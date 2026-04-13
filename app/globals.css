@@ -2,23 +2,30 @@
 @import "tailwindcss";
 
 :root {
-  --navy:       #1e40af;
-  --navy-light: #3b82f6;
-  --navy-dark:  #1e3a8a;
-  --navy-deep:  #172554;
-  --accent:     #ea580c;
-  --accent-lt:  #fb923c;
+  --navy:       #2563eb; /* blue-600 */
+  --navy-light: #3b82f6; /* blue-500 */
+  --navy-dark:  #1d4ed8; /* blue-700 */
+  --navy-deep:  #1e40af; /* blue-800 (used sparingly for contrast) */
+  --accent:     #f97316; /* orange-500 */
+  --accent-lt:  #fb923c; /* orange-400 */
 }
 
 @theme {
   --font-sans: 'Noto Sans JP', sans-serif;
-  --color-navy:       #1e40af;
+  --color-navy:       #2563eb;
   --color-navy-light: #3b82f6;
-  --color-navy-dark:  #1e3a8a;
-  --color-navy-deep:  #172554;
-  --color-accent:     #ea580c;
+  --color-navy-dark:  #1d4ed8;
+  --color-navy-deep:  #1e40af;
+  --color-accent:     #f97316;
   --color-accent-lt:  #fb923c;
   --color-line-green: #06C755;
+
+  /* Custom Animations */
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
 
   /* ── Border Radius — B2B Corporate Style ── */
   --radius-none:    0px;
@@ -127,18 +134,19 @@ body { font-family: 'Noto Sans JP', sans-serif; }
   border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 600;
-  color: #cbd5e1;
-  transition: background 0.15s, color 0.15s;
+  color: #334155; /* slate-700 for high contrast */
+  transition: all 0.2s;
   text-decoration: none;
+  border-left: 3px solid transparent;
 }
-.admin-nav-link:hover,
-.admin-nav-link.active {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
+.admin-nav-link:hover {
+  background: #f1f5f9; /* slate-100 */
+  color: #0f172a; /* slate-900 */
 }
 .admin-nav-link.active {
-  background: rgba(234,88,12,0.25);
-  color: #fb923c;
+  background: #eff6ff; /* blue-50 */
+  color: #1d4ed8; /* blue-700 */
+  border-left: 3px solid #2563eb; /* blue-600 flat boundary */
 }
 
 /* Firefly glowing effect for trust badges */

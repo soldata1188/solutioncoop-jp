@@ -201,29 +201,30 @@ export default function FaqSection() {
           ))}
         </div>
 
-        {/* FAQ Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[400px]">
+        {/* FAQ Grid (Horizontal Row Style) */}
+        <div className="grid grid-cols-1 gap-6 min-h-[400px] max-w-4xl mx-auto">
           {filteredFaq.map((faq, i) => (
-            <div key={i} className="flex flex-col bg-white border border-gray-100 rounded shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group overflow-hidden">
-              {/* Question Header */}
-              <div className="bg-navy p-5 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-16 h-16 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl font-black text-white/20 leading-none flex-shrink-0 mt-1">Q</span>
+            <div key={i} className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+              {/* Question Header (Left side on Desktop) */}
+              <div className="md:w-5/12 bg-slate-50 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-200">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="flex items-start gap-4 relative z-10">
+                  <span className="text-4xl font-black text-slate-300 leading-none flex-shrink-0 mt-1">Q</span>
                   <div>
-                    <span className="text-[10px] text-blue-200 font-bold uppercase tracking-widest block mb-1 opacity-70">
+                    <span className="inline-block bg-white border border-gray-200 text-gray-500 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded mb-2">
                       {faq.catLabel}
                     </span>
-                    <h3 className="font-bold text-white text-[15px] leading-snug">
+                    <h3 className="font-bold text-slate-800 text-base md:text-lg leading-snug">
                       {faq.q}
                     </h3>
                   </div>
                 </div>
               </div>
-              {/* Answer Content */}
-              <div className="p-6 flex-1 flex items-start gap-4 bg-white">
-                <span className="text-3xl font-black text-navy/10 leading-none flex-shrink-0 mt-1">A</span>
-                <div className="flex-1 overflow-hidden">
+              
+              {/* Answer Content (Right side on Desktop) */}
+              <div className="md:w-7/12 p-6 md:p-8 flex items-start gap-4 relative bg-white">
+                <span className="text-4xl font-black text-slate-100 leading-none flex-shrink-0 mt-1">A</span>
+                <div className="flex-1 overflow-hidden w-full relative z-10 text-slate-700">
                   {faq.answer}
                 </div>
               </div>
@@ -231,30 +232,6 @@ export default function FaqSection() {
           ))}
         </div>
 
-        {/* CTA Banner */}
-        <div className="mt-16 bg-navy p-8 md:p-12 text-center rounded relative overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-blue-800/20" />
-          <div className="relative z-10">
-            <h3 className="text-xl md:text-3xl font-black text-white mb-4">
-              その他の疑問もお気軽にご相談ください
-            </h3>
-            <p className="text-blue-100 text-sm md:text-base mb-8 max-w-2xl mx-auto opacity-90 leading-relaxed">
-              貴社の職種や状況に合わせた具体的なアドバイスを無料で行っております。<br className="hidden md:block" />
-              お電話またはWebフォームよりお問い合わせください。
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <TrackedLink href="tel:0722248067" eventAction="cta_click" eventLabel="faq_phone"
-                className="inline-flex items-center justify-center gap-3 bg-white text-navy font-black py-4 px-8 rounded-lg hover:bg-gray-100 transition shadow-lg">
-                📞 072-224-8067
-              </TrackedLink>
-              <TrackedLink href="/contact" eventAction="cta_click" eventLabel="faq_contact"
-                className="inline-flex items-center justify-center gap-3 bg-orange-600 border-b-4 border-orange-800 text-white font-black py-4 px-8 rounded-lg hover:bg-orange-700 transition shadow-lg">
-                ✉️ 無料相談フォームへ
-              </TrackedLink>
-            </div>
-            <p className="text-blue-300 text-[10px] mt-6 tracking-widest">※ 平日 9:00〜18:00 受付中</p>
-          </div>
-        </div>
       </div>
     </section>
   );

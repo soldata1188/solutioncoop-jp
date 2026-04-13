@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import LeadMagnet from '@/components/LeadMagnet';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
 
@@ -124,7 +125,7 @@ export default async function NewsDetailPage({ params }: Props) {
               <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-accent transition">
                 ← お知らせ一覧へ戻る
               </Link>
-              <Link href="/#contact"
+              <Link href="/contact"
                 className="inline-flex items-center gap-2 bg-accent hover:bg-orange-700 text-white font-bold px-6 py-3 rounded-lg text-sm transition shadow-sm">
                 📞 無料相談する
               </Link>
@@ -132,6 +133,10 @@ export default async function NewsDetailPage({ params }: Props) {
           </article>
 
         </div>
+        
+        {/* ===== Lead Magnet (Mồi nhử chuyển đổi từ bài viết) ===== */}
+        <div className="border-t-4 border-double border-gray-200" />
+        <LeadMagnet />
       </main>
       <Footer />
     </>

@@ -4,6 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
   { href: '/admin',          icon: '📊', label: 'ダッシュボード' },
+  { href: '/admin/companies',icon: '🏢', label: '企業リスト管理' },
   { href: '/admin/news',     icon: '📰', label: '最新情報管理' },
   { href: '/admin/news/new', icon: '✏️', label: '新規投稿' },
 ];
@@ -40,29 +41,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const currentYear = new Date().getFullYear();
 
-  // Sidebar content — shared between desktop & mobile
   const sidebarContent = (
     <>
       {/* Logo */}
-      <div className="px-5 py-6 border-b border-white/10">
-        <a href="/" target="_blank" rel="noreferrer" className="block">
-          <p className="text-white font-black text-base leading-tight">ソリューション協同組合</p>
-          <p className="text-blue-300 text-[10px] mt-1">管理画面 Admin Panel</p>
+      <div className="px-5 py-6 border-b border-gray-100 bg-white">
+        <a href="/" target="_blank" rel="noreferrer" className="block group">
+          <p className="text-slate-800 font-black text-base leading-tight group-hover:text-blue-600 transition-colors">ソリューション協同組合</p>
+          <p className="text-slate-400 font-bold text-[10px] mt-1 tracking-wider uppercase">管理画面 Admin Panel</p>
         </a>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-        <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-3 mb-2">メニュー</p>
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto bg-white">
+        <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest px-3 mb-2">メニュー</p>
         {NAV_ITEMS.map(l => (
           <a key={l.href} href={l.href}
             onClick={() => setSidebarOpen(false)}
             className={`admin-nav-link ${isActive(l.href) ? 'active' : ''}`}>
-            <span className="text-lg">{l.icon}</span>{l.label}
+            <span className="text-lg mr-1">{l.icon}</span>{l.label}
           </a>
         ))}
 
-        <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-3 mb-2 mt-6">サイト</p>
+        <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest px-3 mb-2 mt-6">サイト</p>
         {SITE_LINKS.map(l => (
           <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="admin-nav-link">
             <span className="text-lg">{l.icon}</span>{l.label}
@@ -71,30 +71,29 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </nav>
 
       {/* Footer / Logout */}
-      <div className="px-3 py-4 border-t border-white/10 space-y-1">
+      <div className="px-3 py-4 border-t border-gray-100 bg-white space-y-1">
         {BOTTOM_LINKS.map(l => (
           <a key={l.href} href={l.href}
             onClick={() => setSidebarOpen(false)}
             className={`admin-nav-link ${isActive(l.href) ? 'active' : ''}`}>
-            <span className="text-lg">{l.icon}</span>{l.label}
+            <span className="text-lg mr-1">{l.icon}</span>{l.label}
           </a>
         ))}
         <button onClick={handleLogout}
-          className="admin-nav-link w-full text-left text-red-300 hover:text-red-200 hover:bg-red-900/30 mt-2">
-          <span className="text-lg">🚪</span>ログアウト
+          className="admin-nav-link w-full text-left text-red-600 hover:text-red-700 hover:bg-red-50 mt-2 font-bold">
+          <span className="text-lg mr-1">🚪</span>ログアウト
         </button>
-        <p className="text-[10px] text-blue-500 px-3 pt-2">&copy; {currentYear} ソリューション協同組合</p>
+        <p className="text-[10px] font-bold text-slate-500 px-3 pt-3">&copy; {currentYear} ソリューション協同組合</p>
       </div>
     </>
   );
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 font-sans">
+    <div className="min-h-screen bg-gray-50 text-slate-800 font-sans selection:bg-blue-200 selection:text-blue-900">
       <div className="flex h-screen overflow-hidden">
 
         {/* ── Desktop Sidebar ── */}
-        <aside className="hidden md:flex w-64 flex-shrink-0 border-r border-white/10 flex-col overflow-y-auto"
-          style={{ background: 'linear-gradient(180deg,#172554 0%,#1e3a8a 100%)' }}>
+        <aside className="hidden md:flex w-64 flex-shrink-0 border-r border-gray-200 flex-col overflow-y-auto bg-white shadow-[1px_0_10px_rgba(0,0,0,0.02)] z-10">
           {sidebarContent}
         </aside>
 
@@ -102,13 +101,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {sidebarOpen && (
           <div className="md:hidden fixed inset-0 z-50">
             {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/60" onClick={() => setSidebarOpen(false)} />
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={() => setSidebarOpen(false)} />
             {/* Sidebar */}
-            <aside className="absolute left-0 top-0 bottom-0 w-72 flex flex-col overflow-y-auto"
-              style={{ background: 'linear-gradient(180deg,#172554 0%,#1e3a8a 100%)' }}>
+            <aside className="absolute left-0 top-0 bottom-0 w-72 flex flex-col overflow-y-auto bg-white shadow-2xl border-r border-gray-200">
               {/* Close button */}
               <button onClick={() => setSidebarOpen(false)}
-                className="absolute top-4 right-4 text-white/60 hover:text-white text-2xl z-10 transition">
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-2xl z-20 transition">
                 ✕
               </button>
               {sidebarContent}

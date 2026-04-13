@@ -71,35 +71,37 @@ export default async function HomePage() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col items-center text-center">
               <div className="w-full max-w-4xl text-white space-y-6">
-                <div className="flex flex-wrap justify-center gap-3">
-                  {/* "Thẻ Chứng nhận" Uy tín 1 */}
-                  <div className="group flex items-center gap-2 md:gap-2.5 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1.5 md:px-5 md:py-2 hover:bg-white/25 transition-all cursor-default w-fit">
-                    <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full shrink-0">
-                      <span className="text-blue-900 text-[8px] md:text-[10px] font-black">優良</span>
+                <div className="mx-auto w-full max-w-sm md:max-w-max bg-white/10 backdrop-blur-md border border-white/20 rounded-[1.25rem] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+                  <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20">
+                    {/* "Thẻ Chứng nhận" Uy tín 1 */}
+                    <div className="flex-1 px-5 mt-1 md:mt-0 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
+                      <div className="flex items-center justify-center w-6 h-6 bg-orange-500 rounded-full shrink-0 shadow-sm">
+                        <span className="text-white text-[10px] font-black">優良</span>
+                      </div>
+                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
+                        一般監理事業<span className="text-orange-400 ml-1">許可</span>
+                      </span>
                     </div>
-                    <span className="text-white font-bold text-[11px] md:text-sm tracking-widest whitespace-nowrap">
-                      一般監理事業<span className="text-yellow-300 ml-1">許可</span>
-                    </span>
-                  </div>
 
-                  {/* "Thẻ Chứng nhận" Uy tín 2 */}
-                  <div className="group flex items-center gap-2 md:gap-2.5 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1.5 md:px-5 md:py-2 hover:bg-white/25 transition-all cursor-default w-fit">
-                    <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full text-[10px] md:text-xs shrink-0">
-                      🏆
+                    {/* "Thẻ Chứng nhận" Uy tín 2 */}
+                    <div className="flex-1 px-5 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
+                      <div className="flex items-center justify-center w-6 h-6 bg-orange-500 rounded-full text-xs shrink-0 shadow-sm">
+                        🏆
+                      </div>
+                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
+                        令和4年<span className="text-orange-400 mx-1">大阪府知事表彰</span>受賞
+                      </span>
                     </div>
-                    <span className="text-white font-bold text-[11px] md:text-sm tracking-widest whitespace-nowrap">
-                      令和4年<span className="text-yellow-300 mx-1">大阪府知事表彰</span>受賞
-                    </span>
-                  </div>
 
-                  {/* "Thẻ Chứng nhận" Uy tín 3 (Mới) */}
-                  <div className="group flex items-center gap-2 md:gap-2.5 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1.5 md:px-5 md:py-2 hover:bg-white/25 transition-all cursor-default w-fit">
-                    <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 bg-yellow-400 rounded-full text-[10px] md:text-xs shrink-0">
-                      ✨
+                    {/* "Thẻ Chứng nhận" Uy tín 3 (Mới) */}
+                    <div className="flex-1 px-5 mb-1 md:mb-0 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
+                      <div className="flex items-center justify-center w-6 h-6 bg-orange-500 rounded-full text-xs shrink-0 shadow-sm">
+                        ✨
+                      </div>
+                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
+                        令和8年<span className="text-orange-400 mx-1">憲法記念日知事表彰</span>受賞
+                      </span>
                     </div>
-                    <span className="text-white font-bold text-[11px] md:text-sm tracking-widest whitespace-nowrap">
-                      令和8年<span className="text-yellow-300 mx-1">憲法記念日知事表彰</span>受賞
-                    </span>
                   </div>
                 </div>
                 <h1 className="text-2xl sm:text-3xl md:text-5xl font-black leading-snug drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
@@ -130,48 +132,41 @@ export default async function HomePage() {
                     <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#1e40af] border-2 border-blue-500 flex items-center justify-center text-[10px] text-white shadow-sm shadow-black/20 z-20">⚙️</div>
                     <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-blue-800 border-2 border-blue-400 flex items-center justify-center text-[10px] text-white shadow-sm shadow-black/20 z-10">🏗️</div>
                   </div>
-                  <p className="text-xs md:text-sm text-blue-200 font-medium tracking-wide text-left leading-tight md:leading-normal">
-                    大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-yellow-300 font-black mx-1 text-sm md:text-base">70社超</span>の企業様が導入
+                  <p className="text-sm md:text-base text-blue-100 font-medium tracking-wide text-left leading-relaxed">
+                    大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-yellow-300 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入
                   </p>
                 </div>
 
               </div>
             </div>
           </div>
+          
+          {/* ===== COMPANY MARQUEE (Social Proof) - Overlaid on Hero Background ===== */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 py-3 overflow-hidden flex items-center group bg-blue-900/40 backdrop-blur-md">
+            <div className="flex-1 overflow-hidden flex items-center">
+              {/* Base block */}
+              <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused]">
+                {companies.map((c, i) => (
+                  <span key={`a-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    {c}
+                  </span>
+                ))}
+              </div>
+              {/* Duplicate block for seamless infinite scrolling */}
+              <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused]" aria-hidden="true">
+                {companies.map((c, i) => (
+                  <span key={`b-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
-        {/* ===== COMPANY MARQUEE (Social Proof) ===== */}
-        <div className="bg-blue-50/50 border-b border-blue-100 py-3 overflow-hidden shadow-sm relative flex items-center group">
-          {/* Fading Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-blue-50/50 to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-blue-50/50 to-transparent z-10 pointer-events-none"></div>
-          
-          {/* Label */}
-          <div className="flex-shrink-0 bg-blue-600 text-white text-[10px] md:text-xs font-black px-4 py-1.5 rounded-r-md tracking-widest uppercase z-20 shadow-sm border border-blue-500 border-l-0">
-            受入企業様
-          </div>
-          
-          <div className="flex-1 overflow-hidden ml-2 md:ml-6 flex items-center">
-            {/* Base block */}
-            <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-blue-900 group-hover:[animation-play-state:paused]">
-              {companies.map((c, i) => (
-                <span key={`a-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-blue-600 transition-colors cursor-default whitespace-nowrap">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                  {c}
-                </span>
-              ))}
-            </div>
-            {/* Duplicate block for seamless infinite scrolling */}
-            <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-blue-900 group-hover:[animation-play-state:paused]" aria-hidden="true">
-              {companies.map((c, i) => (
-                <span key={`b-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-blue-600 transition-colors cursor-default whitespace-nowrap">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                  {c}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+
 
         {/* ===== KEY STATS ===== */}
         <section className="bg-blue-600 py-10 relative overflow-hidden">

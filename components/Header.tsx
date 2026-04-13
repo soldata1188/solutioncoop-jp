@@ -18,7 +18,6 @@ export default function Header() {
     { href: '/#news',       label: '最新情報' },
     { href: '/about',       label: '組合概要' },
     { href: '/#strengths',  label: '選ばれる理由' },
-    { href: '/#cases',      label: '導入事例' },
     { href: '/#flow',       label: '受入れの流れ' },
     { href: '/#faq',        label: 'よくある質問' },
   ];

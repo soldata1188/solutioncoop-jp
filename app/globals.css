@@ -21,7 +21,7 @@
   --color-line-green: #06C755;
 
   /* Custom Animations */
-  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 65s linear infinite;
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }

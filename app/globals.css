@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --navy:       #1e40af;
+  --navy-light: #3b82f6;
+  --navy-dark:  #1e3a8a;
+  --navy-deep:  #172554;
+  --accent:     #ea580c;
+  --accent-lt:  #fb923c;
+}
+
+@theme {
+  --font-sans: 'Noto Sans JP', sans-serif;
+  --color-navy:       #1e40af;
+  --color-navy-light: #3b82f6;
+  --color-navy-dark:  #1e3a8a;
+  --color-navy-deep:  #172554;
+  --color-accent:     #ea580c;
+  --color-accent-lt:  #fb923c;
+  --color-line-green: #06C755;
+
+  /* ── Border Radius — B2B Corporate Style ── */
+  --radius-none:    0px;
+  --radius-sm:      2px;
+  --radius:         4px;  /* Chuẩn cho Card, Input, Table (rounded) */
+  --radius-md:      6px;
+  --radius-lg:      8px;  /* Chuẩn cho Nút bấm CTA (rounded-lg) */
+  --radius-xl:      12px;
+  --radius-2xl:     16px;
+  --radius-3xl:     24px;
+  --radius-full:    9999px;
+
+  /* ── Shadow — No Shadow Design ── */
+  --shadow-sm:      none;
+  --shadow:         none;
+  --shadow-md:      none;
+  --shadow-lg:      none;
+  --shadow-xl:      none;
+  --shadow-2xl:     none;
+  --shadow-inner:   none;
+}
+
+/* Global Border Override: Clearer and sharper gray */
+.border, 
+.border-t, .border-b, .border-l, .border-r,
+.border-gray-100, .border-gray-200, .border-gray-300 { 
+  border-color: #e2e8f0 !important; 
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; }
+
+/* Progress bar */
+#nprogress .bar { background: var(--accent) !important; height: 3px !important; }
+
+/* Section title underline */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 0px;
+}
+
+/* Card hover lift - No Shadow version */
+.card-lift {
+  transition: transform 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* News badge */
+.nbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+.nb-news   { background: #dbeafe; color: #1d4ed8; }
+.nb-result { background: #dcfce7; color: #15803d; }
+.nb-system { background: #fef9c3; color: #a16207; }
+.nb-event  { background: #ede9fe; color: #6d28d9; }
+.nb-new    { background: #fee2e2; color: #b91c1c; }
+
+/* Ticker */
+.ticker-track {
+  display: flex;
+  animation: ticker-scroll 32s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.5s ease both; }
+
+/* Admin sidebar */
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.admin-nav-link:hover,
+.admin-nav-link.active {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.admin-nav-link.active {
+  background: rgba(234,88,12,0.25);
+  color: #fb923c;
+}
+
+/* Firefly glowing effect for trust badges */
+@keyframes firefly {
+  0%, 100% { 
+    opacity: 0.8; 
+    box-shadow: 0 0 5px rgba(234, 88, 12, 0.2); 
+  }
+  50% { 
+    opacity: 1; 
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.6), 0 0 25px rgba(234, 88, 12, 0.4); 
+  }
+}
+
+.animate-firefly {
+  animation: firefly 2.2s infinite ease-in-out;
+}

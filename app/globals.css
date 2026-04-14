@@ -164,3 +164,12 @@ body { font-family: 'Noto Sans JP', sans-serif; }
 .animate-firefly {
   animation: firefly 2.2s infinite ease-in-out;
 }
+/* Animation for Premium Buttons */
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}

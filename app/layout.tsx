@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import BackToTop from '@/components/BackToTop';
-import FloatingCTA from '@/components/FloatingCTA';
 
 export const metadata: Metadata = {
   title: {
@@ -64,7 +63,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <GoogleAnalytics />
-        <FloatingCTA />
         {children}
         <BackToTop />
       </body>

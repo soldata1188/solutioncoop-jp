@@ -40,8 +40,8 @@ const FAQ_DATA = [
     q: '新制度「育成就労」での「転籍（転職）」リスクへの対策は？',
     answer: (
       <div className="space-y-3 text-xs">
-        <div className="bg-blue-50 border border-blue-200 p-3 rounded">
-          <p className="font-bold text-blue-900 mb-1">🔍 転籍は「無制限」ではありません</p>
+        <div className="bg-slate-50 border border-slate-200 p-3 rounded">
+          <p className="font-bold text-[#1e40af] mb-1">🔍 転籍は「無制限」ではありません</p>
           <p className="text-gray-700 leading-relaxed">
             一定の就労期間（1～2年）と技能・日本語試験の合格が条件です。当組合では、<strong>母国語スタッフによる定期面談</strong>と<strong>メンタルケア</strong>を強化し、他社へ移る必要のない「選ばれる職場づくり」を伴走支援いたします。
           </p>
@@ -139,7 +139,7 @@ const FAQ_DATA = [
           ))}
           <span className="bg-gray-200 text-gray-600 px-3 py-1 text-[10px] font-bold rounded-sm">他多数</span>
         </div>
-        <a href="/about#disclosure" className="inline-block mt-2 text-blue-800 font-bold hover:underline">
+        <a href="/about#disclosure" className="inline-block mt-2 text-[#1e40af] font-bold hover:underline">
           📄 職種詳細・法令情報を確認する →
         </a>
       </div>
@@ -151,8 +151,8 @@ const FAQ_DATA = [
     q: '外国人実習生の受入れが初めてですが、事務手続きは大変ですか？',
     answer: (
       <div className="space-y-3 text-xs">
-        <div className="bg-blue-50 border border-blue-200 p-3 rounded">
-          <p className="font-bold text-blue-900 mb-1">⚖️ 煩雑な書類作成は「当組合にお任せ」ください</p>
+        <div className="bg-slate-50 border border-slate-200 p-3 rounded">
+          <p className="font-bold text-[#1e40af] mb-1">⚖️ 煩雑な書類作成は「当組合にお任せ」ください</p>
           <p className="text-gray-700 leading-relaxed">
             技能実習計画の認定、入管への在留資格申請、OTIT（外国人技能実習機構）への各種届出など、<strong>専門知識が必要な事務手続きは当組合が全面的に代行・サポート</strong>いたします。
           </p>
@@ -177,7 +177,7 @@ export default function FaqSection() {
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12">
           <span className="inline-block bg-orange-100 text-orange-600 font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-3 rounded-full">よくある質問</span>
-          <h2 className="text-3xl md:text-4xl font-black text-navy mb-4">よくあるご質問</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-4">よくある質問</h2>
           <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
             技能実習生の受入れをご検討中の皆様から、特によく寄せられるご質問をカテゴリー別にまとめました。
           </p>
@@ -189,10 +189,10 @@ export default function FaqSection() {
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`flex items-center gap-2 px-5 py-3 rounded-full text-xs font-bold transition-all duration-300 border-2 ${
+              className={`flex items-center gap-2 px-5 py-3 rounded text-xs font-bold transition-all duration-300 border-2 ${
                 activeTab === cat.id 
-                  ? 'bg-navy border-navy text-white shadow-lg -translate-y-1' 
-                  : 'bg-white border-gray-100 text-gray-600 hover:border-navy hover:text-navy'
+                  ? 'bg-[#1e40af] border-[#1e40af] text-white shadow-lg -translate-y-1' 
+                  : 'bg-white border-gray-100 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'
               }`}
             >
               <span>{cat.icon}</span>
@@ -204,7 +204,7 @@ export default function FaqSection() {
         {/* FAQ Grid (Horizontal Row Style) */}
         <div className="grid grid-cols-1 gap-6 min-h-[400px] max-w-4xl mx-auto">
           {filteredFaq.map((faq, i) => (
-            <div key={i} className="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+            <div key={i} className="flex flex-col md:flex-row bg-white border border-gray-200 rounded shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
               {/* Question Header (Left side on Desktop) */}
               <div className="md:w-5/12 bg-slate-50 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-200">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />

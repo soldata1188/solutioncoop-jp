@@ -24,9 +24,9 @@ export default function FloatingCTA() {
       
       {/* Nút 1: Tải tài liệu (Mồi nhử) */}
       <Link 
-        href="/#lead-magnet" 
+        href="/lp#lead-form" 
         onClick={() => trackEvent('floating_cta_click', { event_category: 'engagement', event_label: 'document_download' })}
-        className="group relative flex items-center justify-center w-14 h-14 bg-green-600 rounded-full shadow-lg hover:w-48 transition-all duration-300 overflow-hidden"
+        className="group relative flex items-center justify-center w-14 h-14 bg-[#1e40af] rounded-full shadow-[0_10px_25px_rgba(30,64,175,0.4)] hover:w-48 transition-all duration-300 overflow-hidden"
       >
         <span className="text-2xl z-10 group-hover:mr-32 transition-all duration-300">📥</span>
         <span className="absolute right-4 text-white font-bold text-sm opacity-0 whitespace-nowrap group-hover:opacity-100 transition-opacity duration-300 delay-100">
@@ -36,9 +36,9 @@ export default function FloatingCTA() {
 
       {/* Nút 2: Đăng ký tư vấn */}
       <Link 
-        href="/contact" 
+        href="/lp" 
         onClick={() => trackEvent('floating_cta_click', { event_category: 'conversion', event_label: 'free_consultation' })}
-        className="group relative flex items-center justify-center w-14 h-14 bg-orange-600 rounded-full shadow-lg hover:w-48 transition-all duration-300 overflow-hidden"
+        className="group relative flex items-center justify-center w-14 h-14 bg-[#f97316] rounded-full shadow-[0_10px_25px_rgba(249,115,22,0.4)] hover:w-48 transition-all duration-300 overflow-hidden"
       >
         <span className="text-2xl z-10 group-hover:mr-32 transition-all duration-300">✉️</span>
         <span className="absolute right-4 text-white font-bold text-sm opacity-0 whitespace-nowrap group-hover:opacity-100 transition-opacity duration-300 delay-100">

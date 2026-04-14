@@ -74,8 +74,8 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
                 <button key={c.key} onClick={() => setFilter(c.key)}
                   className={`text-xs font-bold px-4 py-1.5 rounded border-2 transition-all ${
                     filter === c.key
-                      ? 'border-navy bg-navy text-white'
-                      : 'border-gray-200 text-gray-600 hover:border-navy hover:text-navy'
+                      ? 'border-[#1e40af] bg-[#1e40af] text-white'
+                      : 'border-gray-200 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'
                   }`}>
                   {c.label} <span className="ml-1 opacity-60 font-normal">{c.count}</span>
                 </button>
@@ -136,15 +136,15 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
         <aside className="lg:w-72 flex-shrink-0">
           <div className="space-y-6 lg:sticky lg:top-24">
             {/* CTA */}
-            <div className="bg-navy rounded p-6 text-white text-center shadow-lg">
+            <div className="bg-[#1e40af] rounded p-6 text-white text-center shadow-lg">
               <p className="text-3xl mb-3">📞</p>
               <h3 className="font-bold text-lg mb-1">無料相談はこちら</h3>
-              <p className="text-blue-200 text-xs mb-4 leading-relaxed">外国人材の受入れについて、どんなご質問もお気軽に</p>
-              <a href="tel:0722248067" className="flex items-center justify-center gap-2 bg-white text-navy font-black text-xl py-3 rounded-lg hover:bg-gray-100 transition mb-3">
+              <p className="text-blue-100 text-xs mb-4 leading-relaxed opacity-80">外国人材の受入れについて、どんなご質問もお気軽に</p>
+              <a href="tel:0722248067" className="flex items-center justify-center gap-2 bg-white text-[#1e40af] font-black text-xl py-4 rounded hover:bg-gray-100 transition mb-3">
                 📞 072-224-8067
               </a>
-              <p className="text-blue-300 text-[10px] mb-4">平日 9:00〜18:00</p>
-              <Link href="/#contact" className="block w-full bg-accent hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition text-sm shadow-sm">
+              <p className="text-blue-200 text-[10px] mb-4">平日 9:00〜18:00</p>
+              <Link href="/#contact" className="block w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-4 rounded transition text-sm shadow-sm">
                 ✉️ 無料相談フォームへ
               </Link>
             </div>
@@ -180,7 +180,7 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
               </ul>
             </div>
 
-            <Link href="/" className="flex items-center justify-center gap-2 text-sm font-bold text-navy border-2 border-navy px-5 py-3 rounded-lg hover:bg-navy hover:text-white transition-all shadow-sm">
+            <Link href="/" className="flex items-center justify-center gap-2 text-sm font-bold text-[#1e40af] border-2 border-[#1e40af] px-5 py-4 rounded hover:bg-[#1e40af] hover:text-white transition-all shadow-sm">
               ← 技能実習ページへ戻る
             </Link>
           </div>

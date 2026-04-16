@@ -21,13 +21,13 @@ export default function Header() {
     { href: '#flow',      label: '受入の流れ' },
     { href: '/simulation', label: '費用シミュレーション' },
     { href: '#faq',       label: 'よくある質問' },
-    { href: '/support',   label: '相談窓口' },
+    { href: '/support',   label: '24/7 Support' },
   ] : [
     { href: '/#news',       label: '最新情報' },
-    { href: '/about',       label: '組合概要' },
-    { href: '/#strengths',  label: '選ばれる理由' },
+    { href: '/#overview',   label: '組合概要' },
+    { href: '/#disclosure', label: '情報公開' },
     { href: '/#faq',        label: 'よくある質問' },
-    { href: '/support',     label: '相談窓口' },
+    { href: '/support',     label: '24/7 Support' },
   ];
 
   return (
@@ -48,27 +48,27 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-1 text-sm font-medium text-gray-600" aria-label="メインナビ">
-          {navLinks.filter(l => l.label !== '相談窓口').map(l => (
+          {navLinks.filter(l => l.href !== '/support').map(l => (
             <Link key={l.href} href={l.href}
-              className="hover:text-navy px-3 py-2 rounded-lg hover:bg-blue-50 transition-all whitespace-nowrap">
+              className="hover:text-navy px-3 py-2 rounded hover:bg-blue-50 transition-all whitespace-nowrap">
               {l.label}
             </Link>
           ))}
           
           <Link href="/support"
             className="text-accent font-bold border-2 border-accent px-3 py-1.5 rounded hover:bg-accent hover:text-white transition ml-4 whitespace-nowrap">
-            相談窓口
+            24/7 Support
           </Link>
 
           {isLP ? (
             <Link href="#lead-form"
               className="bg-accent text-white font-bold px-4 py-2 rounded hover:bg-[#ea580c] shadow-sm transition ml-2 whitespace-nowrap">
-              無料ダウンロード
+              無料相談
             </Link>
           ) : (
-            <Link href="/about#disclosure"
-              className="text-accent font-bold border-2 border-accent px-3 py-1.5 rounded hover:bg-accent hover:text-white transition ml-2 whitespace-nowrap">
-              情報公開
+            <Link href="/contact"
+              className="text-white font-bold bg-[#f97316] px-4 py-1.5 rounded hover:bg-[#ea580c] transition ml-2 whitespace-nowrap">
+              無料相談
             </Link>
           )}
         </nav>
@@ -97,9 +97,9 @@ export default function Header() {
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100">
           <nav className="container mx-auto px-4 py-4 space-y-1">
-            {navLinks.filter(l => l.label !== '相談窓口').map(l => (
+            {navLinks.filter(l => l.href !== '/support').map(l => (
               <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
-                className="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded-lg">
+                className="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded">
                 {l.label}
               </Link>
             ))}
@@ -107,18 +107,18 @@ export default function Header() {
             <div className="pt-2 space-y-3">
               <Link href="/support" onClick={() => setMenuOpen(false)}
                 className="block text-center text-white bg-accent font-black p-4 hover:bg-[#ea580c] rounded shadow-md ring-2 ring-orange-300 ring-offset-2">
-                📢 相談窓口 (24h Support)
+                📢 24/7 Support
               </Link>
 
               {isLP ? (
-                <Link href="#lead-form" onClick={() => setMenuOpen(false)}
+                <Link href="/contact" onClick={() => setMenuOpen(false)}
                   className="block text-center text-white bg-accent font-bold p-4 hover:bg-[#ea580c] rounded shadow-sm">
-                  資料を無料でダウンロード
+                  無料相談を申し込む
                 </Link>
               ) : (
-                <Link href="/about#disclosure" onClick={() => setMenuOpen(false)}
-                  className="block text-accent font-bold p-4 border-2 border-accent text-center rounded hover:bg-orange-50">
-                  情報公開
+                <Link href="/contact" onClick={() => setMenuOpen(false)}
+                  className="block text-white bg-[#f97316] font-bold p-4 text-center rounded hover:bg-[#ea580c]">
+                  無料相談フォーム
                 </Link>
               )}
             </div>

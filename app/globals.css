@@ -88,23 +88,25 @@ body { font-family: 'Noto Sans JP', sans-serif; }
   transform: translateY(-5px);
 }
 
-/* News badge */
+/* News badge - Ultra-thin B2B Ghost Style */
 .nbadge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-size: 10px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 2px 8px; /* Giảm padding để thẻ mỏng hơn */
   border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
   white-space: nowrap;
   letter-spacing: 0.03em;
 }
-.nb-news   { background: #dbeafe; color: #1d4ed8; }
-.nb-result { background: #dcfce7; color: #15803d; }
-.nb-system { background: #fef9c3; color: #a16207; }
-.nb-event  { background: #ede9fe; color: #6d28d9; }
-.nb-new    { background: #fee2e2; color: #b91c1c; }
+.nb-news   { border-color: #60a5fa; color: #1d4ed8; } /* blue-400 border, blue-700 text */
+.nb-result { border-color: #4ade80; color: #15803d; } /* green-400 border, green-700 text */
+.nb-system { border-color: #facc15; color: #a16207; } /* yellow-400 border, yellow-700 text */
+.nb-event  { border-color: #a78bfa; color: #6d28d9; } /* purple-400 border, purple-700 text */
+.nb-new    { border-color: #f87171; color: #b91c1c; } /* red-400 border, red-700 text */
 
 /* Ticker */
 .ticker-track {

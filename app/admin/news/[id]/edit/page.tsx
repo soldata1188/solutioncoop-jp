@@ -59,7 +59,7 @@ export default function EditArticlePage() {
   return (
     <div className="p-6 md:p-8 max-w-4xl">
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl font-bold text-sm text-white ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
+        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
           {toast.msg}
         </div>
       )}
@@ -74,12 +74,12 @@ export default function EditArticlePage() {
         <div className="grid md:grid-cols-3 gap-6">
 
           <div className="md:col-span-2 space-y-5">
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">📝 記事内容</h2>
               <div>
                 <label className="block text-xs font-bold text-gray-600 mb-1.5">タイトル <span className="text-red-500">*</span></label>
                 <input type="text" value={form.title || ''} onChange={e => update('title', e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
+                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
                 />
               </div>
               <ImageUploader
@@ -90,17 +90,17 @@ export default function EditArticlePage() {
                 <label className="block text-xs font-bold text-gray-600 mb-1.5">本文（HTML可）</label>
                 <textarea value={form.content || ''} onChange={e => update('content', e.target.value)}
                   rows={10}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 font-mono focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-y"
+                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 font-mono focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-y"
                 />
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🔍 SEO設定</h2>
               <div>
                 <label className="block text-xs font-bold text-gray-600 mb-1.5">SEOタイトル</label>
                 <input type="text" value={form.seoTitle || ''} onChange={e => update('seoTitle', e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition"
+                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition"
                 />
                 <p className="text-[10px] text-gray-400 mt-1">{(form.seoTitle || form.title || '').length}文字（推奨30〜60）</p>
               </div>
@@ -108,12 +108,12 @@ export default function EditArticlePage() {
                 <label className="block text-xs font-bold text-gray-600 mb-1.5">メタディスクリプション</label>
                 <textarea value={form.seoDescription || ''} onChange={e => update('seoDescription', e.target.value)}
                   rows={3}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition resize-none"
+                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition resize-none"
                 />
                 <p className="text-[10px] text-gray-400 mt-1">{(form.seoDescription || '').length}文字（推奨80〜160）</p>
               </div>
               {(form.seoTitle || form.title) && (
-                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="bg-gray-50 rounded p-4 border border-gray-200">
                   <p className="text-[10px] text-gray-400 font-bold uppercase mb-2">検索プレビュー</p>
                   <p className="text-sm text-blue-700 font-semibold line-clamp-1">{form.seoTitle || form.title}｜ソリューション協同組合</p>
                   <p className="text-green-700 text-xs">https://solutioncoop-jp.com/news/{id}</p>
@@ -124,7 +124,7 @@ export default function EditArticlePage() {
           </div>
 
           <div className="space-y-5">
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">⚙️ 公開設定</h2>
               <div>
                 <label className="block text-xs font-bold text-gray-600 mb-2">公開ステータス</label>
@@ -135,26 +135,43 @@ export default function EditArticlePage() {
                   ].map(opt => (
                     <button key={String(opt.val)} type="button"
                       onClick={() => update('published', opt.val)}
-                      className={`flex-1 py-2.5 text-sm font-bold rounded-xl border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400'}`}>
+                      className={`flex-1 py-2.5 text-sm font-bold rounded border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400'}`}>
                       {opt.label}
                     </button>
                   ))}
                 </div>
               </div>
+
+              {/* Pin switch */}
+              <div className="pt-4 border-t border-gray-100">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center">
+                    <input type="checkbox" className="sr-only" checked={!!form.pinned} onChange={e => update('pinned', e.target.checked)} />
+                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${form.pinned ? 'bg-[#f97316] border-[#f97316]' : 'border-gray-300 group-hover:border-gray-400'}`}>
+                      {form.pinned && <span className="text-white text-xs leading-none pt-0.5">✓</span>}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="font-bold text-gray-800 text-sm flex items-center gap-1">📌 トップに固定する</span>
+                    <p className="text-[10px] text-gray-500 mt-0.5">最新情報セクションの目立つ位置に表示されます</p>
+                  </div>
+                </label>
+              </div>
+
               <div>
                 <label className="block text-xs font-bold text-gray-600 mb-1.5">投稿日</label>
                 <input type="date" value={form.date || ''} onChange={e => update('date', e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
+                  className="w-full border border-gray-200 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
                 />
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-3">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-3">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🏷️ カテゴリ</h2>
               {(Object.entries(CATEGORY_CONFIG) as [NewsCategory, {label:string;icon:string}][]).map(([key, cfg]) => (
                 <button key={key} type="button"
                   onClick={() => update('category', key)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
                   <span className="text-xl">{cfg.icon}</span>{cfg.label}
                   {form.category === key && <span className="ml-auto">✓</span>}
                 </button>
@@ -163,13 +180,13 @@ export default function EditArticlePage() {
 
             <div className="flex gap-3">
               <a href={`/news/${id}`} target="_blank"
-                className="flex-1 text-center py-3 border-2 border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-50 transition text-sm">
+                className="flex-1 text-center py-3 border-2 border-gray-200 text-gray-600 font-bold rounded hover:bg-gray-50 transition text-sm">
                 👁️ プレビュー
               </a>
             </div>
 
             <button type="submit" disabled={saving}
-              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded-xl transition text-base">
+              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded transition text-base">
               {saving ? '⏳ 保存中...' : '💾 保存する'}
             </button>
           </div>

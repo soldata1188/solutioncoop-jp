@@ -42,7 +42,7 @@ export default function ContactPage() {
             担当者より2〜3営業日以内にご連絡いたします。<br/>
             お急ぎの場合はお電話（072-224-8067）までご連絡ください。
           </p>
-          <a href="/" className="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold px-8 py-3 rounded-lg transition shadow-sm">
+          <a href="/" className="inline-flex items-center gap-2 bg-navy hover:bg-navy-dark text-white font-bold px-8 py-3 rounded transition shadow-sm">
             ← トップページへ戻る
           </a>
         </div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
               <span className="text-blue-400">›</span>
               <span className="text-white font-semibold">無料相談・お問い合わせ</span>
             </nav>
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-sm px-4 py-1.5 text-xs font-bold mb-4">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded px-4 py-1.5 text-xs font-bold mb-4">
               📬 無料相談・お問い合わせ
             </div>
             <h1 className="text-2xl md:text-3xl font-black mb-3">無料相談・お問い合わせ</h1>
@@ -138,7 +138,7 @@ export default function ContactPage() {
                     <a href="/privacy" className="text-navy hover:underline ml-1">プライバシーポリシー</a>
                   </div>
                   <button type="submit" disabled={status === 'loading'}
-                    className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2">
+                    className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded shadow-sm transition flex items-center justify-center gap-2">
                     {status === 'loading' ? <><span className="animate-spin">⏳</span>送信中...</> : '📨 送信する'}
                   </button>
                 </form>
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 <p className="text-3xl mb-2">📞</p>
                 <p className="font-black text-xl">072-224-8067</p>
                 <p className="text-blue-200 text-xs mt-1 mb-3">平日 9:00〜18:00</p>
-                <a href="tel:0722248067" className="block w-full bg-white text-navy font-bold py-2.5 rounded-lg hover:bg-gray-100 transition text-sm">
+                <a href="tel:0722248067" className="block w-full bg-white text-navy font-bold py-2.5 rounded hover:bg-gray-100 transition text-sm">
                   今すぐ電話する
                 </a>
               </div>

@@ -36,8 +36,8 @@ export default async function AdminDashboard() {
           { label: '非公開',       value: total - published, color: 'bg-gray-500', icon: '🔒' },
           { label: 'カテゴリ数',   value: 4,         color: 'bg-accent', icon: '🏷️' },
         ].map(s => (
-          <div key={s.label} className="bg-white rounded-2xl border border-gray-100 p-5">
-            <div className={`w-10 h-10 ${s.color} rounded-xl flex items-center justify-center text-xl mb-3`}>{s.icon}</div>
+          <div key={s.label} className="bg-white rounded border border-gray-100 p-5">
+            <div className={`w-10 h-10 ${s.color} rounded flex items-center justify-center text-xl mb-3`}>{s.icon}</div>
             <p className="text-3xl font-black text-gray-800">{s.value}</p>
             <p className="text-xs text-gray-500 mt-1">{s.label}</p>
           </div>
@@ -46,7 +46,7 @@ export default async function AdminDashboard() {
 
       <div className="grid md:grid-cols-2 gap-6">
         {/* Recent articles */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        <div className="bg-white rounded border border-gray-100 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-bold text-gray-800">最近の投稿</h2>
             <Link href="/admin/news" className="text-xs text-navy hover:underline font-semibold">すべて見る →</Link>
@@ -66,7 +66,7 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Category breakdown */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        <div className="bg-white rounded border border-gray-100 p-6">
           <h2 className="font-bold text-gray-800 mb-4">カテゴリ別件数</h2>
           <div className="space-y-3">
             {(Object.entries(byCategory) as [keyof typeof byCategory, number][]).map(([cat, count]) => (
@@ -85,7 +85,7 @@ export default async function AdminDashboard() {
 
           <div className="mt-6 pt-4 border-t border-gray-100">
             <Link href="/admin/news/new"
-              className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition">
+              className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-orange-700 text-white font-bold py-3 rounded transition">
               ✏️ 新しい記事を投稿する
             </Link>
           </div>

@@ -14,8 +14,8 @@ export interface NewsItem {
   category: NewsCategory;
   date: string;         // YYYY-MM-DD
   published: boolean;   // true = đang hiển thị
+  pinned?: boolean;     // true = ghim lên đầu phần mới nhất (nổi bật)
   image?: string;       // đường dẫn ảnh đại diện (ví dụ: /uploads/news/xxx.jpg)
-  // SEO fields
   seoTitle?: string;
   seoDescription?: string;
   ogImage?: string;

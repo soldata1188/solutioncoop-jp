@@ -51,7 +51,7 @@ export default function AdminContactsPage() {
     <div className="p-6 md:p-8">
       {/* Toast */}
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
+        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
           {toast.type === 'ok' ? '✅' : '❌'} {toast.msg}
         </div>
       )}
@@ -59,7 +59,7 @@ export default function AdminContactsPage() {
       {/* Detail modal */}
       {selected && (
         <div className="fixed inset-0 z-40 bg-black/50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
-          <div className="bg-white rounded-2xl max-w-lg w-full overflow-hidden" onClick={e => e.stopPropagation()}>
+          <div className="bg-white rounded max-w-lg w-full overflow-hidden" onClick={e => e.stopPropagation()}>
             <div className="bg-navy px-6 py-4 flex items-center justify-between">
               <h3 className="text-white font-bold">📬 お問い合わせ詳細</h3>
               <button onClick={() => setSelected(null)} className="text-white/60 hover:text-white text-xl transition">✕</button>
@@ -85,7 +85,7 @@ export default function AdminContactsPage() {
               </div>
               <div>
                 <p className="text-xs font-bold text-gray-500 mb-1">お問い合わせ内容</p>
-                <div className="bg-gray-50 rounded-xl p-4 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                <div className="bg-gray-50 rounded p-4 text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
                   {selected.message}
                 </div>
               </div>
@@ -95,16 +95,16 @@ export default function AdminContactsPage() {
               <div className="flex flex-wrap gap-2 pt-2">
                 <button
                   onClick={() => toggleField(selected.id, 'read', !selected.read)}
-                  className={`text-xs font-bold px-4 py-2 rounded-lg border-2 transition-all ${selected.read ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-200 text-gray-500 hover:border-blue-300'}`}>
+                  className={`text-xs font-bold px-4 py-2 rounded border-2 transition-all ${selected.read ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-200 text-gray-500 hover:border-blue-300'}`}>
                   {selected.read ? '✅ 既読' : '📩 未読'}
                 </button>
                 <button
                   onClick={() => toggleField(selected.id, 'replied', !selected.replied)}
-                  className={`text-xs font-bold px-4 py-2 rounded-lg border-2 transition-all ${selected.replied ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-200 text-gray-500 hover:border-green-300'}`}>
+                  className={`text-xs font-bold px-4 py-2 rounded border-2 transition-all ${selected.replied ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-200 text-gray-500 hover:border-green-300'}`}>
                   {selected.replied ? '✅ 返信済み' : '💬 未返信'}
                 </button>
                 <a href={`mailto:${selected.email}?subject=Re: お問い合わせの件（ソリューション協同組合）`}
-                  className="text-xs font-bold px-4 py-2 rounded-lg bg-accent text-white hover:bg-orange-700 transition ml-auto">
+                  className="text-xs font-bold px-4 py-2 rounded bg-accent text-white hover:bg-orange-700 transition ml-auto">
                   ✉️ メールで返信
                 </a>
               </div>
@@ -132,8 +132,8 @@ export default function AdminContactsPage() {
           { label: '未読', value: unread, icon: '📩', color: unread > 0 ? 'bg-red-500' : 'bg-gray-400' },
           { label: '未返信', value: unreplied, icon: '💬', color: unreplied > 0 ? 'bg-orange-500' : 'bg-gray-400' },
         ].map(s => (
-          <div key={s.label} className="bg-white rounded-2xl border border-gray-100 p-4">
-            <div className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center text-lg mb-2`}>{s.icon}</div>
+          <div key={s.label} className="bg-white rounded border border-gray-100 p-4">
+            <div className={`w-9 h-9 ${s.color} rounded flex items-center justify-center text-lg mb-2`}>{s.icon}</div>
             <p className="text-2xl font-black text-gray-800">{s.value}</p>
             <p className="text-xs text-gray-500">{s.label}</p>
           </div>
@@ -147,12 +147,12 @@ export default function AdminContactsPage() {
           <p>読み込み中...</p>
         </div>
       ) : contacts.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center text-gray-400">
+        <div className="bg-white rounded border border-gray-100 p-12 text-center text-gray-400">
           <p className="text-4xl mb-3">📭</p>
           <p className="font-semibold">お問い合わせはまだありません</p>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded border border-gray-100 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

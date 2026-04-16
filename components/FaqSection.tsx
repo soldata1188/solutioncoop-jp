@@ -135,9 +135,9 @@ const FAQ_DATA = [
         <p className="text-gray-600">制度上認められた<strong>86職種161作業</strong>。主な対応職種：</p>
         <div className="flex flex-wrap gap-1.5">
           {['建設', '溶接', '機械加工', '造園', '農業', '水産加工', '介護', '縫製'].map(t => (
-            <span key={t} className="bg-navy text-white px-3 py-1 text-[10px] font-bold rounded-sm">{t}</span>
+            <span key={t} className="bg-navy text-white px-3 py-1 text-[10px] font-bold rounded">{t}</span>
           ))}
-          <span className="bg-gray-200 text-gray-600 px-3 py-1 text-[10px] font-bold rounded-sm">他多数</span>
+          <span className="bg-gray-200 text-gray-600 px-3 py-1 text-[10px] font-bold rounded">他多数</span>
         </div>
         <a href="/about#disclosure" className="inline-block mt-2 text-[#1e40af] font-bold hover:underline">
           📄 職種詳細・法令情報を確認する →

@@ -53,151 +53,165 @@ export default function LeadMagnet() {
   return (
     <>
       {/* ===== Lead Magnet Section ===== */}
-      <section id="lead-magnet" className="py-16 md:py-20 bg-gradient-to-br from-green-50 via-white to-blue-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+      <section id="lead-magnet" className="py-16 md:py-24 relative overflow-hidden bg-[#1e40af] mt-10 rounded md:rounded-none">
+        {/* Decorative background */}
+        <div className="absolute inset-0 bg-[#0f172a] opacity-40 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#1e40af]/40 to-[#f97316]/20"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid lg:grid-cols-12 gap-10 items-center">
 
               {/* Left — Content */}
-              <div>
-                <span className="inline-block bg-green-600 text-white font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-4">
-                  無料ダウンロード
-                </span>
-                <h2 className="text-2xl md:text-3xl font-bold text-blue-800 mb-4 leading-snug">
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 bg-[#f97316] text-white font-black tracking-widest uppercase text-[10px] md:text-xs px-4 py-1.5 mb-5 rounded shadow-sm">
+                  <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+                  無料ダウンロード (Miễn phí)
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-md">
                   育成就労制度<br className="hidden md:block" />
-                  <span className="text-green-600">まるわかりガイド</span>
+                  <span className="text-orange-400">まるわかりガイド</span>
                 </h2>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  2027年より本格施行される<strong>育成就労制度</strong>。技能実習制度との違い、転籍ルール、企業が今すべき準備を
-                  <strong className="text-blue-800">5分で読める無料ガイド</strong>にまとめました。
+                <p className="text-sm md:text-base text-blue-100 leading-relaxed mb-8 opacity-90 border-l-4 border-orange-400 pl-4 font-medium">
+                  2027年より本格施行される<strong className="text-white">育成就労制度</strong>。技能実習制度との違い、転籍ルール、企業が今すべき準備を
+                  <strong className="text-orange-400 border-b border-orange-400 mx-1">5分で読める無料ガイド</strong>にまとめました。
                 </p>
-                <ul className="space-y-2 mb-4">
+                <ul className="space-y-4 mb-4">
                   {[
                     '新制度の全体像と移行スケジュール',
                     '技能実習との7つの違い（比較表付き）',
                     '受入企業が今やるべき3つの準備',
                     '監理支援機関の選び方チェックリスト',
                   ].map(item => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-green-600 font-bold mt-0.5">✓</span>
+                    <li key={item} className="flex items-center gap-3 text-sm md:text-base text-white font-bold bg-white/10 px-4 py-2.5 rounded backdrop-blur-sm border border-white/5">
+                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-green-500 text-white text-[10px] shadow-sm flex-shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
                 </ul>
-                <p className="text-xs text-gray-400">PDF形式・全12ページ・無料</p>
+                <p className="text-xs text-blue-200 mt-6 flex items-center gap-2">
+                  <span className="text-lg">📄</span> PDF形式・全12ページ・完全無料
+                </p>
               </div>
 
               {/* Right — Form */}
-              <div className="bg-white border border-gray-200 rounded p-6 md:p-8 shadow-sm">
-                {status === 'ok' ? (
-                  <div className="text-center py-8">
-                    <p className="text-4xl mb-4">🎉</p>
-                    <h3 className="text-lg font-bold text-blue-800 mb-2">ダウンロードありがとうございます</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      PDFが新しいタブで開きます。<br />
-                      開かない場合は下のボタンをクリックしてください。
-                    </p>
-                      <a
-                        href="/documents/ikusei-shuro-guide.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition"
-                      >
-                      📥 PDFを開く
-                    </a>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit}>
-                    <h3 className="text-lg font-bold text-blue-800 mb-1">無料ガイドを受け取る</h3>
-                    <p className="text-xs text-gray-400 mb-5">以下を入力して「ダウンロード」を押してください</p>
-
-                    <div className="space-y-3">
-                      <div>
-                        <label className="block text-xs font-bold text-gray-600 mb-1">
-                          お名前 <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={form.name}
-                          onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                          placeholder="田中 太郎"
-                          className="w-full border border-gray-300 rounded px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                        />
+              <div className="lg:col-span-5 relative">
+                {/* Book graphic illusion */}
+                <div className="absolute -top-6 -left-6 z-0 w-full h-full bg-gradient-to-br from-[#f97316] to-[#ea580c] rounded transform -rotate-3 opacity-20 blur-sm pointer-events-none hidden md:block"></div>
+                
+                <div className="bg-white rounded p-7 md:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative z-10 border-t-4 border-[#f97316]">
+                  {status === 'ok' ? (
+                    <div className="text-center py-10 animate-fade-in">
+                      <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+                        <p className="text-4xl">🎉</p>
                       </div>
-                      <div>
-                        <label className="block text-xs font-bold text-gray-600 mb-1">
-                          会社名
-                        </label>
-                        <input
-                          type="text"
-                          value={form.company}
-                          onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
-                          placeholder="株式会社○○"
-                          className="w-full border border-gray-300 rounded px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-bold text-gray-600 mb-1">
-                          メールアドレス <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          value={form.email}
-                          onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                          placeholder="info@example.co.jp"
-                          className="w-full border border-gray-300 rounded px-4 py-2.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                        />
-                      </div>
+                      <h3 className="text-xl font-black text-[#1e40af] mb-3">ダウンロード準備完了</h3>
+                      <p className="text-sm text-gray-600 mb-8 leading-relaxed">
+                        PDFが新しいタブで開きます。<br />
+                        開かない場合は下のボタンをクリックしてください。
+                      </p>
+                        <a
+                          href="/"
+                          className="inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-black py-4 px-8 rounded transition shadow-lg hover:-translate-y-1"
+                        >
+                        ✉️ サイトへ戻る
+                      </a>
                     </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="relative">
+                      <h3 className="text-xl md:text-2xl font-black text-[#1e40af] mb-2 text-center tracking-tight">無料相談を受け付ける</h3>
+                      <p className="text-[11px] text-gray-500 mb-6 text-center font-bold bg-gray-50 py-2 rounded">以下を入力して「送信」を押してください</p>
 
-                    <button
-                      type="submit"
-                      disabled={status === 'sending'}
-                      className="w-full mt-5 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-bold py-3.5 px-6 rounded-lg shadow-sm transition-all flex items-center justify-center gap-2"
-                    >
-                      {status === 'sending' ? (
-                        <>⏳ 送信中...</>
-                      ) : (
-                        <>📥 無料ダウンロード</>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-[11px] font-black text-gray-500 mb-1.5 uppercase tracking-wider">
+                            お名前 <span className="text-[#f97316]">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={form.name}
+                            onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                            placeholder="田中 太郎"
+                            className="w-full border-2 border-gray-200 rounded px-4 py-3 text-sm focus:border-[#1e40af] focus:ring-0 outline-none transition-colors font-medium text-gray-800 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-black text-gray-500 mb-1.5 uppercase tracking-wider">
+                            会社名
+                          </label>
+                          <input
+                            type="text"
+                            value={form.company}
+                            onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
+                            placeholder="株式会社○○"
+                            className="w-full border-2 border-gray-200 rounded px-4 py-3 text-sm focus:border-[#1e40af] focus:ring-0 outline-none transition-colors font-medium text-gray-800 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-black text-gray-500 mb-1.5 uppercase tracking-wider">
+                            メールアドレス <span className="text-[#f97316]">*</span>
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            value={form.email}
+                            onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                            placeholder="info@example.co.jp"
+                            className="w-full border-2 border-gray-200 rounded px-4 py-3 text-sm focus:border-[#1e40af] focus:ring-0 outline-none transition-colors font-medium text-gray-800 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      <button
+                        type="submit"
+                        disabled={status === 'sending'}
+                        className="w-full mt-7 bg-[#f97316] hover:bg-[#ea580c] disabled:bg-gray-400 text-white font-black py-4 px-6 rounded shadow-[0_10px_20px_rgba(249,115,22,0.3)] transition hover:-translate-y-1 flex items-center justify-center gap-2 text-base md:text-lg"
+                      >
+                        {status === 'sending' ? (
+                          <>⏳ 送信中...</>
+                        ) : (
+                          <>✉️ 今すぐ無料相談</>
+                        )}
+                      </button>
+                      {status === 'error' && (
+                        <p className="text-red-500 text-xs mt-3 text-center font-bold">通信エラーが発生しました。再度お試しください。</p>
                       )}
-                    </button>
-                    {status === 'error' && (
-                      <p className="text-red-600 text-xs mt-2 text-center">送信に失敗しました。もう一度お試しください。</p>
-                    )}
-                    <p className="text-[10px] text-gray-400 mt-3 text-center">
-                      ご入力いただいた情報は資料送付・ご連絡のみに使用します。
-                    </p>
-                  </form>
-                )}
+                      <p className="text-[10px] text-gray-400 mt-4 text-center leading-relaxed">
+                        ※ご入力いただいた情報は資料送付・ご連絡のみに使用し、<br className="hidden lg:block"/>第三者に提供することはございません。
+                      </p>
+                    </form>
+                  )}
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== Sticky Bottom Bar ===== */}
+      {/* ===== Sticky Bottom Bar (HIDDEN ON MOBILE to avoid conflict with FloatingCTA) ===== */}
       {showSticky && !dismissed && !downloaded && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-sm border-t-2 border-yellow-400 shadow-2xl transform transition-transform duration-300 animate-slideUp">
+        <div className="hidden md:block fixed bottom-0 left-0 right-0 z-40 bg-[#1e40af]/95 backdrop-blur-md border-t-2 border-[#f97316] shadow-[0_-10px_30px_rgba(0,0,0,0.2)] transform transition-transform duration-300 animate-slideUp">
           <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 min-w-0">
-              <span className="text-2xl flex-shrink-0">📄</span>
+            <div className="flex items-center gap-4 min-w-0">
+              <span className="flex items-center justify-center w-10 h-10 bg-white/10 rounded text-xl flex-shrink-0">📄</span>
               <div className="min-w-0">
-                <p className="text-white font-bold text-sm truncate">育成就労制度まるわかりガイド</p>
-                <p className="text-blue-300 text-xs hidden sm:block">無料PDF — 新制度の全体像を5分で把握</p>
+                <p className="text-white font-black text-sm truncate tracking-wide">育成就労制度まるわかりガイド</p>
+                <p className="text-orange-300 text-[11px] font-bold mt-0.5">無料PDF大公開 — 新制度への移行準備はこれ一冊で完了</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center gap-3 flex-shrink-0">
               <button
                 onClick={scrollToSection}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-5 text-sm rounded-lg transition-all shadow-sm"
+                className="bg-[#f97316] hover:bg-[#ea580c] text-white font-black py-2.5 px-6 text-sm rounded shadow-md transition-all hover:scale-105"
               >
-                無料ダウンロード
+                ✉️ 無料相談
               </button>
               <button
                 onClick={() => setDismissed(true)}
-                className="text-blue-400 hover:text-white p-2 transition"
+                className="text-white/50 hover:text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition"
                 aria-label="閉じる"
               >
                 ✕

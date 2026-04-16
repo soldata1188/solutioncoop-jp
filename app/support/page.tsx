@@ -69,8 +69,79 @@ export default function SupportPage() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               
-              {/* Channel 1: Phone */}
-              <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
+              {/* Channel 1: Facebook */}
+              <div className="group bg-white rounded border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div className="bg-[#1877F2]/5 p-8 flex items-center justify-center border-b border-[#1877F2]/10 group-hover:bg-[#1877F2]/10 transition-colors">
+                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500">👥</span>
+                </div>
+                <div className="p-8 flex flex-col flex-1 text-center">
+                  <h2 className="text-xl font-black text-[#1877F2] mb-1">Facebookで相談</h2>
+                  <p className="text-xs text-[#1877F2]/60 font-bold mb-6 tracking-widest uppercase italic">Contact via Facebook</p>
+                  
+                  <div className="flex-1 space-y-4 mb-8">
+                    <p className="text-sm text-slate-600 leading-relaxed font-bold">
+                      Messengerからも母国語スタッフが<br/>個別に対応いたします。
+                    </p>
+                    <p className="text-xs text-slate-400 italic">
+                      Personal support via Messenger.
+                    </p>
+
+                    {/* FB QR Code */}
+                    <div className="mt-6 p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto">
+                      <img 
+                        src="/images/fb-qr.png" 
+                        alt="Solution Cooperative Facebook QR Code" 
+                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                      />
+                      <p className="text-[10px] text-slate-400 mt-2 font-bold">Scan to open Messenger</p>
+                    </div>
+                  </div>
+                  
+                  <a href="https://www.facebook.com/solution.sakai" target="_blank" rel="noopener noreferrer" className="w-full bg-[#1877F2] text-white font-black py-4 rounded leading-none hover:opacity-90 transition-all shadow-md mt-auto flex flex-col items-center justify-center gap-1 group">
+                    <span>Messengerを開く</span>
+                    <span className="text-[10px] font-normal opacity-80 group-hover:opacity-100">Open Messenger</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Channel 2: LINE */}
+              <div className="group bg-white rounded border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col scale-105 z-10">
+                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[10px] font-bold px-4 py-1 rounded-bl tracking-widest uppercase">Popular</div>
+                <div className="bg-[#06C755]/5 p-8 flex items-center justify-center border-b border-[#06C755]/10 group-hover:bg-[#06C755]/10 transition-colors">
+                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500">💬</span>
+                </div>
+                <div className="p-8 flex flex-col flex-1 text-center">
+                  <h2 className="text-xl font-black text-[#06C755] mb-1">LINEで相談</h2>
+                  <p className="text-xs text-[#06C755]/60 font-bold mb-6 tracking-widest uppercase italic">Contact via LINE</p>
+                  
+                  <div className="flex-1 space-y-4 mb-8">
+                    <p className="text-sm text-slate-600 leading-relaxed font-bold">
+                      友だち追加後、チャットでいつでも<br/>メッセージをお送りいただけます。
+                    </p>
+                    <p className="text-xs text-slate-400 italic">
+                      Add us and send messages anytime.
+                    </p>
+                    
+                    {/* LINE QR Code */}
+                    <div className="mt-6 p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto">
+                      <img 
+                        src="/images/line-qr.png" 
+                        alt="Solution Cooperative LINE QR Code" 
+                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                      />
+                      <p className="text-[10px] text-slate-400 mt-2 font-bold">Scan to add LINE</p>
+                    </div>
+                  </div>
+                  
+                  <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer" className="w-full bg-[#06C755] text-white font-black py-4 rounded leading-none hover:opacity-90 transition-all shadow-md mt-auto flex flex-col items-center justify-center gap-1 group">
+                    <span>LINE 友だち登録へ</span>
+                    <span className="text-[10px] font-normal opacity-80 group-hover:opacity-100">Add on LINE</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Channel 3: Phone */}
+              <div className="group bg-white rounded border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
                 <div className="bg-slate-50 p-8 flex items-center justify-center border-b border-gray-100 group-hover:bg-[#1e40af]/5 transition-colors">
                   <span className="text-5xl group-hover:scale-110 transition-transform duration-500">📞</span>
                 </div>
@@ -97,78 +168,6 @@ export default function SupportPage() {
                 </div>
               </div>
 
-              {/* Channel 2: LINE */}
-              <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col scale-105 z-10">
-                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[10px] font-bold px-4 py-1 rounded-bl-lg tracking-widest uppercase">Popular</div>
-                <div className="bg-[#06C755]/5 p-8 flex items-center justify-center border-b border-[#06C755]/10 group-hover:bg-[#06C755]/10 transition-colors">
-                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500">💬</span>
-                </div>
-                <div className="p-8 flex flex-col flex-1 text-center">
-                  <h2 className="text-xl font-black text-[#06C755] mb-1">LINEで相談</h2>
-                  <p className="text-xs text-[#06C755]/60 font-bold mb-6 tracking-widest uppercase italic">Contact via LINE</p>
-                  
-                  <div className="flex-1 space-y-4 mb-8">
-                    <p className="text-sm text-slate-600 leading-relaxed font-bold">
-                      友だち追加後、チャットでいつでも<br/>メッセージをお送りいただけます。
-                    </p>
-                    <p className="text-xs text-slate-400 italic">
-                      Add us and send messages anytime.
-                    </p>
-                    
-                    {/* LINE QR Code */}
-                    <div className="mt-6 p-2 bg-white border border-gray-100 rounded-lg shadow-inner inline-block mx-auto">
-                      <img 
-                        src="/images/line-qr.png" 
-                        alt="Solution Cooperative LINE QR Code" 
-                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
-                      />
-                      <p className="text-[10px] text-slate-400 mt-2 font-bold">Scan to add LINE</p>
-                    </div>
-                  </div>
-                  
-                  <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer" className="w-full bg-[#06C755] text-white font-black py-4 rounded leading-none hover:opacity-90 transition-all shadow-md mt-auto flex flex-col items-center justify-center gap-1 group">
-                    <span>LINE 友だち登録へ</span>
-                    <span className="text-[10px] font-normal opacity-80 group-hover:opacity-100">Add on LINE</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Channel 3: Facebook */}
-              <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
-                <div className="bg-[#1877F2]/5 p-8 flex items-center justify-center border-b border-[#1877F2]/10 group-hover:bg-[#1877F2]/10 transition-colors">
-                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500">👥</span>
-                </div>
-                <div className="p-8 flex flex-col flex-1 text-center">
-                  <h2 className="text-xl font-black text-[#1877F2] mb-1">Facebookで相談</h2>
-                  <p className="text-xs text-[#1877F2]/60 font-bold mb-6 tracking-widest uppercase italic">Contact via Facebook</p>
-                  
-                  <div className="flex-1 space-y-4 mb-8">
-                    <p className="text-sm text-slate-600 leading-relaxed font-bold">
-                      Messengerからも母国語スタッフが<br/>個別に対応いたします。
-                    </p>
-                    <p className="text-xs text-slate-400 italic">
-                      Personal support via Messenger.
-                    </p>
-
-                    
-                    {/* FB QR Code */}
-                    <div className="mt-6 p-2 bg-white border border-gray-100 rounded-lg shadow-inner inline-block mx-auto">
-                      <img 
-                        src="/images/fb-qr.png" 
-                        alt="Solution Cooperative Facebook QR Code" 
-                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
-                      />
-                      <p className="text-[10px] text-slate-400 mt-2 font-bold">Scan to open Messenger</p>
-                    </div>
-                  </div>
-                  
-                  <a href="https://www.facebook.com/solution.sakai" target="_blank" rel="noopener noreferrer" className="w-full bg-[#1877F2] text-white font-black py-4 rounded leading-none hover:opacity-90 transition-all shadow-md mt-auto flex flex-col items-center justify-center gap-1 group">
-                    <span>Messengerを開く</span>
-                    <span className="text-[10px] font-normal opacity-80 group-hover:opacity-100">Open Messenger</span>
-                  </a>
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
@@ -176,7 +175,7 @@ export default function SupportPage() {
         {/* Safety Note */}
         <section className="pb-24">
           <div className="container mx-auto px-4 max-w-4xl">
-            <div className="bg-[#1e40af] p-8 md:p-12 rounded-xl text-white shadow-2xl relative overflow-hidden">
+            <div className="bg-[#1e40af] p-8 md:p-12 rounded text-white shadow-2xl relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
                   <div className="text-5xl">🛡️</div>

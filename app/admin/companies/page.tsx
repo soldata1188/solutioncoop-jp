@@ -67,13 +67,13 @@ export default function CompaniesAdminPage() {
         <button 
           onClick={handleSave} 
           disabled={saving}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-bold shadow-md transition disabled:opacity-50"
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded font-bold shadow-md transition disabled:opacity-50"
         >
           {saving ? '⏳ 保存中...' : '💾 保存する'}
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded shadow-sm border border-gray-200 overflow-hidden">
         {/* Add New Section */}
         <div className="p-6 border-b border-gray-100 bg-gray-50">
           <form onSubmit={handleAdd} className="flex gap-3">
@@ -82,9 +82,9 @@ export default function CompaniesAdminPage() {
               value={newCompany} 
               onChange={e => setNewCompany(e.target.value)} 
               placeholder="新しい企業名を入力..."
-              className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
+              className="flex-1 bg-white border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition"
             />
-            <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-bold transition shadow-sm whitespace-nowrap">
+            <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded font-bold transition shadow-sm whitespace-nowrap">
               ➕ 追加
             </button>
           </form>
@@ -98,7 +98,7 @@ export default function CompaniesAdminPage() {
           ) : (
             <ul className="space-y-2">
               {companies.map((c, idx) => (
-                <li key={idx} className="flex items-center justify-between p-3 bg-white border border-gray-100 rounded-lg shadow-sm hover:border-blue-200 transition group">
+                <li key={idx} className="flex items-center justify-between p-3 bg-white border border-gray-100 rounded shadow-sm hover:border-blue-200 transition group">
                   <div className="flex items-center gap-4">
                     <span className="text-xl font-bold text-gray-300 w-6 text-center">{idx + 1}</span>
                     <span className="font-bold text-gray-700">{c}</span>

@@ -86,7 +86,7 @@ export default function NewArticlePage() {
   return (
     <div className="p-6 md:p-8 max-w-6xl mx-auto">
       {toast && (
-        <div className="fixed top-4 right-4 z-50 px-5 py-3 rounded-xl font-bold text-sm text-white bg-navy shadow-2xl animate-bounce">
+        <div className="fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white bg-navy shadow-2xl animate-bounce">
           {toast}
         </div>
       )}
@@ -100,7 +100,7 @@ export default function NewArticlePage() {
       </div>
 
       {/* ── AI Assistant Block ── */}
-      <div className="mb-8 bg-gradient-to-r from-navy to-blue-800 rounded-2xl p-6 text-white shadow-xl relative overflow-hidden group">
+      <div className="mb-8 bg-gradient-to-r from-navy to-blue-800 rounded p-6 text-white shadow-xl relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
@@ -114,13 +114,13 @@ export default function NewArticlePage() {
               value={aiTopic}
               onChange={(e) => setAiTopic(e.target.value)}
               placeholder="例：技能実習生59期生の入国、大阪での建設研修..."
-              className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm focus:outline-none focus:bg-white/20 transition placeholder:text-white/40"
+              className="flex-1 bg-white/10 border border-white/20 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white/20 transition placeholder:text-white/40"
             />
             <button 
               type="button"
               onClick={handleAiGenerate}
               disabled={generating}
-              className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 px-8 rounded-xl transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
+              className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 px-8 rounded transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
             >
               {generating ? '⏳ 生成中...' : 'AI Generate 編集 ✨'}
             </button>
@@ -135,7 +135,7 @@ export default function NewArticlePage() {
           <div className="md:col-span-2 space-y-5">
 
             {/* Title */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">📝 記事内容</h2>
               <div>
                 <label className="block text-sm font-bold text-gray-800 mb-1.5">
@@ -143,7 +143,7 @@ export default function NewArticlePage() {
                 </label>
                 <input type="text" value={form.title} onChange={e => update('title', e.target.value)}
                   placeholder="例：技能実習生第59期生として計10名が入国しました"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
                 />
               </div>
               <ImageUploader
@@ -158,13 +158,13 @@ export default function NewArticlePage() {
             </div>
 
             {/* SEO */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🔍 SEO設定</h2>
               <div>
                 <label className="block text-sm font-bold text-gray-800 mb-1.5">SEOタイトル（空欄の場合はタイトルを使用）</label>
                 <input type="text" value={form.seoTitle} onChange={e => update('seoTitle', e.target.value)}
                   placeholder="例：第59期技能実習生10名が入国｜ソリューション協同組合"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
                 />
                 <p className="text-[10px] text-gray-400 mt-1">推奨：30〜60文字 / 現在: {(form.seoTitle || form.title).length}文字</p>
               </div>
@@ -172,13 +172,13 @@ export default function NewArticlePage() {
                 <label className="block text-sm font-bold text-gray-800 mb-1.5">メタディスクリプション</label>
                 <textarea value={form.seoDescription} onChange={e => update('seoDescription', e.target.value)}
                   rows={3} placeholder="Googleの検索結果に表示される説明文（80〜160文字）"
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-none shadow-sm"
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-none shadow-sm"
                 />
                 <p className="text-[10px] text-gray-400 mt-1">{form.seoDescription.length}文字（推奨：80〜160文字）</p>
               </div>
               {/* Preview */}
               {(form.seoTitle || form.title) && (
-                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="bg-gray-50 rounded p-4 border border-gray-200">
                   <p className="text-[10px] text-gray-400 font-bold uppercase mb-2">検索プレビュー</p>
                   <p className="text-sm text-blue-700 font-semibold line-clamp-1">{form.seoTitle || form.title}｜ソリューション協同組合</p>
                   <p className="text-green-700 text-xs mt-0.5">https://solutioncoop-jp.com/news/news-xxx</p>
@@ -191,7 +191,7 @@ export default function NewArticlePage() {
           {/* ── Sidebar options ── */}
           <div className="space-y-5">
             {/* Publish */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">⚙️ 公開設定</h2>
               <div>
                 <label className="block text-sm font-bold text-gray-800 mb-2">公開ステータス</label>
@@ -202,16 +202,33 @@ export default function NewArticlePage() {
                   ].map(opt => (
                     <button key={String(opt.val)} type="button"
                       onClick={() => update('published', opt.val)}
-                      className={`flex-1 py-2.5 text-sm font-bold rounded-xl border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400 hover:border-gray-300'}`}>
+                      className={`flex-1 py-2.5 text-sm font-bold rounded border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400 hover:border-gray-300'}`}>
                       {opt.label}
                     </button>
                   ))}
                 </div>
               </div>
+
+              {/* Pin switch */}
+              <div className="pt-4 border-t border-gray-100">
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center">
+                    <input type="checkbox" className="sr-only" checked={!!form.pinned} onChange={e => update('pinned', e.target.checked)} />
+                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${form.pinned ? 'bg-[#f97316] border-[#f97316]' : 'border-gray-300 group-hover:border-gray-400'}`}>
+                      {form.pinned && <span className="text-white text-xs leading-none pt-0.5">✓</span>}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="font-bold text-gray-800 text-sm flex items-center gap-1">📌 トップに固定する</span>
+                    <p className="text-[10px] text-gray-500 mt-0.5">最新情報セクションの目立つ位置に表示されます</p>
+                  </div>
+                </label>
+              </div>
+
               <div>
                 <label className="block text-sm font-bold text-gray-800 mb-1.5">投稿日</label>
                 <input type="date" value={form.date} onChange={e => update('date', e.target.value)}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm text-gray-900 font-medium focus:outline-none focus:border-navy transition shadow-sm"
+                  className="w-full border border-gray-300 rounded px-4 py-2.5 text-sm text-gray-900 font-medium focus:outline-none focus:border-navy transition shadow-sm"
                 />
               </div>
               <div>
@@ -219,20 +236,20 @@ export default function NewArticlePage() {
                   ⏰ 予約投稿日時 <span className="text-gray-500 font-normal">(任意)</span>
                 </label>
                 <input type="datetime-local" value={form.scheduledDate} onChange={e => update('scheduledDate', e.target.value)}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 text-sm text-gray-900 font-medium focus:outline-none focus:border-navy transition shadow-sm"
+                  className="w-full border border-gray-300 rounded px-4 py-2.5 text-sm text-gray-900 font-medium focus:outline-none focus:border-navy transition shadow-sm"
                 />
                 <p className="text-[10px] text-gray-400 mt-1">設定すると指定日時に自動公開されます</p>
               </div>
             </div>
 
             {/* Category */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-5 space-y-3">
+            <div className="bg-white rounded border border-gray-100 p-5 space-y-3">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🏷️ カテゴリ</h2>
               <div className="space-y-2">
                 {(Object.entries(CATEGORY_CONFIG) as [NewsCategory, {label:string;icon:string}][]).map(([key, cfg]) => (
                   <button key={key} type="button"
                     onClick={() => update('category', key)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
                     <span className="text-xl">{cfg.icon}</span>
                     {cfg.label}
                     {form.category === key && <span className="ml-auto text-navy">✓</span>}
@@ -243,7 +260,7 @@ export default function NewArticlePage() {
 
             {/* Submit */}
             <button type="submit" disabled={saving}
-              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded-xl transition text-base">
+              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded transition text-base">
               {saving ? '⏳ 保存中...' : '✅ 投稿する'}
             </button>
             <a href="/admin/news" className="block text-center text-sm text-gray-400 hover:text-gray-600 transition">

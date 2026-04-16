@@ -67,7 +67,7 @@ export default function AdminTrashPage() {
     <div className="p-6 md:p-8">
       {/* Toast */}
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
+        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
           {toast.type === 'ok' ? '✅' : '❌'} {toast.msg}
         </div>
       )}
@@ -80,7 +80,7 @@ export default function AdminTrashPage() {
         </div>
         {items.length > 0 && (
           <button onClick={emptyTrash}
-            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-xl transition text-sm">
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded transition text-sm">
             🗑️ ゴミ箱を空にする
           </button>
         )}
@@ -93,7 +93,7 @@ export default function AdminTrashPage() {
           <p>読み込み中...</p>
         </div>
       ) : items.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center">
+        <div className="bg-white rounded border border-gray-100 p-12 text-center">
           <p className="text-5xl mb-4">🗑️</p>
           <h2 className="text-lg font-bold text-gray-600 mb-2">ゴミ箱は空です</h2>
           <p className="text-sm text-gray-400">削除した記事がここに表示されます。</p>
@@ -104,7 +104,7 @@ export default function AdminTrashPage() {
       ) : (
         <div className="space-y-3">
           {items.map(item => (
-            <div key={item.id} className="bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4 transition">
+            <div key={item.id} className="bg-white rounded border border-gray-100 p-5 flex items-center gap-4 transition">
               {/* Info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
@@ -127,11 +127,11 @@ export default function AdminTrashPage() {
               {/* Actions */}
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button onClick={() => restoreItem(item.id)}
-                  className="text-xs bg-blue-50 text-navy hover:bg-blue-100 transition px-4 py-2 rounded-lg font-bold">
+                  className="text-xs bg-blue-50 text-navy hover:bg-blue-100 transition px-4 py-2 rounded font-bold">
                   ♻️ 復元
                 </button>
                 <button onClick={() => permanentDelete(item.id)}
-                  className="text-xs bg-red-50 text-red-600 hover:bg-red-100 transition px-4 py-2 rounded-lg font-bold">
+                  className="text-xs bg-red-50 text-red-600 hover:bg-red-100 transition px-4 py-2 rounded font-bold">
                   完全削除
                 </button>
               </div>

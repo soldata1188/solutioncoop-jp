@@ -17,7 +17,7 @@ export default function RichTextEditor({ value, onChange, label = '本文' }: Pr
       <label className="block text-xs font-bold text-gray-600 mb-1.5">
         {label} <span className="text-gray-400 font-normal">(Markdown対応)</span>
       </label>
-      <div data-color-mode="light" className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+      <div data-color-mode="light" className="rounded overflow-hidden border border-gray-200 shadow-sm">
         <MDEditor
           value={value}
           onChange={(v) => onChange(v ?? '')}

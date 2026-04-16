@@ -85,9 +85,9 @@ export default function LPClientComponents() {
                  desc: '入社後も独自のフォロー体制を提供。生活習慣の違いからくるトラブルやメンタルケアまで母国語で対応し、外国人材の迅速な環境適応と長期定着をバックアップします。' 
                }
             ].map((p, i) => (
-              <div key={i} className="bg-white p-8 rounded border-t-4 border-[#1e40af] shadow-md hover:-translate-y-1 transition-transform">
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl bg-blue-50 w-14 h-14 flex items-center justify-center rounded text-[#1e40af] shrink-0">{p.icon}</div>
+              <div key={i} className="bg-white p-6 md:p-8 rounded border-t-4 border-[#1e40af] shadow-md hover:-translate-y-1 transition-transform">
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="text-3xl bg-blue-50 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded text-[#1e40af] shrink-0">{p.icon}</div>
                   <div>
                     <span className="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded inline-block mb-2">{p.sub}</span>
                     <h3 className="text-lg font-black text-[#1e40af] mb-3 leading-tight">{p.title}</h3>
@@ -103,16 +103,16 @@ export default function LPClientComponents() {
       {/* ===== SECTION: COST SIMULATOR HOOK ===== */}
       <section className="py-16 bg-white border-y border-gray-100">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="bg-[#1e40af] p-8 md:p-12 rounded shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+          <div className="bg-[#1e40af] p-6 md:p-12 rounded shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-10 text-9xl">🧮</div>
             <div className="flex-1 text-center md:text-left relative z-10">
               <span className="text-orange-400 font-bold text-xs uppercase tracking-widest border border-orange-400 px-3 py-1 rounded inline-block mb-4">無料・登録不要</span>
               <h2 className="text-2xl md:text-4xl font-black text-white mb-4">
-                自社専用の費用を<span className="text-orange-400 font-mono text-5xl mx-2">30</span>秒で算出
+                自社専用の費用を<span className="text-orange-400 font-mono text-4xl md:text-5xl mx-1 md:mx-2">30</span>秒で算出
               </h2>
-              <p className="text-sm text-blue-100">特定技能・育成就労にかかる「初期費用」から「毎月の監理費」まで。国籍・業種を選ぶだけですぐにお見積りが分かります。</p>
+              <p className="text-[12px] md:text-sm text-blue-100">特定技能・育成就労にかかる「初期費用」から「毎月の監理費」まで。国籍・業種を選ぶだけですぐにお見積りが分かります。</p>
             </div>
-            <a href="/simulator" className="relative z-10 bg-[#f97316] text-white font-black py-4 px-8 rounded shadow-lg hover:bg-[#ea580c] transition-all text-center whitespace-nowrap">
+            <a href="/simulator" className="relative z-10 w-full md:w-auto bg-[#f97316] text-white font-black py-4 px-6 md:px-8 rounded shadow-lg hover:bg-[#ea580c] transition-all text-center whitespace-nowrap text-sm md:text-base">
               シミュレーションを開始 ➔
             </a>
           </div>
@@ -126,8 +126,8 @@ export default function LPClientComponents() {
             <h2 className="text-2xl md:text-4xl font-black text-[#1e40af]">サポート開始までの流れ</h2>
             <p className="text-sm text-gray-500 mt-4">最短ルートで優秀人材を配属。その後のキャリアアップまで一貫サポート。</p>
           </div>
-          <div className="max-w-4xl mx-auto relative pl-6 md:pl-0">
-             <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-1 bg-blue-100 transform md:-translate-x-1/2"></div>
+          <div className="max-w-4xl mx-auto relative pl-10 md:pl-0">
+             <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-blue-100 transform -translate-x-1/2 z-0"></div>
              
              {[
                { m: 'STEP 1', t: '無料相談・お見積り', d: '特定技能と育成就労、貴社にどちらが適しているか含め、詳細な採用計画をご提案します。' },
@@ -137,10 +137,10 @@ export default function LPClientComponents() {
                { m: 'STEP 5', t: '定着支援・キャリアUP', d: '配属後も定期訪問・24時間母国語ケアを実施。特定技能へのスムースな切り替えも支援。' }
              ].map((item, i) => (
                 <div key={i} className={`relative flex items-center md:justify-between mb-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className="absolute left-[-21px] md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#1e40af] transform md:-translate-x-1/2 z-10 shadow flex items-center justify-center">
+                  <div className="absolute left-[-20px] md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#1e40af] transform md:-translate-x-1/2 z-10 shadow flex items-center justify-center">
                     {i === 4 && <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />}
                   </div>
-                  <div className="w-full md:w-[45%] ml-6 md:ml-0">
+                  <div className="w-full md:w-[45%] ml-2 md:ml-0 relative z-20">
                     <div className="bg-white p-6 rounded border border-gray-200 shadow-sm hover:border-[#1e40af] transition-colors">
                       <span className="text-[10px] font-bold text-white bg-[#1e40af] px-3 py-1 rounded inline-block mb-3 tracking-widest">{item.m}</span>
                       <h3 className="text-lg font-black text-[#1e40af] mb-2">{item.t}</h3>
@@ -199,28 +199,27 @@ export default function LPClientComponents() {
 
       {/* ===== SECTION 6: LEAD GENERATION FORM (Light Background) ===== */}
       <section id="lead-form" className="py-24 bg-blue-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 p-20 opacity-[0.03] text-9xl text-[#1e40af] pointer-events-none">📥</div>
+        <div className="absolute top-0 right-0 p-20 opacity-[0.03] text-9xl text-[#1e40af] pointer-events-none">💬</div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <span className="inline-block bg-orange-500 text-white font-bold tracking-widest text-[10px] px-3 py-1 rounded mb-4 shadow-sm">経営者必見・無料ガイド</span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-6">ロードマップを無料で手に入れる</h2>
+            <span className="inline-block bg-orange-500 text-white font-bold tracking-widest text-[10px] px-3 py-1 rounded mb-4 shadow-sm">経営者必見・無料相談</span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-6">専門スタッフによる無料相談</h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed font-medium">
-              育成就労・特定技能の活用法が一目でわかる資料を、<br className="hidden md:block"/>即座にダウンロードいただけます。
+              貴社に最適な外国人材の受入れプランを、専任スタッフが<br className="hidden md:block"/>スピーディーにご提案いたします。
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto bg-white p-8 md:p-12 rounded border border-blue-100 shadow-xl">
+          <div className="max-w-xl mx-auto bg-white p-6 md:p-12 rounded border border-blue-100 shadow-xl">
             {formStatus === 'success' ? (
               <div className="text-center py-8 text-slate-800">
                 <div className="text-5xl mb-6">✅</div>
                 <h3 className="text-2xl font-black mb-4 tracking-wider text-[#1e40af]">お申し込み完了</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-8 font-medium">
-                  ご入力いただいたメールアドレスへ資料をお送りしました。<br/>
-                  以下のボタンからも直接ご確認いただけます。
+                  ご入力いただいた情報を受け付けました。<br/>担当者より通常1営業日以内にご連絡いたします。
                 </p>
-                <a href="/documents/ikusei-shuro-guide.pdf" target="_blank" className="inline-block bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-4 px-10 rounded shadow-lg transition-transform hover:-translate-y-1">
-                  今すぐPDFを開く
+                <a href="/" className="inline-block bg-[#1e40af] hover:bg-blue-800 text-white font-bold py-4 px-10 rounded shadow-lg transition-transform hover:-translate-y-1">
+                  コーポレートサイトへ戻る
                 </a>
               </div>
             ) : (
@@ -251,8 +250,8 @@ export default function LPClientComponents() {
                 </div>
                 
                 <div className="pt-6">
-                  <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-[#f97316] hover:bg-[#ea580c] disabled:bg-gray-400 text-white font-black py-4 rounded shadow-lg hover:shadow-xl transition-all text-lg flex items-center justify-center gap-3 border border-[#ea580c]">
-                    {formStatus === 'sending' ? '送信中...' : '資料を無料で受け取る ➔'}
+                  <button type="submit" disabled={formStatus === 'sending'} className="w-full bg-[#f97316] hover:bg-[#ea580c] disabled:bg-gray-400 text-white font-black py-4 rounded shadow-lg hover:shadow-xl transition-all text-lg flex items-center justify-center gap-3 border border-[#ea580c] tracking-wide">
+                    {formStatus === 'sending' ? '送信中...' : 'まずは話だけでも聞いてみる ➔'}
                   </button>
                 </div>
                 
@@ -328,14 +327,14 @@ export default function LPClientComponents() {
              </div>
              <div className="p-8 bg-slate-50">
                 <div className="space-y-4">
-                  <a href="/documents/kanrihi-meisai.pdf" target="_blank" className="flex items-center gap-4 bg-white p-5 rounded border border-gray-200 hover:border-[#1e40af] hover:shadow-md transition">
+                  <a href="/disclosure" className="flex items-center gap-4 bg-white p-5 rounded border border-gray-200 hover:border-[#1e40af] hover:shadow-md transition">
                      <span className="text-2xl">📄</span>
                      <div>
                        <p className="font-bold text-[#1e40af] mb-1">監理費用の明細</p>
                        <p className="text-[10px] text-gray-500">当組合が徴収する費用の内訳と使途</p>
                      </div>
                   </a>
-                  <a href="/documents/uneikitei.pdf" target="_blank" className="flex items-center gap-4 bg-white p-5 rounded border border-gray-200 hover:border-[#1e40af] hover:shadow-md transition">
+                  <a href="/disclosure" className="flex items-center gap-4 bg-white p-5 rounded border border-gray-200 hover:border-[#1e40af] hover:shadow-md transition">
                      <span className="text-2xl">📖</span>
                      <div>
                        <p className="font-bold text-[#1e40af] mb-1">運営規程</p>

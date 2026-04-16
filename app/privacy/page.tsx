@@ -97,7 +97,7 @@ export default function PrivacyPage() {
 
         {/* Content */}
         <div className="container mx-auto px-4 py-12 max-w-4xl">
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded border border-gray-100 overflow-hidden">
             <div className="p-6 md:p-10 space-y-8">
               {sections.map((section, i) => (
                 <div key={i}>

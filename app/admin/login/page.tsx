@@ -44,10 +44,10 @@ function LoginForm() {
 
       <div className="relative w-full max-w-md">
         {/* Card */}
-        <div className="bg-white rounded-3xl overflow-hidden">
+        <div className="bg-white rounded overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-navy-dark to-navy px-8 py-8 text-center text-white">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-white/20 backdrop-blur rounded flex items-center justify-center mx-auto mb-4">
               <span className="text-3xl">🔐</span>
             </div>
             <h1 className="text-xl font-black">管理画面へのログイン</h1>
@@ -68,7 +68,7 @@ function LoginForm() {
                   placeholder="パスワードを入力"
                   required
                   autoFocus
-                  className="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 pr-12 text-sm focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/15 transition"
+                  className="w-full border-2 border-gray-200 rounded px-4 py-3.5 pr-12 text-sm focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/15 transition"
                 />
                 <button type="button" onClick={() => setShow(!show)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition">
@@ -78,13 +78,13 @@ function LoginForm() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border-2 border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm font-semibold flex items-center gap-2">
+              <div className="bg-red-50 border-2 border-red-200 text-red-700 rounded px-4 py-3 text-sm font-semibold flex items-center gap-2">
                 ❌ {error}
               </div>
             )}
 
             <button type="submit" disabled={loading || !password}
-              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black py-4 rounded-xl hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black py-4 rounded hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
               {loading ? (
                 <><span className="animate-spin">⏳</span> ログイン中...</>
               ) : (

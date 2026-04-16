@@ -50,7 +50,7 @@ export default function AdminNewsPage() {
     <div className="p-6 md:p-8">
       {/* Toast */}
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-xl font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
+        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white transition-all ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
           {toast.type === 'ok' ? '✅' : '❌'} {toast.msg}
         </div>
       )}
@@ -58,17 +58,17 @@ export default function AdminNewsPage() {
       {/* Delete confirm modal */}
       {delId && (
         <div className="fixed inset-0 z-40 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl p-6 max-w-sm w-full">
+          <div className="bg-white rounded p-6 max-w-sm w-full">
             <p className="text-2xl text-center mb-3">🗑️</p>
             <h3 className="font-black text-gray-800 text-center mb-2">削除してよろしいですか？</h3>
             <p className="text-sm text-gray-500 text-center mb-6">この操作は元に戻せません。</p>
             <div className="flex gap-3">
               <button onClick={() => setDelId(null)}
-                className="flex-1 py-3 border-2 border-gray-200 text-gray-600 font-bold rounded-xl hover:bg-gray-50 transition">
+                className="flex-1 py-3 border-2 border-gray-200 text-gray-600 font-bold rounded hover:bg-gray-50 transition">
                 キャンセル
               </button>
               <button onClick={() => deleteItem(delId)}
-                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition">
+                className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded transition">
                 削除する
               </button>
             </div>
@@ -82,7 +82,7 @@ export default function AdminNewsPage() {
           <p className="text-gray-500 text-sm mt-1">{items.length}件の記事</p>
         </div>
         <Link href="/admin/news/new"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-orange-700 text-white font-bold px-5 py-3 rounded-xl transition">
+          className="inline-flex items-center gap-2 bg-accent hover:bg-orange-700 text-white font-bold px-5 py-3 rounded transition">
           ✏️ 新規投稿
         </Link>
       </div>
@@ -107,7 +107,7 @@ export default function AdminNewsPage() {
           <p>読み込み中...</p>
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="bg-white rounded border border-gray-100 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -150,11 +150,11 @@ export default function AdminNewsPage() {
                           👁️
                         </Link>
                         <Link href={`/admin/news/${n.id}/edit`}
-                          className="text-xs bg-blue-50 text-navy hover:bg-blue-100 transition px-3 py-1.5 rounded-lg font-semibold">
+                          className="text-xs bg-blue-50 text-navy hover:bg-blue-100 transition px-3 py-1.5 rounded font-semibold">
                           編集
                         </Link>
                         <button onClick={() => setDelId(n.id)}
-                          className="text-xs bg-red-50 text-red-600 hover:bg-red-100 transition px-3 py-1.5 rounded-lg font-semibold">
+                          className="text-xs bg-red-50 text-red-600 hover:bg-red-100 transition px-3 py-1.5 rounded font-semibold">
                           削除
                         </button>
                       </div>

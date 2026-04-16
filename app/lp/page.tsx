@@ -32,13 +32,13 @@ export default async function LandingPage() {
       <Header />
       <main className="min-h-screen">
       {/* ===== SECTION 1: HERO SECTION ===== */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden py-10 md:py-0">
         <div className="absolute inset-0 z-0 text-white">
           <img src="/images/hero-banner.jpg" alt="Partner" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-[#1e40af]/85 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1e40af] via-[#1e40af]/40 to-transparent opacity-80" />
         </div>
-        <div className="container mx-auto px-4 relative z-10 text-center mt-10">
+        <div className="container mx-auto px-4 relative z-10 text-center mt-28 md:mt-16 pb-20 md:pb-0">
           <div className="max-w-5xl mx-auto text-white">
             
             {/* Trust Badges - Social Proof at First Glance */}
@@ -71,19 +71,18 @@ export default async function LandingPage() {
               </div>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+            <h1 className="text-[26px] sm:text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
               「育成就労」×「特定技能」<br />
-              <span className="text-orange-400 block mt-2 text-4xl md:text-6xl drop-shadow-md">最適解を、共に創る。</span>
+              <span className="text-orange-400 block mt-2 text-[32px] sm:text-4xl md:text-6xl drop-shadow-md">最適解を、共に創る。</span>
             </h1>
             
-            <p className="text-base md:text-xl font-medium mb-10 leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
+            <p className="text-sm sm:text-base md:text-xl font-medium mb-10 leading-relaxed md:leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
               複雑化する制度移行期だからこそ、両制度を熟知した専門家の力が不可欠です。<br className="hidden md:block" />
               直結ルートでの採用から、煩雑な手続きの完全代行、定着までの伴走支援で<br className="hidden md:block"/>
               貴社のグローバル人材戦略を強力に推進します。
             </p>
-            
-            <a href="#lead-form" className="inline-flex items-center justify-center bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-5 px-8 md:px-12 rounded shadow-[0_10px_30px_rgba(249,115,22,0.3)] transform hover:-translate-y-1 transition-all duration-300 text-lg md:text-xl group border border-orange-400">
-              【無料】経営者向け・育成就労移行ロードマップをダウンロード ➔
+            <a href="/contact" className="inline-flex w-full md:w-auto items-center justify-center bg-[#f97316] hover:bg-[#ea580c] text-white font-black py-4 md:py-5 px-2 md:px-12 rounded shadow-[0_10px_30px_rgba(249,115,22,0.3)] transform hover:-translate-y-1 transition-all duration-300 text-[15px] sm:text-base md:text-xl group border border-orange-400 tracking-wider">
+              【無料】まずは話だけでも聞いてみる ➔
             </a>
 
             {/* Social Proof Numbers */}
@@ -183,7 +182,7 @@ export default async function LandingPage() {
                 {/* Decorative background accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-[#1e40af] opacity-5 rounded-bl-full pointer-events-none" />
                 
-                <img src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} className="h-10 mx-auto mb-5 rounded-sm shadow-md border border-gray-100" />
+                <img src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} className="h-10 mx-auto mb-5 rounded shadow-md border border-gray-100" />
                 <h3 className="text-2xl font-black text-[#1e40af] tracking-wide mb-3">{c.name}</h3>
                 
                 <p className="text-orange-600 font-bold text-sm mb-5 leading-tight">{c.trait}</p>

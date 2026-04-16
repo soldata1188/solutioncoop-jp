@@ -49,7 +49,7 @@ export default function ImageUploader({ value, onChange }: ImageUploaderProps) {
 
       {value ? (
         /* ── Preview ── */
-        <div className="relative group rounded-xl overflow-hidden border border-gray-200">
+        <div className="relative group rounded overflow-hidden border border-gray-200">
           <img
             src={value}
             alt="アイキャッチ画像"
@@ -59,14 +59,14 @@ export default function ImageUploader({ value, onChange }: ImageUploaderProps) {
             <button
               type="button"
               onClick={() => inputRef.current?.click()}
-              className="bg-white text-gray-800 font-bold text-xs px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+              className="bg-white text-gray-800 font-bold text-xs px-4 py-2 rounded hover:bg-gray-100 transition"
             >
               🔄 変更
             </button>
             <button
               type="button"
               onClick={() => onChange('')}
-              className="bg-red-600 text-white font-bold text-xs px-4 py-2 rounded-lg hover:bg-red-700 transition"
+              className="bg-red-600 text-white font-bold text-xs px-4 py-2 rounded hover:bg-red-700 transition"
             >
               🗑️ 削除
             </button>
@@ -79,7 +79,7 @@ export default function ImageUploader({ value, onChange }: ImageUploaderProps) {
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
           onClick={() => inputRef.current?.click()}
-          className={`border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all ${
+          className={`border-2 border-dashed rounded p-8 text-center cursor-pointer transition-all ${
             dragOver
               ? 'border-navy bg-blue-50'
               : 'border-gray-300 hover:border-navy hover:bg-gray-50'

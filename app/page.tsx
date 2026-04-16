@@ -18,8 +18,13 @@ export const metadata: Metadata = {
 async function getLatestNews(): Promise<NewsItem[]> {
   const file = path.join(process.cwd(), 'data', 'news.json');
   const raw  = await fs.readFile(file, 'utf-8');
-  const all: NewsItem[] = JSON.parse(raw);
-  return all.filter(n => n.published).sort((a,b) => a.date < b.date ? 1 : -1).slice(0, 6);
+  let all: NewsItem[] = JSON.parse(raw);
+  all = all.filter(n => n.published).sort((a, b) => a.date < b.date ? 1 : -1);
+  
+  const pinnedItems = all.filter(n => n.pinned).slice(0, 2);
+  const unpinnedItems = all.filter(n => !n.pinned);
+  
+  return [...pinnedItems, ...unpinnedItems].slice(0, 6);
 }
 
 async function getCompanies(): Promise<string[]> {
@@ -85,7 +90,7 @@ export default async function HomePage() {
 
                     {/* "Thẻ Chứng nhận" Uy tín 2 */}
                     <div className="flex-1 px-5 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
-                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded-sm text-xs shrink-0 shadow-sm">
+                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded text-xs shrink-0 shadow-sm">
                         🏆
                       </div>
                       <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
@@ -95,7 +100,7 @@ export default async function HomePage() {
 
                     {/* "Thẻ Chứng nhận" Uy tín 3 */}
                     <div className="flex-1 px-5 mb-1 md:mb-0 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
-                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded-sm text-xs shrink-0 shadow-sm">
+                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded text-xs shrink-0 shadow-sm">
                         ✨
                       </div>
                       <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
@@ -197,53 +202,137 @@ export default async function HomePage() {
                 📰 すべてのお知らせを見る →
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {latestNews.map((n, i) => (
-                <Link key={n.id} href={`/news/${n.id}`}
-                  className="card-lift bg-white border border-gray-100 rounded group flex flex-col overflow-hidden shadow-sm hover:border-[#1e40af]/30">
-                  {/* Image/Accent bar */}
-                  {n.image ? (
-                    <div className="w-full h-40 overflow-hidden relative">
-                      <img src={n.image} alt={n.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute top-2 right-2">
-                        {i === 0 && <span className="bg-[#f97316] text-white text-[9px] font-black px-2 py-0.5 rounded shadow-lg uppercase tracking-wider">New</span>}
+            {latestNews.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+                
+                {/* 1. Tin Đinh Chính (Main Feature - Left Column) */}
+                <div className="lg:col-span-5 h-full">
+                  {latestNews[0] && (
+                  <Link href={`/news/${latestNews[0].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-64 md:h-72 w-full overflow-hidden shrink-0">
+                        {latestNews[0].image ? (
+                          <img src={latestNews[0].image} alt={latestNews[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        ) : (
+                          <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[0].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                        )}
+                        {latestNews[0].pinned && (
+                          <div className="absolute top-4 left-4 z-10">
+                            <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>TOP
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  ) : (
-                    <div className={`h-2 bg-gradient-to-r ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'}`} />
+                      
+                      <div className="p-6 md:p-8 flex flex-col flex-grow">
+                        <div className="flex items-center gap-3 mb-4">
+                          <span className={`nbadge ${BADGE_BG[latestNews[0].category]}`}>
+                            {CATEGORY_CONFIG[latestNews[0].category]?.icon} {CATEGORY_CONFIG[latestNews[0].category]?.label}
+                          </span>
+                          <time className="text-xs border-l-2 border-gray-200 pl-3 text-gray-500 font-bold">{formatDateJP(latestNews[0].date)}</time>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors">
+                          {latestNews[0].title}
+                        </h3>
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-medium flex-grow">
+                          {latestNews[0].excerpt}
+                        </p>
+                        <div className="flex items-center text-[#f97316] font-bold text-sm mt-auto">
+                          詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                      </div>
+                    </Link>
                   )}
-                  
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`nbadge ${BADGE_BG[n.category]}`}>
-                        {CATEGORY_CONFIG[n.category]?.icon} {CATEGORY_CONFIG[n.category]?.label}
-                      </span>
-                      <time className="text-[10px] text-gray-400 font-bold">{formatDateJP(n.date)}</time>
+                </div>
+
+                {/* 2. Tin Đinh Phụ (Sub Feature - Middle Column) */}
+                {latestNews[1] && (
+                  <div className="lg:col-span-3 h-full">
+                    <Link href={`/news/${latestNews[1].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-48 w-full overflow-hidden shrink-0">
+                        {latestNews[1].image ? (
+                          <img src={latestNews[1].image} alt={latestNews[1].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        ) : (
+                          <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[1].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                        )}
+                        {latestNews[1].pinned && (
+                          <div className="absolute top-4 left-4 z-10">
+                            <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>TOP
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="p-5 flex flex-col flex-grow">
+                        <div className="flex items-center gap-2 mb-3 flex-wrap">
+                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded shadow-sm ${BADGE_BG[latestNews[1].category]}`}>
+                            {CATEGORY_CONFIG[latestNews[1].category]?.label}
+                          </span>
+                          <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(latestNews[1].date)}</time>
+                        </div>
+                        <h3 className="text-base font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-3">
+                          {latestNews[1].title}
+                        </h3>
+                        <p className="text-gray-500 text-xs leading-relaxed line-clamp-3 md:line-clamp-4 font-medium mb-4 flex-grow">
+                          {latestNews[1].excerpt}
+                        </p>
+                        <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-xs mt-auto transition-colors">
+                          詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+
+                {/* 3. Danh sách tin vắn (Right Column) */}
+                <div className={`${latestNews[1] ? 'lg:col-span-4' : 'lg:col-span-7'} flex flex-col justify-between h-full`}>
+                  <div className="flex flex-col h-full bg-slate-50 border border-gray-100 px-4 md:px-5 pb-5 pt-1 rounded shadow-inner">
+                    <div className="flex-grow flex flex-col justify-start">
+                      {latestNews.slice(2).map((n, idx) => (
+                        <Link key={n.id} href={`/news/${n.id}`} className={`group block py-3.5 ${idx !== 0 ? 'border-t border-gray-200/70' : ''} hover:bg-white transition-colors rounded -mx-3 px-3`}>
+                          <div className="flex items-start gap-4">
+                            {/* Thumbnail */}
+                            <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded overflow-hidden shadow-sm border border-gray-100">
+                              {n.image ? (
+                                <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                              ) : (
+                                <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-80`} />
+                              )}
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="flex flex-col flex-1 gap-1.5">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[n.category]}`}>
+                                  {CATEGORY_CONFIG[n.category]?.label}
+                                </span>
+                                <time className="text-[10px] text-gray-400 font-bold font-mono tracking-wider">{formatDateDot(n.date)}</time>
+                              </div>
+                              <h3 className="font-bold text-gray-700 text-xs md:text-sm leading-snug group-hover:text-[#1e40af] transition-colors line-clamp-2">
+                                {n.title}
+                              </h3>
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                    
-                    <h3 className="font-bold text-gray-800 text-sm md:text-base leading-snug mb-2 group-hover:text-[#1e40af] transition-colors duration-300">
-                      {n.title}
-                    </h3>
-                    <p className="text-[11px] text-gray-500 leading-relaxed line-clamp-2 mb-4">
-                      {n.excerpt}
-                    </p>
-                    
-                    <div className="mt-auto flex items-center justify-between">
-                      <span className="text-[10px] font-bold text-[#1e40af] flex items-center gap-1 group-hover:text-[#f97316] transition-colors">
-                        詳細を見る <span className="group-hover:translate-x-1 transition-transform">→</span>
-                      </span>
+
+                    {/* Nút Xem tất cả */}
+                    <div className="mt-4 pt-4 border-t border-gray-200/70 flex justify-end">
+                      <Link href="/news"
+                        className="inline-flex items-center gap-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors group text-sm">
+                        過去のお知らせをすべて見る 
+                        <span className="w-6 h-6 rounded-full bg-[#1e40af]/10 flex items-center justify-center group-hover:bg-[#f97316]/10 group-hover:translate-x-1 transition-all text-xs">→</span>
+                      </Link>
                     </div>
                   </div>
-                </Link>
-              ))}
-            </div>
-            <div className="mt-12 text-center">
-              <Link href="/news"
-                className="inline-flex items-center gap-3 bg-[#1e40af] hover:bg-[#1d4ed8] text-white font-bold py-4 px-10 rounded hover:-translate-y-1 transition-all duration-300 shadow-md">
-                📰 過去のお知らせをすべて見る →
-              </Link>
-            </div>
+                </div>
+
+              </div>
+            ) : (
+              <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
+            )}
           </div>
         </section>
 
@@ -259,10 +348,11 @@ export default async function HomePage() {
               <h2 className="text-3xl md:text-5xl font-black text-[#1e40af] section-title leading-tight">
                 選ばれる理由
               </h2>
-              <p className="text-[#f97316] font-bold mt-2">失踪・言葉の壁をゼロへ。</p>
+              <p className="text-[#f97316] font-bold mt-2">法令順守と手厚いサポートによる高い定着率。</p>
               <p className="text-gray-500 mt-6 leading-relaxed max-w-2xl mx-auto font-medium">
-                単なる「労働力の確保」ではなく、貴社の中核を担う「人財」を育てるため。<br className="hidden md:block"/>
-                <strong className="text-[#1e40af] font-bold">「規律と礼節」</strong>を教育文化の根幹に置いています。
+                受入企業様が安心して「技能移転」に専念できるよう、煩雑な事務手続きのご負担を軽減。<br className="hidden md:block"/>
+                入国前からの<strong className="text-[#1e40af] font-bold mx-1">「規律と礼節」</strong>を重んじる独自の教育体制で、<br className="hidden md:block"/>
+                グローバル人材の安定的な育成を支援します。
               </p>
             </div>
             <div className="max-w-3xl mx-auto mb-10 bg-[#1e40af] p-6 md:p-8 text-center rounded shadow-md border border-blue-900">
@@ -301,6 +391,88 @@ export default async function HomePage() {
 
 
 
+
+
+        {/* ===== 組合概要 (Overview) ===== */}
+        <section id="overview" className="py-20 md:py-24 bg-white relative">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-black text-blue-900 mb-4 section-title">組合概要・法人情報</h2>
+            </div>
+            <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+              <div className="bg-[#1e40af] px-6 py-4 flex items-center gap-3">
+                <span className="text-orange-400 text-lg">🏛️</span>
+                <span className="text-white font-bold">監理団体 法人情報</span>
+              </div>
+              <table className="w-full text-sm">
+                <tbody className="divide-y divide-blue-50">
+                  {[
+                    ['法人名称', <strong key="n" className="text-slate-800">ソリューション協同組合</strong>],
+                    ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold ml-1 -translate-y-px">📍 MAP</a><br/><span className="text-xs text-slate-400">本社・日本語研修センター</span></div>],
+                    ['監理団体許可番号', <><span key="l" className="font-mono font-bold text-blue-800">許12345678号</span><span key="b" className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 font-sans font-semibold rounded">一般監理事業（優良）</span></>],
+                    ['代表理事', '新 雅志'],
+                    ['電話番号', <><a key="t" href="tel:0722248067" className="text-blue-800 font-bold hover:text-blue-600 transition text-lg">072-224-8067</a><span key="d" className="text-slate-400 text-xs ml-2">（平日 9:00〜18:00）</span></>],
+                    ['FAX', '072-224-2214'],
+                    ['メール', <a key="e" href="mailto:info@solutioncoop-jp.com" className="text-blue-800 hover:underline">info@solutioncoop-jp.com</a>],
+                    ['設立', '平成24年（2012年）3月'],
+                    ['受賞歴', <><span key="a1" className="inline-flex items-center gap-1.5 bg-yellow-50 border border-yellow-300 text-yellow-800 px-2 py-1 text-[11px] font-bold rounded mb-1">🏆 令和4年（2022）大阪府知事表彰受賞</span><br key="br" className="sm:hidden"/><span key="a2" className="sm:ml-2 inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-2 py-1 text-[11px] font-bold rounded">🥇 大阪府中小企業団体中央会表彰</span></>],
+                  ].map(([label, val]) => (
+                    <tr key={String(label)} className="hover:bg-slate-50 transition-colors">
+                      <th className="text-left px-6 py-4 font-bold text-[#1e40af] w-1/3 md:w-1/4 bg-slate-50 align-top border-r border-gray-100">{label as string}</th>
+                      <td className="px-6 py-4 text-slate-800 leading-relaxed">{val}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== 情報公開 (Disclosure) ===== */}
+        <section id="disclosure" className="py-20 md:py-24 bg-blue-50/50 text-slate-800 relative border-t border-blue-100">
+          <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded-full">
+                <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">⚖️ 技能実習法 第32条・第37条 準拠</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
+              <div className="w-16 h-1 bg-orange-500 mx-auto rounded-full" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+              {[
+                { label:'監理費用の明細', icon:'📄', desc:'監理費用の内訳および用途の明細' },
+                { label:'運営規程', icon:'📖', desc:'当組合の事業運営に関する基本規則' },
+                { label:'監理団体事業報告書', icon:'📋', desc:'年度ごとの事業実績および活動報告' },
+                { label:'監理団体許可証の写し', icon:'🏅', desc:'法務省・厚生労働省からの事業許可証' },
+              ].map(d => (
+                <Link key={d.label} href="/disclosure"
+                  className="group flex items-center gap-4 p-5 bg-white border border-gray-200 rounded hover:border-[#1e40af] hover:shadow-md transition-all">
+                  <span className="text-3xl bg-slate-50 group-hover:bg-blue-50 text-[#1e40af] p-3 rounded transition-colors">{d.icon}</span>
+                  <div className="flex-1">
+                    <span className="font-black text-sm block mb-1 text-slate-800 group-hover:text-[#1e40af] transition-colors">{d.label}</span>
+                    <span className="text-[10px] text-slate-500">{d.desc}</span>
+                  </div>
+                  <span className="ml-auto text-xl text-blue-200 group-hover:text-[#1e40af] transition-colors">→</span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-4">
+              {[
+                { icon:'⚖️', title:'法令遵守', desc:'技能実習法に完全準拠した事業運営' },
+                { icon:'👁️', title:'透明性の確保', desc:'全費用・手数料の書面による明示' },
+                { icon:'🛡️', title:'実習生の保護', desc:'不当な徴収の禁止と人権の尊重' },
+              ].map(p => (
+                <div key={p.title} className="bg-white p-5 text-center rounded border border-blue-100 shadow-sm hover:border-blue-300 transition-colors">
+                  <p className="text-blue-500 text-3xl mb-3">{p.icon}</p>
+                  <p className="text-blue-900 font-black text-sm mb-1">{p.title}</p>
+                  <p className="text-slate-500 text-xs mt-1 leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
 
         {/* ===== よくある質問 ===== */}

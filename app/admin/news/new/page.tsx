@@ -20,6 +20,7 @@ export default function NewArticlePage() {
     date: new Date().toISOString().slice(0, 10),
     scheduledDate: '',
     published: true,
+    pinned: false,
     image: '',
     seoTitle: '',
     seoDescription: '',

@@ -137,14 +137,14 @@ export default async function HomePage() {
 
 
                 
-                <div className="mt-8 flex items-center justify-center gap-3">
-                  <div className="flex -space-x-2 shrink-0">
-                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
-                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
-                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
+                <div className="mt-8 flex items-center justify-center gap-3 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap justify-center">
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【建設業】</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【製造業】</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【農業】</span>
                   </div>
-                  <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-left leading-relaxed drop-shadow-sm">
-                    大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入
+                  <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-center leading-relaxed drop-shadow-sm">
+                    大阪府・関西圏を中心に<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入
                   </p>
                 </div>
 

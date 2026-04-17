@@ -58,6 +58,12 @@ export default async function HomePage() {
   const latestNews = await getLatestNews();
   const companies = await getCompanies();
 
+  // Phân loại tin tức NGOÀI JSX để tránh lỗi render
+  const pinnedItems = latestNews.filter(n => n.pinned).slice(0, 2);
+  const unpinnedItems = latestNews.filter(n => !n.pinned);
+  const mainCards = unpinnedItems.slice(0, 6);
+  const secondaryList = unpinnedItems.slice(6);
+
   return (
     <>
       <Header />
@@ -204,111 +210,108 @@ export default async function HomePage() {
                 📰 すべてのお知らせを見る →
               </Link>
             </div>
-            {latestNews.length > 0 ? (() => {
-              const pinnedItems = latestNews.filter(n => n.pinned).slice(0, 2);
-              const unpinnedItems = latestNews.filter(n => !n.pinned);
-              const mainCards = unpinnedItems.slice(0, 6);
-              const secondaryList = unpinnedItems.slice(6);
-
-              return (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                  {/* --- CỘT TRÁI (8/12): 6 bài chính --- */}
-                  <div className="lg:col-span-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                      {mainCards.map((n) => (
-                        <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
-                          <div className="relative h-44 w-full overflow-hidden shrink-0">
-                            {n.image ? (
-                              <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                            ) : (
-                              <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
-                            )}
-                          </div>
-                          <div className="p-4 flex flex-col flex-grow text-left">
-                            <div className="flex items-center gap-2 mb-3">
-                              <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${BADGE_BG[n.category]}`}>
-                                {CATEGORY_CONFIG[n.category]?.label}
-                              </span>
-                            </div>
-                            <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                              {n.title}
-                            </h3>
-                            <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 mb-3 font-medium">
-                              {n.excerpt}
-                            </p>
-                            <time className="text-[10px] text-gray-400 font-bold mt-auto tracking-wider">{formatDateDot(n.date)}</time>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* --- CỘT PHẢI (4/12): Pinned + List --- */}
-                  <div className="lg:col-span-4 flex flex-col gap-6">
-                    {/* Phần trên: Tin được ghim */}
-                    {pinnedItems.length > 0 && (
-                      <div className="bg-orange-50/50 border border-orange-100 rounded p-5 shadow-sm">
-                        <h3 className="text-[#f97316] font-black text-xs mb-4 flex items-center gap-2 uppercase tracking-widest">
-                          <span className="w-1 h-3 bg-[#f97316] rounded-full animate-pulse"></span>
-                          Important Notices
-                        </h3>
-                        <div className="space-y-4">
-                          {pinnedItems.map((n) => (
-                            <Link key={n.id} href={`/news/${n.id}`} className="group block bg-white border border-orange-100 p-3 rounded hover:shadow-md transition-all">
-                              <div className="flex gap-3">
-                                <div className="w-16 h-16 rounded overflow-hidden shrink-0">
-                                  {n.image ? (
-                                    <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-110 transition-transform" />
-                                  ) : (
-                                    <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'}`} />
-                                  )}
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                  <span className="inline-block bg-[#f97316] text-white text-[8px] font-black px-1.5 py-0.5 rounded mb-1.5">PINNED</span>
-                                  <h4 className="text-xs font-black text-navy line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">{n.title}</h4>
-                                </div>
-                              </div>
-                            </Link>
-                          ))}
+            {latestNews.length > 0 ? (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* --- CỘT TRÁI (8/12): 6 bài chính --- */}
+                <div className="lg:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {mainCards.map((n) => (
+                      <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
+                        <div className="relative h-44 w-full overflow-hidden shrink-0">
+                          {n.image ? (
+                            <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                          ) : (
+                            <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                          )}
                         </div>
-                      </div>
-                    )}
+                        <div className="p-4 flex flex-col flex-grow text-left">
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${BADGE_BG[n.category]}`}>
+                              {CATEGORY_CONFIG[n.category]?.label}
+                            </span>
+                          </div>
+                          <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {n.title}
+                          </h3>
+                          <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 mb-3 font-medium">
+                            {n.excerpt}
+                          </p>
+                          <time className="text-[10px] text-gray-400 font-bold mt-auto tracking-wider">{formatDateDot(n.date)}</time>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
 
-                    {/* Phần dưới: Tin vắn khác */}
-                    <div className="bg-slate-50 border border-gray-100 rounded p-5 flex-grow shadow-inner">
-                      <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
-                        <span className="w-1 h-3 bg-navy rounded-full"></span>
-                        Latest Updates
+                {/* --- CỘT PHẢI (4/12): Pinned + List --- */}
+                <div className="lg:col-span-4 flex flex-col gap-6">
+
+                  {/* Phần trên: Tin được ghim */}
+                  {pinnedItems.length > 0 && (
+                    <div className="bg-orange-50 border border-orange-100 rounded p-5">
+                      <h3 className="text-[#f97316] font-black text-xs mb-4 flex items-center gap-2 uppercase tracking-widest">
+                        <span className="w-1 h-3 bg-[#f97316] rounded-full animate-pulse"></span>
+                        Important Notices
                       </h3>
                       <div className="space-y-4">
-                        {secondaryList.map((n) => (
-                          <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
-                            <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
-                              {n.image ? (
-                                <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                              ) : (
-                                <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-60`} />
-                              )}
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <h4 className="text-xs font-bold text-gray-700 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight mb-1">{n.title}</h4>
-                              <span className="text-[9px] text-gray-400 font-bold">{formatDateDot(n.date)}</span>
+                        {pinnedItems.map((n) => (
+                          <Link key={n.id} href={`/news/${n.id}`} className="group block bg-white border border-orange-100 p-3 rounded hover:shadow-md transition-all">
+                            <div className="flex gap-3">
+                              <div className="relative w-16 h-16 rounded overflow-hidden shrink-0">
+                                {n.image ? (
+                                  <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-110 transition-transform" />
+                                ) : (
+                                  <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'}`} />
+                                )}
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <span className="inline-block bg-[#f97316] text-white text-[8px] font-black px-1.5 py-0.5 rounded mb-1.5">PINNED</span>
+                                <h4 className="text-xs font-black text-navy line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">{n.title}</h4>
+                              </div>
                             </div>
                           </Link>
                         ))}
                       </div>
-                      
-                      <div className="mt-8 pt-4 border-t border-gray-200">
-                        <Link href="/news" className="flex items-center justify-between group">
-                          <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors uppercase">View All News</span>
-                          <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
+                    </div>
+                  )}
+
+                  {/* Phần dưới: Tin vắn khác */}
+                  <div className="bg-slate-50 border border-gray-100 rounded p-5 flex-grow">
+                    <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
+                      <span className="w-1 h-3 bg-navy rounded-full"></span>
+                      Latest Updates
+                    </h3>
+                    <div className="space-y-4">
+                      {secondaryList.map((n) => (
+                        <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
+                          <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
+                            {n.image ? (
+                              <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                            ) : (
+                              <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-60`} />
+                            )}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="text-xs font-bold text-gray-700 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight mb-1">{n.title}</h4>
+                            <span className="text-[9px] text-gray-400 font-bold">{formatDateDot(n.date)}</span>
+                          </div>
                         </Link>
-                      </div>
+                      ))}
+                      {secondaryList.length === 0 && (
+                        <p className="text-[10px] text-gray-400 text-center py-4">No other updates.</p>
+                      )}
+                    </div>
+                    <div className="mt-8 pt-4 border-t border-gray-200">
+                      <Link href="/news" className="flex items-center justify-between group">
+                        <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors uppercase">View All News</span>
+                        <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
+                      </Link>
                     </div>
                   </div>
+
                 </div>
-              );
-            })() : (
+              </div>
+            ) : (
               <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
             )}
           </div>

@@ -204,73 +204,41 @@ export default async function HomePage() {
             </div>
             {latestNews.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                {/* 1. Cột Trái (Left Column - 1 Top, 2 Sub) */}
-                <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8 h-full">
-                  {/* Tin Đinh Chính (Main Feature) */}
-                  {latestNews[0] && (
-                    <Link href={`/news/${latestNews[0].id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                      <div className="relative h-64 md:h-[340px] w-full overflow-hidden shrink-0">
-                        {latestNews[0].image ? (
-                          <Image src={latestNews[0].image} alt={latestNews[0].title} fill sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                        ) : (
-                          <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[0].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
-                        )}
-                        {latestNews[0].pinned && (
-                          <div className="absolute top-4 left-4 z-10">
-                            <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>TOP
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      
-                      <div className="p-6 md:p-8 flex flex-col flex-grow">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className={`nbadge ${BADGE_BG[latestNews[0].category]}`}>
-                            {CATEGORY_CONFIG[latestNews[0].category]?.icon} {CATEGORY_CONFIG[latestNews[0].category]?.label}
-                          </span>
-                          <time className="text-xs border-l-2 border-gray-200 pl-3 text-gray-500 font-bold">{formatDateJP(latestNews[0].date)}</time>
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors">
-                          {latestNews[0].title}
-                        </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 md:line-clamp-3 mb-6 font-medium flex-grow">
-                          {latestNews[0].excerpt}
-                        </p>
-                        <div className="flex items-center text-[#f97316] font-bold text-sm mt-auto">
-                          詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-
-                  {/* 2 Tin Mới Nhất Dưới Cùng (Sub Features) */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 flex-grow">
-                    {[latestNews[1], latestNews[2]].filter(Boolean).map((newsItem) => (
+                {/* 1. Cột Trái (Left Column - 3 Bài Bằng Nhau) */}
+                <div className="lg:col-span-8 h-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 h-full">
+                    {latestNews.slice(0, 3).map((newsItem) => (
                       <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                        <div className="relative h-48 w-full overflow-hidden shrink-0">
+                        <div className="relative h-40 md:h-48 w-full overflow-hidden shrink-0">
                           {newsItem.image ? (
                             <Image src={newsItem.image} alt={newsItem.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                           ) : (
                             <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[newsItem.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
                           )}
+                          {newsItem.pinned && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <span className="bg-[#f97316] text-white text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest shadow flex items-center gap-1">
+                                <span className="w-1 h-1 bg-white rounded animate-ping"></span>TOP
+                              </span>
+                            </div>
+                          )}
                         </div>
                         
-                        <div className="p-5 flex flex-col flex-grow">
+                        <div className="p-4 md:p-5 flex flex-col flex-grow">
                           <div className="flex items-center gap-2 mb-3 flex-wrap">
-                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
                               {CATEGORY_CONFIG[newsItem.category]?.label}
                             </span>
                             <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(newsItem.date)}</time>
                           </div>
-                          <h3 className="text-base font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                          <h3 className="text-sm md:text-[15px] font-black text-[#1e40af] leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-3">
                             {newsItem.title}
                           </h3>
-                          <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 font-medium mb-4 flex-grow">
+                          <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 md:line-clamp-3 font-medium mb-4 flex-grow">
                             {newsItem.excerpt}
                           </p>
-                          <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-xs mt-auto transition-colors">
-                            詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
+                          <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-[11px] mt-auto transition-colors">
+                            詳しく読む <span className="ml-1 group-hover:translate-x-1.5 transition-transform">→</span>
                           </div>
                         </div>
                       </Link>

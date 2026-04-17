@@ -60,7 +60,7 @@ export default function Header() {
             24/7 Support
           </Link>
 
-          <Link href="/#contact"
+          <Link href="/lp"
             className="text-[#1e40af] font-black border-2 border-[#1e40af] px-3 py-1.5 rounded hover:bg-[#1e40af] hover:text-white transition ml-2 whitespace-nowrap text-xs flex items-center gap-1">
             🏢 受入企業様はこちら
             <span className="text-[10px]">→</span>
@@ -101,7 +101,7 @@ export default function Header() {
             ))}
 
             <div className="pt-2 space-y-3">
-              <Link href="/#contact" onClick={() => setMenuOpen(false)}
+              <Link href="/lp" onClick={() => setMenuOpen(false)}
                 className="block text-center text-white bg-[#1e40af] font-black p-4 hover:bg-[#1d4ed8] rounded shadow-md">
                 🏢 受入企業様はこちら →
               </Link>

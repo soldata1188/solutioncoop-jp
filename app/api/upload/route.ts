@@ -20,10 +20,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: '対応形式: JPG, PNG, WebP, GIF' }, { status: 400 });
     }
 
-    // Validate file size (max 5MB)
-    const MAX_SIZE = 5 * 1024 * 1024;
+    // Validate file size (max 30MB)
+    const MAX_SIZE = 30 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
-      return NextResponse.json({ error: 'ファイルサイズは5MB以下にしてください' }, { status: 400 });
+      return NextResponse.json({ error: 'ファイルサイズは30MB以下にしてください' }, { status: 400 });
     }
 
     // Generate unique filename

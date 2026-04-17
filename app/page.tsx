@@ -205,78 +205,76 @@ export default async function HomePage() {
               </Link>
             </div>
             {latestNews.length > 0 ? (
-              <div className="space-y-12">
-                {/* 1. Top Grid: 3 bài mới nhất (Hoặc 1, 2 bài dàn hàng) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {latestNews.slice(0, 3).map((n) => (
-                    <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                      {/* Image Area */}
-                      <div className="relative h-52 md:h-56 w-full overflow-hidden shrink-0 bg-gray-100">
-                        {n.image ? (
-                          <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                        ) : (
-                          <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
-                        )}
-                        {n.pinned && (
-                          <div className="absolute top-4 left-4 z-10">
-                            <span className="bg-[#f97316] text-white text-[10px] font-black px-2.5 py-1 rounded shadow-md flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>TOP
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                {/* --- CỘT TRÁI (8/12): 3 bài viết lớn --- */}
+                <div className="lg:col-span-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    {latestNews.slice(0, 3).map((n) => (
+                      <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
+                        <div className="relative h-44 w-full overflow-hidden shrink-0">
+                          {n.image ? (
+                            <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                          ) : (
+                            <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                          )}
+                          {n.pinned && (
+                            <div className="absolute top-3 left-3 z-10">
+                              <span className="bg-[#f97316] text-white text-[9px] font-black px-2 py-1 rounded shadow-md flex items-center gap-1">
+                                <span className="w-1 h-1 bg-white rounded animate-ping"></span>TOP
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-4 flex flex-col flex-grow text-left">
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${BADGE_BG[n.category]}`}>
+                              {CATEGORY_CONFIG[n.category]?.label}
                             </span>
                           </div>
-                        )}
-                      </div>
-                      
-                      {/* Content Area */}
-                      <div className="p-6 flex flex-col flex-grow text-left">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded shadow-sm ${BADGE_BG[n.category]}`}>
-                            {CATEGORY_CONFIG[n.category]?.label}
-                          </span>
-                          <time className="text-xs text-gray-400 font-bold font-mono">{formatDateDot(n.date)}</time>
+                          <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-3">
+                            {n.title}
+                          </h3>
+                          <time className="text-[10px] text-gray-400 font-bold mb-3 mt-auto">{formatDateDot(n.date)}</time>
                         </div>
-                        <h3 className="text-lg font-black text-navy leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
-                          {n.title}
-                        </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 font-medium mb-6 flex-grow">
-                          {n.excerpt}
-                        </p>
-                        <div className="flex items-center text-navy group-hover:text-[#f97316] font-bold text-sm mt-auto transition-colors">
-                          詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
 
-                {/* 2. List Area: Nếu có bài thứ 4 trở đi */}
-                {latestNews.length > 3 && (
-                  <div className="bg-slate-50 border border-gray-100 rounded-2xl p-6 md:p-8">
-                    <h3 className="text-navy font-black text-sm mb-6 flex items-center gap-2">
-                      <span className="w-1 h-4 bg-[#f97316] rounded-full"></span>
-                      過去のお知らせ
+                {/* --- CỘT PHẢI (4/12): Danh sách tin vắn --- */}
+                <div className="lg:col-span-4 flex flex-col">
+                  <div className="bg-slate-50 border border-gray-100 rounded-2xl p-5 flex-grow shadow-inner">
+                    <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
+                      <span className="w-1 h-3 bg-[#f97316] rounded-full"></span>
+                      Latest Updates
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       {latestNews.slice(3).map((n) => (
-                        <Link key={n.id} href={`/news/${n.id}`} className="flex items-center gap-4 bg-white p-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:shadow-md transition-all group">
-                          <div className="w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-gray-50">
+                        <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
+                          <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
                             {n.image ? (
                               <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                             ) : (
-                              <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-70`} />
+                              <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-60`} />
                             )}
                           </div>
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[9px] font-bold text-gray-400">{formatDateDot(n.date)}</span>
-                              <span className={`text-[8px] font-bold px-1 rounded ${BADGE_BG[n.category]}`}>{CATEGORY_CONFIG[n.category]?.label}</span>
-                            </div>
-                            <h4 className="text-sm font-bold text-gray-700 line-clamp-1 group-hover:text-navy transition-colors">{n.title}</h4>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="text-xs font-bold text-gray-700 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight mb-1">{n.title}</h4>
+                            <span className="text-[9px] text-gray-400 font-bold">{formatDateDot(n.date)}</span>
                           </div>
                         </Link>
                       ))}
+                      {latestNews.length === 0 && <p className="text-[10px] text-gray-400 text-center py-4">No other updates.</p>}
+                    </div>
+                    
+                    <div className="mt-6 pt-4 border-t border-gray-200">
+                      <Link href="/news" className="flex items-center justify-between group">
+                        <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors uppercase">View All News</span>
+                        <span className="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
+                      </Link>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>

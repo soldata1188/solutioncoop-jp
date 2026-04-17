@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import mime from 'mime-types'; // Note: Next.js has built-in basic types, but we can guess using simple logic if mime is missing
 
 export async function GET(req: NextRequest, { params }: { params: { filename: string } }) {
   try {

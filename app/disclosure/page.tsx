@@ -40,8 +40,8 @@ export default async function DisclosurePage() {
           {/* Document Cards */}
           <div className="bg-white rounded shadow-sm overflow-hidden border-t-4 border-t-[#f97316]">
             <div className="bg-white px-6 py-5 border-b border-gray-100 flex items-center justify-between">
-              <h2 className="text-[#1e40af] font-black text-xl tracking-widest flex items-center gap-2">
-                <span className="text-2xl">📋</span> 公開書類一覧
+              <h2 className="text-[#1e40af] font-black text-lg md:text-xl tracking-widest flex items-center gap-2">
+                <span className="text-xl md:text-2xl">📋</span> 公開書類一覧
               </h2>
               <span className="text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded border border-blue-100">
                 全 {docs.length} 件
@@ -54,8 +54,8 @@ export default async function DisclosurePage() {
                 <p className="text-gray-500 font-bold text-lg">現在、公開されている書類はありません。</p>
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse">
+              <div className="overflow-x-auto pb-2">
+                <table className="w-full min-w-[600px] text-left border-collapse">
                   <thead className="bg-[#1e40af] text-white">
                     <tr>
                       <th className="px-5 py-4 text-xs font-black tracking-widest uppercase border-r border-[#173085] w-24 text-center">形式</th>
@@ -85,7 +85,7 @@ export default async function DisclosurePage() {
                           </td>
                           <td className="px-5 py-4 text-center">
                              <a href={doc.url} target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center justify-center gap-1.5 bg-white border border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af] hover:text-white font-black px-4 py-2 rounded text-[11px] transition-colors shadow-sm">
+                               className="inline-flex items-center justify-center gap-1.5 bg-white border border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af] hover:text-white font-black px-4 py-2.5 rounded text-[12px] transition-colors shadow-sm w-full">
                                <span>閲覧・保存</span>
                                <span className="text-sm">📥</span>
                              </a>

@@ -120,7 +120,7 @@ export default async function NewsDetailPage({ params }: Props) {
                       {formatDateJP(item.date)}
                     </time>
                   </div>
-                  <h1 className="text-xl md:text-2xl lg:text-3xl font-black text-navy leading-[1.4] tracking-tight">{item.title}</h1>
+                  <h1 className="text-lg md:text-xl lg:text-2xl font-black text-navy leading-[1.4] tracking-tight">{item.title}</h1>
                 </div>
 
                 {/* Nội dung Bài viết */}

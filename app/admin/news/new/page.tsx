@@ -77,13 +77,12 @@ export default function NewArticlePage() {
       CATEGORY: "${form.category}"
       
       [CONTENT GUIDELINES - PRIORITY]
-      1. SCANNABILITY: Use clear H2/H3 headers. Every section must have Bullet Points (箇条書き).
-      2. TONE: Professional but "Warm" Business Japanese (温かみのあるビジネス敬語). Avoid being 100% robotic; focus on the "Heart" (想い) of the cooperation.
-      3. STORYTELLING: Use benefit-driven hooks. Instead of just "rules changed", explain "how this helps your employees thrive".
-      4. EMPHASIS: Use **Bold Text** for key keywords.
-      5. TERMINOLOGY: Never use "丸投げ". Use "煩雑な事務手続きの負担軽減" and "二人三脚の伴走型支援".
-      6. CRO: End with a warm invitation for a "Safe and Secure" (安心・安全) consultation.
-      7. LENGTH: Concise but informative. Max 1200 characters for "content".
+      1. SCANNABILITY & SPACING: Use frequent double line breaks. Paragraphs should be short (max 2-3 sentences). 
+      2. TONE: Professional but "Warm" Business Japanese (温かみのあるビジネス敬語). Avoid robotic repetition.
+      3. FORMATTING: Use clear H2/H3 headers. Every section must have Bullet Points (箇条書き). Use **Bold Text** for key phrases.
+      4. TERMINOLOGY: Never use "丸投げ". Use "煩雑な事務手続きの負担軽減" and "二人三脚の伴走型支援".
+      5. CRO: End with a warm, spaced-out invitation for "Safe and Secure" consultation.
+      6. LENGTH: Concise but informative. Max 1200 characters for "content".
 
       [SEO GUIDELINES]
       - title: Catchy B2B headline (e.g., "[Benefit] + [Topic] | Solution Cooperative").

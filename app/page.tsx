@@ -290,7 +290,11 @@ export default async function HomePage() {
                   </div>
                 ) : (
                   /* Layout Simple: 1, 2, hoặc 3 bài dàn hàng ngang full width */
-                  <div className={`grid grid-cols-1 sm:grid-cols-${latestNews.length} gap-6`}>
+                  <div className={`grid grid-cols-1 gap-6 ${
+                    latestNews.length === 1 ? 'max-w-md mx-auto' : 
+                    latestNews.length === 2 ? 'sm:grid-cols-2' : 
+                    'sm:grid-cols-3'
+                  }`}>
                     {latestNews.map((newsItem) => (
                       <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
                         <div className="relative h-48 md:h-56 w-full overflow-hidden shrink-0">

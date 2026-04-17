@@ -205,94 +205,123 @@ export default async function HomePage() {
               </Link>
             </div>
             {latestNews.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                {/* 1. Cột Trái (Left Column - 3 Bài Bằng Nhau) */}
-                <div className="lg:col-span-8 h-full">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 h-full">
-                    {latestNews.slice(0, 3).map((newsItem) => (
-                      <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                        <div className="relative h-40 md:h-48 w-full overflow-hidden shrink-0">
+              <>
+                {latestNews.length > 3 ? (
+                  /* Layout 8+4: 3 bài lớn bên trái + danh sách bên phải */
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+                    {/* Cột Trái (Left Column - 3 Bài Bằng Nhau) */}
+                    <div className="lg:col-span-8 h-full">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 h-full">
+                        {latestNews.slice(0, 3).map((newsItem) => (
+                          <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                            <div className="relative h-40 md:h-48 w-full overflow-hidden shrink-0">
+                              {newsItem.image ? (
+                                <Image src={newsItem.image} alt={newsItem.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                              ) : (
+                                <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[newsItem.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                              )}
+                              {newsItem.pinned && (
+                                <div className="absolute top-3 left-3 z-10">
+                                  <span className="bg-[#f97316] text-white text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest shadow flex items-center gap-1">
+                                    <span className="w-1 h-1 bg-white rounded animate-ping"></span>TOP
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                            
+                            <div className="p-4 md:p-5 flex flex-col flex-grow">
+                              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
+                                  {CATEGORY_CONFIG[newsItem.category]?.label}
+                                </span>
+                                <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(newsItem.date)}</time>
+                              </div>
+                              <h3 className="text-sm md:text-[15px] font-black text-[#1e40af] leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-3">
+                                {newsItem.title}
+                              </h3>
+                              <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 md:line-clamp-3 font-medium mb-4 flex-grow">
+                                {newsItem.excerpt}
+                              </p>
+                              <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-[11px] mt-auto transition-colors">
+                                詳しく読む <span className="ml-1 group-hover:translate-x-1.5 transition-transform">→</span>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Cột Phải (Right Column) */}
+                    <div className="lg:col-span-4 flex flex-col justify-between h-full text-left">
+                      <div className="flex flex-col h-full bg-slate-50 border border-gray-100 px-4 md:px-5 pb-5 pt-1 rounded shadow-inner">
+                        <div className="flex-grow flex flex-col justify-start">
+                          {latestNews.slice(3).map((n, idx) => (
+                            <Link key={n.id} href={`/news/${n.id}`} className={`group block py-3.5 ${idx !== 0 ? 'border-t border-gray-200/70' : ''} hover:bg-white transition-colors rounded -mx-3 px-3 text-left`}>
+                              <div className="flex items-start gap-4">
+                                <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded overflow-hidden shadow-sm border border-gray-100">
+                                  {n.image ? (
+                                    <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                                  ) : (
+                                    <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-80`} />
+                                  )}
+                                </div>
+                                <div className="flex flex-col flex-1 gap-1.5">
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[n.category]}`}>
+                                      {CATEGORY_CONFIG[n.category]?.label}
+                                    </span>
+                                    <time className="text-[10px] text-gray-400 font-bold font-mono tracking-wider">{formatDateDot(n.date)}</time>
+                                  </div>
+                                  <h3 className="font-bold text-gray-700 text-xs md:text-sm leading-snug group-hover:text-[#1e40af] transition-colors line-clamp-2">
+                                    {n.title}
+                                  </h3>
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-gray-200/70 flex justify-end">
+                          <Link href="/news" className="inline-flex items-center gap-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors group text-sm">
+                            すべて見る <span className="w-6 h-6 rounded bg-[#1e40af]/10 flex items-center justify-center group-hover:bg-[#f97316]/10 group-hover:translate-x-1 transition-all text-xs">→</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Layout Simple: 1, 2, hoặc 3 bài dàn hàng ngang full width */
+                  <div className={`grid grid-cols-1 sm:grid-cols-${latestNews.length} gap-6`}>
+                    {latestNews.map((newsItem) => (
+                      <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div className="relative h-48 md:h-56 w-full overflow-hidden shrink-0">
                           {newsItem.image ? (
                             <Image src={newsItem.image} alt={newsItem.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                           ) : (
                             <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[newsItem.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
                           )}
-                          {newsItem.pinned && (
-                            <div className="absolute top-3 left-3 z-10">
-                              <span className="bg-[#f97316] text-white text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest shadow flex items-center gap-1">
-                                <span className="w-1 h-1 bg-white rounded animate-ping"></span>TOP
-                              </span>
-                            </div>
-                          )}
                         </div>
-                        
-                        <div className="p-4 md:p-5 flex flex-col flex-grow">
-                          <div className="flex items-center gap-2 mb-3 flex-wrap">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
+                        <div className="p-6 flex flex-col flex-grow text-left">
+                          <div className="flex items-center gap-3 mb-4 flex-wrap">
+                            <span className={`text-[10px] font-bold px-2 py-1 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
                               {CATEGORY_CONFIG[newsItem.category]?.label}
                             </span>
-                            <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(newsItem.date)}</time>
+                            <time className="text-xs text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(newsItem.date)}</time>
                           </div>
-                          <h3 className="text-sm md:text-[15px] font-black text-[#1e40af] leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-3">
+                          <h3 className="text-lg font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                             {newsItem.title}
                           </h3>
-                          <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 md:line-clamp-3 font-medium mb-4 flex-grow">
+                          <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 font-medium mb-6 flex-grow">
                             {newsItem.excerpt}
                           </p>
-                          <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-[11px] mt-auto transition-colors">
-                            詳しく読む <span className="ml-1 group-hover:translate-x-1.5 transition-transform">→</span>
+                          <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-sm mt-auto transition-colors">
+                            詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
                           </div>
                         </div>
                       </Link>
                     ))}
                   </div>
-                </div>
-
-                {/* 3. Danh sách tin vắn (Right Column) */}
-                <div className="lg:col-span-4 flex flex-col justify-between h-full">
-                  <div className="flex flex-col h-full bg-slate-50 border border-gray-100 px-4 md:px-5 pb-5 pt-1 rounded shadow-inner">
-                    <div className="flex-grow flex flex-col justify-start">
-                      {latestNews.slice(3).map((n, idx) => (
-                        <Link key={n.id} href={`/news/${n.id}`} className={`group block py-3.5 ${idx !== 0 ? 'border-t border-gray-200/70' : ''} hover:bg-white transition-colors rounded -mx-3 px-3`}>
-                          <div className="flex items-start gap-4">
-                            {/* Thumbnail */}
-                            <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded overflow-hidden shadow-sm border border-gray-100">
-                              {n.image ? (
-                                <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                              ) : (
-                                <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-80`} />
-                              )}
-                            </div>
-                            
-                            {/* Content */}
-                            <div className="flex flex-col flex-1 gap-1.5">
-                              <div className="flex flex-wrap items-center gap-2">
-                                <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm ${BADGE_BG[n.category]}`}>
-                                  {CATEGORY_CONFIG[n.category]?.label}
-                                </span>
-                                <time className="text-[10px] text-gray-400 font-bold font-mono tracking-wider">{formatDateDot(n.date)}</time>
-                              </div>
-                              <h3 className="font-bold text-gray-700 text-xs md:text-sm leading-snug group-hover:text-[#1e40af] transition-colors line-clamp-2">
-                                {n.title}
-                              </h3>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-
-                    {/* Nút Xem tất cả */}
-                    <div className="mt-4 pt-4 border-t border-gray-200/70 flex justify-end">
-                      <Link href="/news"
-                        className="inline-flex items-center gap-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors group text-sm">
-                        過去のお知らせをすべて見る 
-                        <span className="w-6 h-6 rounded bg-[#1e40af]/10 flex items-center justify-center group-hover:bg-[#f97316]/10 group-hover:translate-x-1 transition-all text-xs">→</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+                )}
+              </>
             ) : (
               <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
             )}

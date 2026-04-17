@@ -63,7 +63,7 @@ export default function SimulationPage() {
             <div className="mx-auto w-fit bg-white/10 backdrop-blur-md border border-white/20 rounded mb-6 overflow-hidden shadow-lg hidden md:block">
               <div className="flex divide-x divide-white/10">
                 <div className="px-6 py-2 flex items-center gap-2">
-                  <div className="w-4 h-4 bg-orange-500 rounded flex items-center justify-center font-black text-[8px]">優良</div>
+
                   <span className="text-white font-bold text-[10px] tracking-widest">公式料金シミュレーション</span>
                 </div>
               </div>

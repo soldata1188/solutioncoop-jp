@@ -410,7 +410,7 @@ const FAQ_DATA = [
             ['⚖️','法令遵守・監査の厳格さ'],
             ['🕐','24時間365日サポート体制'],
             ['💰','費用の透明性・明確な明細'],
-            ['🏆','国からの「優良認定」'],
+
           ].map(([icon, label]) => (
             <div key={label} className="bg-gray-50 border border-gray-100 p-2 rounded flex items-center gap-2">
               <span>{icon}</span><span className="font-bold text-gray-700">{label}</span>

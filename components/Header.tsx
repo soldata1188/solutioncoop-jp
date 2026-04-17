@@ -21,13 +21,13 @@ export default function Header() {
     { href: '#flow',      label: '受入の流れ' },
     { href: '/simulation', label: '費用シミュレーション' },
     { href: '#faq',       label: 'よくある質問' },
-    { href: '/support',   label: '24/7 Support' },
+    { href: '/#support',   label: '24/7 Support' },
   ] : [
     { href: '/#news',       label: '最新情報' },
     { href: '/#overview',   label: '組合概要' },
     { href: '/#disclosure', label: '情報公開' },
     { href: '/#faq',        label: 'よくある質問' },
-    { href: '/support',     label: '24/7 Support' },
+    { href: '/#support',     label: '24/7 Support' },
   ];
 
   return (
@@ -38,24 +38,24 @@ export default function Header() {
       <div className="container mx-auto px-4 h-16 md:h-20 flex justify-between items-center gap-2">
         {/* Logo */}
         <Link href="/" className="flex flex-col justify-center flex-shrink-0 group">
-          <span className="text-base md:text-xl font-black text-navy leading-tight block whitespace-nowrap group-hover:text-navy-dark transition">
+          <span className="text-sm md:text-lg font-black text-navy leading-tight block whitespace-nowrap group-hover:text-navy-dark transition">
             ソリューション協同組合
           </span>
-          <span className="text-[10px] md:text-xs text-gray-500 mt-0.5 block">
-            一般監理事業(優良) 許可 | 大阪府堺市
+          <span className="text-[10px] md:text-[11px] text-gray-500 mt-0.5 block">
+            一般監理事業 許可 | 大阪府堺市
           </span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-1 text-sm font-medium text-gray-600" aria-label="メインナビ">
-          {navLinks.filter(l => l.href !== '/support').map(l => (
+          {navLinks.filter(l => l.href !== '/#support').map(l => (
             <Link key={l.href} href={l.href}
               className="hover:text-navy px-3 py-2 rounded hover:bg-blue-50 transition-all whitespace-nowrap">
               {l.label}
             </Link>
           ))}
           
-          <Link href="/support"
+          <Link href="/#support"
             className="text-accent font-bold border-2 border-accent px-3 py-1.5 rounded hover:bg-accent hover:text-white transition ml-4 whitespace-nowrap">
             24/7 Support
           </Link>
@@ -65,7 +65,6 @@ export default function Header() {
             🏢 受入企業様はこちら
             <span className="text-[10px]">→</span>
           </Link>
-
 
         </nav>
 
@@ -93,7 +92,7 @@ export default function Header() {
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100">
           <nav className="container mx-auto px-4 py-4 space-y-1">
-            {navLinks.filter(l => l.href !== '/support').map(l => (
+            {navLinks.filter(l => l.href !== '/#support').map(l => (
               <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
                 className="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded">
                 {l.label}
@@ -106,7 +105,7 @@ export default function Header() {
                 🏢 受入企業様はこちら →
               </Link>
 
-              <Link href="/support" onClick={() => setMenuOpen(false)}
+              <Link href="/#support" onClick={() => setMenuOpen(false)}
                 className="block text-center text-white bg-accent font-black p-4 hover:bg-[#ea580c] rounded shadow-md ring-2 ring-orange-300 ring-offset-2">
                 📢 24/7 Support
               </Link>

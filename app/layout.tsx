@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     default: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
     template: '%s｜ソリューション協同組合',
   },
-  description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体（一般監理事業許可）。規律・礼節を重んじる独自の教育体制と、大阪府知事表彰の実績で中小企業の人材課題を解決します。',
+  description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題を解決します。',
   keywords: ['技能実習', '監理団体', '外国人技能実習', 'ソリューション協同組合', '大阪', '堺市'],
   openGraph: { siteName: 'ソリューション協同組合', locale: 'ja_JP', type: 'website' },
 };
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     alternateName: 'Solution Cooperative Association',
     url: 'https://solutioncoop-jp.com',
     logo: 'https://solutioncoop-jp.com/images/logo.png',
-    description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体（一般監理事業許可）。規律・礼節を重んじる独自の教育体制と、大阪府知事表彰の実績で中小企業の人材課題を解決します。',
+    description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題 को 解決します。',
     telephone: '+81-72-224-8067',
     faxNumber: '+81-72-224-2214',
     email: 'info@solutioncoop-jp.com',
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       opens: '09:00',
       closes: '18:00',
     },
-    award: '令和4年（2022）大阪府知事表彰',
+    award: '',
     sameAs: [],
     contactPoint: {
       '@type': 'ContactPoint',

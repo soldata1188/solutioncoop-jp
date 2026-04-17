@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
-  description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体（一般監理事業許可）。規律・礼節を重んじる独自の教育体制と、大阪府知事表彰の実績で中小企業の人材課題を解決します。',
+  description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題を解決します。',
   alternates: { canonical: 'https://solutioncoop-jp.com' },
 };
 
@@ -70,7 +70,7 @@ export default async function HomePage() {
       <main className="pt-16 md:pt-20">
 
         {/* ===== HERO ===== */}
-        <section className="relative min-h-[600px] lg:min-h-[680px] flex items-center justify-center overflow-hidden pt-10 pb-20 lg:py-0">
+        <section className="relative min-h-[650px] lg:min-h-[720px] flex flex-col overflow-hidden">
           {/* Hero background image */}
           <div className="absolute inset-0 z-0">
             <Image src="/images/hero-banner.jpg" alt="" fill priority className="object-cover" aria-hidden="true" />
@@ -81,70 +81,31 @@ export default async function HomePage() {
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           </div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-full max-w-4xl text-white space-y-6">
-                <div className="mx-auto w-full max-w-sm md:max-w-max bg-white/10 backdrop-blur-md border border-white/20 rounded shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
-                  <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20">
-                    {/* "Thẻ Chứng nhận" Uy tín 1 */}
-                    <div className="flex-1 px-5 mt-1 md:mt-0 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
-                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded flex items-center justify-center shrink-0 shadow-sm">
-                        <span className="text-white text-[10px] font-black">優良</span>
-                      </div>
-                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                        一般監理事業<span className="text-orange-400 ml-1">許可</span>
-                      </span>
-                    </div>
+          <div className="flex-1 flex items-center justify-center w-full relative z-10 py-12">
+            <div className="container mx-auto px-4 text-center flex flex-col items-center">
+              <div className="w-full max-w-4xl text-white flex flex-col items-center gap-8">
 
-                    {/* "Thẻ Chứng nhận" Uy tín 2 */}
-                    <div className="flex-1 px-5 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
-                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded text-xs shrink-0 shadow-sm">
-                        🏆
-                      </div>
-                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                        令和4年<span className="text-orange-400 mx-1">大阪府知事表彰</span>受賞
-                      </span>
-                    </div>
-
-                    {/* "Thẻ Chứng nhận" Uy tín 3 */}
-                    <div className="flex-1 px-5 mb-1 md:mb-0 py-3 md:py-3.5 flex items-center justify-start md:justify-center gap-3 md:gap-2.5 group hover:bg-white/[0.08] transition-colors cursor-default">
-                      <div className="flex items-center justify-center w-6 h-6 bg-[#f97316] rounded text-xs shrink-0 shadow-sm">
-                        ✨
-                      </div>
-                      <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                        令和8年<span className="text-orange-400 mx-1">憲法記念日知事表彰</span>受賞
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                {/* Headline */}
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight drop-shadow-md">
                   <span className="block mb-1 md:mb-2 text-white">実習生の育成と定着を、</span>
                   <span className="block text-orange-400">適正な監理で支えます。</span>
                 </h1>
-                <p className="text-base md:text-xl font-medium mb-10 leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
-                  ソリューション協同組合は、大阪府堺市に拠点を置く<strong className="text-white border-b border-white pb-0.5">技能実習監理団体</strong>です。<br className="hidden md:block" />
-                  平成24年の設立以来、独自の研修センターと12名の専任日本語教師による教育体制で、70社超の受入企業様を支援してまいりました。
+
+                {/* Description */}
+                <p className="text-base md:text-xl font-medium leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
+                  ソリューション協同組合は、大阪府堺市を拠点とする<strong className="text-white border-b border-white pb-0.5">技能実習監理団体</strong>です。<br className="hidden md:block" />
+                  平成24年の設立以来、12名の専任講師による独自の教育体制を強みに、数多くの受入企業様とともに歩んでまいりました。
                 </p>
 
-                {/* ===== MINIMALIST TEXT CTA (Centered) ===== */}
-                <div className="mt-10 flex justify-center">
-                  <TrackedLink href="/lp" eventAction="hero_cta_click" eventLabel="enterprise_lp_minimalist"
-                    className="group relative inline-flex items-center gap-2 text-white hover:text-orange-400 font-black text-xl md:text-2xl transition-all duration-300 py-2 border-b-2 border-transparent hover:border-orange-400">
-                    <span>受入企業様はこちら</span>
-                    <span className="text-2xl md:text-3xl group-hover:translate-x-3 transition-transform duration-500">→</span>
-                  </TrackedLink>
-                </div>
-
-
-                
-                <div className="mt-8 flex items-center justify-center gap-3 flex-wrap">
+                {/* Industry Tags + Social Proof */}
+                <div className="flex flex-col items-center gap-3">
                   <div className="flex items-center gap-2 flex-wrap justify-center">
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">建設業</span>
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">製造業</span>
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">農業</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">建設業</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">製造業</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">農業</span>
                   </div>
                   <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-center leading-relaxed drop-shadow-sm">
-                    大阪府・関西圏を中心に<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入
+                    建設・製造・農業を中心に、大阪・関西圏の<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社を超える企業</span>に導入されています。
                   </p>
                 </div>
 
@@ -153,7 +114,7 @@ export default async function HomePage() {
           </div>
           
           {/* ===== COMPANY MARQUEE (Social Proof) ===== */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 py-3 overflow-hidden flex items-center group bg-[#1e40af]/40 backdrop-blur-md">
+          <div className="relative w-full z-20 border-t border-white/10 py-3 overflow-hidden flex items-center group bg-[#1e40af]/40 backdrop-blur-md mt-auto">
             <div className="flex-1 overflow-hidden flex items-center">
               {/* Base block */}
               <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused]">
@@ -180,8 +141,8 @@ export default async function HomePage() {
 
 
         {/* ===== KEY STATS ===== */}
-        <section className="bg-[#1e40af] py-10 relative overflow-hidden border-b border-white/10">
-          <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white relative z-10">
+        <section className="bg-white py-12 border-b border-gray-100">
+          <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { val: '60', unit: '期', label: '技能実習生受入実績' },
               { val: '70', unit: '社+', label: '受入企業数' },
@@ -189,8 +150,8 @@ export default async function HomePage() {
               { val: '2012', unit: '年〜', label: '設立・10年超の実績' },
             ].map(s => (
               <div key={s.label} className="group cursor-default">
-                <p className="text-4xl font-black text-white drop-shadow-sm group-hover:scale-105 transition-transform duration-300">{s.val}<span className="text-xl font-bold ml-1 text-blue-100">{s.unit}</span></p>
-                <p className="text-blue-100 text-xs mt-2 uppercase tracking-widest">{s.label}</p>
+                <p className="text-3xl font-black text-[#1e40af] group-hover:scale-105 transition-transform duration-300">{s.val}<span className="text-xl font-bold ml-1">{s.unit}</span></p>
+                <p className="text-gray-500 text-[10px] mt-2 tracking-widest uppercase font-bold">{s.label}</p>
               </div>
             ))}
           </div>
@@ -352,7 +313,7 @@ export default async function HomePage() {
                   body: <>夜間・休日の緊急連絡にも母国語通訳スタッフが対応. 生活トラブル, 通院同行, メンタルヘルスまで一貫してサポートし, <strong>受入企業様の負担を最小化</strong>します.</> },
                 { bg: 'from-green-50 to-white', border: 'border-green-100/50', iconBg: 'bg-[#06C755]', icon: '🏆',
                   titleColor: 'text-green-700', title:'公的機関から認められた実績',
-                  body: <>令和4年（2022）に<strong>大阪府知事表彰</strong>を受賞. 設立2012年より10年超・第60期生まで受入実績を持ち、70社超の受入企業様から信頼を頂いています.</> },
+                  body: <>設立2012年より10年超・第60期生までの受入実績を持ち、70社超の受入企業様から信頼を頂いています.</> },
               ].map(s => (
                 <div key={s.title} className={`card-lift bg-gradient-to-br ${s.bg} border ${s.border} rounded p-8 text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]`}>
                   <div className={`w-16 h-16 ${s.iconBg} flex items-center justify-center mx-auto mb-5 rounded shadow-lg transform -translate-y-2`}>
@@ -373,93 +334,6 @@ export default async function HomePage() {
 
 
 
-
-        {/* ===== 組合概要 (Overview) ===== */}
-        <section id="overview" className="py-20 md:py-24 bg-white relative">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-black text-blue-900 mb-4 section-title">組合概要・法人情報</h2>
-            </div>
-            <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
-              <div className="bg-[#1e40af] px-6 py-4 flex items-center gap-3">
-                <span className="text-orange-400 text-lg">🏛️</span>
-                <span className="text-white font-bold">監理団体 法人情報</span>
-              </div>
-              <div className="w-full overflow-x-auto">
-                <table className="w-full text-sm min-w-[500px]">
-                <tbody className="divide-y divide-blue-50">
-                  {[
-                    ['法人名称', <div key="n"><strong className="text-slate-800 text-base">ソリューション協同組合</strong><br/><span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative （略称：SKK）</span></div>],
-                    ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold ml-1 -translate-y-px">📍 MAP</a><br/><span className="text-xs text-slate-400">本社・日本語研修センター</span></div>],
-                    ['監理団体許可番号', <><span key="l" className="font-mono font-bold text-blue-800">許1708000610</span><span key="b" className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 font-sans font-semibold rounded">一般監理事業（優良）</span></>],
-                    ['代表理事', '新 雅志'],
-                    ['電話番号', <><a key="t" href="tel:0722248067" className="text-blue-800 font-bold hover:text-blue-600 transition text-lg">072-224-8067</a><span key="d" className="text-slate-400 text-xs ml-2">（平日 9:00〜18:00）</span></>],
-                    ['FAX', '072-224-2214'],
-                    ['メール', <a key="e" href="mailto:info@solutioncoop-jp.com" className="text-blue-800 hover:underline">info@solutioncoop-jp.com</a>],
-                    ['設立', '平成24年（2012年）3月'],
-                    ['受賞歴', <><span key="a1" className="inline-flex items-center gap-1.5 bg-yellow-50 border border-yellow-300 text-yellow-800 px-2 py-1 text-[11px] font-bold rounded mb-1">🏆 令和4年（2022）大阪府知事表彰受賞</span><br key="br" className="sm:hidden"/><span key="a2" className="sm:ml-2 inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-2 py-1 text-[11px] font-bold rounded">🥇 大阪府中小企業団体中央会表彰</span></>],
-                  ].map(([label, val]) => (
-                    <tr key={String(label)} className="hover:bg-slate-50 transition-colors">
-                      <th className="text-left px-6 py-4 font-bold text-[#1e40af] w-1/3 md:w-1/4 bg-slate-50 align-top border-r border-gray-100">{label as string}</th>
-                      <td className="px-6 py-4 text-slate-800 leading-relaxed">{val}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ===== 情報公開 (Disclosure) ===== */}
-        <section id="disclosure" className="py-20 md:py-24 bg-blue-50/50 text-slate-800 relative border-t border-blue-100">
-          <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded">
-                <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">⚖️ 技能実習法 第32条・第37条 準拠</span>
-              </div>
-              <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
-              <div className="w-16 h-1 bg-orange-500 mx-auto rounded" />
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-              {[
-                { label:'監理費用の明細', icon:'📄', desc:'監理費用の内訳および用途の明細' },
-                { label:'運営規程', icon:'📖', desc:'当組合の事業運営に関する基本規則' },
-                { label:'監理団体事業報告書', icon:'📋', desc:'年度ごとの事業実績および活動報告' },
-                { label:'監理団体許可証の写し', icon:'🏅', desc:'法務省・厚生労働省からの事業許可証' },
-              ].map(d => (
-                <Link key={d.label} href="/disclosure"
-                  className="group flex items-center gap-4 p-5 bg-white border border-gray-200 rounded hover:border-[#1e40af] hover:shadow-md transition-all">
-                  <span className="text-3xl bg-slate-50 group-hover:bg-blue-50 text-[#1e40af] p-3 rounded transition-colors">{d.icon}</span>
-                  <div className="flex-1">
-                    <span className="font-black text-sm block mb-1 text-slate-800 group-hover:text-[#1e40af] transition-colors">{d.label}</span>
-                    <span className="text-[10px] text-slate-500">{d.desc}</span>
-                  </div>
-                  <span className="ml-auto text-xl text-blue-200 group-hover:text-[#1e40af] transition-colors">→</span>
-                </Link>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-4">
-              {[
-                { icon:'⚖️', title:'法令遵守', desc:'技能実習法に完全準拠した事業運営' },
-                { icon:'👁️', title:'透明性の確保', desc:'全費用・手数料の書面による明示' },
-                { icon:'🛡️', title:'実習生の保護', desc:'不当な徴収の禁止と人権の尊重' },
-              ].map(p => (
-                <div key={p.title} className="bg-white p-5 text-center rounded border border-blue-100 shadow-sm hover:border-blue-300 transition-colors">
-                  <p className="text-blue-500 text-3xl mb-3">{p.icon}</p>
-                  <p className="text-blue-900 font-black text-sm mb-1">{p.title}</p>
-                  <p className="text-slate-500 text-xs mt-1 leading-relaxed">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* ===== よくある質問 ===== */}
-        <FaqSection />
 
         {/* ===== 24時間365日 相談窓口 (merged from /support) ===== */}
         <section id="support" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden border-t border-gray-200">
@@ -587,26 +461,96 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Privacy Note */}
-            <div className="max-w-3xl mx-auto bg-white border border-gray-200 shadow-sm p-6 md:p-8 rounded flex flex-col md:flex-row items-center gap-6 md:gap-8">
-              <div className="text-5xl shrink-0 drop-shadow-md">🛡️</div>
-              <div className="text-center md:text-left">
-                <h4 className="font-black text-[#1e40af] mb-2 text-lg md:text-xl underline decoration-orange-400 decoration-4 underline-offset-8">
-                  プライバシー厳守・気軽にご相談
-                </h4>
-                <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest mb-4">
-                  個人情報は厳重に管理・保護いたします
-                </p>
-                <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold mb-2">
-                  ご相談いただいた内容の秘密は厳守いたします。ご本人の同意なく、第三者や関係機関へ情報を提供することは一切ございません。どのような些細なことでも、まずはお気軽にご相談ください。
-                </p>
-                <p className="text-[11px] md:text-xs text-gray-400 leading-relaxed font-medium italic opacity-90">
-                  ご相談内容は厳重に管理され、ご本人の同意なく第三者や関係機関へ提供されることは一切ありません。
-                </p>
+
+          </div>
+        </section>
+
+        {/* ===== 組合概要 (Overview) ===== */}
+        <section id="overview" className="py-20 md:py-24 bg-white relative">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-black text-blue-900 mb-4 section-title">組合概要・法人情報</h2>
+            </div>
+            <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+              <div className="bg-[#1e40af] px-6 py-4 flex items-center gap-3">
+                <span className="text-orange-400 text-lg">🏛️</span>
+                <span className="text-white font-bold">監理団体 法人情報</span>
+              </div>
+              <div className="w-full overflow-x-auto">
+                <table className="w-full text-sm min-w-[500px]">
+                <tbody className="divide-y divide-blue-50">
+                  {[
+                    ['法人名称', <div key="n"><strong className="text-slate-800 text-base">ソリューション協同組合</strong><br/><span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative （略称：SKK）</span></div>],
+                    ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold ml-1 -translate-y-px">📍 MAP</a><br/><span className="text-xs text-slate-400">本社・日本語研修センター</span></div>],
+                    ['監理団体許可番号', <span key="l" className="font-mono font-bold text-blue-800">許1708000610</span>],
+                    ['代表理事', '新 雅志'],
+                    ['電話番号', <><a key="t" href="tel:0722248067" className="text-blue-800 font-bold hover:text-blue-600 transition text-lg">072-224-8067</a><span key="d" className="text-slate-400 text-xs ml-2">（平日 9:00〜18:00）</span></>],
+                    ['FAX', '072-224-2214'],
+                    ['メール', <a key="e" href="mailto:info@solutioncoop-jp.com" className="text-blue-800 hover:underline">info@solutioncoop-jp.com</a>],
+                    ['設立', '平成24年（2012年）3月'],
+                    ['受賞歴', <span key="a2" className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-2 py-1 text-[11px] font-bold rounded">🥇 大阪府中小企業団体中央会表彰</span>],
+                  ].map(([label, val]) => (
+                    <tr key={String(label)} className="hover:bg-slate-50 transition-colors">
+                      <th className="text-left px-6 py-4 font-bold text-[#1e40af] w-1/3 md:w-1/4 bg-slate-50 align-top border-r border-gray-100">{label as string}</th>
+                      <td className="px-6 py-4 text-slate-800 leading-relaxed">{val}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
               </div>
             </div>
           </div>
         </section>
+
+        {/* ===== 情報公開 (Disclosure) ===== */}
+        <section id="disclosure" className="py-20 md:py-24 bg-blue-50/50 text-slate-800 relative border-t border-blue-100">
+          <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded">
+                <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">⚖️ 技能実習法 第32条・第37条 準拠</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
+              <div className="w-16 h-1 bg-orange-500 mx-auto rounded" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+              {[
+                { label:'監理費用の明細', icon:'📄', desc:'監理費用の内訳および用途の明細' },
+                { label:'運営規程', icon:'📖', desc:'当組合の事業運営に関する基本規則' },
+                { label:'監理団体事業報告書', icon:'📋', desc:'年度ごとの事業実績および活動報告' },
+                { label:'監理団体許可証の写し', icon:'🏅', desc:'法務省・厚生労働省からの事業許可証' },
+              ].map(d => (
+                <Link key={d.label} href="/disclosure"
+                  className="group flex items-center gap-4 p-5 bg-white border border-gray-200 rounded hover:border-[#1e40af] hover:shadow-md transition-all">
+                  <span className="text-3xl bg-slate-50 group-hover:bg-blue-50 text-[#1e40af] p-3 rounded transition-colors">{d.icon}</span>
+                  <div className="flex-1">
+                    <span className="font-black text-sm block mb-1 text-slate-800 group-hover:text-[#1e40af] transition-colors">{d.label}</span>
+                    <span className="text-[10px] text-slate-500">{d.desc}</span>
+                  </div>
+                  <span className="ml-auto text-xl text-blue-200 group-hover:text-[#1e40af] transition-colors">→</span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-4">
+              {[
+                { icon:'⚖️', title:'法令遵守', desc:'技能実習法に完全準拠した事業運営' },
+                { icon:'👁️', title:'透明性の確保', desc:'全費用・手数料の書面による明示' },
+                { icon:'🛡️', title:'実習生の保護', desc:'不当な徴収の禁止と人権の尊重' },
+              ].map(p => (
+                <div key={p.title} className="bg-white p-5 text-center rounded border border-blue-100 shadow-sm hover:border-blue-300 transition-colors">
+                  <p className="text-blue-500 text-3xl mb-3">{p.icon}</p>
+                  <p className="text-blue-900 font-black text-sm mb-1">{p.title}</p>
+                  <p className="text-slate-500 text-xs mt-1 leading-relaxed">{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* ===== よくある質問 ===== */}
+        <FaqSection />
 
         {/* ===== CTA (B2B Host Companies) ===== */}
         <section id="contact" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">

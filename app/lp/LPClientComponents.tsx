@@ -278,13 +278,13 @@ export default function LPClientComponents() {
               
               <div className="flex flex-wrap gap-2 mb-6">
                 <span className="inline-flex items-center gap-1 border border-[#1e40af] bg-blue-50 text-[#1e40af] text-[10px] font-black px-2 py-1 rounded shadow-sm tracking-widest">
-                  <span className="text-[#1e40af]">✔</span> 一般監理事業（優良）許可
+                  <span className="text-[#1e40af]">✔</span> 一般監理事業許可
                 </span>
                 <span className="inline-flex items-center gap-1 border border-orange-500 bg-orange-50 text-orange-600 text-[10px] font-black px-2 py-1 rounded shadow-sm tracking-widest">
-                  <span className="text-orange-500">🏆</span> 令和4年 大阪府知事表彰
+
                 </span>
                 <span className="inline-flex items-center gap-1 border border-orange-500 bg-orange-50 text-orange-600 text-[10px] font-black px-2 py-1 rounded shadow-sm tracking-widest">
-                  <span className="text-orange-500">✨</span> 令和8年 知事表彰
+
                 </span>
               </div>
 

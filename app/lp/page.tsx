@@ -31,53 +31,26 @@ export default async function LandingPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
+      <main className="pt-16 md:pt-20 min-h-screen">
       {/* ===== SECTION 1: HERO SECTION ===== */}
-      <section className="relative min-h-[100vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden py-10 md:py-0">
+      <section className="relative min-h-[650px] lg:min-h-[720px] flex flex-col overflow-hidden">
         <div className="absolute inset-0 z-0 text-white">
           <Image src="/images/hero-banner.jpg" alt="Partner" fill priority className="object-cover" />
           <div className="absolute inset-0 bg-[#1e40af]/85 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1e40af] via-[#1e40af]/40 to-transparent opacity-80" />
         </div>
-        <div className="container mx-auto px-4 relative z-10 text-center mt-28 md:mt-16 pb-20 md:pb-0">
-          <div className="max-w-5xl mx-auto text-white">
-            
-            {/* Trust Badges - Social Proof at First Glance */}
-            <div className="mx-auto w-full max-w-sm md:max-w-max bg-white/10 backdrop-blur-md border border-white/20 rounded mb-8 overflow-hidden shadow-lg">
-              <div className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20">
-                <div className="px-4 py-3 flex items-center justify-start md:justify-center gap-2.5">
-                  <div className="w-5 h-5 bg-orange-500 rounded flex items-center justify-center shrink-0">
-                    <span className="text-white text-[9px] font-black">優良</span>
-                  </div>
-                  <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                    一般監理事業<span className="text-orange-400 ml-1">許可</span>
-                  </span>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-start md:justify-center gap-2.5">
-                  <div className="w-5 h-5 bg-orange-500 rounded flex items-center justify-center text-xs shrink-0">
-                    🏆
-                  </div>
-                  <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                    令和4年<span className="text-orange-400 mx-1">大阪府知事表彰</span>受賞
-                  </span>
-                </div>
-                <div className="px-4 py-3 flex items-center justify-start md:justify-center gap-2.5">
-                  <div className="w-5 h-5 bg-orange-500 rounded flex items-center justify-center text-xs shrink-0">
-                    ✨
-                  </div>
-                  <span className="text-white font-bold text-xs md:text-sm tracking-widest whitespace-nowrap">
-                    令和8年<span className="text-orange-400 mx-1">憲法記念日知事表彰</span>受賞
-                  </span>
-                </div>
-              </div>
-            </div>
+        <div className="flex-1 flex items-center justify-center w-full relative z-10 py-12">
+          <div className="container mx-auto px-4 text-center flex flex-col items-center">
+            <div className="max-w-5xl mx-auto text-white flex flex-col items-center gap-8">
 
-            <h1 className="text-[26px] sm:text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+            {/* Headline */}
+            <h1 className="text-[26px] sm:text-3xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
               「育成就労」×「特定技能」<br />
               <span className="text-orange-400 block mt-2 text-[32px] sm:text-4xl md:text-6xl drop-shadow-md">最適解を、共に創る。</span>
             </h1>
-            
-            <p className="text-sm sm:text-base md:text-xl font-medium mb-10 leading-relaxed md:leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
+
+            {/* Description */}
+            <p className="text-sm sm:text-base md:text-xl font-medium leading-relaxed md:leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
               複雑化する制度移行期だからこそ、両制度を熟知した専門家の力が不可欠です。<br className="hidden md:block" />
               直結ルートでの採用から、煩雑な手続きの完全代行、定着までの伴走支援で<br className="hidden md:block"/>
               貴社のグローバル人材戦略を強力に推進します。
@@ -86,21 +59,22 @@ export default async function LandingPage() {
               【無料】まずは話だけでも聞いてみる ➔
             </a>
 
-            {/* Social Proof Numbers */}
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <div className="flex -space-x-2 shrink-0">
-                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
-                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
-                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
+            {/* Industry Tags + Social Proof */}
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex items-center gap-2 flex-wrap justify-center">
+                <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">建設業</span>
+                <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">製造業</span>
+                <span className="bg-white/15 border border-white/30 text-white text-[11px] font-black px-3 py-1.5 rounded tracking-wider">農業</span>
               </div>
-              <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-left leading-relaxed drop-shadow-sm">
-                大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-orange-400 font-black mx-1 text-lg">70社超</span>の企業様が導入
+              <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-center leading-relaxed drop-shadow-sm">
+                建設・製造・農業を中心に、大阪・関西圏の<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社を超える企業</span>に導入されています。
               </p>
             </div>
             
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 py-3 overflow-hidden flex items-center group bg-[#1e40af]/40 backdrop-blur-md">
+        </div>
+        <div className="relative w-full z-20 border-t border-white/10 py-3 overflow-hidden flex items-center group bg-[#1e40af]/40 backdrop-blur-md mt-auto">
           <div className="flex-1 overflow-hidden flex items-center">
             {/* Base block */}
             <div className="flex shrink-0 animate-marquee items-center text-[10px] md:text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused] whitespace-nowrap">

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { promises as fs } from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import LeadMagnet from '@/components/LeadMagnet';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP, formatDateDot } from '@/lib/news';
 
@@ -65,7 +65,7 @@ export default async function HomePage() {
         <section className="relative min-h-[600px] lg:min-h-[680px] flex items-center justify-center overflow-hidden pt-10 pb-20 lg:py-0">
           {/* Hero background image */}
           <div className="absolute inset-0 z-0">
-            <img src="/images/hero-banner.jpg" alt="" className="w-full h-full object-cover" aria-hidden="true" />
+            <Image src="/images/hero-banner.jpg" alt="" fill priority className="object-cover" aria-hidden="true" />
             {/* Dark Premium overlay mapping the LP design */}
             <div className="absolute inset-0 bg-[#1e40af]/85 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1e40af] via-[#1e40af]/40 to-transparent opacity-80" />
@@ -131,9 +131,9 @@ export default async function HomePage() {
                 
                 <div className="mt-8 flex items-center justify-center gap-3">
                   <div className="flex -space-x-2 shrink-0">
-                    <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
-                    <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
-                    <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
+                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
+                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
+                    <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
                   </div>
                   <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-left leading-relaxed drop-shadow-sm">
                     大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入
@@ -151,7 +151,7 @@ export default async function HomePage() {
               <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused]">
                 {companies.map((c, i) => (
                   <span key={`a-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default whitespace-nowrap">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    <span className="w-1.5 h-1.5 rounded bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
                     {c}
                   </span>
                 ))}
@@ -160,7 +160,7 @@ export default async function HomePage() {
               <div className="flex shrink-0 animate-marquee items-center text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused]" aria-hidden="true">
                 {companies.map((c, i) => (
                   <span key={`b-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default whitespace-nowrap">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                    <span className="w-1.5 h-1.5 rounded bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
                     {c}
                   </span>
                 ))}
@@ -211,14 +211,14 @@ export default async function HomePage() {
                   <Link href={`/news/${latestNews[0].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
                       <div className="relative h-64 md:h-72 w-full overflow-hidden shrink-0">
                         {latestNews[0].image ? (
-                          <img src={latestNews[0].image} alt={latestNews[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <Image src={latestNews[0].image} alt={latestNews[0].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[0].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
                         )}
                         {latestNews[0].pinned && (
                           <div className="absolute top-4 left-4 z-10">
                             <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>TOP
+                              <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>TOP
                             </span>
                           </div>
                         )}
@@ -251,14 +251,14 @@ export default async function HomePage() {
                     <Link href={`/news/${latestNews[1].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
                       <div className="relative h-48 w-full overflow-hidden shrink-0">
                         {latestNews[1].image ? (
-                          <img src={latestNews[1].image} alt={latestNews[1].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <Image src={latestNews[1].image} alt={latestNews[1].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[1].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
                         )}
                         {latestNews[1].pinned && (
                           <div className="absolute top-4 left-4 z-10">
                             <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>TOP
+                              <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>TOP
                             </span>
                           </div>
                         )}
@@ -295,7 +295,7 @@ export default async function HomePage() {
                             {/* Thumbnail */}
                             <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0 rounded overflow-hidden shadow-sm border border-gray-100">
                               {n.image ? (
-                                <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                               ) : (
                                 <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-80`} />
                               )}
@@ -323,7 +323,7 @@ export default async function HomePage() {
                       <Link href="/news"
                         className="inline-flex items-center gap-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors group text-sm">
                         過去のお知らせをすべて見る 
-                        <span className="w-6 h-6 rounded-full bg-[#1e40af]/10 flex items-center justify-center group-hover:bg-[#f97316]/10 group-hover:translate-x-1 transition-all text-xs">→</span>
+                        <span className="w-6 h-6 rounded bg-[#1e40af]/10 flex items-center justify-center group-hover:bg-[#f97316]/10 group-hover:translate-x-1 transition-all text-xs">→</span>
                       </Link>
                     </div>
                   </div>
@@ -404,7 +404,8 @@ export default async function HomePage() {
                 <span className="text-orange-400 text-lg">🏛️</span>
                 <span className="text-white font-bold">監理団体 法人情報</span>
               </div>
-              <table className="w-full text-sm">
+              <div className="w-full overflow-x-auto">
+                <table className="w-full text-sm min-w-[500px]">
                 <tbody className="divide-y divide-blue-50">
                   {[
                     ['法人名称', <strong key="n" className="text-slate-800">ソリューション協同組合</strong>],
@@ -424,6 +425,7 @@ export default async function HomePage() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </section>
@@ -432,7 +434,7 @@ export default async function HomePage() {
         <section id="disclosure" className="py-20 md:py-24 bg-blue-50/50 text-slate-800 relative border-t border-blue-100">
           <div className="container mx-auto px-4 relative z-10 max-w-4xl">
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded-full">
+              <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded">
                 <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">⚖️ 技能実習法 第32条・第37条 準拠</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
@@ -478,27 +480,194 @@ export default async function HomePage() {
         {/* ===== よくある質問 ===== */}
         <FaqSection />
 
+        {/* ===== 24時間365日 相談窓口 (merged from /support) ===== */}
+        <section id="support" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden border-t border-gray-200">
+          <div className="absolute inset-0 pointer-events-none opacity-30">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-100 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
+          </div>
 
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section Header */}
+            <div className="text-center mb-14">
+              {/* Target Audience Label */}
+              <div className="inline-block bg-[#1e40af] text-white font-black px-5 py-2 rounded mb-6 shadow-md text-sm tracking-widest">
+                🧑‍🔧 外国人材・実習生のみなさまへ <span className="opacity-80 text-xs ml-1">(For Foreign Workers)</span>
+              </div>
+              <div className="flex justify-center mb-6">
+                <div className="inline-flex items-center gap-2 bg-[#1e40af]/10 border border-[#1e40af]/20 px-4 py-1.5 rounded">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                  </span>
+                  <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">24 Hours / 365 Days Service</span>
+                </div>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-2 leading-tight">
+                24時間365日対応<br className="md:hidden" />
+                <span className="text-[#f97316]">相談窓口</span>
+              </h2>
+              <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest uppercase mb-6">
+                24/7 Consultation Support
+              </p>
+              <div className="mb-0">
+                <p className="text-slate-700 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-bold mb-2">
+                  実習生の皆様が安心して日本で過ごせるよう、母国語スタッフがいつでもお悩みにお答えします。
+                </p>
+                <p className="text-[11px] md:text-xs text-gray-400 italic max-w-2xl mx-auto leading-relaxed">
+                  Our native-speaking staff are always here to help with your concerns so you can stay in Japan safely and comfortably.
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6 transition-all duration-500">
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/vn.svg" alt="Vietnam" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Tiếng Việt</span></div>
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/id.svg" alt="Indonesia" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Bahasa Indonesia</span></div>
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/ph.svg" alt="Philippines" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Tagalog</span></div>
+              </div>
+            </div>
 
+            {/* Contact Channels */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto mb-12">
+              {/* Facebook */}
+              <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div className="bg-[#1877F2]/5 p-8 flex items-center justify-center border-b border-[#1877F2]/10 group-hover:bg-[#1877F2]/10 transition-colors">
+                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500 text-[#1877F2]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </span>
+                </div>
+                <div className="p-6 flex flex-col flex-1 text-center">
+                  <h3 className="text-xl font-black text-[#1877F2] mb-1">Facebookで相談</h3>
+                  <p className="text-xs text-[#1877F2]/60 font-bold mb-4 tracking-widest uppercase italic">Contact via Facebook</p>
+                  <div className="flex-1 mb-4 flex flex-col justify-center">
+                    <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">Messengerからも母国語スタッフが個別に対応いたします。</p>
+                    <p className="text-[10px] text-slate-400 italic">We will respond individually via Messenger in your native language.</p>
+                  </div>
+                  <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
+                    <Image src="/images/fb-qr.png" alt="Facebook QR" width={112} height={112} className="object-contain" />
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">Scan to open Messenger</p>
+                  </div>
+                  <a href="https://www.facebook.com/solution.sakai" target="_blank" rel="noopener noreferrer"
+                    className="w-full bg-[#1877F2] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
+                    <span>Messengerを開く</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Open Messenger</span>
+                  </a>
+                </div>
+              </div>
 
-        {/* ===== CTA ===== */}
-        <section id="contact" className="py-20 md:py-24 bg-[#1e40af] text-white relative overflow-hidden">
+              {/* LINE */}
+              <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col relative">
+                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[9px] font-bold px-3 py-1 rounded-bl tracking-widest uppercase">Popular</div>
+                <div className="bg-[#06C755]/5 p-8 flex items-center justify-center border-b border-[#06C755]/10 group-hover:bg-[#06C755]/10 transition-colors">
+                  <span className="group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" className="w-14 h-14 object-contain" />
+                  </span>
+                </div>
+                <div className="p-6 flex flex-col flex-1 text-center">
+                  <h3 className="text-xl font-black text-[#06C755] mb-1">LINEで相談</h3>
+                  <p className="text-xs text-[#06C755]/60 font-bold mb-4 tracking-widest uppercase italic">Contact via LINE</p>
+                  <div className="flex-1 mb-4 flex flex-col justify-center">
+                    <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">友だち追加後、チャットでいつでもメッセージをお送りいただけます。</p>
+                    <p className="text-[10px] text-slate-400 italic">Add us as a friend to send messages via chat anytime.</p>
+                  </div>
+                  <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
+                    <Image src="/images/line-qr.png" alt="LINE QR" width={112} height={112} className="object-contain" />
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">Scan to add LINE</p>
+                  </div>
+                  <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer"
+                    className="w-full bg-[#06C755] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
+                    <span>LINE 友だち登録へ</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Add on LINE</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div className="bg-slate-50 p-8 flex items-center justify-center border-b border-gray-100 group-hover:bg-blue-50 transition-colors">
+                  <span className="text-5xl group-hover:scale-110 transition-transform duration-500">📞</span>
+                </div>
+                <div className="p-6 flex flex-col flex-1 text-center">
+                  <h3 className="text-xl font-black text-[#1e40af] mb-1">電話で相談</h3>
+                  <p className="text-xs text-[#1e40af]/60 font-bold mb-4 tracking-widest uppercase italic">Call for Support</p>
+                  <div className="flex-1 mb-3 flex flex-col justify-center">
+                    <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">緊急時、すぐにお話したい場合はこちらへお電話ください。</p>
+                    <p className="text-[10px] text-slate-400 italic">For emergencies or immediate assistance, please call us directly.</p>
+                  </div>
+                  <a href="tel:0722248067" className="block text-2xl font-black text-[#1e40af] hover:text-[#f97316] transition-colors mb-4">
+                    072-224-8067
+                  </a>
+                  <a href="tel:0722248067"
+                    className="w-full bg-[#1e40af] text-white font-black py-3 px-2 rounded hover:bg-[#1d4ed8] transition-all shadow-md text-sm flex flex-col items-center">
+                    <span>今すぐ発信する</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Call Now</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Privacy Note */}
+            <div className="max-w-3xl mx-auto bg-white border border-gray-200 shadow-sm p-6 md:p-8 rounded flex flex-col md:flex-row items-center gap-6 md:gap-8">
+              <div className="text-5xl shrink-0 drop-shadow-md">🛡️</div>
+              <div className="text-center md:text-left">
+                <h4 className="font-black text-[#1e40af] mb-2 text-lg md:text-xl underline decoration-orange-400 decoration-4 underline-offset-8">
+                  プライバシー厳守・気軽にご相談
+                </h4>
+                <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest uppercase mb-4">
+                  Strict Privacy Policy & Feel Free to Consult
+                </p>
+                <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold mb-2">
+                  ご相談いただいた内容の秘密は厳守いたします。ご本人の同意なく、第三者や関係機関へ情報を提供することは一切ございません。どのような些細なことでも、まずはお気軽にご相談ください。
+                </p>
+                <p className="text-[11px] md:text-xs text-gray-400 leading-relaxed font-medium italic opacity-90">
+                  The confidentiality of your consultation is strictly maintained. We will never share your information with third parties without your explicit consent. Please do not hesitate to ask us anything.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== CTA (B2B Host Companies) ===== */}
+        <section id="contact" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">
+          {/* Background decorations */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-50 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+          
           <div className="container mx-auto px-4 text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight text-white shadow-sm">まずは無料でご相談ください</h2>
-            <p className="text-base md:text-xl mb-12 opacity-90 max-w-2xl mx-auto leading-loose text-blue-50 border-b border-white/20 pb-10 font-medium">
-              外国人材の受入れを検討されている方、<br className="hidden md:block"/>
-              貴社に最適な受入れプランを、私たちが共に考え、<strong className="text-white font-black mx-1 border-b-[3px] border-white pb-0.5">ご提案</strong>いたします。
+            {/* Target Audience Label */}
+            <div className="inline-block bg-[#1e40af] text-white font-black px-6 py-2.5 rounded mb-8 shadow-md text-sm md:text-base tracking-widest">
+              🏢 受入企業様・人事ご担当者様へ <span className="opacity-80 text-xs ml-1">(For Host Companies & HR Managers)</span>
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight text-[#1e40af]">
+              まずは無料でご相談ください
+            </h2>
+            <p className="text-sm md:text-base text-gray-500 font-bold tracking-widest uppercase mb-8">
+              Please Feel Free to Consult Us For Free
             </p>
+
+            <div className="border-b border-gray-200 pb-10 mb-12 max-w-2xl mx-auto">
+              <p className="text-base md:text-xl leading-loose text-gray-600 font-bold mb-4">
+                外国人材の受入れを検討されている方、<br className="hidden md:block"/>
+                貴社に最適な受入れプランを、私たちが共に考え、<strong className="text-[#f97316] font-black mx-1 border-b-[3px] border-[#f97316] pb-0.5">ご提案</strong>いたします。
+              </p>
+              <p className="text-xs md:text-sm text-gray-400 italic leading-relaxed">
+                If you are considering accepting foreign talent, we will work together with you to propose the most suitable placement plan for your company.
+              </p>
+            </div>
+
             <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-8">
               <TrackedLink href="tel:0722248067" eventAction="cta_click" eventLabel="bottom_phone"
-                className="flex flex-col items-center justify-center bg-white text-[#1e40af] border-2 border-white w-full md:w-80 py-4 px-4 hover:bg-gray-50 transition-all rounded shadow-md group">
-                <span className="text-xs md:text-sm text-gray-500 mb-1 font-bold">お電話での相談（平日 9:00〜18:00）</span>
-                <span className="text-2xl md:text-3xl font-black text-[#1e40af] whitespace-nowrap">📞 072-224-8067</span>
+                className="flex flex-col items-center justify-center bg-white text-[#1e40af] border-2 border-slate-200 w-full md:w-80 py-4 px-4 hover:border-[#1e40af] hover:shadow-md transition-all rounded group">
+                <span className="text-xs md:text-sm text-gray-500 mb-1 font-bold group-hover:text-blue-500 transition-colors">お電話でのご相談 <span className="opacity-70 text-[10px]">/ Phone</span></span>
+                <span className="text-2xl md:text-3xl font-black text-[#1e40af] whitespace-nowrap mb-1">📞 072-224-8067</span>
+                <span className="text-[10px] text-gray-400 font-medium">平日 9:00〜18:00 (Weekdays)</span>
               </TrackedLink>
               <TrackedLink href="/contact" eventAction="cta_click" eventLabel="bottom_contact"
-                className="flex flex-col items-center justify-center bg-[#f97316] hover:bg-[#ea580c] border border-orange-400 text-white w-full md:w-80 py-5 md:py-6 transition rounded shadow-[0_10px_30px_rgba(249,115,22,0.3)] group hover:-translate-y-1">
-                <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider uppercase">24 hours / 365 days</span>
-                <span className="text-xl md:text-2xl font-black flex items-center gap-2 whitespace-nowrap">✉️ Webから無料相談</span>
+                className="flex flex-col items-center justify-center bg-[#f97316] hover:bg-[#ea580c] text-white w-full md:w-80 py-5 transition-all rounded shadow-lg group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(249,115,22,0.3)]">
+                <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider uppercase">Business Consultation</span>
+                <span className="text-xl md:text-2xl font-black flex items-center gap-2 whitespace-nowrap mb-1">✉️ Webから無料相談</span>
+                <span className="text-[10px] text-white/70 italic">Web Inquiry Form</span>
               </TrackedLink>
             </div>
           </div>

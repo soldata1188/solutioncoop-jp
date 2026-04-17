@@ -23,7 +23,7 @@ export default function SupportPage() {
           <div className="container mx-auto px-4 relative z-10 text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded bg-orange-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
               </span>
               <span className="text-xs font-bold tracking-widest uppercase">24 Hours / 365 Days Service</span>

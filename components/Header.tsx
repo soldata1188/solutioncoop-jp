@@ -60,6 +60,12 @@ export default function Header() {
             24/7 Support
           </Link>
 
+          <Link href="/#contact"
+            className="text-[#1e40af] font-black border-2 border-[#1e40af] px-3 py-1.5 rounded hover:bg-[#1e40af] hover:text-white transition ml-2 whitespace-nowrap text-xs flex items-center gap-1">
+            🏢 受入企業様はこちら
+            <span className="text-[10px]">→</span>
+          </Link>
+
           {isLP ? (
             <Link href="#lead-form"
               className="bg-accent text-white font-bold px-4 py-2 rounded hover:bg-[#ea580c] shadow-sm transition ml-2 whitespace-nowrap">
@@ -105,6 +111,11 @@ export default function Header() {
             ))}
 
             <div className="pt-2 space-y-3">
+              <Link href="/#contact" onClick={() => setMenuOpen(false)}
+                className="block text-center text-white bg-[#1e40af] font-black p-4 hover:bg-[#1d4ed8] rounded shadow-md">
+                🏢 受入企業様はこちら →
+              </Link>
+
               <Link href="/support" onClick={() => setMenuOpen(false)}
                 className="block text-center text-white bg-accent font-black p-4 hover:bg-[#ea580c] rounded shadow-md ring-2 ring-orange-300 ring-offset-2">
                 📢 24/7 Support

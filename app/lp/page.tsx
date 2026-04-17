@@ -1,9 +1,10 @@
 import React from 'react';
+import Image from 'next/image';
 import { promises as fs } from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import type { NewsItem } from '@/lib/news';
-import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
+
 import LPClientComponents from './LPClientComponents';
 import Header from '@/components/Header';
 
@@ -34,7 +35,7 @@ export default async function LandingPage() {
       {/* ===== SECTION 1: HERO SECTION ===== */}
       <section className="relative min-h-[100vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden py-10 md:py-0">
         <div className="absolute inset-0 z-0 text-white">
-          <img src="/images/hero-banner.jpg" alt="Partner" className="w-full h-full object-cover" />
+          <Image src="/images/hero-banner.jpg" alt="Partner" fill priority className="object-cover" />
           <div className="absolute inset-0 bg-[#1e40af]/85 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1e40af] via-[#1e40af]/40 to-transparent opacity-80" />
         </div>
@@ -88,9 +89,9 @@ export default async function LandingPage() {
             {/* Social Proof Numbers */}
             <div className="mt-8 flex items-center justify-center gap-3">
               <div className="flex -space-x-2 shrink-0">
-                <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
-                <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
-                <div className="w-8 h-8 rounded-full bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
+                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-500 flex items-center justify-center text-xs text-white shadow-lg z-30">🏢</div>
+                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-400 flex items-center justify-center text-xs text-white shadow-lg z-20">⚙️</div>
+                <div className="w-8 h-8 rounded bg-[#1e40af] border-2 border-orange-300 flex items-center justify-center text-xs text-white shadow-lg z-10">🏗️</div>
               </div>
               <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-left leading-relaxed drop-shadow-sm">
                 大阪府・関西圏を中心に<br className="block sm:hidden"/><span className="text-orange-400 font-black mx-1 text-lg">70社超</span>の企業様が導入
@@ -105,7 +106,7 @@ export default async function LandingPage() {
             <div className="flex shrink-0 animate-marquee items-center text-[10px] md:text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused] whitespace-nowrap">
               {companies.map((c, i) => (
                 <span key={`a-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                  <span className="w-1.5 h-1.5 rounded bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
                   {c}
                 </span>
               ))}
@@ -114,7 +115,7 @@ export default async function LandingPage() {
             <div className="flex shrink-0 animate-marquee items-center text-[10px] md:text-sm font-bold text-white drop-shadow-lg group-hover:[animation-play-state:paused] whitespace-nowrap" aria-hidden="true">
               {companies.map((c, i) => (
                 <span key={`b-${i}`} className="mx-6 md:mx-10 flex items-center gap-2 hover:text-orange-300 transition-colors cursor-default">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                  <span className="w-1.5 h-1.5 rounded bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
                   {c}
                 </span>
               ))}
@@ -182,7 +183,7 @@ export default async function LandingPage() {
                 {/* Decorative background accent */}
                 <div className="absolute top-0 right-0 w-16 h-16 bg-[#1e40af] opacity-5 rounded-bl-full pointer-events-none" />
                 
-                <img src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} className="h-10 mx-auto mb-5 rounded shadow-md border border-gray-100" />
+                <Image src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} width={80} height={53} className="mx-auto mb-5 rounded shadow-md border border-gray-100" />
                 <h3 className="text-2xl font-black text-[#1e40af] tracking-wide mb-3">{c.name}</h3>
                 
                 <p className="text-orange-600 font-bold text-sm mb-5 leading-tight">{c.trait}</p>

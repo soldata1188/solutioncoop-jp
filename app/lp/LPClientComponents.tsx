@@ -30,8 +30,8 @@ export default function LPClientComponents() {
       a: '入国前に徹底した日本語教育と日本の生活マナー教育を行っています。また、建設や製造、介護など各業界特有の専門用語の学習もサポート。配属後も継続的な学習支援と専任通訳スタッフによるフォローがあるため安心です。'
     },
     {
-      q: '外国人材の「失踪」や「途中帰国」が心配です。対策はありますか？',
-      a: '失踪の主な原因は「職場でのコミュニケーション不足」と「生活上の悩み」に起因します。当組合では、選考段階で家庭環境や適性を厳格に調査し、配属後は24時間体制の母国語相談窓口でストレスやSOSを即座にキャッチし、トラブルを未然に防ぐ体制を敷いています。'
+      q: '定着率に不安があります。長く働いてもらうための対策はありますか？',
+      a: '早期離職の主な原因は「職場でのコミュニケーション不足」と「生活上の悩み」に起因します。当組合では、選考段階で適性を厳格に調査し、配属後は母国語スタッフによる手厚い生活指導・メンタルケアにより高い定着率を実現しています。トラブルを未然に防ぐ体制を敷いています。'
     },
     {
       q: '受け入れるにあたり、寮や生活環境は企業側で用意する必要がありますか？',
@@ -137,7 +137,7 @@ export default function LPClientComponents() {
                { m: 'STEP 5', t: '定着支援・キャリアUP', d: '配属後も定期訪問・24時間母国語ケアを実施。特定技能へのスムースな切り替えも支援。' }
              ].map((item, i) => (
                 <div key={i} className={`relative flex items-center md:justify-between mb-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                  <div className="absolute left-[-20px] md:left-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#1e40af] transform md:-translate-x-1/2 z-10 shadow flex items-center justify-center">
+                  <div className="absolute left-[-20px] md:left-1/2 w-8 h-8 rounded bg-white border-4 border-[#1e40af] transform md:-translate-x-1/2 z-10 shadow flex items-center justify-center">
                     {i === 4 && <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />}
                   </div>
                   <div className="w-full md:w-[45%] ml-2 md:ml-0 relative z-20">

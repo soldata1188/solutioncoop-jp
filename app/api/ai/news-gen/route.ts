@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     const data = await response.json();
     
     if (!response.ok) {
-      console.error('Gemini API Error:', data);
+
       return NextResponse.json({ error: 'AI Error' }, { status: 500 });
     }
 
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(aiOutput);
   } catch (error) {
-    console.error('AI Generation Error:', error);
+
     return NextResponse.json({ error: 'AI Generation failed' }, { status: 500 });
   }
 }

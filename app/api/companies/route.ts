@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     await fs.writeFile(DB_PATH, JSON.stringify(body, null, 2), 'utf-8');
     return NextResponse.json({ success: true, message: 'Saved successfully' });
   } catch (error) {
-    console.error('Save error:', error);
+
     return NextResponse.json({ error: 'Failed to save data' }, { status: 500 });
   }
 }

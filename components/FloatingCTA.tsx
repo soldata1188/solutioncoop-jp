@@ -21,21 +21,7 @@ export default function FloatingCTA() {
 
   return (
     <>
-      {/* --- BẢN DESKTOP (MÁY TÍNH): Nút bay ở góc phải --- */}
-      <div className={`hidden md:flex fixed right-4 bottom-24 z-50 flex-col gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-        
-        {/* Nút 2: Đăng ký tư vấn */}
-        <Link 
-          href="/lp" 
-          onClick={() => trackEvent('floating_cta_click', { event_category: 'conversion', event_label: 'free_consultation' })}
-          className="group relative flex items-center justify-center w-14 h-14 bg-[#f97316] rounded-full shadow-[0_10px_25px_rgba(249,115,22,0.4)] hover:w-48 transition-all duration-300 overflow-hidden"
-        >
-          <span className="text-2xl z-10 group-hover:mr-32 transition-all duration-300">✉️</span>
-          <span className="absolute right-4 text-white font-bold text-sm opacity-0 whitespace-nowrap group-hover:opacity-100 transition-opacity duration-300 delay-100">
-            無料相談を予約
-          </span>
-        </Link>
-      </div>
+
 
       {/* --- BẢN MOBILE (ĐIỆN THOẠI): Thanh ngang gọi điện/LINE dính đáy --- */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 z-[100] flex shadow-[0_-5px_20px_rgba(0,0,0,0.15)] transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>

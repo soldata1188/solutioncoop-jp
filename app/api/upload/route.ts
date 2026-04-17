@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     const publicUrl = `/uploads/news/${safeName}`;
     return NextResponse.json({ ok: true, url: publicUrl }, { status: 201 });
   } catch (err) {
-    console.error('Upload error:', err);
+
     return NextResponse.json({ error: 'アップロードに失敗しました' }, { status: 500 });
   }
 }

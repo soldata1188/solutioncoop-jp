@@ -39,7 +39,7 @@ const FAQ_DATA = [
     catLabel: '制度の今後',
     q: '新制度「育成就労」での「転籍（転職）」リスクへの対策は？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-slate-50 border border-slate-200 p-3 rounded">
           <p className="font-bold text-[#1e40af] mb-1">🔍 転籍は「無制限」ではありません</p>
           <p className="text-gray-700 leading-relaxed">
@@ -55,7 +55,7 @@ const FAQ_DATA = [
     catLabel: '在留・制度',
     q: '来日前にどの程度の日本語能力が期待できますか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="flex items-center gap-3 bg-green-50 p-3 rounded border border-green-100">
           <span className="text-xl">🎓</span>
           <p className="font-bold text-green-800 tracking-tight">新制度では「A1相当以上（N5級レベル）」が必須化</p>
@@ -71,7 +71,7 @@ const FAQ_DATA = [
     catLabel: '費用・賃金',
     q: '受入企業側で準備すべき費用や設備は何ですか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-gray-50 p-3 rounded border border-gray-100">
           <p className="font-bold text-gray-800 mb-2">🏘️ 主な準備事項</p>
           <ul className="grid grid-cols-2 gap-2 text-[11px]">
@@ -92,7 +92,7 @@ const FAQ_DATA = [
     catLabel: '制度の今後',
     q: '2027年からの新制度移行に向けて、今何をすべきですか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-orange-50 border border-orange-200 p-3 rounded">
           <p className="font-bold text-orange-800 mb-1">📅 2026年中の準備がカギ</p>
           <p className="text-gray-700 leading-relaxed">
@@ -110,7 +110,7 @@ const FAQ_DATA = [
     catLabel: '費用・賃金',
     q: '実習生に支払う賃金はどのくらいですか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-amber-50 border border-amber-200 p-3 flex items-center gap-4 rounded">
           <span className="text-amber-500 text-2xl">⚖️</span>
           <div>
@@ -118,11 +118,9 @@ const FAQ_DATA = [
             <p className="text-gray-600 text-[10px]">2025年10月改定：<strong>1,177円/時</strong>以上</p>
           </div>
         </div>
-        <ul className="space-y-1.5 text-gray-700 bg-gray-50 p-3 rounded">
-          {['日本人従業員と同等の賃金が原則','残業・深夜・休日割増も法律通り適用','住居費控除後の手取り額管理も重要'].map(t => (
-            <li key={t} className="flex items-start gap-2"><span className="text-green-500 font-bold">✓</span>{t}</li>
-          ))}
-        </ul>
+        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_wage_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
+          🧮 賃金・コストをシミュレーションする →
+        </TrackedLink>
       </div>
     ),
   },
@@ -131,7 +129,7 @@ const FAQ_DATA = [
     catLabel: '在留・制度',
     q: 'どのような職種で受け入れが可能ですか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <p className="text-gray-600">制度上認められた<strong>86職種161作業</strong>。主な対応職種：</p>
         <div className="flex flex-wrap gap-1.5">
           {['建設', '溶接', '機械加工', '造園', '農業', '水産加工', '介護', '縫製'].map(t => (
@@ -139,7 +137,7 @@ const FAQ_DATA = [
           ))}
           <span className="bg-gray-200 text-gray-600 px-3 py-1 text-[10px] font-bold rounded">他多数</span>
         </div>
-        <a href="/about#disclosure" className="inline-block mt-2 text-[#1e40af] font-bold hover:underline">
+        <a href="/documents/1776388620471-____________________.pdf" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-[#1e40af] font-bold hover:underline">
           📄 職種詳細・法令情報を確認する →
         </a>
       </div>
@@ -150,7 +148,7 @@ const FAQ_DATA = [
     catLabel: '導入メリット',
     q: '外国人実習生の受入れが初めてですが、事務手続きは大変ですか？',
     answer: (
-      <div className="space-y-3 text-xs">
+      <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-slate-50 border border-slate-200 p-3 rounded">
           <p className="font-bold text-[#1e40af] mb-1">⚖️ 煩雑な書類作成は「当組合にお任せ」ください</p>
           <p className="text-gray-700 leading-relaxed">
@@ -159,6 +157,268 @@ const FAQ_DATA = [
         </div>
         <p className="text-gray-600 bg-gray-50 p-2 rounded text-[11px]">
           受入企業様は「受入れ体制の整備」と「実習生への技能指導」に専念していただける環境を整えます。初めてでも安心してお任せください。
+        </p>
+      </div>
+    ),
+  },
+  // ─── 新規追加分 ───────────────────────────────────────────────
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '「特定技能」と「技能実習」の根本的な違いは何ですか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-blue-50 border border-blue-100 p-3 rounded">
+            <p className="font-bold text-[#1e40af] mb-1">技能実習</p>
+            <p className="text-gray-600 leading-relaxed">国際貢献を建前とした研修制度。最長<strong>5年</strong>の期間制限あり。入国後に基礎教育が必要。</p>
+          </div>
+          <div className="bg-green-50 border border-green-100 p-3 rounded">
+            <p className="font-bold text-green-700 mb-1">特定技能</p>
+            <p className="text-gray-600 leading-relaxed">即戦力の労働力確保が目的。入国時点で技能・日本語試験（N4相当）に合格済み。教育コスト大幅削減。</p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    cat: 'future',
+    catLabel: '制度の今後',
+    q: '2027年頃から始まる新しい「育成就労制度」とはどのような制度ですか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-orange-50 border border-orange-200 p-3 rounded">
+          <p className="font-bold text-orange-800 mb-1">🌱 現行の技能実習制度を廃止・発展させた新制度</p>
+          <p className="text-gray-700 leading-relaxed">原則<strong>3年間</strong>の育成期間を経て、外国人労働者を「特定技能1号」水準（技能検定3級・日本語N4相当）まで引き上げることを目標とします。受け入れ企業は国が認定する<strong>育成就労計画</strong>を作成・実行する義務があります。</p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '「登録支援機関」と「監理団体」は何が違うのですか？',
+    answer: (
+      <div className="space-y-3 text-sm leading-relaxed">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* 監理団体 */}
+          <div className="border-2 border-[#1e40af] rounded overflow-hidden">
+            <div className="bg-[#1e40af] text-white px-3 py-2 font-black text-sm flex items-center gap-2">
+              <span>🏛️</span> 監理団体
+            </div>
+            <div className="p-3 space-y-1.5">
+              <div className="flex items-start gap-1.5"><span className="text-[#1e40af] font-black shrink-0">対象</span><span className="text-gray-600">技能実習制度</span></div>
+              <div className="flex items-start gap-1.5"><span className="text-[#1e40af] font-black shrink-0">役割</span><span className="text-gray-600">受け入れ企業を<strong>監査・指導</strong>し、実習生を保護する非営利団体</span></div>
+              <div className="flex items-start gap-1.5"><span className="text-[#1e40af] font-black shrink-0">性質</span><span className="text-gray-600">法律上の<strong>義務機関</strong>（必須）</span></div>
+              <div className="mt-2 bg-blue-50 p-2 rounded text-[10px] text-blue-700 font-bold">
+                🔄 新制度移行後 →「監理支援機関」へ機能強化
+              </div>
+            </div>
+          </div>
+          {/* 登録支援機関 */}
+          <div className="border-2 border-green-500 rounded overflow-hidden">
+            <div className="bg-green-500 text-white px-3 py-2 font-black text-sm flex items-center gap-2">
+              <span>🤝</span> 登録支援機関
+            </div>
+            <div className="p-3 space-y-1.5">
+              <div className="flex items-start gap-1.5"><span className="text-green-700 font-black shrink-0">対象</span><span className="text-gray-600">特定技能制度</span></div>
+              <div className="flex items-start gap-1.5"><span className="text-green-700 font-black shrink-0">役割</span><span className="text-gray-600">企業から委託を受け、外国人の<strong>日常生活・支援業務</strong>を代行</span></div>
+              <div className="flex items-start gap-1.5"><span className="text-green-700 font-black shrink-0">性質</span><span className="text-gray-600">委託は<strong>任意</strong>（義務ではない）</span></div>
+              <div className="mt-2 bg-green-50 p-2 rounded text-[10px] text-green-700 font-bold">
+                💡 専門機関への委託で法的リスク低減・業務の効率化が可能
+              </div>
+            </div>
+          </div>
+        </div>
+        <p className="text-gray-500 bg-gray-50 p-2 rounded text-center">
+          ソリューション協同組合は<strong className="text-[#1e40af]">監理団体（監理支援機関）</strong>として両制度をワンストップで対応します。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'cost',
+    catLabel: '費用・賃金',
+    q: '外国人を受け入れる際の初期費用（配属前）はどのくらいですか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-amber-50 border border-amber-200 p-3 rounded text-center">
+          <p className="text-2xl font-black text-amber-700">約20万円前後</p>
+          <p className="text-gray-500">（1名あたりの目安）</p>
+        </div>
+        <ul className="space-y-1 text-gray-700 bg-gray-50 p-3 rounded">
+          {['組合加入・準備費用','入国準備費（事前教育・健診・渡航費）','在留資格申請費・入国後講習費'].map(t => (
+            <li key={t} className="flex items-center gap-2"><span className="text-orange-500 font-bold">•</span>{t}</li>
+          ))}
+        </ul>
+        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_initcost_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
+          🧮 初期費用を詳しく試算する →
+        </TrackedLink>
+      </div>
+    ),
+  },
+  {
+    cat: 'cost',
+    catLabel: '費用・賃金',
+    q: '配属後に毎月発生するランニングコスト（給与以外）を教えてください。',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-gray-50 border border-gray-200 p-3 rounded text-center">
+            <p className="font-bold text-gray-700 mb-0.5">月額監理費</p>
+            <p className="text-lg font-black text-[#1e40af]">2〜3万円</p>
+          </div>
+          <div className="bg-gray-50 border border-gray-200 p-3 rounded text-center">
+            <p className="font-bold text-gray-700 mb-0.5">送出機関管理費</p>
+            <p className="text-lg font-black text-[#1e40af]">5千〜1万円</p>
+          </div>
+        </div>
+        <p className="text-gray-600 bg-blue-50 p-2 rounded">💡 3年間の総費用を労働時間で割ると、<strong>実質約1,200円/時～</strong>が目安です。</p>
+        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_running_simulation" className="inline-flex items-center gap-1.5 mt-1 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
+          🧮 月額コストをシミュレーションする →
+        </TrackedLink>
+      </div>
+    ),
+  },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '外国人雇用に活用できる助成金・支援策はありますか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-green-50 border border-green-100 p-3 rounded">
+          <p className="font-bold text-green-700 mb-1">✅ 活用可能な主な制度（一例）</p>
+          <ul className="space-y-1 text-gray-700">
+            <li>🔹 大阪府「外国人材受入加速化支援事業」（令和7年度）</li>
+            <li>🔹 近畿経済産業局「国際化促進インターンシップ事業」</li>
+          </ul>
+        </div>
+        <p className="text-gray-500 bg-gray-50 p-2 rounded">詳細はお申込みの際にご案内いたします。お気軽にご相談ください。</p>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '申し込みから実際に外国人が配属されるまでのスケジュールを教えてください。',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-blue-50 border border-blue-100 p-3 rounded text-center mb-2">
+          <p className="text-xl font-black text-[#1e40af]">約6ヶ月</p>
+          <p className="text-gray-500">申し込みから配属までの目安期間</p>
+        </div>
+        <div className="flex flex-col gap-1">
+          {[
+            ['①','契約・求人作成','1ヶ月'],
+            ['②','現地募集・面接','1〜2ヶ月'],
+            ['③','書類手続き・行政審査','2〜3ヶ月'],
+            ['④','入国後集中講習・配属','約1ヶ月'],
+          ].map(([step, label, period]) => (
+            <div key={step} className="flex items-center gap-2 bg-white border border-gray-100 p-2 rounded">
+              <span className="text-[#1e40af] font-black text-xs w-6 shrink-0">{step}</span>
+              <span className="flex-1 font-bold text-gray-700">{label}</span>
+              <span className="text-orange-500 font-bold shrink-0">{period}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: 'どこの国から受け入れ可能ですか？面接はどのように行いますか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="flex flex-wrap gap-2 mb-2">
+          {[['🇻🇳','ベトナム','約54%'],['🇮🇩','インドネシア','約14%'],['🇵🇭','フィリピン','約9%']].map(([flag, name, pct]) => (
+            <div key={name} className="flex-1 bg-gray-50 border border-gray-200 p-2 rounded text-center">
+              <span className="text-lg">{flag}</span>
+              <p className="font-bold text-gray-700 text-[10px]">{name}</p>
+              <p className="text-[#1e40af] font-black">{pct}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-600 bg-blue-50 p-2 rounded">面接は<strong>現地・WEBオンライン・代行</strong>の3方式から選択可能。ミスマッチ防止のため自社面接を推奨します。</p>
+      </div>
+    ),
+  },
+  {
+    cat: 'cost',
+    catLabel: '費用・賃金',
+    q: '住宅（寮）の用意は必要ですか？家賃は給与から天引きできますか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-slate-50 border border-slate-200 p-3 rounded">
+          <p className="font-bold text-gray-800 mb-1">🏘️ 住宅確保は受け入れ企業の義務です</p>
+          <ul className="space-y-1 text-gray-600">
+            <li className="flex items-center gap-2"><span className="text-green-500">✓</span>1人あたり4.5㎡以上の居住スペースが必要</li>
+            <li className="flex items-center gap-2"><span className="text-green-500">✓</span>家電・什器の整備も必要</li>
+            <li className="flex items-center gap-2"><span className="text-green-500">✓</span>本人同意のうえで給与天引き可（上限目安：月約2万円）</li>
+            <li className="flex items-center gap-2"><span className="text-orange-500">!</span>上回る分は企業負担</li>
+          </ul>
+        </div>
+        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_housing_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
+          🧮 住居費を含めた総コストを試算する →
+        </TrackedLink>
+      </div>
+    ),
+  },
+  {
+    cat: 'future',
+    catLabel: '制度の今後',
+    q: '育成就労期間中の日本語教育・技術指導はすべて企業が単独で行うのですか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-green-50 border border-green-100 p-3 rounded">
+          <p className="font-bold text-green-700 mb-1">✅ 監理支援機関が全力でバックアップします</p>
+          <ul className="space-y-1 text-gray-700">
+            <li>• 育成就労計画の作成支援</li>
+            <li>• 現場への効果的な指導方法アドバイス</li>
+            <li>• 評価試験不合格時は最長1年間の継続就労が可能（救済措置）</li>
+          </ul>
+        </div>
+        <p className="text-gray-500 text-[10px]">企業単独で全てを負う必要はありません。二人三脚でサポートします。</p>
+      </div>
+    ),
+  },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '外国人労働者が病気やケガをした場合の医療費・保険はどうなりますか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="bg-blue-50 border border-blue-100 p-3 rounded">
+          <p className="font-bold text-[#1e40af] mb-1">🏥 日本人と同等の労働者として保護されます</p>
+          <ul className="space-y-1 text-gray-700">
+            <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span>社会保険・労働保険への加入が義務</li>
+            <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span>健康保険適用で自己負担は原則3割</li>
+            <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span>「外国人技能実習生総合保険」加入で3割分もカバー可</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '信頼できる監理団体を選ぶポイントは？途中で変更は可能ですか？',
+    answer: (
+      <div className="space-y-2 text-sm leading-relaxed">
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            ['⚖️','法令遵守・監査の厳格さ'],
+            ['🕐','24時間365日サポート体制'],
+            ['💰','費用の透明性・明確な明細'],
+            ['🏆','国からの「優良認定」'],
+          ].map(([icon, label]) => (
+            <div key={label} className="bg-gray-50 border border-gray-100 p-2 rounded flex items-center gap-2">
+              <span>{icon}</span><span className="font-bold text-gray-700">{label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-gray-600 bg-amber-50 border border-amber-100 p-2 rounded">
+          ⚠️ 正当な理由があれば<strong>途中での変更（移籍）は法的に可能</strong>です。まずはご相談ください。
         </p>
       </div>
     ),
@@ -176,7 +436,7 @@ export default function FaqSection() {
     <section id="faq" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-12">
-          <span className="inline-block bg-orange-100 text-orange-600 font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-3 rounded-full">よくある質問</span>
+          <span className="inline-block bg-orange-100 text-orange-600 font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-3 rounded">よくある質問</span>
           <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-4">よくある質問</h2>
           <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
             技能実習生の受入れをご検討中の皆様から、特によく寄せられるご質問をカテゴリー別にまとめました。
@@ -189,7 +449,7 @@ export default function FaqSection() {
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`flex items-center gap-2 px-5 py-3 rounded text-xs font-bold transition-all duration-300 border-2 ${
+              className={`flex items-center gap-2 px-5 py-4 rounded text-sm font-bold transition-all duration-300 border-2 ${
                 activeTab === cat.id 
                   ? 'bg-[#1e40af] border-[#1e40af] text-white shadow-lg -translate-y-1' 
                   : 'bg-white border-gray-100 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'

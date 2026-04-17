@@ -75,8 +75,8 @@ export default async function AdminDashboard() {
                   <span className="font-medium text-gray-700">{CATEGORY_CONFIG[cat]?.icon} {CATEGORY_CONFIG[cat]?.label}</span>
                   <span className="font-bold text-gray-800">{count}件</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-navy rounded-full transition-all"
+                <div className="h-2 bg-gray-100 rounded overflow-hidden">
+                  <div className="h-full bg-navy rounded transition-all"
                     style={{ width: `${total > 0 ? (count / total) * 100 : 0}%` }} />
                 </div>
               </div>

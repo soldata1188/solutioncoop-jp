@@ -91,7 +91,7 @@ export default function AdminNewsPage() {
       <div className="flex flex-wrap gap-2 mb-6">
         {CATS.map(c => (
           <button key={c} onClick={() => setFilter(c)}
-            className={`text-xs font-bold px-4 py-1.5 rounded-full border-2 transition-all ${filter === c ? 'border-navy bg-navy text-white' : 'border-gray-200 text-gray-600 hover:border-navy hover:text-navy'}`}>
+            className={`text-xs font-bold px-4 py-1.5 rounded border-2 transition-all ${filter === c ? 'border-navy bg-navy text-white' : 'border-gray-200 text-gray-600 hover:border-navy hover:text-navy'}`}>
             {c === 'all' ? 'すべて' : `${CATEGORY_CONFIG[c as keyof typeof CATEGORY_CONFIG]?.icon} ${CATEGORY_CONFIG[c as keyof typeof CATEGORY_CONFIG]?.label}`}
             <span className="ml-1 opacity-60 font-normal">
               {c === 'all' ? items.length : items.filter(n => n.category === c).length}
@@ -138,9 +138,9 @@ export default function AdminNewsPage() {
                     <td className="px-4 py-4 text-gray-500 text-xs whitespace-nowrap">{n.date}</td>
                     <td className="px-4 py-4 text-center">
                       <button onClick={() => togglePublish(n)}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${n.published ? 'bg-green-500' : 'bg-gray-300'}`}
+                        className={`relative inline-flex h-6 w-11 items-center rounded transition-colors ${n.published ? 'bg-green-500' : 'bg-gray-300'}`}
                         title={n.published ? '公開中（クリックで非公開）' : '非公開（クリックで公開）'}>
-                        <span className={`inline-block h-4 w-4 rounded-full bg-white transition-transform ${n.published ? 'translate-x-6' : 'translate-x-1'}`} />
+                        <span className={`inline-block h-4 w-4 rounded bg-white transition-transform ${n.published ? 'translate-x-6' : 'translate-x-1'}`} />
                       </button>
                     </td>
                     <td className="px-4 py-4">

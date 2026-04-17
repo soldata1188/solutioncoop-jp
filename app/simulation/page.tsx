@@ -108,9 +108,9 @@ export default function SimulationPage() {
                   <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">送出国を選択</label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
                     {[
-                      { id: 'vn', label: 'ベトナム', flag: '🇻🇳' },
-                      { id: 'id', label: 'インドネシア', flag: '🇮🇩' },
-                      { id: 'ph', label: 'フィリピン', flag: '🇵🇭' },
+                      { id: 'vn', label: 'ベトナム', flagSrc: 'https://flagcdn.com/vn.svg' },
+                      { id: 'id', label: 'インドネシア', flagSrc: 'https://flagcdn.com/id.svg' },
+                      { id: 'ph', label: 'フィリピン', flagSrc: 'https://flagcdn.com/ph.svg' },
                     ].map((c) => (
                       <button
                         key={c.id}
@@ -127,7 +127,7 @@ export default function SimulationPage() {
                           }`}>{c.id.toUpperCase()}</p>
                           <p className="font-bold text-sm tracking-tighter">{c.label}</p>
                         </div>
-                        <span className="text-2xl">{c.flag}</span>
+                        <img src={c.flagSrc} alt={c.label} className="w-8 h-6 rounded-sm object-cover shadow-sm" />
                       </button>
                     ))}
                   </div>

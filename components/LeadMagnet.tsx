@@ -66,7 +66,7 @@ export default function LeadMagnet() {
               {/* Left — Content */}
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 bg-[#f97316] text-white font-black tracking-widest uppercase text-[10px] md:text-xs px-4 py-1.5 mb-5 rounded shadow-sm">
-                  <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+                  <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>
                   無料ダウンロード (Miễn phí)
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-md">
@@ -85,7 +85,7 @@ export default function LeadMagnet() {
                     '監理支援機関の選び方チェックリスト',
                   ].map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm md:text-base text-white font-bold bg-white/10 px-4 py-2.5 rounded backdrop-blur-sm border border-white/5">
-                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-green-500 text-white text-[10px] shadow-sm flex-shrink-0">✓</span>
+                      <span className="flex items-center justify-center w-5 h-5 rounded bg-green-500 text-white text-[10px] shadow-sm flex-shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
@@ -103,7 +103,7 @@ export default function LeadMagnet() {
                 <div className="bg-white rounded p-7 md:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative z-10 border-t-4 border-[#f97316]">
                   {status === 'ok' ? (
                     <div className="text-center py-10 animate-fade-in">
-                      <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
+                      <div className="w-20 h-20 bg-green-50 rounded flex items-center justify-center mx-auto mb-5">
                         <p className="text-4xl">🎉</p>
                       </div>
                       <h3 className="text-xl font-black text-[#1e40af] mb-3">ダウンロード準備完了</h3>
@@ -211,7 +211,7 @@ export default function LeadMagnet() {
               </button>
               <button
                 onClick={() => setDismissed(true)}
-                className="text-white/50 hover:text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition"
+                className="text-white/50 hover:text-white w-8 h-8 flex items-center justify-center rounded hover:bg-white/10 transition"
                 aria-label="閉じる"
               >
                 ✕

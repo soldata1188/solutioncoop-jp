@@ -2,7 +2,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import type { NewsItem, NewsCategory } from '@/lib/news';
-import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
+import { CATEGORY_CONFIG } from '@/lib/news';
 
 const BADGE: Record<NewsCategory, string> = {
   news:   'nb-news',
@@ -10,12 +10,7 @@ const BADGE: Record<NewsCategory, string> = {
   system: 'nb-system',
   event:  'nb-event',
 };
-const TOP_ACCENT: Record<NewsCategory, string> = {
-  news:   'from-blue-400 to-blue-600',
-  result: 'from-green-400 to-green-600',
-  system: 'from-yellow-400 to-orange-500',
-  event:  'from-purple-400 to-purple-600',
-};
+
 
 export default function NewsListClient({ initialNews }: { initialNews: NewsItem[] }) {
   const [filter, setFilter]   = useState<'all' | NewsCategory>('all');
@@ -163,10 +158,10 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
                     <button onClick={() => setFilter(c.key)}
                       className={`w-full flex items-center justify-between text-left py-2 px-3 rounded font-bold text-sm transition-all group ${filter === c.key ? 'text-white bg-[#1e40af] shadow-md' : 'text-gray-600 hover:bg-blue-50 hover:text-navy'}`}>
                       <span className="flex items-center gap-2">
-                        {filter === c.key && <span className="w-1 h-3 bg-orange-400 rounded-full"></span>}
+                        {filter === c.key && <span className="w-1 h-3 bg-orange-400 rounded"></span>}
                         {c.label}
                       </span>
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full transition-colors ${filter === c.key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-blue-100 group-hover:text-navy'}`}>{c.count}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded transition-colors ${filter === c.key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-blue-100 group-hover:text-navy'}`}>{c.count}</span>
                     </button>
                   </li>
                 ))}

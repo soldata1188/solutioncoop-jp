@@ -18,7 +18,7 @@ export default function DocumentManager() {
       const data = await res.json();
       setDocs(Array.isArray(data) ? data : []);
     } catch(e) {
-      console.error(e);
+
     } finally {
       setLoading(false);
     }
@@ -87,21 +87,21 @@ export default function DocumentManager() {
       {/* Stats Dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white p-5 rounded shadow-sm border border-gray-100 flex items-center gap-4 border-l-4 border-l-[#1e40af]">
-          <div className="w-12 h-12 bg-blue-50 text-[#1e40af] rounded-full flex items-center justify-center text-xl font-black">📂</div>
+          <div className="w-12 h-12 bg-blue-50 text-[#1e40af] rounded flex items-center justify-center text-xl font-black">📂</div>
           <div>
             <p className="text-[11px] text-gray-500 font-black tracking-widest uppercase mb-1">総書類数 (Files)</p>
             <p className="text-2xl font-black text-slate-800">{loading ? '-' : totalCount} <span className="text-sm font-bold text-gray-400">件</span></p>
           </div>
         </div>
         <div className="bg-white p-5 rounded shadow-sm border border-gray-100 flex items-center gap-4 border-l-4 border-l-emerald-500">
-          <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-xl font-black">💾</div>
+          <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded flex items-center justify-center text-xl font-black">💾</div>
           <div>
             <p className="text-[11px] text-gray-500 font-black tracking-widest uppercase mb-1">使用容量 (Storage)</p>
             <p className="text-2xl font-black text-slate-800">{loading ? '-' : totalSizeMB.toFixed(2)} <span className="text-sm font-bold text-gray-400">MB</span></p>
           </div>
         </div>
         <div className="bg-white p-5 rounded shadow-sm border border-gray-100 flex items-center gap-4 border-l-4 border-l-[#f97316]">
-          <div className="w-12 h-12 bg-orange-50 text-orange-500 rounded-full flex items-center justify-center text-xl font-black">⚡</div>
+          <div className="w-12 h-12 bg-orange-50 text-orange-500 rounded flex items-center justify-center text-xl font-black">⚡</div>
           <div>
             <p className="text-[11px] text-gray-500 font-black tracking-widest uppercase mb-1">システム状態</p>
             <p className="text-lg font-black text-emerald-600">正常稼働中</p>

@@ -59,28 +59,61 @@ export default function NewArticlePage() {
       return;
     }
     setGenerating(true);
-    try {
-      const res = await fetch('/api/ai/news-gen', {
+      const tokenRes = await fetch('/api/ai/token');
+      const { key } = await tokenRes.json();
+      
+      if (!key) {
+        setToast('❌ Lỗi: VPS chưa được nạp GEMINI_API_KEY!');
+        setGenerating(false);
+        return;
+      }
+
+      const prompt = `
+      You are an elite B2B professional copywriter and SEO expert for "Solution Cooperative", a Japanese Supervising Organization in Sakai, Osaka.
+      TOPIC: "${aiTopic}"
+      CATEGORY: "${form.category}"
+      REQUIREMENTS:
+      1. Tone: Professional Business Japanese (Keigo).
+      2. Audience: CEOs and HR Managers.
+      OUTPUT FORMAT: Return ONLY a valid JSON object with the following fields:
+      - "title": (String)
+      - "content": (String) Body in Markdown.
+      - "seoTitle": (String) Max 60 chars.
+      - "seoDescription": (String) Max 160 chars.
+      JSON ONLY. NO OTHER TEXT.
+      `;
+
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${key}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: aiTopic, category: form.category }),
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { response_mime_type: "application/json" }
+        }),
       });
       const data = await res.json();
+      
       if (res.ok) {
-        setForm(f => ({
-          ...f,
-          title: data.title,
-          content: data.content,
-          seoTitle: data.seoTitle,
-          seoDescription: data.seoDescription,
-        }));
-        setToast('✨ AIが記事を生成しました！');
+        try {
+          const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          const parsed = JSON.parse(textOutput);
+          setForm(f => ({
+            ...f,
+            title: parsed.title,
+            content: parsed.content,
+            seoTitle: parsed.seoTitle,
+            seoDescription: parsed.seoDescription,
+          }));
+          setToast('✨ AIが記事を生成しました！');
+        } catch (e) {
+          setToast('❌ Lỗi xử lý kết quả AI');
+        }
       } else {
-        const errorMsg = data.details?.error?.message || data.details || 'Lỗi không xác định';
-        setToast(`❌ AI Error: ${errorMsg}`);
+        const errorMsg = data.error?.message || 'Lỗi không xác định';
+        setToast(`❌ Lỗi Google API: ${errorMsg}`);
       }
     } catch (err) {
-      setToast('❌ 通信エラーが発生しました');
+      setToast('❌ Lỗi kết nối đến Google Gemini');
     }
     setGenerating(false);
   }

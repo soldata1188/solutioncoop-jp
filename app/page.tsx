@@ -26,7 +26,7 @@ async function getLatestNews(): Promise<NewsItem[]> {
   const pinnedItems = all.filter(n => n.pinned).slice(0, 2);
   const unpinnedItems = all.filter(n => !n.pinned);
   
-  return [...pinnedItems, ...unpinnedItems].slice(0, 6);
+  return [...pinnedItems, ...unpinnedItems].slice(0, 12);
 }
 
 async function getCompanies(): Promise<string[]> {
@@ -206,10 +206,10 @@ export default async function HomePage() {
             </div>
             {latestNews.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* --- CỘT TRÁI (8/12): 3 bài viết lớn --- */}
+                {/* --- CỘT TRÁI (8/12): 6 bài viết lớn --- */}
                 <div className="lg:col-span-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    {latestNews.slice(0, 3).map((n) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {latestNews.slice(0, 6).map((n) => (
                       <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
                         <div className="relative h-44 w-full overflow-hidden shrink-0">
                           {n.image ? (
@@ -252,7 +252,7 @@ export default async function HomePage() {
                       Latest Updates
                     </h3>
                     <div className="space-y-4">
-                      {latestNews.slice(3).map((n) => (
+                      {latestNews.slice(6).map((n) => (
                         <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
                           <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
                             {n.image ? (

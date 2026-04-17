@@ -6,6 +6,8 @@ import Footer from '@/components/Footer';
 import NewsListClient from './NewsListClient';
 import type { NewsItem } from '@/lib/news';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: '最新情報・お知らせ｜ソリューション協同組合',
   description: 'ソリューション協同組合の最新情報・お知らせ一覧。技能実習生の受入実績、制度情報、相談会イベントなど最新ニュースをカテゴリ別にご確認いただけます。',

@@ -9,6 +9,8 @@ import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP, formatDateDot } from '@/lib/news';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
   description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体（一般監理事業許可）。規律・礼節を重んじる独自の教育体制と、大阪府知事表彰の実績で中小企業の人材課題を解決します。',

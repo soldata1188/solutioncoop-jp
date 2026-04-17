@@ -8,6 +8,8 @@ import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
 
+export const dynamic = 'force-dynamic';
+
 type Props = { params: Promise<{ id: string }> };
 
 async function getItem(id: string): Promise<NewsItem | null> {

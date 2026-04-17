@@ -70,17 +70,33 @@ export default function NewArticlePage() {
       }
 
       const prompt = `
-      You are an elite B2B professional copywriter and SEO expert for "Solution Cooperative", a Japanese Supervising Organization in Sakai, Osaka.
+      You are an Elite B2B Web Copywriter and Japanese Supervising Organization (監理団体) Specialist.
+      Project: "Solution Cooperative" (ソリューション協同組合) in Sakai, Osaka.
+      Target Audience: Japanese CEOs and HR Managers of Host Companies (受入企業).
       TOPIC: "${aiTopic}"
       CATEGORY: "${form.category}"
-      REQUIREMENTS:
-      1. Tone: Professional Business Japanese (Keigo).
-      2. Audience: CEOs and HR Managers.
-      OUTPUT FORMAT: Return ONLY a valid JSON object with the following fields:
-      - "title": (String)
-      - "content": (String) Body in Markdown.
-      - "seoTitle": (String) Max 60 chars.
-      - "seoDescription": (String) Max 160 chars.
+      
+      [CONTENT GUIDELINES - PRIORITY]
+      1. SCANNABILITY: Use clear H2/H3 headers. Every section must have Bullet Points (箇条書き).
+      2. TONE: 100% Professional Business Japanese (Keigo). Focus on stability, trust (信頼), and legal compliance (コンプライアンス).
+      3. EMPHASIS: Use **Bold Text** for key keywords and benefit-driven phrases.
+      4. TERMINOLOGY: Never use "丸投げ". Use "煩雑な事務手続きの負担軽減" and "二人三脚の伴走型支援".
+      5. CRO: End with a subtle call-to-action to consult since "Ikusei Shuro" (育成就労) is coming.
+      6. LENGTH: Concise but informative. Max 1000 characters for "content".
+
+      [SEO GUIDELINES]
+      - title: Catchy B2B headline (e.g., "[Benefit] + [Topic] | Solution Cooperative").
+      - seoTitle: High-conversion keywords included, max 60 chars.
+      - seoDescription: Benefit-driven meta description starting with the main keyword.
+
+      [OUTPUT FORMAT]
+      Return ONLY a JSON object:
+      {
+        "title": "...",
+        "content": "Markdown body with headers (#, ##), bullet points (-), and bold text (**). No horizontal lines (---).",
+        "seoTitle": "...",
+        "seoDescription": "..."
+      }
       JSON ONLY. NO OTHER TEXT.
       `;
 

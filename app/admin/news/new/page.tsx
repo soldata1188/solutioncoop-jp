@@ -59,6 +59,7 @@ export default function NewArticlePage() {
       return;
     }
     setGenerating(true);
+    try {
       const tokenRes = await fetch('/api/ai/token');
       const { key } = await tokenRes.json();
       

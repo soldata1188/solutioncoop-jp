@@ -273,7 +273,7 @@ export default function LPClientComponents() {
             <div className="flex-1">
               <div className="mb-6">
                 <h2 className="text-3xl font-black text-[#1e40af] tracking-wide mb-1">ソリューション協同組合</h2>
-                <p className="text-[#1e40af]/60 text-xs font-bold tracking-widest uppercase">Solution Cooperative</p>
+                <p className="text-[#1e40af]/60 text-xs font-bold tracking-widest uppercase">Solution Cooperative / 略称: SKK</p>
               </div>
               
               <div className="flex flex-wrap gap-2 mb-6">

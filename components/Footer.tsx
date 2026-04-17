@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="md:col-span-5 space-y-4">
             <div>
               <h2 className="text-xl font-bold text-navy mb-1">ソリューション協同組合</h2>
-              <p className="text-xs text-gray-500">一般監理事業許可 許12345678号</p>
+              <p className="text-xs text-gray-500">一般監理事業許可 許1708000610</p>
             </div>
             <div className="space-y-3 max-w-sm">
               <div className="flex items-start">

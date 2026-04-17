@@ -408,9 +408,9 @@ export default async function HomePage() {
                 <table className="w-full text-sm min-w-[500px]">
                 <tbody className="divide-y divide-blue-50">
                   {[
-                    ['法人名称', <strong key="n" className="text-slate-800">ソリューション協同組合</strong>],
+                    ['法人名称', <div key="n"><strong className="text-slate-800 text-base">ソリューション協同組合</strong><br/><span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative （略称：SKK）</span></div>],
                     ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold ml-1 -translate-y-px">📍 MAP</a><br/><span className="text-xs text-slate-400">本社・日本語研修センター</span></div>],
-                    ['監理団体許可番号', <><span key="l" className="font-mono font-bold text-blue-800">許12345678号</span><span key="b" className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 font-sans font-semibold rounded">一般監理事業（優良）</span></>],
+                    ['監理団体許可番号', <><span key="l" className="font-mono font-bold text-blue-800">許1708000610</span><span key="b" className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 font-sans font-semibold rounded">一般監理事業（優良）</span></>],
                     ['代表理事', '新 雅志'],
                     ['電話番号', <><a key="t" href="tel:0722248067" className="text-blue-800 font-bold hover:text-blue-600 transition text-lg">072-224-8067</a><span key="d" className="text-slate-400 text-xs ml-2">（平日 9:00〜18:00）</span></>],
                     ['FAX', '072-224-2214'],

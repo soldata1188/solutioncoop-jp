@@ -139,9 +139,9 @@ export default async function HomePage() {
                 
                 <div className="mt-8 flex items-center justify-center gap-3 flex-wrap">
                   <div className="flex items-center gap-2 flex-wrap justify-center">
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【建設業】</span>
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【製造業】</span>
-                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">【農業】</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">建設業</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">製造業</span>
+                    <span className="bg-white/15 border border-white/30 text-white text-xs font-black px-2.5 py-1 rounded tracking-wider">農業</span>
                   </div>
                   <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-center leading-relaxed drop-shadow-sm">
                     大阪府・関西圏を中心に<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社超</span>の企業様が導入

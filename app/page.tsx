@@ -308,7 +308,7 @@ export default async function HomePage() {
                   </div>
                 </div>
               );
-            })()) : (
+            })() : (
               <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
             )}
           </div>

@@ -231,10 +231,13 @@ export default async function HomePage() {
                               {CATEGORY_CONFIG[n.category]?.label}
                             </span>
                           </div>
-                          <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-3">
+                          <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                             {n.title}
                           </h3>
-                          <time className="text-[10px] text-gray-400 font-bold mb-3 mt-auto">{formatDateDot(n.date)}</time>
+                          <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 mb-3 font-medium">
+                            {n.excerpt}
+                          </p>
+                          <time className="text-[10px] text-gray-400 font-bold mt-auto tracking-wider">{formatDateDot(n.date)}</time>
                         </div>
                       </Link>
                     ))}

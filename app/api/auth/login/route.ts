@@ -5,7 +5,7 @@ import { sessionOptions, type SessionData } from '@/lib/session';
 
 export async function POST(req: NextRequest) {
   const { password } = await req.json();
-  const correct = process.env.ADMIN_PASSWORD ?? 'solution2024';
+  const correct = process.env.ADMIN_PASSWORD ?? 'Solution2026@';
 
   if (password !== correct) {
     return NextResponse.json({ error: 'パスワードが正しくありません' }, { status: 401 });

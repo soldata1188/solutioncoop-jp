@@ -78,11 +78,12 @@ export default function NewArticlePage() {
       
       [CONTENT GUIDELINES - PRIORITY]
       1. SCANNABILITY: Use clear H2/H3 headers. Every section must have Bullet Points (箇条書き).
-      2. TONE: 100% Professional Business Japanese (Keigo). Focus on stability, trust (信頼), and legal compliance (コンプライアンス).
-      3. EMPHASIS: Use **Bold Text** for key keywords and benefit-driven phrases.
-      4. TERMINOLOGY: Never use "丸投げ". Use "煩雑な事務手続きの負担軽減" and "二人三脚の伴走型支援".
-      5. CRO: End with a subtle call-to-action to consult since "Ikusei Shuro" (育成就労) is coming.
-      6. LENGTH: Concise but informative. Max 1000 characters for "content".
+      2. TONE: Professional but "Warm" Business Japanese (温かみのあるビジネス敬語). Avoid being 100% robotic; focus on the "Heart" (想い) of the cooperation.
+      3. STORYTELLING: Use benefit-driven hooks. Instead of just "rules changed", explain "how this helps your employees thrive".
+      4. EMPHASIS: Use **Bold Text** for key keywords.
+      5. TERMINOLOGY: Never use "丸投げ". Use "煩雑な事務手続きの負担軽減" and "二人三脚の伴走型支援".
+      6. CRO: End with a warm invitation for a "Safe and Secure" (安心・安全) consultation.
+      7. LENGTH: Concise but informative. Max 1200 characters for "content".
 
       [SEO GUIDELINES]
       - title: Catchy B2B headline (e.g., "[Benefit] + [Topic] | Solution Cooperative").

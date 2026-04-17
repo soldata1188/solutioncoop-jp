@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
+import { marked } from 'marked';
 
 export const dynamic = 'force-dynamic';
 
@@ -119,13 +120,19 @@ export default async function NewsDetailPage({ params }: Props) {
                       {formatDateJP(item.date)}
                     </time>
                   </div>
-                  <h1 className="text-2xl md:text-[1.7rem] lg:text-[2rem] font-black text-navy leading-[1.45] tracking-tight text-balance">{item.title}</h1>
+                  <h1 className="text-xl md:text-2xl lg:text-3xl font-black text-navy leading-[1.4] tracking-tight">{item.title}</h1>
                 </div>
 
                 {/* Nội dung Bài viết */}
                 <div
-                  className="p-6 md:p-10 lg:p-12 prose prose-sm md:prose-base max-w-none prose-headings:text-navy prose-h2:border-l-4 prose-h2:border-accent prose-h2:pl-4 prose-a:text-navy hover:prose-a:text-accent prose-img:rounded"
-                  dangerouslySetInnerHTML={{ __html: item.content || '<p>本文準備中です。</p>' }}
+                  className="p-6 md:p-10 lg:p-12 prose prose-slate max-w-none 
+                  prose-headings:text-navy prose-headings:font-black
+                  prose-h2:text-xl md:prose-h2:text-2xl prose-h2:border-l-4 prose-h2:border-accent prose-h2:pl-4 prose-h2:mt-12 prose-h2:mb-6
+                  prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-5
+                  prose-li:text-gray-600 prose-li:mb-2
+                  prose-strong:text-navy prose-strong:font-bold
+                  prose-img:rounded shadow-sm"
+                  dangerouslySetInnerHTML={{ __html: marked(item.content || '本文準備中です。') }}
                 />
 
                 {/* Chân bài viết (Call to logic) */}

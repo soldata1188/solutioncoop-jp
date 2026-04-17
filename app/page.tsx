@@ -204,14 +204,14 @@ export default async function HomePage() {
             </div>
             {latestNews.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-                
-                {/* 1. Tin Đinh Chính (Main Feature - Left Column) */}
-                <div className="lg:col-span-5 h-full">
+                {/* 1. Cột Trái (Left Column - 1 Top, 2 Sub) */}
+                <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8 h-full">
+                  {/* Tin Đinh Chính (Main Feature) */}
                   {latestNews[0] && (
-                  <Link href={`/news/${latestNews[0].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                      <div className="relative h-64 md:h-72 w-full overflow-hidden shrink-0">
+                    <Link href={`/news/${latestNews[0].id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                      <div className="relative h-64 md:h-[340px] w-full overflow-hidden shrink-0">
                         {latestNews[0].image ? (
-                          <Image src={latestNews[0].image} alt={latestNews[0].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <Image src={latestNews[0].image} alt={latestNews[0].title} fill sizes="(max-width: 1024px) 100vw, 66vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[0].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
                         )}
@@ -234,7 +234,7 @@ export default async function HomePage() {
                         <h3 className="text-xl md:text-2xl font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors">
                           {latestNews[0].title}
                         </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-medium flex-grow">
+                        <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 md:line-clamp-3 mb-6 font-medium flex-grow">
                           {latestNews[0].excerpt}
                         </p>
                         <div className="flex items-center text-[#f97316] font-bold text-sm mt-auto">
@@ -243,53 +243,46 @@ export default async function HomePage() {
                       </div>
                     </Link>
                   )}
+
+                  {/* 2 Tin Mới Nhất Dưới Cùng (Sub Features) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 flex-grow">
+                    {[latestNews[1], latestNews[2]].filter(Boolean).map((newsItem) => (
+                      <Link key={newsItem.id} href={`/news/${newsItem.id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div className="relative h-48 w-full overflow-hidden shrink-0">
+                          {newsItem.image ? (
+                            <Image src={newsItem.image} alt={newsItem.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                          ) : (
+                            <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[newsItem.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
+                          )}
+                        </div>
+                        
+                        <div className="p-5 flex flex-col flex-grow">
+                          <div className="flex items-center gap-2 mb-3 flex-wrap">
+                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded shadow-sm ${BADGE_BG[newsItem.category]}`}>
+                              {CATEGORY_CONFIG[newsItem.category]?.label}
+                            </span>
+                            <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(newsItem.date)}</time>
+                          </div>
+                          <h3 className="text-base font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                            {newsItem.title}
+                          </h3>
+                          <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 font-medium mb-4 flex-grow">
+                            {newsItem.excerpt}
+                          </p>
+                          <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-xs mt-auto transition-colors">
+                            詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
 
-                {/* 2. Tin Đinh Phụ (Sub Feature - Middle Column) */}
-                {latestNews[1] && (
-                  <div className="lg:col-span-3 h-full">
-                    <Link href={`/news/${latestNews[1].id}`} className="group h-full flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-                      <div className="relative h-48 w-full overflow-hidden shrink-0">
-                        {latestNews[1].image ? (
-                          <Image src={latestNews[1].image} alt={latestNews[1].title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                        ) : (
-                          <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[latestNews[1].category] || 'from-gray-400 to-gray-600'} opacity-90`} />
-                        )}
-                        {latestNews[1].pinned && (
-                          <div className="absolute top-4 left-4 z-10">
-                            <span className="bg-[#f97316] text-white text-[10px] font-black px-3 py-1.5 rounded uppercase tracking-widest shadow-lg flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>TOP
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      
-                      <div className="p-5 flex flex-col flex-grow">
-                        <div className="flex items-center gap-2 mb-3 flex-wrap">
-                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded shadow-sm ${BADGE_BG[latestNews[1].category]}`}>
-                            {CATEGORY_CONFIG[latestNews[1].category]?.label}
-                          </span>
-                          <time className="text-[10px] text-gray-500 font-bold font-mono tracking-wider">{formatDateDot(latestNews[1].date)}</time>
-                        </div>
-                        <h3 className="text-base font-black text-[#1e40af] leading-snug mb-3 group-hover:text-blue-600 transition-colors line-clamp-3">
-                          {latestNews[1].title}
-                        </h3>
-                        <p className="text-gray-500 text-xs leading-relaxed line-clamp-3 md:line-clamp-4 font-medium mb-4 flex-grow">
-                          {latestNews[1].excerpt}
-                        </p>
-                        <div className="flex items-center text-[#1e40af] group-hover:text-[#f97316] font-bold text-xs mt-auto transition-colors">
-                          詳しく読む <span className="ml-1 group-hover:translate-x-2 transition-transform">→</span>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                )}
-
                 {/* 3. Danh sách tin vắn (Right Column) */}
-                <div className={`${latestNews[1] ? 'lg:col-span-4' : 'lg:col-span-7'} flex flex-col justify-between h-full`}>
+                <div className="lg:col-span-4 flex flex-col justify-between h-full">
                   <div className="flex flex-col h-full bg-slate-50 border border-gray-100 px-4 md:px-5 pb-5 pt-1 rounded shadow-inner">
                     <div className="flex-grow flex flex-col justify-start">
-                      {latestNews.slice(2).map((n, idx) => (
+                      {latestNews.slice(3).map((n, idx) => (
                         <Link key={n.id} href={`/news/${n.id}`} className={`group block py-3.5 ${idx !== 0 ? 'border-t border-gray-200/70' : ''} hover:bg-white transition-colors rounded -mx-3 px-3`}>
                           <div className="flex items-start gap-4">
                             {/* Thumbnail */}

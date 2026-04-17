@@ -66,17 +66,7 @@ export default function Header() {
             <span className="text-[10px]">→</span>
           </Link>
 
-          {isLP ? (
-            <Link href="#lead-form"
-              className="bg-accent text-white font-bold px-4 py-2 rounded hover:bg-[#ea580c] shadow-sm transition ml-2 whitespace-nowrap">
-              無料相談
-            </Link>
-          ) : (
-            <Link href="/contact"
-              className="text-white font-bold bg-[#f97316] px-4 py-1.5 rounded hover:bg-[#ea580c] transition ml-2 whitespace-nowrap">
-              無料相談
-            </Link>
-          )}
+
         </nav>
 
         {/* Right: phone + hamburger */}
@@ -121,17 +111,7 @@ export default function Header() {
                 📢 24/7 Support
               </Link>
 
-              {isLP ? (
-                <Link href="/contact" onClick={() => setMenuOpen(false)}
-                  className="block text-center text-white bg-accent font-bold p-4 hover:bg-[#ea580c] rounded shadow-sm">
-                  無料相談を申し込む
-                </Link>
-              ) : (
-                <Link href="/contact" onClick={() => setMenuOpen(false)}
-                  className="block text-white bg-[#f97316] font-bold p-4 text-center rounded hover:bg-[#ea580c]">
-                  無料相談フォーム
-                </Link>
-              )}
+
             </div>
 
             <div className="pt-4">

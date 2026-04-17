@@ -210,7 +210,7 @@ export default async function HomePage() {
                 <div className="lg:col-span-8">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     {latestNews.slice(0, 3).map((n) => (
-                      <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
+                      <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
                         <div className="relative h-44 w-full overflow-hidden shrink-0">
                           {n.image ? (
                             <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -243,7 +243,7 @@ export default async function HomePage() {
 
                 {/* --- CỘT PHẢI (4/12): Danh sách tin vắn --- */}
                 <div className="lg:col-span-4 flex flex-col">
-                  <div className="bg-slate-50 border border-gray-100 rounded-2xl p-5 flex-grow shadow-inner">
+                  <div className="bg-slate-50 border border-gray-100 rounded p-5 flex-grow shadow-inner">
                     <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
                       <span className="w-1 h-3 bg-[#f97316] rounded-full"></span>
                       Latest Updates
@@ -251,7 +251,7 @@ export default async function HomePage() {
                     <div className="space-y-4">
                       {latestNews.slice(3).map((n) => (
                         <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
-                          <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
+                          <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
                             {n.image ? (
                               <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                             ) : (
@@ -267,10 +267,10 @@ export default async function HomePage() {
                       {latestNews.length === 0 && <p className="text-[10px] text-gray-400 text-center py-4">No other updates.</p>}
                     </div>
                     
-                    <div className="mt-6 pt-4 border-t border-gray-200">
+                    <div className="mt-4 pt-4 border-t border-gray-200">
                       <Link href="/news" className="flex items-center justify-between group">
                         <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors uppercase">View All News</span>
-                        <span className="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
+                        <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
                       </Link>
                     </div>
                   </div>
@@ -384,7 +384,7 @@ export default async function HomePage() {
                 <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">⚖️ 技能実習法 第32条・第37条 準拠</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
-              <div className="w-16 h-1 bg-orange-500 mx-auto rounded-full" />
+              <div className="w-16 h-1 bg-orange-500 mx-auto rounded" />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
@@ -443,8 +443,8 @@ export default async function HomePage() {
               <div className="flex justify-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#1e40af]/10 border border-[#1e40af]/20 px-4 py-1.5 rounded">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded bg-orange-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded h-2 w-2 bg-orange-500"></span>
                   </span>
                   <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">24 Hours / 365 Days Service</span>
                 </div>

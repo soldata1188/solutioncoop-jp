@@ -251,7 +251,7 @@ export default async function HomePage() {
                     <div className="bg-orange-50 border border-orange-100 rounded p-5">
                       <h3 className="text-[#f97316] font-black text-xs mb-4 flex items-center gap-2 uppercase tracking-widest">
                         <span className="w-1 h-3 bg-[#f97316] rounded-full animate-pulse"></span>
-                        Important Notices
+                        重要なお知らせ
                       </h3>
                       <div className="space-y-4">
                         {pinnedItems.map((n) => (
@@ -265,7 +265,7 @@ export default async function HomePage() {
                                 )}
                               </div>
                               <div className="min-w-0 flex-1">
-                                <span className="inline-block bg-[#f97316] text-white text-[8px] font-black px-1.5 py-0.5 rounded mb-1.5">PINNED</span>
+                                <span className="inline-block bg-[#f97316] text-white text-[8px] font-black px-1.5 py-0.5 rounded mb-1.5">注目</span>
                                 <h4 className="text-xs font-black text-navy line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">{n.title}</h4>
                               </div>
                             </div>
@@ -279,7 +279,7 @@ export default async function HomePage() {
                   <div className="bg-slate-50 border border-gray-100 rounded p-5 flex-grow">
                     <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
                       <span className="w-1 h-3 bg-navy rounded-full"></span>
-                      Latest Updates
+                      最新のお知らせ
                     </h3>
                     <div className="space-y-4">
                       {secondaryList.map((n) => (
@@ -298,12 +298,12 @@ export default async function HomePage() {
                         </Link>
                       ))}
                       {secondaryList.length === 0 && (
-                        <p className="text-[10px] text-gray-400 text-center py-4">No other updates.</p>
+                        <p className="text-[10px] text-gray-400 text-center py-4">現在、他のお知らせはありません。</p>
                       )}
                     </div>
                     <div className="mt-8 pt-4 border-t border-gray-200">
                       <Link href="/news" className="flex items-center justify-between group">
-                        <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors uppercase">View All News</span>
+                        <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors">すべてのお知らせを見る</span>
                         <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
                       </Link>
                     </div>
@@ -325,7 +325,7 @@ export default async function HomePage() {
           
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 md:mb-20">
-              <span className="text-[#f97316] font-black tracking-widest text-xs uppercase mb-3 block">Selected by over 70 companies</span>
+              <span className="text-[#f97316] font-black tracking-widest text-xs uppercase mb-3 block">70社超の企業様に選ばれた実績</span>
               <h2 className="text-3xl md:text-5xl font-black text-[#1e40af] section-title leading-tight">
                 選ばれる理由
               </h2>
@@ -473,7 +473,7 @@ export default async function HomePage() {
             <div className="text-center mb-14">
               {/* Target Audience Label */}
               <div className="inline-block bg-[#1e40af] text-white font-black px-5 py-2 rounded mb-6 shadow-md text-sm tracking-widest">
-                🧑‍🔧 外国人材・実習生のみなさまへ <span className="opacity-80 text-xs ml-1">(For Foreign Workers)</span>
+                🧑‍🔧 外国人材・実習生のみなさまへ
               </div>
               <div className="flex justify-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#1e40af]/10 border border-[#1e40af]/20 px-4 py-1.5 rounded">
@@ -481,7 +481,7 @@ export default async function HomePage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded bg-orange-400 opacity-75"></span>
                     <span className="relative inline-flex rounded h-2 w-2 bg-orange-500"></span>
                   </span>
-                  <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">24 Hours / 365 Days Service</span>
+                  <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">年中無休・24時間対応</span>
                 </div>
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-2 leading-tight">
@@ -489,14 +489,14 @@ export default async function HomePage() {
                 <span className="text-[#f97316]">相談窓口</span>
               </h2>
               <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest uppercase mb-6">
-                24/7 Consultation Support
+                24時間365日・年中無休サポート
               </p>
               <div className="mb-0">
                 <p className="text-slate-700 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-bold mb-2">
                   実習生の皆様が安心して日本で過ごせるよう、母国語スタッフがいつでもお悩みにお答えします。
                 </p>
                 <p className="text-[11px] md:text-xs text-gray-400 italic max-w-2xl mx-auto leading-relaxed">
-                  Our native-speaking staff are always here to help with your concerns so you can stay in Japan safely and comfortably.
+                  母国語スタッフがいつでも安心してご相談いただける体制を整えています。
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6 transition-all duration-500">
@@ -519,26 +519,26 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#1877F2] mb-1">Facebookで相談</h3>
-                  <p className="text-xs text-[#1877F2]/60 font-bold mb-4 tracking-widest uppercase italic">Contact via Facebook</p>
+                  <p className="text-xs text-[#1877F2]/60 font-bold mb-4 tracking-widest italic">Facebookメッセンジャーにてご相談受付中</p>
                   <div className="flex-1 mb-4 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">Messengerからも母国語スタッフが個別に対応いたします。</p>
-                    <p className="text-[10px] text-slate-400 italic">We will respond individually via Messenger in your native language.</p>
+                    <p className="text-[10px] text-slate-400 italic">メッセンジャーでお気軽にご連絡ください。</p>
                   </div>
                   <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
                     <Image src="/images/fb-qr.png" alt="Facebook QR" width={112} height={112} className="object-contain" />
-                    <p className="text-[10px] text-slate-400 mt-1 font-bold">Scan to open Messenger</p>
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">QRコードでMessengerを開く</p>
                   </div>
                   <a href="https://www.facebook.com/solution.sakai" target="_blank" rel="noopener noreferrer"
                     className="w-full bg-[#1877F2] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
                     <span>Messengerを開く</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Open Messenger</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">Messengerで開く</span>
                   </a>
                 </div>
               </div>
 
               {/* LINE */}
               <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col relative">
-                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[9px] font-bold px-3 py-1 rounded-bl tracking-widest uppercase">Popular</div>
+                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[9px] font-bold px-3 py-1 rounded-bl tracking-widest">人気</div>
                 <div className="bg-[#06C755]/5 p-8 flex items-center justify-center border-b border-[#06C755]/10 group-hover:bg-[#06C755]/10 transition-colors">
                   <span className="group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" className="w-14 h-14 object-contain" />
@@ -546,19 +546,19 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#06C755] mb-1">LINEで相談</h3>
-                  <p className="text-xs text-[#06C755]/60 font-bold mb-4 tracking-widest uppercase italic">Contact via LINE</p>
+                  <p className="text-xs text-[#06C755]/60 font-bold mb-4 tracking-widest italic">LINEにてご相談受付中</p>
                   <div className="flex-1 mb-4 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">友だち追加後、チャットでいつでもメッセージをお送りいただけます。</p>
-                    <p className="text-[10px] text-slate-400 italic">Add us as a friend to send messages via chat anytime.</p>
+                    <p className="text-[10px] text-slate-400 italic">友だち追加後、いつでもメッセージをお送りください。</p>
                   </div>
                   <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
                     <Image src="/images/line-qr.png" alt="LINE QR" width={112} height={112} className="object-contain" />
-                    <p className="text-[10px] text-slate-400 mt-1 font-bold">Scan to add LINE</p>
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">QRコードでLINEを追加する</p>
                   </div>
                   <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer"
                     className="w-full bg-[#06C755] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
                     <span>LINE 友だち登録へ</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Add on LINE</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">LINEで追加する</span>
                   </a>
                 </div>
               </div>
@@ -570,10 +570,10 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#1e40af] mb-1">電話で相談</h3>
-                  <p className="text-xs text-[#1e40af]/60 font-bold mb-4 tracking-widest uppercase italic">Call for Support</p>
+                  <p className="text-xs text-[#1e40af]/60 font-bold mb-4 tracking-widest italic">お電話でのご相談はこちら</p>
                   <div className="flex-1 mb-3 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">緊急時、すぐにお話したい場合はこちらへお電話ください。</p>
-                    <p className="text-[10px] text-slate-400 italic">For emergencies or immediate assistance, please call us directly.</p>
+                    <p className="text-[10px] text-slate-400 italic">緊急時は迷わずお電話ください。母国語スタッフが対応いたします。</p>
                   </div>
                   <a href="tel:0722248067" className="block text-2xl font-black text-[#1e40af] hover:text-[#f97316] transition-colors mb-4">
                     072-224-8067
@@ -581,7 +581,7 @@ export default async function HomePage() {
                   <a href="tel:0722248067"
                     className="w-full bg-[#1e40af] text-white font-black py-3 px-2 rounded hover:bg-[#1d4ed8] transition-all shadow-md text-sm flex flex-col items-center">
                     <span>今すぐ発信する</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 uppercase tracking-wider">Call Now</span>
+                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">タップして発信</span>
                   </a>
                 </div>
               </div>
@@ -594,14 +594,14 @@ export default async function HomePage() {
                 <h4 className="font-black text-[#1e40af] mb-2 text-lg md:text-xl underline decoration-orange-400 decoration-4 underline-offset-8">
                   プライバシー厳守・気軽にご相談
                 </h4>
-                <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest uppercase mb-4">
-                  Strict Privacy Policy & Feel Free to Consult
+                <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest mb-4">
+                  個人情報は厳重に管理・保護いたします
                 </p>
                 <p className="text-sm md:text-base text-slate-700 leading-relaxed font-bold mb-2">
                   ご相談いただいた内容の秘密は厳守いたします。ご本人の同意なく、第三者や関係機関へ情報を提供することは一切ございません。どのような些細なことでも、まずはお気軽にご相談ください。
                 </p>
                 <p className="text-[11px] md:text-xs text-gray-400 leading-relaxed font-medium italic opacity-90">
-                  The confidentiality of your consultation is strictly maintained. We will never share your information with third parties without your explicit consent. Please do not hesitate to ask us anything.
+                  ご相談内容は厳重に管理され、ご本人の同意なく第三者や関係機関へ提供されることは一切ありません。
                 </p>
               </div>
             </div>
@@ -617,14 +617,14 @@ export default async function HomePage() {
           <div className="container mx-auto px-4 text-center relative z-10">
             {/* Target Audience Label */}
             <div className="inline-block bg-[#1e40af] text-white font-black px-6 py-2.5 rounded mb-8 shadow-md text-sm md:text-base tracking-widest">
-              🏢 受入企業様・人事ご担当者様へ <span className="opacity-80 text-xs ml-1">(For Host Companies & HR Managers)</span>
+              🏢 受入企業様・人事ご担当者様へ
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-2 tracking-tight text-[#1e40af]">
               まずは無料でご相談ください
             </h2>
-            <p className="text-sm md:text-base text-gray-500 font-bold tracking-widest uppercase mb-8">
-              Please Feel Free to Consult Us For Free
+            <p className="text-sm md:text-base text-gray-500 font-bold tracking-widest mb-8">
+              お気軽にお問い合わせください。まずは無料相談から。
             </p>
 
             <div className="border-b border-gray-200 pb-10 mb-12 max-w-2xl mx-auto">
@@ -633,7 +633,7 @@ export default async function HomePage() {
                 貴社に最適な受入れプランを、私たちが共に考え、<strong className="text-[#f97316] font-black mx-1 border-b-[3px] border-[#f97316] pb-0.5">ご提案</strong>いたします。
               </p>
               <p className="text-xs md:text-sm text-gray-400 italic leading-relaxed">
-                If you are considering accepting foreign talent, we will work together with you to propose the most suitable placement plan for your company.
+                外国人材の受入れを検討されている企業様のご相談を、専門スタッフが丁寧にサポートいたします。
               </p>
             </div>
 
@@ -646,9 +646,9 @@ export default async function HomePage() {
               </TrackedLink>
               <TrackedLink href="/contact" eventAction="cta_click" eventLabel="bottom_contact"
                 className="flex flex-col items-center justify-center bg-[#f97316] hover:bg-[#ea580c] text-white w-full md:w-80 py-5 transition-all rounded shadow-lg group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(249,115,22,0.3)]">
-                <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider uppercase">Business Consultation</span>
+                <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider">ウェブからのご相談</span>
                 <span className="text-xl md:text-2xl font-black flex items-center gap-2 whitespace-nowrap mb-1">✉️ Webから無料相談</span>
-                <span className="text-[10px] text-white/70 italic">Web Inquiry Form</span>
+                <span className="text-[10px] text-white/70">Webお問い合わせフォーム</span>
               </TrackedLink>
             </div>
           </div>

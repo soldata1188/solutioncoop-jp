@@ -49,16 +49,21 @@ export async function POST(req: Request) {
     const data = await response.json();
     
     if (!response.ok) {
-
-      return NextResponse.json({ error: 'AI Error' }, { status: 500 });
+      console.error('AI Error:', data);
+      return NextResponse.json({ error: 'AI Error', details: data }, { status: 500 });
     }
 
     // Parse the generated text into JSON
-    const aiOutput = JSON.parse(data.candidates[0].content.parts[0].text);
+    const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!textOutput) {
+      return NextResponse.json({ error: 'AI Error', details: 'Empty or invalid response from Gemini', raw: data }, { status: 500 });
+    }
+
+    const aiOutput = JSON.parse(textOutput);
 
     return NextResponse.json(aiOutput);
-  } catch (error) {
-
-    return NextResponse.json({ error: 'AI Generation failed' }, { status: 500 });
+  } catch (error: any) {
+    console.error('AI Catch Error:', error);
+    return NextResponse.json({ error: 'AI Generation failed', details: error.message }, { status: 500 });
   }
 }

@@ -76,7 +76,8 @@ export default function NewArticlePage() {
         }));
         setToast('✨ AIが記事を生成しました！');
       } else {
-        setToast('❌ AI生成に失敗しました');
+        const errorMsg = data.details?.error?.message || data.details || 'Lỗi không xác định';
+        setToast(`❌ AI Error: ${errorMsg}`);
       }
     } catch (err) {
       setToast('❌ 通信エラーが発生しました');

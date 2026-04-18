@@ -23,7 +23,13 @@ export default function DisclosureTable({ docs }: { docs: Document[] }) {
       e.preventDefault();
       const code = prompt('🔒 会員コード（パスワード）を入力してください:');
       if (code === 'solution@') {
-        window.open(doc.url, '_blank');
+        const link = document.createElement('a');
+        link.href = doc.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       } else if (code !== null) {
         alert('❌ 会員コードが正しくありません。');
       }

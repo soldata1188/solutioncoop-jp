@@ -10,7 +10,7 @@ export default function NewArticlePage() {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [aiTopic, setAiTopic] = useState('');
-  const [aiStyle, setAiStyle] = useState<'policy' | 'casestudy' | 'faq'>('casestudy');
+  const [aiStyle, setAiStyle] = useState<'policy' | 'casestudy' | 'faq' | 'result'>('casestudy');
   const [generating, setGenerating] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -118,6 +118,7 @@ export default function NewArticlePage() {
               { key: 'policy', label: '📋 制度・法改正', desc: 'Style A' },
               { key: 'casestudy', label: '🏭 導入事例', desc: 'Style B' },
               { key: 'faq', label: '❓ FAQ・Q&A', desc: 'Style C' },
+              { key: 'result', label: '✈️ 受入実績', desc: 'Style D' },
             ] as const).map(s => (
               <button key={s.key} type="button"
                 onClick={() => setAiStyle(s.key)}

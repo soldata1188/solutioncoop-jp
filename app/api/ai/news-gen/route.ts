@@ -26,6 +26,18 @@ const STYLE_INSTRUCTIONS: Record<string, string> = {
     - Cấu trúc: Mỗi H2 là một câu hỏi phổ biến (Q). Dưới mỗi H2 là câu trả lời ngắn gọn (A) với bullet points.
     - Văn phong: Giải thích luật phức tạp thành ngôn ngữ kinh doanh đơn giản nhất. Giám đốc SME đọc xong phải hiểu ngay.
   `,
+  result: `
+    [STYLE D — 受入実績 / Báo cáo tiếp nhận]
+    - Trọng tâm: Báo cáo chính thức về một đợt tiếp nhận thực tập sinh / lao động mới.
+    - Cấu trúc bắt buộc:
+      H2 1: 入国概要 (Tổng quan đợt tiếp nhận) — Ghi rõ: 期生 (batch number), 国籍 (quốc tịch), 人数 (số người), 職種 (ngành nghề), 入国日 (ngày nhập cảnh), 配属先地域 (khu vực phân bổ).
+      H2 2: 入国前教育と準備 (Đào tạo trước nhập cảnh) — Nhấn mạnh: thời gian đào tạo tiếng Nhật, giáo dục kỷ luật/lễ nghi, kiểm tra sức khỏe, chuẩn bị hồ sơ.
+      H2 3: 入国後講習・配属の流れ (Quy trình sau nhập cảnh) — Mô tả: 講習 (giảng tập), 安全衛生教育 (giáo dục an toàn), 配属 (phân bổ về xí nghiệp).
+      H2 4: 今後の展望 (Triển vọng) — Kỳ vọng về sự phát triển, kế thừa kỹ thuật, gắn kết với xí nghiệp.
+    - Văn phong: Trang trọng, chuyên nghiệp nhưng ấm áp. Thể hiện sự tự hào về đợt tiếp nhận. Sử dụng số liệu cụ thể.
+    - Luôn nhắc đến vai trò của Nghiệp đoàn trong việc hỗ trợ toàn bộ quy trình.
+    - Category tự động set thành "result".
+  `,
 };
 
 const FEW_SHOT_EXAMPLE = `

@@ -73,7 +73,7 @@ export default function DisclosureTable({ docs }: { docs: Document[] }) {
                    <a href={doc.url} target={doc.protected ? undefined : "_blank"} rel="noopener noreferrer"
                      onClick={(e) => handleDownload(doc, e)}
                      className={`inline-flex items-center justify-center gap-1.5 bg-white border font-black px-4 py-2.5 rounded text-[12px] transition-colors shadow-sm w-full ${doc.protected ? 'border-orange-400 text-orange-600 hover:bg-orange-500 hover:text-white' : 'border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af] hover:text-white'}`}>
-                     <span>{doc.protected ? '会員限定・保存' : '閲覧・保存'}</span>
+                     <span>{doc.protected ? '会員限定' : '閲覧・保存'}</span>
                      <span className="text-sm">{doc.protected ? '🔒' : '📥'}</span>
                    </a>
                 </td>

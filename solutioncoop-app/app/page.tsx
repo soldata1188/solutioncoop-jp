@@ -421,9 +421,9 @@ export default async function HomePage() {
                 24/7 MULTILINGUAL CONSULTATION HOTLINE
               </p>
               <div className="mb-0">
-                <p className="text-slate-700 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-bold mb-2">
-                  実習生の皆様が安心して日本で過ごせるよう、母国語スタッフがいつでもお悩みにお答えします。<br/>
-                  <span className="text-xs md:text-sm text-gray-500 font-medium block mt-1">Our native staff members are always available to help you with any concerns, ensuring you have a safe and peaceful stay in Japan.</span>
+                <p className="text-slate-700 text-sm md:text-base max-w-3xl mx-auto leading-relaxed font-bold mb-2">
+                  実習生の安心な日本生活を、母国語スタッフが全力でサポートします。
+                  <span className="text-[10px] md:text-sm text-gray-400 font-medium md:ml-3 block md:inline-block mt-1 md:mt-0">Our native staff fully support your safe stay in Japan.</span>
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-8 transition-all duration-500">

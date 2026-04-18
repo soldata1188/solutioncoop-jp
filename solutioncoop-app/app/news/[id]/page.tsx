@@ -118,12 +118,12 @@ export default async function NewsDetailPage({ params }: Props) {
             
             {/* Lõi Bài viết chính (Trái) */}
             <div className="flex-1 min-w-0">
-              <nav className="flex items-center gap-2 text-[13px] md:text-[13.5px] font-bold text-gray-400 mb-8 uppercase tracking-wider overflow-x-auto whitespace-nowrap scrollbar-hide py-1" aria-label="パンくず">
+              <nav className="flex items-center gap-2 text-[13px] md:text-[13.5px] font-bold text-gray-400 mb-8 uppercase tracking-wider whitespace-nowrap overflow-hidden" aria-label="パンくず">
                 <Link href="/" className="hover:text-navy transition flex-shrink-0">HOME</Link>
                 <span className="opacity-50 font-normal flex-shrink-0">›</span>
                 <Link href="/news" className="hover:text-navy transition flex-shrink-0">最新情報</Link>
                 <span className="opacity-50 font-normal flex-shrink-0">›</span>
-                <span className="text-gray-500 font-medium line-clamp-1">{item.title}</span>
+                <span className="text-gray-500 font-medium truncate max-w-[120px] sm:max-w-[200px] md:max-w-[400px]">{item.title}</span>
               </nav>
 
               <article className="bg-white rounded border border-gray-100 overflow-hidden shadow-sm">

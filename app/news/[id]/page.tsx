@@ -25,7 +25,7 @@ async function getRecentNews(excludeId: string): Promise<NewsItem[]> {
   return all
     .filter(n => n.published && n.id !== excludeId)
     .sort((a,b) => a.date < b.date ? 1 : -1)
-    .slice(0, 5);
+    .slice(0, 10);
 }
 
 export async function generateStaticParams() {
@@ -165,7 +165,7 @@ export default async function NewsDetailPage({ params }: Props) {
                         )}
                         <div className="flex-1 min-w-0">
                           <time className="text-[10px] text-[#f97316] font-bold tracking-wider mb-1.5 block">{formatDateJP(n.date)}</time>
-                          <h4 className="text-[12.5px] font-bold text-gray-800 leading-[1.5] line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
+                          <h4 className="text-[12.5px] font-normal text-gray-800 leading-[1.5] line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
                         </div>
                       </Link>
                     )) : (
@@ -174,18 +174,45 @@ export default async function NewsDetailPage({ params }: Props) {
                   </div>
                 </div>
 
-                {/* Cụm: CTA Cố vấn Pháp lý ngay thanh bên */}
-                <div className="bg-gradient-to-b from-[#1e40af] to-[#173085] rounded p-6 text-white text-center shadow-xl border-t-4 border-[#f97316] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-xl -mr-8 -mt-8 pointer-events-none"></div>
-                  <p className="text-3xl mb-3 drop-shadow-md">📞</p>
-                  <h3 className="font-black text-lg mb-2">無料相談窓口</h3>
-                  <p className="text-blue-100 text-[10px] mb-5 font-bold leading-relaxed">技能実習・育成就労に関する<br/>ご質問に専門家がお答えします</p>
-                  <a href="tel:0722248067" className="block w-full bg-white text-[#1e40af] font-black text-xl py-3 rounded shadow-inner hover:bg-blue-50 transition transform hover:-translate-y-0.5 mb-3">
-                    072-224-8067
-                  </a>
-                  <Link href="/contact" className="flex items-center justify-center w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-bold py-3.5 rounded transition shadow-sm text-sm">
-                    ✉️ WEBで問い合わせ
-                  </Link>
+                {/* CTA Sidebar Card */}
+                <div className="rounded overflow-hidden border border-gray-100 shadow-sm">
+                  {/* Header band */}
+                  <div className="bg-[#1e40af] px-5 py-4">
+
+                    <h3 className="text-white font-black text-base leading-snug">無料相談窓口</h3>
+                  </div>
+
+                  {/* Body */}
+                  <div className="bg-white px-5 py-5">
+                    <p className="text-[11.5px] text-gray-500 leading-[1.8] mb-5 border-l-2 border-blue-100 pl-3">
+                      技能実習・育成就労・特定技能に関するご質問に、専門スタッフが丁寧にお答えします。
+                    </p>
+
+                    {/* Phone */}
+                    <a href="tel:0722248067"
+                      className="group flex items-center gap-3 w-full border border-[#1e40af] rounded px-4 py-3 mb-2 hover:bg-[#1e40af] transition-all duration-200">
+                      <span className="text-[#1e40af] group-hover:text-white text-lg transition-colors">📞</span>
+                      <div className="text-left">
+                        <p className="text-[10px] text-gray-400 group-hover:text-blue-200 transition-colors leading-none mb-0.5">お電話でのご相談</p>
+                        <p className="font-black text-[#1e40af] group-hover:text-white text-base transition-colors tracking-wide">072-224-8067</p>
+                      </div>
+                    </a>
+                    <p className="text-[10px] text-gray-300 text-right mb-4">平日 9:00〜18:00</p>
+
+                    {/* Divider */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="flex-1 h-px bg-gray-100" />
+                      <span className="text-[10px] text-gray-300 font-bold">または</span>
+                      <div className="flex-1 h-px bg-gray-100" />
+                    </div>
+
+                    {/* Web form CTA */}
+                    <Link href="/contact"
+                      className="flex items-center justify-center gap-2 w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-black py-3.5 rounded transition-all duration-200 text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                      ✉️ Webフォームで相談する
+                    </Link>
+                    <p className="text-[10px] text-gray-300 text-center mt-2">24時間受付・返信は翌営業日以内</p>
+                  </div>
                 </div>
                 
               </div>

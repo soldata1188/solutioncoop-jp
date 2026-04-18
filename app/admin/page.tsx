@@ -12,7 +12,6 @@ async function getStats() {
     news:   all.filter(n => n.category === 'news').length,
     result: all.filter(n => n.category === 'result').length,
     system: all.filter(n => n.category === 'system').length,
-    event:  all.filter(n => n.category === 'event').length,
   };
   const recent = [...all].sort((a,b) => a.date < b.date ? 1 : -1).slice(0, 5);
   return { total: all.length, published: published.length, byCategory, recent };
@@ -34,7 +33,7 @@ export default async function AdminDashboard() {
           { label: '総記事数',     value: total,     color: 'bg-navy', icon: '📰' },
           { label: '公開中',       value: published, color: 'bg-green-600', icon: '✅' },
           { label: '非公開',       value: total - published, color: 'bg-gray-500', icon: '🔒' },
-          { label: 'カテゴリ数',   value: 4,         color: 'bg-accent', icon: '🏷️' },
+          { label: 'カテゴリ数',   value: 3,         color: 'bg-accent', icon: '🏷️' },
         ].map(s => (
           <div key={s.label} className="bg-white rounded border border-gray-100 p-5">
             <div className={`w-10 h-10 ${s.color} rounded flex items-center justify-center text-xl mb-3`}>{s.icon}</div>

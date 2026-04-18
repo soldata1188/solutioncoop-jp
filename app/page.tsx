@@ -204,57 +204,59 @@ export default async function HomePage() {
                   </div>
                 </div>
 
-                {/* --- CỘT PHẢI (4/12): Pinned + List --- */}
-                <div className="lg:col-span-4 flex flex-col gap-6">
+                {/* --- CỘT PHẢI (4/12): Unified News List --- */}
+                <div className="lg:col-span-4 flex flex-col gap-0">
+                  <div className="bg-white border border-gray-100 rounded shadow-sm overflow-hidden h-full flex flex-col">
 
-                  {/* Phần trên: Tin được ghim */}
-                  {pinnedItems.length > 0 && (
-                    <div className="bg-orange-50 border border-orange-100 rounded p-5">
-                      <h3 className="text-[#f97316] font-black text-xs mb-4 flex items-center gap-2 uppercase tracking-widest">
-                        <span className="w-1 h-3 bg-[#f97316] rounded-full animate-pulse"></span>
-                        重要なお知らせ
-                      </h3>
-                      <div className="space-y-4">
-                        {pinnedItems.map((n) => (
-                          <Link key={n.id} href={`/news/${n.id}`} className="group block bg-white border border-orange-100 p-3 rounded hover:shadow-md transition-all">
-                            <div className="flex gap-3">
-                              <div className="relative w-16 h-16 rounded overflow-hidden shrink-0">
-                                {n.image ? (
-                                  <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-110 transition-transform" />
-                                ) : (
-                                  <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'}`} />
-                                )}
+                    {/* Pinned section */}
+                    {pinnedItems.length > 0 && (
+                      <>
+                        <div className="border-l-4 border-[#f97316] px-5 py-3 bg-orange-50/40 flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] animate-pulse inline-block" />
+                          <h3 className="text-[11px] font-black text-gray-700 tracking-widest uppercase">重要なお知らせ</h3>
+                        </div>
+                        <div className="divide-y divide-gray-50 px-4">
+                          {pinnedItems.map((n) => (
+                            <Link key={n.id} href={`/news/${n.id}`} className="group flex gap-4 items-start py-4">
+                              {n.image ? (
+                                <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5 relative">
+                                  <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-105 transition-transform" />
+                                </div>
+                              ) : (
+                                <div className={`w-16 h-16 flex-shrink-0 rounded bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} mt-0.5 flex items-center justify-center`}>
+                                  <span className="text-[9px] font-black text-white/80 -rotate-12 inline-block">PIN</span>
+                                </div>
+                              )}
+                              <div className="flex-1 min-w-0">
+                                <time className="text-[10px] text-[#f97316] font-bold tracking-wider block mb-1">{formatDateDot(n.date)}</time>
+                                <h4 className="text-xs font-normal text-gray-800 leading-snug line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
                               </div>
-                              <div className="min-w-0 flex-1">
-                                <span className="inline-block bg-[#f97316] text-white text-[8px] font-black px-1.5 py-0.5 rounded mb-1.5">注目</span>
-                                <h4 className="text-xs font-black text-navy line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">{n.title}</h4>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    {/* Recent section */}
+                    <div className="border-l-4 border-[#1e40af] px-5 py-3 bg-blue-50/30 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1e40af] inline-block" />
+                      <h3 className="text-[11px] font-black text-gray-700 tracking-widest uppercase">最新のお知らせ</h3>
                     </div>
-                  )}
-
-                  {/* Phần dưới: Tin vắn khác */}
-                  <div className="bg-slate-50 border border-gray-100 rounded p-5 flex-grow">
-                    <h3 className="text-navy font-black text-xs mb-5 flex items-center gap-2 uppercase tracking-widest">
-                      <span className="w-1 h-3 bg-navy rounded-full"></span>
-                      最新のお知らせ
-                    </h3>
-                    <div className="space-y-4">
+                    <div className="divide-y divide-gray-50 px-4 flex-grow">
                       {secondaryList.map((n) => (
-                        <Link key={n.id} href={`/news/${n.id}`} className="flex items-start gap-3 group transition-all">
-                          <div className="w-14 h-14 rounded overflow-hidden flex-shrink-0 border border-gray-200 bg-white">
-                            {n.image ? (
-                              <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
-                            ) : (
-                              <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-60`} />
-                            )}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <h4 className="text-xs font-bold text-gray-700 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight mb-1">{n.title}</h4>
-                            <span className="text-[9px] text-gray-400 font-bold">{formatDateDot(n.date)}</span>
+                        <Link key={n.id} href={`/news/${n.id}`} className="group flex gap-4 items-start py-4">
+                          {n.image ? (
+                            <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5 relative">
+                              <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-105 transition-transform" />
+                            </div>
+                          ) : (
+                            <div className={`w-16 h-16 flex-shrink-0 rounded bg-gradient-to-br from-blue-50 to-white border border-blue-100 mt-0.5 flex items-center justify-center`}>
+                              <span className="text-[9px] font-black text-blue-300 -rotate-12 inline-block">NEWS</span>
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <time className="text-[10px] text-[#f97316] font-bold tracking-wider block mb-1">{formatDateDot(n.date)}</time>
+                            <h4 className="text-xs font-normal text-gray-700 leading-snug line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
                           </div>
                         </Link>
                       ))}
@@ -262,15 +264,19 @@ export default async function HomePage() {
                         <p className="text-[10px] text-gray-400 text-center py-4">現在、他のお知らせはありません。</p>
                       )}
                     </div>
-                    <div className="mt-8 pt-4 border-t border-gray-200">
+
+                    {/* Footer link */}
+                    <div className="px-5 py-4 border-t border-gray-100 mt-auto">
                       <Link href="/news" className="flex items-center justify-between group">
                         <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors">すべてのお知らせを見る</span>
                         <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
                       </Link>
                     </div>
-                  </div>
 
+                  </div>
                 </div>
+
+
               </div>
             ) : (
               <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
@@ -297,12 +303,7 @@ export default async function HomePage() {
                 グローバル人材の安定的な育成を支援します。
               </p>
             </div>
-            <div className="max-w-3xl mx-auto mb-10 bg-[#1e40af] p-6 md:p-8 text-center rounded shadow-md border border-blue-900">
-              <p className="text-blue-50 text-sm md:text-base leading-relaxed">
-                単なる監理団体ではなく、<strong className="text-white font-black text-base md:text-lg border-b-2 border-white pb-0.5 mx-1">一番身近なパートナー</strong>でありたい。<br className="hidden md:block" />
-                私たちは、貴社の人材確保と育成を全力で支えます。
-              </p>
-            </div>
+
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 { bg: 'from-blue-50 to-white', border: 'border-blue-100/50', iconBg: 'bg-navy', icon: '🎓',
@@ -476,27 +477,33 @@ export default async function HomePage() {
                 <span className="text-orange-400 text-lg">🏛️</span>
                 <span className="text-white font-bold">監理団体 法人情報</span>
               </div>
-              <div className="w-full overflow-x-auto">
-                <table className="w-full text-sm min-w-[500px]">
-                <tbody className="divide-y divide-blue-50">
+              <div className="w-full">
+                <div className="flex flex-col divide-y divide-blue-50/50">
                   {[
                     ['法人名称', <div key="n"><strong className="text-slate-800 text-base">ソリューション協同組合</strong><br/><span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative （略称：SKK）</span></div>],
-                    ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold ml-1 -translate-y-px">📍 MAP</a><br/><span className="text-xs text-slate-400">本社・日本語研修センター</span></div>],
-                    ['監理団体許可番号', <span key="l" className="font-mono font-bold text-blue-800">許1708000610</span>],
+                    ['住所', <div key="a">〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号 <a href="https://www.google.com/maps/search/?api=1&query=%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%8D%90%E5%90%8C%E7%B5%84%E5%90%88+%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A0%BA%E5%B8%82%E5%A0%BA%E5%8C%BA%E7%94%B2%E6%96%90%E7%94%BA%E6%9D%B14%E4%B8%812%E7%95%AA2%E5%8F%B1" target="_blank" rel="noopener noreferrer" className="inline-block mt-1 md:mt-0 md:inline-flex items-center gap-1 text-[11px] bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 hover:border-blue-600 px-2 py-0.5 rounded transition-colors font-bold md:ml-2">📍 MAP</a><br/><span className="text-xs text-slate-400 mt-1 block">本社・日本語研修センター</span></div>],
+                    ['監理団体許可番号', <span key="l" className="font-mono font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded text-sm">許1708000610</span>],
                     ['代表理事', '新 雅志'],
                     ['電話番号', <><a key="t" href="tel:0722248067" className="text-blue-800 font-bold hover:text-blue-600 transition text-lg">072-224-8067</a><span key="d" className="text-slate-400 text-xs ml-2">（平日 9:00〜18:00）</span></>],
                     ['FAX', '072-224-2214'],
                     ['メール', <a key="e" href="mailto:info@solutioncoop-jp.com" className="text-blue-800 hover:underline">info@solutioncoop-jp.com</a>],
                     ['設立', '平成24年（2012年）3月'],
-                    ['受賞歴', <span key="a2" className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-800 px-2 py-1 text-[11px] font-bold rounded">🥇 大阪府中小企業団体中央会表彰</span>],
+                    ['受賞歴', <div key="a2" className="flex flex-col items-start gap-2 py-1">
+                      <span className="inline-flex items-center gap-1.5 bg-yellow-50 border border-yellow-200 text-yellow-800 px-2 py-1 text-xs font-bold rounded shadow-sm">🎖️ 令和8年5月 憲法記念日知事表彰受賞</span>
+                      <span className="inline-flex items-center gap-1.5 bg-yellow-50 border border-yellow-200 text-yellow-800 px-2 py-1 text-xs font-bold rounded shadow-sm">🥇 令和4年9月 大阪府知事表彰受賞</span>
+                      <span className="inline-flex items-center gap-1.5 bg-yellow-50 border border-yellow-200 text-yellow-800 px-2 py-1 text-xs font-bold rounded shadow-sm">🏆 令和元年9月 大阪府中小企業団体表彰受賞</span>
+                    </div>],
                   ].map(([label, val]) => (
-                    <tr key={String(label)} className="hover:bg-slate-50 transition-colors">
-                      <th className="text-left px-6 py-4 font-bold text-[#1e40af] w-1/3 md:w-1/4 bg-slate-50 align-top border-r border-gray-100">{label as string}</th>
-                      <td className="px-6 py-4 text-slate-800 leading-relaxed">{val}</td>
-                    </tr>
+                    <div key={String(label)} className="grid grid-cols-1 md:grid-cols-12 hover:bg-slate-50 transition-colors group">
+                      <div className="px-5 pt-4 pb-2 md:px-6 md:py-5 font-bold text-[#1e40af] bg-slate-50 group-hover:bg-blue-50/30 md:border-r border-gray-100 text-sm md:col-span-4 lg:col-span-3 flex items-center">
+                        {label as string}
+                      </div>
+                      <div className="px-5 pb-4 md:px-6 md:py-5 text-slate-800 leading-relaxed text-sm flex items-center md:col-span-8 lg:col-span-9">
+                        {val}
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
               </div>
             </div>
           </div>
@@ -549,8 +556,7 @@ export default async function HomePage() {
         </section>
 
 
-        {/* ===== よくある質問 ===== */}
-        <FaqSection />
+
 
         {/* ===== CTA (B2B Host Companies) ===== */}
         <section id="contact" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">

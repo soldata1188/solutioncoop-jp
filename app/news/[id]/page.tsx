@@ -9,6 +9,9 @@ import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
 import { marked } from 'marked';
 
+// Configure marked to match MDEditor preview behavior
+marked.setOptions({ gfm: true, breaks: true });
+
 export const dynamic = 'force-dynamic';
 
 type Props = { params: Promise<{ id: string }> };
@@ -132,7 +135,7 @@ export default async function NewsDetailPage({ params }: Props) {
                   prose-li:text-gray-600 prose-li:mb-2
                   prose-strong:text-navy prose-strong:font-bold
                   prose-img:rounded shadow-sm"
-                  dangerouslySetInnerHTML={{ __html: marked(item.content || '本文準備中です。') }}
+                  dangerouslySetInnerHTML={{ __html: String(marked.parse(item.content || '本文準備中です。')) }}
                 />
 
                 {/* Chân bài viết (Call to logic) */}

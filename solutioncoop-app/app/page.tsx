@@ -400,8 +400,9 @@ export default async function HomePage() {
             {/* Section Header */}
             <div className="text-center mb-14">
               {/* Target Audience Label */}
-              <div className="inline-block bg-[#1e40af] text-white font-black px-5 py-2 rounded mb-6 shadow-md text-sm tracking-widest">
-                🧑‍🔧 外国人材・実習生のみなさまへ
+              <div className="inline-block bg-[#1e40af] text-white font-black px-5 py-2 rounded mb-6 shadow-md text-sm md:text-base tracking-widest">
+                🧑‍🔧 外国人材・実習生のみなさまへ<br/>
+                <span className="text-[10px] md:text-xs opacity-80 font-bold block mt-0.5">To Foreign Talents and Interns</span>
               </div>
               <div className="flex justify-center mb-6">
                 <div className="inline-flex items-center gap-2 bg-[#1e40af]/10 border border-[#1e40af]/20 px-4 py-1.5 rounded">
@@ -409,28 +410,35 @@ export default async function HomePage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded bg-orange-400 opacity-75"></span>
                     <span className="relative inline-flex rounded h-2 w-2 bg-orange-500"></span>
                   </span>
-                  <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">年中無休・24時間対応</span>
+                  <span className="text-xs font-bold tracking-widest uppercase text-[#1e40af]">年中無休・24時間対応 <span className="opacity-60 ml-1">/ Open 24/7</span></span>
                 </div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-2 leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#1e40af] mb-4 leading-tight">
                 24時間365日対応<br className="md:hidden" />
                 <span className="text-[#f97316]">相談窓口</span>
               </h2>
-              <p className="text-[10px] md:text-xs text-gray-400 font-bold tracking-widest uppercase mb-6">
-                24時間365日・年中無休サポート
+              <p className="text-[10px] md:text-xs text-orange-500 font-bold tracking-[0.2em] uppercase mb-8">
+                24/7 MULTILINGUAL CONSULTATION HOTLINE
               </p>
               <div className="mb-0">
-                <p className="text-slate-700 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-bold mb-2">
-                  実習生の皆様が安心して日本で過ごせるよう、母国語スタッフがいつでもお悩みにお答えします。
-                </p>
-                <p className="text-[11px] md:text-xs text-gray-400 italic max-w-2xl mx-auto leading-relaxed">
-                  母国語スタッフがいつでも安心してご相談いただける体制を整えています。
+                <p className="text-slate-700 text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-bold mb-2">
+                  実習生の皆様が安心して日本で過ごせるよう、母国語スタッフがいつでもお悩みにお答えします。<br/>
+                  <span className="text-xs md:text-sm text-gray-500 font-medium block mt-1">Our native staff members are always available to help you with any concerns, ensuring you have a safe and peaceful stay in Japan.</span>
                 </p>
               </div>
-              <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6 transition-all duration-500">
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/vn.svg" alt="Vietnam" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">ベトナム語</span></div>
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/id.svg" alt="Indonesia" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">インドネシア語</span></div>
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/ph.svg" alt="Philippines" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">タガログ語</span></div>
+              <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-8 transition-all duration-500">
+                <div className="flex flex-col items-center gap-2">
+                  <Image src="https://flagcdn.com/vn.svg" alt="Vietnam" width={40} height={28} className="rounded-sm object-cover shadow-sm" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-700">ベトナム語<br/><span className="text-[9px] text-gray-400">Vietnamese</span></span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <Image src="https://flagcdn.com/id.svg" alt="Indonesia" width={40} height={28} className="rounded-sm object-cover shadow-sm" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-700">インドネシア語<br/><span className="text-[9px] text-gray-400">Indonesian</span></span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <Image src="https://flagcdn.com/ph.svg" alt="Philippines" width={40} height={28} className="rounded-sm object-cover shadow-sm" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-700">タガログ語<br/><span className="text-[9px] text-gray-400">Tagalog</span></span>
+                </div>
               </div>
             </div>
 
@@ -447,26 +455,26 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#1877F2] mb-1">Facebookで相談</h3>
-                  <p className="text-xs text-[#1877F2]/60 font-bold mb-4 tracking-widest italic">Facebookメッセンジャーにてご相談受付中</p>
+                  <p className="text-[10px] text-[#1877F2]/60 font-bold mb-4 tracking-widest uppercase italic font-mono">Consult via Facebook</p>
                   <div className="flex-1 mb-4 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">Messengerからも母国語スタッフが個別に対応いたします。</p>
-                    <p className="text-[10px] text-slate-400 italic">メッセンジャーでお気軽にご連絡ください。</p>
+                    <p className="text-[10px] text-slate-400 font-medium">Native staff will respond to you individually through Messenger.</p>
                   </div>
                   <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
                     <Image src="/images/fb-qr.png" alt="Facebook QR" width={112} height={112} className="object-contain" />
-                    <p className="text-[10px] text-slate-400 mt-1 font-bold">QRコードでMessengerを開く</p>
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">QR code for Messenger</p>
                   </div>
                   <a href="https://www.facebook.com/solution.sakai" target="_blank" rel="noopener noreferrer"
-                    className="w-full bg-[#1877F2] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
+                    className="w-full bg-[#1877F2] text-white font-black py-4 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
                     <span>Messengerを開く</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">Messengerで開く</span>
+                    <span className="text-[10px] font-bold opacity-80 mt-0.5 tracking-wider uppercase">Open Messenger</span>
                   </a>
                 </div>
               </div>
 
               {/* LINE */}
               <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col relative">
-                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[9px] font-bold px-3 py-1 rounded-bl tracking-widest">人気</div>
+                <div className="absolute top-0 right-0 bg-[#06C755] text-white text-[9px] font-bold px-3 py-1 rounded-bl tracking-widest uppercase">Popular</div>
                 <div className="bg-[#06C755]/5 p-8 flex items-center justify-center border-b border-[#06C755]/10 group-hover:bg-[#06C755]/10 transition-colors">
                   <span className="group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE" className="w-14 h-14 object-contain" />
@@ -474,19 +482,19 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#06C755] mb-1">LINEで相談</h3>
-                  <p className="text-xs text-[#06C755]/60 font-bold mb-4 tracking-widest italic">LINEにてご相談受付中</p>
+                  <p className="text-[10px] text-[#06C755]/60 font-bold mb-4 tracking-widest uppercase italic font-mono">Consult via LINE</p>
                   <div className="flex-1 mb-4 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">友だち追加後、チャットでいつでもメッセージをお送りいただけます。</p>
-                    <p className="text-[10px] text-slate-400 italic">友だち追加後、いつでもメッセージをお送りください。</p>
+                    <p className="text-[10px] text-slate-400 font-medium">You can send messages at any time via LINE chat.</p>
                   </div>
                   <div className="p-2 bg-white border border-gray-100 rounded shadow-inner inline-block mx-auto mb-4">
                     <Image src="/images/line-qr.png" alt="LINE QR" width={112} height={112} className="object-contain" />
-                    <p className="text-[10px] text-slate-400 mt-1 font-bold">QRコードでLINEを追加する</p>
+                    <p className="text-[10px] text-slate-400 mt-1 font-bold">Add us on LINE</p>
                   </div>
                   <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer"
-                    className="w-full bg-[#06C755] text-white font-black py-3 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
+                    className="w-full bg-[#06C755] text-white font-black py-4 px-2 rounded hover:opacity-90 transition-all shadow-md text-sm flex flex-col items-center">
                     <span>LINE 友だち登録へ</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">LINEで追加する</span>
+                    <span className="text-[10px] font-bold opacity-80 mt-0.5 tracking-wider uppercase">Add as Friend</span>
                   </a>
                 </div>
               </div>
@@ -498,18 +506,18 @@ export default async function HomePage() {
                 </div>
                 <div className="p-6 flex flex-col flex-1 text-center">
                   <h3 className="text-xl font-black text-[#1e40af] mb-1">電話で相談</h3>
-                  <p className="text-xs text-[#1e40af]/60 font-bold mb-4 tracking-widest italic">お電話でのご相談はこちら</p>
+                  <p className="text-[10px] text-[#1e40af]/60 font-bold mb-4 tracking-widest uppercase italic font-mono">Consult by Phone</p>
                   <div className="flex-1 mb-3 flex flex-col justify-center">
                     <p className="text-sm text-slate-600 leading-relaxed font-bold mb-1.5">緊急時、すぐにお話したい場合はこちらへお電話ください。</p>
-                    <p className="text-[10px] text-slate-400 italic">緊急時は迷わずお電話ください。母国語スタッフが対応いたします。</p>
+                    <p className="text-[10px] text-slate-400 font-medium">In case of emergency, please call us here immediately.</p>
                   </div>
                   <a href="tel:0722248067" className="block text-2xl font-black text-[#1e40af] hover:text-[#f97316] transition-colors mb-4">
                     072-224-8067
                   </a>
                   <a href="tel:0722248067"
-                    className="w-full bg-[#1e40af] text-white font-black py-3 px-2 rounded hover:bg-[#1d4ed8] transition-all shadow-md text-sm flex flex-col items-center">
+                    className="w-full bg-[#1e40af] text-white font-black py-4 px-2 rounded hover:bg-[#1d4ed8] transition-all shadow-md text-sm flex flex-col items-center">
                     <span>今すぐ発信する</span>
-                    <span className="text-[9px] font-normal opacity-80 mt-0.5 tracking-wider">タップして発信</span>
+                    <span className="text-[10px] font-bold opacity-80 mt-0.5 tracking-wider uppercase">Call Now</span>
                   </a>
                 </div>
               </div>

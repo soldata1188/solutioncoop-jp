@@ -125,47 +125,6 @@ export default async function NewsDetailPage({ params }: Props) {
 
                 {/* Nội dung Bài viết */}
                 <div className="p-6 md:p-10 lg:p-12 news-content-area">
-                  <style jsx global>{`
-                    .news-content-area .wmde-markdown {
-                      font-family: inherit !important;
-                      color: #4b5563 !important; /* text-gray-600 */
-                      font-size: 1rem !important;
-                      line-height: 1.8 !important;
-                    }
-                    .news-content-area .wmde-markdown h2 {
-                      font-size: 1.5rem !important;
-                      font-weight: 900 !important;
-                      color: #001f3f !important; /* navy */
-                      border-left: 4px solid #f97316 !important; /* orange */
-                      padding-left: 1rem !important;
-                      margin-top: 3rem !important;
-                      margin-bottom: 1.5rem !important;
-                      border-bottom: 1px solid #f3f4f6 !important;
-                      padding-bottom: 0.5rem !important;
-                    }
-                    .news-content-area .wmde-markdown h3 {
-                      font-size: 1.25rem !important;
-                      font-weight: 800 !important;
-                      color: #001f3f !important;
-                      margin-top: 2rem !important;
-                      margin-bottom: 1rem !important;
-                    }
-                    .news-content-area .wmde-markdown p {
-                      margin-bottom: 1.25rem !important;
-                    }
-                    .news-content-area .wmde-markdown strong {
-                      color: #001f3f !important;
-                      font-weight: 700 !important;
-                    }
-                    .news-content-area .wmde-markdown ul {
-                      list-style-type: disc !important;
-                      padding-left: 1.5rem !important;
-                      margin-bottom: 1.5rem !important;
-                    }
-                    .news-content-area .wmde-markdown li {
-                      margin-bottom: 0.5rem !important;
-                    }
-                  `}</style>
                   <MarkdownView content={item.content || '本文準備中です。'} />
                 </div>
 

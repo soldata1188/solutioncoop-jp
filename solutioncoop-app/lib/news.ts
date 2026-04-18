@@ -16,6 +16,11 @@ export interface NewsItem {
   published: boolean;   // true = đang hiển thị
   pinned?: boolean;     // true = ghim lên đầu phần mới nhất (nổi bật)
   image?: string;       // đường dẫn ảnh đại diện (ví dụ: /uploads/news/xxx.jpg)
+  scheduledDate?: string; // ngày đăng tự động (YYYY-MM-DDTHH:mm)
+  deleted?: boolean;     // soft delete
+  deletedAt?: string;    // thời gian xóa
+  updatedAt?: string;    // lần sửa cuối
+  editLog?: any[];       // lịch sử sửa
   seoTitle?: string;
   seoDescription?: string;
   ogImage?: string;

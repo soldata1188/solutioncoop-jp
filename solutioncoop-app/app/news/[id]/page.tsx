@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP } from '@/lib/news';
 import MarkdownView from '@/components/MarkdownView';
+import ArticleSignature from '@/components/ArticleSignature';
 
 export const dynamic = 'force-dynamic';
 
@@ -149,6 +150,9 @@ export default async function NewsDetailPage({ params }: Props) {
                 {/* Nội dung Bài viết */}
                 <div className="p-6 md:p-10 lg:p-12 news-content-area">
                   <MarkdownView content={item.content || '本文準備中です。'} />
+                  
+                  {/* Tăng tính sinh động cho chữ ký */}
+                  <ArticleSignature />
                 </div>
 
                 {/* Chân bài viết (Call to logic) */}

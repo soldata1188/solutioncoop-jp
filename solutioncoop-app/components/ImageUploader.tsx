@@ -4,9 +4,10 @@ import { useState, useRef } from 'react';
 interface ImageUploaderProps {
   value: string;           // current image URL
   onChange: (url: string) => void;
+  seoHint?: string;        // SEO keyword hint
 }
 
-export default function ImageUploader({ value, onChange }: ImageUploaderProps) {
+export default function ImageUploader({ value, onChange, seoHint }: ImageUploaderProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [dragOver, setDragOver] = useState(false);
@@ -18,6 +19,9 @@ export default function ImageUploader({ value, onChange }: ImageUploaderProps) {
     try {
       const formData = new FormData();
       formData.append('file', file);
+      if (seoHint) {
+        formData.append('hint', seoHint);
+      }
       const res = await fetch('/api/upload', { method: 'POST', body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Upload failed');

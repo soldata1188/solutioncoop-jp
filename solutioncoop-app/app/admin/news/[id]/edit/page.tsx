@@ -174,7 +174,7 @@ export default function EditArticlePage() {
                   className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
                 />
               </div>
-              <ImageUploader value={form.image || ''} onChange={v => update('image', v)} />
+              <ImageUploader value={form.image || ''} onChange={v => update('image', v)} seoHint={form.title} />
               <RichTextEditor
                 value={form.content || ''}
                 onChange={v => update('content', v)}

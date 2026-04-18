@@ -26,10 +26,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'ファイルサイズは30MB以下にしてください' }, { status: 400 });
     }
 
-    // Generate unique filename
+    // SEO tiếng Nhật: Hỗ trợ Kanji, Hiragana, Katakana và ký tự Latinh
+    const hint = formData.get('hint') as string || 'article-image';
+    const cleanHint = hint
+      .toLowerCase()
+      .trim()
+      // Loại bỏ các ký tự đặc biệt gây lỗi URL, nhưng GIỮ LẠI ký tự Nhật Bản (Kanji/Kana)
+      .replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '') 
+      .replace(/\s+/g, '-')      // Thay khoảng trắng bằng gạch ngang
+      .substring(0, 80);          // Cho phép độ dài lớn hơn để chứa đủ Kanji
+
     const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
     const timestamp = Date.now();
-    const safeName = `img-${timestamp}.${ext}`;
+    const safeName = `${cleanHint}-${timestamp}.${ext}`;
 
     // Ensure upload directory exists
     await fs.mkdir(UPLOAD_DIR, { recursive: true });

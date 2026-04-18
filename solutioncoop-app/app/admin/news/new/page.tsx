@@ -174,6 +174,7 @@ export default function NewArticlePage() {
               <ImageUploader
                 value={form.image}
                 onChange={v => update('image', v)}
+                seoHint={form.title}
               />
               <RichTextEditor
                 value={form.content}

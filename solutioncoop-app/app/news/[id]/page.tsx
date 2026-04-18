@@ -129,9 +129,12 @@ export default async function NewsDetailPage({ params }: Props) {
                 </div>
 
                 {/* Chân bài viết (Call to logic) */}
-                <div className="px-6 md:px-12 py-8 bg-slate-50 border-t border-gray-100 flex justify-center">
-                  <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-navy transition bg-white border border-gray-200 px-8 py-3.5 rounded shadow-sm">
+                <div className="px-6 md:px-12 py-8 bg-slate-50 border-t border-gray-100 flex flex-wrap justify-center gap-4">
+                  <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-navy transition bg-white border border-gray-200 px-8 py-3.5 rounded shadow-sm hover:bg-gray-50">
                     ← お知らせ一覧へ戻る
+                  </Link>
+                  <Link href="/lp" className="inline-flex items-center gap-2 text-sm font-bold text-white transition bg-navy hover:bg-navy/90 border border-navy px-8 py-3.5 rounded shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
+                    サービス内容・特長を見る
                   </Link>
                 </div>
               </article>

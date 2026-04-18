@@ -134,7 +134,7 @@ export default async function NewsDetailPage({ params }: Props) {
                     ← お知らせ一覧へ戻る
                   </Link>
                   <Link href="/lp" className="inline-flex items-center gap-2 text-sm font-bold text-white transition bg-navy hover:bg-navy/90 border border-navy px-8 py-3.5 rounded shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
-                    サービス内容・特長を見る
+                    企業様はこちら→
                   </Link>
                 </div>
               </article>

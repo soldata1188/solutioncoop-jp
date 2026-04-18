@@ -26,8 +26,8 @@ export default function Header() {
     { href: '/#news',       label: '最新情報' },
     { href: '/#strengths',  label: '選ばれる理由' },
     { href: '/#overview',   label: '組合概要' },
-    { href: '/disclosure',  label: '情報公開' },
-    { href: '/#faq',        label: 'よくある質問' },
+    { href: '/#disclosure',  label: '情報公開' },
+    { href: '/lp#faq',      label: 'よくある質問' },
   ];
 
   return (

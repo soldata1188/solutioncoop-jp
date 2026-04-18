@@ -1,26 +1,26 @@
 // ============================================================
 //  NEWS DATA LAYER
-//  Đây là nơi lưu trữ toàn bộ tin tức.
-//  File này tự động đọc từ data/news.json
+//  ニュースデータ管理層
+//  data/news.json からデータを自動読み込みします。
 // ============================================================
 
 export type NewsCategory = 'news' | 'result' | 'system';
 
 export interface NewsItem {
-  id: string;           // mã duy nhất: "news-001"
-  title: string;        // tiêu đề tiếng Nhật
-  excerpt: string;      // tóm tắt ngắn
-  content: string;      // nội dung đầy đủ (HTML)
+  id: string;           // ユニークID: "news-001"
+  title: string;        // 日本語タイトル
+  excerpt: string;      // 短い抜粋
+  content: string;      // 本文コンテンツ (HTML/Markdown)
   category: NewsCategory;
   date: string;         // YYYY-MM-DD
-  published: boolean;   // true = đang hiển thị
-  pinned?: boolean;     // true = ghim lên đầu phần mới nhất (nổi bật)
-  image?: string;       // đường dẫn ảnh đại diện (ví dụ: /uploads/news/xxx.jpg)
-  scheduledDate?: string; // ngày đăng tự động (YYYY-MM-DDTHH:mm)
-  deleted?: boolean;     // soft delete
-  deletedAt?: string;    // thời gian xóa
-  updatedAt?: string;    // lần sửa cuối
-  editLog?: any[];       // lịch sử sửa
+  published: boolean;   // true = 公開中
+  pinned?: boolean;     // true = トップに固定表示
+  image?: string;       // サムネイル画像パス (/uploads/news/xxx.jpg)
+  scheduledDate?: string; // 予約投稿日時 (YYYY-MM-DDTHH:mm)
+  deleted?: boolean;     // ソフトデリート
+  deletedAt?: string;    // 削除日時
+  updatedAt?: string;    // 最終更新日時
+  editLog?: any[];       // 編集履歴
   seoTitle?: string;
   seoDescription?: string;
   ogImage?: string;

@@ -121,6 +121,7 @@ interface ContactNotifyData {
   company: string;
   email: string;
   phone: string;
+  purpose: string;
   message: string;
 }
 
@@ -138,6 +139,7 @@ export async function notifyNewContact(data: ContactNotifyData): Promise<boolean
           <tr><td style="padding:8px 0;color:#6b7280;">会社名</td><td style="padding:8px 0;">${data.company || '—'}</td></tr>
           <tr><td style="padding:8px 0;color:#6b7280;">メール</td><td style="padding:8px 0;"><a href="mailto:${data.email}" style="color:#2563eb;">${data.email}</a></td></tr>
           <tr><td style="padding:8px 0;color:#6b7280;">電話番号</td><td style="padding:8px 0;">${data.phone || '—'}</td></tr>
+          <tr><td style="padding:8px 0;color:#6b7280;">相談目的</td><td style="padding:8px 0;font-weight:bold;color:#1e3a8a;">${data.purpose || '—'}</td></tr>
         </table>
         <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0;" />
         <p style="font-size:12px;font-weight:bold;color:#374151;margin:0 0 8px;">💬 お問い合わせ内容</p>

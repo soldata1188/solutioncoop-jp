@@ -423,6 +423,82 @@ const FAQ_DATA = [
       </div>
     ),
   },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '他社と比べて「採用コストの削減」ができる理由は何ですか？',
+    answer: (
+      <div className="space-y-2 text-sm">
+        <p className="font-bold text-orange-600">💡 独自ルートによる「仲介マージン」の排除</p>
+        <p className="text-gray-700 leading-relaxed">
+          余計な仲介業者を挟まず、送出国の機関から直接人材を紹介する独自ルートを構築しているため、無駄な手数料が発生しません。質の高い人材を適正価格で確保できるのが当組合の強みです。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '自社に外国政府との複雑な手続きを行うノウハウがありません。',
+    answer: (
+      <div className="space-y-2 text-sm">
+        <p className="bg-blue-50 p-3 rounded border border-blue-100 text-gray-700">
+          ご安心ください。事前の書類作成、ビザ（在留資格）の申請、行政への定期報告まで、<strong>専門スタッフがすべて代行</strong>いたします。企業様は「現場での業務指導」にのみ集中していただける環境をお作りします。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '日本語でのコミュニケーションは問題なく取れるのでしょうか？',
+    answer: (
+      <div className="space-y-3 text-sm">
+        <p className="text-gray-700 leading-relaxed">
+          入国前に徹底した日本語教育と日本の生活マナー教育を行っています。また、建設や製造など各業界特有の専門用語の学習もサポート。配属後も継続的な学習支援と専任通訳スタッフによるフォローがあるため安心です。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '定着率に不安があります。長く働いてもらうための対策はありますか？',
+    answer: (
+      <div className="space-y-2 text-sm">
+        <p className="text-gray-700 leading-relaxed">
+          早期離職の主な原因は「コミュニケーション不足」と「生活上の悩み」です。当組合では、選考段階で適性を厳格に調査し、配属後は<strong>母国語スタッフによる手厚いメンタルケア</strong>を実施。高い定着率を実現しています。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'merit',
+    catLabel: '導入メリット',
+    q: '業務中のケガや、夜間の急病などの緊急時はどうすればいいですか？',
+    answer: (
+      <div className="space-y-2 text-sm">
+        <p className="flex items-center gap-2 text-orange-600 font-bold mb-1">
+          <span>🚨</span> 24時間365日の緊急ダイヤル
+        </p>
+        <p className="text-gray-700 leading-relaxed">
+          母国語スタッフが常時待機。病院への同行や企業担当者様との通訳、労災手続きのアドバイスまで迅速にサポートします。深夜や休日であっても受入企業様の負担を最小限に抑えます。
+        </p>
+      </div>
+    ),
+  },
+  {
+    cat: 'system',
+    catLabel: '在留・制度',
+    q: '自社の業務内容が受入れの対象になるか分かりません。',
+    answer: (
+      <div className="space-y-2 text-sm">
+        <p className="bg-slate-50 p-3 rounded border border-slate-200 text-gray-700">
+          製造、建設、介護、農業、宿泊、外食業など、多岐にわたる職種で受け入れが可能です。貴社の業務実態をヒアリングした上で、どの在留資格での受け入れが最適か、<strong>無料相談にて即時に診断</strong>させていただきます。
+        </p>
+      </div>
+    ),
+  },
 ];
 
 export default function FaqSection() {
@@ -433,9 +509,9 @@ export default function FaqSection() {
     : FAQ_DATA.filter(item => item.cat === activeTab);
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container mx-auto px-4 max-w-5xl">
-        <div className="text-center mb-12">
+    <section id="faq" className="py-14 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="text-center mb-10">
           <span className="inline-block bg-orange-100 text-orange-600 font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-3 rounded">よくある質問</span>
           <h2 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-4">よくある質問</h2>
           <p className="text-sm text-gray-500 max-w-xl mx-auto leading-relaxed">
@@ -444,14 +520,14 @@ export default function FaqSection() {
         </div>
 
         {/* Categories Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {CATEGORIES.map(cat => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`flex items-center gap-2 px-5 py-4 rounded text-sm font-bold transition-all duration-300 border-2 ${
+              className={`flex items-center gap-2 px-4 py-3 rounded text-sm font-bold transition-all duration-300 border-2 ${
                 activeTab === cat.id 
-                  ? 'bg-[#1e40af] border-[#1e40af] text-white shadow-lg -translate-y-1' 
+                  ? 'bg-[#1e40af] border-[#1e40af] text-white shadow-lg -translate-y-0.5' 
                   : 'bg-white border-gray-100 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'
               }`}
             >
@@ -462,18 +538,17 @@ export default function FaqSection() {
         </div>
 
         {/* FAQ Grid (Horizontal Row Style) */}
-        <div className="grid grid-cols-1 gap-6 min-h-[400px] max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-5 min-h-[400px] max-w-3xl mx-auto">
           {filteredFaq.map((faq, i) => (
-            <div key={i} className="flex flex-col md:flex-row bg-white border border-gray-200 rounded shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-              {/* Question Header (Left side on Desktop) */}
-              <div className="md:w-5/12 bg-slate-50 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-200">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div key={i} className="flex flex-col bg-white border border-slate-100 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden">
+              {/* Question (Top) */}
+              <div className="w-full bg-slate-50/40 p-5 md:p-6 relative overflow-hidden border-b border-slate-100/60">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-slate-100/30 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
                 <div className="flex items-start gap-4 relative z-10">
-                  <span className="text-4xl font-black text-slate-300 leading-none flex-shrink-0 mt-1">Q</span>
+                  <span className="text-xl font-black text-[#1e40af]/20 leading-none flex-shrink-0 mt-1 tabular-nums">
+                    Q<span className="text-sm ml-0.5">{String(i + 1).padStart(2, '0')}</span>
+                  </span>
                   <div>
-                    <span className="inline-block bg-white border border-gray-200 text-gray-500 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded mb-2">
-                      {faq.catLabel}
-                    </span>
                     <h3 className="font-bold text-slate-800 text-base md:text-lg leading-snug">
                       {faq.q}
                     </h3>
@@ -481,9 +556,9 @@ export default function FaqSection() {
                 </div>
               </div>
               
-              {/* Answer Content (Right side on Desktop) */}
-              <div className="md:w-7/12 p-6 md:p-8 flex items-start gap-4 relative bg-white">
-                <span className="text-4xl font-black text-slate-100 leading-none flex-shrink-0 mt-1">A</span>
+              {/* Answer (Bottom) */}
+              <div className="w-full p-5 md:py-6 md:px-8 flex items-start gap-4 relative bg-white">
+                <span className="text-2xl font-black text-orange-500/5 leading-none flex-shrink-0 mt-1">A</span>
                 <div className="flex-1 overflow-hidden w-full relative z-10 text-slate-700">
                   {faq.answer}
                 </div>

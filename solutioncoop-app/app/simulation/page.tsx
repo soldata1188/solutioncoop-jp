@@ -192,7 +192,7 @@ export default function SimulationPage() {
                         {[
                           { name: '入国前講習委託費', desc: '現地教育・面接調整', price: calc.breakdown.preTraining },
                           { name: '入国後講習費用一式', desc: '法定講習・宿泊・講師代', price: calc.breakdown.postTraining },
-                          { name: '入国後講習手当', desc: '実習生へ trực tiếp 支給される手当', price: calc.breakdown.allowance },
+                          { name: '入国後講習手当', desc: '実習生へ直接支給される手当', price: calc.breakdown.allowance },
                         ].map(row => (
                           <tr key={row.name}>
                             <td className="px-6 py-4">

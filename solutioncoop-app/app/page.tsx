@@ -13,8 +13,23 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
-  description: 'ソリューション協同組合は大阪府堺市に拠点を置く技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題を解決します。',
+  description: 'ソリューション協同組合は、大阪府堺市を拠点とする技能実習監理団体です。規律・礼節を重んじる独自の教育体制で、中小企業の人材不足解消と組織活性化をトータルで支援します。',
   alternates: { canonical: 'https://solutioncoop-jp.com' },
+  openGraph: {
+    title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
+    description: '大阪府堺市を拠点とする技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題を解決します。',
+    url: 'https://solutioncoop-jp.com',
+    siteName: 'ソリューション協同組合',
+    images: [{ url: '/images/ogp-main.jpg', width: 1200, height: 630 }],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '【公式】技能実習 監理団体｜ソリューション協同組合',
+    description: '大阪府堺市の技能実習監理団体。独自の教育体制で中小企業の成長を支援。',
+    images: ['/images/ogp-main.jpg'],
+  },
 };
 
 async function getLatestNews(): Promise<NewsItem[]> {
@@ -64,8 +79,31 @@ export default async function HomePage() {
   const mainCards = unpinnedItems.slice(0, 6);
   const secondaryList = unpinnedItems.slice(6);
 
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentOrganization',
+    name: 'ソリューション協同組合',
+    alternateName: 'Solution Cooperative',
+    url: 'https://solutioncoop-jp.com',
+    logo: 'https://solutioncoop-jp.com/images/logo.png',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '堺区甲斐町東4丁2番2号',
+      addressLocality: '堺市',
+      addressRegion: '大阪府',
+      postalCode: '590-0953',
+      addressCountry: 'JP'
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+81-72-224-8067',
+      contactType: 'customer service'
+    }
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       <Header />
       <main className="pt-16 md:pt-20">
 
@@ -107,6 +145,21 @@ export default async function HomePage() {
                   <p className="text-sm md:text-base text-blue-100 font-bold tracking-wide text-center leading-relaxed drop-shadow-sm">
                     建設・製造・農業を中心に、大阪・関西圏の<span className="text-orange-400 font-black mx-1 text-lg md:text-xl">70社を超える企業</span>に導入されています。
                   </p>
+                </div>
+
+                {/* Main Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-lg">
+                  <Link href="#support" className="flex-1 bg-white hover:bg-blue-50 text-navy font-black py-4 px-6 rounded shadow-lg transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center group">
+                    <span className="text-lg">24/7 Support</span>
+                    <span className="text-[10px] text-gray-400 font-bold opacity-80 mt-0.5">実習生・外国人材の方</span>
+                  </Link>
+                  <Link href="#contact" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-black py-4 px-6 rounded shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                    <div className="flex flex-col items-center">
+                       <span className="text-lg">企業様はこちら</span>
+                       <span className="text-[10px] text-white/70 font-bold mt-0.5">無料相談・導入のご検討</span>
+                    </div>
+                    <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                  </Link>
                 </div>
 
               </div>
@@ -375,9 +428,9 @@ export default async function HomePage() {
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-6 transition-all duration-500">
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/vn.svg" alt="Vietnam" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Tiếng Việt</span></div>
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/id.svg" alt="Indonesia" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Bahasa Indonesia</span></div>
-                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/ph.svg" alt="Philippines" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">Tagalog</span></div>
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/vn.svg" alt="Vietnam" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">ベトナム語</span></div>
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/id.svg" alt="Indonesia" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">インドネシア語</span></div>
+                <div className="flex flex-col items-center gap-2"><Image src="https://flagcdn.com/ph.svg" alt="Philippines" width={40} height={28} className="rounded-sm object-cover shadow-sm" /><span className="text-[9px] font-bold uppercase tracking-wider text-gray-500">タガログ語</span></div>
               </div>
             </div>
 

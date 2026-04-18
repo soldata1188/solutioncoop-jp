@@ -60,6 +60,7 @@ export async function POST(req: Request) {
     company: newContact.company,
     email: newContact.email,
     phone: newContact.phone || '',
+    purpose: newContact.purpose,
     message: newContact.message,
   }).catch(() => {});
 

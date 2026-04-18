@@ -5,7 +5,9 @@ import path from 'path';
 const dataFile = path.join(process.cwd(), 'data', 'documents.json');
 const uploadDir = path.join(process.cwd(), 'public', 'documents');
 
-// Khởi tạo thư mục và file DB nếu chưa có
+/**
+ * ディレクトリとDBファイルの初期化
+ */
 async function initFile() {
   await fs.mkdir(uploadDir, { recursive: true });
   try {
@@ -29,18 +31,18 @@ export async function POST(request: Request) {
     const title = formData.get('title') as string;
 
     if (!file || !title) {
-      return NextResponse.json({ error: 'Thiếu file hoặc tiêu đề' }, { status: 400 });
+      return NextResponse.json({ error: 'ファイルまたはタイトルが不足しています' }, { status: 400 });
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    // Làm sạch tên file để chống lỗi hiển thị url
+    // URL表示エラー防止のためのファイル名サニタイズ
     const safeFilename = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
     const filePath = path.join(uploadDir, safeFilename);
 
-    // Lưu file vật lý
+    // 物理ファイルの保存
     await fs.writeFile(filePath, buffer);
 
-    // Cập nhật DB
+    // DBの更新
     const newDoc = {
       id: Date.now().toString(),
       title,
@@ -66,23 +68,23 @@ export async function DELETE(request: Request) {
   await initFile();
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
-  if (!id) return NextResponse.json({ error: 'Thiếu ID' }, { status: 400 });
+  if (!id) return NextResponse.json({ error: 'IDが不足しています' }, { status: 400 });
 
   const rawData = await fs.readFile(dataFile, 'utf-8');
   let docs = JSON.parse(rawData);
   const doc = docs.find((d: any) => d.id === id);
 
   if (doc) {
-    // Xóa khỏi DB
+    // DBから削除
     docs = docs.filter((d: any) => d.id !== id);
     await fs.writeFile(dataFile, JSON.stringify(docs, null, 2));
     
-    // Xóa file vật lý
+    // 物理ファイルの削除
     try {
       const filePath = path.join(process.cwd(), 'public', doc.url);
       await fs.unlink(filePath);
     } catch(e) {
-      // Bỏ qua nếu file đã biến mất
+      // ファイルが既に存在しない場合はスキップ
     }
   }
 
@@ -93,7 +95,7 @@ export async function PATCH(request: Request) {
   await initFile();
   try {
     const { id, protected: isProtected } = await request.json();
-    if (!id) return NextResponse.json({ error: 'Thiếu ID' }, { status: 400 });
+    if (!id) return NextResponse.json({ error: 'IDが不足しています' }, { status: 400 });
 
     const rawData = await fs.readFile(dataFile, 'utf-8');
     let docs = JSON.parse(rawData);

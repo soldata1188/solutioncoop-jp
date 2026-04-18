@@ -1,4 +1,4 @@
-// middleware.ts — Bảo vệ /admin bằng session cookie
+// middleware.ts — セッションクッキーによる /admin の保護
 import { NextRequest, NextResponse } from 'next/server';
 import { getIronSession } from 'iron-session';
 import { sessionOptions, type SessionData } from '@/lib/session';
@@ -6,7 +6,7 @@ import { sessionOptions, type SessionData } from '@/lib/session';
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Chỉ bảo vệ /admin (không bảo vệ /admin/login)
+  // /admin 配下のみを保護（/admin/login は除外）
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const res = NextResponse.next();
     const session = await getIronSession<SessionData>(req, res, sessionOptions);

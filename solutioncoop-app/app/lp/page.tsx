@@ -7,6 +7,25 @@ import type { NewsItem } from '@/lib/news';
 
 import LPClientComponents from './LPClientComponents';
 import Header from '@/components/Header';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '【企業様向け】外国人材採用・育成就労サポート｜ソリューション協同組合',
+  description: '大阪府堺市の監理団体「ソリューション協同組合」の企業様向け特設ページ。育成就労・特定技能への制度移行対応から、採用コスト削減、24時間365日の母国語サポートまで、企業のグローバル人材戦略を強力に推進します。',
+  alternates: { canonical: 'https://solutioncoop-jp.com/lp' },
+  openGraph: {
+    title: '【企業様向け】外国人材採用・育成就労サポート｜ソリューション協同組合',
+    description: '育成就労制度への移行期における最適な人材戦略をご提案。仲介手数料ゼロ、24時間サポートで定着率アップ。',
+    url: 'https://solutioncoop-jp.com/lp',
+    images: [{ url: '/images/hero-banner.jpg' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '外国人材採用の最適解｜ソリューション協同組合',
+    description: '大阪・堺の監理団体が企業の採用コスト削減と定着をフルサポート。',
+  },
+};
 
 
 async function getLatestNews(): Promise<NewsItem[]> {
@@ -28,8 +47,44 @@ export default async function LandingPage() {
   const latestNews = await getLatestNews();
   const companies = await getCompanies();
 
+  // JSON-LD: Breadcrumb
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'HOME', item: 'https://solutioncoop-jp.com' },
+      { '@type': 'ListItem', position: 2, name: '企業様向け', item: 'https://solutioncoop-jp.com/lp' },
+    ]
+  };
+
+  // JSON-LD: FAQ (Schema for Rich Results)
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '技能実習制度と育成就労制度の違いは何ですか？',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '育成就労制度は, 従来の技能実習制度に代わり, 人材育成と人材確保を目的とした新制度です. 3年間の就労を通じて「特定技能1号」への移行を前提とした仕組みとなっています.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '受入れが可能な国はどこですか？',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: '当組合では現在, ベトナム, インドネシア, フィリピンの3カ国からの受入れに対応しています.'
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Header />
       <main className="pt-16 md:pt-20 min-h-screen">
       {/* ===== SECTION 1: HERO SECTION ===== */}

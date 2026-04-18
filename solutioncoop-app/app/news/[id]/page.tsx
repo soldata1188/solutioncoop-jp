@@ -38,16 +38,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const item = await getItem(id);
   if (!item) return {};
+  const metaTitle = item.seoTitle || item.title;
+  const metaDesc = item.seoDescription || item.excerpt;
+  const metaUrl = `https://solutioncoop-jp.com/news/${id}`;
+  const metaImage = item.image ? `https://solutioncoop-jp.com${item.image}` : 'https://solutioncoop-jp.com/images/ogp-main.jpg';
+
   return {
-    title: item.seoTitle || item.title,
-    description: item.seoDescription || item.excerpt,
-    alternates: { canonical: `https://solutioncoop-jp.com/news/${id}` },
+    title: metaTitle,
+    description: metaDesc,
+    alternates: { canonical: metaUrl },
     openGraph: {
-      title: item.seoTitle || item.title,
-      description: item.seoDescription || item.excerpt,
+      title: metaTitle,
+      description: metaDesc,
       type: 'article',
+      url: metaUrl,
       publishedTime: item.date,
-      ...(item.image ? { images: [{ url: item.image }] } : {}),
+      images: [{ url: metaImage }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDesc,
+      images: [metaImage],
     },
   };
 }
@@ -84,9 +96,20 @@ export default async function NewsDetailPage({ params }: Props) {
     url: `https://solutioncoop-jp.com/news/${id}`,
   };
 
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'HOME', item: 'https://solutioncoop-jp.com' },
+      { '@type': 'ListItem', position: 2, name: '最新情報', item: 'https://solutioncoop-jp.com/news' },
+      { '@type': 'ListItem', position: 3, name: item.title, item: `https://solutioncoop-jp.com/news/${id}` },
+    ]
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Header />
       <main className="pt-16 md:pt-20 bg-gray-50 min-h-screen pb-20">
         <div className="container mx-auto px-4 py-12 max-w-6xl">

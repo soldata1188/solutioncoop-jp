@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     title: '最新情報・お知らせ｜ソリューション協同組合',
     description: '技能実習生の受入実績、制度情報、イベント等の最新情報をご案内します。',
     type: 'website',
+    url: 'https://solutioncoop-jp.com/news',
+    images: [{ url: '/images/ogp-main.jpg' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '最新情報・お知らせ｜ソリューション協同組合',
+    description: '技能実習生の受入実績、制度情報、イベント等の最新情報を配信中。',
   },
 };
 
@@ -29,8 +36,19 @@ async function getAllNews(): Promise<NewsItem[]> {
 export default async function NewsPage() {
   const news = await getAllNews();
 
+  // JSON-LD: BreadcrumbList
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'HOME', item: 'https://solutioncoop-jp.com' },
+      { '@type': 'ListItem', position: 2, name: '最新情報', item: 'https://solutioncoop-jp.com/news' },
+    ]
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <Header />
       <main className="pt-16 md:pt-20">
         {/* Hero */}

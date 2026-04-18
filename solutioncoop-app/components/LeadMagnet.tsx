@@ -67,7 +67,7 @@ export default function LeadMagnet() {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2 bg-[#f97316] text-white font-black tracking-widest uppercase text-[10px] md:text-xs px-4 py-1.5 mb-5 rounded shadow-sm">
                   <span className="w-1.5 h-1.5 bg-white rounded animate-ping"></span>
-                  無料ダウンロード (Miễn phí)
+                  無料ダウンロード
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight drop-shadow-md">
                   育成就労制度<br className="hidden md:block" />

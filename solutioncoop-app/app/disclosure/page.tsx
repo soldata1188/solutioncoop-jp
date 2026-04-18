@@ -34,7 +34,7 @@ export default async function DisclosurePage() {
             <h1 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-4 tracking-tight">情報公開</h1>
             <p className="text-gray-600 font-bold text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
               関係法令を順守し、透明性の高い運営を行うため、当組合の監理費表および運営規程などの重要書類を公開しております。<br className="hidden md:block"/>
-              各ドキュメントは直接ダウンロード hoặc 閲覧が可能です。
+              各ドキュメントは直接ダウンロード、または閲覧が可能です。
             </p>
           </div>
 

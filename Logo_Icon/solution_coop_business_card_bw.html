@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Coop - Business Card Mockup (B&W)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #1A1A1A;
+      --dark-gray: #333333;
+      --mid-gray: #666666;
+      --light-gray: #999999;
+      --border-gray: #E0E0E0;
+      --white: #FFFFFF;
+      --bg: #F0F0F0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 50px;
+    }
+    
+    h1 {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      color: var(--mid-gray);
+      text-transform: uppercase;
+    }
+    
+    .cards-container {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .card-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--light-gray);
+      text-transform: uppercase;
+    }
+    
+    .card {
+      width: 360px;
+      height: 210px;
+      border-radius: 8px;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        0 8px 16px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 30px 50px rgba(0,0,0,0.15),
+        0 12px 24px rgba(0,0,0,0.1);
+    }
+    
+    /* Front Card - White with black elements */
+    .card-front {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    
+    .logo-icon {
+      margin-bottom: 18px;
+    }
+    
+    .logo-icon svg {
+      width: 100px;
+      height: 80px;
+    }
+    
+    .company-name {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 6px;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+    
+    .company-name-jp {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--mid-gray);
+    }
+    
+    /* Back Card - White */
+    .card-back {
+      background: var(--white);
+      border: 1px solid var(--border-gray);
+      padding: 26px 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .person-info {
+      flex: 1;
+    }
+    
+    .person-name {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 2px;
+    }
+    
+    .person-name-romaji {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: var(--light-gray);
+      margin-bottom: 6px;
+    }
+    
+    .person-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--dark-gray);
+    }
+    
+    .mini-logo svg {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .divider {
+      height: 1px;
+      background: var(--black);
+      margin-bottom: 16px;
+      opacity: 0.15;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 9px;
+      color: var(--dark-gray);
+    }
+    
+    .contact-icon {
+      width: 12px;
+      height: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .contact-icon svg {
+      width: 11px;
+      height: 11px;
+      stroke: var(--dark-gray);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    
+    .card-back-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    
+    .company-info-small {
+      font-size: 8px;
+      color: var(--light-gray);
+      line-height: 1.6;
+    }
+    
+    .qr-placeholder {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border-gray);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+      color: var(--light-gray);
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Business Card Mockup — Black & White</h1>
+  
+  <div class="cards-container">
+    
+    <!-- Front Card -->
+    <div class="card-wrapper">
+      <div class="card card-front">
+        <div class="logo-icon">
+          <svg viewBox="0 0 120 100" fill="none" stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Left person -->
+            <circle cx="30" cy="25" r="12"/>
+            <polygon points="30,40 10,85 50,85"/>
+            
+            <!-- Center person (larger) -->
+            <circle cx="60" cy="15" r="15"/>
+            <polygon points="60,35 35,90 85,90"/>
+            
+            <!-- Right person -->
+            <circle cx="90" cy="25" r="12"/>
+            <polygon points="90,40 70,85 110,85"/>
+          </svg>
+        </div>
+        <div class="company-name">SOLUTION COOP</div>
+        <div class="company-name-jp">ソリューション協同組合</div>
+      </div>
+      <span class="card-label">Front</span>
+    </div>
+    
+    <!-- Back Card -->
+    <div class="card-wrapper">
+      <div class="card card-back">
+        <div class="card-back-header">
+          <div class="person-info">
+            <div class="person-name">山田 太郎</div>
+            <div class="person-name-romaji">YAMADA TARO</div>
+            <div class="person-title">代表理事 / Representative Director</div>
+          </div>
+          <div class="mini-logo">
+            <svg viewBox="0 0 50 50" fill="none" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <polygon points="12,18 5,38 19,38"/>
+              <circle cx="25" cy="8" r="6"/>
+              <polygon points="25,16 15,40 35,40"/>
+              <circle cx="38" cy="12" r="5"/>
+              <polygon points="38,18 31,38 45,38"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="contact-info">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <span>+81 3-1234-5678</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <span>info@solution-coop.jp</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span>〒100-0001 東京都千代田区丸の内1-1-1</span>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span>www.solution-coop.jp</span>
+          </div>
+        </div>
+        
+        <div class="card-back-footer">
+          <div class="company-info-small">
+            ソリューション協同組合<br>
+            SOLUTION Cooperative Association
+          </div>
+          <div class="qr-placeholder">QR</div>
+        </div>
+      </div>
+      <span class="card-label">Back</span>
+    </div>
+    
+  </div>
+  
+</body>
+</html>

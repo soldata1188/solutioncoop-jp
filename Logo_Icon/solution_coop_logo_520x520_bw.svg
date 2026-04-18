@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520" height="520" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <!-- FINAL V1: Square 520x520 - White bg, black icon, black text -->
+  
+  <rect x="0" y="0" width="520" height="520" fill="#FFFFFF"/>
+  
+  <g fill="none" stroke="#1A1A1A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Left person: Circle head + Triangle body -->
+    <circle cx="152" cy="160" r="30"/>
+    <polygon points="152,195 104,305 200,305"/>
+    
+    <!-- Center person: Circle head + Triangle body (larger) -->
+    <circle cx="260" cy="135" r="38"/>
+    <polygon points="260,180 199,315 321,315"/>
+    
+    <!-- Right person: Circle head + Triangle body -->
+    <circle cx="368" cy="160" r="30"/>
+    <polygon points="368,195 320,305 416,305"/>
+    
+  </g>
+  
+  <text x="260" y="400" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="300" letter-spacing="5" fill="#1A1A1A">SOLUTION COOP</text>
+</svg>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【公式】監理団体・ソリューション協同組合 | 2027年育成就労対応</title>
+    <meta name="description" content="2027年育成就労制度へ完全対応。徹底した法令遵守と万全の定着支援で、御社の事業を守り成長を支える監理団体、ソリューション協同組合です。">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="ソリューション協同組合 | 2027年育成就労対応">
+    <meta property="og:description" content="2027年育成就労制度へ完全対応。徹底した法令遵守と万全の定着支援で、御社の事業を守り成長を支える監理団体です。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solutioncoop-jp.com">
+    <!-- OG Image should ideally be absolute URL for social sharing to work correctly -->
+    <meta property="og:image" content="https://solutioncoop-jp.com/images/hero-bg.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'trust-blue': '#1e40af', /* Blue 800: Sáng hơn, chuyên nghiệp, độ tương phản tốt */
+                        'trust-light': '#3b82f6', /* Blue 500: Tươi sáng, dễ nhìn */
+                        'action-red': '#dc2626', /* Red 600: Đỏ tươi, cảnh báo rõ ràng */
+                        'action-orange': '#ea580c', /* Orange 600: Cam đậm tươi, nổi bật hành động */
+                        'bg-gray': '#f8fafc', /* Slate 50: Nền rất sáng, sạch sẽ */
+                        'line-green': '#06C755' /* Màu chính thức của LINE */
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .section-title { margin-bottom: 3rem; }
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #ea580c; /* Cập nhật theo action-orange mới */
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-white pt-16 md:pt-20">
+
+    <!-- HEADER -->
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm top-0 transition-all duration-300">
+        <div class="container mx-auto px-4 h-16 md:h-20 flex justify-between items-center gap-2 md:gap-4">
+            <!-- Logo -->
+            <div class="flex flex-col justify-center flex-shrink-0">
+                <a href="/" aria-label="ソリューション協同組合 ホーム">
+                    <h1 class="text-base md:text-xl font-bold text-trust-blue leading-tight whitespace-nowrap">
+                        ソリューション協同組合
+                    </h1>
+                    <span class="text-[10px] md:text-xs text-gray-500 mt-0.5 truncate max-w-[220px] md:max-w-none">
+                        一般監理事業許可 | 2027年新制度対応
+                    </span>
+                </a>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-5 text-sm font-medium text-gray-600 whitespace-nowrap" aria-label="メインナビゲーション">
+                <a href="#about" class="hover:text-trust-blue transition py-2">選ばれる理由</a>
+                <a href="#transition2027" class="text-action-red font-bold animate-pulse py-2">2027年育成就労</a>
+                <a href="#service" class="hover:text-trust-blue transition py-2">導入の流れ</a>
+                <a href="#countries" class="hover:text-trust-blue transition py-2">人材・各国特徴</a>
+                <a href="#cases" class="hover:text-trust-blue transition py-2">導入事例</a>
+            </nav>
+
+            <!-- CTA Area -->
+            <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+                <div class="hidden md:flex flex-col items-end mr-2">
+                    <p class="text-[10px] text-gray-500 leading-tight">お急ぎの方はお電話で</p>
+                    <a href="tel:0722248067" class="text-lg font-bold text-trust-blue hover:text-trust-light transition leading-tight flex items-center whitespace-nowrap" aria-label="電話で相談する">
+                        <i class="fa-solid fa-phone mr-1.5 text-sm"></i>072-224-8067
+                    </a>
+                </div>
+                
+                <a href="#contact" class="hidden md:flex bg-action-orange hover:bg-orange-700 text-white text-sm font-bold py-2.5 px-5 rounded shadow hover:shadow-md transition items-center whitespace-nowrap" aria-label="資料請求・無料相談">
+                    <span>資料請求・無料相談</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-3 text-2xl text-trust-blue focus:outline-none active:scale-95 transition-transform" aria-label="メニューを開く" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-50 h-[calc(100vh-64px)] overflow-y-auto" aria-hidden="true">
+            <nav class="container mx-auto px-4 py-6 space-y-2" aria-label="モバイルナビゲーション">
+                <a href="#about" class="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <i class="fa-solid fa-check mr-3 text-trust-light w-5 text-center"></i>選ばれる理由
+                </a>
+                <a href="#transition2027" class="block text-action-red font-bold p-4 hover:bg-red-50 rounded-lg transition border-b border-gray-50">
+                    <i class="fa-solid fa-file-contract mr-3 w-5 text-center"></i>2027年育成就労対応
+                </a>
+                <a href="#service" class="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <i class="fa-solid fa-stairs mr-3 text-trust-light w-5 text-center"></i>導入の流れ
+                </a>
+                <a href="#countries" class="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <i class="fa-solid fa-earth-asia mr-3 text-trust-light w-5 text-center"></i>人材・各国特徴
+                </a>
+                <a href="#cases" class="block text-gray-700 font-bold p-4 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <i class="fa-solid fa-user-check mr-3 text-trust-light w-5 text-center"></i>導入事例
+                </a>
+                
+                <div class="pt-6 mt-4 space-y-3">
+                    <a href="tel:0722248067" class="flex items-center justify-center w-full text-trust-blue font-bold py-4 border-2 border-trust-blue rounded-xl hover:bg-blue-50 transition active:scale-[0.98]">
+                        <i class="fa-solid fa-phone mr-2"></i>電話で相談する
+                    </a>
+                    <a href="#contact" class="flex items-center justify-center w-full bg-action-orange text-white py-4 rounded-xl font-bold shadow-lg hover:bg-orange-700 transition active:scale-[0.98]">
+                        資料請求・お問い合わせ
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="relative min-h-[600px] lg:min-h-[700px] flex items-center justify-center bg-trust-blue overflow-hidden pt-10 pb-20 lg:py-0">
+        <div class="absolute inset-0 z-0">
+            <!-- Hero Image -->
+            <img src="images/hero-bg.jpg" onerror="this.src='https://placehold.co/1920x1080/1e40af/ffffff?text=Image+Not+Found'" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-trust-blue/95 via-trust-blue/90 to-blue-900/80"></div>
+            <!-- Decorative Elements -->
+            <div class="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-action-orange/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-20">
+            <div class="flex flex-col items-center justify-center text-center">
+                <div class="w-full max-w-4xl text-white space-y-6 md:space-y-8 animate-fade-in-up">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 text-xs md:text-sm font-bold text-white shadow-lg hover:bg-white/20 transition cursor-default">
+                        <span class="w-2 h-2 rounded-full bg-action-orange animate-pulse"></span>
+                        2027年「育成就労」新制度へ完全対応
+                    </div>
+
+                    <h2 class="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-shadow-sm leading-snug">
+                        <span class="block text-blue-100 text-xl md:text-2xl lg:text-3xl mb-4 md:mb-6 font-medium">御社の事業を守り、成長を支える。</span>
+                        <span class="block mb-2 md:mb-3">「徹底した法令遵守」と</span>
+                        <span class="block">「万全の定着支援」</span>
+                    </h2>
+
+                    <p class="text-base md:text-lg lg:text-xl text-blue-50 leading-relaxed max-w-2xl mx-auto mt-4 md:mt-6 px-2">
+                        安価な労働力としての受入れは終わりを迎えました。<br class="hidden md:inline">
+                        リスクを回避し、長期的な人材戦略を共に構築しませんか？
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 justify-center w-full sm:w-auto px-4 sm:px-0">
+                        <a href="#contact" class="group bg-action-orange hover:bg-orange-700 text-white font-bold py-3.5 md:py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-center flex items-center justify-center w-full sm:w-auto" aria-label="無料相談を予約する">
+                            <span>無料相談を予約する</span>
+                            <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-1 transition"></i>
+                        </a>
+                        <a href="#transition2027" class="group bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white hover:text-trust-blue text-white font-bold py-3.5 md:py-4 px-8 rounded-xl transition-all duration-300 text-center flex items-center justify-center w-full sm:w-auto" aria-label="新制度ガイドブック">
+                            <i class="fa-regular fa-file-pdf mr-2 text-xl"></i>
+                            <span>新制度ガイドブック</span>
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 text-xs md:text-sm text-blue-100 pt-4 md:pt-6">
+                        <span class="flex items-center"><i class="fa-solid fa-check-circle text-action-orange mr-2 text-base md:text-lg"></i> 一般監理事業（優良）許可</span>
+                        <span class="flex items-center"><i class="fa-solid fa-check-circle text-action-orange mr-2 text-base md:text-lg"></i> 大阪府知事表彰受賞</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS TICKER -->
+    <div class="bg-white border-b border-gray-200 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-2">
+                <div class="flex items-center overflow-hidden">
+                    <span class="bg-action-red text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded mr-2 md:mr-3 flex-shrink-0">NEW</span>
+                    <div class="text-xs md:text-sm text-gray-700 truncate">
+                        <span class="font-bold text-gray-500 mr-2">[2026.01.26]</span>
+                        <a href="#" class="hover:underline hover:text-trust-blue">技能実習生第58期生として、5社の企業様へベトナム・インドネシアより計11名を迎えました。</a>
+                    </div>
+                </div>
+                <div class="flex items-center overflow-hidden">
+                    <span class="bg-trust-blue text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded mr-2 md:mr-3 flex-shrink-0">NEWS</span>
+                    <div class="text-xs md:text-sm text-gray-700 truncate">
+                        <span class="font-bold text-gray-500 mr-2">[2026.02.01]</span>
+                        <a href="#" class="hover:underline hover:text-trust-blue">2027年新制度に向けた「企業向け個別相談会」の予約受付を開始しました。</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2027 TRANSITION -->
+    <section id="transition2027" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-trust-blue section-title">2027年「育成就労」制度への対応</h2>
+                <p class="text-sm md:text-base text-gray-600 mt-2">技能実習制度は廃止され、人材確保と育成を目的とした新制度へ移行します。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch bg-bg-gray rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-trust-blue flex items-center">
+                        <i class="fa-solid fa-circle-exclamation text-action-orange mr-3"></i>
+                        経営者が恐れる「転籍」リスク
+                    </h3>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed mb-6">
+                        新制度最大の特徴は、一定要件下での<strong>「転籍（転職）の自由」</strong>が認められることです。
+                        「せっかく育てたのに辞めてしまうのではないか？」という不安は当然です。<br><br>
+                        しかし、これを防ぐ唯一の方法は、法的拘束ではなく<strong>「選ばれる職場環境」を作ること</strong>です。
+                    </p>
+                    <ul class="space-y-3 md:space-y-4 mt-6">
+                        <li class="flex items-start bg-white p-3 rounded shadow-sm border border-gray-100">
+                            <i class="fa-solid fa-check text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="font-bold block text-gray-800 text-sm md:text-base">適正な評価制度とキャリアパス</span>
+                                <span class="text-xs md:text-sm text-gray-500">頑張りが給与に反映される仕組み作りを支援</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start bg-white p-3 rounded shadow-sm border border-gray-100">
+                            <i class="fa-solid fa-check text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="font-bold block text-gray-800 text-sm md:text-base">特定技能へのスムーズな移行</span>
+                                <span class="text-xs md:text-sm text-gray-500">長期雇用（5年以上）を見据えた育成計画</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start bg-white p-3 rounded shadow-sm border border-gray-100">
+                            <i class="fa-solid fa-check text-green-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <span class="font-bold block text-gray-800 text-sm md:text-base">母国語スタッフによるメンタルケア</span>
+                                <span class="text-xs md:text-sm text-gray-500">孤立を防ぎ、離職の予兆を早期発見</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-5 md:p-6 rounded-xl shadow-md border-t-4 border-trust-blue flex flex-col justify-center">
+                    <h4 class="text-lg font-bold text-center mb-4 md:mb-6 text-trust-blue">当組合の定着戦略モデル</h4>
+                    <div class="space-y-2 px-2 md:px-4">
+                        <div class="flex items-center p-3 md:p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-trust-blue text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold mr-3 md:mr-4 text-sm md:text-lg">1</div>
+                            <div>
+                                <p class="font-bold text-sm md:text-base text-trust-blue">採用段階でのスクリーニング</p>
+                                <p class="text-xs text-gray-600 mt-1">「出稼ぎ」感覚ではなく「キャリア形成」意欲の高い人材を選抜</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center text-gray-300 py-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="flex items-center p-3 md:p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="bg-trust-blue text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold mr-3 md:mr-4 text-sm md:text-lg">2</div>
+                            <div>
+                                <p class="font-bold text-sm md:text-base text-trust-blue">日本語・生活指導の徹底</p>
+                                <p class="text-xs text-gray-600 mt-1">地域社会での孤立を防ぐ生活サポートと日本語教育</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center text-gray-300 py-1"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div class="flex items-center p-3 md:p-4 bg-orange-50 border-2 border-orange-200 rounded-lg shadow-sm">
+                            <div class="bg-action-orange text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold mr-3 md:mr-4 text-sm md:text-lg">3</div>
+                            <div>
+                                <p class="font-bold text-sm md:text-base text-action-orange">高い定着率の実現</p>
+                                <p class="text-xs text-gray-600 mt-1">転籍可能な制度下でも「ここにいたい」と思わせる環境づくり</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICE FLOW -->
+    <section id="service" class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-trust-blue section-title">導入の流れとサポート体制</h2>
+                <p class="text-sm md:text-base text-gray-600 mt-2">面倒な書類作成から入国後のトラブル対応まで、一貫してサポートします。</p>
+            </div>
+
+            <!-- Flow Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16 md:mb-20 relative items-stretch">
+                <div class="hidden md:block absolute top-[40%] left-[10%] w-[80%] h-1 bg-gray-300 -z-0"></div>
+
+                <div class="bg-white p-5 md:p-6 rounded shadow-sm text-center relative z-10 flex flex-row md:flex-col items-center gap-4 md:gap-0 hover:-translate-y-1 transition duration-300 border border-gray-100">
+                    <div class="text-2xl md:text-4xl text-trust-light md:mb-4 bg-blue-50 p-3 md:p-4 rounded-full w-12 h-12 md:w-20 md:h-20 flex items-center justify-center border border-blue-100 flex-shrink-0"><i class="fa-regular fa-comments"></i></div>
+                    <div class="text-left md:text-center">
+                        <h3 class="font-bold md:mb-2 text-base md:text-lg">1. ヒアリング</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">貴社の課題を分析し、最適な国・職種をご提案します。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 md:p-6 rounded shadow-sm text-center relative z-10 flex flex-row md:flex-col items-center gap-4 md:gap-0 hover:-translate-y-1 transition duration-300 border border-gray-100">
+                    <div class="text-2xl md:text-4xl text-trust-light md:mb-4 bg-blue-50 p-3 md:p-4 rounded-full w-12 h-12 md:w-20 md:h-20 flex items-center justify-center border border-blue-100 flex-shrink-0"><i class="fa-solid fa-video"></i></div>
+                    <div class="text-left md:text-center">
+                        <h3 class="font-bold md:mb-2 text-base md:text-lg">2. 現地面接</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">Zoomまたは現地渡航にて、技能と性格を直接確認します。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 md:p-6 rounded shadow-sm text-center relative z-10 flex flex-row md:flex-col items-center gap-4 md:gap-0 hover:-translate-y-1 transition duration-300 border border-gray-100">
+                    <div class="text-2xl md:text-4xl text-trust-light md:mb-4 bg-blue-50 p-3 md:p-4 rounded-full w-12 h-12 md:w-20 md:h-20 flex items-center justify-center border border-blue-100 flex-shrink-0"><i class="fa-solid fa-file-contract"></i></div>
+                    <div class="text-left md:text-center">
+                        <h3 class="font-bold md:mb-2 text-base md:text-lg">3. 申請・講習</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">4-6ヶ月の日本語教育とVISA申請手続きを行います。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 md:p-6 rounded shadow-sm text-center relative z-10 flex flex-row md:flex-col items-center gap-4 md:gap-0 hover:-translate-y-1 transition duration-300 border border-gray-100">
+                    <div class="text-2xl md:text-4xl text-trust-light md:mb-4 bg-blue-50 p-3 md:p-4 rounded-full w-12 h-12 md:w-20 md:h-20 flex items-center justify-center border border-blue-100 flex-shrink-0"><i class="fa-solid fa-plane-arrival"></i></div>
+                    <div class="text-left md:text-center">
+                        <h3 class="font-bold md:mb-2 text-base md:text-lg">4. 入国・配属</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">住居の手配、役所手続き、ライフライン開設を代行。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 md:p-6 rounded shadow-lg border-l-4 md:border-l-0 md:border-b-4 border-action-orange text-center relative z-10 flex flex-row md:flex-col items-center gap-4 md:gap-0 hover:-translate-y-1 transition duration-300 scale-100 md:scale-105">
+                    <div class="text-2xl md:text-4xl text-action-orange md:mb-4 bg-orange-50 p-3 md:p-4 rounded-full w-12 h-12 md:w-20 md:h-20 flex items-center justify-center border border-orange-100 flex-shrink-0"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                    <div class="text-left md:text-center">
+                        <h3 class="font-bold md:mb-2 text-base md:text-lg text-action-orange">5. 定着支援</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">毎月の監査訪問と、24時間の生活サポート。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crisis Management -->
+            <div class="bg-trust-blue rounded-2xl p-6 md:p-12 text-white shadow-xl">
+                <h3 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center flex flex-col md:flex-row items-center justify-center">
+                    <i class="fa-solid fa-shield-virus mb-2 md:mb-0 md:mr-3 text-action-orange text-2xl"></i>
+                    トラブルを未然に防ぐ「24時間セーフティネット」
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                    <div class="flex items-start bg-white/10 p-4 md:p-5 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
+                        <div class="bg-white text-trust-blue w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-house-chimney-medical text-lg md:text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg mb-1 md:mb-2 text-yellow-300">生活トラブル防止</h4>
+                            <p class="text-xs md:text-sm text-blue-100 leading-relaxed">ゴミ出し、騒音、自転車ルールなど、近隣住民との摩擦を防ぐ入居時オリエンテーションを徹底します。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white/10 p-4 md:p-5 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
+                        <div class="bg-white text-trust-blue w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-truck-medical text-lg md:text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg mb-1 md:mb-2 text-yellow-300">緊急時・通院対応</h4>
+                            <p class="text-xs md:text-sm text-blue-100 leading-relaxed">病気や怪我の際の通院同行、夜間の緊急連絡にも母国語通訳が対応。企業様の負担を軽減します。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start bg-white/10 p-4 md:p-5 rounded-lg backdrop-blur-sm border border-white/10 hover:bg-white/20 transition">
+                        <div class="bg-white text-trust-blue w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-heart-pulse text-lg md:text-xl"></i></div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg mb-1 md:mb-2 text-yellow-300">メンタルヘルスケア</h4>
+                            <p class="text-xs md:text-sm text-blue-100 leading-relaxed">ホームシックや職場の人間関係の悩みを早期に発見し、失踪等の重大トラブルを未然に防ぎます。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORY TIMELINE -->
+    <section id="history" class="py-16 md:py-20 bg-white relative overflow-hidden">
+        <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gray-100 transform md:-translate-x-1/2 z-0"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12 md:mb-16 bg-white relative z-20 py-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-trust-blue section-title">組合の歩み・沿革</h2>
+                <p class="text-sm md:text-base text-gray-600 mt-2">
+                    単なる「人材斡旋」ではなく、人を育てる「教育機関」として。<br class="hidden md:inline">
+                    10年以上にわたり、実習生と受入れ企業様の架け橋となってきた信頼の軌跡です。
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- 2012 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative group pl-12 md:pl-0">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <div class="inline-block bg-gray-100 text-gray-600 font-bold px-4 py-1 rounded-full text-sm mb-2">平成24年 (2012) 3月</div>
+                        <h3 class="text-xl font-bold text-trust-blue group-hover:text-action-orange transition">「企業の課題解決」へ</h3>
+                    </div>
+                    
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 md:w-8 md:h-8 bg-white border-4 border-trust-blue rounded-full transform md:-translate-x-1/2 flex items-center justify-center z-10 shadow-md translate-y-1 md:translate-y-0">
+                        <div class="hidden md:block w-3 h-3 bg-trust-blue rounded-full"></div>
+                    </div>
+
+                    <div class="w-full md:w-5/12 md:pl-8 text-left">
+                        <div class="md:hidden inline-block bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-full text-xs mb-2">平成24年 (2012) 3月</div>
+                        <h3 class="md:hidden text-lg font-bold text-trust-blue mb-2">「企業の課題解決」へ</h3>
+                        <div class="bg-gray-50 p-5 rounded-lg border-l-4 border-trust-blue shadow-sm hover:shadow-md transition">
+                            <img src="images/history-2012.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e40af?text=Establishment'" alt="長慶寺のイメージ" class="w-full h-40 md:h-48 object-cover rounded mb-4 shadow-sm">
+                            <p class="text-gray-700 leading-relaxed text-sm">
+                                堺市を拠点に、代表理事・新雅志のもと発足。泉南・長慶寺に研修センターを構え、「規律と礼節」を重んじる精神で、中小企業の課題解決に深く寄り添う支援を展開しています
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2015 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative group pl-12 md:pl-0">
+                    <div class="w-full md:w-5/12 md:pr-8 text-left md:text-right order-1 md:order-1">
+                        <div class="md:hidden inline-block bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-full text-xs mb-2">平成27年 (2015) 3月</div>
+                        <h3 class="md:hidden text-lg font-bold text-trust-blue mb-2">教育体制、確立</h3>
+                        <div class="bg-blue-50 p-5 rounded-lg border-l-4 border-trust-light shadow-sm hover:shadow-md transition">
+                            <img src="images/history-2015.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e40af?text=Education'" alt="日本語教育の様子" class="w-full h-40 md:h-48 object-cover rounded mb-4 shadow-sm">
+                            <p class="text-gray-700 leading-relaxed text-sm">
+                                <span class="font-bold text-trust-blue block mb-2"><i class="fa-solid fa-graduation-cap mr-2"></i>「先生の先生」による日本語教育</span>
+                                泉北日本語研修センターへの移転とともに、画期的な教育体制を構築。木村先生を中心に、小中高校で長年教鞭をとった<span class="font-bold border-b border-orange-300">「ベテラン教員」9名</span>を招聘。単なる日本語教育を超えた、日本の心と規律を教える「人づくり」の礎がここに完成しました。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 md:w-8 md:h-8 bg-white border-4 border-action-orange rounded-full transform md:-translate-x-1/2 flex items-center justify-center z-10 shadow-md order-1 md:order-2 translate-y-1 md:translate-y-0">
+                        <i class="hidden md:block fa-solid fa-star text-action-orange text-[10px]"></i>
+                    </div>
+
+                    <div class="hidden md:block w-5/12 pl-8 text-left order-2 md:order-3">
+                        <div class="inline-block bg-gray-100 text-gray-600 font-bold px-4 py-1 rounded-full text-sm mb-2">平成27年 (2015) 3月</div>
+                        <h3 class="text-xl font-bold text-trust-blue group-hover:text-action-orange transition">教育体制、確立</h3>
+                    </div>
+                </div>
+
+                <!-- 2019 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative group pl-12 md:pl-0">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <div class="inline-block bg-gray-100 text-gray-600 font-bold px-4 py-1 rounded-full text-sm mb-2">令和元年 (2019) 9月</div>
+                        <h3 class="text-xl font-bold text-trust-blue group-hover:text-action-orange transition">公的機関からの信頼の証</h3>
+                    </div>
+                    
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 md:w-8 md:h-8 bg-white border-4 border-trust-blue rounded-full transform md:-translate-x-1/2 flex items-center justify-center z-10 shadow-md translate-y-1 md:translate-y-0">
+                        <div class="hidden md:block w-3 h-3 bg-trust-blue rounded-full"></div>
+                    </div>
+
+                    <div class="w-full md:w-5/12 md:pl-8 text-left">
+                        <div class="md:hidden inline-block bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-full text-xs mb-2">令和元年 (2019) 9月</div>
+                        <h3 class="md:hidden text-lg font-bold text-trust-blue mb-2">公的機関からの信頼の証</h3>
+                        <div class="bg-gray-50 p-5 rounded-lg border-l-4 border-trust-blue shadow-sm hover:shadow-md transition">
+                            <img src="images/history-2019.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e40af?text=Trust'" alt="企業との信頼関係" class="w-full h-40 md:h-48 object-cover rounded mb-4 shadow-sm">
+                            <p class="text-gray-700 leading-relaxed text-sm">
+                                丁寧な監理と教育の質が評価され、受入れ企業様は60社へ拡大。その健全な運営体制が認められ、<span class="font-bold">大阪府中小企業団体中央会より表彰を受賞</span>しました。第30期生を迎える頃には、多くの実習生が日本社会で活躍するたくましい人材へと成長していました。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2022 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative group pl-12 md:pl-0">
+                    <div class="w-full md:w-5/12 md:pr-8 text-left md:text-right order-1 md:order-1">
+                        <div class="md:hidden inline-block bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-full text-xs mb-2">令和4年 (2022) 9月</div>
+                        <h3 class="md:hidden text-lg font-bold text-trust-blue mb-2">10周年、大阪府知事賞を受賞</h3>
+                        <div class="bg-gradient-to-r from-yellow-50 to-white p-5 rounded-lg border-l-4 border-yellow-400 shadow-md hover:shadow-lg transition relative overflow-hidden">
+                            <img src="images/history-2022.jpg" onerror="this.src='https://placehold.co/600x400/fbbf24/000000?text=Award'" alt="大阪府知事表彰" class="w-full h-40 md:h-48 object-cover rounded mb-4 shadow-sm relative z-10">
+                            <div class="absolute top-0 right-0 p-2 opacity-10"><i class="fa-solid fa-award text-6xl text-yellow-500"></i></div>
+                            <p class="text-gray-700 leading-relaxed text-sm relative z-10">
+                                創業10周年を迎えた記念すべき年に、最高の栄誉である<span class="font-bold text-trust-blue text-lg">「大阪府知事表彰」</span>を受賞。日本語教師は12名体制へ。コンプライアンス（法令遵守）と教育品質を徹底的に追求してきた姿勢が、公的に高く評価された瞬間です。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-4 md:left-1/2 w-6 h-6 md:w-10 md:h-10 bg-yellow-400 border-4 border-white ring-2 md:ring-4 ring-yellow-100 rounded-full transform md:-translate-x-1/2 flex items-center justify-center z-10 shadow-lg order-1 md:order-2 translate-y-1 md:translate-y-0">
+                        <i class="hidden md:block fa-solid fa-trophy text-white text-sm"></i>
+                    </div>
+
+                    <div class="hidden md:block w-5/12 pl-8 text-left order-2 md:order-3">
+                        <div class="inline-block bg-yellow-100 text-yellow-800 font-bold px-4 py-1 rounded-full text-sm mb-2">令和4年 (2022) 9月</div>
+                        <h3 class="text-xl font-bold text-trust-blue group-hover:text-action-orange transition">10周年、大阪府知事賞を受賞</h3>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between relative group pl-12 md:pl-0">
+                    <div class="hidden md:block w-5/12 text-right pr-8">
+                        <div class="inline-block bg-gray-100 text-gray-600 font-bold px-4 py-1 rounded-full text-sm mb-2">令和6年 (2024) 10月</div>
+                        <h3 class="text-xl font-bold text-trust-blue group-hover:text-action-orange transition">実習生受入れ50期生、到達</h3>
+                    </div>
+                    
+                    <div class="absolute left-4 md:left-1/2 w-5 h-5 md:w-8 md:h-8 bg-white border-4 border-trust-blue rounded-full transform md:-translate-x-1/2 flex items-center justify-center z-10 shadow-md translate-y-1 md:translate-y-0">
+                        <div class="hidden md:block w-3 h-3 bg-trust-blue rounded-full"></div>
+                    </div>
+
+                    <div class="w-full md:w-5/12 md:pl-8 text-left">
+                        <div class="md:hidden inline-block bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-full text-xs mb-2">令和6年 (2024) 10月</div>
+                        <h3 class="md:hidden text-lg font-bold text-trust-blue mb-2">実習生受入れ50期生、到達</h3>
+                        <div class="bg-gray-50 p-5 rounded-lg border-l-4 border-trust-blue shadow-sm hover:shadow-md transition">
+                            <img src="images/history-2024.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e40af?text=50th+Term'" alt="実習生50期生" class="w-full h-40 md:h-48 object-cover rounded mb-4 shadow-sm">
+                            <p class="text-gray-700 leading-relaxed text-sm">
+                                2024年10月28日、記念すべき第50期生を迎えました。設立から積み重ねてきた信頼と実績の証です。多くの若者がここから巣立ち、日本と母国の架け橋として活躍しています。私たちはこれからも、変わらぬ教育品質で彼らの成長を支え続けます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTRY MATRIX -->
+    <section id="countries" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-trust-blue section-title">人材・送出し国の特徴</h2>
+                <p class="text-sm md:text-base text-gray-600 mt-2">「どこの国でも良い」ではありません。貴社の社風に合った国を選定します。</p>
+            </div>
+
+            <!-- Mobile View: Stacked Cards -->
+            <div class="block md:hidden space-y-6">
+                <!-- Vietnam -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 p-4 border-b border-gray-100 flex items-center justify-between">
+                        <h3 class="font-bold text-trust-blue text-lg flex items-center">
+                            <img src="https://flagcdn.com/w40/vn.png" loading="lazy" decoding="async" alt="Vietnam Flag" class="w-8 h-auto mr-3 shadow-sm rounded-sm">
+                            ベトナム
+                        </h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded">実績No.1</span>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-1"><i class="fa-solid fa-thumbs-up text-trust-light mr-1"></i> 強み・国民性</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">手先が器用で勤勉。日本でのコミュニティが大きく安心感がある。漢字文化圏で学習意欲が高い。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-action-orange mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 受入の留意点</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">同胞意識が強いため、派閥ができやすい。SNS等での情報交換が早く、待遇比較に敏感。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-2"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i> おすすめ業種</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">建設</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">製造</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">機械加工</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indonesia -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 p-4 border-b border-gray-100 flex items-center justify-between">
+                        <h3 class="font-bold text-trust-blue text-lg flex items-center">
+                            <img src="https://flagcdn.com/w40/id.png" loading="lazy" decoding="async" alt="Indonesia Flag" class="w-8 h-auto mr-3 shadow-sm rounded-sm">
+                            インドネシア
+                        </h3>
+                        <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded">急成長中</span>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-1"><i class="fa-solid fa-thumbs-up text-trust-light mr-1"></i> 強み・国民性</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">平均年齢が若く明るい。目上の人を敬い、チームワークを重視する。親日度が高い。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-action-orange mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 受入の留意点</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">イスラム教への理解（礼拝・食事）が必要。叱られることに慣れていないため、指導法に工夫が必要。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-2"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i> おすすめ業種</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">製造</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">水産</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">農業</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Philippines -->
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 p-4 border-b border-gray-100 flex items-center justify-between">
+                        <h3 class="font-bold text-trust-blue text-lg flex items-center">
+                            <img src="https://flagcdn.com/w40/ph.png" loading="lazy" decoding="async" alt="Philippines Flag" class="w-8 h-auto mr-3 shadow-sm rounded-sm">
+                            フィリピン
+                        </h3>
+                        <span class="text-xs font-bold bg-purple-100 text-purple-800 px-2 py-1 rounded">英語力</span>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-1"><i class="fa-solid fa-thumbs-up text-trust-light mr-1"></i> 強み・国民性</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">英語力が高い。ホスピタリティ精神が強く、明るい性格。海外出稼ぎ文化が根付いている。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-action-orange mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> 受入の留意点</h4>
+                            <p class="text-sm text-gray-700 leading-relaxed">家族との連絡を重視するため、Wi-Fi環境の整備が必須。権利主張が比較的はっきりしている。</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-gray-500 mb-2"><i class="fa-solid fa-briefcase text-gray-400 mr-1"></i> おすすめ業種</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">介護</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">接客</span>
+                                <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">ビルクリ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop View: Table -->
+            <div class="hidden md:block overflow-x-auto shadow-lg rounded-lg border border-gray-200">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-700">
+                            <th class="p-5 border-b border-gray-200 w-1/4 bg-gray-200 text-center">特徴</th>
+                            <th class="p-5 border-b border-gray-200 w-1/4 font-bold text-trust-blue text-lg text-center">
+                                <img src="https://flagcdn.com/w40/vn.png" loading="lazy" decoding="async" alt="Vietnam" class="h-8 mx-auto mb-2 shadow-sm rounded-sm">
+                                ベトナム
+                            </th>
+                            <th class="p-5 border-b border-gray-200 w-1/4 font-bold text-trust-blue text-lg text-center">
+                                <img src="https://flagcdn.com/w40/id.png" loading="lazy" decoding="async" alt="Indonesia" class="h-8 mx-auto mb-2 shadow-sm rounded-sm">
+                                インドネシア
+                            </th>
+                            <th class="p-5 border-b border-gray-200 w-1/4 font-bold text-trust-blue text-lg text-center">
+                                <img src="https://flagcdn.com/w40/ph.png" loading="lazy" decoding="async" alt="Philippines" class="h-8 mx-auto mb-2 shadow-sm rounded-sm">
+                                フィリピン
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr>
+                            <td class="p-5 border-b border-gray-200 font-bold bg-gray-50 text-center text-gray-600">強み・国民性</td>
+                            <td class="p-5 border-b border-gray-200 align-top">手先が器用で勤勉。<br>日本でのコミュニティが大きく安心感がある。漢字文化圏で学習意欲が高い。</td>
+                            <td class="p-5 border-b border-gray-200 align-top">平均年齢が若く明るい。<br>目上の人を敬い、チームワークを重視する。親日度が高い。</td>
+                            <td class="p-5 border-b border-gray-200 align-top">英語力が高い。<br>ホスピタリティ精神が強く、明るい性格。海外出稼ぎ文化が根付いている。</td>
+                        </tr>
+                        <tr>
+                            <td class="p-5 border-b border-gray-200 font-bold bg-gray-50 text-center text-action-orange">受入の留意点</td>
+                            <td class="p-5 border-b border-gray-200 align-top">同胞意識が強いため、派閥ができやすい。<br>SNS等での情報交換が早く、待遇比較に敏感。</td>
+                            <td class="p-5 border-b border-gray-200 align-top">イスラム教への理解（礼拝・食事）が必要。<br>叱られることに慣れていないため、指導法に工夫が必要。</td>
+                            <td class="p-5 border-b border-gray-200 align-top">家族との連絡を重視するため、Wi-Fi環境の整備が必須。<br>権利主張が比較的はっきりしている。</td>
+                        </tr>
+                        <tr class="bg-gray-50/50">
+                            <td class="p-5 border-b border-gray-200 font-bold bg-gray-50 text-center text-gray-600">おすすめ業種</td>
+                            <td class="p-5 border-b border-gray-200 text-center">
+                                <div class="flex flex-wrap gap-2 justify-center">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">建設</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">製造</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">機械加工</span>
+                                </div>
+                            </td>
+                            <td class="p-5 border-b border-gray-200 text-center">
+                                <div class="flex flex-wrap gap-2 justify-center">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">製造</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">水産</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">農業</span>
+                                </div>
+                            </td>
+                            <td class="p-5 border-b border-gray-200 text-center">
+                                <div class="flex flex-wrap gap-2 justify-center">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">介護</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">接客</span>
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold border border-blue-200">ビルクリ</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="cases" class="py-16 md:py-20 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-action-orange font-bold tracking-widest uppercase text-xs md:text-sm">CASE STUDY</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-trust-blue section-title mt-2">導入企業様インタビュー</h2>
+                <p class="text-sm md:text-base text-gray-600 mt-2">
+                    「言葉の壁は？」「本当に定着するのか？」<br>
+                    導入前に多くの経営者様が抱えていた不安と、その後の変化をお聞きしました。
+                </p>
+            </div>
+
+            <div class="space-y-8 md:space-y-12 max-w-5xl mx-auto">
+                
+                <!-- CASE 1 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gray-200 relative min-h-[200px] md:min-h-[250px]">
+                            <!-- Updated Image Path -->
+                            <img src="images/case-metal.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e40af?text=Case:Metal+Works'" alt="金属加工工場の様子" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 bg-trust-blue text-white text-xs font-bold px-3 py-1">大阪府・金属加工</div>
+                        </div>
+                        <div class="p-6 md:p-8 md:w-2/3">
+                            <div class="flex items-center mb-3 md:mb-4">
+                                <span class="bg-blue-100 text-trust-blue text-[10px] md:text-xs font-bold px-2 py-1 rounded mr-2">生産性向上</span>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-800">「技術の継承」諦めかけていた現場が、若手実習生の熱意で蘇りました。</h3>
+                            </div>
+                            <p class="text-xs md:text-sm text-gray-500 mb-4 md:mb-6 border-b border-gray-200 pb-3 md:pb-4">
+                                <i class="fa-solid fa-building mr-2"></i>東大阪市 K金属株式会社（従業員30名） 代表取締役 K様
+                            </p>
+                            
+                            <div class="space-y-4 md:space-y-6">
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>導入前の課題は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        ハローワークに求人を出しても、2年間応募ゼロ。ベテラン職人は高齢化し、「このままでは技術を教える相手がいなくなる」という焦りがありました。外国人は言葉が通じないイメージがあり、精密な溶接指示が伝わるか不安でした。
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>ソリューション協同組合を選んだ決め手は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        担当者の方が「溶接」「切削」などの専門用語に詳しく、現場の苦労を理解してくれたことです。また、提案されたインドネシアの実習生が、面接時に素晴らしい日本語力を見せてくれたのも衝撃でした。「ここなら任せられる」と感じました。
+                                    </p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border-l-4 border-action-orange">
+                                    <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fa-solid fa-chart-line text-action-orange mr-2"></i>導入後の成果</p>
+                                    <ul class="text-xs md:text-sm text-gray-600 list-disc list-inside">
+                                        <li>全体の<strong>生産性が15%向上</strong>。</li>
+                                        <li>配属1年目で2名が<strong>JIS溶接技能評価試験（SA-2F）に合格</strong>。</li>
+                                        <li>実習生主導の「5S活動」で工場内が見違えるほど綺麗に。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE 2 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gray-200 relative min-h-[200px] md:min-h-[250px] md:order-2">
+                            <!-- Updated Image Path -->
+                            <img src="images/case-landscaping.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/16a34a?text=Case:Landscaping'" alt="造園土木の現場" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 bg-trust-blue text-white text-xs font-bold px-3 py-1">大阪府・造園土木</div>
+                        </div>
+                        <div class="p-6 md:p-8 md:w-2/3 md:order-1">
+                            <div class="flex items-center mb-3 md:mb-4">
+                                <span class="bg-green-100 text-green-800 text-[10px] md:text-xs font-bold px-2 py-1 rounded mr-2">技術・安全</span>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-800">「技術」と「安全」の両立。現場の意識を変えたのは、彼らのひたむきな向上心でした。</h3>
+                            </div>
+                            <p class="text-xs md:text-sm text-gray-500 mb-4 md:mb-6 border-b border-gray-200 pb-3 md:pb-4">
+                                <i class="fa-solid fa-building mr-2"></i>大阪府 O造園土木株式会社（従業員60名） 専務取締役 O様
+                            </p>
+                            
+                            <div class="space-y-4 md:space-y-6">
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>導入前の課題は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        公共工事が主体のため、施工品質と安全管理には一切の妥協が許されません。「言葉が通じない」ことは致命的であり、過去に他組合で受け入れた際は、コミュニケーション不全からヒヤリハットが多発し、現場が疲弊していました。
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>ソリューション協同組合を選んだ決め手は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        「安全教育」のレベルの高さです。入国前の講習で「指差呼称」や「KYT（危険予知トレーニング）」が徹底されていることに驚きました。また、組合の担当者が足繁く現場に通い、実習生だけでなく日本人職人との間を取り持ってくれたことが大きな安心材料でした。
+                                    </p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                                    <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fa-solid fa-shield-halved text-green-500 mr-2"></i>導入後の成果</p>
+                                    <ul class="text-xs md:text-sm text-gray-600 list-disc list-inside">
+                                        <li>チームワークが向上し、工期短縮を実現。</li>
+                                        <li>造園技能検定（随時3級）に3名が合格。</li>
+                                        <li>現場近隣の方から「挨拶が素晴らしい」と感謝の言葉を頂くように。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE 3 -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gray-200 relative min-h-[200px] md:min-h-[250px]">
+                            <!-- Updated Image Path -->
+                            <img src="images/case-civil-kyoto.jpg" onerror="this.src='https://placehold.co/600x400/e2e8f0/9333ea?text=Case:Civil+Engineering'" alt="土木工事現場の様子" class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute bottom-0 left-0 bg-trust-blue text-white text-xs font-bold px-3 py-1">京都府・土木工事</div>
+                        </div>
+                        <div class="p-6 md:p-8 md:w-2/3">
+                            <div class="flex items-center mb-3 md:mb-4">
+                                <span class="bg-purple-100 text-purple-800 text-[10px] md:text-xs font-bold px-2 py-1 rounded mr-2">マナー・近隣配慮</span>
+                                <h3 class="text-lg md:text-xl font-bold text-gray-800">「伝統と礼節」を重んじる京都の現場。実習生の真面目な姿勢が、地域の信頼に。</h3>
+                            </div>
+                            <p class="text-xs md:text-sm text-gray-500 mb-4 md:mb-6 border-b border-gray-200 pb-3 md:pb-4">
+                                <i class="fa-solid fa-building mr-2"></i>京都府 K土木株式会社（従業員25名） 代表取締役 K様
+                            </p>
+                            
+                            <div class="space-y-4 md:space-y-6">
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>導入前の課題は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        若手の人材不足で、公共工事の工期を守るのがギリギリの状態でした。また、京都という土地柄、近隣住民の方への配慮やマナーが厳しく求められるため、言葉や文化の違う外国人が現場に入ることへ強い懸念がありました。
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-trust-blue mb-1 text-sm md:text-base"><span class="bg-blue-100 px-2 rounded mr-2">Q</span>ソリューション協同組合を選んだ決め手は？</p>
+                                    <p class="text-gray-700 text-xs md:text-sm leading-relaxed pl-8">
+                                        組合が独立の研修センターで入国後講習を行う、「規律と礼節」を教育の根幹に置いている点に共感しました。単なる労働力としてではなく、挨拶や掃除といった「人としての振る舞い」まで徹底して指導してくれる姿勢が決め手でした。
+                                    </p>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border-l-4 border-purple-500">
+                                    <p class="font-bold text-gray-800 mb-2 text-sm"><i class="fa-solid fa-users text-purple-500 mr-2"></i>導入後の成果</p>
+                                    <ul class="text-xs md:text-sm text-gray-600 list-disc list-inside">
+                                        <li>人手不足が解消され、工期の遅延リスクがゼロに。</li>
+                                        <li>「挨拶が気持ちいい」と近隣住民からお褒めの言葉を頂くように。</li>
+                                        <li>基礎級試験に全員が一発合格し、技術面でも即戦力化。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="contact" class="py-16 md:py-20 bg-trust-blue text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">2027年に向けたご準備は万全ですか？</h2>
+            <p class="text-base md:text-lg mb-8 md:mb-12 opacity-90 max-w-2xl mx-auto leading-relaxed">
+                法改正の情報収集段階でも構いません。<br>
+                まずは貴社の現状と課題をお聞かせください。私たちが最適なプランを提案します。
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
+                <a href="tel:0722248067" class="flex flex-col items-center bg-white text-trust-blue w-full md:w-80 py-6 rounded-xl hover:bg-gray-100 transition shadow-lg group border-b-4 border-gray-300 active:border-b-0 active:translate-y-1">
+                    <span class="text-sm text-gray-500 mb-1 font-bold">お電話での相談（平日9:00-18:00）</span>
+                    <span class="text-3xl font-bold group-hover:scale-105 transition transform"><i class="fa-solid fa-phone mr-2"></i>072-224-8067</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center bg-[#06C755] w-full md:w-80 py-6 rounded-xl hover:bg-[#05a546] transition shadow-lg group border-b-4 border-[#048036] active:border-b-0 active:translate-y-1">
+                    <span class="text-sm text-white/90 mb-1 font-bold">まずは気軽にチャット相談</span>
+                    <span class="text-2xl font-bold flex items-center group-hover:scale-105 transition transform">
+                        <i class="fa-brands fa-line mr-2 text-3xl"></i>公式LINEを追加
+                    </span>
+                </a>
+            </div>
+
+            <div class="mt-12 md:mt-16 p-6 md:p-8 border border-white/20 rounded-2xl max-w-3xl mx-auto bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-md shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="md:w-1/3 flex justify-center">
+                        <i class="fa-solid fa-file-pdf text-6xl md:text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="md:w-2/3 text-left">
+                        <div class="flex items-center mb-2 text-yellow-400">
+                            <i class="fa-solid fa-star mr-2"></i>
+                            <span class="font-bold text-sm tracking-widest">無料プレゼント</span>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2">【経営者必読】2027年「育成就労」制度移行ガイドブック</h3>
+                        <p class="text-sm text-gray-300 mb-6">今のうちに知っておくべき「転籍リスク対策」「コスト試算」をまとめた資料（PDF全20ページ）を無料でダウンロードいただけます。</p>
+                        
+                        <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('資料ダウンロードのデモです');">
+                            <input type="email" placeholder="メールアドレスを入力" class="px-4 py-3 rounded text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-action-orange" required>
+                            <button type="submit" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded font-bold transition whitespace-nowrap shadow-lg w-full sm:w-auto">
+                                <i class="fa-solid fa-download mr-2"></i>ダウンロード
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-blue-50 text-gray-600 py-10 md:py-12 text-sm border-t border-blue-100 relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-8 gap-8 md:gap-10 mb-10">
+                <!-- 会社情報 -->
+                <div class="md:col-span-5 space-y-6">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-2xl font-bold text-trust-blue tracking-wide mb-2">ソリューション協同組合</h2>
+                        <p class="text-xs text-gray-500">一般監理事業許可 許12345678号</p>
+                    </div>
+                    <div class="space-y-4 max-w-sm mx-auto md:mx-0">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 text-trust-light w-5 text-center flex-shrink-0"></i>
+                            <span>〒590-0953 大阪府堺市堺区甲斐町東4丁2番2号<br><span class="text-xs text-gray-500">本社・日本語研修センター</span></span>
+                        </div>
+                        <div class="flex items-center group">
+                            <i class="fa-solid fa-phone mr-3 text-trust-light w-5 text-center flex-shrink-0 group-hover:text-action-orange transition"></i>
+                            <a href="tel:0722248067" class="hover:text-trust-blue transition text-xl font-bold tracking-wider text-gray-800">072-224-8067</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-fax mr-3 text-trust-light w-5 text-center flex-shrink-0"></i>
+                            <span>072-224-2214</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-3 text-trust-light w-5 text-center flex-shrink-0"></i>
+                            <span>info@solutioncoop-jp.com</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- クイックリンク -->
+                <div class="md:col-span-3 text-center md:text-left">
+                    <h3 class="text-trust-blue font-bold mb-4 border-b-2 border-trust-light pb-2 inline-block">QUICK LINKS</h3>
+                    <ul class="space-y-3 md:space-y-2 inline-block text-left md:block">
+                        <li><a href="#about" class="hover:text-trust-blue hover:pl-2 transition-all duration-300 flex items-center"><i class="fa-solid fa-chevron-right text-trust-light text-xs mr-2"></i>選ばれる理由</a></li>
+                        <li><a href="#transition2027" class="hover:text-trust-blue hover:pl-2 transition-all duration-300 flex items-center"><i class="fa-solid fa-chevron-right text-trust-light text-xs mr-2"></i>2027年育成就労</a></li>
+                        <li><a href="#service" class="hover:text-trust-blue hover:pl-2 transition-all duration-300 flex items-center"><i class="fa-solid fa-chevron-right text-trust-light text-xs mr-2"></i>導入の流れ</a></li>
+                        <li><a href="#" class="hover:text-trust-blue hover:pl-2 transition-all duration-300 flex items-center"><i class="fa-solid fa-chevron-right text-trust-light text-xs mr-2"></i>運営理念</a></li>
+                        <li><a href="#" class="hover:text-trust-blue hover:pl-2 transition-all duration-300 flex items-center"><i class="fa-solid fa-chevron-right text-trust-light text-xs mr-2"></i>情報公開（法第28条）</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+                    <a href="#" class="hover:text-trust-blue transition">プライバシーポリシー</a>
+                    <a href="#" class="hover:text-trust-blue transition">サイトマップ</a>
+                </div>
+                <p class="text-center md:text-right">&copy; 2024 Solution Cooperative. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        if (!btn || !menu) return;
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            const isExpanded = !menu.classList.contains('hidden');
+            btn.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when clicking internal links
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

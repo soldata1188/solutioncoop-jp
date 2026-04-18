@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Hỗ trợ người lao động nước ngoài 24/7 | 外国人材24時間相談窓口" />
+  <meta name="theme-color" content="#0F4C3A" />
+  <title>Hỗ trợ Lao động | 相談窓口 | ソリューション協同組合</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50:  '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              400: '#4ade80',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#0F4C3A',
+              900: '#052e16',
+            },
+            amber: {
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+            },
+            rose: {
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+            },
+            sky: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            }
+          },
+          fontFamily: {
+            vn: ['"Be Vietnam Pro"', 'sans-serif'],
+            jp: ['"Noto Sans JP"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Be Vietnam Pro', 'Noto Sans JP', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    /* App-like feel */
+    body { 
+      background: #f0f4f0; 
+      max-width: 480px; 
+      margin: 0 auto; 
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Ensure content not hidden behind fixed bottom bar */
+    .main-content { 
+      padding-bottom: 160px; 
+    }
+
+    /* Hero gradient */
+    .hero-bg {
+      background: linear-gradient(160deg, #052e16 0%, #0F4C3A 40%, #166534 100%);
+    }
+
+    /* Fixed bottom CTA bar */
+    .cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.15);
+      z-index: 100;
+      padding: 10px 12px 16px;
+      border-top: 3px solid #0F4C3A;
+    }
+
+    .cta-label {
+      text-align: center;
+      font-size: 10px;
+      color: #6b7280;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .cta-label strong { color: #0F4C3A; font-size: 11px; }
+
+    .cta-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .cta-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 10px 4px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 11px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+      min-height: 60px;
+    }
+    .cta-btn:active { transform: scale(0.95); }
+    .cta-btn i { font-size: 20px; }
+
+    .btn-hotline {
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      box-shadow: 0 4px 15px rgba(225,29,72,0.3);
+    }
+    .btn-zalo {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: white;
+      box-shadow: 0 4px 15px rgba(14,165,233,0.3);
+    }
+    .btn-line {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: white;
+      box-shadow: 0 4px 15px rgba(22,163,74,0.3);
+    }
+
+    /* Compliance cards */
+    .compliance-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid transparent;
+      transition: box-shadow 0.2s;
+    }
+    .compliance-card:active { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(225,29,72,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(225,29,72,0); }
+      100% { box-shadow: 0 0 0 0 rgba(225,29,72,0); }
+    }
+    .pulse-red { animation: pulse-ring 2s infinite; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-up { animation: slideUp 0.5s ease forwards; }
+    .slide-up-d1 { animation: slideUp 0.5s ease 0.1s forwards; opacity: 0; }
+    .slide-up-d2 { animation: slideUp 0.5s ease 0.2s forwards; opacity: 0; }
+    .slide-up-d3 { animation: slideUp 0.5s ease 0.3s forwards; opacity: 0; }
+
+    /* Status badge */
+    .status-online {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(74,222,128,0.15);
+      border: 1px solid rgba(74,222,128,0.4);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #4ade80;
+    }
+    .dot-pulse {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse-ring 1.5s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== APP HEADER ========== -->
+  <header class="hero-bg text-white px-4 pt-6 pb-8">
+    <!-- Top bar -->
+    <div class="flex items-center justify-between mb-6">
+      <a href="index.html" class="flex items-center gap-2 text-green-300 hover:text-white transition-colors">
+        <i class="fa-solid fa-arrow-left text-lg"></i>
+        <span class="text-sm font-semibold">Trang Chủ / トップへ</span>
+      </a>
+      <div class="status-online">
+        <div class="dot-pulse"></div>
+        <span>24/7 Online</span>
+      </div>
+    </div>
+    <!-- Hero content -->
+    <div class="text-center">
+      <div class="w-16 h-16 bg-green-400 bg-opacity-20 border-2 border-green-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <i class="fa-solid fa-headset text-green-300 text-2xl"></i>
+      </div>
+      <h1 class="text-2xl font-extrabold mb-1">Trung Tâm Hỗ Trợ</h1>
+      <p class="text-green-200 text-sm font-medium mb-1">外国人材 相談窓口</p>
+      <p class="text-green-300 text-xs">ソリューション協同組合</p>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="main-content px-4 -mt-2">
+
+    <!-- Emergency Info Card -->
+    <div class="bg-rose-600 text-white rounded-2xl p-5 mb-5 shadow-lg slide-up">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-bell text-xl"></i>
+        </div>
+        <div>
+          <p class="font-bold text-base">Hỗ trợ Khẩn cấp 24/7</p>
+          <p class="text-rose-200 text-xs">緊急相談 24時間対応</p>
+        </div>
+      </div>
+      <p class="text-sm text-rose-100 leading-relaxed">
+        Nếu bạn gặp bất kỳ vấn đề nào về lao động, hợp đồng hoặc cuộc sống, hãy liên hệ ngay!<br/>
+        <span class="text-white font-semibold text-xs">労働・契約・生活に関するお問い合わせは、いつでもご連絡ください。</span>
+      </p>
+    </div>
+
+    <!-- 相談窓口 Information -->
+    <div class="bg-white rounded-2xl p-5 mb-5 shadow-sm slide-up-d1">
+      <h2 class="font-bold text-gray-800 text-base mb-1 flex items-center gap-2">
+        <i class="fa-solid fa-phone-volume text-forest-700 text-lg"></i>
+        Thông Tin Liên Lạc
+      </h2>
+      <p class="text-gray-500 text-xs mb-4 font-jp">相談窓口 / Đường dây hỗ trợ</p>
+      
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 p-3 bg-rose-50 rounded-xl border border-rose-100">
+          <i class="fa-solid fa-phone text-rose-500 text-xl w-6 text-center"></i>
+          <div>
+            <p class="text-xs text-gray-500 font-jp">電話相談</p>
+            <p class="font-bold text-gray-800 text-lg tracking-wider">0XX-XXXX-XXXX</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-sky-50 rounded-xl border border-sky-100">
+          <i class="fa-brands fa-line text-sky-500 text-xl w-6 text-center"></i>
+          <div>
+            <p class="text-xs text-gray-500 font-jp">LINE相談</p>
+            <p class="font-semibold text-gray-800">@solutioncoop</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-xl border border-blue-100">
+          <i class="fa-solid fa-comments text-blue-500 text-xl w-6 text-center"></i>
+          <div>
+            <p class="text-xs text-gray-500">Zalo / Chat</p>
+            <p class="font-semibold text-gray-800">Zalo: 0XX-XXXX-XXXX</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 bg-forest-50 border border-forest-200 rounded-xl p-3">
+        <p class="text-forest-800 text-xs font-semibold text-center leading-relaxed">
+          <i class="fa-solid fa-clock mr-1 text-forest-600"></i>
+          休日・夜間も母国語で対応します<br/>
+          <span class="text-forest-700">Hỗ trợ bằng <strong>tiếng mẹ đẻ</strong> ngoài giờ hành chính và ngày nghỉ</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== コンプライアンス宣言 ========== -->
+    <div class="mb-5">
+      <div class="text-center mb-4 slide-up-d2">
+        <h2 class="text-lg font-extrabold text-gray-800">
+          Cam Kết của Chúng Tôi
+        </h2>
+        <p class="text-gray-500 text-xs font-jp">コンプライアンス宣言</p>
+      </div>
+
+      <!-- Rule 1: No passport confiscation -->
+      <div class="compliance-card border-l-rose-500 mb-3 slide-up-d1" style="border-left-color: #e11d48;">
+        <div class="w-12 h-12 bg-rose-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-passport text-rose-500 text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="bg-rose-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">Nghiêm cấm</span>
+          </div>
+          <p class="font-bold text-gray-800 text-sm mb-1">
+            KHÔNG thu giữ Hộ chiếu / Thẻ ngoại kiều
+          </p>
+          <p class="text-xs text-gray-500 font-jp leading-relaxed">
+            旅券・在留カードの保管禁止<br/>
+            パスポートや在留カードをお預かりすることは一切ありません。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rule 2: No security deposit -->
+      <div class="compliance-card mb-3 slide-up-d2" style="border-left-color: #f59e0b;">
+        <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-circle-dollar-to-slot text-amber-500 text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">Nghiêm cấm</span>
+          </div>
+          <p class="font-bold text-gray-800 text-sm mb-1">
+            KHÔNG thu tiền cọc / Phạt vi phạm HĐ
+          </p>
+          <p class="text-xs text-gray-500 font-jp leading-relaxed">
+            保証金・違約金徴収の禁止<br/>
+            保証金・違約金の徴収は法律で禁止されています。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rule 3: Job transfer support -->
+      <div class="compliance-card slide-up-d3" style="border-left-color: #16a34a;">
+        <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-right-left text-green-600 text-xl"></i>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">Quyền lợi</span>
+          </div>
+          <p class="font-bold text-gray-800 text-sm mb-1">
+            Hỗ trợ chuyển việc đúng quy định
+          </p>
+          <p class="text-xs text-gray-500 font-jp leading-relaxed">
+            転籍のサポート<br/>
+            法律に基づき、適切な転籍手続きをサポートします。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rights Info Card -->
+    <div class="bg-white rounded-2xl p-5 mb-5 shadow-sm border border-amber-200">
+      <h3 class="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-shield-halved text-amber-500"></i>
+        Quyền lợi của bạn / あなたの権利
+      </h3>
+      <ul class="space-y-2">
+        <li class="flex items-start gap-2 text-xs text-gray-600">
+          <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+          <span>Nhận lương đúng thỏa thuận — <span class="font-jp text-gray-500">賃金は契約通りに受け取れます</span></span>
+        </li>
+        <li class="flex items-start gap-2 text-xs text-gray-600">
+          <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+          <span>Nghỉ ngày nghỉ theo luật — <span class="font-jp text-gray-500">法定休日は取得できます</span></span>
+        </li>
+        <li class="flex items-start gap-2 text-xs text-gray-600">
+          <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+          <span>Được tự do liên lạc với gia đình — <span class="font-jp text-gray-500">家族との連絡は自由です</span></span>
+        </li>
+        <li class="flex items-start gap-2 text-xs text-gray-600">
+          <i class="fa-solid fa-check-circle text-green-500 mt-0.5 flex-shrink-0"></i>
+          <span>Được giữ hộ chiếu của mình — <span class="font-jp text-gray-500">パスポートは自分で保管できます</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Back to Home -->
+    <div class="text-center mb-6">
+      <a href="index.html" class="inline-flex items-center gap-2 bg-forest-800 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-forest-700 transition-all shadow-md">
+        <i class="fa-solid fa-house"></i>
+        Về Trang Chủ / トップページへ
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ========== FIXED BOTTOM CTA BAR ========== -->
+  <div class="cta-bar" id="ctaBar">
+    <p class="cta-label">
+      <strong>休日・夜間も母国語で対応します</strong><br/>
+      Hỗ trợ bằng tiếng mẹ đẻ ngoài giờ hành chính và ngày nghỉ
+    </p>
+    <div class="cta-buttons">
+      <!-- Hotline Button -->
+      <a href="tel:+810000000000" id="btn-hotline" class="cta-btn btn-hotline pulse-red">
+        <i class="fa-solid fa-phone"></i>
+        <span>Gọi Hotline</span>
+      </a>
+      <!-- Zalo Button -->
+      <a href="https://zalo.me/0000000000" id="btn-zalo" class="cta-btn btn-zalo" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-comment-dots"></i>
+        <span>Chat Zalo</span>
+      </a>
+      <!-- LINE Button -->
+      <a href="https://line.me/ti/p/@solutioncoop" id="btn-line" class="cta-btn btn-line" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-line"></i>
+        <span>Chat LINE</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Dynamically adjust body max-width centering for the fixed bar
+    function adjustCTABar() {
+      const bar = document.getElementById('ctaBar');
+      const bodyRect = document.body.getBoundingClientRect();
+      bar.style.left = bodyRect.left + 'px';
+      bar.style.right = (window.innerWidth - bodyRect.right) + 'px';
+      bar.style.transform = 'none';
+    }
+    adjustCTABar();
+    window.addEventListener('resize', adjustCTABar);
+  </script>
+</body>
+</html>

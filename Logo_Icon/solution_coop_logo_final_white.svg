@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- FINAL V1: Đầu tròn + Thân tam giác - White Version -->
+  
+  <rect x="0" y="0" width="512" height="512" rx="90" fill="#FFFFFF"/>
+  
+  <g fill="none" stroke="#3D3D3D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Left person: Circle head + Triangle body -->
+    <circle cx="148" cy="155" r="30"/>
+    <polygon points="148,190 100,300 196,300"/>
+    
+    <!-- Center person: Circle head + Triangle body (larger) -->
+    <circle cx="256" cy="130" r="38"/>
+    <polygon points="256,175 195,310 317,310"/>
+    
+    <!-- Right person: Circle head + Triangle body -->
+    <circle cx="364" cy="155" r="30"/>
+    <polygon points="364,190 316,300 412,300"/>
+    
+  </g>
+  
+  <text x="256" y="390" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="300" letter-spacing="5" fill="#3D3D3D">SOLUTION COOP</text>
+</svg>

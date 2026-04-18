@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="育成就労制度における監理支援機関。外国人材の受入れを法令に基づき適正にサポートします。" />
+  <meta name="robots" content="index, follow" />
+  <title>ソリューション協同組合 | 監理支援機関</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              50:  '#eef2fa',
+              100: '#d5dff2',
+              200: '#adbfe6',
+              300: '#7595d4',
+              400: '#4a70c3',
+              500: '#2d52a8',
+              600: '#1e3d8a',
+              700: '#162d6e',
+              800: '#0D2B5E',
+              900: '#091e47',
+            },
+            gold: {
+              300: '#f0d875',
+              400: '#e6c84a',
+              500: '#C9A84C',
+              600: '#a8862e',
+            }
+          },
+          fontFamily: {
+            jp: ['"Noto Sans JP"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { font-family: 'Noto Sans JP', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #091e47 0%, #0D2B5E 50%, #162d6e 100%);
+    }
+    .gold-border { border-color: #C9A84C; }
+    .section-divider {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, #C9A84C, #e6c84a);
+      border-radius: 2px;
+      margin: 0 auto 1.5rem;
+    }
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(13,43,94,0.15);
+    }
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #0D2B5E, #162d6e);
+      color: white;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid #C9A84C;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(13,43,94,0.3);
+    }
+    .pdf-btn:hover {
+      background: linear-gradient(135deg, #C9A84C, #e6c84a);
+      color: #091e47;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201,168,76,0.4);
+    }
+    .pdf-btn i {
+      font-size: 1.4rem;
+    }
+    nav a { transition: color 0.2s; }
+    .warning-box {
+      background: #fff5f5;
+      border: 2px solid #dc2626;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.7s ease forwards; }
+    .fade-in-delay { animation: fadeInUp 0.7s ease 0.2s forwards; opacity: 0; }
+    .fade-in-delay-2 { animation: fadeInUp 0.7s ease 0.4s forwards; opacity: 0; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header id="top" class="bg-navy-800 shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
+          <i class="fa-solid fa-handshake text-navy-800 text-lg"></i>
+        </div>
+        <div>
+          <p class="text-white font-bold text-sm leading-tight">ソリューション協同組合</p>
+          <p class="text-gold-400 text-xs">監理支援機関</p>
+        </div>
+      </div>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#overview" class="text-gray-300 hover:text-gold-400 text-sm font-medium">組合概要</a>
+        <a href="#industries" class="text-gray-300 hover:text-gold-400 text-sm font-medium">取扱職種</a>
+        <a href="#sending" class="text-gray-300 hover:text-gold-400 text-sm font-medium">送出機関</a>
+        <a href="#disclosure" class="text-gold-400 hover:text-gold-300 text-sm font-bold border border-gold-500 px-3 py-1 rounded-md">情報公開</a>
+      </nav>
+      <!-- Mobile menu toggle -->
+      <button id="menuBtn" class="md:hidden text-white text-xl" aria-label="メニュー">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-navy-900 px-4 py-3 space-y-2">
+      <a href="#overview" class="block text-gray-300 hover:text-gold-400 py-2 border-b border-navy-700">組合概要</a>
+      <a href="#industries" class="block text-gray-300 hover:text-gold-400 py-2 border-b border-navy-700">取扱職種</a>
+      <a href="#sending" class="block text-gray-300 hover:text-gold-400 py-2 border-b border-navy-700">送出機関</a>
+      <a href="#disclosure" class="block text-gold-400 hover:text-gold-300 py-2 font-bold">情報公開</a>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero-gradient py-20 md:py-28 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-10 right-10 w-64 h-64 border-2 border-gold-400 rounded-full"></div>
+      <div class="absolute bottom-10 left-10 w-40 h-40 border-2 border-gold-400 rounded-full"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-gold-500 bg-opacity-20 border border-gold-500 px-4 py-2 rounded-full mb-6 fade-in">
+        <i class="fa-solid fa-star text-gold-400 text-sm"></i>
+        <span class="text-gold-400 text-sm font-semibold">育成就労制度 対応機関</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black text-white mb-4 leading-tight fade-in">
+        外国人材の受入れを、<br />
+        <span class="text-gold-400">法令に基づき適正に</span>サポートします
+      </h1>
+      <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-8 fade-in-delay">
+        ソリューション協同組合は、育成就労法に基づく<strong class="text-white">認定監理支援機関</strong>として、
+        受入れ企業様の法令遵守と外国人材のキャリア育成を支援いたします。
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-delay-2">
+        <a href="#overview" class="bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold px-8 py-3 rounded-lg transition-all shadow-lg hover:shadow-gold-500/30">
+          <i class="fa-solid fa-building mr-2"></i>組合概要を見る
+        </a>
+        <a href="#disclosure" class="border-2 border-white text-white hover:bg-white hover:text-navy-800 font-semibold px-8 py-3 rounded-lg transition-all">
+          <i class="fa-solid fa-file-pdf mr-2"></i>情報公開書類
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 組合概要 SECTION ========== -->
+  <section id="overview" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-800 mb-3">組合概要</h2>
+        <div class="section-divider"></div>
+        <p class="text-gray-500 text-sm">Corporate Information</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="bg-navy-800 px-6 py-4 flex items-center gap-3">
+          <i class="fa-solid fa-building text-gold-400 text-lg"></i>
+          <span class="text-white font-semibold">法人情報</span>
+        </div>
+        <table class="w-full">
+          <tbody>
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50 w-1/3 md:w-1/4">法人名称</th>
+              <td class="px-6 py-4 text-gray-800 font-medium">ソリューション協同組合</td>
+            </tr>
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50">住所</th>
+              <td class="px-6 py-4 text-gray-800">〒000-0000 ○○県○○市○○町○-○-○</td>
+            </tr>
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50">許可番号</th>
+              <td class="px-6 py-4 text-gray-800 font-mono font-semibold tracking-wider">第 XXXX-XXXXXX 号</td>
+            </tr>
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50">代表者の氏名</th>
+              <td class="px-6 py-4 text-gray-800">○○ ○○（代表理事）</td>
+            </tr>
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50">電話番号</th>
+              <td class="px-6 py-4 text-gray-800">0XX-XXXX-XXXX</td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <th class="text-left px-6 py-4 text-sm font-semibold text-navy-700 bg-navy-50">設立年月日</th>
+              <td class="px-6 py-4 text-gray-800">令和○年○月○日</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 取扱職種 SECTION ========== -->
+  <section id="industries" class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-800 mb-3">取扱職種</h2>
+        <div class="section-divider"></div>
+        <p class="text-gray-500 text-sm">Accepted Industries & Occupations</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Industry Cards -->
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-industry text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">製造業</p>
+          <p class="text-gray-500 text-xs mt-1">Manufacturing</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-utensils text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">飲食料品製造業</p>
+          <p class="text-gray-500 text-xs mt-1">Food Manufacturing</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-hard-hat text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">建設業</p>
+          <p class="text-gray-500 text-xs mt-1">Construction</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-seedling text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">農業</p>
+          <p class="text-gray-500 text-xs mt-1">Agriculture</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-fish text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">漁業・養殖業</p>
+          <p class="text-gray-500 text-xs mt-1">Fishery</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-shirt text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">縫製業</p>
+          <p class="text-gray-500 text-xs mt-1">Sewing & Apparel</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-broom text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">ビルクリーニング業</p>
+          <p class="text-gray-500 text-xs mt-1">Building Cleaning</p>
+        </div>
+        <div class="card-hover bg-white rounded-xl p-5 text-center shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-3">
+            <i class="fa-solid fa-truck text-navy-600 text-xl"></i>
+          </div>
+          <p class="font-semibold text-navy-800 text-sm">自動車整備業</p>
+          <p class="text-gray-500 text-xs mt-1">Auto Maintenance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 送出機関 SECTION ========== -->
+  <section id="sending" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-navy-800 mb-3">提携送出機関</h2>
+        <div class="section-divider"></div>
+        <p class="text-gray-500 text-sm">Approved Overseas Sending Organizations</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Vietnam -->
+        <div class="card-hover bg-gradient-to-r from-red-50 to-white border border-red-100 rounded-xl p-5 flex items-center gap-4 shadow-sm">
+          <div class="text-4xl">🇻🇳</div>
+          <div class="flex-1">
+            <p class="font-bold text-gray-800 text-base">ベトナム送出機関 (例)</p>
+            <p class="text-gray-500 text-sm">ABC Human Resources Co., Ltd.</p>
+            <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-circle-check mr-1"></i>認定済み</p>
+          </div>
+        </div>
+        <!-- Myanmar -->
+        <div class="card-hover bg-gradient-to-r from-yellow-50 to-white border border-yellow-100 rounded-xl p-5 flex items-center gap-4 shadow-sm">
+          <div class="text-4xl">🇲🇲</div>
+          <div class="flex-1">
+            <p class="font-bold text-gray-800 text-base">ミャンマー送出機関 (例)</p>
+            <p class="text-gray-500 text-sm">Myanmar Golden Manpower Co., Ltd.</p>
+            <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-circle-check mr-1"></i>認定済み</p>
+          </div>
+        </div>
+        <!-- Indonesia -->
+        <div class="card-hover bg-gradient-to-r from-red-50 to-white border border-red-100 rounded-xl p-5 flex items-center gap-4 shadow-sm">
+          <div class="text-4xl">🇮🇩</div>
+          <div class="flex-1">
+            <p class="font-bold text-gray-800 text-base">インドネシア送出機関 (例)</p>
+            <p class="text-gray-500 text-sm">PT. Sumber Daya Insani</p>
+            <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-circle-check mr-1"></i>認定済み</p>
+          </div>
+        </div>
+        <!-- Philippines -->
+        <div class="card-hover bg-gradient-to-r from-blue-50 to-white border border-blue-100 rounded-xl p-5 flex items-center gap-4 shadow-sm">
+          <div class="text-4xl">🇵🇭</div>
+          <div class="flex-1">
+            <p class="font-bold text-gray-800 text-base">フィリピン送出機関 (例)</p>
+            <p class="text-gray-500 text-sm">Manila Global Recruitment Corp.</p>
+            <p class="text-xs text-green-600 font-semibold mt-1"><i class="fa-solid fa-circle-check mr-1"></i>認定済み</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 情報公開 SECTION (CRITICAL) ========== -->
+  <section id="disclosure" class="py-16 bg-navy-800 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 right-0 w-96 h-96 border-2 border-gold-400 rounded-full -translate-y-1/2 translate-x-1/4"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 bg-gold-500 bg-opacity-20 border border-gold-500 px-4 py-2 rounded-full mb-4">
+          <i class="fa-solid fa-gavel text-gold-400"></i>
+          <span class="text-gold-400 font-semibold text-sm">育成就労法 第43条</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">情報公開</h2>
+        <div class="section-divider"></div>
+        <p class="text-gray-400 text-sm">Legal Document Disclosure</p>
+      </div>
+
+      <!-- PDF Download Buttons -->
+      <!-- 📍 PDF URL挿入箇所: href="#" を実際のPDFパスに変更してください -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-10">
+        <!-- PDF Button 1: href="#" → 実際のPDFパスに変更 -->
+        <a id="pdf-btn-1" href="#" class="pdf-btn w-full sm:w-auto justify-center" download>
+          <i class="fa-solid fa-file-pdf"></i>
+          <span>業務の運営に関する規程</span>
+        </a>
+        <!-- PDF Button 2: href="#" → 実際のPDFパスに変更 -->
+        <a id="pdf-btn-2" href="#" class="pdf-btn w-full sm:w-auto justify-center" download>
+          <i class="fa-solid fa-file-pdf"></i>
+          <span>監理支援費表</span>
+        </a>
+      </div>
+
+      <!-- ⚠️ CRITICAL WARNING TEXT -->
+      <div class="warning-box max-w-2xl mx-auto text-center">
+        <p class="text-red-700 font-bold text-sm md:text-base leading-relaxed">
+          <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+          ※監理支援費は受入企業から徴収する実費であり、<br class="hidden sm:block" />
+          外国人本人には一切負担させません。
+        </p>
+      </div>
+
+      <!-- Additional info -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl p-4 text-center">
+          <i class="fa-solid fa-scale-balanced text-gold-400 text-2xl mb-2"></i>
+          <p class="text-white text-sm font-semibold">法令遵守</p>
+          <p class="text-gray-400 text-xs mt-1">育成就労法に完全準拠</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl p-4 text-center">
+          <i class="fa-solid fa-shield-halved text-gold-400 text-2xl mb-2"></i>
+          <p class="text-white text-sm font-semibold">透明性の確保</p>
+          <p class="text-gray-400 text-xs mt-1">全費用を公開・明示</p>
+        </div>
+        <div class="bg-white bg-opacity-5 border border-white border-opacity-10 rounded-xl p-4 text-center">
+          <i class="fa-solid fa-user-shield text-gold-400 text-2xl mb-2"></i>
+          <p class="text-white text-sm font-semibold">人権尊重</p>
+          <p class="text-gray-400 text-xs mt-1">外国人材の権利を守ります</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-gray-900 text-gray-400 py-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <div class="flex items-center gap-2 justify-center md:justify-start mb-2">
+            <div class="w-8 h-8 bg-gold-500 rounded flex items-center justify-center">
+              <i class="fa-solid fa-handshake text-navy-800 text-sm"></i>
+            </div>
+            <span class="text-white font-semibold">ソリューション協同組合</span>
+          </div>
+          <p class="text-sm">監理支援機関 | 〒000-0000 ○○県○○市</p>
+          <p class="text-sm mt-1">許可番号: 第 XXXX-XXXXXX 号</p>
+        </div>
+        <div class="flex flex-col items-center md:items-end gap-2">
+          <a href="privacy.html" class="text-gray-400 hover:text-gold-400 text-sm transition-colors">
+            <i class="fa-solid fa-lock mr-1"></i>個人情報保護方針
+          </a>
+          <p class="text-xs text-gray-600 mt-2">
+            &copy; 2024 ソリューション協同組合. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JS: Mobile menu toggle ========== -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Close menu when link clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+    // Smooth scroll offset for sticky nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 70;
+          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

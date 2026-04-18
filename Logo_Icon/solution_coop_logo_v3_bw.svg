@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520" height="520" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo based on V3 - Solid fill style - B&W -->
+  
+  <rect x="0" y="0" width="520" height="520" fill="#FFFFFF"/>
+  
+  <g fill="#1A1A1A">
+    
+    <!-- Left person -->
+    <circle cx="145" cy="145" r="35"/>
+    <polygon points="145,185 90,310 200,310"/>
+    
+    <!-- Center person (larger) -->
+    <circle cx="260" cy="115" r="45"/>
+    <polygon points="260,168 185,320 335,320"/>
+    
+    <!-- Right person -->
+    <circle cx="375" cy="145" r="35"/>
+    <polygon points="375,185 320,310 430,310"/>
+    
+  </g>
+  
+  <text x="260" y="400" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="600" letter-spacing="4" fill="#1A1A1A">SOLUTION COOP</text>
+</svg>

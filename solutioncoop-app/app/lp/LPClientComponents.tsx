@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import FaqSection from '@/components/FaqSection';
 
 export default function LPClientComponents() {
   const [showFeeTable, setShowFeeTable] = useState(false);
@@ -121,8 +122,11 @@ export default function LPClientComponents() {
 
 
 
+      {/* ===== SECTION: FAQ (From Home) ===== */}
+      <FaqSection />
+
       {/* ===== SECTION: FAQ (Elegant Accordion) ===== */}
-      <section id="faq" className="py-20 md:py-28 bg-white">
+      <section id="faq-detail" className="py-20 md:py-10 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
 
           {/* Header */}

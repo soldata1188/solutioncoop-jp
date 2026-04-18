@@ -3,20 +3,24 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import type { NewsCategory, NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG } from '@/lib/news';
+import RichTextEditor from '@/components/RichTextEditor';
 import ImageUploader from '@/components/ImageUploader';
 
 export default function EditArticlePage() {
-  const router  = useRouter();
-  const params  = useParams<{ id: string }>();
-  const id      = params.id;
+  const router = useRouter();
+  const params = useParams<{ id: string }>();
+  const id = params.id;
 
-  const [loading, setLoading] = useState(true);
-  const [saving,  setSaving]  = useState(false);
-  const [toast,   setToast]   = useState<{ msg: string; type: 'ok'|'err' } | null>(null);
-  const [form, setForm] = useState<Partial<NewsItem>>({});
+  const [loading,    setLoading]    = useState(true);
+  const [saving,     setSaving]     = useState(false);
+  const [aiTopic,    setAiTopic]    = useState('');
+  const [aiStyle,    setAiStyle]    = useState<'policy' | 'casestudy' | 'faq' | 'result'>('casestudy');
+  const [generating, setGenerating] = useState(false);
+  const [toast,      setToast]      = useState<string | null>(null);
+  const [form,       setForm]       = useState<Partial<NewsItem>>({});
 
-  function showToast(msg: string, type: 'ok'|'err' = 'ok') {
-    setToast({ msg, type });
+  function showToast(msg: string) {
+    setToast(msg);
     setTimeout(() => setToast(null), 3000);
   }
 
@@ -33,12 +37,11 @@ export default function EditArticlePage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.title?.trim() || !form.content?.trim()) {
-      showToast('タイトルと本文は必須です', 'err');
+      showToast('❌ タイトルと本文は必須です');
       return;
     }
     setSaving(true);
-    // Auto-generate excerpt: strip HTML tags, take first 60 chars
-    const plainText = (form.content || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    const plainText = (form.content || '').replace(/[#*`>\-]/g, '').replace(/\s+/g, ' ').trim();
     const excerpt = plainText.length > 60 ? plainText.slice(0, 60) + '…' : plainText;
     const res = await fetch(`/api/news/${id}`, {
       method: 'PUT',
@@ -46,8 +49,39 @@ export default function EditArticlePage() {
       body: JSON.stringify({ ...form, excerpt }),
     });
     setSaving(false);
-    if (res.ok) { showToast('保存しました ✅'); }
-    else        { showToast('保存に失敗しました', 'err'); }
+    if (res.ok) { showToast('✅ 保存しました'); }
+    else        { showToast('❌ 保存に失敗しました'); }
+  }
+
+  async function handleAiGenerate() {
+    if (!aiTopic.trim()) {
+      showToast('⚠️ AIに伝えたいキーワードを入力してください');
+      return;
+    }
+    setGenerating(true);
+    try {
+      const res = await fetch('/api/ai/news-gen', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: aiTopic, category: form.category || 'news', style: aiStyle }),
+      });
+      const data = await res.json();
+      if (res.ok && data.title) {
+        setForm(f => ({
+          ...f,
+          title: data.title || f.title,
+          content: data.content || f.content,
+          seoTitle: data.title || f.seoTitle,
+          seoDescription: data.meta_description || f.seoDescription,
+        }));
+        showToast('✨ AIが記事を生成しました！');
+      } else {
+        showToast(`❌ AI Error: ${data.error || 'Unknown'}`);
+      }
+    } catch {
+      showToast('❌ AI接続エラー');
+    }
+    setGenerating(false);
   }
 
   if (loading) return (
@@ -57,44 +91,98 @@ export default function EditArticlePage() {
   );
 
   return (
-    <div className="p-6 md:p-8 max-w-4xl">
+    <div className="p-6 md:p-8 max-w-6xl mx-auto">
+      {/* Toast */}
       {toast && (
-        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white ${toast.type === 'ok' ? 'bg-green-600' : 'bg-red-600'}`}>
-          {toast.msg}
+        <div className="fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white bg-navy shadow-2xl">
+          {toast}
         </div>
       )}
 
       <div className="mb-8">
         <a href="/admin/news" className="text-gray-400 hover:text-gray-600 text-sm">← 一覧へ戻る</a>
         <h1 className="text-2xl font-black text-gray-800 mt-2">記事を編集</h1>
-        <p className="text-gray-400 text-xs mt-1">ID: {id}</p>
+        <p className="text-gray-500 text-sm mt-1">記事の内容を修正・更新します</p>
+      </div>
+
+      {/* ── AI Assistant Block ── */}
+      <div className="mb-8 bg-gradient-to-r from-navy to-blue-800 rounded p-6 text-white shadow-xl relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-2xl animate-pulse">✨</span>
+            <h2 className="font-bold text-lg">AI記事生成アシスタント</h2>
+            <span className="text-xs bg-white/20 px-2 py-0.5 rounded text-blue-100">既存内容を上書きします</span>
+          </div>
+          <p className="text-blue-100 text-sm mb-4">キーワードと文体を選び、AIがプロ品質の記事を再生成します。</p>
+
+          {/* Style selector */}
+          <div className="flex flex-wrap gap-3 mb-4">
+            {([
+              { key: 'policy',    label: '📋 制度・法改正', desc: 'Style A' },
+              { key: 'casestudy', label: '🏭 導入事例',    desc: 'Style B' },
+              { key: 'faq',       label: '❓ FAQ・Q&A',    desc: 'Style C' },
+              { key: 'result',    label: '✈️ 受入実績',    desc: 'Style D' },
+            ] as const).map(s => (
+              <button key={s.key} type="button"
+                onClick={() => setAiStyle(s.key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-all border ${
+                  aiStyle === s.key
+                    ? 'bg-white text-navy border-white shadow-md'
+                    : 'bg-white/10 text-blue-100 border-white/20 hover:bg-white/20'
+                }`}>
+                {s.label}
+                <span className="text-[10px] opacity-60">{s.desc}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-3">
+            <input
+              type="text"
+              value={aiTopic}
+              onChange={e => setAiTopic(e.target.value)}
+              placeholder="例：技能実習生59期生の入国、受入企業の手続き負担軽減..."
+              className="flex-1 bg-white/10 border border-white/20 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white/20 transition placeholder:text-white/40"
+            />
+            <button
+              type="button"
+              onClick={handleAiGenerate}
+              disabled={generating}
+              className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 px-8 rounded transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
+            >
+              {generating ? '⏳ 生成中...' : '✨ AI生成'}
+            </button>
+          </div>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-3 gap-6">
 
+          {/* ── Main content ── */}
           <div className="md:col-span-2 space-y-5">
+
             <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">📝 記事内容</h2>
               <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">タイトル <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-bold text-gray-800 mb-1.5">
+                  タイトル <span className="text-red-600">*</span>
+                </label>
                 <input type="text" value={form.title || ''} onChange={e => update('title', e.target.value)}
-                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition"
+                  placeholder="例：技能実習生第60期生として計13名が入国しました"
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
                 />
               </div>
-              <ImageUploader
-                value={form.image || ''}
-                onChange={v => update('image', v)}
+              <ImageUploader value={form.image || ''} onChange={v => update('image', v)} />
+              <RichTextEditor
+                value={form.content || ''}
+                onChange={v => update('content', v)}
+                label="本文"
               />
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">本文（HTML可）</label>
-                <textarea value={form.content || ''} onChange={e => update('content', e.target.value)}
-                  rows={10}
-                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 font-mono focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition resize-y"
-                />
-              </div>
             </div>
 
+            {/* SEO */}
             <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🔍 SEO設定</h2>
               <div>
@@ -117,15 +205,18 @@ export default function EditArticlePage() {
                   <p className="text-[10px] text-gray-400 font-bold uppercase mb-2">検索プレビュー</p>
                   <p className="text-sm text-blue-700 font-semibold line-clamp-1">{form.seoTitle || form.title}｜ソリューション協同組合</p>
                   <p className="text-green-700 text-xs">https://solutioncoop-jp.com/news/{id}</p>
-                  <p className="text-xs text-gray-600 mt-1 line-clamp-2">{form.seoDescription || (form.content || '').replace(/<[^>]*>/g, '').slice(0, 60)}</p>
+                  <p className="text-xs text-gray-600 mt-1 line-clamp-2">{form.seoDescription || (form.content || '').replace(/[#*`>\-]/g, '').slice(0, 80)}</p>
                 </div>
               )}
             </div>
           </div>
 
+          {/* ── Sidebar settings ── */}
           <div className="space-y-5">
+
             <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">⚙️ 公開設定</h2>
+
               <div>
                 <label className="block text-xs font-bold text-gray-600 mb-2">公開ステータス</label>
                 <div className="flex gap-3">
@@ -142,7 +233,7 @@ export default function EditArticlePage() {
                 </div>
               </div>
 
-              {/* Pin switch */}
+              {/* Pin */}
               <div className="pt-4 border-t border-gray-100">
                 <label className="flex items-center gap-3 cursor-pointer group">
                   <div className="relative flex items-center justify-center">
@@ -164,11 +255,22 @@ export default function EditArticlePage() {
                   className="w-full border border-gray-200 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
                 />
               </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-600 mb-1.5">
+                  🕐 予約投稿日時 <span className="font-normal text-gray-400">（任意）</span>
+                </label>
+                <input type="datetime-local" value={form.scheduledDate || ''} onChange={e => update('scheduledDate', e.target.value)}
+                  className="w-full border border-gray-200 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
+                />
+                <p className="text-[10px] text-gray-400 mt-1">設定すると指定日時に自動公開されます</p>
+              </div>
             </div>
 
+            {/* Category */}
             <div className="bg-white rounded border border-gray-100 p-5 space-y-3">
               <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🏷️ カテゴリ</h2>
-              {(Object.entries(CATEGORY_CONFIG) as [NewsCategory, {label:string;icon:string}][]).map(([key, cfg]) => (
+              {(Object.entries(CATEGORY_CONFIG) as [NewsCategory, { label: string; icon: string }][]).map(([key, cfg]) => (
                 <button key={key} type="button"
                   onClick={() => update('category', key)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
@@ -178,6 +280,7 @@ export default function EditArticlePage() {
               ))}
             </div>
 
+            {/* Actions */}
             <div className="flex gap-3">
               <a href={`/news/${id}`} target="_blank"
                 className="flex-1 text-center py-3 border-2 border-gray-200 text-gray-600 font-bold rounded hover:bg-gray-50 transition text-sm">
@@ -189,6 +292,7 @@ export default function EditArticlePage() {
               className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded transition text-base">
               {saving ? '⏳ 保存中...' : '💾 保存する'}
             </button>
+
           </div>
         </div>
       </form>

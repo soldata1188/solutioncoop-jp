@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import DisclosureTable from '@/components/DisclosureTable';
 
 async function getDocuments() {
   const filePath = path.join(process.cwd(), 'data', 'documents.json');
@@ -33,7 +34,7 @@ export default async function DisclosurePage() {
             <h1 className="text-3xl md:text-4xl font-black text-[#1e40af] mb-4 tracking-tight">情報公開</h1>
             <p className="text-gray-600 font-bold text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
               関係法令を順守し、透明性の高い運営を行うため、当組合の監理費表および運営規程などの重要書類を公開しております。<br className="hidden md:block"/>
-              各ドキュメントは直接ダウンロードまたは閲覧が可能です。
+              各ドキュメントは直接ダウンロード hoặc 閲覧が可能です。
             </p>
           </div>
 
@@ -54,48 +55,7 @@ export default async function DisclosurePage() {
                 <p className="text-gray-500 font-bold text-lg">現在、公開されている書類はありません。</p>
               </div>
             ) : (
-              <div className="overflow-x-auto pb-2">
-                <table className="w-full min-w-[600px] text-left border-collapse">
-                  <thead className="bg-[#1e40af] text-white">
-                    <tr>
-                      <th className="px-5 py-4 text-xs font-black tracking-widest uppercase border-r border-[#173085] w-24 text-center">形式</th>
-                      <th className="px-5 py-4 text-xs font-black tracking-widest uppercase border-r border-[#173085]">書類名</th>
-                      <th className="px-5 py-4 text-xs font-black tracking-widest uppercase border-r border-[#173085] whitespace-nowrap w-32">更新日</th>
-                      <th className="px-5 py-4 text-xs font-black tracking-widest uppercase text-center whitespace-nowrap w-40">ダウンロード</th>
-                    </tr>
-                  </thead>
-                  <tbody className="border-b border-gray-200">
-                    {docs.map((doc: any, idx: number) => {
-                      const isPDF = doc.filename.toLowerCase().endsWith('.pdf');
-                      const bgClass = idx % 2 === 0 ? 'bg-white' : 'bg-[#f8fafc]'; // Zebra strips
-                      
-                      return (
-                        <tr key={doc.id} className={`${bgClass} hover:bg-blue-50 transition-colors`}>
-                          <td className="px-5 py-4 border-r border-gray-200 text-center">
-                             <div className={`inline-flex items-center justify-center px-2 py-1 rounded text-[10px] font-black tracking-widest uppercase border shadow-sm ${isPDF ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-600 border-green-200'}`}>
-                               {isPDF ? 'PDF' : 'FILE'}
-                             </div>
-                          </td>
-                          <td className="px-5 py-4 border-r border-gray-200">
-                            <p className="font-bold text-slate-800 text-[15px] group-hover:text-[#1e40af] transition-colors">{doc.title}</p>
-                            <p className="text-[10px] text-gray-400 font-mono mt-1">{(doc.size / 1024 / 1024).toFixed(2)} MB</p>
-                          </td>
-                          <td className="px-5 py-4 border-r border-gray-200 text-[11px] font-bold text-gray-500 whitespace-nowrap">
-                            {new Date(doc.uploadedAt).toLocaleDateString('ja-JP').replace(/\//g, '.')}
-                          </td>
-                          <td className="px-5 py-4 text-center">
-                             <a href={doc.url} target="_blank" rel="noopener noreferrer"
-                               className="inline-flex items-center justify-center gap-1.5 bg-white border border-[#1e40af] text-[#1e40af] hover:bg-[#1e40af] hover:text-white font-black px-4 py-2.5 rounded text-[12px] transition-colors shadow-sm w-full">
-                               <span>閲覧・保存</span>
-                               <span className="text-sm">📥</span>
-                             </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+              <DisclosureTable docs={docs} />
             )}
           </div>
 

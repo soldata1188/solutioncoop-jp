@@ -88,3 +88,20 @@ export async function DELETE(request: Request) {
 
   return NextResponse.json({ success: true });
 }
+
+export async function PATCH(request: Request) {
+  await initFile();
+  try {
+    const { id, protected: isProtected } = await request.json();
+    if (!id) return NextResponse.json({ error: 'Thiếu ID' }, { status: 400 });
+
+    const rawData = await fs.readFile(dataFile, 'utf-8');
+    let docs = JSON.parse(rawData);
+    docs = docs.map((d: any) => d.id === id ? { ...d, protected: isProtected } : d);
+    
+    await fs.writeFile(dataFile, JSON.stringify(docs, null, 2));
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}

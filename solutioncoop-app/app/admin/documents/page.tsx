@@ -140,19 +140,35 @@ export default function DocumentManager() {
                 <th className="px-6 py-4 text-[11px] font-black tracking-widest uppercase text-gray-500">ドキュメント名</th>
                 <th className="px-6 py-4 text-[11px] font-black tracking-widest uppercase text-gray-500 w-24">サイズ</th>
                 <th className="px-6 py-4 text-[11px] font-black tracking-widest uppercase text-gray-500 w-32">登録日</th>
+                <th className="px-6 py-4 text-[11px] font-black tracking-widest uppercase text-gray-500 w-28 text-center">会員限定</th>
                 <th className="px-6 py-4 text-[11px] font-black tracking-widest uppercase text-gray-500 text-right w-[280px]">操作</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {loading ? (
-                <tr><td colSpan={5} className="p-8 text-center text-gray-500 font-bold">データを読み込んでいます...</td></tr>
+                <tr><td colSpan={6} className="p-8 text-center text-gray-500 font-bold">データを読み込んでいます...</td></tr>
               ) : docs.length === 0 ? (
-                <tr><td colSpan={5} className="p-16 text-center text-gray-400 font-bold">
+                <tr><td colSpan={6} className="p-16 text-center text-gray-400 font-bold">
                   <span className="text-4xl block mb-2">📭</span> アップロードされた書類はありません。
                 </td></tr>
               ) : (
                 docs.map(doc => {
                   const tagInfo = getDocTag(doc.title);
+                  const isProtected = !!doc.protected;
+                  
+                  const toggleProtected = async () => {
+                    try {
+                      const res = await fetch('/api/documents', {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ id: doc.id, protected: !isProtected })
+                      });
+                      if (res.ok) fetchDocs();
+                    } catch (e) {
+                      alert('設定の変更に失敗しました。');
+                    }
+                  };
+
                   return (
                   <tr key={doc.id} className="hover:bg-blue-50/40 transition-colors group">
                     <td className="px-6 py-5 w-36">
@@ -169,6 +185,12 @@ export default function DocumentManager() {
                     </td>
                     <td className="px-6 py-5 text-xs font-black text-gray-500">
                       {new Date(doc.uploadedAt).toLocaleDateString('ja-JP')}
+                    </td>
+                    <td className="px-6 py-5 text-center">
+                       <button onClick={toggleProtected} 
+                        className={`inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded border text-[10px] font-black transition-all ${isProtected ? 'bg-orange-50 text-orange-600 border-orange-200' : 'bg-gray-50 text-gray-400 border-gray-100 hover:bg-gray-100'}`}>
+                         {isProtected ? '🔒 会員限定' : '🔓 公開'}
+                       </button>
                     </td>
                     <td className="px-6 py-5 text-right">
                       <div className="flex justify-end gap-2 items-center">

@@ -10,6 +10,7 @@ export default function NewArticlePage() {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
   const [aiTopic, setAiTopic] = useState('');
+  const [aiStyle, setAiStyle] = useState<'policy' | 'casestudy' | 'faq'>('casestudy');
   const [generating, setGenerating] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
@@ -60,78 +61,27 @@ export default function NewArticlePage() {
     }
     setGenerating(true);
     try {
-      const tokenRes = await fetch('/api/ai/token');
-      const { key } = await tokenRes.json();
-      
-      if (!key) {
-        setToast('❌ Lỗi: VPS chưa được nạp GEMINI_API_KEY!');
-        setGenerating(false);
-        return;
-      }
-
-      const prompt = `
-      You are an Elite B2B Web Copywriter and Japanese Supervising Organization (監理団体) Specialist.
-      Project: "Solution Cooperative" (ソリューション協同組合) in Sakai, Osaka.
-      Target Audience: Japanese CEOs and HR Managers of Host Companies (受入企業).
-      TOPIC: "${aiTopic}"
-      CATEGORY: "${form.category}"
-      
-      [CONTENT GUIDELINES - PRIORITY]
-      1. SCANNABILITY & SPACING: Use frequent double line breaks. Paragraphs should be short (max 2-3 sentences). 
-      2. TONE: Professional but "Warm" Business Japanese (温かみのあるビジネス敬語). Avoid robotic repetition.
-      3. FORMATTING: Use clear H2/H3 headers. Every section must have Bullet Points (箇条書き). Use **Bold Text** for key phrases.
-      4. TERMINOLOGY: Use "煩雑な事務手続きの負担軽減" and "伴走型支援".
-      5. PROHIBITED PHRASES: Never use "丸投げ" or "二人三脚の伴走型支援".
-      6. CRO: End with a warm, spaced-out invitation for "Safe and Secure" consultation.
-      7. LENGTH: Concise but informative. Max 1200 characters for "content".
-
-      [SEO GUIDELINES]
-      - title: Catchy B2B headline (e.g., "[Benefit] + [Topic] | Solution Cooperative").
-      - seoTitle: High-conversion keywords included, max 60 chars.
-      - seoDescription: Benefit-driven meta description starting with the main keyword.
-
-      [OUTPUT FORMAT]
-      Return ONLY a JSON object:
-      {
-        "title": "...",
-        "content": "Markdown body with headers (#, ##), bullet points (-), and bold text (**). No horizontal lines (---).",
-        "seoTitle": "...",
-        "seoDescription": "..."
-      }
-      JSON ONLY. NO OTHER TEXT.
-      `;
-
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${key}`, {
+      const res = await fetch('/api/ai/news-gen', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { response_mime_type: "application/json" }
-        }),
+        body: JSON.stringify({ topic: aiTopic, category: form.category, style: aiStyle }),
       });
       const data = await res.json();
-      
-      if (res.ok) {
-        try {
-          const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text;
-          const parsed = JSON.parse(textOutput);
-          setForm(f => ({
-            ...f,
-            title: parsed.title,
-            content: parsed.content,
-            seoTitle: parsed.seoTitle,
-            seoDescription: parsed.seoDescription,
-          }));
-          setToast('✨ AIが記事を生成しました！');
-        } catch (e) {
-          setToast('❌ Lỗi xử lý kết quả AI');
-        }
+
+      if (res.ok && data.title) {
+        setForm(f => ({
+          ...f,
+          title: data.title || f.title,
+          content: data.content || f.content,
+          seoTitle: data.title || f.seoTitle,
+          seoDescription: data.meta_description || f.seoDescription,
+        }));
+        setToast('✨ AIが記事を生成しました！');
       } else {
-        const errorMsg = data.error?.message || 'Lỗi không xác định';
-        setToast(`❌ Lỗi Google API: ${errorMsg}`);
+        setToast(`❌ AI Error: ${data.error || 'Unknown'}`);
       }
     } catch (err) {
-      setToast('❌ Lỗi kết nối đến Google Gemini');
+      setToast('❌ AI接続エラー');
     }
     setGenerating(false);
   }
@@ -158,24 +108,45 @@ export default function NewArticlePage() {
         <div className="relative z-10">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-2xl animate-pulse">✨</span>
-            <h2 className="font-bold text-lg">AI Magic Assistant</h2>
+            <h2 className="font-bold text-lg">AI記事生成アシスタント</h2>
           </div>
-          <p className="text-blue-100 text-sm mb-4">書きたい内容のキーワードを入力するだけで、AIがタイトルから本文、SEO設定まで自動生成します。</p>
+          <p className="text-blue-100 text-sm mb-4">キーワードと文体を選び、AIがプロ品質の記事を自動生成します。</p>
+
+          {/* Style selector */}
+          <div className="flex flex-wrap gap-3 mb-4">
+            {([
+              { key: 'policy', label: '📋 制度・法改正', desc: 'Style A' },
+              { key: 'casestudy', label: '🏭 導入事例', desc: 'Style B' },
+              { key: 'faq', label: '❓ FAQ・Q&A', desc: 'Style C' },
+            ] as const).map(s => (
+              <button key={s.key} type="button"
+                onClick={() => setAiStyle(s.key)}
+                className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-all border ${
+                  aiStyle === s.key
+                    ? 'bg-white text-navy border-white shadow-md'
+                    : 'bg-white/10 text-blue-100 border-white/20 hover:bg-white/20'
+                }`}>
+                {s.label}
+                <span className="text-[10px] opacity-60">{s.desc}</span>
+              </button>
+            ))}
+          </div>
+
           <div className="flex flex-col md:flex-row gap-3">
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={aiTopic}
               onChange={(e) => setAiTopic(e.target.value)}
-              placeholder="例：技能実習生59期生の入国、大阪での建設研修..."
+              placeholder="例：技能実習生59期生の入国、受入企業の手続き負担軽減..."
               className="flex-1 bg-white/10 border border-white/20 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white/20 transition placeholder:text-white/40"
             />
-            <button 
+            <button
               type="button"
               onClick={handleAiGenerate}
               disabled={generating}
               className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 px-8 rounded transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
             >
-              {generating ? '⏳ 生成中...' : 'AI Generate 編集 ✨'}
+              {generating ? '⏳ 生成中...' : '✨ AI生成'}
             </button>
           </div>
         </div>

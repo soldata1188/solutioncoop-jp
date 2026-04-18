@@ -44,7 +44,7 @@ export default function AdminNewsPage() {
 
   const filtered = filter === 'all' ? items : items.filter(n => n.category === filter);
 
-  const CATS = ['all','news','result','system','event'] as const;
+  const CATS = ['all','news','result','system'] as const;
 
   return (
     <div className="p-6 md:p-8">
@@ -112,31 +112,43 @@ export default function AdminNewsPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50">
+                  <th className="text-left px-4 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-16">画像</th>
                   <th className="text-left px-5 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide">タイトル</th>
                   <th className="text-left px-4 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-24">カテゴリ</th>
                   <th className="text-left px-4 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-28">日付</th>
-                  <th className="text-center px-4 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-24">公開</th>
+                  <th className="text-center px-4 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wide w-20">公開</th>
                   <th className="px-4 py-4 w-32"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filtered.map(n => (
                   <tr key={n.id} className="hover:bg-gray-50/80 transition-colors">
-                    <td className="px-5 py-4">
+                    {/* 画像サムネイル */}
+                    <td className="px-4 py-3">
+                      {n.image ? (
+                        <div className="w-14 h-14 rounded overflow-hidden border border-gray-100 bg-gray-50 flex-shrink-0">
+                          <img src={n.image} alt={n.title} className="w-full h-full object-cover" />
+                        </div>
+                      ) : (
+                        <div className="w-14 h-14 rounded border border-dashed border-gray-200 bg-gray-50 flex items-center justify-center text-gray-300 text-xs flex-shrink-0">
+                          No img
+                        </div>
+                      )}
+                    </td>
+                    <td className="px-5 py-3">
                       <p className="font-semibold text-gray-800 line-clamp-1">{n.title}</p>
                       <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{n.excerpt}</p>
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-4 py-3">
                       <span className={`nbadge ${
                         n.category === 'news'   ? 'nb-news'   :
-                        n.category === 'result' ? 'nb-result' :
-                        n.category === 'system' ? 'nb-system' : 'nb-event'
+                        n.category === 'result' ? 'nb-result' : 'nb-system'
                       }`}>
                         {CATEGORY_CONFIG[n.category]?.icon} {CATEGORY_CONFIG[n.category]?.label}
                       </span>
                     </td>
-                    <td className="px-4 py-4 text-gray-500 text-xs whitespace-nowrap">{n.date}</td>
-                    <td className="px-4 py-4 text-center">
+                    <td className="px-4 py-3 text-gray-500 text-xs whitespace-nowrap">{n.date}</td>
+                    <td className="px-4 py-3 text-center">
                       <button onClick={() => togglePublish(n)}
                         className={`relative inline-flex h-6 w-11 items-center rounded transition-colors ${n.published ? 'bg-green-500' : 'bg-gray-300'}`}
                         title={n.published ? '公開中（クリックで非公開）' : '非公開（クリックで公開）'}>

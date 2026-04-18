@@ -558,6 +558,11 @@ export default async function HomePage() {
 
 
 
+        {/* ===== FAQ (よくある質問) ===== */}
+        <section id="faq">
+          <FaqSection />
+        </section>
+
         {/* ===== CTA (B2B Host Companies) ===== */}
         <section id="contact" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">
           {/* Background decorations */}

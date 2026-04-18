@@ -24,10 +24,10 @@ export default function Header() {
     { href: '/#support',   label: '24/7 Support' },
   ] : [
     { href: '/#news',       label: '最新情報' },
+    { href: '/#strengths',  label: '選ばれる理由' },
     { href: '/#overview',   label: '組合概要' },
-    { href: '/#disclosure', label: '情報公開' },
+    { href: '/disclosure',  label: '情報公開' },
     { href: '/#faq',        label: 'よくある質問' },
-    { href: '/#support',     label: '24/7 Support' },
   ];
 
   return (

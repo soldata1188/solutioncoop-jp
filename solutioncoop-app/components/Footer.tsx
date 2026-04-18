@@ -31,11 +31,12 @@ export default function Footer() {
             <h3 className="text-navy font-bold mb-4 border-b-2 border-navy-light pb-2 inline-block">サイト内リンク</h3>
             <ul className="space-y-2 mt-2">
               {[
-                { href: '/about',       label: '組合概要' },
+                { href: '/#overview',   label: '組合概要' },
                 { href: '/#strengths',  label: '選ばれる理由' },
                 { href: '/#faq',        label: 'よくある質問' },
                 { href: '/news',        label: '最新情報・お知らせ' },
-                { href: '/about#disclosure', label: '情報公開（法第32条）' },
+                { href: '/disclosure',  label: '情報公開' },
+                { href: '/lp',          label: '企業様はこちら' },
               ].map(l => (
                 <li key={l.href}>
                   <Link href={l.href} className="hover:text-navy hover:pl-2 transition-all flex items-center">

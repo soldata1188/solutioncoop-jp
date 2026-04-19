@@ -5,6 +5,7 @@ import type { NewsCategory } from '@/lib/news';
 import { CATEGORY_CONFIG } from '@/lib/news';
 import RichTextEditor from '@/components/RichTextEditor';
 import ImageUploader from '@/components/ImageUploader';
+import { generateArticleFromBrowser } from '@/lib/ai-client';
 
 export default function NewArticlePage() {
   const router = useRouter();
@@ -61,27 +62,18 @@ export default function NewArticlePage() {
     }
     setGenerating(true);
     try {
-      const res = await fetch('/api/ai/news-gen', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: aiTopic, category: form.category, style: aiStyle }),
-      });
-      const data = await res.json();
-
-      if (res.ok && data.title) {
-        setForm(f => ({
-          ...f,
-          title: data.title || f.title,
-          content: data.content || f.content,
-          seoTitle: data.title || f.seoTitle,
-          seoDescription: data.meta_description || f.seoDescription,
-        }));
-        setToast('✨ AIが記事を生成しました！');
-      } else {
-        setToast(`❌ AI Error: ${data.error || 'Unknown'}`);
-      }
-    } catch (err) {
-      setToast('❌ AI接続エラー');
+      // Calls Google AI directly from browser (bypasses VPS IP restriction)
+      const data = await generateArticleFromBrowser(aiTopic, form.category, aiStyle);
+      setForm(f => ({
+        ...f,
+        title: data.title || f.title,
+        content: data.content || f.content,
+        seoTitle: data.title || f.seoTitle,
+        seoDescription: data.meta_description || f.seoDescription,
+      }));
+      setToast('✨ AIが記事を生成しました！');
+    } catch (err: any) {
+      setToast(`❌ AI Error: ${err.message || 'Unknown'}`);
     }
     setGenerating(false);
   }

@@ -153,7 +153,8 @@ export async function POST(req: Request) {
 
     if (!response.ok) {
       console.error('AI Error:', data);
-      return NextResponse.json({ error: 'AI Error', details: data }, { status: 500 });
+      const errorMsg = data.error?.message || JSON.stringify(data);
+      return NextResponse.json({ error: `AI Detail: ${errorMsg}`, details: data }, { status: 500 });
     }
 
     const textOutput = data.candidates?.[0]?.content?.parts?.[0]?.text;

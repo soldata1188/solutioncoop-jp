@@ -4,6 +4,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import type { NewsItem } from '@/lib/news';
+import { getLatestNews, getCompanies } from '@/lib/data';
 
 import LPClientComponents from './LPClientComponents';
 import Header from '@/components/Header';
@@ -28,20 +29,7 @@ export const metadata: Metadata = {
 };
 
 
-async function getLatestNews(): Promise<NewsItem[]> {
-  const file = path.join(process.cwd(), 'data', 'news.json');
-  const raw  = await fs.readFile(file, 'utf-8');
-  const all: NewsItem[] = JSON.parse(raw);
-  return all.filter(n => n.published).sort((a,b) => a.date < b.date ? 1 : -1).slice(0, 3);
-}
-
-async function getCompanies(): Promise<string[]> {
-  try {
-    const file = path.join(process.cwd(), 'data', 'companies.json');
-    const raw = await fs.readFile(file, 'utf-8');
-    return JSON.parse(raw);
-  } catch (e) { return []; }
-}
+// Data fetching logic moved to @/lib/data.ts
 
 export default async function LandingPage() {
   const latestNews = await getLatestNews();

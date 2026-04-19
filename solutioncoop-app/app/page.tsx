@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateJP, formatDateDot } from '@/lib/news';
+import { getLatestNews, getCompanies } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,27 +33,7 @@ export const metadata: Metadata = {
   },
 };
 
-async function getLatestNews(): Promise<NewsItem[]> {
-  const file = path.join(process.cwd(), 'data', 'news.json');
-  const raw  = await fs.readFile(file, 'utf-8');
-  let all: NewsItem[] = JSON.parse(raw);
-  all = all.filter(n => n.published).sort((a, b) => a.date < b.date ? 1 : -1);
-  
-  const pinnedItems = all.filter(n => n.pinned).slice(0, 2);
-  const unpinnedItems = all.filter(n => !n.pinned);
-  
-  return [...pinnedItems, ...unpinnedItems].slice(0, 12);
-}
-
-async function getCompanies(): Promise<string[]> {
-  try {
-    const file = path.join(process.cwd(), 'data', 'companies.json');
-    const raw = await fs.readFile(file, 'utf-8');
-    return JSON.parse(raw);
-  } catch (e) {
-    return [];
-  }
-}
+// Data fetching logic moved to @/lib/data.ts
 
 const BADGE_BG: Record<string, string> = {
   news:   'bg-blue-100 text-blue-800',

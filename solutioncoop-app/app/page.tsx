@@ -341,7 +341,7 @@ export default async function HomePage() {
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 { bg: 'from-blue-50 to-white', border: 'border-blue-100/50', iconBg: 'bg-navy', icon: '🎓',
-                  titleColor: 'text-navy', title:'「先生の先生」による日本語教育',
+                  titleColor: 'text-navy', title:'規律と礼節を育む日本語教育',
                   body: <>小中高校で長年教鞭をとった<strong className="text-navy">ベテラン教員12名</strong>が専任で指導. 単なる語学教育を超えた「規律と礼節」を根幹に置く人づくりが他に類を見ない定着率を実現します.</> },
                 { bg: 'from-orange-50 to-white', border: 'border-orange-100/50', iconBg: 'bg-orange-500', icon: '🏥',
                   titleColor: 'text-orange-600', title:'24時間セーフティネット',

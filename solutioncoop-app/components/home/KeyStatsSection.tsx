@@ -23,7 +23,7 @@ export default function KeyStatsSection() {
               sizes="256px"
             />
           </div>
-          <p className="text-[7.5px] text-gray-400 font-medium text-center mt-2 whitespace-nowrap">
+          <p className="text-[8px] text-gray-400 font-medium text-center mt-2 whitespace-nowrap">
             ソリューション協同組合は、<span className="text-[#1e40af] font-bold">SDGs未来都市・堺</span>を応援しています。
           </p>
         </div>

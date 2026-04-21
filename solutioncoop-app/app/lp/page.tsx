@@ -7,6 +7,8 @@ import type { NewsItem } from '@/lib/news';
 import { getLatestNews, getCompanies } from '@/lib/data';
 
 import LPClientComponents from './LPClientComponents';
+import CountrySatellite from '@/components/CountrySatellite';
+import UnionNetwork from '@/components/UnionNetwork';
 import Header from '@/components/Header';
 import type { Metadata } from 'next';
 
@@ -157,9 +159,7 @@ export default async function LandingPage() {
           ))}
         </div>
       </section>
-
-
-      {/* ===== SECTION: COUNTRIES (Integrated & Enriched) ===== */}
+      {/* ===== SECTION: COUNTRIES INTERACTIVE (SATELLITE EFFECT) ===== */}
       <section id="countries" className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -196,16 +196,12 @@ export default async function LandingPage() {
                 sector: '介護・ビルクリ・宿泊接客' 
               }
             ].map(c => (
-              <div key={c.name} className="border border-gray-200 rounded p-8 hover:border-[#1e40af] transition-all text-center group bg-gray-50 hover:bg-white hover:shadow-xl relative overflow-hidden">
-                {/* Decorative background accent */}
+              <div key={c.name} className="border border-gray-200 rounded p-8 hover:border-[#1e40af] transition-all text-center group bg-gray-50 hover:bg-white hover:shadow-xl relative overflow-hidden flex flex-col">
                 <div className="absolute top-0 right-0 w-16 h-16 bg-[#1e40af] opacity-5 rounded-bl-full pointer-events-none" />
-                
                 <Image src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} width={80} height={53} className="mx-auto mb-5 rounded shadow-md border border-gray-100" />
                 <h3 className="text-2xl font-black text-[#1e40af] tracking-wide mb-3">{c.name}</h3>
-                
                 <p className="text-orange-600 font-bold text-sm mb-5 leading-tight">{c.trait}</p>
                 <p className="text-slate-600 text-xs md:text-sm leading-relaxed text-justify mb-8">{c.desc}</p>
-                
                 <div className="pt-5 border-t border-gray-200 mt-auto">
                   <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center justify-center gap-2">
                     <span className="w-4 h-px bg-gray-300"></span>
@@ -226,6 +222,120 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* ===== SECTION: UNION NETWORK (NEW INTERACTIVE GRID) ===== */}
+      <section id="network" className="py-24 bg-slate-50 border-y border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-[#1e40af] mb-6 leading-tight">
+              「実習生」と「企業」を結ぶ<br className="hidden md:block"/>
+              強固な<span className="text-orange-500 border-b-4 border-orange-500 pb-1">支援ネットワーク</span>
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed font-medium">
+              ソリューション協同組合は、多くの優良企業と優秀な人材を繋ぐハブ（中枢）として機能しています。<br className="hidden md:block"/>
+              顔の見える密な関係性が、トラブルゼロと高い定着率を実現する基盤となっています。
+            </p>
+          </div>
+          <UnionNetwork />
+        </div>
+      </section>
+
+
+      {/* ===== SECTION: SUCCESS STORIES (導入事例) ===== */}
+      <section id="cases" className="py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-[10px] md:text-sm font-black text-orange-500 tracking-[0.2em] uppercase mb-4">Case Studies</h2>
+            <p className="text-2xl md:text-4xl font-black text-[#1e40af] mb-6 leading-tight">
+              導入企業の<span className="text-orange-500">成幸</span>事例
+            </p>
+            <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full mb-8"></div>
+            <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+              課題を抱えていた企業様が、当組合を通じてどのように変革を遂げたのか。<br className="hidden md:block"/>
+              地域・業種別のリアルな声をお届けします。
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                category: '建設業',
+                location: '大阪府堺市',
+                title: '若手不足を解消し、現場に活気が戻った',
+                problem: '従業員の高齢化が進み、20代・30代の採用が困難に。',
+                solution: 'ベトナムから意欲の高い3名の若手を採用。',
+                result: '技術の継承がスムーズになり、現場の平均年齢が15歳若返った。',
+                image: '/images/case-construction.png',
+                tagColor: 'bg-blue-600'
+              },
+              {
+                category: '製造業（金属加工）',
+                location: '大阪府東大阪市',
+                title: '多国籍チームで生産性が20%向上',
+                problem: '受注増に対し、人手不足で機会損失が発生していた。',
+                solution: 'インドネシアとフィリピンの混成チームを編成。',
+                result: '交代制勤務が可能になり、工場の稼働率が劇的に改善。',
+                image: '/images/case-manufacturing.png',
+                tagColor: 'bg-slate-700'
+              },
+              {
+                category: '農業',
+                location: '関西広域',
+                title: '安定した労働力確保で事業拡大へ',
+                problem: '季節による労働需要の変動が激しく、募集コストが膨大に。',
+                solution: '特定技能制度を活用し、通年での安定雇用に移行。',
+                result: '採用コストを年間300万円削減。浮いた資金で新設備を導入。',
+                image: '/images/case-agriculture.png',
+                tagColor: 'bg-emerald-600'
+              }
+            ].map((caseItem, idx) => (
+              <div key={idx} className="bg-white rounded overflow-hidden shadow-lg border border-gray-100 flex flex-col hover:shadow-2xl transition-all duration-500 group">
+                <div className="relative h-56 overflow-hidden">
+                  <Image 
+                    src={caseItem.image} 
+                    alt={caseItem.title} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  <div className={`absolute top-4 left-4 ${caseItem.tagColor} text-white text-[10px] font-black px-3 py-1 rounded tracking-widest`}>
+                    {caseItem.category}
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                    <p className="text-white text-[10px] font-bold opacity-80 flex items-center gap-1">
+                      <span>📍</span> {caseItem.location}
+                    </p>
+                  </div>
+                </div>
+                <div className="p-8 flex-1 flex flex-col">
+                  <h3 className="text-xl font-black text-[#1e40af] mb-5 leading-tight group-hover:text-orange-600 transition-colors">
+                    {caseItem.title}
+                  </h3>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex gap-3">
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-black text-[10px] border border-red-100">課題</span>
+                      <p className="text-xs md:text-sm text-slate-600 leading-relaxed pt-1.5">{caseItem.problem}</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-blue-50 text-[#1e40af] flex items-center justify-center font-black text-[10px] border border-blue-100">施策</span>
+                      <p className="text-xs md:text-sm text-slate-600 leading-relaxed pt-1.5">{caseItem.solution}</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center font-black text-[10px] border border-orange-100">成果</span>
+                      <p className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed pt-1.5">{caseItem.result}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-auto pt-6 border-t border-dotted border-gray-200">
+                    <Link href="/contact" className="text-[12px] font-black text-[#1e40af] flex items-center gap-2 hover:text-orange-500 transition-colors">
+                      この事例の詳細を聞く <span className="text-lg">→</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Dynamic Client Components (Pillars, Form, etc.) */}
       <LPClientComponents />

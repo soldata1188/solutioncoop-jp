@@ -1,0 +1,135 @@
+[
+  {
+    "id": "1",
+    "name": "NGUYEN VAN A",
+    "company": "堺建設㈱",
+    "img": "/images/workers/vn_1.png",
+    "nationality": "vn"
+  },
+  {
+    "id": "2",
+    "name": "SITI AMINAH",
+    "company": "大阪食品工業",
+    "img": "/images/workers/id_1.png",
+    "nationality": "id"
+  },
+  {
+    "id": "3",
+    "name": "JUAN DELA CRUZ",
+    "company": "関西機械製作",
+    "img": "/images/workers/ph_1.png",
+    "nationality": "ph"
+  },
+  {
+    "id": "4",
+    "name": "TRAN THI B",
+    "company": "堺建設㈱",
+    "img": "/images/workers/vn_2.png",
+    "nationality": "vn"
+  },
+  {
+    "id": "5",
+    "name": "AHMAD HIDAYAT",
+    "company": "大阪食品工業",
+    "img": "/images/workers/id_2.png",
+    "nationality": "id"
+  },
+  {
+    "id": "6",
+    "name": "MARIA SANTOS",
+    "company": "関西機械製作",
+    "img": "/images/workers/ph_2.png",
+    "nationality": "ph"
+  },
+  {
+    "id": "7",
+    "name": "LE VAN C",
+    "company": "近畿農業協同",
+    "img": "/images/workers/vn_3.png",
+    "nationality": "vn"
+  },
+  {
+    "id": "8",
+    "name": "PUTRI UTAMI",
+    "company": "大阪食品工業",
+    "img": "/images/workers/id_3.png",
+    "nationality": "id"
+  },
+  {
+    "id": "9",
+    "name": "NGUYEN THI D",
+    "company": "近畿農業協同",
+    "img": "/images/workers/vn_4.png",
+    "nationality": "vn"
+  },
+  {
+    "id": "10",
+    "name": "BUDI SANTOSO",
+    "company": "近畿農業協同",
+    "img": "/images/workers/id_4.png",
+    "nationality": "id"
+  },
+  {
+    "id": "11",
+    "name": "ANA REYES",
+    "company": "関西機械製作",
+    "img": "/images/workers/ph_3.png",
+    "nationality": "ph"
+  },
+  {
+    "id": "12",
+    "name": "TRAN VAN E",
+    "company": "堺建設㈱",
+    "img": "/images/workers/vn_4.png",
+    "nationality": "vn"
+  },
+  {
+    "id": "1776763811802",
+    "name": "トーさん",
+    "company": "18才ー配管工事",
+    "img": "/uploads/news/トーさん-1776764616603.jpg",
+    "nationality": "vn"
+  },
+  {
+    "id": "1776764292866",
+    "name": "ヴーさん",
+    "company": "35才ー造園土木",
+    "img": "/uploads/news/ヴーさん-1776764291523.jpg",
+    "nationality": "vn"
+  },
+  {
+    "id": "1776764548969",
+    "name": "リフキさん",
+    "company": "21才ー左官工事",
+    "img": "/uploads/news/リフキさん-1776764547661.jpg",
+    "nationality": "id"
+  },
+  {
+    "id": "1776764795873",
+    "name": "リパルディさん",
+    "company": "23才ー断熱工事",
+    "img": "/uploads/news/リパルディさん-1776764816479.jpg",
+    "nationality": "id"
+  },
+  {
+    "id": "1776765098320",
+    "name": "ロメルさん",
+    "company": "34才ー内装工事",
+    "img": "/uploads/news/ロメルさん-1776765097454.jpg",
+    "nationality": "ph"
+  },
+  {
+    "id": "1776765341827",
+    "name": "リエナさん",
+    "company": "33才ー機械検査",
+    "img": "/uploads/news/worker-avatar-1776765292363.jpg",
+    "nationality": "ph"
+  },
+  {
+    "id": "1776765386024",
+    "name": "アポロさん",
+    "company": "30才ー内装工事",
+    "img": "/uploads/news/worker-avatar-1776765357673.jpg",
+    "nationality": "ph"
+  }
+]

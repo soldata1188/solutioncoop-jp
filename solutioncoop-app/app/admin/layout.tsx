@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 const NAV_ITEMS = [
   { href: '/admin',          icon: '📊', label: 'ダッシュボード' },
   { href: '/admin/companies',icon: '🏢', label: '企業リスト管理' },
+  { href: '/admin/workers',  icon: '🧑‍🔧', label: '実習生ネットワーク管理' },
   { href: '/admin/news',     icon: '📰', label: '最新情報管理' },
   { href: '/admin/news/new', icon: '✏️', label: '新規投稿' },
   { href: '/admin/documents',icon: '📁', label: '公開書類管理' },

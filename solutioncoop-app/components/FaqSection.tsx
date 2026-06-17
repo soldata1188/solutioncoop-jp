@@ -254,52 +254,7 @@ const FAQ_DATA = [
       </div>
     ),
   },
-  {
-    cat: 'system',
-    catLabel: '在留・制度',
-    q: '申し込みから実際に外国人が配属されるまでのスケジュールを教えてください。',
-    answer: (
-      <div className="space-y-2 text-sm leading-relaxed">
-        <div className="bg-blue-50 border border-blue-100 p-3 rounded text-center mb-2">
-          <p className="text-xl font-black text-[#1e40af]">約6ヶ月</p>
-          <p className="text-gray-500">申し込みから配属までの目安期間</p>
-        </div>
-        <div className="flex flex-col gap-1">
-          {[
-            ['①','契約・求人作成','1ヶ月'],
-            ['②','現地募集・面接','1〜2ヶ月'],
-            ['③','書類手続き・行政審査','2〜3ヶ月'],
-            ['④','入国後集中講習・配属','約1ヶ月'],
-          ].map(([step, label, period]) => (
-            <div key={step} className="flex items-center gap-2 bg-white border border-gray-100 p-2 rounded">
-              <span className="text-[#1e40af] font-black text-xs w-6 shrink-0">{step}</span>
-              <span className="flex-1 font-bold text-gray-700">{label}</span>
-              <span className="text-orange-500 font-bold shrink-0">{period}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
-  },
-  {
-    cat: 'system',
-    catLabel: '在留・制度',
-    q: 'どこの国から受け入れ可能ですか？面接はどのように行いますか？',
-    answer: (
-      <div className="space-y-2 text-sm leading-relaxed">
-        <div className="flex flex-wrap gap-2 mb-2">
-          {[['🇻🇳','ベトナム','約54%'],['🇮🇩','インドネシア','約14%'],['🇵🇭','フィリピン','約9%']].map(([flag, name, pct]) => (
-            <div key={name} className="flex-1 bg-gray-50 border border-gray-200 p-2 rounded text-center">
-              <span className="text-lg">{flag}</span>
-              <p className="font-bold text-gray-700 text-[10px]">{name}</p>
-              <p className="text-[#1e40af] font-black">{pct}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-gray-600 bg-blue-50 p-2 rounded">面接は<strong>現地・WEBオンライン・代行</strong>の3方式から選択可能。ミスマッチ防止のため自社面接を推奨します。</p>
-      </div>
-    ),
-  },
+
   {
     cat: 'cost',
     catLabel: '費用・賃金',
@@ -319,24 +274,7 @@ const FAQ_DATA = [
       </div>
     ),
   },
-  {
-    cat: 'future',
-    catLabel: '制度の今後',
-    q: '育成就労期間中の日本語教育・技術指導はすべて企業が単独で行うのですか？',
-    answer: (
-      <div className="space-y-2 text-sm leading-relaxed">
-        <div className="bg-green-50 border border-green-100 p-3 rounded">
-          <p className="font-bold text-green-700 mb-1">✅ 監理支援機関が全力でバックアップします</p>
-          <ul className="space-y-1 text-gray-700">
-            <li>• 育成就労計画の作成支援</li>
-            <li>• 現場への効果的な指導方法アドバイス</li>
-            <li>• 評価試験不合格時は最長1年間の継続就労が可能（救済措置）</li>
-          </ul>
-        </div>
-        <p className="text-gray-500 text-[10px]">企業単独で全てを負う必要はありません。二人三脚でサポートします。</p>
-      </div>
-    ),
-  },
+
   {
     cat: 'merit',
     catLabel: '導入メリット',
@@ -354,30 +292,7 @@ const FAQ_DATA = [
       </div>
     ),
   },
-  {
-    cat: 'merit',
-    catLabel: '導入メリット',
-    q: '信頼できる監理団体を選ぶポイントは？途中で変更は可能ですか？',
-    answer: (
-      <div className="space-y-2 text-sm leading-relaxed">
-        <div className="grid grid-cols-2 gap-2">
-          {[
-            ['⚖️','法令遵守・監査の厳格さ'],
-            ['🕐','24時間365日サポート体制'],
-            ['💰','費用の透明性・明確な明細'],
 
-          ].map(([icon, label]) => (
-            <div key={label} className="bg-gray-50 border border-gray-100 p-2 rounded flex items-center gap-2">
-              <span>{icon}</span><span className="font-bold text-gray-700">{label}</span>
-            </div>
-          ))}
-        </div>
-        <p className="text-gray-600 bg-amber-50 border border-amber-100 p-2 rounded">
-          ⚠️ 正当な理由があれば<strong>途中での変更（移籍）は法的に可能</strong>です。まずはご相談ください。
-        </p>
-      </div>
-    ),
-  },
   {
     cat: 'merit',
     catLabel: '導入メリット',
@@ -391,18 +306,7 @@ const FAQ_DATA = [
       </div>
     ),
   },
-  {
-    cat: 'system',
-    catLabel: '在留・制度',
-    q: '自社に外国政府との複雑な手続きを行うノウハウがありません。',
-    answer: (
-      <div className="space-y-2 text-sm">
-        <p className="bg-blue-50 p-3 rounded border border-blue-100 text-gray-700">
-          ご安心ください。事前の書類作成、ビザ（在留資格）の申請、行政への定期報告まで、<strong>専門スタッフが全面的にサポート</strong>いたします。企業様は「現場での業務指導」に集中していただける環境をお作りします。
-        </p>
-      </div>
-    ),
-  },
+
   {
     cat: 'system',
     catLabel: '在留・制度',

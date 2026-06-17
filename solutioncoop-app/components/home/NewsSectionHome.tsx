@@ -3,17 +3,17 @@ import Link from 'next/link';
 import type { NewsItem } from '@/lib/news';
 import { CATEGORY_CONFIG, formatDateDot } from '@/lib/news';
 
-const BADGE_BG: Record<string, string> = {
-  news:   'bg-blue-100 text-blue-800',
-  result: 'bg-green-100 text-green-800',
-  system: 'bg-yellow-100 text-yellow-800',
-  event:  'bg-purple-100 text-purple-800',
+const CAT_COLOR: Record<string, string> = {
+  news:   'bg-blue-500',
+  result: 'bg-emerald-500',
+  system: 'bg-amber-500',
+  event:  'bg-purple-500',
 };
 
-const TOP_ACCENT: Record<string, string> = {
+const CAT_GRADIENT: Record<string, string> = {
   news:   'from-blue-400 to-blue-600',
-  result: 'from-green-400 to-green-600',
-  system: 'from-yellow-400 to-orange-500',
+  result: 'from-emerald-400 to-emerald-600',
+  system: 'from-amber-400 to-orange-500',
   event:  'from-purple-400 to-purple-600',
 };
 
@@ -22,136 +22,96 @@ interface NewsSectionHomeProps {
 }
 
 export default function NewsSectionHome({ latestNews }: NewsSectionHomeProps) {
-  const pinnedItems    = latestNews.filter((n) => n.pinned).slice(0, 2);
-  const unpinnedItems  = latestNews.filter((n) => !n.pinned);
-  const mainCards      = unpinnedItems.slice(0, 6);
-  const secondaryList  = unpinnedItems.slice(6);
+  // Show up to 12 posts
+  const items = latestNews.slice(0, 12);
+  const pinned   = items.filter(n => n.pinned);
+  const regular  = items.filter(n => !n.pinned);
+
+  // Merge: pinned first, then regular
+  const ordered = [...pinned, ...regular].slice(0, 12);
 
   return (
-    <section id="news" className="py-14 md:py-20 bg-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-72 h-72 bg-blue-50 opacity-60 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-orange-50 opacity-60 translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+    <section id="news" className="py-12 bg-gray-50 border-t border-gray-100">
+      <div className="container mx-auto px-4 max-w-7xl">
+
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#1e40af] section-title uppercase tracking-tight">最新情報</h2>
+            <span className="inline-block text-[10px] font-bold tracking-widest text-orange-500 uppercase mb-0.5">最新情報</span>
+            <h2 className="text-xl md:text-2xl font-black text-[#1e40af] leading-tight">
+              お知らせ・実績レポート
+            </h2>
           </div>
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 border-2 border-blue-600 px-6 py-2.5 rounded hover:bg-blue-600 hover:text-white transition-all self-start md:self-auto flex-shrink-0 shadow-sm hover:shadow-md"
+            className="text-xs font-bold text-[#1e40af] border border-[#1e40af] px-3 py-1.5 rounded hover:bg-[#1e40af] hover:text-white transition-all flex-shrink-0"
           >
-            📰 すべてのお知らせを見る →
+            一覧を見る →
           </Link>
         </div>
 
-        {latestNews.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* --- CỘT TRÁI (8/12): 6 bài chính --- */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {mainCards.map((n) => (
-                  <Link key={n.id} href={`/news/${n.id}`} className="group flex flex-col bg-white border border-gray-100 rounded overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full">
-                    <div className="relative h-44 w-full overflow-hidden shrink-0">
-                      {n.image ? (
-                        <Image src={n.image} alt={n.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                      ) : (
-                        <div className={`w-full h-full bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} opacity-90`} />
-                      )}
+        {ordered.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {ordered.map((n) => (
+              <div
+                key={n.id}
+                className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col"
+              >
+                {/* Image */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  {n.image ? (
+                    <Image
+                      src={n.image}
+                      alt={n.title}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-br ${CAT_GRADIENT[n.category] || 'from-gray-400 to-gray-600'} flex items-center justify-center`}>
+                      <span className="text-white/40 text-2xl">📰</span>
                     </div>
-                    <div className="p-4 flex flex-col flex-grow text-left">
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${BADGE_BG[n.category]}`}>
-                          {CATEGORY_CONFIG[n.category]?.label}
-                        </span>
-                      </div>
-                      <h3 className="text-sm font-black text-navy leading-snug mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                        {n.title}
-                      </h3>
-                      <p className="text-gray-500 text-[11px] leading-relaxed line-clamp-2 mb-3 font-medium">
-                        {n.excerpt}
-                      </p>
-                      <time className="text-[10px] text-gray-400 font-bold mt-auto tracking-wider">{formatDateDot(n.date)}</time>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* --- CỘT PHẢI (4/12): Unified News List --- */}
-            <div className="lg:col-span-4 flex flex-col gap-0">
-              <div className="bg-white border border-gray-100 rounded shadow-sm overflow-hidden h-full flex flex-col">
-
-                {/* Pinned section */}
-                {pinnedItems.length > 0 && (
-                  <>
-                    <div className="border-l-4 border-[#f97316] px-5 py-3 bg-orange-50/40 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] animate-pulse inline-block" />
-                      <h3 className="text-[11px] font-black text-gray-700 tracking-widest uppercase">重要なお知らせ</h3>
-                    </div>
-                    <div className="divide-y divide-gray-50 px-4">
-                      {pinnedItems.map((n) => (
-                        <Link key={n.id} href={`/news/${n.id}`} className="group flex gap-4 items-start py-4">
-                          {n.image ? (
-                            <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5 relative">
-                              <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-105 transition-transform" />
-                            </div>
-                          ) : (
-                            <div className={`w-16 h-16 flex-shrink-0 rounded bg-gradient-to-br ${TOP_ACCENT[n.category] || 'from-gray-400 to-gray-600'} mt-0.5 flex items-center justify-center`}>
-                              <span className="text-[9px] font-black text-white/80 -rotate-12 inline-block">PIN</span>
-                            </div>
-                          )}
-                          <div className="flex-1 min-w-0">
-                            <time className="text-[10px] text-[#f97316] font-bold tracking-wider block mb-1">{formatDateDot(n.date)}</time>
-                            <h4 className="text-xs font-normal text-gray-800 leading-snug line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                )}
-
-                {/* Recent section */}
-                <div className="border-l-4 border-[#1e40af] px-5 py-3 bg-blue-50/30 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1e40af] inline-block" />
-                  <h3 className="text-[11px] font-black text-gray-700 tracking-widest uppercase">最新のお知らせ</h3>
-                </div>
-                <div className="divide-y divide-gray-50 px-4 flex-grow">
-                  {secondaryList.map((n) => (
-                    <Link key={n.id} href={`/news/${n.id}`} className="group flex gap-4 items-start py-4">
-                      {n.image ? (
-                        <div className="w-16 h-16 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5 relative">
-                          <Image src={n.image} alt={n.title} fill sizes="64px" className="object-cover group-hover:scale-105 transition-transform" />
-                        </div>
-                      ) : (
-                        <div className="w-16 h-16 flex-shrink-0 rounded bg-gradient-to-br from-blue-50 to-white border border-blue-100 mt-0.5 flex items-center justify-center">
-                          <span className="text-[9px] font-black text-blue-300 -rotate-12 inline-block">NEWS</span>
-                        </div>
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <time className="text-[10px] text-[#f97316] font-bold tracking-wider block mb-1">{formatDateDot(n.date)}</time>
-                        <h4 className="text-xs font-normal text-gray-700 leading-snug line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
-                      </div>
-                    </Link>
-                  ))}
-                  {secondaryList.length === 0 && (
-                    <p className="text-[10px] text-gray-400 text-center py-4">現在、他のお知らせはありません。</p>
+                  )}
+                  {/* Category badge */}
+                  <span className={`absolute top-1.5 left-1.5 text-[8px] font-bold text-white px-1.5 py-0.5 rounded leading-none ${CAT_COLOR[n.category] || 'bg-gray-500'}`}>
+                    {CATEGORY_CONFIG[n.category]?.label ?? n.category}
+                  </span>
+                  {/* Pinned badge */}
+                  {n.pinned && (
+                    <span className="absolute top-1.5 right-1.5 text-[8px] font-bold text-white bg-orange-500 px-1.5 py-0.5 rounded leading-none">
+                      重要
+                    </span>
                   )}
                 </div>
 
-                {/* Footer link */}
-                <div className="px-5 py-4 border-t border-gray-100 mt-auto">
-                  <Link href="/news" className="flex items-center justify-between group">
-                    <span className="text-xs font-black text-navy group-hover:text-[#f97316] transition-colors">すべてのお知らせを見る</span>
-                    <span className="w-6 h-6 rounded bg-navy text-white flex items-center justify-center text-[10px] group-hover:bg-[#f97316] group-hover:translate-x-1 transition-all">→</span>
-                  </Link>
+                {/* Title */}
+                <div className="px-2 pt-1.5 pb-2 flex flex-col flex-grow">
+                  <time className="text-[9px] text-gray-400 font-medium leading-none">
+                    {formatDateDot(n.date)}
+                  </time>
+                  <h3 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 mt-1 group-hover:text-[#1e40af] transition-colors">
+                    {n.title}
+                  </h3>
                 </div>
-
               </div>
-            </div>
+            ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center py-10">現在、新しいお知らせはありません。</p>
+          <p className="text-gray-400 text-center py-12 text-sm">現在、お知らせはありません。</p>
         )}
+
+        {/* Footer */}
+        {latestNews.length > 0 && (
+          <div className="text-center mt-6">
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#1e40af] border border-[#1e40af] px-6 py-2 rounded hover:bg-[#1e40af] hover:text-white transition-all"
+            >
+              すべてのお知らせを見る（{latestNews.length}件）→
+            </Link>
+          </div>
+        )}
+
       </div>
     </section>
   );

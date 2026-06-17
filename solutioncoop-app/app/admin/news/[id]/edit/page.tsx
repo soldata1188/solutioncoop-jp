@@ -2,26 +2,27 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import type { NewsCategory, NewsItem } from '@/lib/news';
-import { CATEGORY_CONFIG } from '@/lib/news';
-import RichTextEditor from '@/components/RichTextEditor';
 import ImageUploader from '@/components/ImageUploader';
-import { generateArticleFromBrowser } from '@/lib/ai-client';
+
+const CATEGORIES: { key: NewsCategory; label: string; icon: string; color: string }[] = [
+  { key: 'news',   label: 'お知らせ', icon: '📢', color: 'border-blue-500 bg-blue-50 text-blue-700' },
+  { key: 'result', label: '受入実績', icon: '✅', color: 'border-emerald-500 bg-emerald-50 text-emerald-700' },
+  { key: 'system', label: '制度情報', icon: '📋', color: 'border-amber-500 bg-amber-50 text-amber-700' },
+  { key: 'event',  label: 'イベント', icon: '🎯', color: 'border-purple-500 bg-purple-50 text-purple-700' },
+];
 
 export default function EditArticlePage() {
-  const router = useRouter();
-  const params = useParams<{ id: string }>();
-  const id = params.id;
+  const router  = useRouter();
+  const params  = useParams<{ id: string }>();
+  const id      = params.id;
 
-  const [loading,    setLoading]    = useState(true);
-  const [saving,     setSaving]     = useState(false);
-  const [aiTopic,    setAiTopic]    = useState('');
-  const [aiStyle,    setAiStyle]    = useState<'policy' | 'casestudy' | 'faq' | 'result'>('casestudy');
-  const [generating, setGenerating] = useState(false);
-  const [toast,      setToast]      = useState<string | null>(null);
-  const [form,       setForm]       = useState<Partial<NewsItem>>({});
+  const [loading, setLoading] = useState(true);
+  const [saving,  setSaving]  = useState(false);
+  const [toast,   setToast]   = useState<{ msg: string; ok: boolean } | null>(null);
+  const [form,    setForm]    = useState<Partial<NewsItem>>({});
 
-  function showToast(msg: string) {
-    setToast(msg);
+  function showToast(msg: string, ok = true) {
+    setToast({ msg, ok });
     setTimeout(() => setToast(null), 3000);
   }
 
@@ -37,44 +38,26 @@ export default function EditArticlePage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.title?.trim() || !form.content?.trim()) {
-      showToast('❌ タイトルと本文は必須です');
+    if (!form.title?.trim()) {
+      showToast('❌ タイトルは必須です', false);
       return;
     }
     setSaving(true);
-    const plainText = (form.content || '').replace(/[#*`>\-]/g, '').replace(/\s+/g, ' ').trim();
-    const excerpt = plainText.length > 60 ? plainText.slice(0, 60) + '…' : plainText;
+    const payload = {
+      ...form,
+      excerpt: form.title,
+      content: form.content || form.title,
+      seoTitle: form.seoTitle || form.title,
+      seoDescription: form.seoDescription || form.title,
+    };
     const res = await fetch(`/api/news/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...form, excerpt }),
+      body: JSON.stringify(payload),
     });
     setSaving(false);
-    if (res.ok) { showToast('✅ 保存しました'); }
-    else        { showToast('❌ 保存に失敗しました'); }
-  }
-
-  async function handleAiGenerate() {
-    if (!aiTopic.trim()) {
-      showToast('⚠️ AIに伝えたいキーワードを入力してください');
-      return;
-    }
-    setGenerating(true);
-    try {
-      // Calls Google AI directly from browser (bypasses VPS IP restriction)
-      const data = await generateArticleFromBrowser(aiTopic, form.category || 'news', aiStyle);
-      setForm(f => ({
-        ...f,
-        title: data.title || f.title,
-        content: data.content || f.content,
-        seoTitle: data.title || f.seoTitle,
-        seoDescription: data.meta_description || f.seoDescription,
-      }));
-      showToast('✨ AIが記事を生成しました！');
-    } catch (err: any) {
-      showToast(`❌ AI Error: ${err.message || 'Unknown'}`);
-    }
-    setGenerating(false);
+    if (res.ok) showToast('✅ 保存しました');
+    else        showToast('❌ 保存に失敗しました', false);
   }
 
   if (loading) return (
@@ -84,210 +67,175 @@ export default function EditArticlePage() {
   );
 
   return (
-    <div className="p-6 md:p-8 max-w-6xl mx-auto">
+    <div className="p-6 md:p-8 max-w-3xl mx-auto">
+
       {/* Toast */}
       {toast && (
-        <div className="fixed top-4 right-4 z-50 px-5 py-3 rounded font-bold text-sm text-white bg-navy shadow-2xl">
-          {toast}
+        <div className={`fixed top-4 right-4 z-50 px-5 py-3 rounded-lg font-bold text-sm text-white shadow-2xl ${toast.ok ? 'bg-emerald-600' : 'bg-red-500'}`}>
+          {toast.msg}
         </div>
       )}
 
+      {/* Header */}
       <div className="mb-8">
-        <a href="/admin/news" className="text-gray-400 hover:text-gray-600 text-sm">← 一覧へ戻る</a>
-        <h1 className="text-2xl font-black text-gray-800 mt-2">記事を編集</h1>
-        <p className="text-gray-500 text-sm mt-1">記事の内容を修正・更新します</p>
+        <a href="/admin/news" className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 mb-2">
+          ← 一覧へ戻る
+        </a>
+        <h1 className="text-2xl font-black text-gray-800">記事を編集</h1>
+        <p className="text-gray-400 text-sm mt-0.5">ニュースグリッドの表示内容を更新します</p>
       </div>
 
-      {/* ── AI Assistant Block ── */}
-      <div className="mb-8 bg-gradient-to-r from-navy to-blue-800 rounded p-6 text-white shadow-xl relative overflow-hidden group">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700" />
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-2xl animate-pulse">✨</span>
-            <h2 className="font-bold text-lg">AI記事生成アシスタント</h2>
-            <span className="text-xs bg-white/20 px-2 py-0.5 rounded text-blue-100">既存内容を上書きします</span>
-          </div>
-          <p className="text-blue-100 text-sm mb-4">キーワードと文体を選び、AIがプロ品質の記事を再生成します。</p>
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-          {/* Style selector */}
-          <div className="flex flex-wrap gap-3 mb-4">
-            {([
-              { key: 'policy',    label: '📋 制度・法改正', desc: 'Style A' },
-              { key: 'casestudy', label: '🏭 導入事例',    desc: 'Style B' },
-              { key: 'faq',       label: '❓ FAQ・Q&A',    desc: 'Style C' },
-              { key: 'result',    label: '✈️ 受入実績',    desc: 'Style D' },
-            ] as const).map(s => (
-              <button key={s.key} type="button"
-                onClick={() => setAiStyle(s.key)}
-                className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-all border ${
-                  aiStyle === s.key
-                    ? 'bg-white text-navy border-white shadow-md'
-                    : 'bg-white/10 text-blue-100 border-white/20 hover:bg-white/20'
-                }`}>
-                {s.label}
-                <span className="text-[10px] opacity-60">{s.desc}</span>
+        {/* ① タイトル */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <label className="block text-sm font-black text-gray-700 mb-3">
+            📝 タイトル <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            value={form.title || ''}
+            onChange={e => update('title', e.target.value)}
+            placeholder="例：第59期ベトナム実習生10名が入国しました"
+            className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#1e40af] transition"
+            required
+          />
+          <p className="text-[10px] text-gray-400 mt-2">現在: {(form.title || '').length}文字（推奨: 20〜40文字）</p>
+        </div>
+
+        {/* ② 画像 */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <label className="block text-sm font-black text-gray-700 mb-3">
+            🖼️ サムネイル画像 <span className="text-gray-400 font-normal text-xs">（グリッドに表示される重要な要素）</span>
+          </label>
+          <ImageUploader
+            value={form.image || ''}
+            onChange={v => update('image', v)}
+            seoHint={form.title}
+          />
+          {!form.image && (
+            <p className="text-xs text-amber-600 font-bold mt-2">⚠️ 画像なしの場合はカテゴリカラーのグラデーションが表示されます</p>
+          )}
+        </div>
+
+        {/* ③ カテゴリ */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+          <label className="block text-sm font-black text-gray-700 mb-3">🏷️ カテゴリ</label>
+          <div className="grid grid-cols-2 gap-3">
+            {CATEGORIES.map(c => (
+              <button
+                key={c.key}
+                type="button"
+                onClick={() => update('category', c.key)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg border-2 text-sm font-bold transition-all text-left ${
+                  form.category === c.key ? c.color + ' shadow-sm' : 'border-gray-200 text-gray-500 hover:border-gray-300'
+                }`}
+              >
+                <span className="text-xl">{c.icon}</span>
+                <span>{c.label}</span>
+                {form.category === c.key && <span className="ml-auto">✓</span>}
               </button>
             ))}
           </div>
-
-          <div className="flex flex-col md:flex-row gap-3">
-            <input
-              type="text"
-              value={aiTopic}
-              onChange={e => setAiTopic(e.target.value)}
-              placeholder="例：技能実習生59期生の入国、受入企業の手続き負担軽減..."
-              className="flex-1 bg-white/10 border border-white/20 rounded px-4 py-3 text-sm focus:outline-none focus:bg-white/20 transition placeholder:text-white/40"
-            />
-            <button
-              type="button"
-              onClick={handleAiGenerate}
-              disabled={generating}
-              className="bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 px-8 rounded transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg"
-            >
-              {generating ? '⏳ 生成中...' : '✨ AI生成'}
-            </button>
-          </div>
         </div>
-      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* ④ 公開設定 */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-5">
+          <label className="block text-sm font-black text-gray-700">⚙️ 公開設定</label>
 
-          {/* ── Main content ── */}
-          <div className="md:col-span-2 space-y-5">
-
-            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
-              <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">📝 記事内容</h2>
-              <div>
-                <label className="block text-sm font-bold text-gray-800 mb-1.5">
-                  タイトル <span className="text-red-600">*</span>
-                </label>
-                <input type="text" value={form.title || ''} onChange={e => update('title', e.target.value)}
-                  placeholder="例：技能実習生第60期生として計13名が入国しました"
-                  className="w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-900 font-medium placeholder:text-gray-500 focus:outline-none focus:border-navy focus:ring-2 focus:ring-navy/10 transition shadow-sm"
-                />
-              </div>
-              <ImageUploader value={form.image || ''} onChange={v => update('image', v)} seoHint={form.title} />
-              <RichTextEditor
-                value={form.content || ''}
-                onChange={v => update('content', v)}
-                label="本文"
-              />
-            </div>
-
-            {/* SEO */}
-            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
-              <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🔍 SEO設定</h2>
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">SEOタイトル</label>
-                <input type="text" value={form.seoTitle || ''} onChange={e => update('seoTitle', e.target.value)}
-                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition"
-                />
-                <p className="text-[10px] text-gray-400 mt-1">{(form.seoTitle || form.title || '').length}文字（推奨30〜60）</p>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">メタディスクリプション</label>
-                <textarea value={form.seoDescription || ''} onChange={e => update('seoDescription', e.target.value)}
-                  rows={3}
-                  className="w-full border border-gray-200 rounded px-4 py-3 text-sm text-gray-800 focus:outline-none focus:border-navy transition resize-none"
-                />
-                <p className="text-[10px] text-gray-400 mt-1">{(form.seoDescription || '').length}文字（推奨80〜160）</p>
-              </div>
-              {(form.seoTitle || form.title) && (
-                <div className="bg-gray-50 rounded p-4 border border-gray-200">
-                  <p className="text-[10px] text-gray-400 font-bold uppercase mb-2">検索プレビュー</p>
-                  <p className="text-sm text-blue-700 font-semibold line-clamp-1">{form.seoTitle || form.title}｜ソリューション協同組合</p>
-                  <p className="text-green-700 text-xs">https://solutioncoop-jp.com/news/{id}</p>
-                  <p className="text-xs text-gray-600 mt-1 line-clamp-2">{form.seoDescription || (form.content || '').replace(/[#*`>\-]/g, '').slice(0, 80)}</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* ── Sidebar settings ── */}
-          <div className="space-y-5">
-
-            <div className="bg-white rounded border border-gray-100 p-5 space-y-4">
-              <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">⚙️ 公開設定</h2>
-
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-2">公開ステータス</label>
-                <div className="flex gap-3">
-                  {[
-                    { val: true,  label: '公開',   cls: 'border-green-500 bg-green-50 text-green-700' },
-                    { val: false, label: '非公開', cls: 'border-gray-300 bg-gray-50 text-gray-600' },
-                  ].map(opt => (
-                    <button key={String(opt.val)} type="button"
-                      onClick={() => update('published', opt.val)}
-                      className={`flex-1 py-2.5 text-sm font-bold rounded border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400'}`}>
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Pin */}
-              <div className="pt-4 border-t border-gray-100">
-                <label className="flex items-center gap-3 cursor-pointer group">
-                  <div className="relative flex items-center justify-center">
-                    <input type="checkbox" className="sr-only" checked={!!form.pinned} onChange={e => update('pinned', e.target.checked)} />
-                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${form.pinned ? 'bg-[#f97316] border-[#f97316]' : 'border-gray-300 group-hover:border-gray-400'}`}>
-                      {form.pinned && <span className="text-white text-xs leading-none pt-0.5">✓</span>}
-                    </div>
-                  </div>
-                  <div>
-                    <span className="font-bold text-gray-800 text-sm flex items-center gap-1">📌 トップに固定する</span>
-                    <p className="text-[10px] text-gray-500 mt-0.5">最新情報セクションの目立つ位置に表示されます</p>
-                  </div>
-                </label>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">投稿日</label>
-                <input type="date" value={form.date || ''} onChange={e => update('date', e.target.value)}
-                  className="w-full border border-gray-200 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-gray-600 mb-1.5">
-                  🕐 予約投稿日時 <span className="font-normal text-gray-400">（任意）</span>
-                </label>
-                <input type="datetime-local" value={form.scheduledDate || ''} onChange={e => update('scheduledDate', e.target.value)}
-                  className="w-full border border-gray-200 rounded px-4 py-2.5 text-sm focus:outline-none focus:border-navy transition"
-                />
-                <p className="text-[10px] text-gray-400 mt-1">設定すると指定日時に自動公開されます</p>
-              </div>
-            </div>
-
-            {/* Category */}
-            <div className="bg-white rounded border border-gray-100 p-5 space-y-3">
-              <h2 className="font-bold text-gray-700 text-sm border-b border-gray-100 pb-3">🏷️ カテゴリ</h2>
-              {(Object.entries(CATEGORY_CONFIG) as [NewsCategory, { label: string; icon: string }][]).map(([key, cfg]) => (
-                <button key={key} type="button"
-                  onClick={() => update('category', key)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded border-2 text-sm font-semibold transition-all text-left ${form.category === key ? 'border-navy bg-blue-50 text-navy' : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}>
-                  <span className="text-xl">{cfg.icon}</span>{cfg.label}
-                  {form.category === key && <span className="ml-auto">✓</span>}
+          {/* Published */}
+          <div>
+            <p className="text-xs font-bold text-gray-600 mb-2">公開ステータス</p>
+            <div className="flex gap-3">
+              {[
+                { val: true,  label: '🟢 公開',   cls: 'border-emerald-500 bg-emerald-50 text-emerald-700' },
+                { val: false, label: '⚫ 非公開', cls: 'border-gray-400 bg-gray-50 text-gray-600' },
+              ].map(opt => (
+                <button key={String(opt.val)} type="button"
+                  onClick={() => update('published', opt.val)}
+                  className={`flex-1 py-2.5 text-sm font-bold rounded-lg border-2 transition-all ${form.published === opt.val ? opt.cls : 'border-gray-200 text-gray-400'}`}
+                >
+                  {opt.label}
                 </button>
               ))}
             </div>
+          </div>
 
-            {/* Actions */}
-            <div className="flex gap-3">
-              <a href={`/news/${id}`} target="_blank"
-                className="flex-1 text-center py-3 border-2 border-gray-200 text-gray-600 font-bold rounded hover:bg-gray-50 transition text-sm">
-                👁️ プレビュー
-              </a>
+          {/* Date */}
+          <div>
+            <label className="block text-xs font-bold text-gray-600 mb-2">📅 投稿日</label>
+            <input type="date" value={form.date || ''} onChange={e => update('date', e.target.value)}
+              className="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#1e40af] transition"
+            />
+          </div>
+
+          {/* Pinned */}
+          <label className="flex items-center gap-3 cursor-pointer group p-3 bg-orange-50 rounded-lg border border-orange-100 hover:border-orange-300 transition">
+            <div className="relative">
+              <input type="checkbox" className="sr-only" checked={!!form.pinned} onChange={e => update('pinned', e.target.checked)} />
+              <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all ${form.pinned ? 'bg-[#f97316] border-[#f97316]' : 'border-gray-300'}`}>
+                {form.pinned && <span className="text-white text-xs font-black">✓</span>}
+              </div>
             </div>
+            <div>
+              <span className="font-bold text-gray-800 text-sm">📌 重要・トップに固定</span>
+              <p className="text-[10px] text-gray-500 mt-0.5">バッジ「重要」が表示されます</p>
+            </div>
+          </label>
 
-            <button type="submit" disabled={saving}
-              className="w-full bg-accent hover:bg-orange-700 disabled:opacity-50 text-white font-black py-4 rounded transition text-base">
-              {saving ? '⏳ 保存中...' : '💾 保存する'}
-            </button>
-
+          {/* Scheduled */}
+          <div>
+            <label className="block text-xs font-bold text-gray-600 mb-2">⏰ 予約投稿 <span className="font-normal text-gray-400">（任意）</span></label>
+            <input type="datetime-local" value={form.scheduledDate || ''} onChange={e => update('scheduledDate', e.target.value)}
+              className="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#1e40af] transition"
+            />
           </div>
         </div>
+
+        {/* プレビュー */}
+        {(form.title || form.image) && (
+          <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+            <p className="text-xs font-black text-gray-500 uppercase tracking-widest mb-4">👁️ グリッドプレビュー</p>
+            <div className="max-w-[200px]">
+              <div className="rounded-lg overflow-hidden border border-gray-100 shadow-sm">
+                <div className="relative w-full aspect-[16/9] bg-gray-100 overflow-hidden">
+                  {form.image ? (
+                    <img src={form.image} alt={form.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                      <span className="text-white/50 text-xl">📰</span>
+                    </div>
+                  )}
+                  <span className="absolute top-1.5 left-1.5 text-[9px] font-bold text-white bg-blue-500 px-1.5 py-0.5 rounded">
+                    {CATEGORIES.find(c => c.key === form.category)?.label}
+                  </span>
+                  {form.pinned && (
+                    <span className="absolute top-1.5 right-1.5 text-[9px] font-bold text-white bg-orange-500 px-1.5 py-0.5 rounded">重要</span>
+                  )}
+                </div>
+                <div className="px-2.5 py-2">
+                  <p className="text-[9px] text-gray-400">{form.date}</p>
+                  <p className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 mt-0.5">
+                    {form.title || 'タイトルを入力してください'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="flex gap-3 pt-2">
+          <a href="/admin/news" className="flex-1 text-center py-3 text-sm font-bold text-gray-500 border-2 border-gray-200 rounded-xl hover:border-gray-300 transition">
+            キャンセル
+          </a>
+          <button type="submit" disabled={saving}
+            className="flex-[2] bg-[#1e40af] hover:bg-blue-700 disabled:opacity-50 text-white font-black py-3 rounded-xl transition text-sm shadow-lg"
+          >
+            {saving ? '⏳ 保存中...' : '💾 保存する'}
+          </button>
+        </div>
+
       </form>
     </div>
   );

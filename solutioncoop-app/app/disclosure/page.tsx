@@ -15,6 +15,10 @@ async function getDocuments() {
   }
 }
 
+// 毎回最新データを取得するためにdynamicレンダリングを強制
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: '情報公開',
   description: 'ソリューション協同組合（大阪府堺市）の監理費表、運営規程などの公開書類をダウンロードいただけます。法令を順守し、透明性の高い運営を行っております。',

@@ -6,6 +6,7 @@ import { getLatestNews, getCompanies } from '@/lib/data';
 
 import HeroSection            from '@/components/home/HeroSection';
 import KeyStatsSection        from '@/components/home/KeyStatsSection';
+import NewsSectionHome        from '@/components/home/NewsSectionHome';
 import PillarsSection         from '@/components/home/PillarsSection';
 import CountriesSection       from '@/components/home/CountriesSection';
 import CtaMiniBanner          from '@/components/home/CtaMiniBanner';
@@ -55,6 +56,7 @@ export default async function HomePage() {
       <main className="pt-16 md:pt-20">
         <HeroSection            companies={companies} />
         <KeyStatsSection />
+        <NewsSectionHome        latestNews={latestNews} />
         <PillarsSection />
         <CountriesSection />
         <CtaMiniBanner />

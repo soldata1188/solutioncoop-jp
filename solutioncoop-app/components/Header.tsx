@@ -14,20 +14,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const isLP = pathname === '/lp';
-
-  const navLinks = isLP ? [
-    { href: '#countries', label: '厳選3カ国' },
-    { href: '#flow',      label: '受入の流れ' },
-    { href: '/simulation', label: '費用シミュレーション' },
-    { href: '#faq',       label: 'よくある質問' },
-    { href: '/#support',   label: '24/7 Support' },
-  ] : [
-    { href: '/#news',       label: '最新情報' },
+  const navLinks = [
     { href: '/#strengths',  label: '選ばれる理由' },
     { href: '/#overview',   label: '組合概要' },
     { href: '/#disclosure',  label: '情報公開' },
-    { href: '/lp#faq',      label: 'よくある質問' },
+    { href: '/#faq',        label: 'よくある質問' },
   ];
 
   return (
@@ -55,14 +46,9 @@ export default function Header() {
             </Link>
           ))}
           
-          <Link href="/#support"
-            className="text-accent font-bold border-2 border-accent px-3 py-1.5 rounded hover:bg-accent hover:text-white transition ml-4 whitespace-nowrap">
-            24/7 Support
-          </Link>
-
-          <Link href="/lp"
-            className="text-[#1e40af] font-black border-2 border-[#1e40af] px-3 py-1.5 rounded hover:bg-[#1e40af] hover:text-white transition ml-2 whitespace-nowrap text-xs flex items-center gap-1">
-            企業様はこちら→
+          <Link href="/#contact"
+            className="bg-[#1e40af] text-white font-bold px-4 py-2 rounded hover:bg-[#1d4ed8] transition ml-3 whitespace-nowrap text-xs flex items-center gap-1 shadow-sm">
+            お問い合わせ
           </Link>
 
         </nav>
@@ -99,14 +85,14 @@ export default function Header() {
             ))}
 
             <div className="pt-2 space-y-3">
-              <Link href="/lp" onClick={() => setMenuOpen(false)}
-                className="block text-center text-white bg-[#1e40af] font-black p-4 hover:bg-[#1d4ed8] rounded shadow-md">
-                企業様はこちら→
+              <Link href="/#contact" onClick={() => setMenuOpen(false)}
+                className="block text-center text-white bg-[#1e40af] font-bold p-4 hover:bg-[#1d4ed8] rounded shadow-md">
+                お問い合わせ
               </Link>
 
               <Link href="/#support" onClick={() => setMenuOpen(false)}
-                className="block text-center text-white bg-accent font-black p-4 hover:bg-[#ea580c] rounded shadow-md ring-2 ring-orange-300 ring-offset-2">
-                📢 24/7 Support
+                className="block text-center text-white bg-accent font-bold p-4 hover:bg-[#ea580c] rounded shadow-md ring-2 ring-orange-300 ring-offset-2">
+                📢 24時間対応体制
               </Link>
 
 

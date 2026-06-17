@@ -18,51 +18,19 @@ export default function DisclosureAndCtaSection() {
   return (
     <>
       {/* ===== 情報公開 (Disclosure) ===== */}
-      <section id="disclosure" className="py-20 md:py-24 bg-blue-50/50 text-slate-800 relative border-t border-blue-100">
-        <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-yellow-100 border border-yellow-300 px-4 py-2 mb-4 rounded">
-              <span className="text-yellow-800 font-bold text-xs uppercase tracking-wider">
-                ⚖️ 技能実習法 第32条・第37条 準拠
-              </span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
-            <div className="w-16 h-1 bg-orange-500 mx-auto rounded" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-            {DISCLOSURE_DOCS.map((d) => (
-              <Link
-                key={d.label}
-                href="/disclosure"
-                className="group flex items-center gap-4 p-5 bg-white border border-gray-200 rounded hover:border-[#1e40af] hover:shadow-md transition-all"
-              >
-                <span className="text-3xl bg-slate-50 group-hover:bg-blue-50 text-[#1e40af] p-3 rounded transition-colors">
-                  {d.icon}
-                </span>
-                <div className="flex-1">
-                  <span className="font-black text-sm block mb-1 text-slate-800 group-hover:text-[#1e40af] transition-colors">
-                    {d.label}
-                  </span>
-                  <span className="text-[10px] text-slate-500">{d.desc}</span>
-                </div>
-                <span className="ml-auto text-xl text-blue-200 group-hover:text-[#1e40af] transition-colors">→</span>
-              </Link>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-4">
-            {COMPLIANCE_PILLARS.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white p-5 text-center rounded border border-blue-100 shadow-sm hover:border-blue-300 transition-colors"
-              >
-                <p className="text-blue-500 text-3xl mb-3">{p.icon}</p>
-                <p className="text-blue-900 font-black text-sm mb-1">{p.title}</p>
-                <p className="text-slate-500 text-xs mt-1 leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
+      <section id="disclosure" className="py-16 md:py-20 bg-blue-50/50 text-slate-800 border-t border-blue-100">
+        <div className="container mx-auto px-4 text-center max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-black mb-4 text-blue-900">情報公開・公開書類</h2>
+          <div className="w-16 h-1 bg-orange-500 mx-auto rounded mb-6" />
+          <p className="text-sm text-gray-600 mb-8 leading-relaxed">
+            技能実習法に基づき、監理費用の明細・運営規程・事業報告書等の重要書類を公開しております。
+          </p>
+          <Link
+            href="/disclosure"
+            className="inline-flex items-center gap-2 bg-white text-[#1e40af] font-bold px-8 py-3.5 rounded border-2 border-[#1e40af] hover:bg-[#1e40af] hover:text-white transition-all"
+          >
+            📋 公開書類一覧を見る <span className="text-lg">→</span>
+          </Link>
         </div>
       </section>
 
@@ -111,14 +79,16 @@ export default function DisclosureAndCtaSection() {
             </TrackedLink>
 
             <TrackedLink
-              href="/contact"
+              href="https://lin.ee/rBe1tM6"
+              target="_blank"
+              rel="noopener noreferrer"
               eventAction="cta_click"
-              eventLabel="bottom_contact"
-              className="flex flex-col items-center justify-center bg-[#f97316] hover:bg-[#ea580c] text-white w-full md:w-80 py-5 transition-all rounded shadow-lg group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
+              eventLabel="bottom_line"
+              className="flex flex-col items-center justify-center bg-[#06C755] hover:bg-[#05b34c] text-white w-full md:w-80 py-5 transition-all rounded shadow-lg group hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(6,199,85,0.3)]"
             >
-              <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider">ウェブからのご相談</span>
-              <span className="text-xl md:text-2xl font-black flex items-center gap-2 whitespace-nowrap mb-1">✉️ Webから無料相談</span>
-              <span className="text-[10px] text-white/70">Webお問い合わせフォーム</span>
+              <span className="text-xs md:text-sm font-bold opacity-90 mb-1 tracking-wider">LINEからのご相談</span>
+              <span className="text-xl md:text-2xl font-black flex items-center gap-2 whitespace-nowrap mb-1">💬 LINEでお問い合わせ</span>
+              <span className="text-[10px] text-white/70">LINE公式アカウント</span>
             </TrackedLink>
           </div>
         </div>

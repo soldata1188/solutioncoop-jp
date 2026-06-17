@@ -48,14 +48,14 @@ export default function HeroSection({ companies }: HeroSectionProps) {
 
             {/* Main Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-lg">
-              <Link href="#support" className="flex-1 bg-white hover:bg-blue-50 text-navy font-black py-4 px-6 rounded shadow-lg transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center group">
-                <span className="text-lg">24/7 Support</span>
-                <span className="text-[10px] text-gray-400 font-bold opacity-80 mt-0.5">実習生・外国人材の方</span>
+              <Link href="#support" className="flex-1 bg-white hover:bg-blue-50 text-navy font-black py-4 px-6 rounded transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center group border border-white/80">
+                <span className="text-lg">24時間相談窓口</span>
+                <span className="text-[10px] text-gray-400 font-bold opacity-80 mt-0.5">実習生・外国人材の方はこちら</span>
               </Link>
-              <Link href="#contact" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-black py-4 px-6 rounded shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+              <Link href="#contact" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-black py-4 px-6 rounded transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group border border-orange-400">
                 <div className="flex flex-col items-center">
-                   <span className="text-lg">企業様はこちら</span>
-                   <span className="text-[10px] text-white/70 font-bold mt-0.5">無料相談・導入のご検討</span>
+                   <span className="text-lg">受入れを検討する</span>
+                   <span className="text-[10px] text-white/70 font-bold mt-0.5">無料相談・お問い合わせ</span>
                 </div>
                 <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
               </Link>

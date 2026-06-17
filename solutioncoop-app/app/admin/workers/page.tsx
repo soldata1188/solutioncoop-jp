@@ -22,8 +22,10 @@ export default function AdminWorkersPage() {
     setTimeout(() => setToast(null), 3000);
   }
 
-  async function loadData() {
-    setLoading(true);
+  async function loadData(showSpinner = false) {
+    if (showSpinner) {
+      setLoading(true);
+    }
     const res = await fetch('/api/workers');
     const data = await res.json();
     setWorkers(data);
@@ -31,7 +33,10 @@ export default function AdminWorkersPage() {
   }
 
   useEffect(() => {
-    loadData();
+    const t = setTimeout(() => {
+      loadData(false);
+    }, 0);
+    return () => clearTimeout(t);
   }, []);
 
   function openNewModal() {

@@ -19,8 +19,10 @@ export default function AdminContactsPage() {
     setTimeout(() => setToast(null), 3000);
   }
 
-  async function load() {
-    setLoading(true);
+  async function load(showSpinner = false) {
+    if (showSpinner) {
+      setLoading(true);
+    }
     try {
       const [cRes, qRes] = await Promise.all([
         fetch('/api/contact'),
@@ -38,9 +40,13 @@ export default function AdminContactsPage() {
     // Handle tab from URL
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab');
-    if (tabParam === 'quotes') setActiveTab('quotes');
-    
-    load(); 
+    const t = setTimeout(() => {
+      if (tabParam === 'quotes') {
+        setActiveTab('quotes');
+      }
+      load(false);
+    }, 0);
+    return () => clearTimeout(t);
   }, []);
 
   // Actions for Contact

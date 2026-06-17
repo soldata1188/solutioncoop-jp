@@ -3,6 +3,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 import NewsListClient from './NewsListClient';
 import type { NewsItem } from '@/lib/news';
 
@@ -59,7 +60,7 @@ export default async function NewsPage() {
           </div>
           <div className="container mx-auto px-4 relative z-10 text-center">
             <nav className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-6" aria-label="パンくず">
-              <a href="/" className="hover:text-[#1e40af] transition">🏠 ホーム</a>
+              <Link href="/" className="hover:text-[#1e40af] transition">🏠 ホーム</Link>
               <span className="text-slate-300">›</span>
               <span className="text-slate-600 font-semibold">最新情報・お知らせ</span>
             </nav>

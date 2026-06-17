@@ -16,14 +16,21 @@ export default function AdminNewsPage() {
     setTimeout(() => setToast(null), 3000);
   }
 
-  async function load() {
-    setLoading(true);
+  async function load(showSpinner = false) {
+    if (showSpinner) {
+      setLoading(true);
+    }
     const res = await fetch('/api/news');
     setItems(await res.json());
     setLoading(false);
   }
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      load(false);
+    }, 0);
+    return () => clearTimeout(t);
+  }, []);
 
   async function togglePublish(item: NewsItem) {
     await fetch(`/api/news/${item.id}`, {

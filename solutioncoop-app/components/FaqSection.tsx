@@ -20,9 +20,9 @@ const FAQ_DATA = [
     answer: (
       <div className="grid grid-cols-2 gap-2">
         {[
-          ['👥','若手人材の安定確保','20代の意欲ある人材 को長期採用'],
+          ['👥','若手人材の安定確保','20代の意欲ある人材を長期採用'],
           ['⚡','職場の活性化','日本人社員の指導・教育力も向上'],
-          ['🏆','技術の継承','5年間（特定技能へ移行でさらに長期）の戦力化'],
+          ['🏆','技術の継承','5年間（特定技能へ移行でさらに長期）の育成'],
           ['🤝','海外進出への布石','将来の海外拠点リーダー候補の育成'],
         ].map(([icon,title,desc], i) => (
           <div key={i} className="bg-orange-50/50 border border-orange-100 p-3 rounded text-center">
@@ -99,31 +99,13 @@ const FAQ_DATA = [
             すでに「特定技能」への移行を見越したキャリア形成が必要です。当組合は<strong>監理支援機関</strong>（新制度での呼称）への移行認可を申請中であり、現行制度から新制度へのスムーズな橋渡しを保証します。
           </p>
         </div>
-        <TrackedLink href="/contact" eventAction="cta_click" eventLabel="faq_future_consult" className="text-navy font-bold underline underline-offset-4">
+        <TrackedLink href="/#contact" eventAction="cta_click" eventLabel="faq_future_consult" className="text-navy font-bold underline underline-offset-4">
           新制度対応の無料シミュレーションを依頼する →
         </TrackedLink>
       </div>
     ),
   },
-  {
-    cat: 'cost',
-    catLabel: '費用・賃金',
-    q: '実習生に支払う賃金はどのくらいですか？',
-    answer: (
-      <div className="space-y-3 text-sm leading-relaxed">
-        <div className="bg-amber-50 border border-amber-200 p-3 flex items-center gap-4 rounded">
-          <span className="text-amber-500 text-2xl">⚖️</span>
-          <div>
-            <p className="font-bold text-gray-900">大阪府最低賃金以上が必須</p>
-            <p className="text-gray-600 text-[10px]">2025年10月改定：<strong>1,177円/時</strong>以上</p>
-          </div>
-        </div>
-        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_wage_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
-          🧮 賃金・コストをシミュレーションする →
-        </TrackedLink>
-      </div>
-    ),
-  },
+
   {
     cat: 'system',
     catLabel: '在留・制度',
@@ -150,18 +132,17 @@ const FAQ_DATA = [
     answer: (
       <div className="space-y-3 text-sm leading-relaxed">
         <div className="bg-slate-50 border border-slate-200 p-3 rounded">
-          <p className="font-bold text-[#1e40af] mb-1">⚖️ 煩雑な書類作成は「当組合にお任せ」ください</p>
+          <p className="font-bold text-[#1e40af] mb-1">⚖️ 煩雑な書類作成は当組合が全力でサポートいたします</p>
           <p className="text-gray-700 leading-relaxed">
-            技能実習計画の認定、入管への在留資格申請、OTIT（外国人技能実習機構）への各種届出など、<strong>専門知識が必要な事務手続きは当組合が全面的に代行・サポート</strong>いたします。
+            技能実習計画の認定、入管への在留資格申請、OTIT（外国人技能実習機構）への各種届出など、<strong>専門知識が必要な事務手続きは当組合が全面的にサポート</strong>いたします。
           </p>
         </div>
         <p className="text-gray-600 bg-gray-50 p-2 rounded text-[11px]">
-          受入企業様は「受入れ体制の整備」と「実習生への技能指導」に専念していただける環境を整えます。初めてでも安心してお任せください。
+          受入企業様は「受入れ体制の整備」と「実習生への技能指導」に専念していただける環境を整えます。初めてでも安心してお取り組みいただけます。
         </p>
       </div>
     ),
   },
-  // ─── 新規追加分 ───────────────────────────────────────────────
   {
     cat: 'system',
     catLabel: '在留・制度',
@@ -175,7 +156,7 @@ const FAQ_DATA = [
           </div>
           <div className="bg-green-50 border border-green-100 p-3 rounded">
             <p className="font-bold text-green-700 mb-1">特定技能</p>
-            <p className="text-gray-600 leading-relaxed">即戦力の労働力確保が目的。入国時点で技能・日本語試験（N4相当）に合格済み。教育コスト大幅削減。</p>
+            <p className="text-gray-600 leading-relaxed">即応性の高い人材活用が可能。入国時点で技能・日本語試験（N4相当）に合格済み。基礎教育の負担が軽減されます。</p>
           </div>
         </div>
       </div>
@@ -251,35 +232,11 @@ const FAQ_DATA = [
             <li key={t} className="flex items-center gap-2"><span className="text-orange-500 font-bold">•</span>{t}</li>
           ))}
         </ul>
-        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_initcost_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
-          🧮 初期費用を詳しく試算する →
-        </TrackedLink>
+
       </div>
     ),
   },
-  {
-    cat: 'cost',
-    catLabel: '費用・賃金',
-    q: '配属後に毎月発生するランニングコスト（給与以外）を教えてください。',
-    answer: (
-      <div className="space-y-2 text-sm leading-relaxed">
-        <div className="grid grid-cols-2 gap-2">
-          <div className="bg-gray-50 border border-gray-200 p-3 rounded text-center">
-            <p className="font-bold text-gray-700 mb-0.5">月額監理費</p>
-            <p className="text-lg font-black text-[#1e40af]">2〜3万円</p>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 p-3 rounded text-center">
-            <p className="font-bold text-gray-700 mb-0.5">送出機関管理費</p>
-            <p className="text-lg font-black text-[#1e40af]">5千〜1万円</p>
-          </div>
-        </div>
-        <p className="text-gray-600 bg-blue-50 p-2 rounded">💡 3年間の総費用を労働時間で割ると、<strong>実質約1,200円/時～</strong>が目安です。</p>
-        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_running_simulation" className="inline-flex items-center gap-1.5 mt-1 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
-          🧮 月額コストをシミュレーションする →
-        </TrackedLink>
-      </div>
-    ),
-  },
+
   {
     cat: 'merit',
     catLabel: '導入メリット',
@@ -358,9 +315,7 @@ const FAQ_DATA = [
             <li className="flex items-center gap-2"><span className="text-orange-500">!</span>上回る分は企業負担</li>
           </ul>
         </div>
-        <TrackedLink href="/simulation" eventAction="faq_cta_click" eventLabel="faq_housing_simulation" className="inline-flex items-center gap-1.5 mt-2 text-[#1e40af] font-black hover:text-[#f97316] transition-colors text-sm py-2 min-h-[44px]">
-          🧮 住居費を含めた総コストを試算する →
-        </TrackedLink>
+
       </div>
     ),
   },
@@ -426,12 +381,12 @@ const FAQ_DATA = [
   {
     cat: 'merit',
     catLabel: '導入メリット',
-    q: '他社と比べて「採用コストの削減」ができる理由は何ですか？',
+    q: '他社と比べて「適正な費用体系」と言われる理由は何ですか？',
     answer: (
       <div className="space-y-2 text-sm">
         <p className="font-bold text-orange-600">💡 独自ルートによる「仲介マージン」の排除</p>
         <p className="text-gray-700 leading-relaxed">
-          余計な仲介業者を挟まず、送出国の機関から直接人材を紹介する独自ルートを構築しているため、無駄な手数料が発生しません。質の高い人材を適正価格で確保できるのが当組合の強みです。
+          余計な仲介業者を挟まず、送出国の機関から直接人材を紹介する独自ルートを構築しているため、無駄な手数料が発生しません。質の高い人材を透明性の高い適正な費用でご紹介できるのが当組合の強みです。
         </p>
       </div>
     ),
@@ -443,7 +398,7 @@ const FAQ_DATA = [
     answer: (
       <div className="space-y-2 text-sm">
         <p className="bg-blue-50 p-3 rounded border border-blue-100 text-gray-700">
-          ご安心ください。事前の書類作成、ビザ（在留資格）の申請、行政への定期報告まで、<strong>専門スタッフがすべて代行</strong>いたします。企業様は「現場での業務指導」にのみ集中していただける環境をお作りします。
+          ご安心ください。事前の書類作成、ビザ（在留資格）の申請、行政への定期報告まで、<strong>専門スタッフが全面的にサポート</strong>いたします。企業様は「現場での業務指導」に集中していただける環境をお作りします。
         </p>
       </div>
     ),
@@ -501,6 +456,20 @@ const FAQ_DATA = [
   },
 ];
 
+// Plain-text Q&A for FAQPage JSON-LD (Google Rich Results)
+const FAQ_SCHEMA_DATA = [
+  { q: '技能実習生を受け入れる最大のメリットは何ですか？', a: '若手人材の安定確保（20代の意欲ある人材を長期採用）、職場の活性化（日本人社員の指導・教育力も向上）、技術の継承（5年間、特定技能へ移行でさらに長期の育成）、海外進出への布石（将来の海外拠点リーダー候補の育成）が主なメリットです。' },
+  { q: '新制度「育成就労」での「転籍（転職）」リスクへの対策は？', a: '転籍は無制限ではなく、一定の就労期間（1～2年）と技能・日本語試験の合格が条件です。当組合では母国語スタッフによる定期面談とメンタルケアを強化し、他社へ移る必要のない「選ばれる職場づくり」を伴走支援いたします。' },
+  { q: '来日前にどの程度の日本語能力が期待できますか？', a: '新制度では「A1相当以上（N5級レベル）」が必須化されます。当組合の提携送り出し機関では、現場での安全指示や日本の生活ルールを徹底教育し、現場配属後すぐに馴染める基礎体力を養います。' },
+  { q: '受入企業側で準備すべき費用や設備は何ですか？', a: '主な準備事項は、宿舎（1人4.5㎡以上）、家電・什器一式、渡航費用などの初期費用、社会保険・労働保険です。宿舎の選定から家電のリース手配まで、当組合が全面的にアドバイスいたします。' },
+  { q: '2027年頃から始まる新しい「育成就労制度」とはどのような制度ですか？', a: '現行の技能実習制度を廃止・発展させた新制度です。原則3年間の育成期間を経て、外国人労働者を「特定技能1号」水準（技能検定3級・日本語N4相当）まで引き上げることを目標とします。受け入れ企業は国が認定する育成就労計画を作成・実行する義務があります。' },
+  { q: 'どのような職種で受け入れが可能ですか？', a: '制度上認められた86職種161作業が対象です。主な対応職種は建設、溶接、機械加工、造園、農業、水産加工、介護、縫製など多数あります。' },
+  { q: '外国人実習生の受入れが初めてですが、事務手続きは大変ですか？', a: '煩雑な書類作成は当組合が全力でサポートいたします。技能実習計画の認定、入管への在留資格申請、OTIT（外国人技能実習機構）への各種届出など、専門知識が必要な事務手続きは当組合が全面的にサポートいたします。受入企業様は受入れ体制の整備と実習生への技能指導に専念していただけます。' },
+  { q: '「特定技能」と「技能実習」の根本的な違いは何ですか？', a: '技能実習は国際貢献を建前とした研修制度で最長5年の期間制限があり、入国後に基礎教育が必要です。特定技能は即応性の高い人材活用が可能で、入国時点で技能・日本語試験（N4相当）に合格済みのため基礎教育の負担が軽減されます。' },
+  { q: '「登録支援機関」と「監理団体」は何が違うのですか？', a: '監理団体は技能実習制度における受け入れ企業を監査・指導し実習生を保護する非営利団体で、法律上の義務機関です。登録支援機関は特定技能制度における外国人材の日常生活等を支援する登録制の民間事業者で、任意利用です。当組合は両方の機能を兼ね備えています。' },
+  { q: '自社の業務内容が受入れの対象になるか分かりません。', a: '製造、建設、介護、農業、宿泊、外食業など、多岐にわたる職種で受け入れが可能です。貴社の業務実態をヒアリングした上で、どの在留資格での受け入れが最適か、無料相談にて即時に診断させていただきます。' },
+];
+
 export default function FaqSection() {
   const [activeTab, setActiveTab] = useState<Category>('all');
 
@@ -508,8 +477,22 @@ export default function FaqSection() {
     ? FAQ_DATA 
     : FAQ_DATA.filter(item => item.cat === activeTab);
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_SCHEMA_DATA.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <section id="faq" className="py-14 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-10">
           <span className="inline-block bg-orange-100 text-orange-600 font-bold tracking-widest uppercase text-xs px-4 py-1.5 mb-3 rounded">よくある質問</span>

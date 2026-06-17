@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import fs from 'fs/promises';
 import path from 'path';
 import Header from '@/components/Header';
@@ -14,10 +15,23 @@ async function getDocuments() {
   }
 }
 
-export const metadata = {
-  title: '情報公開 | ソリューション協同組合',
+export const metadata: Metadata = {
+  title: '情報公開',
   description: 'ソリューション協同組合（大阪府堺市）の監理費表、運営規程などの公開書類をダウンロードいただけます。法令を順守し、透明性の高い運営を行っております。',
   alternates: { canonical: 'https://solutioncoop-jp.com/disclosure' },
+  openGraph: {
+    title: '情報公開｜ソリューション協同組合',
+    description: '監理費表・運営規程などの公開書類一覧。法令を順守し透明性の高い運営を行っております。',
+    url: 'https://solutioncoop-jp.com/disclosure',
+    siteName: 'ソリューション協同組合',
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: '情報公開｜ソリューション協同組合',
+    description: '監理費表・運営規程などの公開書類一覧。',
+  },
 };
 
 export default async function DisclosurePage() {

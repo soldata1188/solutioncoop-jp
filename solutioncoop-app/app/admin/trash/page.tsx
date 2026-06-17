@@ -7,6 +7,7 @@ export default function AdminTrashPage() {
   const [items, setItems]     = useState<ExtendedNewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [toast, setToast]     = useState<{ msg: string; type: 'ok' | 'err' } | null>(null);
+  const [now, setNow]         = useState<number>(0);
 
   function showToast(msg: string, type: 'ok' | 'err' = 'ok') {
     setToast({ msg, type });
@@ -21,7 +22,13 @@ export default function AdminTrashPage() {
     setLoading(false);
   }
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setNow(Date.now());
+      load();
+    }, 0);
+    return () => clearTimeout(t);
+  }, []);
 
   async function restoreItem(id: string) {
     const res = await fetch(`/api/news/${id}/restore`, { method: 'PUT' });
@@ -54,8 +61,8 @@ export default function AdminTrashPage() {
   }
 
   function timeAgo(dateStr?: string): string {
-    if (!dateStr) return '';
-    const diff = Date.now() - new Date(dateStr).getTime();
+    if (!dateStr || !now) return '';
+    const diff = now - new Date(dateStr).getTime();
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     if (days === 0) return '今日';
     if (days === 1) return '昨日';

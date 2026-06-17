@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -174,4 +173,19 @@ body { font-family: 'Noto Sans JP', sans-serif; }
 
 .animate-shimmer {
   animation: shimmer 2s infinite;
+}
+
+/* Scroll-triggered fade-in animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out both;
 }

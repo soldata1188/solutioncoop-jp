@@ -132,10 +132,10 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
                   className="block w-full bg-white text-[#1e40af] font-black text-sm py-2 rounded mb-2 hover:bg-blue-50 transition">
                   📞 072-224-8067
                 </a>
-                <Link href="/contact"
-                  className="block w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-xs py-2 rounded transition">
-                  ✉️ Webで相談する
-                </Link>
+                <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer"
+                  className="block w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-bold text-xs py-2 rounded transition">
+                  💬 LINEで相談する
+                </a>
               </div>
               <h3 className="font-black text-navy text-sm mb-3 border-b-2 border-navy/20 pb-2 uppercase tracking-widest text-[11px]">カテゴリ</h3>
               <ul>

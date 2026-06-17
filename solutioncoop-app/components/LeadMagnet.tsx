@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { trackEvent } from '@/lib/gtag';
+import Link from 'next/link';
 
 export default function LeadMagnet() {
   const [form, setForm] = useState({ name: '', company: '', email: '' });
@@ -111,16 +112,16 @@ export default function LeadMagnet() {
                         PDFが新しいタブで開きます。<br />
                         開かない場合は下のボタンをクリックしてください。
                       </p>
-                        <a
+                        <Link
                           href="/"
                           className="inline-flex items-center gap-2 bg-[#06C755] hover:bg-[#05b34c] text-white font-black py-4 px-8 rounded transition shadow-lg hover:-translate-y-1"
                         >
                         ✉️ サイトへ戻る
-                      </a>
+                      </Link>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="relative">
-                      <h3 className="text-xl md:text-2xl font-black text-[#1e40af] mb-2 text-center tracking-tight">無料相談を受け付ける</h3>
+                      <h3 className="text-xl md:text-2xl font-black text-[#1e40af] mb-2 text-center tracking-tight">ガイドブックを請求する</h3>
                       <p className="text-[11px] text-gray-500 mb-6 text-center font-bold bg-gray-50 py-2 rounded">以下を入力して「送信」を押してください</p>
 
                       <div className="space-y-4">
@@ -172,7 +173,7 @@ export default function LeadMagnet() {
                         {status === 'sending' ? (
                           <>⏳ 送信中...</>
                         ) : (
-                          <>✉️ 今すぐ無料相談</>
+                          <>✉️ 資料をダウンロードする</>
                         )}
                       </button>
                       {status === 'error' && (
@@ -207,7 +208,7 @@ export default function LeadMagnet() {
                 onClick={scrollToSection}
                 className="bg-[#f97316] hover:bg-[#ea580c] text-white font-black py-2.5 px-6 text-sm rounded shadow-md transition-all hover:scale-105"
               >
-                ✉️ 無料相談
+                ✉️ 資料請求
               </button>
               <button
                 onClick={() => setDismissed(true)}

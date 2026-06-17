@@ -6,8 +6,7 @@
     "url": "/documents/1776490154075-______________.pdf",
     "size": 3527722,
     "type": "application/pdf",
-    "uploadedAt": "2026-04-18T05:29:14.080Z",
-    "protected": true
+    "uploadedAt": "2026-04-18T05:29:14.080Z"
   },
   {
     "id": "1776388620478",
@@ -17,5 +16,23 @@
     "size": 6341651,
     "type": "application/pdf",
     "uploadedAt": "2026-04-17T01:17:00.478Z"
+  },
+  {
+    "id": "1776490154081",
+    "title": "監理費表（費用明細）",
+    "filename": "kanrihi-meisai.pdf",
+    "url": "/documents/kanrihi-meisai.pdf",
+    "size": 435,
+    "type": "application/pdf",
+    "uploadedAt": "2026-06-17T00:00:00.000Z"
+  },
+  {
+    "id": "1776490154082",
+    "title": "運営規程",
+    "filename": "uneikitei.pdf",
+    "url": "/documents/uneikitei.pdf",
+    "size": 420,
+    "type": "application/pdf",
+    "uploadedAt": "2026-06-17T00:00:00.000Z"
   }
 ]

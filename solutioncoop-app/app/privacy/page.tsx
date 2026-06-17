@@ -1,11 +1,25 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
   description: 'ソリューション協同組合の個人情報保護方針。個人情報の取り扱い、利用目的、管理体制について詳しくご説明します。',
   alternates: { canonical: 'https://solutioncoop-jp.com/privacy' },
+  openGraph: {
+    title: 'プライバシーポリシー｜ソリューション協同組合',
+    description: '個人情報保護方針。個人情報の取り扱い、利用目的、管理体制についてご説明します。',
+    url: 'https://solutioncoop-jp.com/privacy',
+    siteName: 'ソリューション協同組合',
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'プライバシーポリシー｜ソリューション協同組合',
+    description: '個人情報保護方針のご案内。',
+  },
 };
 
 export default function PrivacyPage() {
@@ -81,7 +95,7 @@ export default function PrivacyPage() {
         <section className="py-12 md:py-16" style={{background:'linear-gradient(135deg,#172554 0%,#1e3a8a 55%,#1e40af 100%)'}}>
           <div className="container mx-auto px-4 text-center text-white">
             <nav className="flex items-center justify-center gap-2 text-xs text-blue-300 mb-4" aria-label="パンくず">
-              <a href="/" className="hover:text-white transition">🏠 ホーム</a>
+              <Link href="/" className="hover:text-white transition">🏠 ホーム</Link>
               <span className="text-blue-400">›</span>
               <span className="text-white font-semibold">プライバシーポリシー</span>
             </nav>

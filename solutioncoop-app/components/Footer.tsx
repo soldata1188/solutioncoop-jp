@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-8 gap-8 mb-8">
           <div className="md:col-span-5 space-y-4">
             <div>
-              <h2 className="text-xl font-bold text-navy mb-1">ソリューション協同組合</h2>
+              <p className="text-xl font-bold text-navy mb-1">ソリューション協同組合</p>
               <p className="text-xs text-gray-500">一般監理事業許可 許1708000610</p>
             </div>
             <div className="space-y-3 max-w-sm">
@@ -34,9 +34,7 @@ export default function Footer() {
                 { href: '/#overview',   label: '組合概要' },
                 { href: '/#strengths',  label: '選ばれる理由' },
                 { href: '/#faq',        label: 'よくある質問' },
-                { href: '/news',        label: '最新情報・お知らせ' },
                 { href: '/disclosure',  label: '情報公開' },
-                { href: '/lp',          label: '企業様はこちら' },
               ].map(l => (
                 <li key={l.href}>
                   <Link href={l.href} className="hover:text-navy hover:pl-2 transition-all flex items-center">

@@ -5,7 +5,7 @@ export default function OverviewSection() {
       <div key="n">
         <strong className="text-slate-800 text-base">ソリューション協同組合</strong>
         <br />
-        <span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative （略称：SKK）</span>
+        <span className="text-xs text-slate-500 font-bold tracking-widest">Solution Cooperative</span>
       </div>,
     ],
     [

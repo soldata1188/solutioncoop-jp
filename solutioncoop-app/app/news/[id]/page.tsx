@@ -160,8 +160,8 @@ export default async function NewsDetailPage({ params }: Props) {
                   <Link href="/news" className="inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-navy transition bg-white border border-gray-200 px-8 py-3.5 rounded shadow-sm hover:bg-gray-50">
                     ← お知らせ一覧へ戻る
                   </Link>
-                  <Link href="/lp" className="inline-flex items-center gap-2 text-sm font-bold text-white transition bg-navy hover:bg-navy/90 border border-navy px-8 py-3.5 rounded shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
-                    企業様はこちら→
+                  <Link href="/#contact" className="inline-flex items-center gap-2 text-sm font-bold text-white transition bg-navy hover:bg-navy/90 border border-navy px-8 py-3.5 rounded shadow-md hover:shadow-lg hover:-translate-y-0.5 transform">
+                    お問い合わせはこちら
                   </Link>
                 </div>
               </article>
@@ -230,10 +230,10 @@ export default async function NewsDetailPage({ params }: Props) {
                     </div>
 
                     {/* Web form CTA */}
-                    <Link href="/contact"
-                      className="flex items-center justify-center gap-2 w-full bg-[#f97316] hover:bg-[#ea580c] text-white font-black py-3.5 rounded transition-all duration-200 text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                      ✉️ Webフォームで相談する
-                    </Link>
+                    <a href="https://lin.ee/rBe1tM6" target="_blank" rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-black py-3.5 rounded transition-all duration-200 text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                      💬 LINEでお問い合わせ
+                    </a>
                     <p className="text-[10px] text-gray-300 text-center mt-2">24時間受付・返信は翌営業日以内</p>
                   </div>
                 </div>

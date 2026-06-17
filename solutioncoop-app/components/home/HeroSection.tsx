@@ -24,14 +24,15 @@ export default function HeroSection({ companies }: HeroSectionProps) {
 
             {/* Headline */}
             <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight drop-shadow-md">
-              <span className="block mb-1 md:mb-2 text-white">実習生の育成と定着を、</span>
-              <span className="block text-orange-400">適正な監理で支えます。</span>
+              <span className="block mb-1 md:mb-2 text-white">技能実習生・育成就労・特定技能、</span>
+              <span className="block text-orange-400">外国人採用を適正な監理で支えます。</span>
             </h1>
 
             {/* Description */}
             <p className="text-sm md:text-xl font-medium leading-relaxed text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm px-2">
-              ソリューション協同組合は、大阪府堺市を拠点とする<strong className="text-white border-b border-white pb-0.5">技能実習監理団体</strong>です。<br className="hidden md:block" />
-              平成24年の設立以来、12名の専任講師による独自の教育体制を強みに、数多くの受入企業様とともに歩んでまいりました。
+              <strong className="text-white border-b border-white pb-0.5">技能実習監理団体</strong>のソリューション協同組合（大阪府堺市）。<br className="hidden md:block" />
+              技能実習生の受入れから<strong className="text-orange-300">育成就労・特定技能</strong>への移行まで、<br className="hidden md:block" />
+              設立2012年・70社超の実績で中小企業の外国人採用を一貫支援します。
             </p>
 
             {/* Industry Tags + Social Proof */}

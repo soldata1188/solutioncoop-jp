@@ -17,25 +17,33 @@ import FaqSection from '@/components/FaqSection';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
-  description: 'ソリューション協同組合は、大阪府堺市を拠点とする技能実習監理団体です。規律・礼節を重んじる独自の教育体制で、意欲ある若手・グローバル人材の安定的な確保と育成を支援します。',
+  title: '技能実習生・外国人採用・育成就労・特定技能｜監理団体 ソリューション協同組合｜大阪府堺市',
+  description: '大阪府堺市の監理団体「ソリューション協同組合」。技能実習生の受入れから育成就労・特定技能への移行まで一貫支援。外国人採用に初めて取り組む中小企業様も安心。設立2012年・70社超の実績。無料相談受付中。',
+  keywords: [
+    '技能実習生', '技能実習 監理団体', '外国人採用', '外国人技能実習',
+    '育成就労', '育成就労制度', '特定技能', '特定技能 サポート',
+    '監理団体 大阪', '監理団体 堺市', '外国人採用 中小企業',
+    'ソリューション協同組合', 'OTIT', '外国人技能実習機構',
+    '技能実習 大阪', '外国人労働者 受け入れ',
+  ],
   alternates: { canonical: 'https://solutioncoop-jp.com' },
   openGraph: {
-    title: '【公式】技能実習 監理団体｜ソリューション協同組合｜大阪府堺市',
-    description: '大阪府堺市を拠点とする技能実習監理団体。規律・礼節を重んじる独自の教育体制で中小企業の人材課題を解決します。',
+    title: '技能実習生・外国人採用・育成就労・特定技能｜ソリューション協同組合｜大阪府堺市',
+    description: '大阪府堺市の監理団体。技能実習生の受入れから育成就労・特定技能への移行まで一貫支援。設立2012年・70社超の実績。',
     url: 'https://solutioncoop-jp.com',
     siteName: 'ソリューション協同組合',
-    images: [{ url: '/images/ogp-main.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 630, alt: '技能実習・育成就労・特定技能の監理団体 ソリューション協同組合' }],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '【公式】技能実習 監理団体｜ソリューション協同組合',
-    description: '大阪府堺市の技能実習監理団体。独自の教育体制で中小企業の成長を支援。',
-    images: ['/images/ogp-main.jpg'],
+    title: '技能実習生・外国人採用・育成就労｜ソリューション協同組合',
+    description: '大阪府堺市の監理団体。技能実習・育成就労・特定技能まで一貫支援。70社超の実績・無料相談受付中。',
+    images: ['/images/hero-banner.jpg'],
   },
 };
+
 
 export default async function HomePage() {
   const latestNews = await getLatestNews();

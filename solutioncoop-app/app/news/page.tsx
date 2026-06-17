@@ -10,20 +10,22 @@ import type { NewsItem } from '@/lib/news';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: '最新情報・お知らせ｜ソリューション協同組合',
-  description: 'ソリューション協同組合の最新情報・お知らせ一覧。技能実習生の受入実績、制度情報、相談会イベントなど最新ニュースをカテゴリ別にご確認いただけます。',
+  title: '技能実習・育成就労・特定技能 最新情報｜ソリューション協同組合',
+  description: '技能実習生の受入実績・育成就労制度の最新情報・特定技能対応のお知らせなど、外国人採用に関する最新ニュースをカテゴリ別にご確認いただけます。',
+  keywords: ['技能実習', '育成就労', '特定技能', '外国人採用', '監理団体', 'お知らせ'],
   alternates: { canonical: 'https://solutioncoop-jp.com/news' },
   openGraph: {
-    title: '最新情報・お知らせ｜ソリューション協同組合',
-    description: '技能実習生の受入実績、制度情報、イベント等の最新情報をご案内します。',
+    title: '技能実習・育成就労・特定技能 最新情報｜ソリューション協同組合',
+    description: '技能実習生の受入実績・育成就労制度・特定技能対応のお知らせを配信中。',
     type: 'website',
     url: 'https://solutioncoop-jp.com/news',
-    images: [{ url: '/images/ogp-main.jpg' }],
+    images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '最新情報・お知らせ｜ソリューション協同組合',
-    description: '技能実習生の受入実績、制度情報、イベント等の最新情報を配信中。',
+    title: '技能実習・育成就労・特定技能 最新情報｜ソリューション協同組合',
+    description: '技能実習生の受入実績・育成就労制度・特定技能対応のお知らせを配信中。',
+    images: ['/images/hero-banner.jpg'],
   },
 };
 

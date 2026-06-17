@@ -68,7 +68,11 @@ export default function OverviewSection() {
     <section id="overview" className="py-20 md:py-24 bg-white relative">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-black text-blue-900 mb-4 section-title">組合概要・法人情報</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-blue-900 mb-4 section-title">監理団体情報・法人概要</h2>
+          <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed mt-8">
+            ソリューション協同組合は、<strong className="text-[#1e40af]">技能実習生の受入れ</strong>から<strong className="text-[#1e40af]">育成就労制度への移行</strong>、
+            <strong className="text-[#1e40af]">特定技能</strong>への対応まで、<strong className="text-[#1e40af]">外国人採用</strong>に関わる全ての手続きを一貫してサポートする大阪府堺市の監理団体です。
+          </p>
         </div>
         <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
           <div className="bg-[#1e40af] px-6 py-4 flex items-center gap-3">

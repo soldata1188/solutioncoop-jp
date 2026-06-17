@@ -53,13 +53,13 @@ export default function PillarsSection() {
             70社超の企業様に選ばれた実績
           </span>
           <h2 className="text-2xl md:text-4xl font-black text-[#1e40af] mb-4">
-            なぜ<span className="text-orange-500">70社以上</span>に選ばれ続けるのか
+            <span className="text-orange-500">70社以上</span>に選ばれ続ける理由
           </h2>
-          <p className="text-sm text-gray-500 font-bold">— 受入企業様が実感する、4つの理由 —</p>
+          <p className="text-sm text-gray-500 font-bold">— 受入企業様が実感する、技能実習・育成就労・特定技能対応の4つの理由 —</p>
           <p className="text-gray-500 mt-6 leading-relaxed max-w-2xl mx-auto font-medium text-sm">
-            受入企業様が安心して「技能移転」に専念できるよう、煩雑な事務手続きのご負担を軽減。<br className="hidden md:block" />
-            入国前からの<strong className="text-[#1e40af] font-bold mx-1">「規律と礼節」</strong>を重んじる独自の教育体制で、<br className="hidden md:block" />
-            グローバル人材の安定的な育成を支援します。
+            技能実習生受入れから<strong className="text-[#1e40af] font-bold mx-1">育成就労制度</strong>への移行、<strong className="text-[#1e40af] font-bold mx-1">特定技能</strong>への対応まで。<br className="hidden md:block" />
+            外国人採用に慣れていない中小企業様も、煩雑な事務手続きのご負担を軽減し、<br className="hidden md:block" />
+            「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。
           </p>
         </div>
 

@@ -55,8 +55,17 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Noto Sans JP', sans-serif; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: 'Noto Sans JP', sans-serif; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+
+/* Mobile touch targets: minimum 44px for tap targets */
+a, button { touch-action: manipulation; }
+
+/* Prevent image overflow on mobile */
+img { max-width: 100%; height: auto; }
+
+/* Smooth scrolling offset for fixed header */
+[id] { scroll-margin-top: 80px; }
 
 /* Progress bar */
 #nprogress .bar { background: var(--accent) !important; height: 3px !important; }

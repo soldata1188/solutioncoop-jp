@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function SupportSection() {
   return (
-    <section id="support" className="py-20 md:py-28 bg-slate-50 relative overflow-hidden border-t border-gray-200">
+    <section id="support" className="py-14 md:py-28 bg-slate-50 relative overflow-hidden border-t border-gray-200">
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-100 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
@@ -10,7 +10,7 @@ export default function SupportSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 md:mb-14">
           {/* Target Audience Label */}
           <div className="inline-block bg-[#1e40af] text-white font-black px-5 py-2 rounded mb-6 shadow-md text-sm md:text-base tracking-widest">
             🧑‍🔧 外国人材・実習生のみなさまへ<br />
@@ -66,7 +66,7 @@ export default function SupportSection() {
         </div>
 
         {/* Contact Channels */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 max-w-5xl mx-auto mb-12">
 
           {/* Facebook */}
           <div className="group bg-white rounded border border-gray-100 overflow-hidden shadow-xl hover:-translate-y-2 transition-all duration-500 flex flex-col">

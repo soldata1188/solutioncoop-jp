@@ -45,10 +45,10 @@ export default function PillarsSection() {
   ];
 
   return (
-    <section id="strengths" className="py-20 md:py-28 bg-blue-50 relative overflow-hidden">
+    <section id="strengths" className="py-14 md:py-28 bg-blue-50 relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <span className="text-[#f97316] font-black tracking-widest text-xs uppercase mb-3 block">
             70社超の企業様に選ばれた実績
           </span>
@@ -66,7 +66,7 @@ export default function PillarsSection() {
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
           {pillars.map((p, i) => (
-            <div key={i} className="bg-white p-6 md:p-8 rounded border-t-4 border-[#1e40af] hover:-translate-y-1 transition-transform">
+            <div key={i} className="bg-white p-5 md:p-8 rounded border-t-4 border-[#1e40af] hover:-translate-y-1 transition-transform">
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <div className="text-3xl bg-blue-50 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded text-[#1e40af] shrink-0">{p.icon}</div>
                 <div>
@@ -81,7 +81,7 @@ export default function PillarsSection() {
 
         {/* Trust Badges (merged from StrengthsSection) */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {trustBadges.map((b) => (
               <div
                 key={b.title}

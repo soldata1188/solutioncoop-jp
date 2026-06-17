@@ -36,7 +36,7 @@ export default function CasesSection() {
   ];
 
   return (
-    <section id="cases" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="cases" className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="text-[#f97316] font-black tracking-widest text-xs uppercase mb-3 block">
@@ -52,7 +52,7 @@ export default function CasesSection() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 max-w-7xl mx-auto">
           {cases.map((caseItem, idx) => (
             <div key={idx} className="bg-white rounded overflow-hidden border border-gray-100 flex flex-col hover:-translate-y-1 transition-all duration-500 group">
               <div className="relative h-56 overflow-hidden">
@@ -71,7 +71,7 @@ export default function CasesSection() {
                   </p>
                 </div>
               </div>
-              <div className="p-8 flex-1 flex flex-col">
+              <div className="p-5 md:p-8 flex-1 flex flex-col">
                 <h3 className="text-xl font-black text-[#1e40af] mb-5 leading-tight group-hover:text-orange-600 transition-colors">
                   {caseItem.title}
                 </h3>

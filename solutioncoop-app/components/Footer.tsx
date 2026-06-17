@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-50 text-gray-600 py-10 text-sm border-t border-blue-100">
+    <footer className="bg-blue-50 text-gray-600 py-10 pb-24 md:pb-10 text-sm border-t border-blue-100">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-8 gap-8 mb-8">
           <div className="md:col-span-5 space-y-4">
@@ -19,7 +19,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center">
                 <span className="mr-3 text-navy-light w-5 text-center flex-shrink-0">📞</span>
-                <a href="tel:0722248067" className="text-xl font-bold text-gray-800 hover:text-navy transition">072-224-8067</a>
+                <a href="tel:0722248067" className="text-lg font-bold text-gray-800 hover:text-navy transition break-all">072-224-8067</a>
               </div>
               <div className="flex items-center">
                 <span className="mr-3 text-navy-light w-5 text-center flex-shrink-0">✉️</span>

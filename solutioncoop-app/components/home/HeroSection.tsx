@@ -7,7 +7,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ companies }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[650px] lg:min-h-[720px] flex flex-col overflow-hidden">
+    <section className="relative min-h-[560px] sm:min-h-[620px] lg:min-h-[720px] flex flex-col overflow-hidden">
       {/* Hero background image */}
       <div className="absolute inset-0 z-0">
         <Image src="/images/hero-banner.jpg" alt="" fill priority className="object-cover" aria-hidden="true" />
@@ -23,13 +23,13 @@ export default function HeroSection({ companies }: HeroSectionProps) {
           <div className="w-full max-w-4xl text-white flex flex-col items-center gap-8">
 
             {/* Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight drop-shadow-md">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight drop-shadow-md">
               <span className="block mb-1 md:mb-2 text-white">実習生の育成と定着を、</span>
               <span className="block text-orange-400">適正な監理で支えます。</span>
             </h1>
 
             {/* Description */}
-            <p className="text-base md:text-xl font-medium leading-loose text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm">
+            <p className="text-sm md:text-xl font-medium leading-relaxed text-blue-50 opacity-95 max-w-3xl mx-auto drop-shadow-sm px-2">
               ソリューション協同組合は、大阪府堺市を拠点とする<strong className="text-white border-b border-white pb-0.5">技能実習監理団体</strong>です。<br className="hidden md:block" />
               平成24年の設立以来、12名の専任講師による独自の教育体制を強みに、数多くの受入企業様とともに歩んでまいりました。
             </p>
@@ -47,17 +47,17 @@ export default function HeroSection({ companies }: HeroSectionProps) {
             </div>
 
             {/* Main Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full max-w-lg">
-              <Link href="#support" className="flex-1 bg-white hover:bg-blue-50 text-navy font-black py-4 px-6 rounded transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center group border border-white/80">
-                <span className="text-lg">24時間相談窓口</span>
-                <span className="text-[10px] text-gray-400 font-bold opacity-80 mt-0.5">実習生・外国人材の方はこちら</span>
-              </Link>
-              <Link href="#contact" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-black py-4 px-6 rounded transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group border border-orange-400">
+            <div className="flex flex-col sm:flex-row gap-3 mt-2 sm:mt-4 w-full max-w-lg px-2 sm:px-0">
+              <Link href="#contact" className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-black py-3.5 sm:py-4 px-4 rounded transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group border border-orange-400">
                 <div className="flex flex-col items-center">
-                   <span className="text-lg">受入れを検討する</span>
+                   <span className="text-base sm:text-lg">受入れを検討する</span>
                    <span className="text-[10px] text-white/70 font-bold mt-0.5">無料相談・お問い合わせ</span>
                 </div>
                 <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+              </Link>
+              <Link href="#support" className="flex-1 bg-white/20 hover:bg-white/30 text-white font-black py-3.5 sm:py-4 px-4 rounded transition-all transform hover:-translate-y-1 flex flex-col items-center justify-center group border border-white/40 backdrop-blur-sm">
+                <span className="text-base sm:text-lg">24時間相談窓口</span>
+                <span className="text-[10px] text-white/60 font-bold opacity-80 mt-0.5">実習生・外国人材の方はこちら</span>
               </Link>
             </div>
 

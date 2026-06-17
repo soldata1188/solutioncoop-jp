@@ -35,7 +35,7 @@ export default function DisclosureAndCtaSection() {
       </section>
 
       {/* ===== CTA (B2B Host Companies) ===== */}
-      <section id="contact" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">
+      <section id="contact" className="py-16 md:py-28 pb-24 md:pb-28 bg-white text-slate-800 relative overflow-hidden border-t-8 border-[#f97316]">
         {/* Background decorations */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-50 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -64,7 +64,7 @@ export default function DisclosureAndCtaSection() {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-8">
+          <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 md:gap-8 px-4 sm:px-0">
             <TrackedLink
               href="tel:0722248067"
               eventAction="cta_click"

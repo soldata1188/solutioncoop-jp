@@ -42,13 +42,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: 'ソリューション協同組合',
     alternateName: 'Solution Cooperative Association',
     url: 'https://solutioncoop-jp.com',
-    logo: 'https://solutioncoop-jp.com/images/logo.png',
-    image: 'https://solutioncoop-jp.com/images/hero-banner.jpg',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://solutioncoop-jp.com/images/logo.png',
+      width: 400,
+      height: 400,
+    },
+    image: [
+      'https://solutioncoop-jp.com/images/hero-banner.jpg',
+      'https://solutioncoop-jp.com/images/logo.png',
+    ],
+    priceRange: '要お問い合わせ',
     description: '大阪府堺市を拠点とする技能実習監理団体。技能実習生の受入れから育成就労・特定技能への移行まで一貫支援。設立2012年・70社超の実績。',
     telephone: '+81-72-224-8067',
     faxNumber: '+81-72-224-2214',
     email: 'info@solutioncoop-jp.com',
     foundingDate: '2012-03',
+
     address: {
       '@type': 'PostalAddress',
       streetAddress: '甲斐町東4丁2番2号',

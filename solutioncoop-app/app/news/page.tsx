@@ -3,7 +3,6 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Link from 'next/link';
 import NewsListClient from './NewsListClient';
 import type { NewsItem } from '@/lib/news';
 
@@ -55,26 +54,25 @@ export default async function NewsPage() {
       <Header />
       <main className="pt-16 md:pt-20">
         {/* Hero */}
-        <section className="py-14 md:py-20 relative overflow-hidden bg-slate-50 border-b border-gray-100">
-          <div className="absolute inset-0 pointer-events-none opacity-40">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-100/50 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
-          </div>
-          <div className="container mx-auto px-4 relative z-10 text-center">
-            <nav className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-6" aria-label="パンくず">
-              <Link href="/" className="hover:text-[#1e40af] transition">🏠 ホーム</Link>
-              <span className="text-slate-300">›</span>
-              <span className="text-slate-600 font-semibold">最新情報・お知らせ</span>
-            </nav>
-            <div className="inline-flex items-center gap-2 bg-[#1e40af]/5 border border-[#1e40af]/10 rounded px-4 py-1.5 text-xs font-bold mb-4 text-[#1e40af]">
-              📰 お知らせ
-            </div>
-            <h1 className="text-3xl md:text-5xl font-black mb-4 text-[#1e40af]">
-              最新情報・<span className="text-[#f97316]">お知らせ</span>
+        <section className="relative py-10 md:py-14 bg-white border-b border-gray-100">
+          <div className="container mx-auto px-4 text-center">
+            {/* Subtitle */}
+            <span className="text-[10px] md:text-xs font-bold tracking-widest text-[#f97316] uppercase block mb-2">
+              NEWS & TOPICS
+            </span>
+            
+            {/* Main Title */}
+            <h1 className="text-2xl md:text-4xl font-bold text-[#0D2B5E] tracking-tight leading-tight mb-3">
+              最新情報・お知らせ
             </h1>
-            <p className="text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
-              受入実績・制度情報・相談会イベントなど、<br className="hidden sm:block"/>
-              ソリューション協同組合の最新情報をお届けします。
+            
+            {/* Divider */}
+            <div className="w-10 h-[2.5px] bg-[#f97316] mx-auto mb-4 rounded-full" />
+            
+            {/* Description */}
+            <p className="text-xs md:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+              外国人材の受入れ実績から、育成就労制度の最新解説、<br className="hidden sm:block"/>
+              セミナー・イベント情報まで、有益なニュースをお届けします。
             </p>
           </div>
         </section>

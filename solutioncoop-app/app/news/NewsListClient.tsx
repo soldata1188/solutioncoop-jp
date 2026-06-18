@@ -20,7 +20,7 @@ const CAT_GRADIENT: Record<string, string> = {
 
 export default function NewsListClient({ initialNews }: { initialNews: NewsItem[] }) {
   const [filter, setFilter] = useState<'all' | NewsCategory>('all');
-  const [search, setSearch] = useState('');
+  const search = '';
   const [sort,   setSort]   = useState<'new' | 'old'>('new');
 
   const filtered = useMemo(() => {
@@ -42,49 +42,41 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
     { key: 'news',   label: 'お知らせ', count: initialNews.filter(n => n.category === 'news').length },
     { key: 'result', label: '受入実績', count: initialNews.filter(n => n.category === 'result').length },
     { key: 'system', label: '制度情報', count: initialNews.filter(n => n.category === 'system').length },
+    { key: 'event',  label: 'イベント', count: initialNews.filter(n => n.category === 'event').length },
   ];
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
 
-      {/* ── 検索・フィルター ── */}
+      {/* ── フィルター ── */}
       <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-5 mb-8">
-        <div className="flex flex-col sm:flex-row gap-3 mb-4">
-          <div className="relative flex-1">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
-            <input
-              type="search"
-              placeholder="キーワードで検索..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded bg-gray-50 focus:outline-none focus:border-[#1e40af] focus:ring-2 focus:ring-[#1e40af]/10 transition"
-            />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {/* Category tabs */}
+          <div className="flex flex-wrap gap-2">
+            {CATS.map(c => (
+              <button
+                key={c.key}
+                onClick={() => setFilter(c.key)}
+                className={`text-xs font-bold px-4 py-1.5 rounded border-2 transition-all ${
+                  filter === c.key
+                    ? 'border-[#1e40af] bg-[#1e40af] text-white'
+                    : 'border-gray-200 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'
+                }`}
+              >
+                {c.label} <span className="ml-1 opacity-60 font-normal">{c.count}</span>
+              </button>
+            ))}
           </div>
+
+          {/* Sort select */}
           <select
             value={sort}
             onChange={e => setSort(e.target.value as 'new' | 'old')}
-            className="text-xs border border-gray-200 rounded px-3 py-2.5 bg-gray-50 text-gray-600 cursor-pointer focus:outline-none focus:border-[#1e40af]"
+            className="text-xs border border-gray-200 rounded px-3 py-2 bg-gray-50 text-gray-600 cursor-pointer focus:outline-none focus:border-[#1e40af] self-start sm:self-auto"
           >
             <option value="new">新しい順</option>
             <option value="old">古い順</option>
           </select>
-        </div>
-
-        {/* Category tabs */}
-        <div className="flex flex-wrap gap-2">
-          {CATS.map(c => (
-            <button
-              key={c.key}
-              onClick={() => setFilter(c.key)}
-              className={`text-xs font-bold px-4 py-1.5 rounded border-2 transition-all ${
-                filter === c.key
-                  ? 'border-[#1e40af] bg-[#1e40af] text-white'
-                  : 'border-gray-200 text-gray-600 hover:border-[#1e40af] hover:text-[#1e40af]'
-              }`}
-            >
-              {c.label} <span className="ml-1 opacity-60 font-normal">{c.count}</span>
-            </button>
-          ))}
         </div>
       </div>
 
@@ -99,11 +91,11 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
           <p className="text-xs text-gray-400 mt-1">キーワードを変更するか、カテゴリを「すべて」に戻してください</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filtered.map(n => (
             <div
               key={n.id}
-              className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 flex flex-col"
+              className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 flex flex-col"
             >
               {/* Image */}
               <div className="relative w-full aspect-[16/9] overflow-hidden">
@@ -113,17 +105,13 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
                     alt={n.title}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
                   <div className={`w-full h-full bg-gradient-to-br ${CAT_GRADIENT[n.category] || 'from-gray-400 to-gray-600'} flex items-center justify-center`}>
                     <span className="text-white/50 text-2xl">📰</span>
                   </div>
                 )}
-                {/* Category badge */}
-                <span className={`absolute top-2 left-2 text-[9px] font-bold text-white px-1.5 py-0.5 rounded ${CAT_COLOR[n.category] || 'bg-gray-500'}`}>
-                  {CATEGORY_CONFIG[n.category]?.label ?? n.category}
-                </span>
                 {n.pinned && (
                   <span className="absolute top-2 right-2 text-[9px] font-bold text-white bg-orange-500 px-1.5 py-0.5 rounded">
                     重要
@@ -133,10 +121,15 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
 
               {/* Title only */}
               <div className="px-3 py-2.5 flex flex-col flex-grow">
-                <time className="text-[9px] text-gray-400 font-medium tracking-wider">
-                  {n.date.replace(/-/g, '.')}
-                </time>
-                <h2 className="text-xs font-bold text-gray-800 leading-snug line-clamp-2 mt-0.5">
+                <div className="flex items-center gap-1.5">
+                  <time className="text-[11px] text-gray-400 font-medium tracking-wider">
+                    {n.date.replace(/-/g, '.')}
+                  </time>
+                  <span className={`text-[9px] font-bold text-white px-1.5 py-0.5 rounded leading-none ${CAT_COLOR[n.category] || 'bg-gray-500'}`}>
+                    {CATEGORY_CONFIG[n.category]?.label ?? n.category}
+                  </span>
+                </div>
+                <h2 className="text-sm font-medium text-slate-700 leading-snug mt-0.5 group-hover:text-[#1e40af] transition-colors">
                   {n.title}
                 </h2>
               </div>

@@ -32,7 +32,7 @@ export default function Footer() {
             <ul className="space-y-2 mt-2">
               {[
                 { href: '/#overview',   label: '組合概要' },
-                { href: '/#strengths',  label: '選ばれる理由' },
+                { href: '/news',        label: 'お知らせ' },
                 { href: '/#faq',        label: 'よくある質問' },
                 { href: '/disclosure',  label: '情報公開' },
               ].map(l => (

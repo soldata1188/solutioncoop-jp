@@ -233,8 +233,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
 
-  // 後方互換: jsonLd として単一変数にまとめる
-  const jsonLd = orgLd;
 
   return (
     <html lang="ja">

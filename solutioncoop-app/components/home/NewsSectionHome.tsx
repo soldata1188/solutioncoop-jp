@@ -72,10 +72,6 @@ export default function NewsSectionHome({ latestNews }: NewsSectionHomeProps) {
                       <span className="text-white/40 text-2xl">📰</span>
                     </div>
                   )}
-                  {/* Category badge */}
-                  <span className={`absolute top-1.5 left-1.5 text-[8px] font-bold text-white px-1.5 py-0.5 rounded leading-none ${CAT_COLOR[n.category] || 'bg-gray-500'}`}>
-                    {CATEGORY_CONFIG[n.category]?.label ?? n.category}
-                  </span>
                   {/* Pinned badge */}
                   {n.pinned && (
                     <span className="absolute top-1.5 right-1.5 text-[8px] font-bold text-white bg-orange-500 px-1.5 py-0.5 rounded leading-none">
@@ -86,10 +82,15 @@ export default function NewsSectionHome({ latestNews }: NewsSectionHomeProps) {
 
                 {/* Title */}
                 <div className="px-2 pt-1.5 pb-2 flex flex-col flex-grow">
-                  <time className="text-[9px] text-gray-400 font-medium leading-none">
-                    {formatDateDot(n.date)}
-                  </time>
-                  <h3 className="text-[11px] font-bold text-gray-800 leading-snug line-clamp-2 mt-1 group-hover:text-[#1e40af] transition-colors">
+                  <div className="flex items-center gap-1.5">
+                    <time className="text-[11px] text-gray-400 font-medium leading-none">
+                      {formatDateDot(n.date)}
+                    </time>
+                    <span className={`text-[9px] font-bold text-white px-1.5 py-0.5 rounded leading-none ${CAT_COLOR[n.category] || 'bg-gray-500'}`}>
+                      {CATEGORY_CONFIG[n.category]?.label ?? n.category}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-medium text-slate-700 leading-snug line-clamp-3 mt-1 group-hover:text-[#1e40af] transition-colors">
                     {n.title}
                   </h3>
                 </div>
@@ -102,12 +103,12 @@ export default function NewsSectionHome({ latestNews }: NewsSectionHomeProps) {
 
         {/* Footer */}
         {latestNews.length > 0 && (
-          <div className="text-center mt-6">
+          <div className="text-center mt-8">
             <Link
               href="/news"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#1e40af] border border-[#1e40af] px-6 py-2 rounded hover:bg-[#1e40af] hover:text-white transition-all"
+              className="inline-flex items-center gap-2 text-sm font-bold text-white bg-[#1e40af] hover:bg-[#1d4ed8] px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              すべてのお知らせを見る（{latestNews.length}件）→
+              すべてのお知らせを見る（{latestNews.length}件） →
             </Link>
           </div>
         )}

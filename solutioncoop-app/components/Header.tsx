@@ -15,7 +15,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: '/#strengths',  label: '選ばれる理由' },
+    { href: '/news',        label: 'お知らせ' },
     { href: '/#overview',   label: '組合概要' },
     { href: '/#disclosure',  label: '情報公開' },
     { href: '/#faq',        label: 'よくある質問' },

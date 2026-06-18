@@ -92,15 +92,15 @@ export default function EditArticlePage() {
           <label className="block text-sm font-black text-gray-700 mb-3">
             📝 タイトル <span className="text-red-500">*</span>
           </label>
-          <input
-            type="text"
+          <textarea
+            rows={3}
             value={form.title || ''}
             onChange={e => update('title', e.target.value)}
-            placeholder="例：第59期ベトナム実習生10名が入国しました"
-            className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#1e40af] transition"
+            placeholder="例：【受入実績】食品製造業でベトナム技能実習生3名が配属完了！母国語スタッフによる徹底的な初期生活指導と現場定着までのサポート体制について"
+            className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#1e40af] transition resize-y"
             required
           />
-          <p className="text-[10px] text-gray-400 mt-2">現在: {(form.title || '').length}文字（推奨: 20〜40文字）</p>
+          <p className="text-[10px] text-gray-400 mt-2">現在: {(form.title || '').length}文字（推奨: 50〜85文字・2〜3行の折り返し表示に最適化）</p>
         </div>
 
         {/* ② 画像 */}

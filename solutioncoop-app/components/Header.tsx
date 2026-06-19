@@ -16,7 +16,7 @@ export default function Header() {
     { href: '/news',        label: 'お知らせ' },
     { href: '/#overview',   label: '組合概要' },
     { href: '/#disclosure',  label: '情報公開' },
-    { href: '/#faq',        label: 'よくある質問' },
+    { href: '/faq',        label: 'よくある質問' },
   ];
 
   return (

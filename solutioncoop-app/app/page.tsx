@@ -13,7 +13,6 @@ import CtaMiniBanner          from '@/components/home/CtaMiniBanner';
 import SupportSection         from '@/components/home/SupportSection';
 import OverviewSection        from '@/components/home/OverviewSection';
 import DisclosureAndCtaSection from '@/components/home/DisclosureAndCtaSection';
-import FaqSection from '@/components/FaqSection';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,7 +60,6 @@ export default async function HomePage() {
         <CountriesSection />
         <CtaMiniBanner />
         <SupportSection />
-        <FaqSection />
         <OverviewSection />
         <DisclosureAndCtaSection />
 

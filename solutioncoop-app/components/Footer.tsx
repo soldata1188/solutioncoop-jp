@@ -33,7 +33,7 @@ export default function Footer() {
               {[
                 { href: '/#overview',   label: '組合概要' },
                 { href: '/news',        label: 'お知らせ' },
-                { href: '/#faq',        label: 'よくある質問' },
+                { href: '/faq',        label: 'よくある質問' },
                 { href: '/disclosure',  label: '情報公開' },
               ].map(l => (
                 <li key={l.href}>

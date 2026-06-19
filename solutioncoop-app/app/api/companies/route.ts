@@ -9,7 +9,7 @@ export async function GET() {
     const raw = await fs.readFile(DB_PATH, 'utf-8');
     const data = JSON.parse(raw);
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to read companies data' }, { status: 500 });
   }
 }
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     }
     await fs.writeFile(DB_PATH, JSON.stringify(body, null, 2), 'utf-8');
     return NextResponse.json({ success: true, message: 'Saved successfully' });
-  } catch (error) {
+  } catch {
 
     return NextResponse.json({ error: 'Failed to save data' }, { status: 500 });
   }

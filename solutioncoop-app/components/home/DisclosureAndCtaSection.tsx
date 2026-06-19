@@ -1,19 +1,6 @@
 import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 
-const DISCLOSURE_DOCS = [
-  { label: '監理費用の明細', icon: '📄', desc: '監理費用の内訳および用途の明細' },
-  { label: '運営規程',       icon: '📖', desc: '当組合の事業運営に関する基本規則' },
-  { label: '監理団体事業報告書', icon: '📋', desc: '年度ごとの事業実績および活動報告' },
-  { label: '監理団体許可証の写し', icon: '🏅', desc: '法務省・厚生労働省からの事業許可証' },
-];
-
-const COMPLIANCE_PILLARS = [
-  { icon: '⚖️', title: '法令遵守',    desc: '技能実習法に完全準拠した事業運営' },
-  { icon: '👁️', title: '透明性の確保', desc: '全費用・手数料の書面による明示' },
-  { icon: '🛡️', title: '実習生の保護', desc: '不当な徴収の禁止と人権の尊重' },
-];
-
 export default function DisclosureAndCtaSection() {
   return (
     <>

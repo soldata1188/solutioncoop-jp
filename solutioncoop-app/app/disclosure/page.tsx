@@ -10,7 +10,7 @@ async function getDocuments() {
   try {
     const raw = await fs.readFile(filePath, 'utf-8');
     return JSON.parse(raw);
-  } catch (e) {
+  } catch {
     return [];
   }
 }

@@ -2,8 +2,6 @@
 
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import Image from 'next/image';
-
 interface WorkerFace {
   id: number;
   src: string;

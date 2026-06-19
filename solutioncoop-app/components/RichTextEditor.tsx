@@ -135,7 +135,6 @@ export default function RichTextEditor({ value, onChange, label = '本文' }: Pr
         </div>
         <div className="article-preview-pane min-h-[100px]">
           {value ? (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             <MDPreview source={value} {...({} as any)} />
           ) : (
             <p className="text-gray-300 text-sm italic">

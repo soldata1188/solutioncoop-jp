@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     // Return public URL path
     const publicUrl = `/uploads/news/${safeName}`;
     return NextResponse.json({ ok: true, url: publicUrl }, { status: 201 });
-  } catch (err) {
+  } catch {
 
     return NextResponse.json({ error: 'アップロードに失敗しました' }, { status: 500 });
   }

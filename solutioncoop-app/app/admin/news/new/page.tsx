@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { NewsCategory } from '@/lib/news';
-import { CATEGORY_CONFIG } from '@/lib/news';
 import ImageUploader from '@/components/ImageUploader';
 
 const CATEGORIES: { key: NewsCategory; label: string; icon: string; color: string }[] = [

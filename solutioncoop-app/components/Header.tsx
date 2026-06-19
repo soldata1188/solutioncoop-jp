@@ -6,8 +6,6 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled]  = useState(false);
-  const pathname = usePathname();
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll);

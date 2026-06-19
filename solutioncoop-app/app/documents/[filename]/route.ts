@@ -35,7 +35,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ file
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
-  } catch (error) {
+  } catch {
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 }

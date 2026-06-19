@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FaqSection from '@/components/FaqSection';
 import TrackedLink from '@/components/TrackedLink';
+import ContactCtaSection from '@/components/ContactCtaSection';
 
 export const metadata: Metadata = {
   title: 'よくある質問（FAQ）｜ソリューション協同組合',
@@ -33,6 +34,7 @@ export default function FaqPage() {
 
 
       </main>
+      <ContactCtaSection />
       <Footer />
     </>
   );

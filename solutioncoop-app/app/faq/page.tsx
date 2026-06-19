@@ -34,7 +34,7 @@ export default function FaqPage() {
         <div className="container mx-auto px-4 pb-20">
           <div className="bg-gradient-to-r from-orange-50 to-orange-100/50 rounded-2xl p-8 md:p-12 border border-orange-200 shadow-sm max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-black text-orange-800 mb-4">
-              さらに詳しい情報をお探しですか？
+              お問い合わせ
             </h2>
             <p className="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
               「育成就労」への移行ポイントや、当組合独自のサポート体制について、より分かりやすくまとめた最新のガイドブックを無料でダウンロードいただけます。

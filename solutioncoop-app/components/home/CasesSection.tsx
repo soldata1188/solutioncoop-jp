@@ -10,7 +10,7 @@ export default function CasesSection() {
       problem: '次世代への技術継承が課題となり、新たな育成体制の構築が求められていた。',
       solution: 'ベトナムから意欲の高い3名の若手を受入れ、OJTによる技術指導を開始。',
       result: '技術の継承がスムーズに進み、現場全体の士気と生産性が向上した。',
-      image: '/images/case-construction.png',
+      image: '/images/case-construction.webp',
       tagColor: 'bg-blue-600'
     },
     {
@@ -20,7 +20,7 @@ export default function CasesSection() {
       problem: '受注増に対応するため、即戦力となる人材の育成体制が必要だった。',
       solution: 'インドネシアとフィリピンの混成チームを編成し、段階的に技能を移転。',
       result: '交代制勤務が可能になり、工場の稼働率が劇的に改善。',
-      image: '/images/case-manufacturing.png',
+      image: '/images/case-manufacturing.webp',
       tagColor: 'bg-slate-700'
     },
     {
@@ -30,7 +30,7 @@ export default function CasesSection() {
       problem: '季節による繁閑差が激しく、継続的な技能指導が困難だった。',
       solution: '特定技能制度を活用し、通年での安定雇用と計画的な育成体制に移行。',
       result: '人材の定着率が向上し、浮いた採用・教育費を新設備の導入に活用。',
-      image: '/images/case-agriculture.png',
+      image: '/images/case-agriculture.webp',
       tagColor: 'bg-emerald-600'
     }
   ];
@@ -60,6 +60,7 @@ export default function CasesSection() {
                   src={caseItem.image} 
                   alt={caseItem.title} 
                   fill 
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700" 
                 />
                 <div className={`absolute top-4 left-4 ${caseItem.tagColor} text-white text-[10px] font-black px-3 py-1 rounded tracking-widest`}>

@@ -41,8 +41,7 @@ export default function NewsListClient({ initialNews }: { initialNews: NewsItem[
     { key: 'all',    label: 'すべて',   count: initialNews.length },
     { key: 'news',   label: 'お知らせ', count: initialNews.filter(n => n.category === 'news').length },
     { key: 'result', label: '受入実績', count: initialNews.filter(n => n.category === 'result').length },
-    { key: 'system', label: '制度情報', count: initialNews.filter(n => n.category === 'system').length },
-    { key: 'event',  label: 'イベント', count: initialNews.filter(n => n.category === 'event').length },
+    { key: 'event',  label: 'イベント',  count: initialNews.filter(n => n.category === 'event').length },
   ];
 
   return (

@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
-  { href: '/admin',          icon: '📊', label: 'ダッシュボード' },
-  { href: '/admin/companies',icon: '🏢', label: '企業リスト管理' },
   { href: '/admin/news',     icon: '📰', label: '最新情報管理' },
   { href: '/admin/news/new', icon: '✏️', label: '新規投稿' },
+  { href: '/admin/companies',icon: '🏢', label: '企業リスト管理' },
   { href: '/admin/documents',icon: '📁', label: '公開書類管理' },
 ];
 
@@ -36,7 +35,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   function isActive(href: string) {
-    if (href === '/admin') return pathname === '/admin';
+    if (href === '/admin/news' && !pathname.startsWith('/admin/news/new')) {
+      return pathname === '/admin/news' || (pathname.startsWith('/admin/news') && !pathname.startsWith('/admin/news/new'));
+    }
     return pathname.startsWith(href);
   }
 

@@ -117,8 +117,7 @@ export default function AdminTrashPage() {
                 <div className="flex items-center gap-2 mb-1">
                   <span className={`nbadge ${
                     item.category === 'news'   ? 'nb-news'   :
-                    item.category === 'result' ? 'nb-result' :
-                    item.category === 'system' ? 'nb-system' : 'nb-event'
+                    item.category === 'result' ? 'nb-result' : 'nb-event'
                   }`}>
                     {CATEGORY_CONFIG[item.category]?.icon} {CATEGORY_CONFIG[item.category]?.label}
                   </span>

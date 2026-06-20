@@ -1,9 +1,9 @@
-// app/api/contact/route.ts — Form liên hệ
+// app/api/contact/route.ts — お問い合わせフォーム処理
+// ※メール通知機能なし。データはcontacts.jsonに保存のみ。
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { ContactEntry } from '@/lib/types';
-import { notifyNewContact } from '@/lib/mail';
 
 const CONTACT_FILE = path.join(process.cwd(), 'data', 'contacts.json');
 
@@ -53,16 +53,6 @@ export async function POST(req: Request) {
 
   contacts.unshift(newContact);
   await writeContacts(contacts);
-
-  // メール通知（非同期・エラーでもレスポンスに影響しない）
-  notifyNewContact({
-    name: newContact.name,
-    company: newContact.company,
-    email: newContact.email,
-    phone: newContact.phone || '',
-    purpose: newContact.purpose,
-    message: newContact.message,
-  }).catch(() => {});
 
   return NextResponse.json({ ok: true, id: newContact.id }, { status: 201 });
 }

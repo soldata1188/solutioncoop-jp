@@ -51,7 +51,7 @@ export default function AdminNewsPage() {
 
   const filtered = filter === 'all' ? items : items.filter(n => n.category === filter);
 
-  const CATS = ['all','news','result','system'] as const;
+  const CATS = ['all','news','result','event'] as const;
 
   return (
     <div className="p-6 md:p-8">
@@ -149,7 +149,7 @@ export default function AdminNewsPage() {
                     <td className="px-4 py-3">
                       <span className={`nbadge ${
                         n.category === 'news'   ? 'nb-news'   :
-                        n.category === 'result' ? 'nb-result' : 'nb-system'
+                        n.category === 'result' ? 'nb-result' : 'nb-event'
                       }`}>
                         {CATEGORY_CONFIG[n.category]?.icon} {CATEGORY_CONFIG[n.category]?.label}
                       </span>

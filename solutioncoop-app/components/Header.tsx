@@ -13,10 +13,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: '/news',        label: 'お知らせ' },
-    { href: '/#overview',   label: '組合概要' },
-    { href: '/#disclosure',  label: '情報公開' },
-    { href: '/faq',        label: 'よくある質問' },
+    { href: '/ikusei-shuro', label: '育成就労制度' },
+    { href: '/news',         label: 'お知らせ' },
+    { href: '/#overview',    label: '組合概要' },
+    { href: '/disclosure',   label: '情報公開' },
+    { href: '/faq',          label: 'よくある質問' },
   ];
 
   return (

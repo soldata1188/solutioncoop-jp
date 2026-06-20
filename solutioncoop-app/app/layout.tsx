@@ -16,8 +16,8 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://solutioncoop-jp.com'),
   title: {
-    default: '技能実習生・外国人採用・育成就労・特定技能｜監理団体 ソリューション協同組合｜大阪府堺市',
-    template: '%s｜ソリューション協同組合',
+    default: 'ソリューション協同組合｜育成就労・技能実習・特定技能 外国人採用の監理団体｜大阪府堺市',
+    template: '%s — ソリューション協同組合',
   },
   description: '大阪府堺市の監理団体「ソリューション協同組合」。技能実習生の受入れから育成就労・特定技能への移行まで一貫支援。外国人採用に初めて取り組む中小企業様も安心。設立2012年・70社超の実績。',
   keywords: [
@@ -30,7 +30,10 @@ export const metadata: Metadata = {
     siteName: 'ソリューション協同組合',
     locale: 'ja_JP',
     type: 'website',
-    images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 630, alt: '技能実習・育成就労・特定技能の監理団体 ソリューション協同組合' }],
+  },
+  icons: {
+    icon: '/favicon.ico',
   },
 };
 
@@ -233,9 +236,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
 
+  // ── Schema 4: WebSite + SearchAction (Sitelinks Searchbox) ──
+  const websiteLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ソリューション協同組合',
+    url: 'https://solutioncoop-jp.com',
+    description: '大阪府堺市の監理団体。技能実習生の受入れから育成就労・特定技能への移行まで一貫支援。設立2012年・70社超の実績。',
+    inLanguage: 'ja',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://solutioncoop-jp.com/news?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
 
   return (
     <html lang="ja">
+      <head>
+        {/* Performance: preconnect for Google Fonts & Analytics */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body className={`${notoSansJP.className} text-gray-700 bg-white antialiased`}>
         <noscript>
           <iframe
@@ -259,6 +286,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+        {/* Schema 4: WebSite + SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
         />
         <GoogleAnalytics />
         <GoogleTagManager />

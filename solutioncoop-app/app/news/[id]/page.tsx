@@ -3,6 +3,7 @@ import path from 'path';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import type { NewsItem } from '@/lib/news';
@@ -87,14 +88,29 @@ export default async function NewsDetailPage({ params }: Props) {
     headline: item.seoTitle || item.title,
     description: item.seoDescription || item.excerpt,
     datePublished: item.date,
-    ...(item.image ? { image: `https://solutioncoop-jp.com${item.image}` } : {}),
-    author: { '@type': 'Organization', name: 'ソリューション協同組合' },
-    publisher: {
+    dateModified: item.updatedAt || item.date,
+    ...(item.image ? { image: { '@type': 'ImageObject', url: `https://solutioncoop-jp.com${item.image}`, width: 1200, height: 630 } } : {}),
+    author: {
       '@type': 'Organization',
       name: 'ソリューション協同組合',
       url: 'https://solutioncoop-jp.com',
     },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ソリューション協同組合',
+      url: 'https://solutioncoop-jp.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://solutioncoop-jp.com/images/logo.png',
+        width: 400,
+        height: 400,
+      },
+    },
     url: `https://solutioncoop-jp.com/news/${id}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://solutioncoop-jp.com/news/${id}`,
+    },
   };
 
   const breadcrumbLd = {
@@ -130,7 +146,13 @@ export default async function NewsDetailPage({ params }: Props) {
                 {/* Hero Image */}
                 {item.image && (
                   <div className="w-full h-64 md:h-[26rem] overflow-hidden relative">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 800px"
+                    />
                   </div>
                 )}
                 
@@ -178,8 +200,14 @@ export default async function NewsDetailPage({ params }: Props) {
                     {recentNews.length > 0 ? recentNews.map(n => (
                       <Link key={n.id} href={`/news/${n.id}`} className="group flex gap-4 items-start">
                         {n.image ? (
-                          <div className="w-20 h-20 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5">
-                            <img src={n.image} alt={n.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                          <div className="w-20 h-20 flex-shrink-0 rounded overflow-hidden bg-gray-100 border border-gray-100 mt-0.5 relative">
+                            <Image
+                              src={n.image}
+                              alt={n.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform"
+                              sizes="80px"
+                            />
                           </div>
                         ) : (
                           <div className="w-20 h-20 flex-shrink-0 rounded bg-gradient-to-br from-blue-50 to-white border border-blue-100 flex items-center justify-center p-2 group-hover:border-navy/30 transition-colors mt-0.5">
@@ -187,7 +215,7 @@ export default async function NewsDetailPage({ params }: Props) {
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
-                          <time className="text-[10px] text-[#f97316] font-bold tracking-wider mb-1.5 block">{formatDateJP(n.date)}</time>
+                         <time dateTime={n.date} className="text-[10px] text-[#f97316] font-bold tracking-wider mb-1.5 block">{formatDateJP(n.date)}</time>
                           <h4 className="text-[12.5px] font-normal text-gray-800 leading-[1.5] line-clamp-2 group-hover:text-navy transition-colors">{n.title}</h4>
                         </div>
                       </Link>

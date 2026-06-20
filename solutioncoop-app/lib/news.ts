@@ -4,7 +4,7 @@
 //  data/news.json からデータを自動読み込みします。
 // ============================================================
 
-export type NewsCategory = 'news' | 'result' | 'system' | 'event';
+export type NewsCategory = 'news' | 'result' | 'event';
 
 export interface NewsItem {
   id: string;           // ユニークID: "news-001"
@@ -33,9 +33,8 @@ export const CATEGORY_CONFIG: Record<NewsCategory, {
   color: string;
 }> = {
   news:   { label: 'お知らせ',  icon: '🔔', badgeClass: 'nb-news',   color: '#1d4ed8' },
-  result: { label: '受入実績',  icon: '👥', badgeClass: 'nb-result', color: '#15803d' },
-  system: { label: '制度情報',  icon: '⚖️', badgeClass: 'nb-system', color: '#a16207' },
-  event:  { label: 'イベント',  icon: '🎯', badgeClass: 'nb-event',  color: '#a855f7' },
+  result: { label: '受入実績',  icon: '✅', badgeClass: 'nb-result', color: '#166534' },
+  event:  { label: 'イベント',  icon: '🎯', badgeClass: 'nb-event',  color: '#6b21a8' },
 };
 
 export function formatDateJP(dateStr: string): string {

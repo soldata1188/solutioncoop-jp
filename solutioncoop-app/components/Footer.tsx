@@ -31,7 +31,6 @@ export default function Footer() {
             <h3 className="text-navy font-bold mb-4 border-b-2 border-navy-light pb-2 inline-block">サイト内リンク</h3>
             <ul className="space-y-2 mt-2">
               {[
-                { href: '/ikusei-shuro', label: '育成就労制度とは' },
                 { href: '/#overview',    label: '組合概要' },
                 { href: '/news',         label: 'お知らせ' },
                 { href: '/faq',          label: 'よくある質問' },

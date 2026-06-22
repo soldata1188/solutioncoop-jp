@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
       },
       {
         // Override cache cho HTML pages (luôn mới nhất)
-        source: '/(|news|faq|disclosure|ikusei-shuro|privacy)',
+        source: '/(|news|faq|disclosure|privacy)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
         ],

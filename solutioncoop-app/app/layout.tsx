@@ -33,7 +33,13 @@ export const metadata: Metadata = {
     images: [{ url: '/images/hero-banner.jpg', width: 1200, height: 630, alt: '技能実習・育成就労・特定技能の監理団体 ソリューション協同組合' }],
   },
   icons: {
-    icon: '/favicon.jpg?v=2',
+    icon: [
+      { url: '/favicon.ico?v=3', sizes: 'any' },
+      { url: '/icon.png?v=3', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/apple-icon.png?v=3', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 

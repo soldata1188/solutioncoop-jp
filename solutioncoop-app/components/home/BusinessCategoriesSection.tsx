@@ -71,12 +71,12 @@ export default function BusinessCategoriesSection() {
           </div>
         </div>
 
-        {/* 4 Pillars Grid: 1 col on mobile, 2 cols on tablet, 4 cols on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+        {/* 4 Pillars Grid: 1 col on mobile, 2 cols on tablet and desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           {categories.map((cat, i) => (
-            <div key={i} className="flex flex-col bg-slate-50 rounded-xl p-4 sm:p-6 md:p-8 border border-slate-200 hover:shadow-lg hover:border-[#1e40af]/30 transition-all duration-300">
-              <div className="flex flex-row md:flex-col lg:flex-row items-center lg:items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white rounded flex items-center justify-center text-xl sm:text-2xl md:text-3xl shadow-sm border border-slate-100 shrink-0">
+            <div key={i} className="flex flex-col bg-slate-50 rounded-xl p-6 md:p-8 border border-slate-200 hover:shadow-lg hover:border-[#1e40af]/30 transition-all duration-300">
+              <div className="flex flex-row items-center lg:items-start gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded flex items-center justify-center text-2xl md:text-4xl shadow-sm border border-slate-100 shrink-0">
                   {cat.icon}
                 </div>
                 <div>

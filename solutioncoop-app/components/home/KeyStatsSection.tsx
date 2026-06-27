@@ -4,7 +4,7 @@ const STATS = [
   { val: '60', unit: '期', label: '技能実習生受入実績' },
   { val: '70', unit: '社+', label: '受入企業数' },
   { val: '12', unit: '名', label: '専任日本語教師' },
-  { val: '2012', unit: '年〜', label: '設立・10年超の実績' },
+  { val: '知事', unit: '表彰', label: '令和8年 大阪府知事表彰' },
 ];
 
 export default function KeyStatsSection() {
@@ -31,12 +31,12 @@ export default function KeyStatsSection() {
         {/* 4 Con số thống kê — bên phải */}
         <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:pl-8">
           {STATS.map((s) => (
-            <div key={s.label} className="group cursor-default">
-              <p className="text-3xl font-black text-[#1e40af] group-hover:scale-105 transition-transform duration-300">
+            <div key={s.label} className="group cursor-default flex flex-col items-center justify-center p-2">
+              <p className="text-2xl md:text-3xl font-black text-[#1e40af] group-hover:scale-105 transition-transform duration-300 flex items-baseline">
                 {s.val}
-                <span className="text-xl font-bold ml-1">{s.unit}</span>
+                <span className="text-sm md:text-xl font-bold ml-1">{s.unit}</span>
               </p>
-              <p className="text-gray-500 text-[10px] mt-2 tracking-widest uppercase font-bold">{s.label}</p>
+              <p className="text-gray-500 text-[9px] md:text-[10px] mt-1.5 md:mt-2 tracking-[0.05em] md:tracking-widest uppercase font-bold leading-tight">{s.label}</p>
             </div>
           ))}
         </div>

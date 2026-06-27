@@ -8,6 +8,7 @@ import HeroSection            from '@/components/home/HeroSection';
 import KeyStatsSection        from '@/components/home/KeyStatsSection';
 import NewsSectionHome        from '@/components/home/NewsSectionHome';
 import PillarsSection         from '@/components/home/PillarsSection';
+import BusinessCategoriesSection from '@/components/home/BusinessCategoriesSection';
 import CountriesSection       from '@/components/home/CountriesSection';
 import CtaMiniBanner          from '@/components/home/CtaMiniBanner';
 import SupportSection         from '@/components/home/SupportSection';
@@ -57,6 +58,7 @@ export default async function HomePage() {
         <HeroSection            companies={companies} />
         <KeyStatsSection />
         <NewsSectionHome        latestNews={latestNews} />
+        <BusinessCategoriesSection />
         <PillarsSection />
         <CountriesSection />
         <CtaMiniBanner />

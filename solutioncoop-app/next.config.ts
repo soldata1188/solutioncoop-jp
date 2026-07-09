@@ -23,6 +23,26 @@ const nextConfig: NextConfig = {
       },
       // 301 Permanent Redirects for legacy HTML pages to modern clean routes (SEO & 404 Fix)
       {
+        source: '/受け入れ実績',
+        destination: '/news',
+        permanent: true,
+      },
+      {
+        source: '/%E3%81%86%E3%81%91%E3%81%84%E3%82%8C%E5%AE%9F%E7%B8%BE',
+        destination: '/news',
+        permanent: true,
+      },
+      {
+        source: '/受入実績',
+        destination: '/news',
+        permanent: true,
+      },
+      {
+        source: '/%E5%8F%97%E5%85%A5%E5%AE%9F%E5%B8%BE',
+        destination: '/news',
+        permanent: true,
+      },
+      {
         source: '/index.html',
         destination: '/',
         permanent: true,

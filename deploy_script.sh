@@ -18,6 +18,7 @@ git reset --hard origin/master
 
 echo "3. Khôi phục lại (Restore) dữ liệu tin tức và ảnh upload của VPS"
 if [ -d "$HOME/app_backup/data" ]; then
+  mkdir -p solutioncoop-app/data
   cp -r $HOME/app_backup/data/* solutioncoop-app/data/ 2>/dev/null || true
 fi
 if [ -d "$HOME/app_backup/uploads" ]; then

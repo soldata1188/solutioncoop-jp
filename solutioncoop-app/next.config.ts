@@ -21,6 +21,32 @@ const nextConfig: NextConfig = {
         destination: 'https://solutioncoop-jp.com/:path*',
         permanent: true,
       },
+      // 301 Permanent Redirects for legacy HTML pages to modern clean routes (SEO & 404 Fix)
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/gino-jisshu.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/news.html',
+        destination: '/news',
+        permanent: true,
+      },
+      {
+        source: '/privacy.html',
+        destination: '/privacy',
+        permanent: true,
+      },
+      {
+        source: '/support.html',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
   async headers() {

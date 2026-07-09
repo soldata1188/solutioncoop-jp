@@ -17,12 +17,12 @@ git fetch origin master
 git reset --hard origin/master
 
 echo "3. Khôi phục lại (Restore) dữ liệu tin tức và ảnh upload của VPS"
-if [ -d "~/app_backup/data" ]; then
-  cp -r ~/app_backup/data/* solutioncoop-app/data/ 2>/dev/null || true
+if [ -d "$HOME/app_backup/data" ]; then
+  cp -r $HOME/app_backup/data/* solutioncoop-app/data/ 2>/dev/null || true
 fi
-if [ -d "~/app_backup/uploads" ]; then
+if [ -d "$HOME/app_backup/uploads" ]; then
   mkdir -p solutioncoop-app/public/uploads
-  cp -r ~/app_backup/uploads/* solutioncoop-app/public/uploads/ 2>/dev/null || true
+  cp -r $HOME/app_backup/uploads/* solutioncoop-app/public/uploads/ 2>/dev/null || true
 fi
 
 echo "4. Cài đặt thư viện, Biên dịch và Khởi chạy lại ứng dụng"

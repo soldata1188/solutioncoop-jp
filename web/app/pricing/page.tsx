@@ -21,7 +21,7 @@ export default function Page() {
         lead={`育成就労制度で${p.countryLabel}から人材を受け入れる場合の費用の目安です。金額はすべて1名あたり・税別です。`}
       />
       <Section width="narrow" flushBottom>
-        <aside role="note" className="rounded-md border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
+        <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
           <p className="text-lg font-bold">{p.countryLabel}向け｜{label}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             <li>最終金額は個別にご案内します。</li>
@@ -42,8 +42,8 @@ export default function Page() {
               </SubHeading>
               <ul className="mt-4 space-y-3 sm:hidden">
                 {g.rows.map((r) => (
-                  <li key={r.item} className="rounded-md border border-line bg-white p-4 shadow-card">
-                    <p className="font-bold text-navy-900">{r.item}</p>
+                  <li key={r.item} className="rounded border border-line bg-white p-4 shadow-card">
+                    <p className="font-bold text-ink">{r.item}</p>
                     <p className="mt-1 text-lg font-bold">{r.amount}<span className="ml-1 text-sm font-normal">（税別）</span></p>
                     <p className="text-sm text-muted">{label}</p>
                     {r.note ? <p className="mt-1 text-sm">{r.note}</p> : null}
@@ -57,10 +57,10 @@ export default function Page() {
                 ))}
               </ul>
               <div className="mt-4 hidden sm:block">
-                <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md text-left text-[15px] shadow-card">
+                <table className="w-full border-separate border-spacing-0 overflow-hidden rounded text-left text-[15px] shadow-card">
                   <caption className="sr-only">{g.title}の費用（{label}・税別・1名あたり）</caption>
                   <thead>
-                    <tr className="bg-navy-900 text-white">
+                    <tr className="bg-primary-dark text-white">
                       <th scope="col" className="w-[26%] p-3">項目</th>
                       <th scope="col" className="w-[34%] p-3">金額（税別・{label}）</th>
                       <th scope="col" className="p-3">備考</th>
@@ -69,9 +69,9 @@ export default function Page() {
                   <tbody className="bg-white">
                     {g.rows.map((r) => (
                       <tr key={r.item} className="align-top">
-                        <th scope="row" className="border-t border-line bg-pale-gray p-3 font-bold text-navy-900">{r.item}</th>
+                        <th scope="row" className="border-t border-line bg-label p-3 font-bold text-ink">{r.item}</th>
                         <td className="border-t border-line p-3">
-                          <span className="font-bold text-navy-900">{r.amount}</span>
+                          <span className="font-bold text-ink">{r.amount}</span>
                           <span className="block text-sm text-muted">{label}</span>
                         </td>
                         <td className="border-t border-line p-3 text-sm">
@@ -92,7 +92,7 @@ export default function Page() {
           ))}
         </div>
 
-        <p className="mt-12 rounded-md border-l-4 border-navy-900 bg-pale p-5 font-bold text-navy-900">
+        <p className="mt-12 border-l-4 border-primary bg-pale p-5 font-bold text-ink">
           最終金額は個別にご案内します。ベトナム・フィリピンからの受入れ費用についても、お問い合わせください。
         </p>
         <p className="mt-3 text-sm text-muted">出典：当組合 費用一覧 {p.docNo}（{p.version}・{p.asOf}時点）</p>

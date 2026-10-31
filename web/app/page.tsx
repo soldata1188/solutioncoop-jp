@@ -1,12 +1,13 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/LineIcons";
-import { ArrowIcon, ImagePlaceholder, LinkButton, Section, SquaresPattern } from "@/components/ui";
+import { ArrowIcon, ImagePlaceholder, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { CONTACT_HREF, licenses, org } from "@/lib/site";
 import { faqs } from "@/lib/faq";
+import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
@@ -30,40 +31,40 @@ const problems = [
     body: "申請書類の作成、住まいの手配、受入れ後の体制づくりなど、何から手を付ければよいか迷われる企業様は少なくありません。",
   },
   {
-    title: "せっかく受け入れた人材に、長く働いてもらえるか不安",
+    title: "受け入れた人材に、長く働いてもらえるか不安",
     body: "新制度では一定の要件のもとで転籍が認められる予定です。働き続けたいと思っていただける職場づくりが、これまで以上に大切になります。",
   },
 ];
 
 const reasons = [
   {
-    title: "監理団体の許可と登録支援機関の登録",
+    title: "監理団体の許可と\n登録支援機関の登録",
     body: `技能実習法に基づく監理団体（${licenses.kanri.kind}）の許可と、特定技能の登録支援機関の登録を受けております。`,
-    fact: `許可番号 ${licenses.kanri.number}／登録番号 ${licenses.toroku.number}`,
+    note: `許可番号 ${licenses.kanri.number}／登録番号 ${licenses.toroku.number}`,
     Icon: IconLicense,
     href: "/about",
     link: "許可・登録の内容を見る",
   },
   {
-    title: "堺市に拠点、大阪の中小企業様に密着",
+    title: "堺市に拠点を構え、\n大阪の中小企業様に密着",
     body: `堺市堺区に事務所を構え、職員${org.staff}の体制で、大阪府内の中小企業様を中心にきめ細かくご支援いたします。`,
-    fact: `${org.locality}（職員${org.staff}）`,
+    note: `所在地 ${org.locality}／職員 ${org.staff}`,
     Icon: IconLocal,
     href: "/about",
     link: "組合概要を見る",
   },
   {
-    title: "3か国の送り出し機関と連携",
+    title: "3か国の送り出し機関と\n連携",
     body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携し、貴社の業務に合った人材の受入れをご提案いたします。",
-    fact: "ベトナム・インドネシア・フィリピン",
+    note: "ベトナム・インドネシア・フィリピン",
     Icon: IconPartners,
     href: "/flow",
     link: "受入れの流れを見る",
   },
   {
-    title: `${org.managed}の管理実績`,
+    title: `${org.managed}の\n管理実績`,
     body: "技能実習生・特定技能外国人あわせて約360名を管理しております。現場で培った経験をもとに、受入れ企業様をご支援いたします。",
-    fact: `管理人数 ${org.managed}`,
+    note: "技能実習生・特定技能外国人の合計",
     Icon: IconPeople,
     href: "/industries",
     link: "対象業種を見る",
@@ -81,218 +82,264 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
   { item: "育成就労制度への対応", ours: "監理支援機関としての許可に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
 ];
 
-const steps = [
-  "お問い合わせ・資料請求",
-  "ヒアリング・ご提案",
-  "ご契約（ここまで約1〜2週間）",
-  "Web面接・各種申請",
-  "入国・講習を経て配属（インドネシアの場合、面接から約5〜6か月）",
-  "受入れ後の定期訪問・支援",
-];
+/** トップの費用サマリー（lib/pricing.ts のデータをそのまま表示。金額の加工・合算はしません） */
+const pricing = pricingByCountry[DEFAULT_COUNTRY];
+const priceLabel = `目安・暫定（${pricing.version}・${pricing.asOf}時点）`;
+const feeCards = [
+  { key: "初期費用（ご加入時）", caption: "ご加入時" },
+  { key: "入国時〜上陸後講習", caption: "入国時〜上陸後講習" },
+  { key: "入国後（毎月）", caption: "配属後（毎月）" },
+].flatMap(({ key, caption }) => {
+  const g = pricing.groups.find((x) => x.title === key);
+  return g ? [{ title: g.title, step: g.step, caption, rows: g.rows }] : [];
+});
 
-const industries = [
-  { name: "建設", body: "建設現場での人材確保に関するご相談を承ります。" },
-  { name: "機械・金属", body: "機械加工・金属加工などの製造現場をご支援いたします。" },
-  { name: "食品製造", body: "食品工場など製造ラインの人材確保をご支援いたします。" },
-];
+const badge = "inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-dark px-5 py-1.5 text-white";
 
 export default function Home() {
   return (
     <>
-      {/* ヒーロー */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
+      {/* ヒーロー：青 #1478E6。白文字は大きい文字（見出し・19px太字）のみ */}
+      <section className="relative overflow-hidden bg-primary text-white">
         <SquaresPattern />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:py-20 lg:grid-cols-[1.25fr_1fr]">
+        <div className="relative mx-auto grid max-w-[1000px] items-center gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-sm bg-white/10 px-3 py-1 text-sm font-bold">
-              <span aria-hidden="true" className="h-2 w-2 bg-accent-500" />
-              2027年4月 育成就労制度スタート
-            </p>
-            <h1 className="mt-5 text-[1.85rem] font-bold leading-[1.45] sm:text-4xl md:text-5xl md:leading-[1.35]">
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">2027年4月 育成就労制度スタート</p>
+            <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem]">
               <span className="block">堺の監理団体として、</span>
               <span className="block">大阪の外国人材受入れを</span>
               <span className="block">支えます。</span>
             </h1>
-            <p className="mt-6 max-w-xl text-slate-100">
-              ソリューション協同組合は、堺市を拠点に大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。技能実習制度に代わる育成就労制度への移行についても、わかりやすくご案内いたします。
+            <p className="mt-5 text-[19px] font-bold leading-relaxed">
+              堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href={CONTACT_HREF} className="min-h-14 text-lg">お問い合わせ・資料請求</LinkButton>
-              <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 text-lg">育成就労制度を知る</LinkButton>
+              <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">お問い合わせ・資料請求</LinkButton>
+              <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
             </div>
           </div>
           <div className="hidden lg:block">
-            <ImagePlaceholder note="事務所・職員の写真をご支給いただく予定の枠です" />
+            <ImagePlaceholder tone="onBlue" className="aspect-[4/3]" note="写真はご支給素材を確認のうえ掲載" />
           </div>
         </div>
       </section>
 
-      {/* 確認済みの数値（ピル型バッジ） */}
-      <section aria-label="当組合の概要（数値）" className="border-b border-line bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-6">
-          <ul className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-            <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-navy-900 px-5 py-2 text-white">
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M3 8.5l3 3 7-7" /></svg>
-              <span className="text-sm">管理人数</span>
+      {/* 確認済みの数値（ピル型バッジ）。本文サイズの白文字のため背景は #0D5FC4 */}
+      <section aria-label="当組合の概要（数値）" className="bg-white">
+        <div className="mx-auto max-w-[812px] px-4 py-5">
+          <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-start">
+            <li className={badge}>
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
+              <span className="text-sm font-bold">管理人数</span>
               <strong className="text-lg">{org.managed}</strong>
-              <span className="text-xs text-slate-200">※1</span>
+              <span className="text-[11px]">※1</span>
             </li>
-            <li className="inline-flex min-h-11 items-center gap-2 rounded-full bg-navy-900 px-5 py-2 text-white">
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M3 8.5l3 3 7-7" /></svg>
-              <span className="text-sm">連携する送り出し国</span>
+            <li className={badge}>
+              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
+              <span className="text-sm font-bold">連携する送り出し国</span>
               <strong className="text-lg">3か国</strong>
-              <span className="text-xs text-slate-200">※2</span>
+              <span className="text-[11px]">※2</span>
             </li>
           </ul>
-          <p className="mt-3 text-center text-xs leading-6 text-muted">
-            ※1 技能実習生・特定技能外国人の合計（集計時点<CheckBadge />）　※2 ベトナム・インドネシア・フィリピン
+          <p className="mt-2 text-center text-[11px] leading-6 text-muted sm:text-left">
+            <span className="block sm:inline">※1 技能実習生・特定技能外国人の合計（集計時点<CheckBadge />）</span>
+            <span className="hidden sm:inline">　</span>
+            <span className="block sm:inline">※2 ベトナム・インドネシア・フィリピン</span>
           </p>
         </div>
       </section>
 
       {/* お悩み */}
-      <Section
-        id="problems"
-        tone="pale"
-        title="外国人材の受入れで、このようなお悩みはありませんか"
-        lead="育成就労制度の開始を前に、中小企業の経営者・ご担当者様が抱えやすいお悩みの例をまとめました。"
-      >
-        <ol className="grid gap-5 md:grid-cols-3">
-          {problems.map((p, i) => (
-            <li key={p.title} className="rounded-md border-b-4 border-navy-900 bg-white p-6 shadow-card">
-              <p aria-hidden="true" className="flex items-center gap-3 text-lg font-bold text-navy-900">
-                <span className="h-px flex-1 bg-line" />
-                {i + 1}
-                <span className="h-px flex-1 bg-line" />
-              </p>
-              <h3 className="mt-3 text-lg font-bold leading-snug text-navy-900">
-                <span className="sr-only">お悩み{i + 1}：</span>
-                {p.title}
-              </h3>
-              <p className="mt-3 text-[15px] text-muted">{p.body}</p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-8 text-center font-bold text-navy-900">そのお悩み、堺の監理団体である当組合が一緒に整理いたします。</p>
+      <Section id="problems" tone="pale" title="外国人材の受入れで、このようなお悩みはありませんか">
+        <div className="bg-pale-strong px-4 py-8 md:px-6">
+          <p className="text-center text-sm font-bold text-primary-dark">育成就労制度の開始を前に</p>
+          <p className="mt-1 text-center text-xl font-bold text-primary-dark md:text-2xl">受入れ準備の見通し</p>
+          <p className="mx-auto mt-3 max-w-[560px] text-center text-[13px] font-bold text-ink">
+            中小企業の経営者・ご担当者様が抱えやすいお悩みの例です。
+          </p>
+          <ol className="mt-6 grid gap-4 md:grid-cols-3">
+            {problems.map((p, i) => (
+              <li key={p.title} className="border-b-4 border-primary bg-white px-4 pb-6 pt-5">
+                <p aria-hidden="true" className="flex items-center gap-3 text-lg font-bold text-primary-dark">
+                  <span className="h-px flex-1 bg-line" />
+                  {i + 1}
+                  <span className="h-px flex-1 bg-line" />
+                </p>
+                <h3 className="mt-2 text-base font-bold leading-snug text-primary-dark">
+                  <span className="sr-only">お悩み{i + 1}：</span>
+                  {p.title}
+                </h3>
+                <p className="mt-3 text-[13px] leading-relaxed text-ink">{p.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p className="mt-4 text-[11px] text-muted">※上記は一般的なお悩みの例であり、調査結果ではありません。</p>
       </Section>
 
       {/* 選ばれる理由 */}
       <Section id="reasons" title="ソリューション協同組合が選ばれる4つの理由">
-        <ol className="grid gap-6 md:grid-cols-2">
-          {reasons.map(({ title, body, fact, Icon, href, link }, i) => (
-            <li key={title} className="relative flex flex-col rounded-md border-2 border-navy-100 bg-white p-6 pt-10 shadow-card">
-              <span aria-hidden="true" className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-br-md bg-navy-100 font-bold text-navy-900">
-                {i + 1}
-              </span>
-              <div className="flex justify-center text-navy-700">
-                <Icon className="h-16 w-16" />
+        <ol className="grid gap-5 md:grid-cols-2">
+          {reasons.map(({ title, body, note, Icon, href, link }, i) => (
+            <TabCard key={title} n={i + 1}>
+              <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">
+                <Icon className="h-20 w-20" />
               </div>
-              <h3 className="mt-5 text-xl font-bold leading-snug text-navy-900">
-                <span className="sr-only">理由{i + 1}：</span>
-                {title}
-              </h3>
-              <p className="mt-3 text-[15px] text-muted">{body}</p>
-              <p className="mt-3 text-sm font-bold text-navy-900">{fact}</p>
-              <Link href={href} className="mt-auto inline-flex min-h-11 items-center gap-2 self-start pt-4 text-sm font-bold text-navy-700 no-underline hover:underline hover:underline-offset-4">
-                {link}
-                <ArrowIcon />
-              </Link>
-            </li>
+              <div className="px-5 pb-6 pt-5">
+                <h3 className="whitespace-pre-line text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">理由{i + 1}：</span>
+                  {title}
+                </h3>
+                <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
+                <p className="mt-2 text-[11px] text-muted">※{note}</p>
+                <Link href={href} className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
+                  {link}
+                  <ArrowIcon className="h-3 w-3" />
+                </Link>
+              </div>
+            </TabCard>
           ))}
         </ol>
+      </Section>
+
+      {/* 費用の目安（プラン型） */}
+      <Section
+        id="fees"
+        tone="pale"
+        title="費用の目安"
+        lead={`${pricing.countryLabel}から受け入れる場合の主な費用です（${priceLabel}・税別・1名あたり）。`}
+      >
+        <ul className="grid gap-4 md:grid-cols-3">
+          {feeCards.map((c) => (
+            <li key={c.title} className="flex flex-col bg-white shadow-card">
+              <p className="bg-primary-dark px-4 py-3 text-center font-bold text-white">
+                {c.caption}
+                {c.step ? <span className="block text-xs font-normal">（{c.step}）</span> : null}
+              </p>
+              <dl className="flex-1 px-4 py-3">
+                {c.rows.map((r) => (
+                  <div key={r.item} className="border-b border-line py-2.5 last:border-b-0">
+                    <dt className="text-[13px] text-body">{r.item}</dt>
+                    <dd className="text-lg font-bold text-primary-dark">{r.amount}</dd>
+                    {r.note ? <dd className="text-[11px] text-muted">{r.note}</dd> : null}
+                  </div>
+                ))}
+              </dl>
+              <p className="border-t border-line px-4 py-2 text-[11px] text-muted">
+                {priceLabel}・税別
+                <CheckBadge />
+              </p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 border-l-4 border-primary bg-white p-4 text-sm font-bold text-ink">
+          最終金額は個別にご案内します。現在の金額は技能実習制度の料金を転記した暫定値で、育成就労制度の正式な単価は確定しておりません。
+        </p>
+        <div className="mt-8 text-center">
+          <LinkButton href="/pricing" variant="ghost" className="min-w-64">費用の詳細を見る</LinkButton>
+        </div>
+      </Section>
+
+      {/* 事例（未確定のため要確認枠のみ） */}
+      <Section id="cases" title="受入れ事例" lead="受入れ企業様の事例は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
+        <ul className="grid gap-4 sm:grid-cols-3">
+          {[1, 2, 3].map((n) => (
+            <li key={n} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
+              <ImagePlaceholder label="事例要確認" className="aspect-[16/10] border-0 border-b-2" />
+              <div className="flex-1 p-4">
+                <p className="text-[11px] text-muted">業種｜規模：要確認</p>
+                <p className="mt-1 text-sm font-bold text-ink">掲載予定の事例枠 {n}</p>
+                <p className="mt-1 text-[13px] text-body">実際の受入れ企業様の事例を確認のうえ掲載いたします。</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       {/* 比較表 */}
       <Section
         id="compare"
         tone="pale"
-        title="当組合の特長を比較でご紹介"
+        width="wide"
+        title="一般的な受入れ方法との比較"
         lead="「一般的な受入れ方法」の欄は特定の団体を指すものではありません。団体ごとに対応は異なりますので、目安としてご覧ください。"
       >
-        {/* スマートフォン：項目ごとに縦積み */}
         <ul className="space-y-4 sm:hidden">
           {comparison.map((c) => (
-            <li key={c.item} className="overflow-hidden rounded-md bg-white shadow-card">
-              <p className="bg-pale-gray px-4 py-2 text-center text-sm font-bold text-navy-900">{c.item}</p>
-              <div className="bg-navy-900 px-4 py-3 text-white">
-                <p className="text-xs text-slate-200">ソリューション協同組合</p>
+            <li key={c.item} className="overflow-hidden bg-white shadow-card">
+              <p className="bg-label px-4 py-2 text-center text-[13px] font-bold text-ink">{c.item}</p>
+              <div className="bg-primary-dark px-4 py-3 text-white">
+                <p className="text-[11px]">ソリューション協同組合</p>
                 <p className="font-bold">
                   {c.ours}
                   {c.needsCheck ? <CheckBadge /> : null}
                 </p>
               </div>
-              <div className="bg-slate-100 px-4 py-3 text-slate-800">
-                <p className="text-xs text-slate-600">一般的な受入れ方法</p>
-                <p>{c.general}</p>
+              <div className="bg-white px-4 py-3 text-body">
+                <p className="text-[11px] text-muted">一般的な受入れ方法</p>
+                <p className="text-sm">{c.general}</p>
               </div>
             </li>
           ))}
         </ul>
-        <div className="hidden sm:block">
-          <table className="w-full border-separate border-spacing-0 bg-white text-left text-[15px]">
+        <div className="hidden bg-white p-1.5 sm:block">
+          <table className="w-full border-separate border-spacing-0 text-left text-[13px]">
             <caption className="sr-only">ソリューション協同組合と一般的な受入れ方法の比較</caption>
             <thead>
               <tr>
-                <th scope="col" className="w-[22%] bg-pale-gray p-3 text-center text-sm font-bold text-navy-900">比較項目</th>
-                <th scope="col" className="w-[42%] bg-navy-900 p-3 text-center font-bold text-white">ソリューション協同組合</th>
-                <th scope="col" className="bg-slate-200 p-3 text-center font-bold text-slate-800">一般的な受入れ方法</th>
+                <th scope="col" className="w-[20%] bg-label p-3 text-center font-bold text-ink">比較項目</th>
+                <th scope="col" className="w-[42%] bg-primary p-3 text-center text-[19px] font-bold text-white">ソリューション協同組合</th>
+                <th scope="col" className="bg-[#eeeeee] p-3 text-center text-sm font-bold text-body">一般的な受入れ方法</th>
               </tr>
             </thead>
             <tbody>
               {comparison.map((c) => (
                 <tr key={c.item}>
-                  <th scope="row" className="border-t border-white bg-pale-gray p-3 text-center text-sm font-bold text-navy-900">{c.item}</th>
-                  <td className="border-t border-white/20 bg-navy-900 p-3 font-bold text-white">
+                  <th scope="row" className="border-t border-white bg-label p-3 text-center font-bold text-ink">{c.item}</th>
+                  <td className="border-t border-white/25 bg-primary-dark p-3 text-center text-sm font-bold text-white">
                     {c.ours}
                     {c.needsCheck ? <CheckBadge /> : null}
                   </td>
-                  <td className="border-t border-white bg-slate-100 p-3 text-slate-800">{c.general}</td>
+                  <td className="border-t border-line bg-white p-3 text-center text-body">{c.general}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-xs text-muted">※費用の目安は暫定値です。最終金額は個別にご案内します。</p>
+        <p className="mt-3 text-[11px] text-muted">※費用の目安は暫定値です。最終金額は個別にご案内します。</p>
       </Section>
 
-      {/* 受入れの流れ */}
-      <Section id="flow" title="受入れの流れ" lead="お問い合わせからご契約までは約1〜2週間が目安です。">
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {steps.map((s, i) => (
-            <li key={s} className="flex items-center gap-4 rounded-md border border-line bg-white p-5 shadow-card">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-navy-900 font-bold text-white">
-                <span className="sr-only">手順</span>
-                {i + 1}
-              </span>
-              <span className="font-bold leading-snug text-navy-900">{s}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="mt-10 text-center">
-          <LinkButton href="/flow" variant="ghost">受入れの流れを詳しく見る</LinkButton>
+      {/* 資料のご案内 */}
+      <Section id="documents" title="資料のご案内" width="default">
+        <LineHeading>当組合のご案内資料</LineHeading>
+        <div className="mx-auto mt-6 grid max-w-[620px] items-center gap-6 rounded border border-line bg-white p-5 sm:grid-cols-[200px_1fr]">
+          <ImagePlaceholder label="資料画像要確認" className="aspect-[3/4]" />
+          <div>
+            <p className="text-[15px] text-body">
+              育成就労制度の概要や受入れの流れについて、資料をご用意してお届けいたします。資料の内容・形式は、お問い合わせの際にご案内いたします。
+            </p>
+            <div className="mt-5">
+              <LinkButton href={CONTACT_HREF} variant="ghost" className="w-full sm:w-auto sm:min-w-56">資料を請求する</LinkButton>
+            </div>
+          </div>
         </div>
-      </Section>
-
-      {/* 対象業種 */}
-      <Section id="industries" tone="pale" title="主な対象業種">
-        <ul className="grid gap-5 md:grid-cols-3">
-          {industries.map((s) => (
-            <li key={s.name} className="rounded-md border-t-4 border-navy-900 bg-white p-6 shadow-card">
-              <h3 className="text-xl font-bold text-navy-900">{s.name}</h3>
-              <p className="mt-2 text-[15px] text-muted">{s.body}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 text-center">
-          <LinkButton href="/industries" variant="ghost">対象業種を詳しく見る</LinkButton>
+        <div className="mt-12">
+          <LineHeading>制度について詳しく知る</LineHeading>
+          <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
+            <p className="text-sm text-body">育成就労制度の概要と、受入れの流れをまとめております。</p>
+            <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
+              <LinkButton href="/ikusei-shuro" variant="ghost" className="sm:min-w-52">育成就労制度とは</LinkButton>
+              <LinkButton href="/flow" variant="ghost" className="sm:min-w-52">受入れの流れ</LinkButton>
+            </div>
+          </div>
         </div>
       </Section>
 
       {/* よくある質問 */}
-      <Section id="faq" title="よくある質問" width="narrow">
+      <Section id="faq" tone="pale" title="よくある質問" width="narrow">
         <FaqList items={faqs.slice(0, 5)} />
-        <div className="mt-10 text-center">
-          <LinkButton href="/faq" variant="ghost">よくある質問をすべて見る</LinkButton>
+        <div className="mt-8 text-center">
+          <LinkButton href="/faq" variant="ghost" className="min-w-64">よくある質問をすべて見る</LinkButton>
         </div>
       </Section>
 

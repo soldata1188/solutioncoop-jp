@@ -34,7 +34,7 @@ export default function Page() {
         lead="育成就労制度でインドネシアから人材を受け入れる場合の、お申込みから配属までの13の手順をご紹介いたします。国や時期により手順・期間が異なる場合がございます。"
       />
       <Section width="narrow" flushBottom>
-        <aside role="note" className="rounded-md border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
+        <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
           本ページの手順・期間は目安・暫定（改訂6版・2026年10月31日時点）です。育成就労制度の運用により変更となる可能性がございます。<CheckBadge />
         </aside>
       </Section>
@@ -42,14 +42,14 @@ export default function Page() {
         <ol className="relative">
           {steps.map((s, i) => (
             <li key={s.title} className="relative flex gap-4 pb-8 last:pb-0 md:gap-6">
-              {i < steps.length - 1 ? <span aria-hidden="true" className="absolute left-[21px] top-11 bottom-0 w-0.5 bg-navy-100" /> : null}
-              <span aria-hidden="true" className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-navy-900 font-bold text-white">{i + 1}</span>
-              <div className="flex-1 rounded-md border border-line bg-white p-5 shadow-card">
-                <h2 className="text-lg font-bold leading-snug text-navy-900 md:text-xl">
+              {i < steps.length - 1 ? <span aria-hidden="true" className="absolute left-[21px] top-11 bottom-0 w-0.5 bg-tab" /> : null}
+              <span aria-hidden="true" className="relative flex h-11 w-11 shrink-0 items-center justify-center bg-primary-dark font-bold text-white">{i + 1}</span>
+              <div className="flex-1 rounded border border-line bg-white p-5 shadow-card">
+                <h2 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">手順{i + 1}：</span>{s.title}
                 </h2>
                 <p className="mt-2 text-[15px] text-muted">{s.body}</p>
-                {s.badge ? <p className="mt-3 inline-block rounded-full bg-navy-900 px-4 py-1 text-sm font-bold text-white">{s.badge}</p> : null}
+                {s.badge ? <p className="mt-3 inline-block rounded-full bg-primary-dark px-4 py-1 text-sm font-bold text-white">{s.badge}</p> : null}
                 {s.check ? <p className="mt-2 text-sm text-muted">{s.check}<CheckBadge /></p> : null}
               </div>
             </li>

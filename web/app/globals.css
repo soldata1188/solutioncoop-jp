@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
+/*
+ * カラートークン（リファレンスのパレット）
+ * コントラスト（WCAG 2.x）:
+ *  白 / #1478E6 = 4.32:1 → 大きい文字（24px以上、または18.66px以上の太字）と図形のみに使用
+ *  白 / #0D5FC4 = 6.09:1 → 本文サイズの白文字はこちらの背景に置く
+ *  #222 / #FF8A00 = 6.73:1 → オレンジボタンの文字は #222（白は 2.36:1 で不可）
+ *  #0D5FC4 / 白 = 6.09:1、#0D5FC4 / #EAF4FE = 5.47:1 → 本文サイズの青文字
+ *  #777 / 白 = 4.48:1（AA未満）→ 本文の補足文字は #666（5.74:1）を使用し、#777 は区切り等の装飾のみ
+ *  #B45309 / 白 = 5.02:1 → 白地オレンジ枠ボタンの文字
+ */
 @theme {
-  --color-navy-950: #0b1f3a;
-  --color-navy-900: #12305e;
-  --color-navy-700: #1f4e8c;
-  --color-navy-100: #e6eef8;
-  --color-navy-50: #f3f7fc;
-  /* セクション背景（白と交互に使う淡いブルー） */
-  --color-pale: #eef3fa;
-  /* 表の見出し列など（淡いグレーブルー） */
-  --color-pale-gray: #e3e9f2;
-  --color-line: #d6dde8;
-  --color-accent-500: #f97316;
-  --color-accent-400: #fb923c;
-  /* オレンジの文字・枠線用（白地で 5.18:1） */
-  --color-accent-700: #c2410c;
-  --color-ink: #1a1f29;
-  --color-muted: #4a5568;
+  --color-primary: #1478e6;
+  --color-primary-dark: #0d5fc4;
+  --color-primary-darker: #0a4ea3;
+  --color-cta: #ff8a00;
+  --color-cta-hover: #ffa033;
+  --color-cta-text: #b45309;
+  --color-pale: #eaf4fe;
+  --color-pale-strong: #dcebfc;
+  --color-tab: #d4e7fc;
+  --color-label: #d9e3ee;
+  --color-line: #dde3ea;
+  --color-gray-ref: #777777;
+  --color-ink: #222222;
+  --color-body: #333333;
+  --color-muted: #666666;
   --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
-  --shadow-card: 0 1px 2px rgb(18 48 94 / 0.06), 0 4px 14px rgb(18 48 94 / 0.07);
+  --shadow-card: 0 1px 3px rgb(20 120 230 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
 html {
@@ -27,9 +36,9 @@ html {
 }
 
 body {
-  color: var(--color-ink);
+  color: var(--color-body);
   background: #ffffff;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.85;
   font-feature-settings: "palt" 1;
   overflow-wrap: anywhere;
@@ -37,19 +46,18 @@ body {
 
 @media (min-width: 768px) {
   body {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 
 :focus-visible {
-  /* オレンジ＋ネイビーの二重リングで、白地・紺地のどちらでも3:1以上を確保 */
-  outline: 3px solid var(--color-accent-500);
+  /* オレンジ＋濃い青の二重リングで、白地・青地のどちらでも3:1以上を確保 */
+  outline: 3px solid var(--color-cta);
   outline-offset: 2px;
-  box-shadow: 0 0 0 5px var(--color-navy-900);
+  box-shadow: 0 0 0 5px var(--color-primary-darker);
   border-radius: 4px;
 }
 
-/* <details> の既定マーカーを消す（＋／−は独自に表示） */
 summary {
   list-style: none;
 }

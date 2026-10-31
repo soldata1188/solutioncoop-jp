@@ -6,9 +6,9 @@ import { INDUSTRIES, HEADCOUNTS } from "@/lib/contact";
 
 type Status = { kind: "idle" | "sending" | "ok" | "info" | "error"; message?: string; errors?: Record<string, string> };
 
-const field = "mt-2 block w-full min-h-12 rounded border-2 border-slate-400 bg-white px-3 py-2 text-base text-ink focus:border-navy-700";
-const label = "block font-bold text-navy-900";
-const req = <span className="ml-2 rounded bg-navy-900 px-1.5 py-0.5 text-xs font-bold text-white">必須</span>;
+const field = "mt-2 block w-full min-h-12 rounded border-2 border-[#949494] bg-white px-3 py-2 text-base text-ink focus:border-primary-dark";
+const label = "block font-bold text-ink";
+const req = <span className="ml-2 rounded bg-primary-dark px-1.5 py-0.5 text-xs font-bold text-white">必須</span>;
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -85,20 +85,20 @@ export function ContactForm() {
       </div>
       <div>
         <div className="flex min-h-11 items-start gap-3">
-          <input id="agree" name="agree" type="checkbox" value="yes" required className="mt-1 h-6 w-6 shrink-0 cursor-pointer accent-navy-900" {...a11y("agree")} />
+          <input id="agree" name="agree" type="checkbox" value="yes" required className="mt-1 h-6 w-6 shrink-0 cursor-pointer accent-[#0d5fc4]" {...a11y("agree")} />
           <label htmlFor="agree" className="cursor-pointer">
             個人情報の取扱いに同意します{req}
           </label>
         </div>
         <p className="ml-9 mt-1 text-sm">
-          <Link href="/privacy" className="inline-flex min-h-11 items-center font-bold text-navy-700 underline underline-offset-4">個人情報保護方針を確認する</Link>
+          <Link href="/privacy" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">個人情報保護方針を確認する</Link>
         </p>
         {errNode("agree")}
       </div>
       <button
         type="submit"
         disabled={status.kind === "sending"}
-        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-md bg-accent-500 px-8 text-lg font-bold text-navy-900 shadow-sm hover:bg-accent-400 disabled:opacity-60 sm:w-auto"
+        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded bg-cta px-8 text-lg font-bold text-ink shadow-sm hover:bg-cta-hover disabled:opacity-60 sm:w-auto"
       >
         {status.kind === "sending" ? "送信中です…" : "入力内容を送信する"}
         <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>

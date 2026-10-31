@@ -24,9 +24,9 @@ export default function Page() {
       <Section width="narrow">
         <ul className="space-y-5">
           {items.map((s, i) => (
-            <li key={s.name} className="relative rounded-md border-2 border-navy-100 bg-white p-6 pt-10 shadow-card">
-              <span aria-hidden="true" className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-br-md bg-navy-100 font-bold text-navy-900">{i + 1}</span>
-              <h2 className="text-2xl font-bold text-navy-900">{s.name}</h2>
+            <li key={s.name} className="relative border-[6px] border-tab bg-white p-6 pt-10">
+              <span aria-hidden="true" className="absolute -left-[6px] -top-[6px] flex h-8 w-8 items-center justify-center bg-tab font-bold text-primary-dark">{i + 1}</span>
+              <h2 className="text-2xl font-bold text-primary-dark">{s.name}</h2>
               <p className="mt-3">{s.body}</p>
             </li>
           ))}
@@ -38,19 +38,19 @@ export default function Page() {
 
       <Section id="record" title="当組合の実績" tone="pale">
         <dl className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+          <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
             <dt className="text-sm text-muted">管理人数</dt>
-            <dd className="text-2xl font-bold text-navy-900">{org.managed}</dd>
+            <dd className="text-2xl font-bold text-primary-dark">{org.managed}</dd>
             <dd className="text-sm text-muted">技能実習生・特定技能外国人</dd>
           </div>
-          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+          <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
             <dt className="text-sm text-muted">連携する送り出し国</dt>
-            <dd className="text-2xl font-bold text-navy-900">3か国</dd>
+            <dd className="text-2xl font-bold text-primary-dark">3か国</dd>
             <dd className="text-sm text-muted">ベトナム・インドネシア・フィリピン</dd>
           </div>
-          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+          <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
             <dt className="text-sm text-muted">主な受入れ企業</dt>
-            <dd className="text-2xl font-bold text-navy-900">大阪府内</dd>
+            <dd className="text-2xl font-bold text-primary-dark">大阪府内</dd>
             <dd className="text-sm text-muted">中小企業様</dd>
           </div>
         </dl>

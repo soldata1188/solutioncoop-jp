@@ -4,7 +4,7 @@ import Link from "next/link";
 /** 支給ロゴ（JPGから白背景を除去したPNG/WebP）＋日本語の組合名 */
 export function Wordmark() {
   return (
-    <Link href="/" className="inline-flex min-h-11 shrink-0 items-center gap-2.5 font-bold text-navy-900 no-underline">
+    <Link href="/" className="inline-flex min-h-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
       <Image
         src="/brand/sol-logo-240.png"
         alt="ソリューション協同組合"

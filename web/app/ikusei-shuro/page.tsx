@@ -25,7 +25,7 @@ export default function Page() {
         lead="2027年4月、技能実習制度に代わる新しい制度として「育成就労制度」が始まります。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
       />
       <Section width="narrow" flushBottom>
-        <aside role="note" className="rounded-md border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
+        <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
           <p className="font-bold">ご確認のお願い</p>
           <p className="mt-1">
             本ページは制度の概要を一般的にご紹介するものです。詳細な要件・運用は、出入国在留管理庁（ISA）および厚生労働省（MHLW）が公表する最新の資料に基づきます。省令・運用要領等により内容が変わる可能性があるため、個別の判断は必ず公式情報をご確認ください。
@@ -47,14 +47,14 @@ export default function Page() {
         {/* スマートフォン：項目ごとに縦積み */}
         <ul className="space-y-4 sm:hidden">
           {changes.map((c) => (
-            <li key={c.item} className="overflow-hidden rounded-md bg-white shadow-card">
-              <p className="bg-pale-gray px-4 py-2 text-center text-sm font-bold text-navy-900">{c.item}</p>
-              <div className="bg-slate-100 px-4 py-3 text-slate-800">
-                <p className="text-xs text-slate-600">技能実習制度</p>
+            <li key={c.item} className="overflow-hidden rounded bg-white shadow-card">
+              <p className="bg-label px-4 py-2 text-center text-sm font-bold text-ink">{c.item}</p>
+              <div className="bg-[#f2f2f2] px-4 py-3 text-body">
+                <p className="text-xs text-muted">技能実習制度</p>
                 <p>{c.before}</p>
               </div>
-              <div className="bg-navy-900 px-4 py-3 text-white">
-                <p className="text-xs text-slate-200">育成就労制度</p>
+              <div className="bg-primary-dark px-4 py-3 text-white">
+                <p className="text-xs text-white">育成就労制度</p>
                 <p className="font-bold">{c.after}</p>
               </div>
             </li>
@@ -65,17 +65,17 @@ export default function Page() {
             <caption className="sr-only">技能実習制度と育成就労制度の比較</caption>
             <thead>
               <tr>
-                <th scope="col" className="w-[22%] bg-pale-gray p-3 text-center text-sm font-bold text-navy-900">項目</th>
-                <th scope="col" className="bg-slate-200 p-3 text-center font-bold text-slate-800">技能実習制度</th>
-                <th scope="col" className="bg-navy-900 p-3 text-center font-bold text-white">育成就労制度</th>
+                <th scope="col" className="w-[22%] bg-label p-3 text-center text-sm font-bold text-ink">項目</th>
+                <th scope="col" className="bg-[#eeeeee] p-3 text-center font-bold text-body">技能実習制度</th>
+                <th scope="col" className="bg-primary p-3 text-center text-[19px] font-bold text-white">育成就労制度</th>
               </tr>
             </thead>
             <tbody>
               {changes.map((c) => (
                 <tr key={c.item}>
-                  <th scope="row" className="border-t border-white bg-pale-gray p-3 text-center text-sm font-bold text-navy-900">{c.item}</th>
-                  <td className="border-t border-white bg-slate-100 p-3 text-slate-800">{c.before}</td>
-                  <td className="border-t border-white/20 bg-navy-900 p-3 font-bold text-white">{c.after}</td>
+                  <th scope="row" className="border-t border-white bg-label p-3 text-center text-sm font-bold text-ink">{c.item}</th>
+                  <td className="border-t border-white bg-white p-3 text-body border-b border-line">{c.before}</td>
+                  <td className="border-t border-white/25 bg-primary-dark p-3 font-bold text-white">{c.after}</td>
                 </tr>
               ))}
             </tbody>
@@ -95,7 +95,7 @@ export default function Page() {
             <>現在受け入れている技能実習生の取扱いについては、経過措置が設けられる予定です。<CheckBadge /></>,
           ].map((node, i) => (
             <li key={i} className="flex gap-3 border-b border-line pb-4 last:border-b-0">
-              <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 shrink-0 bg-navy-900" />
+              <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 shrink-0 bg-primary-dark" />
               <span>{node}</span>
             </li>
           ))}
@@ -110,9 +110,9 @@ export default function Page() {
             ["手続きのサポート", "計画の作成や各種申請の準備について、制度に沿ってサポートいたします。"],
             ["受入れ後のフォロー", "定期的な訪問や相談対応を通じて、人材の定着と育成を支えます。"],
           ].map(([t, b], i) => (
-            <li key={t} className="relative rounded-md border-2 border-navy-100 bg-white p-6 pt-10 shadow-card">
-              <span aria-hidden="true" className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-br-md bg-navy-100 font-bold text-navy-900">{i + 1}</span>
-              <h3 className="text-lg font-bold text-navy-900">{t}</h3>
+            <li key={t} className="relative border-[6px] border-tab bg-white p-6 pt-10">
+              <span aria-hidden="true" className="absolute -left-[6px] -top-[6px] flex h-8 w-8 items-center justify-center bg-tab font-bold text-primary-dark">{i + 1}</span>
+              <h3 className="text-lg font-bold text-ink">{t}</h3>
               <p className="mt-2 text-[15px] text-muted">{b}</p>
             </li>
           ))}

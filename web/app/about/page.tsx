@@ -16,9 +16,9 @@ export default function Page() {
     ["名称", org.name],
     ["代表者", org.representative],
     ["所在地", fullAddress],
-    ["電話番号", <a key="tel" href="tel:0722248067" className="font-bold text-navy-700 underline underline-offset-4">{org.tel}</a>],
+    ["電話番号", <a key="tel" href="tel:0722248067" className="font-bold text-primary-dark underline underline-offset-4">{org.tel}</a>],
     ["FAX番号", org.fax],
-    ["メールアドレス", <a key="mail" href={`mailto:${org.email}`} className="font-bold text-navy-700 underline underline-offset-4">{org.email}</a>],
+    ["メールアドレス", <a key="mail" href={`mailto:${org.email}`} className="font-bold text-primary-dark underline underline-offset-4">{org.email}</a>],
     ["設立", <Placeholder key="est" />],
     [
       "事業内容",
@@ -37,12 +37,12 @@ export default function Page() {
     <>
       <PageHeader title="組合概要" lead="堺市堺区を拠点に、大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。" />
       <Section id="overview" title="組合の概要" width="narrow">
-        <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md text-left text-[15px] shadow-card md:text-base">
+        <table className="w-full border-separate border-spacing-0 overflow-hidden rounded text-left text-[15px] shadow-card md:text-base">
           <caption className="sr-only">ソリューション協同組合の概要</caption>
           <tbody>
             {rows.map(([k, v]) => (
               <tr key={k}>
-                <th scope="row" className="w-28 border-b border-white bg-pale-gray p-4 align-top font-bold text-navy-900 sm:w-48">{k}</th>
+                <th scope="row" className="w-28 border-b border-white bg-label p-4 align-top font-bold text-ink sm:w-48">{k}</th>
                 <td className="border-b border-line bg-white p-4">{v}</td>
               </tr>
             ))}
@@ -52,8 +52,8 @@ export default function Page() {
 
       <Section id="license" title="許可・登録" tone="pale">
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-md border-t-4 border-navy-900 bg-white p-6 shadow-card">
-              <h3 className="text-lg font-bold text-navy-900">{licenses.kanri.label}</h3>
+            <div className="border-b-4 border-primary bg-white p-6 shadow-card">
+              <h3 className="text-lg font-bold text-ink">{licenses.kanri.label}</h3>
               <dl className="mt-3 space-y-1">
                 <div><dt className="inline font-bold">許可番号：</dt><dd className="inline">{licenses.kanri.number}</dd></div>
                 <div><dt className="inline font-bold">許可の別：</dt><dd className="inline">{licenses.kanri.kind}</dd></div>
@@ -70,8 +70,8 @@ export default function Page() {
                 </div>
               </dl>
             </div>
-            <div className="rounded-md border-t-4 border-navy-900 bg-white p-6 shadow-card">
-              <h3 className="text-lg font-bold text-navy-900">{licenses.toroku.label}</h3>
+            <div className="border-b-4 border-primary bg-white p-6 shadow-card">
+              <h3 className="text-lg font-bold text-ink">{licenses.toroku.label}</h3>
               <dl className="mt-3 space-y-1">
                 <div><dt className="inline font-bold">登録番号：</dt><dd className="inline">{licenses.toroku.number}</dd></div>
                 <div><dt className="inline font-bold">登録年月日：</dt><dd className="inline">{licenses.toroku.registeredOn}</dd></div>

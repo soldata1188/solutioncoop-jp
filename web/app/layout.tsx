@@ -1,0 +1,45 @@
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL, org, organizationJsonLd } from "@/lib/site";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労",
+    template: `%s｜${org.name}`,
+  },
+  description:
+    "堺市の監理団体、ソリューション協同組合です。大阪の中小企業様の外国人材受入れと、2027年4月開始の育成就労制度への対応をご支援いたします。",
+  openGraph: { type: "website", locale: "ja_JP", siteName: org.name },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#12305e",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="ja">
+      <body className="flex min-h-screen flex-col antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-navy-900 focus:shadow"
+        >
+          本文へスキップ
+        </a>
+        <Header />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+        <JsonLd data={organizationJsonLd} />
+      </body>
+    </html>
+  );
+}

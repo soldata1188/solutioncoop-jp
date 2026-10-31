@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #0b1f3a;
+  --color-navy-900: #12305e;
+  --color-navy-700: #1f4e8c;
+  --color-navy-100: #e6eef8;
+  --color-navy-50: #f3f7fc;
+  --color-accent-500: #f97316;
+  --color-accent-400: #fb923c;
+  --color-ink: #1a1f29;
+  --color-muted: #4a5568;
+  --font-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-ink);
+  background: #ffffff;
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "palt" 1;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+:focus-visible {
+  /* オレンジ＋ネイビーの二重リングで、白地・紺地のどちらでも3:1以上を確保 */
+  outline: 3px solid var(--color-accent-500);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-navy-900);
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

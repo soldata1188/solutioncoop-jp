@@ -1,0 +1,106 @@
+import { PageHeader } from "@/components/PageHeader";
+import { CtaSection } from "@/components/CtaSection";
+import { CheckBadge } from "@/components/Placeholder";
+import { pageMeta } from "@/lib/meta";
+
+export const metadata = pageMeta(
+  "/ikusei-shuro",
+  "育成就労制度とは｜育成就労の監理団体が解説",
+  "2027年4月に始まる育成就労制度について、技能実習制度からの変更点や受入れ企業様への影響を、堺市の監理団体ソリューション協同組合がわかりやすく解説いたします。",
+);
+
+const changes = [
+  { item: "制度の目的", before: "国際貢献（技能・技術の移転）", after: "人材育成と人材確保" },
+  { item: "転籍（職場の変更）", before: "原則として認められていない", after: "一定の要件のもとで本人の意向による転籍が認められる予定" },
+  { item: "育成の目標", before: "技能の修得", after: "おおむね3年間で特定技能1号の水準の人材への育成を目指す" },
+  { item: "監理を行う団体", before: "監理団体", after: "監理支援機関（新たな許可が必要）" },
+];
+
+export default function Page() {
+  return (
+    <>
+      <PageHeader
+        title="育成就労制度とは"
+        lead="2027年4月、技能実習制度に代わる新しい制度として「育成就労制度」が始まります。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
+      />
+      <div className="mx-auto max-w-4xl px-4 py-12">
+        <aside role="note" className="rounded-lg border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
+          <p className="font-bold">ご確認のお願い</p>
+          <p className="mt-1">
+            本ページは制度の概要を一般的にご紹介するものです。詳細な要件・運用は、出入国在留管理庁（ISA）および厚生労働省（MHLW）が公表する最新の資料に基づきます。省令・運用要領等により内容が変わる可能性があるため、個別の判断は必ず公式情報をご確認ください。
+            <CheckBadge />
+          </p>
+        </aside>
+
+        <section aria-labelledby="s1" className="mt-12">
+          <h2 id="s1" className="text-2xl font-bold text-navy-950">育成就労制度の概要</h2>
+          <p className="mt-4">
+            育成就労制度は、2024年に成立した改正法にもとづき、2027年4月に施行される予定の制度です。外国人材を日本の産業を支える人材として育成し、同時に人手不足の分野における人材確保を図ることを目的としています。
+          </p>
+          <p className="mt-4">
+            受入れ対象となる分野は、特定技能制度の分野と連携して定められる予定です。育成就労を修了した人材が、特定技能へと円滑に移行し、長く日本で活躍できる仕組みが想定されています。
+          </p>
+        </section>
+
+        <section aria-labelledby="s2" className="mt-12">
+          <h2 id="s2" className="text-2xl font-bold text-navy-950">技能実習制度からの主な変更点</h2>
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full min-w-[560px] border-collapse text-left">
+              <caption className="sr-only">技能実習制度と育成就労制度の比較</caption>
+              <thead>
+                <tr className="bg-navy-900 text-white">
+                  <th scope="col" className="p-3">項目</th>
+                  <th scope="col" className="p-3">技能実習制度</th>
+                  <th scope="col" className="p-3">育成就労制度</th>
+                </tr>
+              </thead>
+              <tbody>
+                {changes.map((c) => (
+                  <tr key={c.item} className="border-b border-slate-200 odd:bg-navy-50">
+                    <th scope="row" className="p-3 font-bold text-navy-900">{c.item}</th>
+                    <td className="p-3">{c.before}</td>
+                    <td className="p-3">{c.after}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-muted">
+            ※転籍の要件（就労期間、技能・日本語能力など）や日本語能力の基準、移行期間の取扱いの詳細は公式資料をご確認ください。<CheckBadge />
+          </p>
+        </section>
+
+        <section aria-labelledby="s3" className="mt-12">
+          <h2 id="s3" className="text-2xl font-bold text-navy-950">受入れ企業様にとっての意味</h2>
+          <ul className="mt-4 list-disc space-y-3 pl-6">
+            <li>人材を「育てて定着させる」視点での受入れ計画が、これまで以上に重要になります。</li>
+            <li>転籍が一定の条件で認められるため、職場環境や処遇、日本語学習の支援など、働き続けたいと思える環境づくりが求められます。</li>
+            <li>新制度での受入れには、制度に沿った計画の作成・認定など、新たな手続きが必要となる見込みです。</li>
+            <li>現在受け入れている技能実習生の取扱いについては、経過措置が設けられる予定です。<CheckBadge /></li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="s4" className="mt-12">
+          <h2 id="s4" className="text-2xl font-bold text-navy-950">当組合のご支援</h2>
+          <ul className="mt-4 grid gap-4 md:grid-cols-2">
+            {[
+              ["制度のご説明", "育成就労制度の内容や、技能実習制度からの移行について、貴社の状況に合わせてご説明いたします。"],
+              ["人材の選考支援", "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、選考を支援いたします。"],
+              ["手続きのサポート", "計画の作成や各種申請の準備について、制度に沿ってサポートいたします。"],
+              ["受入れ後のフォロー", "定期的な訪問や相談対応を通じて、人材の定着と育成を支えます。"],
+            ].map(([t, b]) => (
+              <li key={t} className="rounded-lg border border-slate-200 p-5">
+                <h3 className="text-lg font-bold text-navy-900">{t}</h3>
+                <p className="mt-2 text-muted">{b}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-muted">
+            ※当組合は現在、技能実習法に基づく監理団体（一般監理事業）として許可を受けております。育成就労制度に向けて準備中です。
+          </p>
+        </section>
+      </div>
+      <CtaSection title="育成就労制度について、まずはご相談ください。" />
+    </>
+  );
+}

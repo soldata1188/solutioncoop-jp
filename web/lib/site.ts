@@ -1,0 +1,75 @@
+export const SITE_URL = "https://solutioncoop-jp.com";
+
+export const org = {
+  name: "ソリューション協同組合",
+  postalCode: "590-0953",
+  // 住所表記は「堺市堺区」で記載。正式表記は要確認。
+  region: "大阪府",
+  locality: "堺市堺区",
+  street: "甲斐町東4丁2番2号",
+  tel: "072-224-8067",
+  fax: "072-224-2214",
+  email: "info@solutioncoop-jp.com",
+  staff: "10名",
+  managed: "約360名",
+  representative: "新 雅志",
+};
+
+/** 許可・登録情報（許可証・登録通知の記載内容。画像は掲載しない） */
+export const licenses = {
+  kanri: {
+    label: "監理団体許可（技能実習法）",
+    number: "許1708000610",
+    kind: "一般監理事業",
+    corpType: "中小企業団体",
+    grantedOn: "平成29年12月1日",
+    validity: "令和4年12月1日から令和11年11月30日まで",
+    conditions: [
+      "介護職種の介護作業を除く",
+      "取扱職種は、技能実習計画作成指導者が在籍する範囲",
+      "受入国籍は、相談体制を構築済みの範囲",
+    ],
+  },
+  toroku: {
+    label: "登録支援機関（特定技能）",
+    number: "19登-001221",
+    registeredOn: "2019年7月18日",
+    validity: "2024年7月18日から2029年7月17日まで",
+  },
+};
+
+export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;
+
+export const nav = [
+  { href: "/ikusei-shuro", label: "育成就労制度とは" },
+  { href: "/flow", label: "受入れの流れ" },
+  { href: "/industries", label: "対象業種" },
+  { href: "/pricing", label: "費用・料金" },
+  { href: "/faq", label: "よくある質問" },
+  { href: "/about", label: "組合概要" },
+];
+
+export const CONTACT_HREF = "/contact";
+export const CONTACT_LABEL = "お問い合わせ・資料請求";
+
+export const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: org.name,
+  url: SITE_URL,
+  telephone: "+81-72-224-8067",
+  faxNumber: "+81-72-224-2214",
+  email: org.email,
+  address: {
+    "@type": "PostalAddress",
+    postalCode: org.postalCode,
+    addressRegion: org.region,
+    addressLocality: org.locality,
+    streetAddress: org.street,
+    addressCountry: "JP",
+  },
+  identifier: [
+    { "@type": "PropertyValue", name: "監理団体許可番号", value: "許1708000610" },
+    { "@type": "PropertyValue", name: "登録支援機関登録番号", value: "19登-001221" },
+  ],
+};

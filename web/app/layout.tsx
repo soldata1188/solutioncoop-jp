@@ -1,9 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, org, organizationJsonLd } from "@/lib/site";
+
+/** Noto Sans JP（ビルド時に取得してセルフホスト。実行時に外部へは接続しません） */
+const notoSansJp = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-sans-jp",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,7 +34,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={notoSansJp.variable}>
       <body className="flex min-h-screen flex-col antialiased">
         <a
           href="#main"

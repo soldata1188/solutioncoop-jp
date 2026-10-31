@@ -6,11 +6,19 @@
   --color-navy-700: #1f4e8c;
   --color-navy-100: #e6eef8;
   --color-navy-50: #f3f7fc;
+  /* セクション背景（白と交互に使う淡いブルー） */
+  --color-pale: #eef3fa;
+  /* 表の見出し列など（淡いグレーブルー） */
+  --color-pale-gray: #e3e9f2;
+  --color-line: #d6dde8;
   --color-accent-500: #f97316;
   --color-accent-400: #fb923c;
+  /* オレンジの文字・枠線用（白地で 5.18:1） */
+  --color-accent-700: #c2410c;
   --color-ink: #1a1f29;
   --color-muted: #4a5568;
-  --font-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgb(18 48 94 / 0.06), 0 4px 14px rgb(18 48 94 / 0.07);
 }
 
 html {
@@ -21,14 +29,15 @@ html {
 body {
   color: var(--color-ink);
   background: #ffffff;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.85;
   font-feature-settings: "palt" 1;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 768px) {
   body {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 
@@ -38,6 +47,14 @@ body {
   outline-offset: 2px;
   box-shadow: 0 0 0 5px var(--color-navy-900);
   border-radius: 4px;
+}
+
+/* <details> の既定マーカーを消す（＋／−は独自に表示） */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

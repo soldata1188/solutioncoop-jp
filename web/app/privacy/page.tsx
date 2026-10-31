@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Placeholder } from "@/components/Placeholder";
+import { Section, SubHeading } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { org, fullAddress } from "@/lib/site";
 
@@ -34,15 +35,15 @@ export default function Page() {
   return (
     <>
       <PageHeader title="個人情報保護方針" />
-      <div className="mx-auto max-w-3xl px-4 py-12">
+      <Section width="narrow">
         {sections.map((s) => (
           <section key={s.title} className="mb-8">
-            <h2 className="text-xl font-bold text-navy-950">{s.title}</h2>
+            <SubHeading as="h2">{s.title}</SubHeading>
             <div className="mt-2">{s.body}</div>
           </section>
         ))}
-        <section className="rounded-lg bg-navy-50 p-5">
-          <h2 className="text-xl font-bold text-navy-950">お問い合わせ窓口</h2>
+        <section className="rounded-md border-l-4 border-navy-900 bg-pale p-5">
+          <SubHeading as="h2">お問い合わせ窓口</SubHeading>
           <p className="mt-2">
             {org.name}
             <br />
@@ -56,7 +57,7 @@ export default function Page() {
           </p>
           <p className="mt-3 text-sm text-muted">制定日：<Placeholder /></p>
         </section>
-      </div>
+      </Section>
     </>
   );
 }

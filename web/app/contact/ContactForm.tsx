@@ -6,8 +6,8 @@ import { INDUSTRIES, HEADCOUNTS } from "@/lib/contact";
 
 type Status = { kind: "idle" | "sending" | "ok" | "info" | "error"; message?: string; errors?: Record<string, string> };
 
-const field = "mt-2 block w-full min-h-12 rounded-md border-2 border-slate-400 bg-white px-3 py-2 text-base text-ink focus:border-navy-700";
-const label = "block font-bold text-navy-950";
+const field = "mt-2 block w-full min-h-12 rounded border-2 border-slate-400 bg-white px-3 py-2 text-base text-ink focus:border-navy-700";
+const label = "block font-bold text-navy-900";
 const req = <span className="ml-2 rounded bg-navy-900 px-1.5 py-0.5 text-xs font-bold text-white">必須</span>;
 
 export function ContactForm() {
@@ -98,9 +98,10 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status.kind === "sending"}
-        className="inline-flex min-h-14 w-full items-center justify-center rounded-md bg-navy-900 px-8 text-lg font-bold text-white hover:bg-navy-700 disabled:opacity-60 sm:w-auto"
+        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-md bg-accent-500 px-8 text-lg font-bold text-navy-900 shadow-sm hover:bg-accent-400 disabled:opacity-60 sm:w-auto"
       >
         {status.kind === "sending" ? "送信中です…" : "入力内容を送信する"}
+        <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
       </button>
       <div role="status" aria-live="polite">
         {status.message ? (

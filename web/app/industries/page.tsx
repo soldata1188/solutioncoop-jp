@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
+import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { org } from "@/lib/site";
 
@@ -20,10 +21,11 @@ export default function Page() {
   return (
     <>
       <PageHeader title="対象業種" lead="建設、機械・金属、食品製造を中心に、大阪府内の中小企業様の外国人材受入れをご支援しております。" />
-      <div className="mx-auto max-w-4xl px-4 py-12">
-        <ul className="space-y-6">
-          {items.map((s) => (
-            <li key={s.name} className="rounded-xl border-l-4 border-navy-700 p-6 shadow-sm ring-1 ring-slate-200">
+      <Section width="narrow">
+        <ul className="space-y-5">
+          {items.map((s, i) => (
+            <li key={s.name} className="relative rounded-md border-2 border-navy-100 bg-white p-6 pt-10 shadow-card">
+              <span aria-hidden="true" className="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-br-md bg-navy-100 font-bold text-navy-900">{i + 1}</span>
               <h2 className="text-2xl font-bold text-navy-900">{s.name}</h2>
               <p className="mt-3">{s.body}</p>
             </li>
@@ -32,28 +34,27 @@ export default function Page() {
         <p className="mt-6 text-sm text-muted">
           ※育成就労制度で受入れ可能な分野・業務は制度上定められています。貴社の業務が対象となるかは、個別に確認いたします。<CheckBadge />
         </p>
+      </Section>
 
-        <section aria-labelledby="record" className="mt-12 rounded-xl bg-navy-50 p-6">
-          <h2 id="record" className="text-2xl font-bold text-navy-950">当組合の実績</h2>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-lg bg-white p-4 text-center">
-              <dt className="text-sm text-muted">管理人数</dt>
-              <dd className="text-2xl font-bold text-navy-900">{org.managed}</dd>
-              <dd className="text-sm text-muted">技能実習生・特定技能外国人</dd>
-            </div>
-            <div className="rounded-lg bg-white p-4 text-center">
-              <dt className="text-sm text-muted">連携する送り出し国</dt>
-              <dd className="text-2xl font-bold text-navy-900">3か国</dd>
-              <dd className="text-sm text-muted">ベトナム・インドネシア・フィリピン</dd>
-            </div>
-            <div className="rounded-lg bg-white p-4 text-center">
-              <dt className="text-sm text-muted">主な受入れ企業</dt>
-              <dd className="text-2xl font-bold text-navy-900">大阪府内</dd>
-              <dd className="text-sm text-muted">中小企業様</dd>
-            </div>
-          </dl>
-        </section>
-      </div>
+      <Section id="record" title="当組合の実績" tone="pale">
+        <dl className="grid gap-4 sm:grid-cols-3">
+          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+            <dt className="text-sm text-muted">管理人数</dt>
+            <dd className="text-2xl font-bold text-navy-900">{org.managed}</dd>
+            <dd className="text-sm text-muted">技能実習生・特定技能外国人</dd>
+          </div>
+          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+            <dt className="text-sm text-muted">連携する送り出し国</dt>
+            <dd className="text-2xl font-bold text-navy-900">3か国</dd>
+            <dd className="text-sm text-muted">ベトナム・インドネシア・フィリピン</dd>
+          </div>
+          <div className="rounded-md border-b-4 border-navy-900 bg-white p-5 text-center shadow-card">
+            <dt className="text-sm text-muted">主な受入れ企業</dt>
+            <dd className="text-2xl font-bold text-navy-900">大阪府内</dd>
+            <dd className="text-sm text-muted">中小企業様</dd>
+          </div>
+        </dl>
+      </Section>
       <CtaSection title="貴社の業種で受入れが可能か、お気軽にご相談ください。" />
     </>
   );

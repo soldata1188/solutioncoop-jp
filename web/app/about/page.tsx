@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { Placeholder } from "@/components/Placeholder";
+import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { org, fullAddress, licenses } from "@/lib/site";
 
@@ -35,23 +36,23 @@ export default function Page() {
   return (
     <>
       <PageHeader title="組合概要" lead="堺市堺区を拠点に、大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。" />
-      <div className="mx-auto max-w-4xl px-4 py-12">
-        <table className="w-full border-collapse text-left">
+      <Section id="overview" title="組合の概要" width="narrow">
+        <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-md text-left text-[15px] shadow-card md:text-base">
           <caption className="sr-only">ソリューション協同組合の概要</caption>
           <tbody>
             {rows.map(([k, v]) => (
-              <tr key={k} className="border-b border-slate-200">
-                <th scope="row" className="w-32 bg-navy-50 p-4 align-top font-bold text-navy-900 sm:w-52">{k}</th>
-                <td className="p-4">{v}</td>
+              <tr key={k}>
+                <th scope="row" className="w-28 border-b border-white bg-pale-gray p-4 align-top font-bold text-navy-900 sm:w-48">{k}</th>
+                <td className="border-b border-line bg-white p-4">{v}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      </Section>
 
-        <section aria-labelledby="license" className="mt-12">
-          <h2 id="license" className="text-2xl font-bold text-navy-950">許可・登録</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div className="rounded-xl border-t-4 border-accent-500 p-6 shadow-sm ring-1 ring-slate-200">
+      <Section id="license" title="許可・登録" tone="pale">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-md border-t-4 border-navy-900 bg-white p-6 shadow-card">
               <h3 className="text-lg font-bold text-navy-900">{licenses.kanri.label}</h3>
               <dl className="mt-3 space-y-1">
                 <div><dt className="inline font-bold">許可番号：</dt><dd className="inline">{licenses.kanri.number}</dd></div>
@@ -69,7 +70,7 @@ export default function Page() {
                 </div>
               </dl>
             </div>
-            <div className="rounded-xl border-t-4 border-accent-500 p-6 shadow-sm ring-1 ring-slate-200">
+            <div className="rounded-md border-t-4 border-navy-900 bg-white p-6 shadow-card">
               <h3 className="text-lg font-bold text-navy-900">{licenses.toroku.label}</h3>
               <dl className="mt-3 space-y-1">
                 <div><dt className="inline font-bold">登録番号：</dt><dd className="inline">{licenses.toroku.number}</dd></div>
@@ -81,8 +82,7 @@ export default function Page() {
           <p className="mt-4 text-sm text-muted">
             ※当組合は、技能実習法に基づく監理団体として許可を受けております。2027年4月に始まる育成就労制度に向けて準備中です。
           </p>
-        </section>
-      </div>
+      </Section>
       <CtaSection />
     </>
   );

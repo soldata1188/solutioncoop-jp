@@ -10,7 +10,7 @@ import { org, fullAddress, licenses, repoFacts, TEL_HREF } from "@/lib/site";
 export const metadata = pageMeta(
   "/about",
   "組合概要｜堺の監理団体",
-  "堺市堺区の監理団体、ソリューション協同組合の組合概要です。所在地、連絡先、職員数、管理人数などをご案内いたします。",
+  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、管理人数、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
 );
 
 export default function Page() {

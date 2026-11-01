@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/meta";
 export const metadata = pageMeta(
   "/roadmap",
   "2027年4月に向けた準備｜育成就労のロードマップとチェックリスト",
-  "2027年4月に施行予定の育成就労制度に向けて、受入れ企業様が進めておきたい準備をロードマップとチェックリストでご案内いたします。",
+  "2027年4月に施行予定の育成就労制度に向けて、受入れ企業様がいつ頃から何を進めておきたいかを、時期の目安を示したロードマップと、社内体制や書類の準備を確かめられるチェックリストでご案内いたします。",
 );
 
 type Milestone = { when: string; title: string; body: string; tag: "目安" | "公表資料" | "予定"; check?: boolean };

@@ -10,18 +10,12 @@ import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { CONTACT_HREF, licenses, org } from "@/lib/site";
 import { faqs } from "@/lib/faq";
+import { pageMeta } from "@/lib/meta";
 import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
 
 export const metadata: Metadata = {
+  ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月開始予定の育成就労制度に向けて準備中です。"),
   title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
-  description:
-    "堺市の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れと、2027年4月開始予定の育成就労制度への対応をご支援いたします。",
-  alternates: { canonical: "/" },
-  openGraph: {
-    url: "https://solutioncoop-jp.com/",
-    title: "堺の監理団体 ソリューション協同組合",
-    description: "大阪の外国人材受入れと育成就労制度への対応をご支援いたします。",
-  },
 };
 
 const problems = [

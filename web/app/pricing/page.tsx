@@ -8,7 +8,7 @@ import { pricingByCountry, DEFAULT_COUNTRY } from "@/lib/pricing";
 export const metadata = pageMeta(
   "/pricing",
   "費用・料金（インドネシア向け・目安）",
-  "育成就労でインドネシアから人材を受け入れる場合の費用の目安（暫定・税別・1名あたり）をご案内いたします。最終金額は個別にご案内します。",
+  "育成就労でインドネシアから人材を受け入れる場合の費用の目安（暫定・税別・1名あたり）を、ご加入時・入国前・入国時・入国後の毎月など、時期ごとに一覧でご案内いたします。最終金額は個別にご案内します。",
 );
 
 export default function Page() {

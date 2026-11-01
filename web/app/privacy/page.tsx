@@ -7,7 +7,7 @@ import { org, fullAddress } from "@/lib/site";
 export const metadata = pageMeta(
   "/privacy",
   "個人情報保護方針",
-  "ソリューション協同組合の個人情報保護方針です。個人情報の取得、利用目的、第三者提供、安全管理、開示等のご請求について定めています。",
+  "ソリューション協同組合の個人情報保護方針です。お問い合わせ等でお預かりする個人情報の取得方法、利用目的、第三者提供、安全管理措置、開示・訂正・利用停止等のご請求の窓口について定めています。",
 );
 
 const sections: { title: string; body: React.ReactNode }[] = [

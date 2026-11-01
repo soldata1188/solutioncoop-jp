@@ -6,7 +6,7 @@ import { achievements } from "@/lib/site";
  * トップの実績ストリップ（ヒーロー直下）。
  * PC（lg以上）：左に「SDGs未来都市・堺」ロゴ、右に4つの実績を細い区切り線で並べます。
  * スマートフォン：ロゴと応援の一文を上に、実績を2×2で表示します。
- * 数値は #0E4A32（白背景で 10.27:1）、ラベルは #222。
+ * 数値は #0F4D2A（白背景で 9.93:1）、ラベルは #222。
  * ロゴは既存リポジトリ images/sdgs-sakai.png を WebP に変換したもの（使用許諾は要確認・ページには表示しません）。
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {

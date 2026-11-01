@@ -15,12 +15,12 @@ const buttonBase =
   "relative inline-flex min-h-12 items-center justify-center gap-3 rounded px-10 font-bold leading-snug no-underline transition-colors";
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  // ライム地は #222 文字（11.28:1）。白文字は 1.41:1 のため使用しません。
+  // 淡い黄色地は #222 文字（13.99:1）。白文字は使用しません。
   primary: "bg-cta text-ink shadow-sm hover:bg-cta-hover",
   outlineWhite: "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary-dark",
-  // 白地＋濃いライム枠（枠・文字とも #46700E、5.86:1）
-  whiteCta: "border-2 border-cta-text bg-white text-cta-text hover:bg-cta-tint",
-  outlineCta: "border-2 border-cta-text bg-white text-cta-text hover:bg-cta-tint",
+  // 白地＋濃い緑の枠（枠・文字とも #0F4D2A、9.93:1）
+  whiteCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
+  outlineCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
   dark: "bg-primary-dark text-white hover:bg-primary-darker",
   // 白地・グレー枠・緑の矢印（資料などの「もっと見る」ボタン）
   ghost: "border border-line bg-white text-ink shadow-sm hover:border-primary [&>svg]:text-primary-dark",
@@ -62,7 +62,7 @@ export function SquareDots({ className = "", tone = "pale" }: { className?: stri
   );
 }
 
-/** セクション見出し（中央揃え・太字・緑＋3つの四角）。#18774C（白地 5.55:1） */
+/** セクション見出し（中央揃え・太字・緑＋3つの四角）。#1E7F46（白地 5.02:1） */
 export function SectionHeading({
   id,
   children,

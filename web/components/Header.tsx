@@ -5,9 +5,9 @@ import { ArrowIcon } from "./ui";
 import { LineButton } from "./LineButton";
 
 const btnBase = "min-h-11 items-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline transition-colors";
-// ライム地は #222 文字（11.28:1）。白地の枠ボタンは #46700E の枠と文字（5.86:1）
+// 淡い黄色地は #222 文字（13.99:1）。白地の枠ボタンは #0F4D2A の枠と文字（9.93:1）
 const btnPrimaryColors = "bg-cta text-ink hover:bg-cta-hover";
-const btnOutlineColors = "border border-cta-text bg-white text-cta-text hover:bg-cta-tint";
+const btnOutlineColors = "border border-primary-dark bg-white text-primary-dark hover:bg-cta-tint";
 
 export function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (

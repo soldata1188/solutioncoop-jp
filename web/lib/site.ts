@@ -114,7 +114,7 @@ export const organizationJsonLd = {
   "@id": `${SITE_URL}/#organization`,
   name: org.name,
   url: SITE_URL,
-  logo: `${SITE_URL}/brand/sol-logo-green-512.png`,
+  logo: `${SITE_URL}/brand/sol-logo-main-512.png`,
   image: `${SITE_URL}/opengraph-image.png`,
   areaServed: { "@type": "AdministrativeArea", name: "大阪府" },
   telephone: "+81-72-224-8067",

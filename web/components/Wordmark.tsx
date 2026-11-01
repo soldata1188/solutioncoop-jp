@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import logoTile from "@/public/brand/sol-logo-tile.webp";
+import logoTile from "@/public/brand/sol-logo-main-tile.webp";
 
 /**
- * 新ロゴ（深緑 #0E4A32 の正方形タイルに白の S・L とライムの O）＋日本語の組合名。
+ * 新ロゴ（明るい緑 #34B268 の正方形タイルに白の S・L と淡い黄色の O）＋日本語の組合名。
  * 小さい表示では「Solution Coop」の文字が判読できないため、SOL 部分のみのタイル（256px 原寸の WebP）を角丸で表示します。
- * 原本: 支給の logo_chinh_SOL_green_dark_1000.png（1000×1000）
+ * 原本: 支給の logo_chinh_SOL_main_1000.png（1000×1000）
  */
 export function LogoTile({
   className = "h-10 w-10",

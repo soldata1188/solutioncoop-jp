@@ -3,7 +3,7 @@ import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
 import { LinkButton, SquaresPattern } from "./ui";
 
-/** 最後のCTA帯。本文サイズの白文字を置くため、背景は深緑 #0E4A32（白文字 10.27:1） */
+/** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い緑 #0F4D2A（白文字 9.93:1） */
 export function CtaSection({ title = "育成就労制度への備えを、今から始めませんか。" }: { title?: string }) {
   return (
     <section aria-labelledby="cta-title" className="relative overflow-hidden bg-primary-dark text-white">

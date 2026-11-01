@@ -1,40 +1,42 @@
 @import "tailwindcss";
 
 /*
- * カラートークン（新ロゴ：深緑 #0E4A32・ライム #C8E650 に合わせた緑基調のパレット）
+ * カラートークン（最終ロゴ：緑 #34B268・淡い黄色 #FFF478 に合わせた緑基調のパレット）
+ * ロゴの緑 #34B268 は白文字 2.72:1 のため、文字の背景には使わず装飾（ロゴ・細い線・大きな図形）のみ（brand）
  * コントラスト（WCAG 2.x）:
- *  白 / #18774C (primary) = 5.55:1 → 本文サイズの白文字も可。#18774C / 白 = 5.55:1、/ #EFF6F0 = 5.05:1
- *  白 / #0E4A32 (primary-dark・ロゴの地色) = 10.27:1。#0E4A32 / #EFF6F0 = 9.35:1、/ #E0EFE4 = 8.63:1
- *  白 / #08301F (primary-darker) = 14.45:1
- *  #222 / #C8E650 (cta・ロゴの O のライム) = 11.28:1、hover #D8EF7F = 12.56:1。白文字は 1.41:1 のため使用しません
- *  #46700E (cta-text) / 白 = 5.86:1、/ #EFF6F0 = 5.33:1、/ #F4F9DC = 5.42:1 → 白地の枠ボタン・「A」等の文字
+ *  白 / #1E7F46 (primary・ロゴと同じ色相) = 5.02:1。#1E7F46 / 白 = 5.02:1、/ #EEF8F1 = 4.63:1
+ *  白 / #0F4D2A (primary-dark) = 9.93:1。#0F4D2A / #EEF8F1 = 9.14:1、/ #DDF1E4 = 8.3:1 前後
+ *  白 / #0A3720 (primary-darker) = 13.29:1
+ *  #222 / #FFF478 (cta・ロゴの O の淡い黄色) = 13.99:1、hover #FFF9B0 = 14.72:1。白文字は使用しません
+ *  #6B5A00 (cta-text) / 白 = 6.80:1、/ #FFFBD1 = 6.47:1、/ #EEF8F1 = 6.26:1 → FAQ の「A」・ロードマップの「施行日」タグの文字（枠ボタンは primary-dark）
  *  #777 / 白 = 4.48:1（AA未満）→ 本文の補足文字は #666（5.74:1）を使用し、#777 は区切り等の装飾のみ
- *  LINE の #06C755 とは明度差があり（#06C755 / #18774C = 2.46:1）、ボタン同士が同じ色に見えないようにしています
+ *  LINE の #06C755 とは明度差があり（#06C755 / #1E7F46 = 2.23:1）、ボタン同士が同じ色に見えないようにしています
  */
 @theme {
-  --color-primary: #18774c;
-  --color-primary-dark: #0e4a32;
-  --color-primary-darker: #08301f;
-  --color-cta: #c8e650;
-  --color-cta-hover: #d8ef7f;
-  --color-cta-text: #46700e;
-  --color-cta-tint: #f4f9dc;
-  --color-pale: #eff6f0;
+  --color-brand: #34b268;
+  --color-primary: #1e7f46;
+  --color-primary-dark: #0f4d2a;
+  --color-primary-darker: #0a3720;
+  --color-cta: #fff478;
+  --color-cta-hover: #fff9b0;
+  --color-cta-text: #6b5a00;
+  --color-cta-tint: #fffbd1;
+  --color-pale: #eef8f1;
   /* LINE公式アカウントへのボタン。#06C755 地に #222 文字（7.05:1）。白文字は 2.26:1 のため使用しません。hover は #2BD06B（#222 で 7.83:1） */
   --color-linegreen: #06c755;
   --color-linegreen-hover: #2bd06b;
-  --color-pale-strong: #e0efe4;
-  --color-pale-border: #b3d6bf;
-  --color-tab: #cfe6d6;
-  --color-label: #dce7df;
-  --color-line: #dde4df;
-  --color-line-strong: #cfdad3;
+  --color-pale-strong: #ddf1e4;
+  --color-pale-border: #a9ddbc;
+  --color-tab: #cbebd6;
+  --color-label: #daeadf;
+  --color-line: #dce6df;
+  --color-line-strong: #ccddd2;
   --color-gray-ref: #777777;
   --color-ink: #222222;
   --color-body: #333333;
   --color-muted: #666666;
   --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
-  --shadow-card: 0 1px 3px rgb(14 74 50 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
 html {
@@ -58,7 +60,7 @@ body {
 }
 
 :focus-visible {
-  /* ライム＋深緑の二重リング。白地では深緑（14.45:1）、緑地ではライム（#C8E650 / #0E4A32 = 7.28:1）が3:1以上 */
+  /* 淡い黄色＋濃い緑の二重リング。白地では濃い緑（13.29:1）、緑地では黄色（#FFF478 / #1E7F46 = 4.42:1、/ #0F4D2A = 8.73:1）が3:1以上 */
   outline: 3px solid var(--color-cta);
   outline-offset: 2px;
   box-shadow: 0 0 0 5px var(--color-primary-darker);

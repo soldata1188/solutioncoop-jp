@@ -112,7 +112,7 @@ export default function Page() {
             </div>
           </div>
           <p className="mt-4 text-sm text-muted">
-            ※当組合は、技能実習法に基づく監理団体として許可を受けております。2027年4月に始まる予定の育成就労制度に向けて準備中です。
+            ※当組合は、技能実習法に基づく監理団体として許可を受けております。2027年4月1日施行の育成就労制度に向けて準備中です。
           </p>
       </Section>
       <CtaSection />

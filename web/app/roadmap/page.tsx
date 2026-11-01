@@ -8,10 +8,10 @@ import { pageMeta } from "@/lib/meta";
 export const metadata = pageMeta(
   "/roadmap",
   "2027年4月に向けた準備｜育成就労のロードマップとチェックリスト",
-  "2027年4月に施行予定の育成就労制度に向けて、受入れ企業様がいつ頃から何を進めておきたいかを、時期の目安を示したロードマップと、社内体制や書類の準備を確かめられるチェックリストでご案内いたします。",
+  "2027年4月1日施行の育成就労制度に向けて、受入れ企業様がいつ頃から何を進めておきたいかを、時期の目安を示したロードマップと、社内体制や書類の準備を確かめられるチェックリストでご案内いたします。",
 );
 
-type Milestone = { when: string; title: string; body: string; tag: "目安" | "公表資料" | "予定"; check?: boolean };
+type Milestone = { when: string; title: string; body: string; tag: "目安" | "公表資料" | "施行日"; check?: boolean };
 
 const timeline: Milestone[] = [
   {
@@ -37,8 +37,8 @@ const timeline: Milestone[] = [
   {
     when: "2027年4月1日",
     title: "育成就労制度の施行",
-    body: "育成就労制度が施行される予定です。施行前に認定を受けた技能実習計画による技能実習の取扱い（経過措置）は、個別にご説明いたします。",
-    tag: "予定",
+    body: "育成就労制度は2027年4月1日施行です。施行前に認定を受けた技能実習計画による技能実習の取扱い（経過措置）は、個別にご説明いたします。",
+    tag: "施行日",
     check: true,
   },
   {
@@ -63,7 +63,7 @@ const checklist: { text: string; note?: string; check?: boolean }[] = [
 const tagClass: Record<Milestone["tag"], string> = {
   目安: "border-primary-dark text-primary-dark",
   公表資料: "border-[#1d6b3a] text-[#1d6b3a]",
-  予定: "border-cta-text text-cta-text",
+  施行日: "border-cta-text text-cta-text",
 };
 
 export default function Page() {
@@ -72,7 +72,7 @@ export default function Page() {
       <PageHeader
         title="2027年4月に向けた準備"
         path="/roadmap"
-        lead="育成就労制度は2027年4月に施行される予定です。受入れ企業様が今から進めておきたい準備を、ロードマップとチェックリストにまとめました。"
+        lead="育成就労制度は2027年4月1日施行です。受入れ企業様が今から進めておきたい準備を、ロードマップとチェックリストにまとめました。"
       />
 
       <Section id="timeline" title="準備のロードマップ" width="narrow">
@@ -93,7 +93,7 @@ export default function Page() {
           ))}
         </ol>
         <p className="mt-8 text-sm text-muted">
-          ※「目安」は当組合が想定する一般的な進め方、「公表資料」は「育成就労制度 運用要領」の記載、「予定」は公表されている施行予定日です。企業様ごとの状況により異なります。
+          ※「目安」は当組合が想定する一般的な進め方、「公表資料」は「育成就労制度 運用要領」の記載、「施行日」は育成就労制度の施行日（2027年4月1日）です。企業様ごとの状況により異なります。
         </p>
       </Section>
 

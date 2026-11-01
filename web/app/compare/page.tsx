@@ -9,13 +9,13 @@ import { compareRows, ourStatus, type Cell } from "@/lib/compare";
 export const metadata = pageMeta(
   "/compare",
   "技能実習・特定技能・育成就労の違い｜制度の比較",
-  "技能実習、特定技能（1号）、2027年4月施行予定の育成就労について、目的・期間・転籍・日本語・支援機関・送出機関の費用などの違いを、受入れ企業の経営者様向けに一覧表でわかりやすくご説明いたします。",
+  "技能実習、特定技能（1号）、2027年4月1日施行の育成就労について、目的・期間・転籍・日本語・支援機関・送出機関の費用などの違いを、受入れ企業の経営者様向けに一覧表でわかりやすくご説明いたします。",
 );
 
 const cols = [
   { key: "jisshu", label: "技能実習" },
   { key: "tokutei", label: "特定技能（1号）" },
-  { key: "ikusei", label: "育成就労（2027年4月施行予定）" },
+  { key: "ikusei", label: "育成就労（2027年4月1日施行）" },
 ] as const;
 
 function CellText({ cell }: { cell: Cell }) {
@@ -48,7 +48,7 @@ export default function Page() {
       <PageHeader
         title="制度の比較"
         path="/compare"
-        lead="技能実習・特定技能（1号）・育成就労の主な違いを、受入れ企業様の立場から整理しました。育成就労は2027年4月に施行される予定の制度です。"
+        lead="技能実習・特定技能（1号）・育成就労の主な違いを、受入れ企業様の立場から整理しました。育成就労は2027年4月1日施行の制度です。"
       />
 
       <Section id="table" title="3つの制度の主な違い" width="wide">

@@ -14,14 +14,14 @@ import { pageMeta } from "@/lib/meta";
 import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月開始予定の育成就労制度に向けて準備中です。"),
+  ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月1日施行の育成就労制度に向けて準備中です。"),
   title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
 };
 
 const problems = [
   {
     title: "育成就労制度で何が変わるのか、まだ整理できていない",
-    body: "2027年4月に始まる予定の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいと感じていらっしゃる企業様もおられます。",
+    body: "2027年4月1日施行の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいと感じていらっしゃる企業様もおられます。",
   },
   {
     title: "初めての受入れで、手続きや準備の進め方がわからない",
@@ -118,7 +118,7 @@ export default function Home() {
         <SquaresPattern />
         <div className="relative mx-auto grid max-w-[1000px] items-center gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">2027年4月 育成就労制度スタート予定</p>
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
             <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem]">
               <span className="block">堺の監理団体として、</span>
               <span className="block">大阪の外国人材受入れを</span>

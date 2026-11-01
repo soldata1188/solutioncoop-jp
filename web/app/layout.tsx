@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s｜${org.name}`,
   },
   description:
-    "堺市の監理団体、ソリューション協同組合です。大阪の中小企業様の外国人材受入れと、2027年4月開始予定の育成就労制度への対応をご支援いたします。",
+    "堺市の監理団体、ソリューション協同組合です。大阪の中小企業様の外国人材受入れと、2027年4月1日施行の育成就労制度への対応をご支援いたします。",
   openGraph: { type: "website", locale: "ja_JP", siteName: org.name },
 };
 

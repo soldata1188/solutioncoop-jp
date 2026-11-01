@@ -62,7 +62,7 @@ const checklist: { text: string; note?: string; check?: boolean }[] = [
 
 const tagClass: Record<Milestone["tag"], string> = {
   目安: "border-primary-dark text-primary-dark",
-  公表資料: "border-[#1d6b3a] text-[#1d6b3a]",
+  公表資料: "border-body text-body",
   施行日: "border-cta-text text-cta-text",
 };
 

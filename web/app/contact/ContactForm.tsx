@@ -69,7 +69,7 @@ export function ContactForm() {
       </div>
       <div>
         <div className="flex min-h-11 items-start gap-3">
-          <input id="agree" name="agree" type="checkbox" value="yes" required className="mt-1 h-6 w-6 shrink-0 cursor-pointer accent-[#0d5fc4]" {...a11y("agree")} />
+          <input id="agree" name="agree" type="checkbox" value="yes" required className="mt-1 h-6 w-6 shrink-0 cursor-pointer accent-primary-dark" {...a11y("agree")} />
           <label htmlFor="agree" className="cursor-pointer">
             個人情報の取扱いに同意します{req}
           </label>

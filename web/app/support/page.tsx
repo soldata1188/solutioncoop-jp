@@ -127,7 +127,7 @@ export default function Page() {
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <LinkButton href="/flow" variant="blue" className="min-h-14 sm:flex-1">受入れの流れを見る</LinkButton>
+          <LinkButton href="/flow" variant="dark" className="min-h-14 sm:flex-1">受入れの流れを見る</LinkButton>
           <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:flex-1">よくある質問</LinkButton>
         </div>
       </Section>

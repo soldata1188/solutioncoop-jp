@@ -99,7 +99,7 @@ const badge = "inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-d
 export default function Home() {
   return (
     <>
-      {/* ヒーロー：青 #1478E6。白文字は大きい文字（見出し・19px太字）のみ。
+      {/* ヒーロー：緑 #18774C（白文字 5.55:1）。
           写真は掲載しない方針（代表者様のご指示）。文字を中央揃え・最大幅を絞り、左右の四角模様でバランスを取ります */}
       <section className="relative overflow-hidden bg-primary text-white">
         <SquaresPattern />
@@ -121,7 +121,7 @@ export default function Home() {
       </section>
 
       {/* 実績ストリップ（代表者様確認済みの4項目）＋既存の数値ピル（管理人数・送り出し国）を同じ帯にまとめています。
-          ピルは本文サイズの白文字のため背景は #0D5FC4 */}
+          ピルは本文サイズの白文字のため背景は #0E4A32（10.27:1） */}
       <StatsStrip>
         <div className="mt-5">
           <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">

@@ -71,7 +71,7 @@ export default function Page() {
                 <tr key={r.label}>
                   <th scope="row" className="border-b border-white bg-label p-3 align-top font-bold text-ink">{r.label}</th>
                   {cols.map((c) => (
-                    <td key={c.key} className={`border-b border-line p-3 align-top ${c.key === "ikusei" ? "bg-orange-50" : "bg-white"}`}>
+                    <td key={c.key} className={`border-b border-line p-3 align-top ${c.key === "ikusei" ? "bg-cta-tint" : "bg-white"}`}>
                       <CellText cell={r[c.key]} />
                     </td>
                   ))}
@@ -80,7 +80,7 @@ export default function Page() {
               <tr>
                 <th scope="row" className="bg-label p-3 align-top font-bold text-ink">当組合の対応</th>
                 {cols.map((c) => (
-                  <td key={c.key} className={`p-3 align-top font-bold text-primary-dark ${c.key === "ikusei" ? "bg-orange-50" : "bg-white"}`}>
+                  <td key={c.key} className={`p-3 align-top font-bold text-primary-dark ${c.key === "ikusei" ? "bg-cta-tint" : "bg-white"}`}>
                     {ourStatus[c.key]}
                   </td>
                 ))}
@@ -96,7 +96,7 @@ export default function Page() {
               <h3 className="bg-label px-4 py-2 font-bold text-ink">{r.label}</h3>
               <dl className="divide-y divide-line">
                 {cols.map((c) => (
-                  <div key={c.key} className={`px-4 py-3 ${c.key === "ikusei" ? "bg-orange-50" : ""}`}>
+                  <div key={c.key} className={`px-4 py-3 ${c.key === "ikusei" ? "bg-cta-tint" : ""}`}>
                     <dt className="text-[13px] font-bold text-primary-dark">{c.label}</dt>
                     <dd className="mt-0.5 text-[15px]"><CellText cell={r[c.key]} /></dd>
                   </div>
@@ -131,7 +131,7 @@ export default function Page() {
           準備の進め方は「<Link href="/roadmap" className="font-bold text-primary-dark underline underline-offset-4">2027年4月に向けた準備</Link>」でもご案内しております。
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <LinkButton href="/roadmap" variant="blue" className="min-h-14 sm:flex-1">準備のロードマップを見る</LinkButton>
+          <LinkButton href="/roadmap" variant="dark" className="min-h-14 sm:flex-1">準備のロードマップを見る</LinkButton>
           <LinkButton href="/ikusei-shuro" variant="outlineCta" className="min-h-14 sm:flex-1">育成就労制度とは</LinkButton>
         </div>
       </Section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoTile } from "@/components/Wordmark";
 import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF } from "@/lib/site";
 import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
@@ -29,7 +30,10 @@ export function Footer() {
           </Link>
         </div>
         <div className="mt-6 border-t border-line pt-6 text-center text-[13px] leading-7 text-muted">
-          <p className="text-[15px] font-bold text-ink">{org.name}</p>
+          <p className="inline-flex items-center gap-2.5 text-[15px] font-bold text-ink">
+            <LogoTile alt="" className="h-10 w-10" />
+            {org.name}
+          </p>
           <address className="mt-1 not-italic">
             {fullAddress}
             <br />

@@ -10,7 +10,7 @@ export function FaqList({ items, headingLevel = "h3" }: { items: Faq[]; headingL
   return (
     <div>
       {items.map((f) => (
-        <details key={f.q} className="group border-b border-[#cfd8e3]">
+        <details key={f.q} className="group border-b border-line-strong">
           <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-4 text-ink hover:text-primary-dark">
             <Q className="flex items-start gap-3 text-[15px] font-bold leading-relaxed md:text-base">
               <span aria-hidden="true" className="font-bold text-primary-dark">Q</span>

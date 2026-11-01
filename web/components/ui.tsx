@@ -9,20 +9,20 @@ export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string })
   );
 }
 
-type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "blue" | "ghost";
+type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "dark" | "ghost";
 
 const buttonBase =
   "relative inline-flex min-h-12 items-center justify-center gap-3 rounded px-10 font-bold leading-snug no-underline transition-colors";
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  // オレンジ地は #222 文字（6.73:1）。白文字は 2.36:1 のため使用しません。
+  // ライム地は #222 文字（11.28:1）。白文字は 1.41:1 のため使用しません。
   primary: "bg-cta text-ink shadow-sm hover:bg-cta-hover",
   outlineWhite: "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary-dark",
-  // 白地＋オレンジ枠（文字は #B45309、5.02:1）
-  whiteCta: "border-2 border-cta bg-white text-cta-text hover:bg-orange-50",
-  outlineCta: "border-2 border-cta bg-white text-cta-text hover:bg-orange-50",
-  blue: "bg-primary-dark text-white hover:bg-primary-darker",
-  // 白地・グレー枠・青い矢印（資料などの「もっと見る」ボタン）
+  // 白地＋濃いライム枠（枠・文字とも #46700E、5.86:1）
+  whiteCta: "border-2 border-cta-text bg-white text-cta-text hover:bg-cta-tint",
+  outlineCta: "border-2 border-cta-text bg-white text-cta-text hover:bg-cta-tint",
+  dark: "bg-primary-dark text-white hover:bg-primary-darker",
+  // 白地・グレー枠・緑の矢印（資料などの「もっと見る」ボタン）
   ghost: "border border-line bg-white text-ink shadow-sm hover:border-primary [&>svg]:text-primary-dark",
 };
 
@@ -52,7 +52,7 @@ export function LinkButton({
 
 /** 見出し下の小さな3つの四角（装飾） */
 export function SquareDots({ className = "", tone = "pale" }: { className?: string; tone?: "pale" | "white" }) {
-  const c = tone === "white" ? "bg-white/60" : "bg-[#b9d6f6]";
+  const c = tone === "white" ? "bg-white/60" : "bg-pale-border";
   return (
     <span aria-hidden="true" className={`flex justify-center gap-6 ${className}`}>
       <span className={`h-1.5 w-1.5 ${c}`} />
@@ -62,7 +62,7 @@ export function SquareDots({ className = "", tone = "pale" }: { className?: stri
   );
 }
 
-/** セクション見出し（中央揃え・太字・青＋3つの四角）。青 #1478E6 は24px以上の大きい文字でのみ使用 */
+/** セクション見出し（中央揃え・太字・緑＋3つの四角）。#18774C（白地 5.55:1） */
 export function SectionHeading({
   id,
   children,
@@ -97,7 +97,7 @@ export function LineHeading({ id, children, as: Tag = "h3" }: { id?: string; chi
   );
 }
 
-/** セクション内の小見出し（左の青い四角） */
+/** セクション内の小見出し（左の緑の四角） */
 export function SubHeading({ id, children, as: Tag = "h3" }: { id?: string; children: React.ReactNode; as?: "h2" | "h3" }) {
   return (
     <Tag id={id} className="flex items-start gap-3 text-lg font-bold leading-snug text-ink md:text-xl">
@@ -146,18 +146,18 @@ export function Section({
   );
 }
 
-/** 青地に半透明の四角を散らした背景パターン（抽象図形のみ） */
+/** 緑地に半透明の四角を散らした背景パターン（抽象図形のみ） */
 export function SquaresPattern({ variant = "hero" }: { variant?: "hero" | "band" }) {
   return (
     <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 520">
       {variant === "hero" ? (
         <>
-          <rect x="60" y="20" width="200" height="200" fill="#0d5fc4" opacity="0.35" />
+          <rect x="60" y="20" width="200" height="200" className="fill-primary-dark" opacity="0.35" />
           <rect x="700" y="40" width="220" height="220" fill="#ffffff" opacity="0.08" />
           <rect x="860" y="200" width="260" height="260" fill="#ffffff" opacity="0.1" />
-          <rect x="1040" y="-40" width="160" height="160" fill="#0d5fc4" opacity="0.35" />
+          <rect x="1040" y="-40" width="160" height="160" className="fill-primary-dark" opacity="0.35" />
           <rect x="600" y="330" width="140" height="140" fill="#ffffff" opacity="0.07" />
-          <rect x="340" y="400" width="160" height="160" fill="#0d5fc4" opacity="0.3" />
+          <rect x="340" y="400" width="160" height="160" className="fill-primary-dark" opacity="0.3" />
         </>
       ) : (
         <>
@@ -180,15 +180,15 @@ export function ImagePlaceholder({
   label?: string;
   note?: string;
   className?: string;
-  tone?: "light" | "onBlue";
+  tone?: "light" | "onDark";
 }) {
-  const box = tone === "onBlue" ? "border-white/60 bg-white/10" : "border-[#b9d6f6] bg-pale";
+  const box = tone === "onDark" ? "border-white/60 bg-white/10" : "border-pale-border bg-pale";
   return (
     <div className={`relative flex w-full items-end overflow-hidden border-2 border-dashed ${box} ${className}`}>
       <svg aria-hidden="true" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
-        <rect x="70" y="50" width="120" height="120" fill={tone === "onBlue" ? "#ffffff" : "#1478e6"} opacity="0.14" />
-        <rect x="160" y="110" width="150" height="150" fill={tone === "onBlue" ? "#ffffff" : "#1478e6"} opacity="0.1" />
-        <rect x="270" y="40" width="70" height="70" fill="#ff8a00" opacity="0.55" />
+        <rect x="70" y="50" width="120" height="120" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.14" />
+        <rect x="160" y="110" width="150" height="150" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.1" />
+        <rect x="270" y="40" width="70" height="70" className="fill-cta" opacity="0.55" />
       </svg>
       <p className="relative m-3 rounded bg-amber-50 px-2 py-1 text-xs font-bold leading-relaxed text-amber-900">
         【{label}】{note}
@@ -197,7 +197,7 @@ export function ImagePlaceholder({
   );
 }
 
-/** 番号タブ付きの淡い青枠カード（「選ばれる理由」型） */
+/** 番号タブ付きの淡い緑枠カード（「選ばれる理由」型） */
 export function TabCard({ n, children, className = "", as: Tag = "li" }: { n: number; children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
     <Tag className={`relative flex flex-col border-[6px] border-tab bg-white ${className}`}>

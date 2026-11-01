@@ -39,4 +39,4 @@ npm run build && npm start
 
 - 組合情報・許可番号: `lib/site.ts`
 - よくある質問（画面表示と FAQPage JSON-LD の共通データ）: `lib/faq.ts`
-- ロゴ: `public/brand/`（支給JPGから白背景を除去。原本は `sol-logo-original.jpg`）
+- ロゴ: 支給の新ロゴ `logo_chinh_SOL_green_dark_1000.png`（深緑地・白の S/L・ライムの O）から PIL で生成。`public/brand/sol-logo-tile.webp`（ヘッダー・フッター用、SOL 部分のみ 256px）、`public/brand/sol-logo-green-512.png`（JSON-LD の logo）、`app/icon.png`・`app/favicon.ico`（16/32/48、SOL 部分のみ）、`app/apple-icon.png`（180）、`app/opengraph-image.png`（1200×630、文字の追加なし）。旧ロゴ（青・オレンジ）のファイルは削除済み。

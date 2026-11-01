@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from "next/image";
 
 /**
  * 写真（next/image）。静的 import の width/height を使い、レイアウトのずれを防ぎます。
- * priority はヒーロー画像のみで指定してください。
+ * priority はファーストビューに表示される画像のみで指定してください（現在トップのヒーローに画像はありません）。
  */
 export function Photo({
   photo,

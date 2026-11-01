@@ -113,39 +113,31 @@ const badge = "inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-d
 export default function Home() {
   return (
     <>
-      {/* ヒーロー：青 #1478E6。白文字は大きい文字（見出し・19px太字）のみ */}
+      {/* ヒーロー：青 #1478E6。白文字は大きい文字（見出し・19px太字）のみ。
+          写真は掲載しない方針（代表者様のご指示）。文字を中央揃え・最大幅を絞り、左右の四角模様でバランスを取ります */}
       <section className="relative overflow-hidden bg-primary text-white">
         <SquaresPattern />
-        <div className="relative mx-auto grid max-w-[1000px] items-center gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1.3fr_1fr]">
-          <div>
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
-            <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem]">
-              <span className="block">堺の監理団体として、</span>
-              <span className="block">大阪の外国人材受入れを</span>
-              <span className="block">支えます。</span>
-            </h1>
-            <p className="mt-5 text-[19px] font-bold leading-relaxed">
-              堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">お問い合わせ・資料請求</LinkButton>
-              <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
-            </div>
+        <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
+          <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
+          <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]">
+            <span className="block">堺の監理団体として、</span>
+            <span className="block">大阪の外国人材受入れを</span>
+            <span className="block">支えます。</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-[640px] text-[19px] font-bold leading-relaxed [word-break:auto-phrase]">
+            堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">お問い合わせ・資料請求</LinkButton>
+            <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
           </div>
-          <Photo
-            photo={photos.hero}
-            priority
-            sizes="(min-width: 1024px) 400px, (min-width: 640px) 600px, 100vw"
-            className="mx-auto w-full max-w-[600px] lg:max-w-none"
-            imgClassName="aspect-[16/9] rounded lg:aspect-[4/3]"
-          />
         </div>
       </section>
 
       {/* 確認済みの数値（ピル型バッジ）。本文サイズの白文字のため背景は #0D5FC4 */}
       <section aria-label="当組合の概要（数値）" className="bg-white">
         <div className="mx-auto max-w-[812px] px-4 py-5">
-          <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-start">
+          <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
             <li className={badge}>
               <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
               <span className="text-sm font-bold">管理人数</span>
@@ -159,7 +151,7 @@ export default function Home() {
               <span className="text-[11px]">※2</span>
             </li>
           </ul>
-          <p className="mt-2 text-center text-[11px] leading-6 text-muted sm:text-left">
+          <p className="mt-2 text-center text-[11px] leading-6 text-muted">
             <span className="block sm:inline">※1 技能実習生・特定技能外国人の合計（集計時点<CheckBadge />）</span>
             <span className="hidden sm:inline">　</span>
             <span className="block sm:inline">※2 ベトナム・インドネシア・フィリピン</span>

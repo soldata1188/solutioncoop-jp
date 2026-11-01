@@ -3,7 +3,6 @@
  * 静的 import により width/height が自動で付与され、レイアウトのずれを防ぎます。
  * faces: 人物の顔が写っている写真（掲載の同意確認が必要。restyle3-notes.md の一覧を参照）
  */
-import heroIndustrial from "@/public/images/hero-industrial-dusk.webp";
 import siteSteel from "@/public/images/site-steel-workshop.webp";
 import siteExcavation from "@/public/images/site-excavation.webp";
 import siteInterior from "@/public/images/site-building-interior.webp";
@@ -14,7 +13,6 @@ import fireDrill from "@/public/images/training-fire-drill.webp";
 import practice from "@/public/images/training-practice.webp";
 
 export const photos = {
-  hero: { src: heroIndustrial, alt: "夕焼けの空を背景に、臨海部の工場の煙突や設備が立ち並ぶ風景", faces: false },
   siteSteel: { src: siteSteel, alt: "鋼材が積まれ、工具や脚立が並ぶ金属加工の作業場", faces: false },
   siteExcavation: { src: siteExcavation, alt: "土留めの木製矢板と配管が見える、掘削中の土木工事の現場", faces: false },
   siteInterior: { src: siteInterior, alt: "照明や資材、作業台が置かれた、内装工事中の広い建物内部", faces: false },

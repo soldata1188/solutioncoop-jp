@@ -64,17 +64,26 @@ export const allPages = [
 export const TEL_HREF = "tel:0722248067";
 
 /**
+ * LINE公式アカウント（@122kbyao）の友だち追加・トーク画面へのリンク。
+ * 公式の lin.ee 短縮リンクを発行した場合は、この定数だけを差し替えてください。
+ */
+export const LINE_URL = "https://line.me/R/ti/p/@122kbyao";
+export const LINE_LABEL = "LINEで相談";
+export const LINE_ARIA = "LINEで相談する（新しいタブで開きます）";
+
+/**
  * 既存リポジトリ（solutioncoop-app/・gino-jisshu.html・index16.html）に記載のある情報。
  * 記載どうしで食い違いがある、または代表者様の確認が済んでいないため、表示時は必ず「要確認」を付けます。
+ * ただし established（設立）と confirmed: true の沿革項目は代表者様に確認済みのため、要確認を付けません。
  */
 export const repoFacts = {
-  /** solutioncoop-app OverviewSection・gino-jisshu.html に記載 */
-  established: "平成24年（2012年）3月",
+  /** 代表者様に確認済み（2026年11月1日） */
+  established: "2012年3月",
   /** gino-jisshu.html「（平日 9:00〜18:00）」。代表者様の確認前のため要確認 */
   hours: "平日 9:00〜18:00",
   /** 沿革（index16.html の記載。年表の各項目は要確認） */
   history: [
-    { year: "2012年（平成24年）", text: "堺市にて設立" },
+    { year: "2012年（平成24年）3月", text: "設立", confirmed: true },
     { year: "2017年（平成29年）12月", text: "監理団体の許可（一般監理事業）を取得", confirmed: true },
     { year: "2019年（令和元年）7月", text: "登録支援機関として登録", confirmed: true },
     { year: "2022年（令和4年）", text: "大阪府知事表彰を受賞（社内資料の記載）" },
@@ -85,7 +94,7 @@ export const repoFacts = {
 export const CONTACT_HREF = "/contact";
 export const CONTACT_LABEL = "お問い合わせ・資料請求";
 
-/** Organization / LocalBusiness（確認済みの情報のみ。営業時間・設立年などの未確認情報は含めません） */
+/** Organization / LocalBusiness（確認済みの情報のみ。営業時間などの未確認情報は含めません） */
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness"],

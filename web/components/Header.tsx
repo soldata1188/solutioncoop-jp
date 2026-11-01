@@ -2,6 +2,7 @@ import Link from "next/link";
 import { nav, allPages, CONTACT_HREF, TEL_HREF, org } from "@/lib/site";
 import { Wordmark } from "./Wordmark";
 import { ArrowIcon } from "./ui";
+import { LineButton } from "./LineButton";
 
 const btnBase = "min-h-11 items-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline transition-colors";
 // オレンジ地は #222 文字（6.73:1）。白地のオレンジ枠ボタンは #B45309 文字（5.02:1）
@@ -19,7 +20,7 @@ export function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-4 py-1.5">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-1.5">
         <div className="flex items-center gap-6">
           <Wordmark />
           <nav aria-label="メインメニュー" className="hidden xl:block">
@@ -28,7 +29,7 @@ export function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="inline-flex min-h-11 items-center whitespace-nowrap px-2.5 text-[13px] font-bold text-ink no-underline hover:text-primary-dark"
+                    className="inline-flex min-h-11 items-center whitespace-nowrap px-2 text-[13px] font-bold text-ink no-underline hover:text-primary-dark"
                   >
                     {item.label}
                   </Link>
@@ -46,6 +47,7 @@ export function Header() {
             <PhoneIcon />
             <span className="hidden lg:inline xl:hidden">{org.tel}</span>
           </a>
+          <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] md:inline-flex" />
           <Link href={CONTACT_HREF} className={`hidden sm:inline-flex ${btnBase} ${btnPrimaryColors}`}>
             お問い合わせ
             <ArrowIcon className="h-3 w-3" />
@@ -84,6 +86,7 @@ export function Header() {
                   <PhoneIcon />
                   電話 {org.tel}
                 </a>
+                <LineButton className="flex min-h-11 gap-2 px-4 text-[13px]" />
               </div>
             </nav>
           </details>

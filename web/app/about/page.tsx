@@ -21,7 +21,7 @@ export default function Page() {
     ["電話番号", <a key="tel" href={TEL_HREF} className="font-bold text-primary-dark underline underline-offset-4">{org.tel}</a>],
     ["FAX番号", org.fax],
     ["メールアドレス", <a key="mail" href={`mailto:${org.email}`} className="font-bold text-primary-dark underline underline-offset-4">{org.email}</a>],
-    ["設立", <span key="est">{repoFacts.established}（社内資料の記載）<CheckBadge /></span>],
+    ["設立", repoFacts.established],
     [
       "事業内容",
       <span key="biz">
@@ -78,7 +78,7 @@ export default function Page() {
           ))}
         </ol>
         <p className="mt-6 text-sm text-muted">
-          ※許可・登録以外の項目は、既存の社内資料・旧サイトの記載をもとにしており、年月・内容を確認中です。
+          ※設立・許可・登録以外の項目は、既存の社内資料・旧サイトの記載をもとにしており、年月・内容を確認中です。
         </p>
       </Section>
 

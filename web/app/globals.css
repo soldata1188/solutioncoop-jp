@@ -18,6 +18,9 @@
   --color-cta-hover: #ffa033;
   --color-cta-text: #b45309;
   --color-pale: #eaf4fe;
+  /* LINE公式アカウントへのボタン。#06C755 地に #222 文字（7.05:1）。白文字は 2.26:1 のため使用しません。hover は #2BD06B（#222 で 7.83:1） */
+  --color-linegreen: #06c755;
+  --color-linegreen-hover: #2bd06b;
   --color-pale-strong: #dcebfc;
   --color-tab: #d4e7fc;
   --color-label: #d9e3ee;

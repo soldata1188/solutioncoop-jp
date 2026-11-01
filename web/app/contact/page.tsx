@@ -3,6 +3,7 @@ import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { org, TEL_HREF } from "@/lib/site";
 import { PhoneIcon } from "@/components/Header";
+import { LineButton } from "@/components/LineButton";
 import { ContactForm } from "./ContactForm";
 
 export const metadata = pageMeta(
@@ -27,6 +28,12 @@ export default function Page() {
             {org.tel}
           </a>
           <p className="mt-2 text-sm text-muted">FAX：{org.fax}　メール：{org.email}</p>
+        </div>
+        <div className="mb-8 border-l-4 border-linegreen bg-white p-5 shadow-card">
+          <p className="font-bold text-ink">LINEでもご相談いただけます</p>
+          <p className="mt-1 text-sm text-body">当組合のLINE公式アカウントから、トークでご相談をお送りいただけます。</p>
+          <LineButton className="mt-3 inline-flex min-h-12 gap-2 px-5 text-lg" iconClassName="h-5 w-5" />
+          <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
         </div>
         <div className="rounded bg-white p-5 shadow-card sm:p-8">
           <ContactForm />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF } from "@/lib/site";
 import { PhoneIcon } from "./Header";
+import { LineButton } from "./LineButton";
 
 export function Footer() {
   return (
@@ -22,6 +23,7 @@ export function Footer() {
             <PhoneIcon className="h-5 w-5" />
             お電話でのご相談 {org.tel}
           </a>
+          <LineButton className="inline-flex min-h-12 gap-2 px-6 text-base" iconClassName="h-5 w-5" />
           <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded bg-cta px-6 text-base font-bold text-ink no-underline hover:bg-cta-hover">
             ご相談・資料請求
           </Link>

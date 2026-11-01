@@ -1,5 +1,6 @@
 import { CONTACT_HREF, TEL_HREF, org, repoFacts } from "@/lib/site";
 import { PhoneIcon } from "./Header";
+import { LineButton } from "./LineButton";
 import { LinkButton, SquaresPattern } from "./ui";
 
 /** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い青 #0D5FC4（白文字 6.09:1） */
@@ -26,6 +27,10 @@ export function CtaSection({ title = "育成就労制度への備えを、今か
             受付時間：{repoFacts.hours}（社内資料の記載）
             <span className="ml-1 rounded bg-amber-100 px-1 font-bold text-amber-900">要確認</span>
           </span>
+        </p>
+        <p className="mt-6 text-[15px]">
+          LINEでのご相談
+          <LineButton className="mx-auto mt-2 flex min-h-12 w-fit gap-2 px-6 text-lg" iconClassName="h-5 w-5" />
         </p>
       </div>
     </section>

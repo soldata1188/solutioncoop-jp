@@ -20,7 +20,7 @@ const items = [
 export default function Page() {
   return (
     <>
-      <PageHeader title="対象業種" lead="建設、機械・金属、食品製造を中心に、大阪府内の中小企業様の外国人材受入れをご支援しております。" />
+      <PageHeader path="/industries" title="対象業種" lead="建設、機械・金属、食品製造を中心に、大阪府内の中小企業様の外国人材受入れをご支援しております。" />
       <Section width="narrow">
         <ul className="space-y-5">
           {items.map((s, i) => (

@@ -34,7 +34,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
 export default function Page() {
   return (
     <>
-      <PageHeader title="個人情報保護方針" />
+      <PageHeader path="/privacy" title="個人情報保護方針" />
       <Section width="narrow">
         {sections.map((s) => (
           <section key={s.title} className="mb-8">

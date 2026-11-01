@@ -25,9 +25,12 @@ const faqJsonLd = {
 export default function Page() {
   return (
     <>
-      <PageHeader title="よくある質問" lead="外国人材の受入れや育成就労制度について、よくいただくご質問をまとめました。" />
-      <Section width="narrow">
-        <FaqList items={faqs} headingLevel="h2" />
+      <PageHeader path="/faq" title="よくある質問" lead="外国人材の受入れや育成就労制度について、よくいただくご質問をまとめました。" />
+      <Section id="faq-system" title="制度・受入れについて" width="narrow">
+        <FaqList items={faqs.slice(0, 10)} />
+      </Section>
+      <Section id="faq-owner" title="経営者様からよくいただくご質問" width="narrow" tone="pale">
+        <FaqList items={faqs.slice(10)} />
       </Section>
       <CtaSection title="ご不明な点は、お気軽にお問い合わせください。" />
       <JsonLd data={faqJsonLd} />

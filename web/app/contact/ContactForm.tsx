@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { INDUSTRIES, HEADCOUNTS } from "@/lib/contact";
 
 type Status = { kind: "idle" | "sending" | "ok" | "info" | "error"; message?: string; errors?: Record<string, string> };
 
@@ -38,15 +37,16 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6">
+      <p className="text-sm text-muted">ご入力いただくのは5項目です（すべて必須）。</p>
+      <div>
+        <label htmlFor="name" className={label}>お名前{req}</label>
+        <input id="name" name="name" type="text" required autoComplete="name" className={field} {...a11y("name")} />
+        {errNode("name")}
+      </div>
       <div>
         <label htmlFor="company" className={label}>会社名{req}</label>
         <input id="company" name="company" type="text" required autoComplete="organization" className={field} {...a11y("company")} />
         {errNode("company")}
-      </div>
-      <div>
-        <label htmlFor="name" className={label}>ご担当者名{req}</label>
-        <input id="name" name="name" type="text" required autoComplete="name" className={field} {...a11y("name")} />
-        {errNode("name")}
       </div>
       <div>
         <label htmlFor="phone" className={label}>電話番号{req}</label>
@@ -59,24 +59,8 @@ export function ContactForm() {
         {errNode("email")}
       </div>
       <div>
-        <label htmlFor="industry" className={label}>業種{req}</label>
-        <select id="industry" name="industry" required defaultValue="" className={field} {...a11y("industry")}>
-          <option value="" disabled>選択してください</option>
-          {INDUSTRIES.map((i) => <option key={i} value={i}>{i}</option>)}
-        </select>
-        {errNode("industry")}
-      </div>
-      <div>
-        <label htmlFor="headcount" className={label}>受入れ人数の目安</label>
-        <select id="headcount" name="headcount" defaultValue="" className={field} {...a11y("headcount")}>
-          <option value="">選択してください</option>
-          {HEADCOUNTS.filter(Boolean).map((h) => <option key={h} value={h}>{h}</option>)}
-        </select>
-        {errNode("headcount")}
-      </div>
-      <div>
-        <label htmlFor="message" className={label}>お問い合わせ内容{req}</label>
-        <textarea id="message" name="message" required rows={6} className={field} {...a11y("message")} placeholder="ご相談内容や、資料請求をご希望の旨をご記入ください。" />
+        <label htmlFor="message" className={label}>ご相談内容{req}</label>
+        <textarea id="message" name="message" required rows={5} className={field} {...a11y("message")} placeholder="例：資料がほしい／2027年4月からの受入れを相談したい／費用を詳しく知りたい　など" />
         {errNode("message")}
       </div>
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">

@@ -1,13 +1,13 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
-import { Section } from "@/components/ui";
+import { Section, LinkButton } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 
 export const metadata = pageMeta(
   "/ikusei-shuro",
   "育成就労制度とは｜育成就労の監理団体が解説",
-  "2027年4月に始まる育成就労制度について、技能実習制度からの変更点や受入れ企業様への影響を、堺市の監理団体ソリューション協同組合がわかりやすく解説いたします。",
+  "2027年4月に始まる予定の育成就労制度について、技能実習制度からの変更点や受入れ企業様への影響を、堺市の監理団体ソリューション協同組合がわかりやすく解説いたします。",
 );
 
 const changes = [
@@ -21,8 +21,9 @@ export default function Page() {
   return (
     <>
       <PageHeader
+        path="/ikusei-shuro"
         title="育成就労制度とは"
-        lead="2027年4月、技能実習制度に代わる新しい制度として「育成就労制度」が始まります。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
+        lead="2027年4月、技能実習制度に代わる新しい制度として「育成就労制度」が始まる予定です。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
       />
       <Section width="narrow" flushBottom>
         <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
@@ -120,6 +121,11 @@ export default function Page() {
         <p className="mt-6 text-sm text-muted">
           ※当組合は現在、技能実習法に基づく監理団体（一般監理事業）として許可を受けております。育成就労制度に向けて準備中です。
         </p>
+        <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <LinkButton href="/compare" variant="ghost">制度の比較を見る</LinkButton>
+          <LinkButton href="/roadmap" variant="ghost">準備のロードマップ</LinkButton>
+          <LinkButton href="/support" variant="ghost">受入れ後の支援</LinkButton>
+        </div>
       </Section>
       <CtaSection title="育成就労制度について、まずはご相談ください。" />
     </>

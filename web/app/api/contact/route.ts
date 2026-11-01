@@ -36,12 +36,13 @@ export async function POST(request: Request) {
 
   const errors: Record<string, string> = {};
   if (!data.company) errors.company = "会社名をご入力ください。";
-  if (!data.name) errors.name = "ご担当者名をご入力ください。";
+  if (!data.name) errors.name = "お名前をご入力ください。";
   if (!/^[0-9０-９+\-－ー() ]{10,20}$/.test(data.phone)) errors.phone = "電話番号を正しくご入力ください。";
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = "メールアドレスを正しくご入力ください。";
-  if (!INDUSTRIES.includes(data.industry)) errors.industry = "業種をお選びください。";
-  if (!HEADCOUNTS.includes(data.headcount)) errors.headcount = "受入れ人数の目安をお選びください。";
-  if (!data.message) errors.message = "お問い合わせ内容をご入力ください。";
+  // 業種・受入れ人数はフォームの簡略化により任意項目（送られた場合のみ検証）
+  if (data.industry && !INDUSTRIES.includes(data.industry)) errors.industry = "業種をお選びください。";
+  if (data.headcount && !HEADCOUNTS.includes(data.headcount)) errors.headcount = "受入れ人数の目安をお選びください。";
+  if (!data.message) errors.message = "ご相談内容をご入力ください。";
   if (!data.agree) errors.agree = "個人情報の取扱いへのご同意をお願いいたします。";
 
   if (Object.keys(errors).length > 0) {
@@ -67,13 +68,13 @@ export async function POST(request: Request) {
 
   const text = [
     `会社名：${data.company}`,
-    `ご担当者名：${data.name}`,
+    `お名前：${data.name}`,
     `電話番号：${data.phone}`,
     `メールアドレス：${data.email}`,
-    `業種：${data.industry}`,
-    `受入れ人数の目安：${data.headcount || "未選択"}`,
+    ...(data.industry ? [`業種：${data.industry}`] : []),
+    ...(data.headcount ? [`受入れ人数の目安：${data.headcount}`] : []),
     "",
-    "お問い合わせ内容：",
+    "ご相談内容：",
     data.message,
   ].join("\n");
 

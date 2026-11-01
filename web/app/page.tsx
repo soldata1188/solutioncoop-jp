@@ -5,6 +5,9 @@ import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/LineIcons";
 import { ArrowIcon, ImagePlaceholder, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
+import { Photo } from "@/components/Photo";
+import { FlowTimeline } from "@/components/FlowTimeline";
+import { photos } from "@/lib/images";
 import { CONTACT_HREF, licenses, org } from "@/lib/site";
 import { faqs } from "@/lib/faq";
 import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
@@ -12,7 +15,7 @@ import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
   description:
-    "堺市の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れと、2027年4月開始の育成就労制度への対応をご支援いたします。",
+    "堺市の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れと、2027年4月開始予定の育成就労制度への対応をご支援いたします。",
   alternates: { canonical: "/" },
   openGraph: {
     url: "https://solutioncoop-jp.com/",
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
 const problems = [
   {
     title: "育成就労制度で何が変わるのか、まだ整理できていない",
-    body: "2027年4月に始まる新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいと感じていらっしゃる企業様もおられます。",
+    body: "2027年4月に始まる予定の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいと感じていらっしゃる企業様もおられます。",
   },
   {
     title: "初めての受入れで、手続きや準備の進め方がわからない",
@@ -79,7 +82,7 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
   { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
   { item: "費用の目安", ours: "インドネシアからの受入れ費用の目安（暫定）をWebで公開", general: "団体により公開の有無が異なります" },
   { item: "特定技能への移行", ours: "登録支援機関として、育成就労後の特定技能への移行もご相談いただけます", general: "別の機関への依頼が必要となる場合があります", needsCheck: true },
-  { item: "育成就労制度への対応", ours: "監理支援機関としての許可に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
+  { item: "育成就労制度への対応", ours: "育成就労制度に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
 ];
 
 /** トップの費用サマリー（lib/pricing.ts のデータをそのまま表示。金額の加工・合算はしません） */
@@ -94,6 +97,23 @@ const feeCards = [
   return g ? [{ title: g.title, step: g.step, caption, rows: g.rows }] : [];
 });
 
+/** 経営者様にお任せいただけること（確認済みの事実・lib のデータのみ） */
+const benefits: { title: string; body: string; check?: boolean }[] = [
+  { title: "申請書類の作成をサポート", body: "受入れに必要な書類や申請書類の作成を、当組合がご案内・サポートいたします。" },
+  { title: "3か国から人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
+  { title: "入国後1か月の講習", body: "上陸後講習で日本語や生活のルールを学んでから、貴社へ配属いたします。" },
+  { title: "配属後の監査・訪問", body: "法令に基づく定期的な監査・訪問指導で、受入れ後も継続してご支援いたします。" },
+  { title: "費用の目安を事前に公開", body: "インドネシアからの受入れ費用の目安（暫定）を公開しております。最終金額は個別にご案内します。" },
+  { title: "2027年4月への移行準備", body: "育成就労制度に向けて、現在の技能実習からの切り替えの準備を一緒に進めます。" },
+];
+
+/** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
+const cases = [
+  { photo: photos.siteSteel, tag: "大阪府・金属加工" },
+  { photo: photos.siteExcavation, tag: "大阪府・造園土木" },
+  { photo: photos.siteInterior, tag: "京都府・土木工事" },
+];
+
 const badge = "inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-dark px-5 py-1.5 text-white";
 
 export default function Home() {
@@ -104,7 +124,7 @@ export default function Home() {
         <SquaresPattern />
         <div className="relative mx-auto grid max-w-[1000px] items-center gap-10 px-4 py-12 md:py-16 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">2027年4月 育成就労制度スタート</p>
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">2027年4月 育成就労制度スタート予定</p>
             <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem]">
               <span className="block">堺の監理団体として、</span>
               <span className="block">大阪の外国人材受入れを</span>
@@ -118,9 +138,13 @@ export default function Home() {
               <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
             </div>
           </div>
-          <div className="hidden lg:block">
-            <ImagePlaceholder tone="onBlue" className="aspect-[4/3]" note="写真はご支給素材を確認のうえ掲載" />
-          </div>
+          <Photo
+            photo={photos.hero}
+            priority
+            sizes="(min-width: 1024px) 400px, (min-width: 640px) 600px, 100vw"
+            className="mx-auto w-full max-w-[600px] lg:max-w-none"
+            imgClassName="aspect-[16/9] rounded lg:aspect-[4/3]"
+          />
         </div>
       </section>
 
@@ -202,6 +226,32 @@ export default function Home() {
         </ol>
       </Section>
 
+      {/* 経営者様のメリット */}
+      <Section id="benefits" tone="pale" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
+        <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {benefits.map((b) => (
+            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 text-primary-dark" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M4 12.5l5 5L20 6.5" /></svg>
+              <div>
+                <h3 className="font-bold text-ink">{b.title}</h3>
+                <p className="mt-1 text-[13px] leading-relaxed md:text-sm">{b.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 text-center">
+          <LinkButton href="/support" variant="ghost" className="min-w-64">受入れ後の支援を見る</LinkButton>
+        </div>
+      </Section>
+
+      {/* 受入れまでの期間 */}
+      <Section id="timeline" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
+        <FlowTimeline />
+        <div className="mt-8 text-center">
+          <LinkButton href="/flow" variant="ghost" className="min-w-64">13の手順を詳しく見る</LinkButton>
+        </div>
+      </Section>
+
       {/* 費用の目安（プラン型） */}
       <Section
         id="fees"
@@ -241,15 +291,17 @@ export default function Home() {
       </Section>
 
       {/* 事例（未確定のため要確認枠のみ） */}
-      <Section id="cases" title="受入れ事例" lead="受入れ企業様の事例は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
+      <Section id="cases" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
         <ul className="grid gap-4 sm:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <li key={n} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
-              <ImagePlaceholder label="事例要確認" className="aspect-[16/10] border-0 border-b-2" />
+          {cases.map((c) => (
+            <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
+              <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
               <div className="flex-1 p-4">
-                <p className="text-[11px] text-muted">業種｜規模：要確認</p>
-                <p className="mt-1 text-sm font-bold text-ink">掲載予定の事例枠 {n}</p>
-                <p className="mt-1 text-[13px] text-body">実際の受入れ企業様の事例を確認のうえ掲載いたします。</p>
+                <p className="text-sm font-bold text-ink">{c.tag}</p>
+                <p className="mt-1 text-[13px] text-body">
+                  事例の詳細
+                  <CheckBadge />
+                </p>
               </div>
             </li>
           ))}
@@ -326,10 +378,14 @@ export default function Home() {
         <div className="mt-12">
           <LineHeading>制度について詳しく知る</LineHeading>
           <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
-            <p className="text-sm text-body">育成就労制度の概要と、受入れの流れをまとめております。</p>
+            <p className="text-sm text-body">育成就労制度の概要、受入れの流れ、技能実習・特定技能との違い、2027年4月に向けた準備をまとめております。</p>
             <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
               <LinkButton href="/ikusei-shuro" variant="ghost" className="sm:min-w-52">育成就労制度とは</LinkButton>
               <LinkButton href="/flow" variant="ghost" className="sm:min-w-52">受入れの流れ</LinkButton>
+            </div>
+            <div className="mt-3 flex flex-col justify-center gap-3 sm:flex-row">
+              <LinkButton href="/compare" variant="ghost" className="sm:min-w-52">制度の比較</LinkButton>
+              <LinkButton href="/roadmap" variant="ghost" className="sm:min-w-52">2027年4月に向けた準備</LinkButton>
             </div>
           </div>
         </div>

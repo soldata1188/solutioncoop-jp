@@ -17,6 +17,7 @@ export default function Page() {
   return (
     <>
       <PageHeader
+        path="/pricing"
         title="費用・料金"
         lead={`育成就労制度で${p.countryLabel}から人材を受け入れる場合の費用の目安です。金額はすべて1名あたり・税別です。`}
       />

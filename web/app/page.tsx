@@ -12,7 +12,6 @@ import { photos } from "@/lib/images";
 import { CONTACT_HREF, licenses, org } from "@/lib/site";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
-import { DEFAULT_COUNTRY, pricingByCountry } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月1日施行の育成就労制度に向けて準備中です。"),
@@ -75,22 +74,9 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
   { item: "許可・登録", ours: "監理団体許可（一般監理事業）と登録支援機関の登録の両方", general: "団体により許可・登録の範囲が異なります" },
   { item: "連携する送り出し国", ours: "ベトナム・インドネシア・フィリピンの3か国", general: "団体により連携先の国・機関が異なります" },
   { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
-  { item: "費用の目安", ours: "インドネシアからの受入れ費用の目安（暫定）をWebで公開", general: "団体により公開の有無が異なります" },
   { item: "特定技能への移行", ours: "登録支援機関として、育成就労後の特定技能への移行もご相談いただけます", general: "別の機関への依頼が必要となる場合があります", needsCheck: true },
   { item: "育成就労制度への対応", ours: "育成就労制度に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
 ];
-
-/** トップの費用サマリー（lib/pricing.ts のデータをそのまま表示。金額の加工・合算はしません） */
-const pricing = pricingByCountry[DEFAULT_COUNTRY];
-const priceLabel = `目安・暫定（${pricing.version}・${pricing.asOf}時点）`;
-const feeCards = [
-  { key: "初期費用（ご加入時）", caption: "ご加入時" },
-  { key: "入国時〜上陸後講習", caption: "入国時〜上陸後講習" },
-  { key: "入国後（毎月）", caption: "配属後（毎月）" },
-].flatMap(({ key, caption }) => {
-  const g = pricing.groups.find((x) => x.title === key);
-  return g ? [{ title: g.title, step: g.step, caption, rows: g.rows }] : [];
-});
 
 /** 経営者様にお任せいただけること（確認済みの事実・lib のデータのみ） */
 const benefits: { title: string; body: string; check?: boolean }[] = [
@@ -98,7 +84,6 @@ const benefits: { title: string; body: string; check?: boolean }[] = [
   { title: "3か国から人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
   { title: "入国後1か月の講習", body: "上陸後講習で日本語や生活のルールを学んでから、貴社へ配属いたします。" },
   { title: "配属後の監査・訪問", body: "法令に基づく定期的な監査・訪問指導で、受入れ後も継続してご支援いたします。" },
-  { title: "費用の目安を事前に公開", body: "インドネシアからの受入れ費用の目安（暫定）を公開しております。最終金額は個別にご案内します。" },
   { title: "2027年4月への移行準備", body: "育成就労制度に向けて、現在の技能実習からの切り替えの準備を一緒に進めます。" },
 ];
 
@@ -216,9 +201,10 @@ export default function Home() {
 
       {/* 経営者様のメリット */}
       <Section id="benefits" tone="pale" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
-        <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {/* 5項目：PCは3＋2（2段目を中央寄せ）、タブレット幅は最後の1項目を全幅 */}
+        <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-6 md:[&>li:nth-child(4)]:col-start-2 sm:max-md:[&>li:last-child]:col-span-2">
           {benefits.map((b) => (
-            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card">
+            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card md:col-span-2">
               <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 text-primary-dark" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M4 12.5l5 5L20 6.5" /></svg>
               <div>
                 <h3 className="font-bold text-ink">{b.title}</h3>
@@ -237,44 +223,6 @@ export default function Home() {
         <FlowTimeline />
         <div className="mt-8 text-center">
           <LinkButton href="/flow" variant="ghost" className="min-w-64">13の手順を詳しく見る</LinkButton>
-        </div>
-      </Section>
-
-      {/* 費用の目安（プラン型） */}
-      <Section
-        id="fees"
-        tone="pale"
-        title="費用の目安"
-        lead={`${pricing.countryLabel}から受け入れる場合の主な費用です（${priceLabel}・税別・1名あたり）。`}
-      >
-        <ul className="grid gap-4 md:grid-cols-3">
-          {feeCards.map((c) => (
-            <li key={c.title} className="flex flex-col bg-white shadow-card">
-              <p className="bg-primary-dark px-4 py-3 text-center font-bold text-white">
-                {c.caption}
-                {c.step ? <span className="block text-xs font-normal">（{c.step}）</span> : null}
-              </p>
-              <dl className="flex-1 px-4 py-3">
-                {c.rows.map((r) => (
-                  <div key={r.item} className="border-b border-line py-2.5 last:border-b-0">
-                    <dt className="text-[13px] text-body">{r.item}</dt>
-                    <dd className="text-lg font-bold text-primary-dark">{r.amount}</dd>
-                    {r.note ? <dd className="text-[11px] text-muted">{r.note}</dd> : null}
-                  </div>
-                ))}
-              </dl>
-              <p className="border-t border-line px-4 py-2 text-[11px] text-muted">
-                {priceLabel}・税別
-                <CheckBadge />
-              </p>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-6 border-l-4 border-primary bg-white p-4 text-sm font-bold text-ink">
-          最終金額は個別にご案内します。現在の金額は技能実習制度の料金を転記した暫定値で、育成就労制度の正式な単価は確定しておりません。
-        </p>
-        <div className="mt-8 text-center">
-          <LinkButton href="/pricing" variant="ghost" className="min-w-64">費用の詳細を見る</LinkButton>
         </div>
       </Section>
 
@@ -346,7 +294,6 @@ export default function Home() {
             </tbody>
           </table>
         </div>
-        <p className="mt-3 text-[11px] text-muted">※費用の目安は暫定値です。最終金額は個別にご案内します。</p>
       </Section>
 
       {/* 資料のご案内 */}

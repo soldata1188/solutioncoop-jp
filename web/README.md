@@ -39,5 +39,4 @@ npm run build && npm start
 
 - 組合情報・許可番号: `lib/site.ts`
 - よくある質問（画面表示と FAQPage JSON-LD の共通データ）: `lib/faq.ts`
-- 費用（国別。新しい国はキーを追加）: `lib/pricing.ts`
 - ロゴ: `public/brand/`（支給JPGから白背景を除去。原本は `sol-logo-original.jpg`）

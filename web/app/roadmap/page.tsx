@@ -56,7 +56,7 @@ const checklist: { text: string; note?: string; check?: boolean }[] = [
   { text: "育成就労責任者・育成就労指導員・生活相談員の候補者を考えた" },
   { text: "住居や通勤手段など、生活の環境を確認した" },
   { text: "日本語講習の機会を提供する方法を検討した", note: "就労開始前はA1相当、終了時はA2相当が目標です" },
-  { text: "費用の目安を確認し、予算を検討した", note: "費用・料金ページをご覧ください" },
+  { text: "費用について確認し、予算を検討した", note: "当組合にご相談ください" },
   { text: "受入れの開始時期を決め、申請のスケジュールを相談した" },
 ];
 
@@ -113,8 +113,7 @@ export default function Page() {
           ))}
         </ul>
         <p className="mt-6 text-[15px]">
-          詳しくは「<Link href="/compare" className="font-bold text-primary-dark underline underline-offset-4">制度の比較</Link>」「
-          <Link href="/pricing" className="font-bold text-primary-dark underline underline-offset-4">費用・料金</Link>」もご覧ください。
+          詳しくは「<Link href="/compare" className="font-bold text-primary-dark underline underline-offset-4">制度の比較</Link>」もご覧ください。
         </p>
       </Section>
 

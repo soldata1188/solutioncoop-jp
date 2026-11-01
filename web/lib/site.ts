@@ -54,13 +54,12 @@ export const achievements = [
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;
 
-/** ヘッダーのメニュー（PC表示の幅に収まる7項目） */
+/** ヘッダーのメニュー（PC表示の幅に収まる6項目） */
 export const nav = [
   { href: "/ikusei-shuro", label: "育成就労制度とは" },
   { href: "/compare", label: "制度の比較" },
   { href: "/flow", label: "受入れの流れ" },
   { href: "/support", label: "受入れ後の支援" },
-  { href: "/pricing", label: "費用・料金" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
 ];

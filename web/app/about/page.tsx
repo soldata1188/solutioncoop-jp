@@ -10,7 +10,7 @@ import { org, fullAddress, licenses, repoFacts, TEL_HREF } from "@/lib/site";
 export const metadata = pageMeta(
   "/about",
   "組合概要｜堺の監理団体",
-  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、管理人数、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
+  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、管理人数、受入実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
 );
 
 export default function Page() {
@@ -33,6 +33,10 @@ export default function Page() {
     ],
     ["職員数", org.staff],
     ["管理人数", `${org.managed}（技能実習生・特定技能外国人）`],
+    ["技能実習生受入実績", org.terms],
+    ["受入企業数", org.clients],
+    ["専任日本語教師", org.teachers],
+    ["表彰", org.award],
     ["連携する送り出し国", "ベトナム、インドネシア、フィリピン"],
   ];
   return (

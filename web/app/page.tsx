@@ -6,6 +6,7 @@ import { FaqList } from "@/components/FaqList";
 import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/LineIcons";
 import { ArrowIcon, ImagePlaceholder, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
+import { StatsStrip } from "@/components/StatsStrip";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { CONTACT_HREF, licenses, org } from "@/lib/site";
@@ -134,9 +135,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 確認済みの数値（ピル型バッジ）。本文サイズの白文字のため背景は #0D5FC4 */}
-      <section aria-label="当組合の概要（数値）" className="bg-white">
-        <div className="mx-auto max-w-[812px] px-4 py-5">
+      {/* 実績ストリップ（代表者様確認済みの4項目）＋既存の数値ピル（管理人数・送り出し国）を同じ帯にまとめています。
+          ピルは本文サイズの白文字のため背景は #0D5FC4 */}
+      <StatsStrip>
+        <div className="mt-5">
           <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
             <li className={badge}>
               <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
@@ -157,7 +159,7 @@ export default function Home() {
             <span className="block sm:inline">※2 ベトナム・インドネシア・フィリピン</span>
           </p>
         </div>
-      </section>
+      </StatsStrip>
 
       {/* お悩み */}
       <Section id="problems" tone="pale" title="外国人材の受入れで、このようなお悩みはありませんか">

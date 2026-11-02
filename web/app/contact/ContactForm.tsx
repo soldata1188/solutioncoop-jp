@@ -60,7 +60,7 @@ export function ContactForm() {
       </div>
       <div>
         <label htmlFor="message" className={label}>ご相談内容{req}</label>
-        <p id="message-hint" className="mt-1 text-sm text-muted">例：資料がほしい／2027年4月からの受入れを相談したい／費用を詳しく知りたい　など</p>
+        <p id="message-hint" className="mt-1 text-sm text-muted">例：2027年4月からの受入れを相談したい／費用を詳しく知りたい　など</p>
         <textarea
           id="message"
           name="message"

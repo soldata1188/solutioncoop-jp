@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
 import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
-import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
 
 export function Footer() {
@@ -19,14 +18,11 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-        {/* スマートフォンでは、直前の CTA 帯と画面下部の固定バーに同じ操作があるため、ボタンは表示しません（PC は従来どおり） */}
+        {/* スマートフォンでは、直前の CTA 帯と画面下部の固定バーに同じ操作があるため、ボタンは表示しません。
+            PC は主ボタン「LINEで無料相談」＋メールの副ボタン（電話番号は下の所在地欄のリンク） */}
         <div className="mt-6 hidden items-center justify-center gap-3 sm:flex">
-          <a href={TEL_HREF} className="inline-flex min-h-12 items-center gap-2 rounded bg-primary-dark px-6 text-base font-bold text-white no-underline hover:bg-primary-darker">
-            <PhoneIcon className="h-5 w-5" />
-            お電話でのご相談 {org.tel}
-          </a>
           <LineButton className="inline-flex min-h-12 gap-2 px-6 text-base" iconClassName="h-5 w-5" />
-          <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded bg-cta px-6 text-base font-bold text-ink no-underline hover:bg-cta-hover">
+          <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint">
             {CONTACT_LABEL}
           </Link>
         </div>

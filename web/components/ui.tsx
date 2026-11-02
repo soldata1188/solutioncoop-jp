@@ -22,7 +22,7 @@ const buttonVariants: Record<ButtonVariant, string> = {
   whiteCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
   outlineCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
   dark: "bg-primary-dark text-white hover:bg-primary-darker",
-  // 白地・グレー枠・緑の矢印（資料などの「もっと見る」ボタン）
+  // 白地・グレー枠・緑の矢印（「もっと見る」などの副ボタン）
   ghost: "border border-line bg-white text-ink shadow-sm hover:border-primary [&>svg]:text-primary-dark",
 };
 
@@ -85,7 +85,7 @@ export function SectionHeading({
   );
 }
 
-/** 左寄せの小見出し＋右へ伸びる線（リファレンスの「資料」「イベント」見出しの形） */
+/** 左寄せの小見出し＋右へ伸びる線（リファレンスの見出しの形） */
 export function LineHeading({ id, children, as: Tag = "h3" }: { id?: string; children: React.ReactNode; as?: "h2" | "h3" }) {
   return (
     <div className="flex items-center gap-4">
@@ -172,7 +172,7 @@ export function SquaresPattern({ variant = "hero" }: { variant?: "hero" | "band"
   );
 }
 
-/** 写真・資料画像などの代わりに置く要確認枠（抽象的な四角のみ） */
+/** 写真などの代わりに置く要確認枠（抽象的な四角のみ） */
 export function ImagePlaceholder({
   label = "画像要確認",
   note,

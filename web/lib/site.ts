@@ -81,8 +81,8 @@ export const TEL_HREF = "tel:0722248067";
  * 公式の lin.ee 短縮リンクを発行した場合は、この定数だけを差し替えてください。
  */
 export const LINE_URL = "https://line.me/R/ti/p/@122kbyao";
-export const LINE_LABEL = "LINEで相談";
-export const LINE_ARIA = "LINEで相談する（新しいタブで開きます）";
+export const LINE_LABEL = "LINEで無料相談";
+export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
 /**
  * 既存リポジトリ（solutioncoop-app/・gino-jisshu.html・index16.html）に記載のある情報。
@@ -106,7 +106,7 @@ export const repoFacts = {
 
 export const CONTACT_HREF = "/contact";
 /** /contact へのボタンの文言（代表者様のご指示により全ボタンで統一） */
-export const CONTACT_LABEL = "ご相談・資料請求";
+export const CONTACT_LABEL = "メールでのお問い合わせ";
 /** 電話ボタンの読み上げ名（アイコンのみのボタン用） */
 export const TEL_ARIA = "電話でお問い合わせ";
 

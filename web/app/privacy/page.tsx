@@ -17,7 +17,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
     title: "3. 利用目的",
     body: (
       <ul className="list-disc space-y-1 pl-6">
-        <li>お問い合わせ・資料請求への対応およびご連絡のため</li>
+        <li>お問い合わせへの対応およびご連絡のため</li>
         <li>外国人材の受入れに関する監理・支援業務の実施のため</li>
         <li>組合員企業様への情報提供およびご案内のため</li>
         <li>法令に基づく報告・届出等の対応のため</li>

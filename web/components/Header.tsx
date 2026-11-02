@@ -6,8 +6,7 @@ import { ArrowIcon } from "./ui";
 import { LineButton } from "./LineButton";
 
 const btnBase = "min-h-11 items-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline transition-colors";
-// 淡い黄色地は #222 文字（13.99:1）。白地の枠ボタンは #0F4D2A の枠と文字（9.93:1）
-const btnPrimaryColors = "bg-cta text-ink hover:bg-cta-hover";
+// 主ボタンは LINE（#06C755 地に #222、7.05:1）。メールは白地の枠ボタン（#0F4D2A の枠と文字、9.93:1）
 const btnOutlineColors = "border border-primary-dark bg-white text-primary-dark hover:bg-cta-tint";
 
 export function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -49,10 +48,9 @@ export function Header() {
             <PhoneIcon />
             <span className="hidden lg:inline xl:hidden">{org.tel}</span>
           </a>
-          <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] md:inline-flex" />
-          <Link href={CONTACT_HREF} className={`hidden sm:inline-flex ${btnBase} ${btnPrimaryColors}`}>
+          <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] sm:inline-flex" />
+          <Link href={CONTACT_HREF} className={`hidden md:inline-flex ${btnBase} ${btnOutlineColors}`}>
             {CONTACT_LABEL}
-            <ArrowIcon className="h-3 w-3" />
           </Link>
           <details className="group relative xl:hidden">
             <summary className="flex min-h-11 min-w-12 cursor-pointer flex-col items-center justify-center gap-[3px] rounded border border-line px-2 text-ink">
@@ -82,12 +80,12 @@ export function Header() {
                 ))}
               </ul>
               <div className="mt-2 grid gap-2">
-                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnPrimaryColors}`}>{CONTACT_LABEL}</Link>
+                <LineButton className="flex min-h-11 gap-2 px-4 text-[13px]" />
+                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnOutlineColors}`}>{CONTACT_LABEL}</Link>
                 <a href={TEL_HREF} aria-label={`${TEL_ARIA}（${org.tel}）`} className={`flex justify-center gap-2 ${btnBase} ${btnOutlineColors}`}>
                   <PhoneIcon />
                   電話 {org.tel}
                 </a>
-                <LineButton className="flex min-h-11 gap-2 px-4 text-[13px]" />
               </div>
             </nav>
           </details>

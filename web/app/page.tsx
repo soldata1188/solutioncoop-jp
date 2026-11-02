@@ -9,7 +9,8 @@ import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
-import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
+import { licenses, org } from "@/lib/site";
+import { LineButton } from "@/components/LineButton";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
@@ -114,7 +115,7 @@ export default function Home() {
             堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">{CONTACT_LABEL}</LinkButton>
+            <LineButton className="flex min-h-14 gap-2 px-8 text-base sm:min-w-64" iconClassName="h-5 w-5" />
             <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
           </div>
         </div>
@@ -296,17 +297,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 資料のご案内 */}
-      <Section id="documents" title="資料のご案内" width="default">
-        <LineHeading>当組合のご案内資料</LineHeading>
-        {/* TODO: 資料の表紙画像は代表者様からのご提供待ち。届くまでは空の枠（【資料画像要確認】）を表示せず、文章とボタンのみとします。
-            画像が届いたら sm:grid-cols-[200px_1fr] の2列に戻し、左に <Image> を置いてください（ボタンは画像より先に読めるよう右列の上部に）。 */}
+      {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}
+      <Section id="line" title="LINEでのご相談" width="default">
+        <LineHeading>当組合のLINE公式アカウント</LineHeading>
         <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
-          <p className="text-[15px] text-body">
-            育成就労制度の概要や受入れの流れについて、資料をご用意してお届けいたします。資料の内容・形式は、お問い合わせの際にご案内いたします。
-          </p>
+          <p className="text-[15px] text-body">当組合のLINE公式アカウントから、トークでご相談をお送りいただけます。</p>
+          <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
           <div className="mt-5">
-            <LinkButton href={CONTACT_HREF} variant="ghost" className="w-full sm:w-auto sm:min-w-64">{CONTACT_LABEL}</LinkButton>
+            <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />
           </div>
         </div>
         <div className="mt-12">

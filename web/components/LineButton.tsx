@@ -12,7 +12,7 @@ export function ChatIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 /**
  * LINE公式アカウントへのボタン（新しいタブで開きます）。
- * 色は #06C755 地に #222 文字（7.05:1）。タップ領域は高さ44px以上。
+ * サイト全体の主ボタン（文言「LINEで無料相談」）。色は #06C755 地に #222 文字（7.05:1、hover #2BD06B は 7.83:1）。タップ領域は高さ44px以上。
  */
 export function LineButton({
   className = "",

@@ -11,12 +11,12 @@ export function CtaSection({ title = "育成就労制度への備えを、今か
       <div className="relative mx-auto max-w-[612px] px-4 py-14 text-center md:py-[72px]">
         <h2 id="cta-title" className="text-2xl font-bold leading-snug md:text-[1.75rem]">{title}</h2>
         <p className="mx-auto mt-5 text-left text-[15px] sm:text-center">
-          外国人材の受入れや育成就労制度について、堺市の監理団体である当組合が丁寧にご説明いたします。資料請求・ご相談はお気軽にお申し付けください。
+          外国人材の受入れや育成就労制度について、堺市の監理団体である当組合が丁寧にご説明いたします。ご相談はお気軽にお申し付けください。
         </p>
-        {/* /contact へのボタンは1つに統一（文言「ご相談・資料請求」）。隣に LINE ボタン */}
+        {/* 主ボタンは「LINEで無料相談」1つ。メール（/contact のフォーム）は白枠の副ボタン */}
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">{CONTACT_LABEL}</LinkButton>
-          <LineButton className="flex min-h-14 gap-2 px-8 text-base sm:min-w-56" iconClassName="h-5 w-5" />
+          <LineButton className="flex min-h-14 gap-2 px-8 text-base sm:min-w-64" iconClassName="h-5 w-5" />
+          <LinkButton href={CONTACT_HREF} variant="outlineWhite" className="min-h-14 sm:min-w-64">{CONTACT_LABEL}</LinkButton>
         </div>
         <p className="mt-6 text-[15px]">
           お電話でのご相談

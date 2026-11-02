@@ -1,11 +1,12 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
+import { KeepWords } from "@/components/KeepWords";
 import { CheckBadge } from "@/components/Placeholder";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
-import { org, fullAddress, licenses, repoFacts, TEL_HREF } from "@/lib/site";
+import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/site";
 
 export const metadata = pageMeta(
   "/about",
@@ -50,6 +51,17 @@ export default function Page() {
               当組合は、堺市堺区に事務所を構え、職員{org.staff}の体制で、大阪府内の中小企業様の外国人材受入れをご支援しております。
             </p>
             <Photo photo={photos.sakai} sizes="(min-width: 768px) 310px, 100vw" className="mt-5" caption="地元・堺の海辺の風景" />
+            <div className="mt-5 border-l-4 border-primary bg-pale px-4 py-3 text-sm">
+              <p className="font-bold text-black"><KeepWords text={sdgs.support} /></p>
+              <p className="mt-1 text-body">
+                {sdgs.selected}（出典：
+                <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary-dark underline underline-offset-4">
+                  {sdgs.sourceLabel}
+                  <span className="sr-only">（新しいタブで開きます）</span>
+                </a>
+                ）
+              </p>
+            </div>
           </div>
         </div>
       </Section>

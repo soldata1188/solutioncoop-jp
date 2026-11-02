@@ -45,6 +45,19 @@ export const licenses = {
 };
 
 /** トップの実績ストリップ（値は org の確認済みの数値と同じ。sr はスクリーンリーダー向けの読み上げ文） */
+/**
+ * 「SDGs未来都市・堺」関連（堺市の公式ページで確認した事実のみ）。
+ * 選定：堺市「SDGs未来都市」ページ「堺市は、平成30年（2018年）6月、SDGs未来都市に大阪府内の自治体で初めて選定され…」
+ * 応援の一文は、堺市「ロゴマーク使用ガイド」が定める表現『[他の主体名]は、SDGs未来都市・堺を応援しています。』に従います。
+ */
+export const sdgs = {
+  support: "ソリューション協同組合は、SDGs未来都市・堺を応援しています。",
+  badge: "SDGs未来都市・堺を応援しています",
+  selected: "堺市は、平成30年（2018年）6月、国から「SDGs未来都市」に選定されました。",
+  sourceUrl: "https://www.city.sakai.lg.jp/shisei/toshi/sdgs/",
+  sourceLabel: "堺市「SDGs未来都市」",
+} as const;
+
 export const achievements = [
   { value: "65", unit: "期", label: "技能実習生受入実績", sr: `技能実習生受入実績 ${org.terms}` },
   { value: "80", unit: "社+", label: "受入企業数", sr: `受入企業数 ${org.clients}` },

@@ -7,9 +7,10 @@ import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/L
 import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
+import { KeepWords } from "@/components/KeepWords";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
-import { licenses, org } from "@/lib/site";
+import { licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
@@ -105,7 +106,11 @@ export default function Home() {
       <section data-hero className="relative overflow-hidden bg-primary text-white">
         <SquaresPattern />
         <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
-          <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
+            {/* 応援の表明のみ（認定・選定を受けた旨ではありません）。白文字・白枠は緑地に対して 5.02:1 */}
+            <p className="inline-block rounded-sm border border-white px-3 py-[3px] text-[13px] font-bold text-white"><KeepWords text={sdgs.badge} /></p>
+          </div>
           <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]">
             <span className="block">堺の監理団体として、</span>
             <span className="block">大阪の外国人材受入れを</span>

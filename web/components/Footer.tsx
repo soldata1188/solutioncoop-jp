@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
+import { allPages, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
 import { LineButton } from "./LineButton";
-import { Phrases } from "./KeepWords";
+import { KeepWords, Phrases } from "./KeepWords";
 
 export function Footer() {
   return (
@@ -46,6 +46,7 @@ export function Footer() {
             <br className="sm:hidden" />
             登録支援機関登録番号：{licenses.toroku.number}
           </p>
+          <p className="mt-2 text-black"><KeepWords text={sdgs.support} /></p>
         </div>
       </div>
       <p className="bg-primary-dark py-3 text-center text-xs text-white">© {org.name}</p>

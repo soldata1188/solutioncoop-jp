@@ -1,4 +1,5 @@
 import { LinkButton, Section } from "@/components/ui";
+import { CONTACT_LABEL } from "@/lib/site";
 
 export default function NotFound() {
   return (
@@ -8,7 +9,7 @@ export default function NotFound() {
         <p className="mt-4 text-muted">ページが移動または削除された可能性がございます。お手数ですが、トップページからお探しください。</p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <LinkButton href="/" variant="ghost">トップページへ戻る</LinkButton>
-          <LinkButton href="/contact">お問い合わせ・資料請求</LinkButton>
+          <LinkButton href="/contact">{CONTACT_LABEL}</LinkButton>
         </div>
       </div>
     </Section>

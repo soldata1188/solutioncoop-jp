@@ -60,7 +60,16 @@ export function ContactForm() {
       </div>
       <div>
         <label htmlFor="message" className={label}>ご相談内容{req}</label>
-        <textarea id="message" name="message" required rows={5} className={field} {...a11y("message")} placeholder="例：資料がほしい／2027年4月からの受入れを相談したい／費用を詳しく知りたい　など" />
+        <p id="message-hint" className="mt-1 text-sm text-muted">例：資料がほしい／2027年4月からの受入れを相談したい／費用を詳しく知りたい　など</p>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={5}
+          className={field}
+          {...a11y("message")}
+          aria-describedby={err("message") ? "message-hint message-error" : "message-hint"}
+        />
         {errNode("message")}
       </div>
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">

@@ -25,14 +25,12 @@ export default function Page() {
         title="育成就労制度とは"
         lead="技能実習制度に代わる新しい制度「育成就労制度」は、2027年4月1日施行です。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
       />
+      {/* ファーストビューには短い案内1行のみ。全文の「ご確認のお願い」は概要の直後に移しています（文言は変更なし） */}
       <Section width="narrow" flushBottom>
-        <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
-          <p className="font-bold">ご確認のお願い</p>
-          <p className="mt-1">
-            本ページは制度の概要を一般的にご紹介するものです。詳細な要件・運用は、出入国在留管理庁（ISA）および厚生労働省（MHLW）が公表する最新の資料に基づきます。省令・運用要領等により内容が変わる可能性があるため、個別の判断は必ず公式情報をご確認ください。
-            <CheckBadge />
-          </p>
-        </aside>
+        <p className="border-l-4 border-amber-600 bg-amber-50 px-4 py-2 text-sm text-amber-950">
+          最新情報は出入国在留管理庁の公表をご確認ください。
+          <a href="#notice" className="ml-1 inline-flex min-h-11 items-center font-bold text-amber-950 underline underline-offset-4">ご確認のお願い</a>
+        </p>
       </Section>
 
       <Section id="s1" title="育成就労制度の概要" width="narrow">
@@ -42,6 +40,13 @@ export default function Page() {
         <p className="mt-4">
           受入れ対象となる分野は、特定技能制度の分野と連携して定められる予定です。育成就労を修了した人材が、特定技能へと円滑に移行し、長く日本で活躍できる仕組みが想定されています。
         </p>
+        <aside id="notice" role="note" aria-labelledby="notice-title" className="mt-8 scroll-mt-24 rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
+          <p id="notice-title" className="font-bold">ご確認のお願い</p>
+          <p className="mt-1">
+            本ページは制度の概要を一般的にご紹介するものです。詳細な要件・運用は、出入国在留管理庁（ISA）および厚生労働省（MHLW）が公表する最新の資料に基づきます。省令・運用要領等により内容が変わる可能性があるため、個別の判断は必ず公式情報をご確認ください。
+            <CheckBadge />
+          </p>
+        </aside>
       </Section>
 
       <Section id="s2" title="技能実習制度からの主な変更点" tone="pale">

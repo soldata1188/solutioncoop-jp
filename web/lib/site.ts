@@ -105,7 +105,10 @@ export const repoFacts = {
 };
 
 export const CONTACT_HREF = "/contact";
-export const CONTACT_LABEL = "お問い合わせ・資料請求";
+/** /contact へのボタンの文言（代表者様のご指示により全ボタンで統一） */
+export const CONTACT_LABEL = "ご相談・資料請求";
+/** 電話ボタンの読み上げ名（アイコンのみのボタン用） */
+export const TEL_ARIA = "電話でお問い合わせ";
 
 /** Organization / LocalBusiness（確認済みの情報のみ。営業時間などの未確認情報は含めません） */
 export const organizationJsonLd = {

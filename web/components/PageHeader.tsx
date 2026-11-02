@@ -35,7 +35,7 @@ export function PageHeader({ title, lead, path, crumb }: { title: string; lead?:
       ) : null}
       {lead ? (
         <div className="border-b border-line bg-white">
-          <p className="mx-auto max-w-[612px] px-4 py-7 text-[15px] text-body md:text-center">{lead}</p>
+          <p className="mx-auto max-w-[612px] px-4 py-7 text-[15px] text-body md:text-base">{lead}</p>
         </div>
       ) : null}
     </>

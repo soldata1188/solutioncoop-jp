@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { nav, allPages, CONTACT_HREF, TEL_HREF, org } from "@/lib/site";
+import { nav, allPages, CONTACT_HREF, CONTACT_LABEL, TEL_ARIA, TEL_HREF, org } from "@/lib/site";
+import { NavLink } from "./NavLink";
 import { Wordmark } from "./Wordmark";
 import { ArrowIcon } from "./ui";
 import { LineButton } from "./LineButton";
@@ -27,12 +28,13 @@ export function Header() {
             <ul className="flex items-center">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <NavLink
                     href={item.href}
                     className="inline-flex min-h-11 items-center whitespace-nowrap px-2 text-[13px] font-bold text-ink no-underline hover:text-primary-dark"
+                    activeClassName="text-primary-dark underline decoration-2 underline-offset-[6px]"
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -41,7 +43,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={TEL_HREF}
-            aria-label={`電話をかける ${org.tel}`}
+            aria-label={`${TEL_ARIA}（${org.tel}）`}
             className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded border border-primary-dark px-2 text-[13px] font-bold text-primary-dark no-underline hover:bg-pale lg:px-3 xl:px-2"
           >
             <PhoneIcon />
@@ -49,11 +51,7 @@ export function Header() {
           </a>
           <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] md:inline-flex" />
           <Link href={CONTACT_HREF} className={`hidden sm:inline-flex ${btnBase} ${btnPrimaryColors}`}>
-            お問い合わせ
-            <ArrowIcon className="h-3 w-3" />
-          </Link>
-          <Link href={CONTACT_HREF} className={`hidden sm:inline-flex xl:hidden ${btnBase} ${btnOutlineColors}`}>
-            資料請求
+            {CONTACT_LABEL}
             <ArrowIcon className="h-3 w-3" />
           </Link>
           <details className="group relative xl:hidden">
@@ -63,7 +61,7 @@ export function Header() {
                 <span className="block h-0.5 w-5 bg-primary group-open:opacity-0" />
                 <span className="block h-0.5 w-5 bg-primary" />
               </span>
-              <span className="whitespace-nowrap text-[10px] font-bold leading-none">メニュー</span>
+              <span className="whitespace-nowrap text-xs font-bold leading-none">メニュー</span>
             </summary>
             <nav
               aria-label="メインメニュー（モバイル）"
@@ -72,17 +70,20 @@ export function Header() {
               <ul>
                 {allPages.map((item) => (
                   <li key={item.href} className="border-b border-line last:border-b-0">
-                    <Link href={item.href} className="flex min-h-12 items-center justify-between px-3 text-[15px] font-bold text-ink no-underline hover:bg-pale">
+                    <NavLink
+                      href={item.href}
+                      className="flex min-h-12 items-center justify-between border-l-4 border-l-transparent px-3 text-[15px] font-bold text-ink no-underline hover:bg-pale"
+                      activeClassName="border-l-primary-dark! bg-pale text-primary-dark"
+                    >
                       {item.label}
                       <ArrowIcon className="h-3 w-3 text-primary-dark" />
-                    </Link>
+                    </NavLink>
                   </li>
                 ))}
               </ul>
               <div className="mt-2 grid gap-2">
-                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnPrimaryColors}`}>お問い合わせ</Link>
-                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnOutlineColors}`}>資料請求</Link>
-                <a href={TEL_HREF} className={`flex justify-center gap-2 ${btnBase} ${btnOutlineColors}`}>
+                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnPrimaryColors}`}>{CONTACT_LABEL}</Link>
+                <a href={TEL_HREF} aria-label={`${TEL_ARIA}（${org.tel}）`} className={`flex justify-center gap-2 ${btnBase} ${btnOutlineColors}`}>
                   <PhoneIcon />
                   電話 {org.tel}
                 </a>

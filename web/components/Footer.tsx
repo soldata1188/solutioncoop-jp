@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF } from "@/lib/site";
+import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
 import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
 
@@ -9,10 +9,10 @@ export function Footer() {
     <footer className="border-t border-line bg-white text-body">
       <div className="mx-auto max-w-[812px] px-4 py-10">
         <nav aria-label="フッターメニュー">
-          <ul className="flex flex-wrap justify-center gap-x-1 text-[13px]">
-            {[...allPages, { href: "/contact", label: "お問い合わせ・資料請求" }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
+          <ul className="grid grid-cols-2 gap-x-3 text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-x-1 sm:text-[13px]">
+            {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="inline-flex min-h-11 items-center px-2 text-ink no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
+                <Link href={item.href} className="flex min-h-11 items-center border-b border-line px-1 text-ink sm:inline-flex sm:border-b-0 sm:px-2 no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
                   {item.label}
                 </Link>
               </li>
@@ -26,7 +26,7 @@ export function Footer() {
           </a>
           <LineButton className="inline-flex min-h-12 gap-2 px-6 text-base" iconClassName="h-5 w-5" />
           <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded bg-cta px-6 text-base font-bold text-ink no-underline hover:bg-cta-hover">
-            ご相談・資料請求
+            {CONTACT_LABEL}
           </Link>
         </div>
         <div className="mt-6 border-t border-line pt-6 text-center text-[13px] leading-7 text-muted">

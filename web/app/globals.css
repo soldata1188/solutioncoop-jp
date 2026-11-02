@@ -59,6 +59,26 @@ body {
   }
 }
 
+/* viewport-fit=cover（固定バーのホームバー対策）にしたため、横向きのiPhoneで左右のノッチに文字が掛からないよう余白を確保 */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* 改行位置：日本語を文節単位で折り返し（word-break: auto-phrase、未対応ブラウザは通常の折り返し）、
+   見出しは行の長さをそろえ（balance）、本文は最終行が1〜2文字だけにならないよう調整（pretty）します。
+   @layer base に置き、個別の Tailwind ユーティリティ（[text-wrap:balance] 等）で上書きできるようにしています */
+@layer base {
+  h1, h2, h3, h4, h5, h6, th, dt, summary, figcaption, label, legend {
+    text-wrap: balance;
+    word-break: auto-phrase;
+  }
+  p, li, dd, td, blockquote {
+    text-wrap: pretty;
+    word-break: auto-phrase;
+  }
+}
+
 :focus-visible {
   /* 淡い黄色＋濃い緑の二重リング。白地では濃い緑（13.29:1）、緑地では黄色（#FFF478 / #1E7F46 = 4.42:1、/ #0F4D2A = 8.73:1）が3:1以上 */
   outline: 3px solid var(--color-cta);

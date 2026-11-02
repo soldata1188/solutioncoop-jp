@@ -3,9 +3,9 @@ import { CheckBadge } from "./Placeholder";
 
 /** 受入れまでの期間の目安（5段階のタイムライン）。期間は lib/flow.ts と同じ目安・暫定の値のみを使います。 */
 const spans: Record<(typeof phases)[number], { time: string; check?: boolean }> = {
-  "ご契約": { time: "お問い合わせから約1〜2週間" },
+  "ご契約": { time: "お問い合わせから|約1〜2週間" },
   "人材の選考": { time: "求人依頼・Web面接" },
-  "申請": { time: "面接から配属まで約5〜6か月", check: true },
+  "申請": { time: "面接から配属まで|約5〜6か月", check: true },
   "入国・講習": { time: "上陸後講習 1か月" },
   "配属・育成": { time: "育成就労 原則3年間" },
 };
@@ -35,7 +35,10 @@ export function FlowTimeline() {
               <p className="text-base font-bold text-ink">{p}</p>
               <p className="text-[13px] text-muted">手順{from === to ? from : `${from}〜${to}`}</p>
               <p className="mt-1 text-[13px] font-bold text-primary-dark">
-                {spans[p].time}
+                {/* 「|」は改行してよい位置。各まとまりは途中で折り返さず、最終行が1文字だけになるのを防ぎます */}
+                {spans[p].time.split("|").map((t) => (
+                  <span key={t} className="inline-block">{t}</span>
+                ))}
                 {spans[p].check ? <CheckBadge /> : null}
               </p>
             </div>

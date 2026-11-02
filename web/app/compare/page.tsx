@@ -71,7 +71,7 @@ export default function Page() {
                 <tr key={r.label}>
                   <th scope="row" className="border-b border-white bg-label p-3 align-top font-bold text-ink">{r.label}</th>
                   {cols.map((c) => (
-                    <td key={c.key} className={`border-b border-line p-3 align-top ${c.key === "ikusei" ? "bg-cta-tint" : "bg-white"}`}>
+                    <td key={c.key} className={`border-b border-line p-3 align-top [text-wrap:balance] ${c.key === "ikusei" ? "bg-cta-tint" : "bg-white"}`}>
                       <CellText cell={r[c.key]} />
                     </td>
                   ))}

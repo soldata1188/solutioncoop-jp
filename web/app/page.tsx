@@ -4,12 +4,12 @@ import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/LineIcons";
-import { ArrowIcon, ImagePlaceholder, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
+import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
-import { CONTACT_HREF, licenses, org } from "@/lib/site";
+import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
@@ -51,7 +51,7 @@ const reasons = [
     link: "組合概要を見る",
   },
   {
-    title: "3か国の送り出し機関と\n連携",
+    title: "3か国の送り出し機関と連携",
     body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携し、貴社の業務に合った人材の受入れをご提案いたします。",
     note: "ベトナム・インドネシア・フィリピン",
     Icon: IconPartners,
@@ -101,7 +101,7 @@ export default function Home() {
     <>
       {/* ヒーロー：緑 #1E7F46（白文字 5.02:1）。
           写真は掲載しない方針（代表者様のご指示）。文字を中央揃え・最大幅を絞り、左右の四角模様でバランスを取ります */}
-      <section className="relative overflow-hidden bg-primary text-white">
+      <section data-hero className="relative overflow-hidden bg-primary text-white">
         <SquaresPattern />
         <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
           <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
@@ -114,7 +114,7 @@ export default function Home() {
             堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">お問い合わせ・資料請求</LinkButton>
+            <LinkButton href={CONTACT_HREF} className="min-h-14 sm:min-w-64">{CONTACT_LABEL}</LinkButton>
             <LinkButton href="/ikusei-shuro" variant="outlineWhite" className="min-h-14 sm:min-w-56">育成就労制度を知る</LinkButton>
           </div>
         </div>
@@ -129,16 +129,16 @@ export default function Home() {
               <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
               <span className="text-sm font-bold">管理人数</span>
               <strong className="text-lg">{org.managed}</strong>
-              <span className="text-[11px]">※1</span>
+              <span className="text-xs">※1</span>
             </li>
             <li className={badge}>
               <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
               <span className="text-sm font-bold">連携する送り出し国</span>
               <strong className="text-lg">3か国</strong>
-              <span className="text-[11px]">※2</span>
+              <span className="text-xs">※2</span>
             </li>
           </ul>
-          <p className="mt-2 text-center text-[11px] leading-6 text-muted">
+          <p className="mt-2 text-center text-xs leading-6 text-muted">
             <span className="block sm:inline">※1 技能実習生・特定技能外国人の合計（集計時点<CheckBadge />）</span>
             <span className="hidden sm:inline">　</span>
             <span className="block sm:inline">※2 ベトナム・インドネシア・フィリピン</span>
@@ -171,7 +171,7 @@ export default function Home() {
             ))}
           </ol>
         </div>
-        <p className="mt-4 text-[11px] text-muted">※上記は一般的なお悩みの例であり、調査結果ではありません。</p>
+        <p className="mt-4 text-xs text-muted">※上記は一般的なお悩みの例であり、調査結果ではありません。</p>
       </Section>
 
       {/* 選ばれる理由 */}
@@ -188,7 +188,7 @@ export default function Home() {
                   {title}
                 </h3>
                 <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
-                <p className="mt-2 text-[11px] text-muted">※{note}</p>
+                <p className="mt-2 text-xs text-muted">※{note}</p>
                 <Link href={href} className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
                   {link}
                   <ArrowIcon className="h-3 w-3" />
@@ -201,14 +201,14 @@ export default function Home() {
 
       {/* 経営者様のメリット */}
       <Section id="benefits" tone="pale" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
-        {/* 5項目：PCは3＋2（2段目を中央寄せ）、タブレット幅は最後の1項目を全幅 */}
-        <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-6 md:[&>li:nth-child(4)]:col-start-2 sm:max-md:[&>li:last-child]:col-span-2">
+        {/* 5項目：半端な段（3＋2）を作らないよう、全幅のカードを縦に並べます（PCは見出しと説明を横並び） */}
+        <ul className="grid gap-3">
           {benefits.map((b) => (
-            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card md:col-span-2">
+            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card">
               <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 text-primary-dark" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M4 12.5l5 5L20 6.5" /></svg>
-              <div>
+              <div className="md:grid md:flex-1 md:grid-cols-[240px_1fr] md:gap-6">
                 <h3 className="font-bold text-ink">{b.title}</h3>
-                <p className="mt-1 text-[13px] leading-relaxed md:text-sm">{b.body}</p>
+                <p className="mt-1 text-[15px] leading-relaxed md:mt-0">{b.body}</p>
               </div>
             </li>
           ))}
@@ -257,14 +257,14 @@ export default function Home() {
             <li key={c.item} className="overflow-hidden bg-white shadow-card">
               <p className="bg-label px-4 py-2 text-center text-[13px] font-bold text-ink">{c.item}</p>
               <div className="bg-primary-dark px-4 py-3 text-white">
-                <p className="text-[11px]">ソリューション協同組合</p>
+                <p className="text-xs">ソリューション協同組合</p>
                 <p className="font-bold">
                   {c.ours}
                   {c.needsCheck ? <CheckBadge /> : null}
                 </p>
               </div>
               <div className="bg-white px-4 py-3 text-body">
-                <p className="text-[11px] text-muted">一般的な受入れ方法</p>
+                <p className="text-xs text-muted">一般的な受入れ方法</p>
                 <p className="text-sm">{c.general}</p>
               </div>
             </li>
@@ -299,15 +299,14 @@ export default function Home() {
       {/* 資料のご案内 */}
       <Section id="documents" title="資料のご案内" width="default">
         <LineHeading>当組合のご案内資料</LineHeading>
-        <div className="mx-auto mt-6 grid max-w-[620px] items-center gap-6 rounded border border-line bg-white p-5 sm:grid-cols-[200px_1fr]">
-          <ImagePlaceholder label="資料画像要確認" className="aspect-[3/4]" />
-          <div>
-            <p className="text-[15px] text-body">
-              育成就労制度の概要や受入れの流れについて、資料をご用意してお届けいたします。資料の内容・形式は、お問い合わせの際にご案内いたします。
-            </p>
-            <div className="mt-5">
-              <LinkButton href={CONTACT_HREF} variant="ghost" className="w-full sm:w-auto sm:min-w-56">資料を請求する</LinkButton>
-            </div>
+        {/* TODO: 資料の表紙画像は代表者様からのご提供待ち。届くまでは空の枠（【資料画像要確認】）を表示せず、文章とボタンのみとします。
+            画像が届いたら sm:grid-cols-[200px_1fr] の2列に戻し、左に <Image> を置いてください（ボタンは画像より先に読めるよう右列の上部に）。 */}
+        <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
+          <p className="text-[15px] text-body">
+            育成就労制度の概要や受入れの流れについて、資料をご用意してお届けいたします。資料の内容・形式は、お問い合わせの際にご案内いたします。
+          </p>
+          <div className="mt-5">
+            <LinkButton href={CONTACT_HREF} variant="ghost" className="w-full sm:w-auto sm:min-w-64">{CONTACT_LABEL}</LinkButton>
           </div>
         </div>
         <div className="mt-12">

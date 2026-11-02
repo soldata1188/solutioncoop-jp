@@ -152,11 +152,13 @@ export function SquaresPattern({ variant = "hero" }: { variant?: "hero" | "band"
     <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 520">
       {variant === "hero" ? (
         <>
+          {/* 明るい（白）四角は白文字のコントラストを下げるため、文字の来ない左右の端（x≤140 / x≥1050）にのみ置きます。
+              中央付近は濃い四角のみ（白文字のコントラストは上がる方向）。 */}
           <rect x="60" y="20" width="200" height="200" className="fill-primary-dark" opacity="0.35" />
-          <rect x="700" y="40" width="220" height="220" fill="#ffffff" opacity="0.08" />
-          <rect x="860" y="200" width="260" height="260" fill="#ffffff" opacity="0.1" />
+          <rect x="-60" y="280" width="200" height="200" fill="#ffffff" opacity="0.08" />
+          <rect x="1050" y="190" width="220" height="220" fill="#ffffff" opacity="0.1" />
           <rect x="1040" y="-40" width="160" height="160" className="fill-primary-dark" opacity="0.35" />
-          <rect x="600" y="330" width="140" height="140" fill="#ffffff" opacity="0.07" />
+          <rect x="860" y="360" width="140" height="140" className="fill-primary-dark" opacity="0.25" />
           <rect x="340" y="400" width="160" height="160" className="fill-primary-dark" opacity="0.3" />
         </>
       ) : (

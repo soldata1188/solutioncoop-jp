@@ -33,7 +33,7 @@ export default function Page() {
     ],
     ["職員数", org.staff],
     ["管理人数", `${org.managed}（技能実習生・特定技能外国人）`],
-    ["技能実習生受入実績", org.terms],
+    ["技能実習生|受入実績", org.terms],
     ["受入企業数", org.clients],
     ["専任日本語教師", org.teachers],
     ["表彰", org.award],
@@ -60,8 +60,13 @@ export default function Page() {
           <tbody>
             {rows.map(([k, v]) => (
               <tr key={k}>
-                <th scope="row" className="w-28 border-b border-white bg-label p-4 align-top font-bold text-ink sm:w-48">{k}</th>
-                <td className="border-b border-line bg-white p-4">{v}</td>
+                <th scope="row" className="w-[8.5rem] border-b border-white bg-label p-3 align-top font-bold text-ink sm:w-48 sm:p-4">
+                  {/* 「|」は改行してよい位置（狭い画面で「実績」だけが次の行に残らないように） */}
+                  {k.split("|").map((t) => (
+                    <span key={t} className="inline-block">{t}</span>
+                  ))}
+                </th>
+                <td className="border-b border-line bg-white p-3 sm:p-4">{v}</td>
               </tr>
             ))}
           </tbody>

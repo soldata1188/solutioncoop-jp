@@ -30,12 +30,14 @@ export const viewport: Viewport = {
   themeColor: "#1e7f46",
   width: "device-width",
   initialScale: 1,
+  // iPhone のホームバー等の領域まで描画し、固定バーは env(safe-area-inset-bottom) で余白を確保
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja" className={notoSansJp.variable}>
-      <body className="flex min-h-screen flex-col pb-[calc(72px+env(safe-area-inset-bottom))] antialiased md:pb-0">
+      <body className="flex min-h-screen flex-col pb-[calc(69px+env(safe-area-inset-bottom))] antialiased md:pb-0">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-primary-dark focus:shadow"

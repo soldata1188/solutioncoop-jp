@@ -3,7 +3,6 @@ import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
-import { org } from "@/lib/site";
 
 export const metadata = pageMeta(
   "/industries",
@@ -37,17 +36,7 @@ export default function Page() {
       </Section>
 
       <Section id="record" title="当組合の実績" tone="pale">
-        <dl className="grid gap-4 sm:grid-cols-3">
-          <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
-            <dt className="text-sm text-muted">管理人数</dt>
-            <dd className="text-2xl font-bold text-primary-dark">{org.managed}</dd>
-            <dd className="text-sm text-muted">技能実習生・特定技能外国人</dd>
-          </div>
-          <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
-            <dt className="text-sm text-muted">連携する送り出し国</dt>
-            <dd className="text-2xl font-bold text-primary-dark">3か国</dd>
-            <dd className="text-sm text-muted">ベトナム・インドネシア・フィリピン</dd>
-          </div>
+        <dl className="mx-auto grid max-w-sm gap-4">
           <div className="border-b-4 border-primary bg-white p-5 text-center shadow-card">
             <dt className="text-sm text-muted">主な受入れ企業</dt>
             <dd className="text-2xl font-bold text-primary-dark">大阪府内</dd>

@@ -34,7 +34,7 @@ export function IconLocal({ className = "h-14 w-14" }: { className?: string }) {
   );
 }
 
-/** 3か国との連携（3つの四角を線でつなぐ） */
+/** 送り出し機関との連携（3つの四角を線でつなぐ） */
 export function IconPartners({ className = "h-14 w-14" }: { className?: string }) {
   return (
     <svg {...common} className={className}>
@@ -46,17 +46,3 @@ export function IconPartners({ className = "h-14 w-14" }: { className?: string }
   );
 }
 
-/** 管理実績（人物の並び） */
-export function IconPeople({ className = "h-14 w-14" }: { className?: string }) {
-  return (
-    <svg {...common} className={className}>
-      <circle cx="32" cy="20" r="7" />
-      <path d="M20 48v-6a12 12 0 0124 0v6z" />
-      <circle cx="13" cy="26" r="5" />
-      <path d="M4 48v-3a9 9 0 0113-8" />
-      <circle cx="51" cy="26" r="5" />
-      <path d="M60 48v-3a9 9 0 00-13-8" />
-      <path d="M4 54h56" />
-    </svg>
-  );
-}

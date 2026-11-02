@@ -16,9 +16,8 @@ const body = `# ${org.name}
 - 所在地: ${fullAddress}
 - 電話: ${org.tel} / FAX: ${org.fax} / メール: ${org.email}
 - 主な対応地域: 堺市・大阪府
-- 連携する送り出し国: ベトナム、インドネシア、フィリピン（3か国）
+- 連携する送り出し国: ベトナム、インドネシア、フィリピン
 - 職員数: ${org.staff}
-- 管理人数: ${org.managed}（技能実習生・特定技能外国人の合計。集計時点は確認中）
 - 技能実習生の受入実績: ${org.terms}
 - 受入企業数: ${org.clients}
 - 専任日本語教師: ${org.teachers}

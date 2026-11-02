@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
-import { IconLicense, IconLocal, IconPartners, IconPeople } from "@/components/LineIcons";
+import { IconLicense, IconLocal, IconPartners } from "@/components/LineIcons";
 import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
@@ -53,20 +53,12 @@ const reasons = [
     link: "組合概要を見る",
   },
   {
-    title: "3か国の送り出し機関と連携",
+    title: "送り出し機関と連携",
     body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携し、貴社の業務に合った人材の受入れをご提案いたします。",
     note: "ベトナム・インドネシア・フィリピン",
     Icon: IconPartners,
     href: "/flow",
     link: "受入れの流れを見る",
-  },
-  {
-    title: `${org.managed}の\n管理実績`,
-    body: "技能実習生・特定技能外国人あわせて約360名を管理しております。現場で培った経験をもとに、受入れ企業様をご支援いたします。",
-    note: "技能実習生・特定技能外国人の合計",
-    Icon: IconPeople,
-    href: "/industries",
-    link: "対象業種を見る",
   },
 ];
 
@@ -74,7 +66,7 @@ const reasons = [
 const comparison: { item: string; ours: string; general: string; needsCheck?: boolean }[] = [
   { item: "拠点", ours: "堺市堺区（大阪府内の企業様を中心にご支援）", general: "団体により所在地・対応地域はさまざまです" },
   { item: "許可・登録", ours: "監理団体許可（一般監理事業）と登録支援機関の登録の両方", general: "団体により許可・登録の範囲が異なります" },
-  { item: "連携する送り出し国", ours: "ベトナム・インドネシア・フィリピンの3か国", general: "団体により連携先の国・機関が異なります" },
+  { item: "連携する送り出し国", ours: "ベトナム・インドネシア・フィリピン", general: "団体により連携先の国・機関が異なります" },
   { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
   { item: "特定技能への移行", ours: "登録支援機関として、育成就労後の特定技能への移行もご相談いただけます", general: "別の機関への依頼が必要となる場合があります", needsCheck: true },
   { item: "育成就労制度への対応", ours: "育成就労制度に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
@@ -83,7 +75,7 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
 /** 経営者様にお任せいただけること（確認済みの事実・lib のデータのみ） */
 const benefits: { title: string; body: string; check?: boolean }[] = [
   { title: "申請書類の作成をサポート", body: "受入れに必要な書類や申請書類の作成を、当組合がご案内・サポートいたします。" },
-  { title: "3か国から人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
+  { title: "人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
   { title: "入国後1か月の講習", body: "上陸後講習で日本語や生活のルールを学んでから、貴社へ配属いたします。" },
   { title: "配属後の監査・訪問", body: "法令に基づく定期的な監査・訪問指導で、受入れ後も継続してご支援いたします。" },
   { title: "2027年4月への移行準備", body: "育成就労制度に向けて、現在の技能実習からの切り替えの準備を一緒に進めます。" },
@@ -95,8 +87,6 @@ const cases = [
   { photo: photos.siteExcavation, tag: "大阪府・造園土木" },
   { photo: photos.siteInterior, tag: "京都府・土木工事" },
 ];
-
-const badge = "inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-dark px-5 py-1.5 text-white";
 
 export default function Home() {
   return (
@@ -127,31 +117,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 実績ストリップ（代表者様確認済みの4項目）＋既存の数値ピル（管理人数・送り出し国）を同じ帯にまとめています。
-          ピルは本文サイズの白文字のため背景は #0F4D2A（9.93:1） */}
-      <StatsStrip>
-        <div className="mt-5">
-          <ul className="flex flex-col items-center gap-2.5 sm:flex-row sm:justify-center">
-            <li className={badge}>
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
-              <span className="text-sm font-bold">管理人数</span>
-              <strong className="text-lg">{org.managed}</strong>
-              <span className="text-xs">※1</span>
-            </li>
-            <li className={badge}>
-              <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 8.5l3 3 7-7" /></svg>
-              <span className="text-sm font-bold">連携する送り出し国</span>
-              <strong className="text-lg">3か国</strong>
-              <span className="text-xs">※2</span>
-            </li>
-          </ul>
-          <p className="mt-2 text-center text-xs leading-6 text-muted">
-            <span className="block sm:inline">※1 技能実習生・特定技能外国人の合計（集計時点<CheckBadge />）</span>
-            <span className="hidden sm:inline">　</span>
-            <span className="block sm:inline">※2 ベトナム・インドネシア・フィリピン</span>
-          </p>
-        </div>
-      </StatsStrip>
+      {/* 実績ストリップ（代表者様確認済みの4項目と「SDGs未来都市・堺」） */}
+      <StatsStrip />
 
       {/* お悩み */}
       <Section id="problems" tone="pale" title="外国人材の受入れで、このようなお悩みはありませんか">
@@ -182,8 +149,9 @@ export default function Home() {
       </Section>
 
       {/* 選ばれる理由 */}
-      <Section id="reasons" title="ソリューション協同組合が選ばれる4つの理由">
-        <ol className="grid gap-5 md:grid-cols-2">
+      <Section id="reasons" title="ソリューション協同組合が選ばれる理由">
+        {/* 3項目：PCは2列。最後の1枚は中央に置き、片寄りを作りません */}
+        <ol className="grid gap-5 md:grid-cols-2 md:[&>li:last-child:nth-child(odd)]:col-span-2 md:[&>li:last-child:nth-child(odd)]:mx-auto md:[&>li:last-child:nth-child(odd)]:w-[calc(50%-0.625rem)]">
           {reasons.map(({ title, body, note, Icon, href, link }, i) => (
             <TabCard key={title} n={i + 1}>
               <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">

@@ -99,7 +99,7 @@ export default function Page() {
         <ItemList items={life} />
       </Section>
 
-      <Section id="countries" title="3か国の人材に対応">
+      <Section id="countries" title="ベトナム・インドネシア・フィリピンの人材に対応">
         <p className="text-[15px]">当組合は、ベトナム・インドネシア・フィリピンの送り出し機関と連携しております。</p>
         <ul className="mt-6 grid gap-4 sm:grid-cols-3">
           {countries.map((c) => (

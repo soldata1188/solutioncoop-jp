@@ -11,7 +11,6 @@ export const org = {
   fax: "072-224-2214",
   email: "info@solutioncoop-jp.com",
   staff: "10名",
-  managed: "約360名",
   /** 以下4項目は代表者様に確認済み（2026年11月1日）。集計時点の日付は未確認のため表示しません */
   terms: "65期",
   clients: "80社以上",

@@ -4,6 +4,7 @@ import { NavLink } from "./NavLink";
 import { Wordmark } from "./Wordmark";
 import { ArrowIcon } from "./ui";
 import { LineButton } from "./LineButton";
+import { Phrases } from "./KeepWords";
 
 const btnBase = "min-h-11 items-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline transition-colors";
 // 主ボタンは LINE（#06C755 地に #222、7.05:1）。メールは白地の枠ボタン（#0F4D2A の枠と文字、9.93:1）
@@ -50,7 +51,7 @@ export function Header() {
           </a>
           <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] sm:inline-flex" />
           <Link href={CONTACT_HREF} className={`hidden md:inline-flex ${btnBase} ${btnOutlineColors}`}>
-            {CONTACT_LABEL}
+            <Phrases text={CONTACT_LABEL} />
           </Link>
           <details className="group relative xl:hidden">
             <summary className="flex min-h-11 min-w-12 cursor-pointer flex-col items-center justify-center gap-[3px] rounded border border-line px-2 text-ink">
@@ -81,7 +82,7 @@ export function Header() {
               </ul>
               <div className="mt-2 grid gap-2">
                 <LineButton className="flex min-h-11 gap-2 px-4 text-[13px]" />
-                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnOutlineColors}`}>{CONTACT_LABEL}</Link>
+                <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnOutlineColors}`}><Phrases text={CONTACT_LABEL} /></Link>
                 <a href={TEL_HREF} aria-label={`${TEL_ARIA}（${org.tel}）`} className={`flex justify-center gap-2 ${btnBase} ${btnOutlineColors}`}>
                   <PhoneIcon />
                   電話 {org.tel}

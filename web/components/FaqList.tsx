@@ -1,5 +1,6 @@
 import type { Faq } from "@/lib/faq";
 import { CheckBadge } from "./Placeholder";
+import { KeepWords } from "./KeepWords";
 
 /**
  * 枠線なしのアコーディオン（<details>/<summary>。JS不要）。
@@ -24,7 +25,7 @@ export function FaqList({ items, headingLevel = "h3" }: { items: Faq[]; headingL
           <div className="flex gap-3 pb-5 pr-2 md:pr-8">
             <span aria-hidden="true" className="font-bold text-cta-text">A</span>
             <p className="text-[15px] text-body">
-              {f.a}
+              <KeepWords text={f.a} />
               {f.needsCheck ? <CheckBadge /> : null}
             </p>
           </div>

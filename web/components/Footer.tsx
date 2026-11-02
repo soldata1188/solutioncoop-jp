@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
 import { allPages, org, fullAddress, licenses, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
 import { LineButton } from "./LineButton";
+import { Phrases } from "./KeepWords";
 
 export function Footer() {
   return (
@@ -12,7 +13,7 @@ export function Footer() {
             {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="flex min-h-11 items-center border-b border-line px-1 text-ink sm:inline-flex sm:border-b-0 sm:px-2 no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
-                  {item.label}
+                  <Phrases text={item.label} />
                 </Link>
               </li>
             ))}
@@ -23,7 +24,7 @@ export function Footer() {
         <div className="mt-6 hidden items-center justify-center gap-3 sm:flex">
           <LineButton className="inline-flex min-h-12 gap-2 px-6 text-base" iconClassName="h-5 w-5" />
           <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint">
-            {CONTACT_LABEL}
+            <Phrases text={CONTACT_LABEL} />
           </Link>
         </div>
         <div className="mt-6 border-t border-line pt-6 text-center text-[13px] leading-7 text-muted">

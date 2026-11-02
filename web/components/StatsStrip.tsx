@@ -1,6 +1,7 @@
 import Image from "next/image";
 import sdgsSakai from "@/public/images/sdgs-sakai.webp";
 import { achievements } from "@/lib/site";
+import { NoBreak } from "./KeepWords";
 
 /**
  * トップの実績ストリップ（ヒーロー直下）。
@@ -30,7 +31,12 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
                   <span className="text-[2.25rem] md:text-[2.5rem]">{a.value}</span>
                   <span className="ml-0.5 text-lg md:text-xl">{a.unit}</span>
                 </span>
-                <span aria-hidden="true" className="mt-2 text-[13px] font-bold leading-snug text-ink">{a.label}</span>
+                <span aria-hidden="true" className="mt-2 text-[13px] font-bold leading-snug text-ink">
+                  {/* ラベルは語の途中で折り返さないよう、空白で区切ったまとまりごとに改行を禁止します */}
+                  {a.label.split(" ").map((part, i) => (
+                    <span key={part}>{i > 0 ? " " : null}<NoBreak>{part}</NoBreak></span>
+                  ))}
+                </span>
                 <span className="sr-only">{a.sr}</span>
               </li>
             ))}

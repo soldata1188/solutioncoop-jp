@@ -119,7 +119,7 @@ export default function Page() {
       <Section width="narrow">
         <SubHeading as="h2">現在、技能実習生を受け入れている企業様へ</SubHeading>
         <p className="mt-4">
-          現在受け入れている技能実習生の在留期間中の取扱いや、育成就労制度への切り替えの時期は、企業様ごとに異なります。
+          現在受け入れている技能実習生の在留期間中の取扱いや、育成就労制度への切り替えの時期は、企業様ごとに異なります。{""}
           準備の進め方は「<Link href="/roadmap" className="font-bold text-primary-dark underline underline-offset-4">2027年4月に向けた準備</Link>」でもご案内しております。
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -1,6 +1,7 @@
 import { CONTACT_HREF, CONTACT_LABEL, TEL_HREF, org, repoFacts } from "@/lib/site";
 import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
+import { Phrases } from "./KeepWords";
 import { LinkButton, SquaresPattern } from "./ui";
 
 /** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い緑 #0F4D2A（白文字 9.93:1） */
@@ -16,7 +17,7 @@ export function CtaSection({ title = "育成就労制度への備えを、今か
         {/* 主ボタンは「LINEで無料相談」1つ。メール（/contact のフォーム）は白枠の副ボタン */}
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <LineButton className="flex min-h-14 gap-2 px-8 text-base sm:min-w-64" iconClassName="h-5 w-5" />
-          <LinkButton href={CONTACT_HREF} variant="outlineWhite" className="min-h-14 sm:min-w-64">{CONTACT_LABEL}</LinkButton>
+          <LinkButton href={CONTACT_HREF} variant="outlineWhite" className="min-h-14 sm:min-w-64"><Phrases text={CONTACT_LABEL} /></LinkButton>
         </div>
         <p className="mt-6 text-[15px]">
           お電話でのご相談

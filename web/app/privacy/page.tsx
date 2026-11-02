@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Placeholder } from "@/components/Placeholder";
 import { Section, SubHeading } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
+import { KeepWords } from "@/components/KeepWords";
 import { org, fullAddress } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -39,7 +40,7 @@ export default function Page() {
         {sections.map((s) => (
           <section key={s.title} className="mb-8">
             <SubHeading as="h2">{s.title}</SubHeading>
-            <div className="mt-2 [text-wrap:pretty] [word-break:auto-phrase]">{s.body}</div>
+            <div className="mt-2 [text-wrap:pretty] [word-break:auto-phrase]">{typeof s.body === "string" ? <KeepWords text={s.body} /> : s.body}</div>
           </section>
         ))}
         <section className="border-l-4 border-primary bg-pale p-5">

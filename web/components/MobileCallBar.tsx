@@ -3,6 +3,7 @@ import { CONTACT_HREF, CONTACT_LABEL, TEL_HREF, org } from "@/lib/site";
 import { BarVisibility } from "./BarVisibility";
 import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
+import { Phrases } from "./KeepWords";
 
 /**
  * スマートフォン用の固定CTA（画面下部・3つの操作：電話／LINEで無料相談（主・最も幅広）／メール）。
@@ -18,7 +19,7 @@ export function MobileCallBar() {
       <div className="mx-auto grid max-w-[612px] grid-cols-[1fr_1.45fr_1fr] gap-2">
         <a href={TEL_HREF} aria-label={`電話で相談（${org.tel}）`} className={`${item} bg-primary-dark text-white`}>
           <PhoneIcon className="h-5 w-5" />
-          電話で相談
+          <Phrases text="電話で相談" />
         </a>
         <LineButton className={item} iconClassName="h-5 w-5" />
         <Link href={CONTACT_HREF} aria-label={CONTACT_LABEL} className={`${item} border-2 border-primary-dark bg-white text-primary-dark`}>

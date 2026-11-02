@@ -1,4 +1,5 @@
 import { LINE_ARIA, LINE_LABEL, LINE_URL } from "@/lib/site";
+import { Phrases } from "./KeepWords";
 
 /** 吹き出しアイコン（自作の簡易図形。LINE のロゴではありません。装飾のため読み上げ対象外） */
 export function ChatIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -13,15 +14,18 @@ export function ChatIcon({ className = "h-4 w-4" }: { className?: string }) {
 /**
  * LINE公式アカウントへのボタン（新しいタブで開きます）。
  * サイト全体の主ボタン（文言「LINEで無料相談」）。色は #06C755 地に #222 文字（7.05:1、hover #2BD06B は 7.83:1）。タップ領域は高さ44px以上。
+ * onDark：緑 #1E7F46 のヒーローでは、ボタンと背景の境目が 2.23〜2.75:1 と弱いため、2px の白枠（背景に対して 5.02:1 以上）を付けます。
  */
 export function LineButton({
   className = "",
   iconClassName = "h-4 w-4",
-  children = LINE_LABEL,
+  children = <Phrases text={LINE_LABEL} />,
+  onDark = false,
 }: {
   className?: string;
   iconClassName?: string;
   children?: React.ReactNode;
+  onDark?: boolean;
 }) {
   return (
     <a
@@ -29,7 +33,7 @@ export function LineButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={LINE_ARIA}
-      className={`items-center justify-center whitespace-nowrap rounded bg-linegreen font-bold text-ink no-underline transition-colors hover:bg-linegreen-hover ${className}`}
+      className={`items-center justify-center whitespace-nowrap rounded bg-linegreen font-bold text-ink no-underline transition-colors hover:bg-linegreen-hover ${onDark ? "border-2 border-white" : ""} ${className}`}
     >
       <ChatIcon className={iconClassName} />
       {children}

@@ -46,3 +46,72 @@ export function IconPartners({ className = "h-14 w-14" }: { className?: string }
   );
 }
 
+
+/** 地球（円＋経線・緯線） */
+export function IconGlobe({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <circle cx="32" cy="32" r="22" />
+      <ellipse cx="32" cy="32" rx="10" ry="22" />
+      <path d="M10 32h44M13.6 20h36.8M13.6 44h36.8" />
+    </svg>
+  );
+}
+
+/** 握手（左右の袖口と組み合わせた手） */
+export function IconHandshake({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <path d="M4 20h8v22H4M60 20h-8v22h8" />
+      <path d="M52 24l-9-4-13 8a3 3 0 004 4l8-4 10 9" />
+      <path d="M12 24l8-4h9" />
+      <path d="M12 39l5 1 7 6a3 3 0 004-4M23 41l6 5a3 3 0 004-4l-5-4M29 37l6 5a3 3 0 004-4l-4-3" />
+    </svg>
+  );
+}
+
+/** 飛行機（上から見た機体） */
+export function IconPlane({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <path d="M32 6c2 0 3 2 3 5v14l19 11v5l-19-6v12l6 5v4l-9-3-9 3v-4l6-5V35l-19 6v-5l19-11V11c0-3 1-5 3-5z" />
+    </svg>
+  );
+}
+
+/** 右上がりのグラフ（棒＋上向きの矢印） */
+export function IconChartUp({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <path d="M8 8v48h48" />
+      <rect x="16" y="44" width="7" height="12" />
+      <rect x="29" y="36" width="7" height="20" />
+      <rect x="42" y="28" width="7" height="28" />
+      <path d="M14 34l12-10 8 6 16-16M42 14h8v8" />
+    </svg>
+  );
+}
+
+/** 右下がりのグラフ（棒＋下向きの矢印） */
+export function IconChartDown({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <path d="M8 8v48h48" />
+      <rect x="16" y="32" width="7" height="24" />
+      <rect x="29" y="40" width="7" height="16" />
+      <rect x="42" y="47" width="7" height="9" />
+      <path d="M14 12l12 10 8-6 16 14M50 22v8h-8" />
+    </svg>
+  );
+}
+
+/** 書類（重ねた2枚の用紙） */
+export function IconDocuments({ className = "h-14 w-14" }: { className?: string }) {
+  return (
+    <svg {...common} className={className}>
+      <path d="M22 12V8a2 2 0 012-2h24a2 2 0 012 2v36a2 2 0 01-2 2h-4" />
+      <rect x="14" y="14" width="30" height="44" rx="2" />
+      <path d="M21 26h16M21 33h16M21 40h16M21 47h9" />
+    </svg>
+  );
+}

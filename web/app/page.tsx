@@ -3,11 +3,11 @@ import Link from "next/link";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
-import { IconLicense, IconLocal, IconPartners } from "@/components/LineIcons";
+import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
-import { KeepWords } from "@/components/KeepWords";
+import { Chunks, KeepWords } from "@/components/KeepWords";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { licenses, org, sdgs } from "@/lib/site";
@@ -35,9 +35,70 @@ const problems = [
   },
 ];
 
+/** 事業内容（代表者様ご提供の文言をそのまま掲載） */
+const businesses = [
+  {
+    title: "外国人材受入事業",
+    sub: "グローバル人材の安定確保",
+    body: "意欲ある若手・グローバル人材の安定的な確保と育成を支援。新制度「育成就労」や「特定技能」を見据え、母国語スタッフによる手厚い生活指導・メンタルケアで高い定着率を実現します。",
+    items: ["外国人技能実習生共同受入れ事業", "特定技能外国人支援事業"],
+    Icon: IconGlobe,
+  },
+  {
+    title: "事業拡大サポート",
+    sub: "共同事業を通じたビジネス拡大支援",
+    body: "組合員様向けに、事業拡大と業務効率化を直接的にバックアップ。受注の斡旋や必要な資材・設備の共同購買を通じて、組合員様のコスト削減と収益向上に貢献します。",
+    items: ["組合員の行う事業・工事等の受注斡旋", "組合員の必要とする機械・設備等の購買斡旋"],
+    Icon: IconHandshake,
+  },
+  {
+    title: "グローバルビジネス支援",
+    sub: "海外進出サポート事業",
+    body: "労働力不足の解消だけでなく、組合員様のさらなる成長のために海外展開を支援。現地の強力なネットワークを活かし、安全かつ円滑なグローバルビジネスの第一歩をサポートします。",
+    items: ["組合員の海外進出に関するサポート事業", "海外市場の調査及び関連情報の提供"],
+    Icon: IconPlane,
+  },
+  {
+    title: "組織力強化支援",
+    sub: "経営向上と福利厚生の充実",
+    body: "企業としての持続的な成長を支援するため、最新の法令・業界動向の共有から、従業員の皆様の働きやすい環境づくりまで、多角的なサポートを提供します。",
+    items: ["組合員の福利厚生に関する事業", "前各号の事業に附帯する事業"],
+    Icon: IconChartUp,
+  },
+];
+
+/** 選ばれ続ける理由（代表者様ご提供の文言をそのまま掲載） */
 const reasons = [
   {
-    title: "監理団体の許可と\n登録支援機関の登録",
+    title: "明朗な費用で安心",
+    sub: "適正な費用体系・透明性の高い運営",
+    body: "仲介業者を介さず、海外の教育機関と直接連携して人材をご紹介。すべての費用を書面で明示し、透明性の高い適正な運営体制で企業様の信頼にお応えします。",
+    Icon: IconChartDown,
+  },
+  {
+    title: "事務負担を大幅に軽減",
+    sub: "煩雑な事務手続きの負担軽減",
+    body: "新制度移行に伴う煩雑な手続きの負担軽減と確実な法令順守をサポート。受入準備から各種申請への適切なアドバイスまで、専門スタッフが伴走し、企業様の適正な運用を支援します。",
+    Icon: IconDocuments,
+  },
+  {
+    title: "3カ国対応ハイブリッド",
+    sub: "多国籍で優秀な人材の厳選",
+    body: "ベトナム、インドネシア、フィリピンの3カ国から意欲ある人材を紹介可能。貴社の社風や業務ニーズに合わせ、グローバルな視点から最も定着しやすい人材を提案します。",
+    Icon: IconGlobe,
+  },
+  {
+    title: "手厚いフォローで安心",
+    sub: "365日・24時間の母国語サポート",
+    body: "入社後も独自のフォロー体制を提供。生活習慣の違いからくるトラブルやメンタルケアまで母国語で対応し、外国人材の迅速な環境適応と長期定着をバックアップします。",
+    Icon: IconHandshake,
+  },
+];
+
+/** 許可・登録・拠点（旧「選ばれる理由」の3枚。確認済みの事実） */
+const credentials = [
+  {
+    title: "監理団体の許可と登録支援機関の登録",
     body: `技能実習法に基づく監理団体（${licenses.kanri.kind}）の許可と、特定技能の登録支援機関の登録を受けております。`,
     note: `許可番号 ${licenses.kanri.number}／登録番号 ${licenses.toroku.number}`,
     Icon: IconLicense,
@@ -45,7 +106,7 @@ const reasons = [
     link: "許可・登録の内容を見る",
   },
   {
-    title: "堺市に拠点を構え、\n大阪の中小企業様に密着",
+    title: "堺市に拠点を構え、大阪の中小企業様に密着",
     body: `堺市堺区に事務所を構え、職員${org.staff}の体制で、大阪府内の中小企業様を中心にきめ細かくご支援いたします。`,
     note: `所在地 ${org.locality}／職員 ${org.staff}`,
     Icon: IconLocal,
@@ -148,34 +209,91 @@ export default function Home() {
         <p className="mt-4 text-xs text-muted">※上記は一般的なお悩みの例であり、調査結果ではありません。</p>
       </Section>
 
-      {/* 選ばれる理由 */}
-      <Section id="reasons" title="ソリューション協同組合が選ばれる理由">
-        {/* 3項目：PCは2列。最後の1枚は中央に置き、片寄りを作りません */}
-        <ol className="grid gap-5 md:grid-cols-2 md:[&>li:last-child:nth-child(odd)]:col-span-2 md:[&>li:last-child:nth-child(odd)]:mx-auto md:[&>li:last-child:nth-child(odd)]:w-[calc(50%-0.625rem)]">
-          {reasons.map(({ title, body, note, Icon, href, link }, i) => (
+      {/* 事業内容（代表者様ご提供の文言） */}
+      <Section
+        id="business"
+        eyebrow={<span lang="en">BUSINESS CONTENT</span>}
+        title="ソリューション協同組合の事業内容"
+        lead="単なる人材紹介にとどまらず、受入企業様の「人手不足解消」から「事業拡大」「海外進出」までをトータルでサポートする4つの事業を柱としています。"
+      >
+        <ol className="grid gap-5 md:grid-cols-2">
+          {businesses.map(({ title, sub, body, items, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
               <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">
                 <Icon className="h-20 w-20" />
               </div>
-              <div className="px-5 pb-6 pt-5">
-                <h3 className="whitespace-pre-line text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">理由{i + 1}：</span>
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">事業{i + 1}：</span>
                   {title}
                 </h3>
+                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
                 <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
-                <p className="mt-2 text-xs text-muted">※{note}</p>
-                <Link href={href} className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
-                  {link}
-                  <ArrowIcon className="h-3 w-3" />
-                </Link>
+                <div className="mt-auto pt-4">
+                  <p className="inline-block bg-label px-2 py-0.5 text-xs font-bold text-ink">定款記載事業(等)</p>
+                  <ul className="mt-2 space-y-1">
+                    {items.map((it) => (
+                      <li key={it} className="flex items-start gap-2 text-[13px] leading-snug text-ink">
+                        <span aria-hidden="true" className="mt-[0.4em] h-2 w-2 shrink-0 bg-primary" />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </TabCard>
           ))}
         </ol>
       </Section>
 
+      {/* 選ばれ続ける理由（代表者様ご提供の文言）＋許可・登録・拠点 */}
+      <Section
+        id="reasons"
+        tone="pale"
+        eyebrow="70社超の企業様に選ばれた実績"
+        title="70社以上に選ばれ続ける理由"
+        sub={<Chunks parts={["— 受入企業様が実感する、", "技能実習・育成就労・", "特定技能対応の", "4つの理由 —"]} />}
+        lead="技能実習生受入れから育成就労制度への移行、特定技能への対応まで。外国人採用に慣れていない中小企業様も、煩雑な事務手続きのご負担を軽減し、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
+      >
+        <ol className="grid gap-5 md:grid-cols-2">
+          {reasons.map(({ title, sub, body, Icon }, i) => (
+            <TabCard key={title} n={i + 1}>
+              <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">
+                <Icon className="h-20 w-20" />
+              </div>
+              <div className="px-5 pb-6 pt-5">
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">理由{i + 1}：</span>
+                  {title}
+                </h3>
+                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
+                <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
+              </div>
+            </TabCard>
+          ))}
+        </ol>
+
+        <div className="mt-12">
+          <LineHeading id="credentials-title">許可・登録・拠点</LineHeading>
+          <ul aria-labelledby="credentials-title" className="mt-6 grid gap-4 md:grid-cols-3">
+            {credentials.map(({ title, body, note, Icon, href, link }) => (
+              <li key={title} className="flex flex-col bg-white p-5 shadow-card">
+                <Icon className="h-10 w-10 text-primary" />
+                <h4 className="mt-3 text-base font-bold leading-snug text-ink">{title}</h4>
+                <p className="mt-2 text-[13px] leading-relaxed text-body">{body}</p>
+                <p className="mt-2 text-xs text-muted">※{note}</p>
+                <Link href={href} className="mt-auto inline-flex min-h-11 items-center gap-2 pt-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
+                  {link}
+                  <ArrowIcon className="h-3 w-3" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
       {/* 経営者様のメリット */}
-      <Section id="benefits" tone="pale" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
+      <Section id="benefits" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
         {/* 5項目：半端な段（3＋2）を作らないよう、全幅のカードを縦に並べます（PCは見出しと説明を横並び） */}
         <ul className="grid gap-3">
           {benefits.map((b) => (
@@ -194,7 +312,7 @@ export default function Home() {
       </Section>
 
       {/* 受入れまでの期間 */}
-      <Section id="timeline" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
+      <Section id="timeline" tone="pale" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
         <FlowTimeline />
         <div className="mt-8 text-center">
           <LinkButton href="/flow" variant="ghost" className="min-w-64">13の手順を詳しく見る</LinkButton>

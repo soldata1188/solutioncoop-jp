@@ -68,17 +68,25 @@ export function SectionHeading({
   children,
   lead,
   as: Tag = "h2",
+  eyebrow,
+  sub,
 }: {
   id?: string;
   children: React.ReactNode;
   lead?: React.ReactNode;
   as?: "h1" | "h2";
+  /** 見出しの上の小さなラベル */
+  eyebrow?: React.ReactNode;
+  /** 見出しの下の副題 */
+  sub?: React.ReactNode;
 }) {
   return (
     <div className="text-center">
+      {eyebrow ? <p className="mb-2 text-[13px] font-bold tracking-wide text-primary-dark">{eyebrow}</p> : null}
       <Tag id={id} className="text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
         {children}
       </Tag>
+      {sub ? <p className="mt-3 text-[15px] font-bold leading-relaxed text-ink md:text-base">{sub}</p> : null}
       <SquareDots className="mt-4" />
       {lead ? <p className="mx-auto mt-5 max-w-[580px] text-left text-[15px] text-body sm:text-center">{lead}</p> : null}
     </div>
@@ -126,10 +134,14 @@ export function Section({
   children,
   className = "",
   flushBottom = false,
+  eyebrow,
+  sub,
 }: {
   id?: string;
   title?: React.ReactNode;
   lead?: React.ReactNode;
+  eyebrow?: React.ReactNode;
+  sub?: React.ReactNode;
   tone?: "white" | "pale";
   width?: keyof typeof widths;
   children: React.ReactNode;
@@ -139,7 +151,7 @@ export function Section({
   return (
     <section aria-labelledby={title && id ? id : undefined} className={`${tone === "pale" ? "bg-pale" : "bg-white"} ${className}`}>
       <div className={`mx-auto ${widths[width]} px-4 ${flushBottom ? "pt-14 md:pt-[72px]" : "py-14 md:py-[72px]"}`}>
-        {title ? <SectionHeading id={id} lead={lead}>{title}</SectionHeading> : null}
+        {title ? <SectionHeading id={id} lead={lead} eyebrow={eyebrow} sub={sub}>{title}</SectionHeading> : null}
         <div className={title ? "mt-10" : ""}>{children}</div>
       </div>
     </section>

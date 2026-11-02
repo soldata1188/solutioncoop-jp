@@ -4,7 +4,7 @@ import { CheckBadge } from "@/components/Placeholder";
 import { Section } from "@/components/ui";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { pageMeta } from "@/lib/meta";
-import { steps } from "@/lib/flow";
+import { steps, phaseStepLabel } from "@/lib/flow";
 
 export const metadata = pageMeta(
   "/flow",
@@ -35,11 +35,14 @@ export default function Page() {
               {i < steps.length - 1 ? <span aria-hidden="true" className="absolute left-[21px] top-11 bottom-0 w-0.5 bg-tab" /> : null}
               <span aria-hidden="true" className="relative flex h-11 w-11 shrink-0 items-center justify-center bg-primary-dark font-bold text-white">{i + 1}</span>
               <div className="flex-1 rounded border border-line bg-white p-5 shadow-card">
+                {/* 上の「期間の目安（全体像）」の段階名と手順番号の範囲 */}
+                <p className="mb-1 text-[13px] font-bold text-primary-dark">{s.phase}（{phaseStepLabel[s.phase]}）</p>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">手順{i + 1}：</span>{s.title}
                 </h3>
                 <p className="mt-2 text-[15px] text-muted">{s.body}</p>
-                {s.badge ? <p className="mt-3 inline-block rounded-full bg-primary-dark px-4 py-1 text-sm font-bold text-white">{s.badge}</p> : null}
+                {/* 期間の目安は、上の全体像と同じ書式（濃い緑の太字）で表示し、ピル型の表示は使いません */}
+                {s.badge ? <p className="mt-3 text-sm font-bold text-primary-dark">{s.badge}</p> : null}
                 {s.check ? <p className="mt-2 text-sm text-muted">{s.check}<CheckBadge /></p> : null}
               </div>
             </li>

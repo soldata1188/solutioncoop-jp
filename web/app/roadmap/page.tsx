@@ -98,10 +98,11 @@ export default function Page() {
       </Section>
 
       <Section id="checklist" title="経営者様向けチェックリスト" tone="pale" width="narrow">
-        <ul className="space-y-3">
-          {checklist.map((c) => (
+        {/* 操作できるチェック欄ではないため、四角い枠ではなく番号で表示します */}
+        <ol className="space-y-3">
+          {checklist.map((c, i) => (
             <li key={c.text} className="flex gap-4 rounded bg-white p-4 shadow-card">
-              <span aria-hidden="true" className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded border-2 border-primary-dark bg-white" />
+              <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-dark text-sm font-bold text-white">{i + 1}</span>
               <div>
                 <p className="font-bold text-ink">
                   {c.text}
@@ -111,7 +112,7 @@ export default function Page() {
               </div>
             </li>
           ))}
-        </ul>
+        </ol>
         <p className="mt-6 text-[15px]">
           詳しくは「<Link href="/compare" className="font-bold text-primary-dark underline underline-offset-4">制度の比較</Link>」もご覧ください。
         </p>

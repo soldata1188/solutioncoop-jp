@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
+import { BarRoute } from "@/components/BarRoute";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL, org, organizationJsonLd } from "@/lib/site";
 
@@ -36,8 +37,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja" className={notoSansJp.variable}>
-      <body className="flex min-h-screen flex-col pb-[calc(69px+env(safe-area-inset-bottom))] antialiased md:pb-0">
+    <html lang="ja" className={notoSansJp.variable} suppressHydrationWarning>
+      <head>
+        {/* JavaScript が使えるときだけ html に .js を付けます（開閉式の部品は、JavaScript 無効時にすべて開いた状態で表示するため） */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className="flex min-h-screen flex-col antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-primary-dark focus:shadow"
@@ -49,7 +54,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <Footer />
-        <MobileCallBar />
+        <BarRoute>
+          <MobileCallBar />
+        </BarRoute>
         <JsonLd data={organizationJsonLd} />
       </body>
     </html>

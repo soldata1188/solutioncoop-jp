@@ -19,7 +19,8 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        {/* スマートフォンでは、直前の CTA 帯と画面下部の固定バーに同じ操作があるため、ボタンは表示しません（PC は従来どおり） */}
+        <div className="mt-6 hidden items-center justify-center gap-3 sm:flex">
           <a href={TEL_HREF} className="inline-flex min-h-12 items-center gap-2 rounded bg-primary-dark px-6 text-base font-bold text-white no-underline hover:bg-primary-darker">
             <PhoneIcon className="h-5 w-5" />
             お電話でのご相談 {org.tel}

@@ -6,7 +6,8 @@ import { LineButton } from "./LineButton";
 
 /**
  * スマートフォン用の固定CTA（画面下部・3つの操作）。
- * バーの高さは 69px（上枠1＋上余白8＋ボタン52＋下余白8）。body に同じ69px＋safe-area分の下余白を付けているため、ページ末尾の内容を覆いません。
+ * バーの高さは 69px（上枠1＋上余白8＋ボタン52＋下余白8）。BarRoute がフッターの後ろに同じ69px＋safe-area分の余白を置くため、ページ末尾の内容を覆いません。
+ * /contact・/privacy では表示しません（BarRoute）。
  * 各ボタンは高さ52px（タップ領域44px以上）、文字は13px。iPhone のホームバー分は env(safe-area-inset-bottom) で確保します。
  * トップではヒーローが見えている間だけ隠します（BarVisibility。JavaScript 無効時は常に表示）。
  */

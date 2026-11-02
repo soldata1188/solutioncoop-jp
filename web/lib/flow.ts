@@ -18,3 +18,13 @@ export const steps: FlowStep[] = [
   { phase: "配属・育成", title: "企業様へ配属", body: "貴社での就労が始まります。", badge: "面接から配属まで約5〜6か月", check: "平均期間を確認中" },
   { phase: "配属・育成", title: "育成就労（原則3年間）", body: "配属後は原則3年間、当組合が定期的な訪問やご相談への対応を通じて、受入れ企業様と人材の双方をご支援いたします。" },
 ];
+
+/** 各段階に含まれる手順番号の範囲の表示（例：「手順2〜4」）。期間の目安（全体像）と13の手順で共通に使います */
+export const phaseStepLabel: Record<Phase, string> = Object.fromEntries(
+  phases.map((p) => {
+    const idx = steps.flatMap((s, i) => (s.phase === p ? [i + 1] : []));
+    const from = idx[0];
+    const to = idx[idx.length - 1];
+    return [p, `手順${from === to ? from : `${from}〜${to}`}`];
+  }),
+) as Record<Phase, string>;

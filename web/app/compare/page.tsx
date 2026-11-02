@@ -5,6 +5,7 @@ import { CheckBadge } from "@/components/Placeholder";
 import { Section, SubHeading, LinkButton } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { compareRows, ourStatus, type Cell } from "@/lib/compare";
+import { CompareAccordion } from "./CompareAccordion";
 
 export const metadata = pageMeta(
   "/compare",
@@ -89,21 +90,12 @@ export default function Page() {
           </table>
         </div>
 
-        {/* スマートフォン：項目ごとのカード */}
-        <div className="space-y-4 md:hidden">
-          {[...compareRows, { label: "当組合の対応", jisshu: { text: ourStatus.jisshu }, tokutei: { text: ourStatus.tokutei }, ikusei: { text: ourStatus.ikusei } }].map((r) => (
-            <section key={r.label} aria-label={r.label} className="overflow-hidden rounded bg-white shadow-card">
-              <h3 className="bg-label px-4 py-2 font-bold text-ink">{r.label}</h3>
-              <dl className="divide-y divide-line">
-                {cols.map((c) => (
-                  <div key={c.key} className={`px-4 py-3 ${c.key === "ikusei" ? "bg-cta-tint" : ""}`}>
-                    <dt className="text-[13px] font-bold text-primary-dark">{c.label}</dt>
-                    <dd className="mt-0.5 text-[15px]"><CellText cell={r[c.key]} /></dd>
-                  </div>
-                ))}
-              </dl>
-            </section>
-          ))}
+        {/* スマートフォン：項目ごとの開閉式（開くと3制度を並べて表示） */}
+        <div className="md:hidden">
+          <CompareAccordion
+            cols={cols}
+            rows={[...compareRows, { label: "当組合の対応", jisshu: { text: ourStatus.jisshu }, tokutei: { text: ourStatus.tokutei }, ikusei: { text: ourStatus.ikusei } }]}
+          />
         </div>
 
         <div className="mt-6 space-y-1 text-sm text-muted">

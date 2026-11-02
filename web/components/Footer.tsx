@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
 import { allPages, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
 import { LineButton } from "./LineButton";
-import { KeepWords, Phrases } from "./KeepWords";
+import { Chunks, Phrases } from "./KeepWords";
 
 export function Footer() {
   return (
@@ -27,6 +27,10 @@ export function Footer() {
             <Phrases text={CONTACT_LABEL} />
           </Link>
         </div>
+        {/* SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）。黒文字・1〜2行 */}
+        <p className="mx-auto mt-6 max-w-[560px] rounded border border-line-strong bg-white px-4 py-4 text-center text-base font-bold leading-relaxed text-black shadow-card [text-wrap:balance]">
+          <Chunks parts={sdgs.supportParts} />
+        </p>
         <div className="mt-6 border-t border-line pt-6 text-center text-[13px] leading-7 text-muted">
           <p className="inline-flex items-center gap-2.5 text-[15px] font-bold text-ink">
             <LogoTile alt="" className="h-10 w-10" />
@@ -46,7 +50,6 @@ export function Footer() {
             <br className="sm:hidden" />
             登録支援機関登録番号：{licenses.toroku.number}
           </p>
-          <p className="mt-2 text-black"><KeepWords text={sdgs.support} /></p>
         </div>
       </div>
       <p className="bg-primary-dark py-3 text-center text-xs text-white">© {org.name}</p>

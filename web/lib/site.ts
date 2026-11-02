@@ -52,6 +52,9 @@ export const licenses = {
  */
 export const sdgs = {
   support: "ソリューション協同組合は、SDGs未来都市・堺を応援しています。",
+  /** support を改行してよい位置で2つに分けたもの（1〜2行で表示するため） */
+  supportParts: ["ソリューション協同組合は、", "SDGs未来都市・堺を応援しています。"],
+  heading: "SDGs未来都市・堺",
   badge: "SDGs未来都市・堺を応援しています",
   selected: "堺市は、平成30年（2018年）6月、国から「SDGs未来都市」に選定されました。",
   sourceUrl: "https://www.city.sakai.lg.jp/shisei/toshi/sdgs/",

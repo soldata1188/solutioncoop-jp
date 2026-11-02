@@ -108,8 +108,9 @@ export default function Home() {
         <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
           <div className="flex flex-wrap items-center justify-center gap-2">
             <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
-            {/* 応援の表明のみ（認定・選定を受けた旨ではありません）。白文字・白枠は緑地に対して 5.02:1 */}
-            <p className="inline-block rounded-sm border border-white px-3 py-[3px] text-[13px] font-bold text-white"><KeepWords text={sdgs.badge} /></p>
+            {/* 応援の表明のみ（認定・選定を受けた旨ではありません）。ロゴ画像は使いません（承認範囲の確認前のため）。
+                白地に #0F4D2A の文字（9.93:1）。組合名入りの定型文は 390px で2行になり見出しを押し下げるため、短い表現にしています */}
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-sm font-bold text-primary-dark"><KeepWords text={sdgs.badge} /></p>
           </div>
           <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]">
             <span className="block">堺の監理団体として、</span>

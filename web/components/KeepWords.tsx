@@ -33,7 +33,11 @@ const PHRASES: Record<string, string[]> = {
   "フォームへ進む": ["フォームへ", "進む"],
 };
 export function Phrases({ text }: { text: string }) {
-  const parts = PHRASES[text] ?? [text];
+  return <Chunks parts={PHRASES[text] ?? [text]} />;
+}
+
+/** 与えたまとまりの間だけで改行できるようにします（各まとまりは途中で折り返しません） */
+export function Chunks({ parts }: { parts: readonly string[] }) {
   // 1つの span にまとめ、flex のボタン内でも1つの要素として扱われるようにします
   return (
     <span>

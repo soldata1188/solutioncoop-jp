@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { KeepWords } from "@/components/KeepWords";
+import { Chunks } from "@/components/KeepWords";
 import { CheckBadge } from "@/components/Placeholder";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
@@ -42,7 +42,28 @@ export default function Page() {
   ];
   return (
     <>
-      <PageHeader title="組合概要" path="/about" lead="堺市堺区を拠点に、大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。" />
+      <PageHeader
+        title="組合概要"
+        path="/about"
+        lead="堺市堺区を拠点に、大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。"
+        leadAfter={
+          // SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）
+          <section aria-labelledby="sdgs-title" className="mt-5 rounded border border-line-strong border-l-4 border-l-primary bg-white p-4 shadow-card sm:p-5">
+            <h2 id="sdgs-title" className="text-lg font-bold text-ink">{sdgs.heading}</h2>
+            <p className="mt-2 text-base font-bold leading-relaxed text-black [text-wrap:balance]">
+              <Chunks parts={sdgs.supportParts} />
+            </p>
+            <p className="mt-2 text-[15px] text-body">
+              {sdgs.selected}（出典：
+              <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap text-primary-dark underline underline-offset-4">
+                {sdgs.sourceLabel}
+                <span className="sr-only">（新しいタブで開きます）</span>
+              </a>
+              ）
+            </p>
+          </section>
+        }
+      />
       <Section id="office" title="堺から、大阪の企業様を支えます" width="default">
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
           <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" caption={<>「ソリューション協同組合」の看板を掲げた当組合の建物（撮影場所<CheckBadge />）</>} />
@@ -51,17 +72,6 @@ export default function Page() {
               当組合は、堺市堺区に事務所を構え、職員{org.staff}の体制で、大阪府内の中小企業様の外国人材受入れをご支援しております。
             </p>
             <Photo photo={photos.sakai} sizes="(min-width: 768px) 310px, 100vw" className="mt-5" caption="地元・堺の海辺の風景" />
-            <div className="mt-5 border-l-4 border-primary bg-pale px-4 py-3 text-sm">
-              <p className="font-bold text-black"><KeepWords text={sdgs.support} /></p>
-              <p className="mt-1 text-body">
-                {sdgs.selected}（出典：
-                <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary-dark underline underline-offset-4">
-                  {sdgs.sourceLabel}
-                  <span className="sr-only">（新しいタブで開きます）</span>
-                </a>
-                ）
-              </p>
-            </div>
           </div>
         </div>
       </Section>

@@ -23,9 +23,9 @@ export function PageHeader({ title, lead, path, crumb, leadAfter }: { title: str
       {path ? (
         <>
           <nav aria-label="パンくずリスト" className="border-b border-line bg-pale">
-            <ol className="mx-auto flex max-w-[932px] flex-wrap items-center gap-x-2 px-4 text-[13px]">
+            <ol className="mx-auto flex max-w-[932px] flex-wrap items-center gap-x-2 px-4 text-sm">
               <li>
-                <Link href="/" className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4">ホーム</Link>
+                <Link href="/" className="inline-flex min-h-11 min-w-11 items-center text-primary-dark underline underline-offset-4">ホーム</Link>
               </li>
               <li aria-hidden="true" className="text-muted">›</li>
               <li aria-current="page" className="inline-flex min-h-11 items-center text-ink">{name}</li>

@@ -36,7 +36,7 @@ export default function Page() {
               <span aria-hidden="true" className="relative flex h-11 w-11 shrink-0 items-center justify-center bg-primary-dark font-bold text-white">{i + 1}</span>
               <div className="flex-1 rounded border border-line bg-white p-5 shadow-card">
                 {/* 上の「期間の目安（全体像）」の段階名と手順番号の範囲 */}
-                <p className="mb-1 text-[13px] font-bold text-primary-dark">{s.phase}（{phaseStepLabel[s.phase]}）</p>
+                <p className="mb-1 text-sm font-bold text-primary-dark">{s.phase}（{phaseStepLabel[s.phase]}）</p>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">手順{i + 1}：</span>{s.title}
                 </h3>

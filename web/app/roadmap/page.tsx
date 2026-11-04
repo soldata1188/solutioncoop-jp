@@ -82,7 +82,7 @@ export default function Page() {
               <span aria-hidden="true" className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-white bg-primary-dark shadow" />
               <p className="flex flex-wrap items-center gap-2 text-[15px] font-bold text-primary-dark">
                 {m.when}
-                <span className={`rounded border bg-white px-1.5 text-xs font-bold ${tagClass[m.tag]}`}>{m.tag}</span>
+                <span className={`rounded border bg-white px-1.5 text-sm font-bold ${tagClass[m.tag]}`}>{m.tag}</span>
               </p>
               <h3 className="mt-1 text-lg font-bold text-ink">
                 {m.title}

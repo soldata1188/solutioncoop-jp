@@ -20,7 +20,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
         <div className="grid overflow-hidden rounded border border-line bg-white shadow-card lg:grid-cols-[300px_1fr]">
           <div className="flex flex-col items-center justify-center gap-1.5 border-b border-line px-4 py-3 lg:border-b-0 lg:flex-col lg:gap-2 lg:border-r lg:px-5 lg:py-4">
             <Image src={sdgsSakai} alt="SDGs未来都市・堺 ロゴ" sizes="(min-width: 1024px) 248px, 200px" className="h-auto w-[200px] shrink-0 lg:w-[248px]" />
-            <p className="text-center text-[11px] font-bold leading-relaxed text-black lg:text-xs">
+            <p className="text-center text-xs font-bold leading-relaxed text-black">
               ソリューション協同組合は、
               <br />
               SDGs未来都市・堺を応援しています。
@@ -33,7 +33,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
                   <span className="text-[2.25rem] md:text-[2.5rem]">{a.value}</span>
                   <span className="ml-0.5 text-lg md:text-xl">{a.unit}</span>
                 </span>
-                <span aria-hidden="true" className="mt-2 text-[13px] font-bold leading-snug text-ink">
+                <span aria-hidden="true" className="mt-2 text-sm font-bold leading-snug text-ink">
                   {/* ラベルは語の途中で折り返さないよう、空白で区切ったまとまりごとに改行を禁止します */}
                   {a.label.split(" ").map((part, i) => (
                     <span key={part}>{i > 0 ? " " : null}<NoBreak>{part}</NoBreak></span>

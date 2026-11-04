@@ -26,8 +26,8 @@ export function FlowTimeline() {
             </div>
             <div className="pb-2 md:mt-3">
               <p className="text-base font-bold text-ink">{p}</p>
-              <p className="text-[13px] text-muted">{phaseStepLabel[p]}</p>
-              <p className="mt-1 text-[13px] font-bold text-primary-dark">
+              <p className="text-sm text-muted">{phaseStepLabel[p]}</p>
+              <p className="mt-1 text-sm font-bold text-primary-dark">
                 {/* 「|」は改行してよい位置。各まとまりは途中で折り返さず、最終行が1文字だけになるのを防ぎます */}
                 {spans[p].time.split("|").map((t) => (
                   <span key={t} className="inline-block">{t}</span>

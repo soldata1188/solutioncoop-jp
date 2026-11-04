@@ -7,7 +7,7 @@ type Status = { kind: "idle" | "sending" | "ok" | "info" | "error"; message?: st
 
 const field = "mt-2 block w-full min-h-12 rounded border-2 border-[#949494] bg-white px-3 py-2 text-base text-ink focus:border-primary-dark";
 const label = "block font-bold text-ink";
-const req = <span className="ml-2 rounded bg-primary-dark px-1.5 py-0.5 text-xs font-bold text-white">必須</span>;
+const req = <span className="ml-2 rounded bg-primary-dark px-1.5 py-0.5 text-sm font-bold text-white">必須</span>;
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -77,9 +77,9 @@ export function ContactForm() {
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <div>
-        <div className="flex min-h-11 items-start gap-3">
-          <input id="agree" name="agree" type="checkbox" value="yes" required className="mt-1 h-6 w-6 shrink-0 cursor-pointer accent-primary-dark" {...a11y("agree")} />
-          <label htmlFor="agree" className="cursor-pointer">
+        <div className="flex items-center gap-3">
+          <input id="agree" name="agree" type="checkbox" value="yes" required className="h-6 w-6 shrink-0 cursor-pointer accent-primary-dark" {...a11y("agree")} />
+          <label htmlFor="agree" className="flex min-h-11 cursor-pointer items-center">
             個人情報の取扱いに同意します{req}
           </label>
         </div>
@@ -91,7 +91,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status.kind === "sending"}
-        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded bg-cta px-8 text-lg font-bold text-ink shadow-sm hover:bg-cta-hover disabled:opacity-60 sm:w-auto"
+        className="inline-flex min-h-14 w-full items-center justify-center gap-3 rounded bg-primary px-8 text-lg font-bold text-white shadow-sm hover:bg-primary-dark disabled:opacity-60 sm:w-auto"
       >
         {status.kind === "sending" ? "送信中です…" : "入力内容を送信する"}
         <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>

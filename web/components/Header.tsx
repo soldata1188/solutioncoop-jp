@@ -81,7 +81,7 @@ export function Header() {
                 ))}
               </ul>
               <div className="mt-2 grid gap-2">
-                <LineButton className="flex min-h-11 gap-2 px-4 text-[13px]" />
+                <LineButton className="flex min-h-11 gap-2 px-4 text-sm" />
                 <Link href={CONTACT_HREF} className={`flex justify-center ${btnBase} ${btnOutlineColors}`}><Phrases text={CONTACT_LABEL} /></Link>
                 <a href={TEL_HREF} aria-label={`${TEL_ARIA}（${org.tel}）`} className={`flex justify-center gap-2 ${btnBase} ${btnOutlineColors}`}>
                   <PhoneIcon />

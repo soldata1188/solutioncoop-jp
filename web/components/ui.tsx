@@ -12,11 +12,11 @@ export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string })
 type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "dark" | "ghost";
 
 const buttonBase =
-  "relative inline-flex min-h-12 items-center justify-center gap-3 rounded px-10 font-bold leading-snug no-underline transition-colors";
+  "relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded px-8 font-bold leading-snug no-underline transition-colors";
 
 const buttonVariants: Record<ButtonVariant, string> = {
-  // 淡い黄色地は #222 文字（13.99:1）。白文字は使用しません。
-  primary: "bg-cta text-ink shadow-sm hover:bg-cta-hover",
+  // 主ボタン：#1E7F46 地に白文字（5.02:1）、hover #0F4D2A（9.93:1）
+  primary: "bg-primary text-white shadow-sm hover:bg-primary-dark",
   outlineWhite: "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary-dark",
   // 白地＋濃い緑の枠（枠・文字とも #0F4D2A、9.93:1）
   whiteCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
@@ -30,7 +30,7 @@ export function buttonClass(variant: ButtonVariant = "primary", extra = "") {
   return `${buttonBase} ${buttonVariants[variant]} ${extra}`;
 }
 
-/** 文字は中央、矢印は右端に置くボタン */
+/** 文字と矢印をひとまとまりで中央に置くボタン（左右の余白は同じ。空きの枠は作りません） */
 export function LinkButton({
   href,
   children,
@@ -45,7 +45,7 @@ export function LinkButton({
   return (
     <Link href={href} className={buttonClass(variant, className)}>
       <span>{children}</span>
-      <ArrowIcon className="absolute right-3.5 h-3.5 w-3.5" />
+      <ArrowIcon className="h-3.5 w-3.5" />
     </Link>
   );
 }
@@ -82,7 +82,7 @@ export function SectionHeading({
 }) {
   return (
     <div className="text-center">
-      {eyebrow ? <p className="mb-2 text-[13px] font-bold tracking-wide text-primary-dark">{eyebrow}</p> : null}
+      {eyebrow ? <p className="mb-2 text-sm font-bold tracking-wide text-primary-dark">{eyebrow}</p> : null}
       <Tag id={id} className="text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
         {children}
       </Tag>
@@ -184,29 +184,30 @@ export function SquaresPattern({ variant = "hero" }: { variant?: "hero" | "band"
   );
 }
 
-/** 写真などの代わりに置く要確認枠（抽象的な四角のみ） */
+/**
+ * 写真の代わりに置く中立の枠（抽象的な四角のみ。文字は表示しません）。
+ * 実際の写真が届くまでの仮置き用です。差し替えが必要な場所は data-image-needed（note）で検索できます。
+ * 閲覧者には「要確認」などの表示を見せず、読み上げ対象外にします。
+ * 現在、サイト内での使用箇所はありません（restyle22-notes.md 参照）。
+ */
 export function ImagePlaceholder({
-  label = "画像要確認",
   note,
   className = "",
   tone = "light",
 }: {
-  label?: string;
+  /** 開発者向けのメモ（どの写真が必要か）。画面には表示しません */
   note?: string;
   className?: string;
   tone?: "light" | "onDark";
 }) {
-  const box = tone === "onDark" ? "border-white/60 bg-white/10" : "border-pale-border bg-pale";
+  const box = tone === "onDark" ? "bg-white/10" : "bg-pale";
   return (
-    <div className={`relative flex w-full items-end overflow-hidden border-2 border-dashed ${box} ${className}`}>
-      <svg aria-hidden="true" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
-        <rect x="70" y="50" width="120" height="120" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.14" />
-        <rect x="160" y="110" width="150" height="150" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.1" />
-        <rect x="270" y="40" width="70" height="70" className="fill-cta" opacity="0.55" />
+    <div aria-hidden="true" data-image-needed={note ?? ""} className={`relative w-full overflow-hidden ${box} ${className}`}>
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full">
+        <rect x="70" y="50" width="120" height="120" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.1" />
+        <rect x="160" y="110" width="150" height="150" className={tone === "onDark" ? "fill-white" : "fill-primary"} opacity="0.07" />
+        <rect x="270" y="40" width="70" height="70" className="fill-brand" opacity="0.18" />
       </svg>
-      <p className="relative m-3 rounded bg-amber-50 px-2 py-1 text-xs font-bold leading-relaxed text-amber-900">
-        【{label}】{note}
-      </p>
     </div>
   );
 }

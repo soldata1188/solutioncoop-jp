@@ -56,11 +56,11 @@ export default function Page() {
             <li key={c.item} className="overflow-hidden rounded bg-white shadow-card">
               <p className="bg-label px-4 py-2 text-center text-sm font-bold text-ink">{c.item}</p>
               <div className="bg-[#f2f2f2] px-4 py-3 text-body">
-                <p className="text-xs text-muted">技能実習制度</p>
+                <p className="text-sm text-muted">技能実習制度</p>
                 <p>{c.before}</p>
               </div>
               <div className="bg-primary-dark px-4 py-3 text-white">
-                <p className="text-xs text-white">育成就労制度</p>
+                <p className="text-sm text-white">育成就労制度</p>
                 <p className="font-bold">{c.after}</p>
               </div>
             </li>

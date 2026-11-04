@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { Chunks } from "@/components/KeepWords";
+import { NoBreak } from "@/components/KeepWords";
 import { CheckBadge } from "@/components/Placeholder";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
@@ -19,7 +19,7 @@ export default function Page() {
     ["名称", org.name],
     ["代表者", org.representative],
     ["所在地", fullAddress],
-    ["電話番号", <a key="tel" href={TEL_HREF} className="font-bold text-primary-dark underline underline-offset-4">{org.tel}</a>],
+    ["電話番号", <a key="tel" href={TEL_HREF} className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">{org.tel}</a>],
     ["FAX番号", org.fax],
     ["メールアドレス", <a key="mail" href={`mailto:${org.email}`} className="font-bold text-primary-dark underline underline-offset-4">{org.email}</a>],
     ["設立", repoFacts.established],
@@ -48,10 +48,14 @@ export default function Page() {
         leadAfter={
           // SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）
           <section aria-labelledby="sdgs-title" className="mt-5 rounded border border-line-strong border-l-4 border-l-primary bg-white p-4 shadow-card sm:p-5">
-            <h2 id="sdgs-title" className="text-lg font-bold text-ink">{sdgs.heading}</h2>
-            <p className="mt-2 text-base font-bold leading-relaxed text-black [text-wrap:balance]">
-              <Chunks parts={sdgs.supportParts} />
-            </p>
+            {/* 見出しと応援の一文が重複していたため、一文を見出しにまとめ、「SDGs未来都市・堺」を大きく表示します */}
+            <h2 id="sdgs-title" className="text-base font-bold leading-relaxed text-black [text-wrap:balance]">
+              <NoBreak>{sdgs.supportParts[0]}</NoBreak>
+              <wbr />
+              <NoBreak><span className="text-xl text-primary-dark md:text-2xl">{sdgs.heading}</span></NoBreak>
+              <wbr />
+              <NoBreak>{sdgs.supportParts[1].slice(sdgs.heading.length)}</NoBreak>
+            </h2>
             <p className="mt-2 text-[15px] text-body">
               {sdgs.selected}（出典：
               <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap text-primary-dark underline underline-offset-4">

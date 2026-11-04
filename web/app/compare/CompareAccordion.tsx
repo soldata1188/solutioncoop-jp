@@ -49,7 +49,7 @@ export function CompareAccordion({ rows, cols }: { rows: Row[]; cols: readonly C
               <dl className="divide-y divide-line">
                 {cols.map((c) => (
                   <div key={c.key} className={`px-4 py-3 ${c.key === "ikusei" ? "bg-cta-tint" : ""}`}>
-                    <dt className="text-[13px] font-bold text-primary-dark">{c.label}</dt>
+                    <dt className="text-sm font-bold text-primary-dark">{c.label}</dt>
                     <dd className="mt-0.5 text-[15px]">
                       {r[c.key].text}
                       {r[c.key].check ? <CheckBadge /> : null}

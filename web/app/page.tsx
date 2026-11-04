@@ -158,7 +158,7 @@ export default function Home() {
         <SquaresPattern />
         <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
           <div className="flex flex-wrap items-center justify-center gap-2">
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-[13px] font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
+            <p className="inline-block rounded-sm bg-white px-3 py-1 text-sm font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
             {/* 応援の表明のみ（認定・選定を受けた旨ではありません）。ロゴ画像は使いません（承認範囲の確認前のため）。
                 白地に #0F4D2A の文字（9.93:1）。組合名入りの定型文は 390px で2行になり見出しを押し下げるため、短い表現にしています */}
             <p className="inline-block rounded-sm bg-white px-3 py-1 text-sm font-bold text-primary-dark"><KeepWords text={sdgs.badge} /></p>
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="bg-pale-strong px-4 py-8 md:px-6">
           <p className="text-center text-sm font-bold text-primary-dark">育成就労制度の開始を前に</p>
           <p className="mt-1 text-center text-xl font-bold text-primary-dark md:text-2xl">受入れ準備の見通し</p>
-          <p className="mx-auto mt-3 max-w-[560px] text-center text-[13px] font-bold text-ink">
+          <p className="mx-auto mt-3 max-w-[560px] text-center text-sm font-bold text-ink">
             中小企業の経営者・ご担当者様が抱えやすいお悩みの例です。
           </p>
           <ol className="mt-6 grid gap-4 md:grid-cols-3">
@@ -201,7 +201,7 @@ export default function Home() {
                   <span className="sr-only">お悩み{i + 1}：</span>
                   {p.title}
                 </h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-ink">{p.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink">{p.body}</p>
               </li>
             ))}
           </ol>
@@ -228,12 +228,12 @@ export default function Home() {
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
                 <div className="mt-auto pt-4">
-                  <p className="inline-block bg-label px-2 py-0.5 text-xs font-bold text-ink">定款記載事業(等)</p>
+                  <p className="inline-block bg-label px-2 py-0.5 text-sm font-bold text-ink">定款記載事業(等)</p>
                   <ul className="mt-2 space-y-1">
                     {items.map((it) => (
-                      <li key={it} className="flex items-start gap-2 text-[13px] leading-snug text-ink">
+                      <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
                         <span aria-hidden="true" className="mt-[0.4em] h-2 w-2 shrink-0 bg-primary" />
                         <span>{it}</span>
                       </li>
@@ -267,7 +267,7 @@ export default function Home() {
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-[13px] leading-relaxed text-body md:text-sm">{body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
               </div>
             </TabCard>
           ))}
@@ -280,8 +280,8 @@ export default function Home() {
               <li key={title} className="flex flex-col bg-white p-5 shadow-card">
                 <Icon className="h-10 w-10 text-primary" />
                 <h4 className="mt-3 text-base font-bold leading-snug text-ink">{title}</h4>
-                <p className="mt-2 text-[13px] leading-relaxed text-body">{body}</p>
-                <p className="mt-2 text-xs text-muted">※{note}</p>
+                <p className="mt-2 text-sm leading-relaxed text-body">{body}</p>
+                <p className="mt-2 text-sm text-muted">※{note}</p>
                 <Link href={href} className="mt-auto inline-flex min-h-11 items-center gap-2 pt-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
                   {link}
                   <ArrowIcon className="h-3 w-3" />
@@ -327,7 +327,7 @@ export default function Home() {
               <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
               <div className="flex-1 p-4">
                 <p className="text-sm font-bold text-ink">{c.tag}</p>
-                <p className="mt-1 text-[13px] text-body">
+                <p className="mt-1 text-sm text-body">
                   事例の詳細
                   <CheckBadge />
                 </p>
@@ -348,23 +348,23 @@ export default function Home() {
         <ul className="space-y-4 sm:hidden">
           {comparison.map((c) => (
             <li key={c.item} className="overflow-hidden bg-white shadow-card">
-              <p className="bg-label px-4 py-2 text-center text-[13px] font-bold text-ink">{c.item}</p>
+              <p className="bg-label px-4 py-2 text-center text-sm font-bold text-ink">{c.item}</p>
               <div className="bg-primary-dark px-4 py-3 text-white">
-                <p className="text-xs">ソリューション協同組合</p>
+                <p className="text-sm">ソリューション協同組合</p>
                 <p className="font-bold">
                   {c.ours}
                   {c.needsCheck ? <CheckBadge /> : null}
                 </p>
               </div>
               <div className="bg-white px-4 py-3 text-body">
-                <p className="text-xs text-muted">一般的な受入れ方法</p>
+                <p className="text-sm text-muted">一般的な受入れ方法</p>
                 <p className="text-sm">{c.general}</p>
               </div>
             </li>
           ))}
         </ul>
         <div className="hidden bg-white p-1.5 sm:block">
-          <table className="w-full border-separate border-spacing-0 text-left text-[13px]">
+          <table className="w-full border-separate border-spacing-0 text-left text-sm">
             <caption className="sr-only">ソリューション協同組合と一般的な受入れ方法の比較</caption>
             <thead>
               <tr>

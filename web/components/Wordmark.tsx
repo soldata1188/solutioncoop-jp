@@ -22,7 +22,7 @@ export function LogoTile({
 
 export function Wordmark() {
   return (
-    <Link href="/" className="inline-flex min-h-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
+    <Link href="/" className="inline-flex min-h-11 min-w-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
       <LogoTile priority className="h-10 w-10 md:h-11 md:w-11" />
       <span aria-hidden="true" className="hidden whitespace-nowrap text-[15px] tracking-wide sm:inline">ソリューション協同組合</span>
     </Link>

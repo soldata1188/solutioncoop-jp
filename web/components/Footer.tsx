@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="border-t border-line bg-white text-body">
       <div className="mx-auto max-w-[812px] px-4 py-10">
         <nav aria-label="フッターメニュー">
-          <ul className="grid grid-cols-2 gap-x-3 text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-x-1 sm:text-[13px]">
+          <ul className="grid grid-cols-2 gap-x-3 text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-x-1">
             {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="flex min-h-11 items-center border-b border-line px-1 text-ink sm:inline-flex sm:border-b-0 sm:px-2 no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
@@ -31,7 +31,7 @@ export function Footer() {
         <p className="mx-auto mt-6 max-w-[560px] rounded border border-line-strong bg-white px-4 py-4 text-center text-base font-bold leading-relaxed text-black shadow-card [text-wrap:balance]">
           <Chunks parts={sdgs.supportParts} />
         </p>
-        <div className="mt-6 border-t border-line pt-6 text-center text-[13px] leading-7 text-muted">
+        <div className="mt-6 border-t border-line pt-6 text-center text-sm leading-7 text-muted">
           <p className="inline-flex items-center gap-2.5 text-[15px] font-bold text-ink">
             <LogoTile alt="" className="h-10 w-10" />
             {org.name}

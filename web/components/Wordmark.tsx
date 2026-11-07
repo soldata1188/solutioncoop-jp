@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import logoTile from "@/public/brand/sol-logo-main-tile.webp";
+import logo from "@/public/brand/SOL_Solution_Coop_official_2026-11-07.jpg";
 
 /**
- * 新ロゴ（明るい緑 #34B268 の正方形タイルに白の S・L と淡い黄色の O）＋日本語の組合名。
- * 小さい表示では「Solution Coop」の文字が判読できないため、SOL 部分のみのタイル（256px 原寸の WebP）を角丸で表示します。
- * 原本: 支給の logo_chinh_SOL_main_1000.png（1000×1000）
+ * 公式ロゴ（2026-11-07 支給の全体）。緑地、白の S・L、淡い黄色の O、下段の白文字「Solution Coop」。
+ * 切り抜き・変色・比率変更はしません。表示枠は原本と同じ 1500:1200 です。
+ * 原本: public/brand/SOL_Solution_Coop_official_2026-11-07.jpg
  */
 export function LogoTile({
-  className = "h-10 w-10",
+  className = "",
   alt = "ソリューション協同組合",
   priority = false,
 }: {
@@ -17,13 +17,21 @@ export function LogoTile({
   alt?: string;
   priority?: boolean;
 }) {
-  return <Image src={logoTile} alt={alt} sizes="48px" priority={priority} className={`rounded-md ${className}`} />;
+  return (
+    <Image
+      src={logo}
+      alt={alt}
+      priority={priority}
+      sizes="(min-width: 768px) 80px, 70px"
+      className={`h-14 w-[70px] max-w-none shrink-0 object-contain md:h-16 md:w-20 ${className}`}
+    />
+  );
 }
 
 export function Wordmark() {
   return (
     <Link href="/" className="inline-flex min-h-11 min-w-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
-      <LogoTile priority className="h-10 w-10 md:h-11 md:w-11" />
+      <LogoTile priority />
       <span aria-hidden="true" className="hidden whitespace-nowrap text-[15px] tracking-wide sm:inline">ソリューション協同組合</span>
     </Link>
   );

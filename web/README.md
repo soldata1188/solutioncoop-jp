@@ -39,4 +39,4 @@ npm run build && npm start
 
 - 組合情報・許可番号: `lib/site.ts`
 - よくある質問（画面表示と FAQPage JSON-LD の共通データ）: `lib/faq.ts`
-- ロゴ: 支給の最終ロゴ `logo_chinh_SOL_main_1000.png`（緑 #34B268 地・白の S/L・淡い黄色の O）から PIL で生成。`public/brand/sol-logo-main-tile.webp`（ヘッダー・フッター用、SOL 部分のみ 256px）、`public/brand/sol-logo-main-512.png`（JSON-LD の logo）、`app/icon.png`・`app/favicon.ico`（16/32/48、SOL 部分のみ）、`app/apple-icon.png`（180）、`app/opengraph-image.png`（1200×630、文字の追加なし）。以前のロゴ（青・オレンジ、深緑）のファイルは削除済み。
+- ロゴ: 公式画像 `public/brand/SOL_Solution_Coop_official_2026-11-07.jpg`（1500×1200。緑地、白の S/L、淡い黄色の O、下段の「Solution Coop」）。ヘッダーとフッターはこの全体を同じ比率で表示します。`sol-logo-main-512.png` は同じ全体の縮小です。favicon・icon・apple-icon・OGP は、ロゴと同じ緑の余白の中に全体を収めています。SDGs のロゴは変更していません。

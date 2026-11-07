@@ -32,8 +32,8 @@ export function Footer() {
           <Chunks parts={sdgs.supportParts} />
         </p>
         <div className="mt-6 border-t border-line pt-6 text-center text-sm leading-7 text-muted">
-          <p className="inline-flex items-center gap-2.5 text-[15px] font-bold text-ink">
-            <LogoTile alt="" className="h-10 w-10" />
+          <p className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 text-[15px] font-bold text-ink">
+            <LogoTile alt="" />
             {org.name}
           </p>
           <address className="mt-1 not-italic">

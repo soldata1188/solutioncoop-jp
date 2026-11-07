@@ -22,8 +22,8 @@ export function LogoTile({
       src={logo}
       alt={alt}
       priority={priority}
-      sizes="(min-width: 768px) 80px, 70px"
-      className={`h-14 w-[70px] max-w-none shrink-0 object-contain md:h-16 md:w-20 ${className}`}
+      sizes="55px"
+      className={`h-11 w-[55px] max-w-none shrink-0 object-contain ${className}`}
     />
   );
 }

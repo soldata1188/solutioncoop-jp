@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+ * カラートークン（最終ロゴ：緑 #34B268・淡い黄色 #FFF478 に合わせた緑基調のパレット）
+ * ロゴの緑 #34B268 は白文字 2.72:1 のため、文字の背景には使わず装飾（ロゴ・細い線・大きな図形）のみ（brand）
+ * コントラスト（WCAG 2.x）:
+ *  白 / #1E7F46 (primary・ロゴと同じ色相) = 5.02:1。#1E7F46 / 白 = 5.02:1、/ #EEF8F1 = 4.63:1
+ *  白 / #0F4D2A (primary-dark) = 9.93:1。#0F4D2A / #EEF8F1 = 9.14:1、/ #DDF1E4 = 8.3:1 前後
+ *  白 / #0A3720 (primary-darker) = 13.29:1
+ *  #222 / #FFF478 (cta・ロゴの O の淡い黄色) = 13.99:1、hover #FFF9B0 = 14.72:1。白文字は使用しません
+ *  #6B5A00 (cta-text) / 白 = 6.80:1、/ #FFFBD1 = 6.47:1、/ #EEF8F1 = 6.26:1 → FAQ の「A」・ロードマップの「施行日」タグの文字（枠ボタンは primary-dark）
+ *  #777 / 白 = 4.48:1（AA未満）→ 本文の補足文字は #666（5.74:1）を使用し、#777 は区切り等の装飾のみ
+ *  LINE の #06C755 とは明度差があり（#06C755 / #1E7F46 = 2.23:1）、ボタン同士が同じ色に見えないようにしています
+ */
+@theme {
+  --color-brand: #34b268;
+  --color-primary: #1e7f46;
+  --color-primary-dark: #0f4d2a;
+  --color-primary-darker: #0a3720;
+  --color-cta: #fff478;
+  --color-cta-hover: #fff9b0;
+  --color-cta-text: #6b5a00;
+  --color-cta-tint: #fffbd1;
+  --color-pale: #eef8f1;
+  /* LINE公式アカウントへのボタン。#06C755 地に #222 文字（7.05:1）。白文字は 2.26:1 のため使用しません。hover は #2BD06B（#222 で 7.83:1） */
+  --color-linegreen: #06c755;
+  --color-linegreen-hover: #2bd06b;
+  --color-pale-strong: #ddf1e4;
+  --color-pale-border: #a9ddbc;
+  --color-tab: #cbebd6;
+  --color-label: #daeadf;
+  --color-line: #dce6df;
+  --color-line-strong: #ccddd2;
+  --color-gray-ref: #777777;
+  --color-ink: #222222;
+  --color-body: #333333;
+  --color-muted: #666666;
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-body);
+  background: #ffffff;
+  font-size: 15px;
+  line-height: 1.85;
+  font-feature-settings: "palt" 1;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* viewport-fit=cover（固定バーのホームバー対策）にしたため、横向きのiPhoneで左右のノッチに文字が掛からないよう余白を確保 */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* 改行位置：日本語を文節単位で折り返し（word-break: auto-phrase、未対応ブラウザは通常の折り返し）、
+   見出しは行の長さをそろえ（balance）、本文は最終行が1〜2文字だけにならないよう調整（pretty）します。
+   @layer base に置き、個別の Tailwind ユーティリティ（[text-wrap:balance] 等）で上書きできるようにしています */
+@layer base {
+  h1, h2, h3, h4, h5, h6, th, dt, summary, figcaption, label, legend {
+    text-wrap: balance;
+    word-break: auto-phrase;
+  }
+  p, li, dd, td, blockquote {
+    text-wrap: pretty;
+    word-break: auto-phrase;
+  }
+}
+
+:focus-visible {
+  /* 淡い黄色＋濃い緑の二重リング。白地では濃い緑（13.29:1）、緑地では黄色（#FFF478 / #1E7F46 = 4.42:1、/ #0F4D2A = 8.73:1）が3:1以上 */
+  outline: 3px solid var(--color-cta);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-primary-darker);
+  border-radius: 4px;
+}
+
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* /compare スマートフォンの開閉式：JavaScript 有効時のみ、閉じた項目を隠します（無効時はすべて表示し、開閉ボタンの矢印も隠します） */
+.js .compare-panel[data-open="false"] {
+  display: none;
+}
+html:not(.js) .compare-toggle svg {
+  display: none;
+}

@@ -12,6 +12,7 @@ import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
+import { OfficialXCard } from "@/components/OfficialXCard";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
@@ -421,6 +422,15 @@ export default function Home() {
         <div className="mt-8 text-center">
           <LinkButton href="/faq" variant="ghost" className="min-w-64">よくある質問をすべて見る</LinkButton>
         </div>
+      </Section>
+
+      {/* 公式X。お知らせ欄は無いため、最後の相談枠の直前に置きます。widgets.js はボタンを押すまで読み込みません。 */}
+      <Section
+        id="official-x"
+        title="公式X（旧Twitter）"
+        lead="当組合の公式アカウントです。ボタンを押していただくと、このページ内に投稿を表示します。"
+      >
+        <OfficialXCard />
       </Section>
 
       <CtaSection />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { allPages, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL } from "@/lib/site";
+import { allPages, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
 import { LineButton } from "./LineButton";
 import { Chunks, Phrases } from "./KeepWords";
 
@@ -19,13 +19,22 @@ export function Footer() {
             ))}
           </ul>
         </nav>
-        {/* スマートフォンでは、直前の CTA 帯と画面下部の固定バーに同じ操作があるため、ボタンは表示しません。
-            PC は主ボタン「LINEで無料相談」＋メールの副ボタン（電話番号は下の所在地欄のリンク） */}
-        <div className="mt-6 hidden items-center justify-center gap-3 sm:flex">
-          <LineButton className="inline-flex min-h-12 gap-2 px-6 text-base" iconClassName="h-5 w-5" />
-          <Link href={CONTACT_HREF} className="inline-flex min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint">
+        {/* スマートフォンでは、直前の CTA 帯と画面下部の固定バーに同じ電話・LINE・メールがあるため、その2つは表示しません。
+            公式Xは固定バーに無いため、画面幅を問わず表示します。PC は LINE・メールの横に並べます。 */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <LineButton className="hidden min-h-12 gap-2 px-6 text-base sm:inline-flex" iconClassName="h-5 w-5" />
+          <Link href={CONTACT_HREF} className="hidden min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint sm:inline-flex">
             <Phrases text={CONTACT_LABEL} />
           </Link>
+          <a
+            href={X_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint"
+          >
+            公式X（@{X_HANDLE}）
+            <span className="sr-only">（新しいタブで開きます）</span>
+          </a>
         </div>
         {/* SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）。黒文字・1〜2行 */}
         <p className="mx-auto mt-6 max-w-[560px] rounded border border-line-strong bg-white px-4 py-4 text-center text-base font-bold leading-relaxed text-black shadow-card [text-wrap:balance]">

@@ -100,6 +100,15 @@ export const LINE_LABEL = "LINEで無料相談";
 export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
 /**
+ * 公式X（旧Twitter）アカウント @KumiaiSol。
+ * 埋め込む投稿を変えるときは X_POST_ID だけを差し替えてください。
+ * ID は安全な整数の範囲を超えるため、必ず文字列のままにしてください（数値にすると別の投稿を指します）。
+ */
+export const X_URL = "https://x.com/KumiaiSol";
+export const X_HANDLE = "KumiaiSol";
+export const X_POST_ID = "2117033843530289581";
+
+/**
  * 既存リポジトリ（solutioncoop-app/・gino-jisshu.html・index16.html）に記載のある情報。
  * 記載どうしで食い違いがある、または代表者様の確認が済んでいないため、表示時は必ず「要確認」を付けます。
  * ただし established（設立）と confirmed: true の沿革項目は代表者様に確認済みのため、要確認を付けません。

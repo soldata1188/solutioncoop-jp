@@ -12,9 +12,12 @@ import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
-import { OfficialXCard } from "@/components/OfficialXCard";
+import { OfficialXPosts } from "@/components/OfficialXPosts";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
+
+/** 公式Xの投稿を、多くても15分に1回程度の再取得に合わせます */
+export const revalidate = 900;
 
 export const metadata: Metadata = {
   ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月1日施行の育成就労制度に向けて準備中です。"),
@@ -424,13 +427,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 公式X。お知らせ欄は無いため、最後の相談枠の直前に置きます。widgets.js はボタンを押すまで読み込みません。 */}
+      {/* 公式X。お知らせ欄は無いため、最後の相談枠の直前。取得はサーバー側のみで、widgets.js は使いません。 */}
       <Section
         id="official-x"
         title="公式X（旧Twitter）"
-        lead="当組合の公式アカウントです。ボタンを押していただくと、このページ内に投稿を表示します。"
+        lead="当組合の公式アカウントの最新の投稿です。"
       >
-        <OfficialXCard />
+        <OfficialXPosts />
       </Section>
 
       <CtaSection />

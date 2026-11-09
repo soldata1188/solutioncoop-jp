@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection } from "@/components/CtaSection";
-import { CheckBadge } from "@/components/Placeholder";
 import { FaqList } from "@/components/FaqList";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks, KeepWords } from "@/components/KeepWords";
-import { FlowTimeline } from "@/components/FlowTimeline";
 import { photos } from "@/lib/images";
 import { licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
@@ -128,14 +126,6 @@ const credentials = [
     href: "/flow",
     link: "受入れの流れを見る",
   },
-];
-
-/** 比較表。「一般的な受入れ方法」列は特定の団体を指すものではなく、断定を避けた表現にとどめています。 */
-const comparison: { item: string; ours: string; general: string; needsCheck?: boolean }[] = [
-  { item: "拠点", ours: "堺市堺区（大阪府内の企業様を中心にご支援）", general: "団体により所在地・対応地域はさまざまです" },
-  { item: "許可・登録", ours: "監理団体許可（一般監理事業）と登録支援機関の登録の両方", general: "団体により許可・登録の範囲が異なります" },
-  { item: "連携する送り出し国", ours: "ベトナム・インドネシア・フィリピン", general: "団体により連携先の国・機関が異なります" },
-  { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
 ];
 
 /** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
@@ -288,16 +278,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 受入れまでの期間 */}
-      <Section id="timeline" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
-        <FlowTimeline />
-        <div className="mt-8 text-center">
-          <LinkButton href="/flow" variant="ghost" className="min-w-64">13の手順を詳しく見る</LinkButton>
-        </div>
-      </Section>
-
       {/* 事例（未確定のため要確認枠のみ） */}
-      <Section id="cases" tone="pale" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
+      <Section id="cases" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
         <ul className="grid gap-4 sm:grid-cols-3">
           {cases.map((c) => (
             <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
@@ -308,57 +290,6 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </Section>
-
-      {/* 比較表 */}
-      <Section
-        id="compare"
-        width="wide"
-        title="一般的な受入れ方法との比較"
-        lead="「一般的な受入れ方法」の欄は特定の団体を指すものではありません。団体ごとに対応は異なりますので、目安としてご覧ください。"
-      >
-        <ul className="space-y-4 sm:hidden">
-          {comparison.map((c) => (
-            <li key={c.item} className="overflow-hidden bg-white shadow-card">
-              <p className="bg-label px-4 py-2 text-center text-sm font-bold text-ink">{c.item}</p>
-              <div className="bg-primary-dark px-4 py-3 text-white">
-                <p className="text-sm">ソリューション協同組合</p>
-                <p className="font-bold">
-                  {c.ours}
-                  {c.needsCheck ? <CheckBadge /> : null}
-                </p>
-              </div>
-              <div className="bg-white px-4 py-3 text-body">
-                <p className="text-sm text-muted">一般的な受入れ方法</p>
-                <p className="text-sm">{c.general}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="hidden bg-white p-1.5 sm:block">
-          <table className="w-full border-separate border-spacing-0 text-left text-sm">
-            <caption className="sr-only">ソリューション協同組合と一般的な受入れ方法の比較</caption>
-            <thead>
-              <tr>
-                <th scope="col" className="w-[20%] bg-label p-3 text-center font-bold text-ink">比較項目</th>
-                <th scope="col" className="w-[42%] bg-primary p-3 text-center text-[19px] font-bold text-white">ソリューション協同組合</th>
-                <th scope="col" className="bg-[#eeeeee] p-3 text-center text-sm font-bold text-body">一般的な受入れ方法</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((c) => (
-                <tr key={c.item}>
-                  <th scope="row" className="border-t border-white bg-label p-3 text-center font-bold text-ink">{c.item}</th>
-                  <td className="border-t border-white/25 bg-primary-dark p-3 text-center text-sm font-bold text-white">
-                    {c.ours}
-                    {c.needsCheck ? <CheckBadge /> : null}
-                  </td>
-                  <td className="border-t border-line bg-white p-3 text-center text-body">{c.general}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </Section>
 
       {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}

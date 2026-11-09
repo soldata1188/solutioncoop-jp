@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { CheckBadge } from "@/components/Placeholder";
@@ -110,9 +109,6 @@ export default function Page() {
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-[15px]">
-          詳しくは「<Link href="/compare" className="font-bold text-primary-dark underline underline-offset-4">制度の比較</Link>」もご覧ください。
-        </p>
       </Section>
 
       <Section width="narrow">

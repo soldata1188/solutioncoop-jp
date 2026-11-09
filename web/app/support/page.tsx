@@ -118,9 +118,8 @@ export default function Page() {
             当組合の研修センターです。講習などに使用しております。
           </p>
         </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <LinkButton href="/flow" variant="dark" className="min-h-14 sm:flex-1">受入れの流れを見る</LinkButton>
-          <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:flex-1">よくある質問を見る</LinkButton>
+        <div className="mt-8">
+          <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:min-w-64">よくある質問を見る</LinkButton>
         </div>
       </Section>
 

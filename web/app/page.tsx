@@ -8,7 +8,7 @@ import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks, KeepWords } from "@/components/KeepWords";
 import { photos } from "@/lib/images";
-import { licenses, org, sdgs } from "@/lib/site";
+import { CONTACT_HREF, CONTACT_LABEL, licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
@@ -116,8 +116,8 @@ const credentials = [
     body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携し、貴社の業務に合った人材の受入れをご提案いたします。",
     note: "ベトナム・インドネシア・フィリピン",
     Icon: IconPartners,
-    href: "/flow",
-    link: "受入れの流れを見る",
+    href: CONTACT_HREF,
+    link: CONTACT_LABEL,
   },
 ];
 
@@ -298,13 +298,9 @@ export default function Home() {
         <div className="mt-12">
           <LineHeading>制度について詳しく知る</LineHeading>
           <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
-            <p className="text-sm text-body">育成就労制度の概要、受入れの流れ、技能実習・特定技能との違い、2027年4月に向けた準備をまとめております。</p>
+            <p className="text-sm text-body">育成就労制度の概要と、2027年4月に向けた準備をまとめております。</p>
             <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
               <LinkButton href="/ikusei-shuro" variant="ghost" className="sm:min-w-52">育成就労制度とは</LinkButton>
-              <LinkButton href="/flow" variant="ghost" className="sm:min-w-52">受入れの流れ</LinkButton>
-            </div>
-            <div className="mt-3 flex flex-col justify-center gap-3 sm:flex-row">
-              <LinkButton href="/compare" variant="ghost" className="sm:min-w-52">制度の比較</LinkButton>
               <LinkButton href="/roadmap" variant="ghost" className="sm:min-w-52">2027年4月に向けた準備</LinkButton>
             </div>
           </div>

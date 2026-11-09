@@ -323,12 +323,8 @@ export default function Home() {
           {cases.map((c) => (
             <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
               <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
-              <div className="flex-1 p-4">
+              <div className="p-4">
                 <p className="text-sm font-bold text-ink">{c.tag}</p>
-                <p className="mt-1 text-sm text-body">
-                  事例の詳細
-                  <CheckBadge />
-                </p>
               </div>
             </li>
           ))}

@@ -69,11 +69,9 @@ export const achievements = [
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;
 
-/** ヘッダーのメニュー（PC表示の幅に収まる6項目） */
+/** ヘッダーのメニュー（PC表示の幅に収まる4項目） */
 export const nav = [
   { href: "/ikusei-shuro", label: "育成就労制度とは" },
-  { href: "/compare", label: "制度の比較" },
-  { href: "/flow", label: "受入れの流れ" },
   { href: "/support", label: "受入れ後の支援" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
@@ -81,11 +79,11 @@ export const nav = [
 
 /** フッター・モバイルメニュー用の全ページ一覧 */
 export const allPages = [
-  ...nav.slice(0, 2),
+  nav[0],
   { href: "/roadmap", label: "2027年4月に向けた準備" },
-  ...nav.slice(2, 4),
+  nav[1],
   { href: "/industries", label: "対象業種" },
-  ...nav.slice(4),
+  ...nav.slice(2),
 ];
 
 /** 電話リンク（全ページのCTAで使用） */

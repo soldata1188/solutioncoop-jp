@@ -99,11 +99,3 @@ summary::-webkit-details-marker {
     scroll-behavior: auto;
   }
 }
-
-/* /compare スマートフォンの開閉式：JavaScript 有効時のみ、閉じた項目を隠します（無効時はすべて表示し、開閉ボタンの矢印も隠します） */
-.js .compare-panel[data-open="false"] {
-  display: none;
-}
-html:not(.js) .compare-toggle svg {
-  display: none;
-}

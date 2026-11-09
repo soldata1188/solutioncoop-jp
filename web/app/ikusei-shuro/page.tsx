@@ -115,8 +115,7 @@ export default function Page() {
         <p className="mt-6 text-sm text-muted">
           ※当組合は現在、技能実習法に基づく監理団体（一般監理事業）として許可を受けております。育成就労制度に向けて準備中です。
         </p>
-        <div className="mt-8 grid gap-3 sm:grid-cols-3">
-          <LinkButton href="/compare" variant="ghost">制度の比較を見る</LinkButton>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
           <LinkButton href="/roadmap" variant="ghost">準備のロードマップを見る</LinkButton>
           <LinkButton href="/support" variant="ghost">受入れ後の支援を見る</LinkButton>
         </div>

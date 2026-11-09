@@ -138,15 +138,6 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
   { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
 ];
 
-/** 経営者様にお任せいただけること（確認済みの事実・lib のデータのみ） */
-const benefits: { title: string; body: string; check?: boolean }[] = [
-  { title: "申請書類の作成をサポート", body: "受入れに必要な書類や申請書類の作成を、当組合がご案内・サポートいたします。" },
-  { title: "人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
-  { title: "入国後1か月の講習", body: "上陸後講習で日本語や生活のルールを学んでから、貴社へ配属いたします。" },
-  { title: "配属後の監査・訪問", body: "法令に基づく定期的な監査・訪問指導で、受入れ後も継続してご支援いたします。" },
-  { title: "2027年4月への移行準備", body: "育成就労制度に向けて、技能実習からの移行準備を、貴社と一緒に進めます。" },
-];
-
 /** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
 const cases = [
   { photo: photos.siteSteel, tag: "大阪府・金属加工" },
@@ -297,27 +288,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 経営者様のメリット */}
-      <Section id="benefits" title="経営者様にお任せいただけること" lead="手続きから配属後のご支援まで、当組合が一貫してお手伝いいたします。本業に専念しながら、外国人材の受入れを進めていただけます。">
-        {/* 5項目：半端な段（3＋2）を作らないよう、全幅のカードを縦に並べます（PCは見出しと説明を横並び） */}
-        <ul className="grid gap-3">
-          {benefits.map((b) => (
-            <li key={b.title} className="flex gap-3 bg-white p-5 shadow-card">
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 text-primary-dark" fill="none" stroke="currentColor" strokeWidth="2.6"><path d="M4 12.5l5 5L20 6.5" /></svg>
-              <div className="md:grid md:flex-1 md:grid-cols-[240px_1fr] md:gap-6">
-                <h3 className="font-bold text-ink">{b.title}</h3>
-                <p className="mt-1 text-[15px] leading-relaxed md:mt-0">{b.body}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8 text-center">
-          <LinkButton href="/support" variant="ghost" className="min-w-64">受入れ後の支援を見る</LinkButton>
-        </div>
-      </Section>
-
       {/* 受入れまでの期間 */}
-      <Section id="timeline" tone="pale" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
+      <Section id="timeline" title="受入れまでの流れと期間の目安" width="wide" lead="インドネシアからの受入れの場合の目安です。国や時期、手続きの状況により異なります。">
         <FlowTimeline />
         <div className="mt-8 text-center">
           <LinkButton href="/flow" variant="ghost" className="min-w-64">13の手順を詳しく見る</LinkButton>
@@ -325,7 +297,7 @@ export default function Home() {
       </Section>
 
       {/* 事例（未確定のため要確認枠のみ） */}
-      <Section id="cases" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
+      <Section id="cases" tone="pale" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
         <ul className="grid gap-4 sm:grid-cols-3">
           {cases.map((c) => (
             <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
@@ -341,7 +313,6 @@ export default function Home() {
       {/* 比較表 */}
       <Section
         id="compare"
-        tone="pale"
         width="wide"
         title="一般的な受入れ方法との比較"
         lead="「一般的な受入れ方法」の欄は特定の団体を指すものではありません。団体ごとに対応は異なりますので、目安としてご覧ください。"
@@ -391,7 +362,7 @@ export default function Home() {
       </Section>
 
       {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}
-      <Section id="line" title="LINEでのご相談" width="default">
+      <Section id="line" tone="pale" title="LINEでのご相談" width="default">
         <LineHeading>当組合のLINE公式アカウント</LineHeading>
         <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
           <p className="text-[15px] text-body">当組合のLINE公式アカウントから、トーク画面からご相談いただけます。</p>
@@ -417,7 +388,7 @@ export default function Home() {
       </Section>
 
       {/* よくある質問 */}
-      <Section id="faq" tone="pale" title="よくある質問" width="narrow">
+      <Section id="faq" title="よくある質問" width="narrow">
         <FaqList items={faqs.slice(0, 5)} />
         <div className="mt-8 text-center">
           <LinkButton href="/faq" variant="ghost" className="min-w-64">よくある質問をすべて見る</LinkButton>

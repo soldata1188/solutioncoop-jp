@@ -23,13 +23,13 @@ export const compareRows: CompareRow[] = [
     label: "受入れの対象",
     jisshu: { text: "定められた職種・作業" },
     tokutei: { text: "特定産業分野" },
-    ikusei: { text: "定められた分野・業務区分", check: true },
+    ikusei: { text: "定められた分野・業務区分" },
   },
   {
     label: "本人の意向による転籍・転職",
     jisshu: { text: "原則として認められていません" },
     tokutei: { text: "同じ分野の中での転職が可能" },
-    ikusei: { text: "一定の要件のもとで可能（分野ごとに1〜2年の範囲で転籍制限期間を設定。技能・日本語の水準なども要件）", check: true },
+    ikusei: { text: "—" },
   },
   {
     label: "日本語能力",
@@ -65,7 +65,7 @@ export const compareRows: CompareRow[] = [
     label: "家族の帯同",
     jisshu: { text: "認められていません" },
     tokutei: { text: "原則として認められていません" },
-    ikusei: { text: "認められない見込みです", check: true },
+    ikusei: { text: "—" },
   },
 ];
 

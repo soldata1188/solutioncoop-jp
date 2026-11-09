@@ -1,6 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { CheckBadge } from "@/components/Placeholder";
 import { Section } from "@/components/ui";
 import { FlowTimeline } from "@/components/FlowTimeline";
 import { pageMeta } from "@/lib/meta";
@@ -20,11 +19,6 @@ export default function Page() {
         title="外国人材 受入れの流れ"
         lead="育成就労制度でインドネシアから人材を受け入れる場合の、お申込みから配属までの13の手順をご紹介いたします。国や時期により手順・期間が異なる場合がございます。"
       />
-      <Section width="narrow" flushBottom>
-        <aside role="note" className="rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
-          本ページの手順・期間は目安・暫定（改訂6版・2026年10月31日時点）です。育成就労制度の運用により変更となる可能性がございます。<CheckBadge />
-        </aside>
-      </Section>
       <Section id="overview" title="期間の目安（全体像）" width="wide">
         <FlowTimeline />
       </Section>
@@ -43,7 +37,6 @@ export default function Page() {
                 <p className="mt-2 text-[15px] text-muted">{s.body}</p>
                 {/* 期間の目安は、上の全体像と同じ書式（濃い緑の太字）で表示し、ピル型の表示は使いません */}
                 {s.badge ? <p className="mt-3 text-sm font-bold text-primary-dark">{s.badge}</p> : null}
-                {s.check ? <p className="mt-2 text-sm text-muted">{s.check}<CheckBadge /></p> : null}
               </div>
             </li>
           ))}

@@ -129,8 +129,6 @@ const comparison: { item: string; ours: string; general: string; needsCheck?: bo
   { item: "許可・登録", ours: "監理団体許可（一般監理事業）と登録支援機関の登録の両方", general: "団体により許可・登録の範囲が異なります" },
   { item: "連携する送り出し国", ours: "ベトナム・インドネシア・フィリピン", general: "団体により連携先の国・機関が異なります" },
   { item: "ご契約までの期間", ours: "最初のお問い合わせから約1〜2週間が目安", general: "団体や手続きの状況により異なります" },
-  { item: "特定技能への移行", ours: "登録支援機関として、育成就労後の特定技能への移行もご相談いただけます", general: "別の機関への依頼が必要となる場合があります", needsCheck: true },
-  { item: "育成就労制度への対応", ours: "育成就労制度に向けて準備中です", general: "各団体が準備を進めている段階です", needsCheck: true },
 ];
 
 /** 経営者様にお任せいただけること（確認済みの事実・lib のデータのみ） */

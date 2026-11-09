@@ -1,5 +1,4 @@
 import { PageHeader } from "@/components/PageHeader";
-import { Placeholder } from "@/components/Placeholder";
 import { Section, SubHeading } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { KeepWords } from "@/components/KeepWords";
@@ -28,7 +27,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
   { title: "4. 第三者への提供", body: "当組合は、法令に基づく場合を除き、ご本人の同意を得ることなく個人情報を第三者に提供いたしません。" },
   { title: "5. 業務の委託", body: "利用目的の達成に必要な範囲で個人情報の取扱いを外部に委託する場合は、委託先を適切に選定し、必要かつ適切な監督を行います。" },
   { title: "6. 安全管理措置", body: "当組合は、個人情報の漏えい、滅失またはき損の防止その他の安全管理のため、必要かつ適切な措置を講じます。" },
-  { title: "7. 開示・訂正・利用停止等のご請求", body: <>ご本人から個人情報の開示、訂正、追加、削除、利用停止等のご請求があった場合は、ご本人であることを確認のうえ、法令に従い遅滞なく対応いたします。ご請求の窓口は下記のとおりです。<span className="mt-2 block"><Placeholder>開示請求窓口・手続きの方法</Placeholder></span></> },
+  { title: "7. 開示・訂正・利用停止等のご請求", body: `ご本人から個人情報の開示、訂正、追加、削除、利用停止等のご請求があった場合は、ご本人であることを確認のうえ、法令に従い遅滞なく対応いたします。お電話（${org.tel}）またはメール（${org.email}）にてご連絡ください。ご本人確認のうえ、手続きをご案内いたします。` },
   { title: "8. 本方針の改定", body: "当組合は、法令の改正等に応じて本方針を見直し、改定することがあります。改定後の内容は本ページに掲載した時点から効力を生じるものとします。" },
 ];
 
@@ -48,7 +47,7 @@ export default function Page() {
           <p className="mt-2">
             {org.name}
             <br />
-            個人情報保護責任者：<Placeholder />
+            個人情報保護責任者：代表理事 新 雅志
             <br />
             {fullAddress}
             <br />
@@ -56,7 +55,7 @@ export default function Page() {
             <br />
             メール：{org.email}
           </p>
-          <p className="mt-3 text-sm text-muted">制定日：<Placeholder /></p>
+          <p className="mt-3 text-sm text-muted">制定日：2026年11月9日</p>
         </section>
       </Section>
     </>

@@ -1,6 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { CheckBadge } from "@/components/Placeholder";
 import { Photo } from "@/components/Photo";
 import { Section, LinkButton } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
@@ -13,7 +12,13 @@ export const metadata = pageMeta(
   "外国人材の配属後も、当組合が定期的な監査・訪問指導、病院の受診や役所の手続きなど生活面のご相談への対応、ベトナム・インドネシア・フィリピンの送り出し機関との連携を通じて、受入れ企業様を支えます。",
 );
 
-type Item = { title: string; body: string; check?: string };
+type Item = { title: string; body: string };
+
+/**
+ * 母国語での相談対応（ベトナム語・インドネシア語・タガログ語）。
+ * Boss確認後に true にすると、各国カードの言語名の一行を再表示します。
+ */
+const SHOW_NATIVE_LANGUAGE_CONSULTATION = false;
 
 const audit: Item[] = [
   {
@@ -36,14 +41,8 @@ const life: Item[] = [
     body: "入国後の1か月間、日本語や生活ルール、安全に関することなどを学んでいただいたうえで、企業様へ配属いたします。",
   },
   {
-    title: "入居時のオリエンテーション",
-    body: "ごみの出し方、騒音、自転車の交通ルールなど、地域で暮らすための基本的なルールをご説明します。",
-    check: "実施内容",
-  },
-  {
     title: "通院・手続きのサポート",
     body: "病院の受診や役所での手続きなど、生活の中で困りごとがあったときのご相談に対応いたします。",
-    check: "対応範囲",
   },
   {
     title: "生活の相談への対応",
@@ -62,10 +61,7 @@ function ItemList({ items }: { items: Item[] }) {
     <ul className="grid gap-4 sm:grid-cols-2">
       {items.map((it) => (
         <li key={it.title} className="border-l-4 border-primary bg-white p-5 shadow-card">
-          <h3 className="font-bold text-ink">
-            {it.title}
-            {it.check ? <CheckBadge /> : null}
-          </h3>
+          <h3 className="font-bold text-ink">{it.title}</h3>
           <p className="mt-2 text-[15px]">{it.body}</p>
         </li>
       ))}
@@ -101,13 +97,15 @@ export default function Page() {
             <li key={c.name} className="border-t-4 border-primary bg-pale p-5 text-center">
               <p className="text-lg font-bold text-ink">{c.name}</p>
               <p className="mt-1 text-sm">送り出し機関と連携</p>
-              <p className="mt-1 text-sm">{c.lang}での相談対応<CheckBadge /></p>
+              {SHOW_NATIVE_LANGUAGE_CONSULTATION ? <p className="mt-1 text-sm">{c.lang}での相談対応</p> : null}
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-sm text-muted">
-          相談窓口の対応言語・受付時間につきましては、個別にお問い合わせください。
-        </p>
+        {SHOW_NATIVE_LANGUAGE_CONSULTATION ? (
+          <p className="mt-4 text-sm text-muted">
+            相談窓口の対応言語・受付時間につきましては、個別にお問い合わせください。
+          </p>
+        ) : null}
       </Section>
 
       <Section id="tokutei" title="特定技能の方への支援" tone="pale" width="narrow">
@@ -118,7 +116,6 @@ export default function Page() {
           <Photo photo={photos.trainingPlate} sizes="(min-width: 640px) 290px, 100vw" />
           <p className="text-[15px]">
             当組合の研修センターです。講習などに使用しております。
-            <span className="mt-1 block text-sm text-muted">所在地・利用内容の詳細<CheckBadge /></span>
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

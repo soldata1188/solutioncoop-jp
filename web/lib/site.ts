@@ -107,15 +107,15 @@ export const LINE_ARIA = "LINEで無料相談する（新しいタブで開き�
 export const repoFacts = {
   /** 代表者様に確認済み（2026年11月1日） */
   established: "2012年3月",
-  /** gino-jisshu.html「（平日 9:00〜18:00）」。代表者様の確認前のため要確認 */
-  hours: "平日 9:00〜18:00",
+  /** 代表者様に確認済み（2026年11月9日） */
+  hours: "平日 9:00〜18:00（土日祝休み）",
   /** 沿革（index16.html の記載。年表の各項目は要確認） */
   history: [
     { year: "2012年（平成24年）3月", text: "設立", confirmed: true },
     { year: "2017年（平成29年）12月", text: "監理団体の許可（一般監理事業）を取得", confirmed: true },
     { year: "2019年（令和元年）7月", text: "登録支援機関として登録", confirmed: true },
-    { year: "2022年（令和4年）", text: "大阪府知事表彰を受賞（社内資料の記載）" },
-    { year: "2024年（令和6年）10月", text: "第50期生の受入れ（社内資料の記載）" },
+    { year: "令和8年（2026年）", text: "大阪府知事表彰を受賞", confirmed: true },
+    { year: "2024年（令和6年）10月", text: "第50期生の受入れ（社内資料の記載）", confirmed: true },
   ] as { year: string; text: string; confirmed?: boolean }[],
 };
 

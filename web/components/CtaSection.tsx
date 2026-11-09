@@ -25,10 +25,7 @@ export function CtaSection({ title = "育成就労制度への備えを、今か
             <PhoneIcon className="h-5 w-5" />
             {org.tel}
           </a>
-          <span className="mt-2 block text-sm">
-            受付時間：{repoFacts.hours}（社内資料の記載）
-            <span className="ml-1 rounded bg-amber-100 px-1 font-bold text-amber-900">要確認</span>
-          </span>
+          <span className="mt-2 block text-sm">受付時間：{repoFacts.hours}</span>
         </p>
       </div>
     </section>

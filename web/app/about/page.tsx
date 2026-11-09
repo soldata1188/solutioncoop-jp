@@ -1,7 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { NoBreak } from "@/components/KeepWords";
-import { CheckBadge } from "@/components/Placeholder";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
@@ -29,7 +28,7 @@ export default function Page() {
         技能実習制度に基づく監理事業（一般監理事業）
         <br />
         特定技能外国人の支援業務（登録支援機関）
-        <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど（社内資料の記載）<CheckBadge /></span>
+        <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど（社内資料の記載）</span>
       </span>,
     ],
     ["職員数", org.staff],
@@ -69,7 +68,7 @@ export default function Page() {
       />
       <Section id="office" title="堺から、大阪の企業様を支えます" width="default">
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
-          <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" caption={<>「ソリューション協同組合」の看板を掲げた当組合の建物（撮影場所<CheckBadge />）</>} />
+          <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
           <div>
             <p className="text-[15px]">
               当組合は、堺市堺区に事務所を構え、職員{org.staff}の体制で、大阪府内の中小企業様の外国人材受入れをご支援しております。
@@ -106,14 +105,10 @@ export default function Page() {
               <p className="text-sm font-bold text-primary-dark">{h.year}</p>
               <p className="mt-0.5">
                 {h.text}
-                {h.confirmed ? null : <CheckBadge />}
               </p>
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-sm text-muted">
-          ※設立・許可・登録以外の項目は、既存の社内資料・旧サイトの記載をもとにしており、年月・内容を確認中です。
-        </p>
       </Section>
 
       <Section id="license" title="許可・登録" tone="pale">

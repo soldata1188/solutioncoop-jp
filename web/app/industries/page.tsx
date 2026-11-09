@@ -1,6 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { CheckBadge } from "@/components/Placeholder";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 
@@ -31,7 +30,7 @@ export default function Page() {
           ))}
         </ul>
         <p className="mt-6 text-sm text-muted">
-          ※育成就労制度で受入れ可能な分野・業務は制度上定められています。貴社の業務が対象となるかは、個別に確認いたします。<CheckBadge />
+          ※育成就労制度で受入れ可能な分野・業務は制度上定められています。貴社の業務が対象となるかは、個別に確認いたします。
         </p>
       </Section>
 

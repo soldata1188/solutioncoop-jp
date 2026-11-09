@@ -1,6 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { CheckBadge } from "@/components/Placeholder";
 import { Section, LinkButton } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 
@@ -40,13 +39,6 @@ export default function Page() {
         <p className="mt-4">
           受入れ対象となる分野は、特定技能制度の分野と連携して定められる予定です。育成就労を修了した人材が、特定技能へと円滑に移行し、長く日本で活躍できる仕組みが想定されています。
         </p>
-        <aside id="notice" role="note" aria-labelledby="notice-title" className="mt-8 scroll-mt-24 rounded border-2 border-amber-600 bg-amber-50 p-5 text-amber-950">
-          <p id="notice-title" className="font-bold">ご確認のお願い</p>
-          <p className="mt-1">
-            本ページは制度の概要を一般的にご紹介するものです。詳細な要件・運用は、出入国在留管理庁（ISA）および厚生労働省（MHLW）が公表する最新の資料に基づきます。省令・運用要領等により内容が変わる可能性があるため、個別の判断は必ず公式情報をご確認ください。
-            <CheckBadge />
-          </p>
-        </aside>
       </Section>
 
       <Section id="s2" title="技能実習制度からの主な変更点" tone="pale">
@@ -88,7 +80,7 @@ export default function Page() {
           </table>
         </div>
         <p className="mt-3 text-sm text-muted">
-          ※転籍の要件（就労期間、技能・日本語能力など）や日本語能力の基準、移行期間の取扱いの詳細は公式資料をご確認ください。<CheckBadge />
+          ※転籍の要件（就労期間、技能・日本語能力など）や日本語能力の基準、移行期間の取扱いの詳細は公式資料をご確認ください。
         </p>
       </Section>
 
@@ -98,7 +90,6 @@ export default function Page() {
             <>人材を「育てて定着させる」視点での受入れ計画が、これまで以上に重要になります。</>,
             <>転籍が一定の条件で認められるため、職場環境や処遇、日本語学習の支援など、働き続けたいと思える環境づくりが求められます。</>,
             <>新制度での受入れには、制度に沿った計画の作成・認定など、新たな手続きが必要となる見込みです。</>,
-            <>現在受け入れている技能実習生の取扱いについては、経過措置が設けられる予定です。<CheckBadge /></>,
           ].map((node, i) => (
             <li key={i} className="flex gap-3 border-b border-line pb-4 last:border-b-0">
               <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 shrink-0 bg-primary-dark" />

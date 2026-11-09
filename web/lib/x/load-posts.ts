@@ -1,9 +1,9 @@
+import { readFileSync } from "node:fs";
 import { unstable_cache } from "next/cache";
 import { X_HANDLE } from "@/lib/site";
 import { xFixturePayload } from "./fixture";
 import {
-  X_POSTS_REVALIDATE_SECONDS,
-  X_USER_REVALIDATE_SECONDS,
+  X_POSTS_CACHE_TAG,
   buildUserByUsernameUrl,
   buildUserTweetsUrl,
   mapTweetsToCards,
@@ -36,21 +36,27 @@ function userIdFromEnv(): string | null {
   return id && /^\d{1,20}$/.test(id) ? id : null;
 }
 
+function readFixturePayload(): unknown {
+  const file = process.env.X_FIXTURE_FILE;
+  if (!file || !xFixtureEnabled()) return xFixturePayload;
+  try {
+    return JSON.parse(readFileSync(file, "utf8")) as unknown;
+  } catch {
+    return xFixturePayload;
+  }
+}
+
 async function lookupUserId(): Promise<string> {
   const token = bearerToken();
-  if (!token) throw new Error("x user unavailable");
+  if (!token) throw new Error("x posts unavailable");
   const response = await fetch(buildUserByUsernameUrl(X_HANDLE), {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (!response.ok) throw new Error("x user unavailable");
+  if (!response.ok) throw new Error("x posts unavailable");
   const id = readUserId(await response.json());
-  if (!id) throw new Error("x user unavailable");
+  if (!id) throw new Error("x posts unavailable");
   return id;
 }
-
-const lookupUserIdCached = unstable_cache(lookupUserId, ["official-x-user-id"], {
-  revalidate: X_USER_REVALIDATE_SECONDS,
-});
 
 async function fetchTweets(userId: string): Promise<XPostCard[]> {
   const token = bearerToken();
@@ -58,15 +64,27 @@ async function fetchTweets(userId: string): Promise<XPostCard[]> {
   const response = await fetch(buildUserTweetsUrl(userId), {
     headers: { Authorization: `Bearer ${token}` },
   });
-  if (response.status === 401 || response.status === 403 || response.status === 429 || response.status >= 500) {
-    throw new Error("x posts unavailable");
-  }
   if (!response.ok) throw new Error("x posts unavailable");
   return mapTweetsToCards(await response.json(), X_HANDLE);
 }
 
-const fetchTweetsCached = unstable_cache(fetchTweets, ["official-x-posts-6"], {
-  revalidate: X_POSTS_REVALIDATE_SECONDS,
+/** 成功した一覧だけを期限なしで保存します。失敗は例外のままにし、キャッシュしません。 */
+async function loadFresh(): Promise<XPostCard[]> {
+  if (xFixtureEnabled()) {
+    const posts = mapTweetsToCards(readFixturePayload(), X_HANDLE);
+    if (posts.length === 0) throw new Error("x posts unavailable");
+    return posts;
+  }
+  if (!bearerToken()) throw new Error("x posts unavailable");
+  const userId = userIdFromEnv() ?? (await lookupUserId());
+  const posts = await fetchTweets(userId);
+  if (posts.length === 0) throw new Error("x posts unavailable");
+  return posts;
+}
+
+const loadSuccessCached = unstable_cache(loadFresh, ["x-posts-success"], {
+  revalidate: false,
+  tags: [X_POSTS_CACHE_TAG],
 });
 
 /** Next.js が静的生成をやめるための制御エラーは、案内カードに変えてはいけません。 */
@@ -78,15 +96,9 @@ function isNextControlFlowError(error: unknown): boolean {
 
 /** 失敗しても空を返し、ページのビルドや表示を止めません。トークンは返しません。 */
 export async function loadOfficialPosts(): Promise<OfficialPostsResult> {
-  if (xFixtureEnabled()) {
-    return { source: "fixture", posts: mapTweetsToCards(xFixturePayload, X_HANDLE) };
-  }
-  if (!bearerToken()) return { source: "fallback", posts: [] };
   try {
-    const userId = userIdFromEnv() ?? (await lookupUserIdCached());
-    const posts = await fetchTweetsCached(userId);
-    if (posts.length === 0) return { source: "fallback", posts: [] };
-    return { source: "api", posts };
+    const posts = await loadSuccessCached();
+    return { source: xFixtureEnabled() ? "fixture" : "api", posts };
   } catch (error) {
     if (isNextControlFlowError(error)) throw error;
     return { source: "fallback", posts: [] };

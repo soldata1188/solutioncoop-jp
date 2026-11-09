@@ -16,8 +16,11 @@ import { OfficialXPosts } from "@/components/OfficialXPosts";
 import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
-/** 公式Xの投稿を、多くても15分に1回程度の再取得に合わせます */
-export const revalidate = 900;
+/**
+ * 失敗した案内表示だけ、約5分後の再生成で取り直します。
+ * 取得に成功した投稿はタグ x-posts に期限なしで残り、この再生成では X API を呼びません。
+ */
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援し、2027年4月1日施行の育成就労制度に向けて準備中です。"),

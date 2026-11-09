@@ -1,8 +1,10 @@
 /** X API v2 のユーザー投稿レスポンスを、画面用のカードへ変換します。トークンは扱いません。 */
 
 export const X_API_BASE = "https://api.x.com";
-export const X_POSTS_REVALIDATE_SECONDS = 900;
-export const X_USER_REVALIDATE_SECONDS = 60 * 60 * 24;
+/** 取得に成功した投稿のキャッシュタグ。時間では切れず、手動更新でのみ破棄します。 */
+export const X_POSTS_CACHE_TAG = "x-posts";
+/** 失敗した取得だけ、この秒数のあとにもう一度試します。 */
+export const X_POSTS_FAILURE_REVALIDATE_SECONDS = 300;
 /** 表示する最新投稿の件数。取得は max_results=10 のまま、ここだけを変えます。 */
 export const X_POST_COUNT = 6;
 

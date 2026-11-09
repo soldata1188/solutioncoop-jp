@@ -100,6 +100,13 @@ export const LINE_LABEL = "LINEで無料相談";
 export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
 /**
+ * 公式X（旧Twitter）アカウント @KumiaiSol。
+ * 投稿の取得はサーバー側の X_BEARER_TOKEN だけで行い、ブラウザには出しません。
+ */
+export const X_URL = "https://x.com/KumiaiSol";
+export const X_HANDLE = "KumiaiSol";
+
+/**
  * 既存リポジトリ（solutioncoop-app/・gino-jisshu.html・index16.html）に記載のある情報。
  * 記載どうしで食い違いがある、または代表者様の確認が済んでいないため、表示時は必ず「要確認」を付けます。
  * ただし established（設立）と confirmed: true の沿革項目は代表者様に確認済みのため、要確認を付けません。

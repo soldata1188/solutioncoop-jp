@@ -32,7 +32,7 @@ export default function Page() {
         <div className="mb-8 grid gap-4 md:grid-cols-2">
           <div className="border-l-4 border-linegreen bg-white p-4 shadow-card">
             <p className="font-bold text-ink">LINEでもご相談いただけます</p>
-            <p className="mt-1 text-sm text-body">当組合のLINE公式アカウントから、トークでご相談をお送りいただけます。</p>
+            <p className="mt-1 text-sm text-body">当組合のLINE公式アカウントから、トーク画面からご相談いただけます。</p>
             <LineButton className="mt-3 flex min-h-12 w-full gap-2 px-4 text-base" iconClassName="h-5 w-5" />
             <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
           </div>

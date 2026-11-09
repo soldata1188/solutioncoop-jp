@@ -46,7 +46,7 @@ const life: Item[] = [
   },
   {
     title: "生活の相談への対応",
-    body: "仕事や生活の悩みを早めに把握し、受入れ企業様と連携して解決を図ります。人材の定着のための大切なご支援です。",
+    body: "仕事や生活の悩みを早めに把握し、受入れ企業様と連携して解決を図ります。人材の定着につながる大切な支援です。",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function Page() {
 
       <Section id="life" title="生活面のご支援" tone="pale">
         <div className="mb-8 grid gap-5 sm:grid-cols-2">
-          <Photo photo={photos.fireDrill} sizes="(min-width: 640px) 390px, 100vw" caption="入国後講習での消火訓練の様子" />
+          <Photo photo={photos.fireDrill} sizes="(min-width: 640px) 390px, 100vw" caption="上陸後講習での消火訓練の様子" />
           <Photo photo={photos.practice} sizes="(min-width: 640px) 390px, 100vw" caption="講習での実技練習の様子" />
         </div>
         <ItemList items={life} />
@@ -120,7 +120,7 @@ export default function Page() {
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <LinkButton href="/flow" variant="dark" className="min-h-14 sm:flex-1">受入れの流れを見る</LinkButton>
-          <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:flex-1">よくある質問</LinkButton>
+          <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:flex-1">よくある質問を見る</LinkButton>
         </div>
       </Section>
 

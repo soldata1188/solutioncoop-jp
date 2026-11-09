@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/meta";
 
 export const metadata = pageMeta(
   "/ikusei-shuro",
-  "育成就労制度とは｜育成就労の監理団体が解説",
+  "育成就労制度とは｜堺の監理団体が解説",
   "2027年4月1日施行の育成就労制度について、技能実習制度からの主な変更点、転籍や日本語の考え方、受入れ企業様が準備しておきたいことを、堺市の監理団体ソリューション協同組合がわかりやすく解説いたします。",
 );
 
@@ -24,11 +24,9 @@ export default function Page() {
         title="育成就労制度とは"
         lead="技能実習制度に代わる新しい制度「育成就労制度」は、2027年4月1日施行です。受入れ企業様に知っていただきたいポイントを、堺市の監理団体である当組合がわかりやすくご説明いたします。"
       />
-      {/* ファーストビューには短い案内1行のみ。全文の「ご確認のお願い」は概要の直後に移しています（文言は変更なし） */}
       <Section width="narrow" flushBottom>
-        <p className="border-l-4 border-amber-600 bg-amber-50 px-4 py-2 text-sm text-amber-950">
+        <p className="border-l-4 border-amber-600 bg-amber-50 px-4 py-3 text-sm text-amber-950">
           最新情報は出入国在留管理庁の公表をご確認ください。
-          <a href="#notice" className="ml-1 inline-flex min-h-11 items-center font-bold text-amber-950 underline underline-offset-4">ご確認のお願い</a>
         </p>
       </Section>
 
@@ -119,8 +117,8 @@ export default function Page() {
         </p>
         <div className="mt-8 grid gap-3 sm:grid-cols-3">
           <LinkButton href="/compare" variant="ghost">制度の比較を見る</LinkButton>
-          <LinkButton href="/roadmap" variant="ghost">準備のロードマップ</LinkButton>
-          <LinkButton href="/support" variant="ghost">受入れ後の支援</LinkButton>
+          <LinkButton href="/roadmap" variant="ghost">準備のロードマップを見る</LinkButton>
+          <LinkButton href="/support" variant="ghost">受入れ後の支援を見る</LinkButton>
         </div>
       </Section>
       <CtaSection title="育成就労制度について、まずはご相談ください。" />

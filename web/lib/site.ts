@@ -61,8 +61,8 @@ export const sdgs = {
 } as const;
 
 export const achievements = [
-  { value: "65", unit: "期", label: "技能実習生受入実績", sr: `技能実習生受入実績 ${org.terms}` },
-  { value: "80", unit: "社+", label: "受入企業数", sr: `受入企業数 ${org.clients}` },
+  { value: "65", unit: "期", label: "技能実習生受入れ実績", sr: `技能実習生受入れ実績 ${org.terms}` },
+  { value: "80", unit: "社+", label: "受入れ企業数", sr: `受入れ企業数 ${org.clients}` },
   { value: "12", unit: "名", label: "専任日本語教師", sr: `専任日本語教師 ${org.teachers}` },
   { value: "知事", unit: "表彰", label: "令和8年 大阪府知事表彰", sr: org.award },
 ];
@@ -115,7 +115,7 @@ export const repoFacts = {
     { year: "2017年（平成29年）12月", text: "監理団体の許可（一般監理事業）を取得", confirmed: true },
     { year: "2019年（令和元年）7月", text: "登録支援機関として登録", confirmed: true },
     { year: "令和8年（2026年）", text: "大阪府知事表彰を受賞", confirmed: true },
-    { year: "2024年（令和6年）10月", text: "第50期生の受入れ（社内資料の記載）", confirmed: true },
+    { year: "2024年（令和6年）10月", text: "第50期生の受入れ", confirmed: true },
   ] as { year: string; text: string; confirmed?: boolean }[],
 };
 
@@ -123,17 +123,25 @@ export const CONTACT_HREF = "/contact";
 /** /contact へのボタンの文言（代表者様のご指示により全ボタンで統一） */
 export const CONTACT_LABEL = "メールでのお問い合わせ";
 /** 電話ボタンの読み上げ名（アイコンのみのボタン用） */
-export const TEL_ARIA = "電話でお問い合わせ";
+export const TEL_ARIA = "お電話でのご相談";
 
-/** Organization / LocalBusiness（確認済みの情報のみ。営業時間などの未確認情報は含めません） */
+/** Organization / LocalBusiness（確認済みの情報のみ。営業時間は平日 9:00〜18:00） */
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness"],
   "@id": `${SITE_URL}/#organization`,
   name: org.name,
   url: SITE_URL,
-  logo: `${SITE_URL}/brand/sol-logo-main-512.png`,
-  image: `${SITE_URL}/opengraph-image.png`,
+  logo: `${SITE_URL}/brand/SOL_Solution_Coop_official_2026-11-07.jpg`,
+  image: `${SITE_URL}/brand/SOL_Solution_Coop_official_2026-11-07.jpg`,
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  ],
   areaServed: { "@type": "AdministrativeArea", name: "大阪府" },
   telephone: "+81-72-224-8067",
   faxNumber: "+81-72-224-2214",

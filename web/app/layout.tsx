@@ -24,7 +24,12 @@ export const metadata: Metadata = {
   },
   description:
     "堺市の監理団体、ソリューション協同組合です。大阪の中小企業様の外国人材受入れと、2027年4月1日施行の育成就労制度への対応をご支援いたします。",
-  openGraph: { type: "website", locale: "ja_JP", siteName: org.name },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    siteName: org.name,
+    images: [{ url: "/brand/SOL_Solution_Coop_official_2026-11-07.jpg", width: 1500, height: 1200, alt: org.name }],
+  },
 };
 
 export const viewport: Viewport = {

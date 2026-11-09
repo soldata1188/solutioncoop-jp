@@ -56,7 +56,7 @@ export const compareRows: CompareRow[] = [
     ikusei: { text: "必須業務が従事時間の3分の1以上、安全衛生に関する業務が10分の1以上" },
   },
   {
-    label: "送出機関に支払う費用",
+    label: "送り出し機関に支払う費用",
     jisshu: { text: "—" },
     tokutei: { text: "—" },
     ikusei: { text: "外国人本人が負担する手数料は、月給の2か月分が上限" },

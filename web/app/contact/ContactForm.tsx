@@ -27,7 +27,7 @@ export function ContactForm() {
       else if (json.status === "not_configured") setStatus({ kind: "info", message: json.message });
       else setStatus({ kind: "error", message: json.message, errors: json.errors });
     } catch {
-      setStatus({ kind: "error", message: "通信エラーが発生いたしました。お手数ですが、お電話にてお問い合わせください。" });
+      setStatus({ kind: "error", message: "通信エラーが発生しました。お手数ですが、お電話にてお問い合わせください。" });
     }
   }
 

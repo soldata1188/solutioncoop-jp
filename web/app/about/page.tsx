@@ -10,7 +10,7 @@ import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/sit
 export const metadata = pageMeta(
   "/about",
   "組合概要｜堺の監理団体",
-  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、受入実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
+  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、受入れ実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
 );
 
 export default function Page() {
@@ -28,12 +28,12 @@ export default function Page() {
         技能実習制度に基づく監理事業（一般監理事業）
         <br />
         特定技能外国人の支援業務（登録支援機関）
-        <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど（社内資料の記載）</span>
+        <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど</span>
       </span>,
     ],
     ["職員数", org.staff],
-    ["技能実習生|受入実績", org.terms],
-    ["受入企業数", org.clients],
+    ["技能実習生|受入れ実績", org.terms],
+    ["受入れ企業数", org.clients],
     ["専任日本語教師", org.teachers],
     ["表彰", org.award],
     ["連携する送り出し国", "ベトナム、インドネシア、フィリピン"],

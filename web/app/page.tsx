@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const problems = [
   {
     title: "育成就労制度で何が変わるのか、まだ整理できていない",
-    body: "2027年4月1日施行の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいと感じていらっしゃる企業様もおられます。",
+    body: "2027年4月1日施行の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいとお感じの企業様もいらっしゃいます。",
   },
   {
     title: "初めての受入れで、手続きや準備の進め方がわからない",
@@ -47,7 +47,7 @@ const businesses = [
   {
     title: "事業拡大サポート",
     sub: "共同事業を通じたビジネス拡大支援",
-    body: "組合員様向けに、事業拡大と業務効率化を直接的にバックアップ。受注の斡旋や必要な資材・設備の共同購買を通じて、組合員様のコスト削減と収益向上に貢献します。",
+    body: "組合員様向けに、事業拡大と業務効率化を直接的にバックアップ。受注のあっせんや必要な資材・設備の共同購買を通じて、組合員様のコスト削減と収益向上に貢献します。",
     items: ["組合員の行う事業・工事等の受注斡旋", "組合員の必要とする機械・設備等の購買斡旋"],
     Icon: IconHandshake,
   },
@@ -78,13 +78,13 @@ const reasons = [
   {
     title: "事務負担を大幅に軽減",
     sub: "煩雑な事務手続きの負担軽減",
-    body: "新制度移行に伴う煩雑な手続きの負担軽減と確実な法令順守をサポート。受入準備から各種申請への適切なアドバイスまで、専門スタッフが伴走し、企業様の適正な運用を支援します。",
+    body: "新制度移行に伴う煩雑な手続きの負担軽減と確実な法令順守をサポート。受入れ準備から各種申請に関する適切なアドバイスまで、専門スタッフが伴走し、企業様の適正な運用を支援します。",
     Icon: IconDocuments,
   },
   {
-    title: "3カ国対応ハイブリッド",
+    title: "3か国対応ハイブリッド",
     sub: "多国籍で優秀な人材の厳選",
-    body: "ベトナム、インドネシア、フィリピンの3カ国から意欲ある人材を紹介可能。貴社の社風や業務ニーズに合わせ、グローバルな視点から最も定着しやすい人材を提案します。",
+    body: "ベトナム、インドネシア、フィリピンの3か国から意欲ある人材を紹介可能。貴社の社風や業務ニーズに合わせ、グローバルな視点から最も定着しやすい人材を提案します。",
     Icon: IconGlobe,
   },
   {
@@ -137,7 +137,7 @@ const benefits: { title: string; body: string; check?: boolean }[] = [
   { title: "人材をご提案", body: "ベトナム・インドネシア・フィリピンの送り出し機関と連携し、Web面接で人材を選考いただけます。" },
   { title: "入国後1か月の講習", body: "上陸後講習で日本語や生活のルールを学んでから、貴社へ配属いたします。" },
   { title: "配属後の監査・訪問", body: "法令に基づく定期的な監査・訪問指導で、受入れ後も継続してご支援いたします。" },
-  { title: "2027年4月への移行準備", body: "育成就労制度に向けて、現在の技能実習からの切り替えの準備を一緒に進めます。" },
+  { title: "2027年4月への移行準備", body: "育成就労制度に向けて、技能実習からの移行準備を、貴社と一緒に進めます。" },
 ];
 
 /** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
@@ -212,7 +212,7 @@ export default function Home() {
         id="business"
         eyebrow={<span lang="en">BUSINESS CONTENT</span>}
         title="ソリューション協同組合の事業内容"
-        lead="単なる人材紹介にとどまらず、受入企業様の「人手不足解消」から「事業拡大」「海外進出」までをトータルでサポートする4つの事業を柱としています。"
+        lead="単なる人材紹介にとどまらず、受入れ企業様の「人手不足解消」から「事業拡大」「海外進出」までをトータルでサポートする4つの事業を柱としています。"
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {businesses.map(({ title, sub, body, items, Icon }, i) => (
@@ -228,7 +228,7 @@ export default function Home() {
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
                 <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
                 <div className="mt-auto pt-4">
-                  <p className="inline-block bg-label px-2 py-0.5 text-sm font-bold text-ink">定款記載事業(等)</p>
+                  <p className="inline-block bg-label px-2 py-0.5 text-sm font-bold text-ink">定款記載事業など</p>
                   <ul className="mt-2 space-y-1">
                     {items.map((it) => (
                       <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
@@ -248,10 +248,10 @@ export default function Home() {
       <Section
         id="reasons"
         tone="pale"
-        eyebrow="80社超の企業様に選ばれた実績"
+        eyebrow="80社以上の企業様に選ばれた実績"
         title="80社以上に選ばれ続ける理由"
-        sub={<Chunks parts={["— 受入企業様が実感する、", "技能実習・育成就労・", "特定技能対応の", "4つの理由 —"]} />}
-        lead="技能実習生受入れから育成就労制度への移行、特定技能への対応まで。外国人採用に慣れていない中小企業様も、煩雑な事務手続きのご負担を軽減し、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
+        sub={<Chunks parts={["— 受入れ企業様が実感する、", "技能実習・育成就労・", "特定技能対応の", "4つの理由 —"]} />}
+        lead="技能実習生の受入れから育成就労制度への移行、特定技能への対応まで。外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {reasons.map(({ title, sub, body, Icon }, i) => (
@@ -387,7 +387,7 @@ export default function Home() {
       <Section id="line" title="LINEでのご相談" width="default">
         <LineHeading>当組合のLINE公式アカウント</LineHeading>
         <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
-          <p className="text-[15px] text-body">当組合のLINE公式アカウントから、トークでご相談をお送りいただけます。</p>
+          <p className="text-[15px] text-body">当組合のLINE公式アカウントから、トーク画面からご相談いただけます。</p>
           <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
           <div className="mt-5">
             <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />

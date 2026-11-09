@@ -398,6 +398,7 @@ export default function Home() {
       {/* 公式X。お知らせ欄は無いため、最後の相談枠の直前。取得はサーバー側のみで、widgets.js は使いません。 */}
       <Section
         id="official-x"
+        tone="pale"
         title="公式X（旧Twitter）"
         width="wide"
         lead="当組合の公式アカウントの最新の投稿です。"

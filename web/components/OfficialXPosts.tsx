@@ -40,10 +40,10 @@ function FallbackCard() {
 
 function PostCard({ post }: { post: XPostCard }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded border border-line bg-white shadow-card">
+    <article className="flex h-full w-full flex-col overflow-hidden rounded border border-line bg-white shadow-card">
       {post.image ? (
         <div className="relative aspect-video w-full overflow-hidden bg-pale">
-          <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 768px) 380px, 100vw" className="object-cover" />
+          <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 1024px) 290px, (min-width: 768px) 360px, 100vw" className="object-cover" />
         </div>
       ) : null}
       <div className="flex flex-1 flex-col px-4 py-4">
@@ -51,15 +51,17 @@ function PostCard({ post }: { post: XPostCard }) {
           {post.dateLabel}
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
-        <a
-          href={post.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-11 items-center justify-center rounded border-2 border-primary-dark px-4 text-[15px] font-bold text-primary-dark no-underline hover:bg-cta-tint"
-        >
-          Xで見る
-          <span className="sr-only">（新しいタブで開きます）</span>
-        </a>
+        <div className="mt-auto pt-4">
+          <a
+            href={post.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded border-2 border-primary-dark px-4 text-[15px] font-bold text-primary-dark no-underline hover:bg-cta-tint"
+          >
+            Xで見る
+            <span className="sr-only">（新しいタブで開きます）</span>
+          </a>
+        </div>
       </div>
     </article>
   );
@@ -74,9 +76,9 @@ export async function OfficialXPosts() {
         <p className="mb-6 text-center text-[15px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
       ) : null}
       {result.posts.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <ul className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
           {result.posts.map((post) => (
-            <li key={post.id} className="min-w-0">
+            <li key={post.id} className="flex min-w-0">
               <PostCard post={post} />
             </li>
           ))}

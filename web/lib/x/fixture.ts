@@ -16,8 +16,20 @@ export const xFixturePayload = {
     },
     {
       id: "2118000000000000002",
+      text: "金属加工の現場でも、外国人材の方が作業に入っています。受入れ後のフォローも続けています。",
+      created_at: "2026-11-07T04:00:00.000Z",
+      attachments: { media_keys: ["3_steel"] },
+    },
+    {
+      id: "2118000000000000006",
       text: "受入れ後の定期訪問では、職場でのご様子と生活面のご相談を伺っています。ご不明な点はお気軽にお問い合わせください。",
       created_at: "2026-11-06T06:30:00.000Z",
+    },
+    {
+      id: "2118000000000000005",
+      text: "土木の現場では、安全な作業の進め方を送り出し機関と確認しています。",
+      created_at: "2026-11-05T02:00:00.000Z",
+      attachments: { media_keys: ["3_excavation"] },
     },
     {
       id: "2118000000000000001",
@@ -26,7 +38,7 @@ export const xFixturePayload = {
     },
     {
       id: "2118000000000000000",
-      text: "これは5件目なので、新しい4件だけを表示します。",
+      text: "これは7件目なので、新しい6件だけを表示します。",
       created_at: "2026-10-01T00:00:00.000Z",
     },
   ],
@@ -41,6 +53,16 @@ export const xFixturePayload = {
         media_key: "3_sakai",
         type: "photo",
         url: "/images/sakai-lighthouse.webp",
+      },
+      {
+        media_key: "3_steel",
+        type: "photo",
+        url: "/images/site-steel-workshop.webp",
+      },
+      {
+        media_key: "3_excavation",
+        type: "photo",
+        url: "/images/site-excavation.webp",
       },
     ],
   },

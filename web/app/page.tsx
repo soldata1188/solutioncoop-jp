@@ -431,6 +431,7 @@ export default function Home() {
       <Section
         id="official-x"
         title="公式X（旧Twitter）"
+        width="wide"
         lead="当組合の公式アカウントの最新の投稿です。"
       >
         <OfficialXPosts />

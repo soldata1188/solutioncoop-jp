@@ -65,7 +65,7 @@ async function fetchTweets(userId: string): Promise<XPostCard[]> {
   return mapTweetsToCards(await response.json(), X_HANDLE);
 }
 
-const fetchTweetsCached = unstable_cache(fetchTweets, ["official-x-posts"], {
+const fetchTweetsCached = unstable_cache(fetchTweets, ["official-x-posts-6"], {
   revalidate: X_POSTS_REVALIDATE_SECONDS,
 });
 

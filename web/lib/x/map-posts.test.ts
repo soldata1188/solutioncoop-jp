@@ -40,9 +40,19 @@ test("dates use the Japan calendar day", () => {
   assert.equal(formatJapaneseDate("not-a-date"), "");
 });
 
-test("maps the newest four posts, photos, video previews, and plain text", () => {
+test("maps the newest six posts, photos, video previews, and plain text", () => {
   const cards = mapTweetsToCards({
     data: [
+      {
+        id: "15",
+        text: "いちばん新しい投稿",
+        created_at: "2026-11-10T01:00:00.000Z",
+      },
+      {
+        id: "9",
+        text: "表示されない古い投稿",
+        created_at: "2026-09-01T00:00:00.000Z",
+      },
       {
         id: "10",
         text: "古い投稿",
@@ -91,15 +101,15 @@ test("maps the newest four posts, photos, video previews, and plain text", () =>
     },
   });
 
-  assert.deepEqual(cards.map((card) => card.id), ["14", "13", "12", "11"]);
-  assert.equal(cards[0]?.image?.url, "https://pbs.twimg.com/media/thumb.jpg");
-  assert.equal(cards[0]?.text, "動画です");
-  assert.equal(cards[1]?.image?.url, "https://pbs.twimg.com/media/photo.jpg");
-  assert.equal(cards[1]?.text, "写真です 詳細は solutioncoop-jp.com");
-  assert.equal(cards[2]?.text, "文章のみ #堺市");
-  assert.equal(cards[2]?.href, "https://x.com/KumiaiSol/status/12");
-  assert.equal(cards[2]?.dateLabel, "2026年11月07日");
-  assert.equal(cards[3]?.image, null);
+  assert.deepEqual(cards.map((card) => card.id), ["15", "14", "13", "12", "11", "10"]);
+  assert.equal(cards[1]?.image?.url, "https://pbs.twimg.com/media/thumb.jpg");
+  assert.equal(cards[1]?.text, "動画です");
+  assert.equal(cards[2]?.image?.url, "https://pbs.twimg.com/media/photo.jpg");
+  assert.equal(cards[2]?.text, "写真です 詳細は solutioncoop-jp.com");
+  assert.equal(cards[3]?.text, "文章のみ #堺市");
+  assert.equal(cards[3]?.href, "https://x.com/KumiaiSol/status/12");
+  assert.equal(cards[3]?.dateLabel, "2026年11月07日");
+  assert.equal(cards[4]?.image, null);
 });
 
 test("bad payloads become an empty list", () => {

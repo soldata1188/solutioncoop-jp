@@ -3,6 +3,8 @@
 export const X_API_BASE = "https://api.x.com";
 export const X_POSTS_REVALIDATE_SECONDS = 900;
 export const X_USER_REVALIDATE_SECONDS = 60 * 60 * 24;
+/** 表示する最新投稿の件数。取得は max_results=10 のまま、ここだけを変えます。 */
+export const X_POST_COUNT = 6;
 
 export type XPostCard = {
   id: string;
@@ -109,7 +111,7 @@ function firstImage(tweet: Record<string, unknown>, mediaByKey: Map<string, Reco
   return null;
 }
 
-export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit = 4): XPostCard[] {
+export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit = X_POST_COUNT): XPostCard[] {
   if (!isRecord(payload) || !Array.isArray(payload.data)) return [];
   const mediaByKey = new Map<string, Record<string, unknown>>();
   if (isRecord(payload.includes) && Array.isArray(payload.includes.media)) {

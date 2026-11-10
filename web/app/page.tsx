@@ -25,21 +25,6 @@ export const metadata: Metadata = {
   title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
 };
 
-const problems = [
-  {
-    title: "育成就労制度で何が変わるのか、まだ整理できていない",
-    body: "2027年4月1日施行の新しい制度について、自社にどのような影響があり、いつまでに何を準備すればよいのかが見えにくいとお感じの企業様もいらっしゃいます。",
-  },
-  {
-    title: "初めての受入れで、手続きや準備の進め方がわからない",
-    body: "申請書類の作成、住まいの手配、受入れ後の体制づくりなど、何から手を付ければよいか迷われる企業様は少なくありません。",
-  },
-  {
-    title: "受け入れた人材に、長く働いてもらえるか不安",
-    body: "新制度では一定の要件のもとで転籍が認められる予定です。働き続けたいと思っていただける職場づくりが、これまで以上に大切になります。",
-  },
-];
-
 /** 事業内容（代表者様ご提供の文言をそのまま掲載） */
 const businesses = [
   {
@@ -165,34 +150,6 @@ export default function Home() {
 
       {/* 実績ストリップ（代表者様確認済みの4項目と「SDGs未来都市・堺」） */}
       <StatsStrip />
-
-      {/* お悩み */}
-      <Section id="problems" tone="pale" title="外国人材の受入れで、このようなお悩みはありませんか">
-        <div className="bg-pale-strong px-4 py-8 md:px-6">
-          <p className="text-center text-sm font-bold text-primary-dark">育成就労制度の開始を前に</p>
-          <p className="mt-1 text-center text-xl font-bold text-primary-dark md:text-2xl">受入れ準備の見通し</p>
-          <p className="mx-auto mt-3 max-w-[560px] text-center text-sm font-bold text-ink">
-            中小企業の経営者・ご担当者様が抱えやすいお悩みの例です。
-          </p>
-          <ol className="mt-6 grid gap-4 md:grid-cols-3">
-            {problems.map((p, i) => (
-              <li key={p.title} className="border-b-4 border-brand bg-white px-4 pb-6 pt-5">
-                <p aria-hidden="true" className="flex items-center gap-3 text-lg font-bold text-primary-dark">
-                  <span className="h-px flex-1 bg-line" />
-                  {i + 1}
-                  <span className="h-px flex-1 bg-line" />
-                </p>
-                <h3 className="mt-2 text-base font-bold leading-snug text-primary-dark">
-                  <span className="sr-only">お悩み{i + 1}：</span>
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink">{p.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <p className="mt-4 text-xs text-muted">※上記は一般的なお悩みの例であり、調査結果ではありません。</p>
-      </Section>
 
       {/* 事業内容（代表者様ご提供の文言） */}
       <Section

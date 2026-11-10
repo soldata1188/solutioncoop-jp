@@ -314,7 +314,9 @@ export default function Home() {
 
       {/* よくある質問 */}
       <Section id="faq" title="よくある質問" width="narrow">
-        <FaqList items={faqs.slice(0, 5)} />
+        <FaqList
+          items={faqs.slice(0, 5).filter((item) => item.q !== "育成就労制度はいつから始まりますか。" && item.q !== "どのような業種の企業で受入れが可能ですか。")}
+        />
         <div className="mt-8 text-center">
           <LinkButton href="/faq" variant="ghost" className="min-w-64">よくある質問をすべて見る</LinkButton>
         </div>

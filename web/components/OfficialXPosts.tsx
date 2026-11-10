@@ -38,19 +38,39 @@ function FallbackCard() {
   );
 }
 
+function XMark() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="currentColor">
+      <path d="M2.1 2.1h2.6L8 6.6l3.3-4.5h2.6L9.3 8l4.6 5.9h-2.6L8 9.4l-3.3 4.5H2.1L6.7 8 2.1 2.1Z" />
+    </svg>
+  );
+}
+
 function PostCard({ post }: { post: XPostCard }) {
   return (
-    <article className="flex h-full w-full flex-col overflow-hidden rounded border border-line bg-white shadow-card">
+    <article className="flex h-full w-full flex-col rounded border border-line bg-white shadow-card">
       {post.image ? (
-        <div className="relative aspect-video w-full overflow-hidden bg-pale">
+        <div className="relative aspect-video w-full overflow-hidden rounded-t bg-pale">
           <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 1024px) 290px, (min-width: 768px) 360px, 100vw" className="object-cover" />
         </div>
       ) : null}
-      <div className="flex flex-1 flex-col px-4 py-4">
+      <div className="flex flex-1 flex-col px-4 pt-4 pb-2">
         <time dateTime={post.createdAt} className="text-[15px] text-body">
           {post.dateLabel}
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
+        <div className="mt-auto flex justify-end">
+          <a
+            href={post.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm font-bold text-primary-dark no-underline hover:bg-cta-tint hover:underline hover:underline-offset-4"
+          >
+            <XMark />
+            Xで見る
+            <span className="sr-only">（新しいタブで開きます）</span>
+          </a>
+        </div>
       </div>
     </article>
   );

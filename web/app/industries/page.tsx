@@ -30,7 +30,7 @@ export default function Page() {
           {featured.map((field) => (
             <li key={field.slug}>
               <Link href={`/industries/${field.slug}`} className="flex h-full flex-col rounded bg-white p-5 shadow-card no-underline">
-                <FieldArt kind={artFor(field.slug)} />
+                <FieldArt kind={artFor(field.slug)} eager />
                 <p className="mt-2 text-xs font-bold text-muted">イメージ</p>
                 <h3 className="mt-1 text-xl font-bold text-primary-dark">{field.name}</h3>
                 <p className="mt-2 text-[15px] text-body">{field.summary}</p>

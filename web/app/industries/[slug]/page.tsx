@@ -36,8 +36,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         lead={`${field.summary} 育成就労制度は2027年4月1日施行です。`}
       />
       <Section width="narrow">
-        <div className="flex items-center gap-4">
-          <FieldArt kind={artFor(field.slug)} />
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <FieldArt kind={artFor(field.slug)} eager className="shrink-0" />
           <p className="text-sm font-bold text-muted">イメージ。実在の会社や人を描いたものではありません。</p>
         </div>
         <ul className="mt-8 space-y-10">

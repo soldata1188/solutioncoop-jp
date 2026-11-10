@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { FieldArt } from "@/components/FieldArt";
+import { FieldArt, artFor } from "@/components/FieldArt";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
-import { INDUSTRY_SOURCE, fieldBySlug, fields, tocOnlyLabel, type Work } from "@/lib/industries";
+import { fieldBySlug, fields, skillPlanLabel, tocOnlyLabel, workSourceLabel, type Work } from "@/lib/industries";
 import { Marks, SourceNote } from "../marks";
 
 export function generateStaticParams() {
@@ -37,14 +37,16 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       />
       <Section width="narrow">
         <div className="flex items-center gap-4">
-          <FieldArt kind={field.art} />
+          <FieldArt kind={artFor(field.slug)} />
           <p className="text-sm font-bold text-muted">イメージ。実在の会社や人を描いたものではありません。</p>
         </div>
         <ul className="mt-8 space-y-10">
           {field.works.map((work) => (
             <li key={work.name} id={`work-${field.works.indexOf(work)}`} className="scroll-mt-24 rounded bg-white p-4 shadow-card ring-1 ring-line sm:p-6">
               <h2 className="text-xl font-bold text-primary-dark">{work.name}</h2>
-              <Marks flags={work.flags} />
+              <p className="mt-1 text-sm font-bold text-muted">{workSourceLabel(work)}</p>
+              <Marks flags={work.flags} source={work.source ?? "6"} />
+              {skillPlanLabel(work) ? <p className="mt-2 text-sm text-body">{skillPlanLabel(work)}</p> : null}
               <dl className="mt-4 grid gap-3 text-[15px] sm:grid-cols-2">
                 <Fact term="主たる技能" value={work.skill} />
                 <Fact term="対応する技能実習職種" value={work.jobs} />
@@ -56,9 +58,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           ))}
         </ul>
         <SourceNote />
-        <p className="mt-2 text-sm text-muted">
-          資料PDF：<a href={INDUSTRY_SOURCE.pdfUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-primary-dark underline underline-offset-4">{INDUSTRY_SOURCE.document}<span className="sr-only">（新しいタブで開きます）</span></a>
-        </p>
       </Section>
       <CtaSection title="貴社の業務が対象となるか、お気軽にご相談ください。" />
     </>
@@ -81,6 +80,7 @@ function Detail({ work }: { work: Work }) {
     <div className="mt-5 space-y-5 text-[15px]">
       <p><span className="font-bold">主な業務（特定技能1号の技能水準）。</span>{detail.level}</p>
       <p><span className="font-bold">試験。</span>{detail.exam}</p>
+      {detail.note ? <p className="text-sm text-muted">{detail.note}</p> : null}
       {detail.topics.map((topic) => (
         <div key={topic.name}>
           <h3 className="text-lg font-bold text-ink">{topic.name}</h3>

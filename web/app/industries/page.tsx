@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { FieldArt } from "@/components/FieldArt";
+import { FieldArt, artFor } from "@/components/FieldArt";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { fields } from "@/lib/industries";
@@ -23,14 +23,14 @@ export default function Page() {
       <PageHeader
         path="/industries"
         title="対象業種"
-        lead="建設、機械・金属、食品製造を中心にご支援しております。分野の内容は、第14回有識者会議の資料に沿ってご案内します。育成就労制度は2027年4月1日施行です。"
+        lead="建設、機械・金属、食品製造を中心にご支援しております。第6回資料を基本に、第14回で追加・改訂された区分を反映しています。育成就労制度は2027年4月1日施行です。"
       />
       <Section id="coop" title="組合の主な対応分野" width="wide">
         <ul className="grid gap-5 md:grid-cols-3">
           {featured.map((field) => (
             <li key={field.slug}>
               <Link href={`/industries/${field.slug}`} className="flex h-full flex-col rounded bg-white p-5 shadow-card no-underline">
-                <FieldArt kind={field.art} />
+                <FieldArt kind={artFor(field.slug)} />
                 <p className="mt-2 text-xs font-bold text-muted">イメージ</p>
                 <h3 className="mt-1 text-xl font-bold text-primary-dark">{field.name}</h3>
                 <p className="mt-2 text-[15px] text-body">{field.summary}</p>
@@ -43,15 +43,17 @@ export default function Page() {
         </p>
       </Section>
 
-      <Section id="all" title="育成就労の受入れ対象分野" tone="pale" width="wide" lead="有識者会議の資料1-3の目次に沿って、すべての分野を掲載しています。色だけで区別せず、文字のラベルで意味を示します。">
-        <ul className="mb-8 grid gap-2 text-sm sm:grid-cols-2">
-          <li className="rounded bg-white px-3 py-2">新たに追加（資料の赤字）。主たる技能の整備予定は令和8年度時点です。</li>
+      <Section id="all" title="育成就労の受入れ対象分野" tone="pale" width="wide" lead="第6回資料1-3の目次を基本に、すべての分野を掲載しています。第14回資料3-2で追加・改訂された業務区分は、その内容に置き換えています。色だけで区別せず、文字のラベルで意味を示します。">
+        <p className="mb-4 text-[15px] font-bold text-ink">第6回資料を基本に、第14回で追加・改訂された区分を反映しています。</p>
+        <ul className="mb-8 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+          <li className="rounded bg-white px-3 py-2">新たに追加（資料の赤字）。整備予定は、第6回の区分が令和7年度時点、第14回の区分が令和8年度時点です。</li>
           <li className="rounded bg-white px-3 py-2">特定技能2号へ移行できる業務区分（資料の緑字）。</li>
+          <li className="rounded bg-white px-3 py-2">第6回の区分のうち、3年目に特定技能1号評価試験を活用するもの（資料の青字）。</li>
         </ul>
         <ul className="grid gap-4 md:grid-cols-2">
           {fields.map((field) => (
             <li key={field.slug} className="flex flex-col rounded bg-white p-5 shadow-card">
-              <FieldArt kind={field.art} />
+              <FieldArt kind={artFor(field.slug)} />
               <p className="mt-2 text-xs font-bold text-muted">イメージ</p>
               <h3 className="mt-1 text-lg font-bold text-ink">
                 <Link href={`/industries/${field.slug}`} className="underline decoration-primary underline-offset-4">{field.name}</Link>

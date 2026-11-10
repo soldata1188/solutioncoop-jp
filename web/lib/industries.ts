@@ -1116,6 +1116,72 @@ function workOf(slug: string, name: string) {
 
   const food = workOf("food-manufacturing", "飲食料品製造業").work;
   food.note += "。第14回の目次では業務区分を飲食料品製造とし、技能実習職種（豆腐製造）同様の育成で、個別の頁はありません";
+
+  // 目次の文字色。業務区分の緑=特定技能2号、主たる技能の青=第6回の3年目試験、分野・業務区分・備考の赤=新たに追加。
+  // 第14回に載る区分は第14回の色を優先する。第14回の主たる技能に青はない。
+  const tocFlags: Record<string, WorkFlags> = {
+    "介護": {},
+    "ビルクリーニング": { spec2: true, exam1: true },
+    "リネンサプライ": { added: true },
+    "板ガラス加工": { added: true },
+    "ガラス溶融成形": { added: true },
+    "機械金属加工": { added: true, spec2: true },
+    "電気電子機器組み立て": { added: true, spec2: true },
+    "金属表面処理": { added: true, spec2: true },
+    "コンクリート製品製造": {},
+    "紙器・段ボール箱製造": { added: true },
+    "RPF製造": { exam1: true },
+    "陶磁器製品製造": { added: true },
+    "印刷・製本": {},
+    "紡織製品製造": { added: true },
+    "縫製": { added: true },
+    "電線・ケーブル製造": { added: true },
+    "プレハブ製造": { added: true },
+    "家具製造": { added: true },
+    "定形・不定形耐火物製造": { added: true },
+    "生コンクリート製造": { added: true, exam1: true },
+    "ゴム製品製造": { added: true },
+    "かばん製造": { added: true },
+    "土木": { added: true, spec2: true },
+    "建築": { added: true, spec2: true },
+    "ライフライン・設備": { added: true, spec2: true },
+    "造船": { spec2: true },
+    "舶用機械": { spec2: true },
+    "舶用電気電子機器組立て": { spec2: true },
+    "自動車整備": { spec2: true },
+    "車体整備": { added: true },
+    "空港グランドハンドリング": { added: true },
+    "航空機整備": {},
+    "宿泊": { added: true, spec2: true, exam1: true },
+    "トラック運転者": {},
+    "バス運転者": {},
+    "タクシー運転者": {},
+    "軌道整備": { added: true, exam1: true },
+    "電気設備整備": { added: true, exam1: true },
+    "車両整備": { added: true, exam1: true },
+    "車両製造": { added: true, exam1: true },
+    "運輸係員": { added: true },
+    "駅・車両清掃": { added: true, exam1: true },
+    "物流倉庫": { added: true, exam1: true },
+    "耕種農業": { added: true, spec2: true },
+    "畜産農業": { added: true, spec2: true },
+    "漁業": { added: true, spec2: true, exam1: true },
+    "養殖業": { added: true, spec2: true, exam1: true },
+    "水産物産地卸売市場業": { added: true },
+    "飲食料品製造業": { added: true, spec2: true, exam1: true },
+    "水産加工": { added: true },
+    "外食業": { added: true, spec2: true, exam1: true },
+    "林業": {},
+    "木材産業": { added: true, exam1: true },
+    "廃棄物処分業（中間処理）": { added: true, exam1: true },
+  };
+  for (const field of fields) {
+    for (const work of field.works) {
+      const flags = tocFlags[work.name];
+      if (!flags) throw new Error(work.name);
+      work.flags = flags;
+    }
+  }
 }
 
 export function workSourceLabel(work: Work) {

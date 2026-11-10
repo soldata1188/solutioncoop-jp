@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
-import { Photo } from "@/components/Photo";
+import { FieldArt } from "@/components/FieldArt";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
-import { photos } from "@/lib/images";
 import { fields } from "@/lib/industries";
 import { FieldMarks, SourceNote } from "./marks";
 
@@ -14,27 +13,9 @@ export const metadata = pageMeta(
   "建設、機械・金属、食品製造を中心に、育成就労制度の受入れ対象分野と業務区分を、有識者会議の資料に沿ってご案内します。貴社の業務が対象となるかは個別に確認いたします。",
 );
 
-const featured = [
-  {
-    name: "建設",
-    body: "建設現場の人手不足に悩む企業様の人材確保をご支援いたします。安全面への配慮や現場での日本語コミュニケーションについてもご相談ください。",
-    href: "/industries/construction",
-    photo: photos.siteExcavation,
-  },
-  {
-    name: "機械・金属",
-    body: "機械加工、金属加工、溶接などの製造現場をご支援いたします。技能の習得と定着を見据えた受入れをご提案いたします。",
-    href: "/industries/industrial-products",
-    photo: photos.siteSteel,
-    note: "資料の分野名は「工業製品製造業」です。機械金属加工はその業務区分の一つです。",
-  },
-  {
-    name: "食品製造",
-    body: "食品工場など製造ラインでの人材確保をご支援いたします。衛生管理のルールなど、現場で必要な知識の習得もサポートいたします。",
-    href: "/industries/food-manufacturing",
-    note: "資料の分野名は「飲食料品製造業」です。",
-  },
-];
+const featured = ["construction", "industrial-products", "food-manufacturing"]
+  .map((slug) => fields.find((field) => field.slug === slug))
+  .filter((field) => field != null);
 
 export default function Page() {
   return (
@@ -42,21 +23,18 @@ export default function Page() {
       <PageHeader
         path="/industries"
         title="対象業種"
-        lead="建設、機械・金属、食品製造を中心に、大阪府内の中小企業様の外国人材受入れをご支援しております。育成就労制度は2027年4月1日施行です。"
+        lead="建設、機械・金属、食品製造を中心にご支援しております。分野の内容は、第14回有識者会議の資料に沿ってご案内します。育成就労制度は2027年4月1日施行です。"
       />
       <Section id="coop" title="組合の主な対応分野" width="wide">
         <ul className="grid gap-5 md:grid-cols-3">
-          {featured.map((item) => (
-            <li key={item.name} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
-              {item.photo ? <Photo photo={item.photo} sizes="(min-width: 768px) 320px, 100vw" imgClassName="aspect-[16/10]" /> : null}
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-xl font-bold text-primary-dark">{item.name}</h3>
-                <p className="mt-2 text-[15px]">{item.body}</p>
-                {item.note ? <p className="mt-2 text-sm text-muted">{item.note}</p> : null}
-                <Link href={item.href} className="mt-auto inline-flex min-h-11 items-center pt-3 font-bold text-primary-dark underline underline-offset-4">
-                  分野の詳細を見る
-                </Link>
-              </div>
+          {featured.map((field) => (
+            <li key={field.slug}>
+              <Link href={`/industries/${field.slug}`} className="flex h-full flex-col rounded bg-white p-5 shadow-card no-underline">
+                <FieldArt kind={field.art} />
+                <p className="mt-2 text-xs font-bold text-muted">イメージ</p>
+                <h3 className="mt-1 text-xl font-bold text-primary-dark">{field.name}</h3>
+                <p className="mt-2 text-[15px] text-body">{field.summary}</p>
+              </Link>
             </li>
           ))}
         </ul>
@@ -67,15 +45,15 @@ export default function Page() {
 
       <Section id="all" title="育成就労の受入れ対象分野" tone="pale" width="wide" lead="有識者会議の資料1-3の目次に沿って、すべての分野を掲載しています。色だけで区別せず、文字のラベルで意味を示します。">
         <ul className="mb-8 grid gap-2 text-sm sm:grid-cols-2">
-          <li className="rounded bg-white px-3 py-2">新たに追加（資料の赤字）。主たる技能の整備予定は令和7年度時点です。</li>
+          <li className="rounded bg-white px-3 py-2">新たに追加（資料の赤字）。主たる技能の整備予定は令和8年度時点です。</li>
           <li className="rounded bg-white px-3 py-2">特定技能2号へ移行できる業務区分（資料の緑字）。</li>
-          <li className="rounded bg-white px-3 py-2">3年目の試験に特定技能1号評価試験を使う（資料の青字）。</li>
-          <li className="rounded bg-white px-3 py-2">頁の黒字は第5回会議資料の再掲、赤字は今回新たに示す資料です。</li>
         </ul>
         <ul className="grid gap-4 md:grid-cols-2">
           {fields.map((field) => (
             <li key={field.slug} className="flex flex-col rounded bg-white p-5 shadow-card">
-              <h3 className="text-lg font-bold text-ink">
+              <FieldArt kind={field.art} />
+              <p className="mt-2 text-xs font-bold text-muted">イメージ</p>
+              <h3 className="mt-1 text-lg font-bold text-ink">
                 <Link href={`/industries/${field.slug}`} className="underline decoration-primary underline-offset-4">{field.name}</Link>
               </h3>
               <p className="mt-2 text-[15px] text-body">{field.summary}</p>
@@ -93,7 +71,7 @@ export default function Page() {
           ))}
         </ul>
         <p className="mt-6 text-sm text-muted">
-          ※タオル製造（縫製）、かばん製造、管路更生（土木）は、技能実習職種への追加申請中です。表の「技能実習職種」は、技能実習2号移行対象の職種・作業を指します。
+          表の「技能実習職種」は、技能実習2号移行対象の職種・作業を指します。
         </p>
         <SourceNote />
       </Section>

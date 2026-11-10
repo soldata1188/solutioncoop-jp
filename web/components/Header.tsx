@@ -24,13 +24,13 @@ export function Header() {
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-1.5">
         <div className="flex items-center gap-6">
           <Wordmark />
-          <nav aria-label="メインメニュー" className="hidden xl:block">
+          <nav aria-label="メインメニュー" className="hidden min-[1100px]:block">
             <ul className="flex items-center">
               {nav.map((item) => (
                 <li key={item.href}>
                   <NavLink
                     href={item.href}
-                    className="inline-flex min-h-11 items-center whitespace-nowrap px-2 text-[13px] font-bold text-ink no-underline hover:text-primary-dark"
+                    className="inline-flex min-h-11 items-center whitespace-nowrap px-1.5 text-[13px] font-bold text-ink no-underline hover:text-primary-dark"
                     activeClassName="text-primary-dark underline decoration-2 underline-offset-[6px]"
                   >
                     {item.label}
@@ -47,13 +47,13 @@ export function Header() {
             className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded border border-primary-dark px-2 text-[13px] font-bold text-primary-dark no-underline hover:bg-pale lg:px-3 xl:px-2"
           >
             <PhoneIcon />
-            <span className="hidden lg:inline xl:hidden">{org.tel}</span>
+            <span className="hidden md:inline min-[1100px]:hidden">{org.tel}</span>
           </a>
           <LineButton className="hidden min-h-11 gap-1.5 px-3 text-[13px] sm:inline-flex" />
           <Link href={CONTACT_HREF} className={`hidden md:inline-flex ${btnBase} ${btnOutlineColors}`}>
             <Phrases text={CONTACT_LABEL} />
           </Link>
-          <details className="group relative xl:hidden">
+          <details className="group relative min-[1100px]:hidden">
             <summary className="flex min-h-11 min-w-12 cursor-pointer flex-col items-center justify-center gap-[3px] rounded border border-line px-2 text-ink">
               <span aria-hidden="true" className="flex flex-col gap-[3px]">
                 <span className="block h-0.5 w-5 bg-primary" />

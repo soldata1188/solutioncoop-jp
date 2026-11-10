@@ -3,10 +3,6 @@ import { INDUSTRY_CAVEAT, INDUSTRY_SOURCE, type Work } from "@/lib/industries";
 const labels = [
   ["added", "新たに追加"],
   ["spec2", "特定技能2号へ移行可"],
-  ["exam1", "3年目は特定技能1号評価試験"],
-  ["reprint", "第5回会議資料の再掲"],
-  ["newMaterial", "今回新たに示す資料"],
-  ["revised", "第5回資料を一部修正"],
 ] as const;
 
 export function Marks({ flags }: { flags: Work["flags"] }) {

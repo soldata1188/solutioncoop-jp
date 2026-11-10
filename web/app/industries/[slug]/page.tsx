@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
+import { FieldArt } from "@/components/FieldArt";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { INDUSTRY_SOURCE, fieldBySlug, fields, tocOnlyLabel, type Work } from "@/lib/industries";
@@ -35,9 +36,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         lead={`${field.summary} 育成就労制度は2027年4月1日施行です。`}
       />
       <Section width="narrow">
-        <p className="text-sm text-muted">
-          図は資料の工程名を並べた当サイトの図です。資料の写真や挿絵は転載していません。
-        </p>
+        <div className="flex items-center gap-4">
+          <FieldArt kind={field.art} />
+          <p className="text-sm font-bold text-muted">イメージ。実在の会社や人を描いたものではありません。</p>
+        </div>
         <ul className="mt-8 space-y-10">
           {field.works.map((work) => (
             <li key={work.name} id={`work-${field.works.indexOf(work)}`} className="scroll-mt-24 rounded bg-white p-4 shadow-card ring-1 ring-line sm:p-6">
@@ -79,8 +81,6 @@ function Detail({ work }: { work: Work }) {
     <div className="mt-5 space-y-5 text-[15px]">
       <p><span className="font-bold">主な業務（特定技能1号の技能水準）。</span>{detail.level}</p>
       <p><span className="font-bold">試験。</span>{detail.exam}</p>
-      <p><span className="font-bold">育成の考え方。</span>{detail.approach}</p>
-      {detail.note ? <p className="text-sm text-muted">{detail.note}</p> : null}
       {detail.topics.map((topic) => (
         <div key={topic.name}>
           <h3 className="text-lg font-bold text-ink">{topic.name}</h3>
@@ -88,6 +88,7 @@ function Detail({ work }: { work: Work }) {
             <p className="rounded bg-pale p-3"><span className="font-bold">1年目。</span>{topic.year1}</p>
             <p className="rounded bg-white p-3 ring-1 ring-line"><span className="font-bold">2〜3年目。</span>{topic.year23}</p>
           </div>
+          {topic.also ? <p className="mt-2 text-sm text-muted">{topic.also}</p> : null}
           <p className="mt-3 text-sm font-bold text-ink">業務の流れ（イメージ）</p>
           <ol className="mt-2 grid gap-2 sm:grid-cols-2">
             {topic.steps.map((step, index) => (

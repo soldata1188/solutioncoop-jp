@@ -305,9 +305,10 @@ export default function Home() {
         <div className="mt-12">
           <LineHeading>制度について詳しく知る</LineHeading>
           <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
-            <p className="text-sm text-body">育成就労制度の概要と、2027年4月に向けた準備をまとめております。</p>
+            <p className="text-sm text-body">育成就労制度の概要、対象業種、2027年4月に向けた準備をまとめております。</p>
             <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
               <LinkButton href="/ikusei-shuro" variant="ghost" className="sm:min-w-52">育成就労制度とは</LinkButton>
+              <LinkButton href="/industries" variant="ghost" className="sm:min-w-52">対象業種</LinkButton>
               <LinkButton href="/roadmap" variant="ghost" className="sm:min-w-52">2027年4月に向けた準備</LinkButton>
             </div>
           </div>

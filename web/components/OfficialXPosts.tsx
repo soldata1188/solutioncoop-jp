@@ -54,23 +54,23 @@ function PostCard({ post }: { post: XPostCard }) {
           <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 1024px) 290px, (min-width: 768px) 360px, 100vw" className="object-cover" />
         </div>
       ) : null}
-      <div className="flex flex-1 flex-col px-4 pt-4 pb-2">
+      <div className="px-4 pt-4 pb-4">
         <time dateTime={post.createdAt} className="text-[15px] text-body">
           {post.dateLabel}
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
-        <div className="mt-auto flex justify-end">
-          <a
-            href={post.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-1.5 px-2 text-sm font-bold text-primary-dark no-underline hover:bg-cta-tint hover:underline hover:underline-offset-4"
-          >
-            <XMark />
-            Xで見る
-            <span className="sr-only">（新しいタブで開きます）</span>
-          </a>
-        </div>
+      </div>
+      <div className="mt-auto border-t border-line">
+        <a
+          href={post.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex min-h-11 w-full items-center justify-center gap-1.5 rounded-b px-4 py-3 text-sm font-bold text-primary-dark no-underline hover:bg-cta-tint hover:underline hover:underline-offset-4 focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+        >
+          <XMark />
+          Xで見る
+          <span className="sr-only">（新しいタブで開きます）</span>
+        </a>
       </div>
     </article>
   );

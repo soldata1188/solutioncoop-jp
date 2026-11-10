@@ -1,18 +1,33 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { allPages, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
+import { org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
 import { LineButton } from "./LineButton";
 import { Chunks, Phrases } from "./KeepWords";
+
+const footerLead = { href: "/roadmap", label: "2027年4月に向けた準備" };
+const footerLinks = [
+  { href: "/support", label: "受入れ後の支援" },
+  { href: "/faq", label: "よくある質問" },
+  { href: "/about", label: "組合概要" },
+  { href: CONTACT_HREF, label: CONTACT_LABEL },
+  { href: "/disclosure", label: "情報公開" },
+  { href: "/privacy", label: "個人情報保護方針" },
+];
 
 export function Footer() {
   return (
     <footer className="border-t border-line bg-white text-body">
       <div className="mx-auto max-w-[812px] px-4 py-10">
-        <nav aria-label="フッターメニュー">
-          <ul className="grid grid-cols-2 gap-x-3 text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-x-1">
-            {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/disclosure", label: "情報公開" }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
+        <nav aria-label="フッターメニュー" className="mx-auto max-w-xl text-center">
+          <p>
+            <Link href={footerLead.href} className="inline-flex min-h-11 items-center text-[15px] font-bold text-primary-dark no-underline hover:underline hover:underline-offset-4">
+              {footerLead.label}
+            </Link>
+          </p>
+          <ul className="grid grid-cols-2 text-sm sm:flex sm:flex-wrap sm:justify-center">
+            {footerLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="flex min-h-11 items-center border-b border-line px-1 text-ink sm:inline-flex sm:border-b-0 sm:px-2 no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
+                <Link href={item.href} className="flex min-h-11 items-center justify-center px-2 text-ink no-underline hover:text-primary-dark hover:underline hover:underline-offset-4 sm:inline-flex">
                   <Phrases text={item.label} />
                 </Link>
               </li>

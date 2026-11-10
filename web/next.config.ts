@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // 投稿画像は next/image が同一オリジンの /_next/image 経由で配信します。
+    remotePatterns: [{ protocol: "https", hostname: "pbs.twimg.com" }],
+  },
   turbopack: {
     root: __dirname,
   },

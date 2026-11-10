@@ -51,17 +51,6 @@ function PostCard({ post }: { post: XPostCard }) {
           {post.dateLabel}
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
-        <div className="mt-auto pt-4">
-          <a
-            href={post.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded border-2 border-primary-dark px-4 text-[15px] font-bold text-primary-dark no-underline hover:bg-cta-tint"
-          >
-            Xで見る
-            <span className="sr-only">（新しいタブで開きます）</span>
-          </a>
-        </div>
       </div>
     </article>
   );

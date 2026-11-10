@@ -1,4 +1,3 @@
-import { fields } from "@/lib/industries";
 import { SITE_URL, fullAddress, licenses, org } from "@/lib/site";
 
 /**
@@ -28,11 +27,8 @@ const body = `# ${org.name}
 ## 主なページ
 
 - [トップページ](${u("/")}): 当組合の概要と外国人材受入れのご支援内容
-- [育成就労制度とは](${u("/ikusei-shuro")}): 2027年4月1日施行の育成就労制度の解説
 - [2027年4月に向けた準備](${u("/roadmap")}): 受入れ企業様向けのロードマップとチェックリスト
 - [受入れ後の支援](${u("/support")}): 監査・訪問指導・生活面のご相談への対応
-- [対象業種](${u("/industries")}): 育成就労の受入れ対象分野。組合の主な対応は建設、機械・金属、食品製造
-${fields.map((field) => `- [${field.name}](${u(`/industries/${field.slug}`)}): ${field.summary}`).join("\n")}
 - [よくある質問](${u("/faq")}): 制度や受入れに関するご質問と回答
 - [組合概要](${u("/about")}): 所在地・連絡先・受入れ実績・許可番号・登録番号
 - [メールでのお問い合わせ](${u("/contact")}): お電話またはフォームでのご相談

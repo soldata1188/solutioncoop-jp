@@ -38,6 +38,24 @@ function FallbackCard() {
   );
 }
 
+/** 投稿日。Asia/Tokyo 固定で YYYY.MM.DD（ゼロ埋め）。 */
+function formatJstDotDate(iso: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "";
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const pick = (type: Intl.DateTimeFormatPartTypes) => parts.find((part) => part.type === type)?.value ?? "";
+  const year = pick("year");
+  const month = pick("month");
+  const day = pick("day");
+  if (!year || !month || !day) return "";
+  return `${year}.${month}.${day}`;
+}
+
 function PostCard({ post }: { post: XPostCard }) {
   return (
     <article className="flex h-full w-full flex-col rounded border border-line bg-white shadow-card">
@@ -47,8 +65,8 @@ function PostCard({ post }: { post: XPostCard }) {
         </div>
       ) : null}
       <div className="px-4 pt-4 pb-4">
-        <time dateTime={post.createdAt} className="text-[15px] text-body">
-          {post.dateLabel}
+        <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
+          {formatJstDotDate(post.createdAt) || post.dateLabel}
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
       </div>

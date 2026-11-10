@@ -10,6 +10,5 @@ export type DisclosureDocument = {
 };
 
 export const disclosureDocuments: DisclosureDocument[] = [
-  { id: "kanrihi", name: "監理費表", status: "preparing" },
-  { id: "unei-kitei", name: "運営規程", status: "preparing" },
+  { id: "unei-kitei", name: "監理団体の業務の運営に関する規程（監理費表を含む）", status: "preparing" },
 ];

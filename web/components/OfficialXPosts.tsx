@@ -40,7 +40,7 @@ function FallbackCard() {
 
 function XMark() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="currentColor">
+    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-4 w-4 shrink-0" fill="currentColor">
       <path d="M2.1 2.1h2.6L8 6.6l3.3-4.5h2.6L9.3 8l4.6 5.9h-2.6L8 9.4l-3.3 4.5H2.1L6.7 8 2.1 2.1Z" />
     </svg>
   );
@@ -60,16 +60,16 @@ function PostCard({ post }: { post: XPostCard }) {
         </time>
         <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
       </div>
-      <div className="mt-auto border-t border-line">
+      <div className="mt-auto flex justify-center border-t border-line py-2">
         <a
           href={post.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex min-h-11 w-full items-center justify-center gap-1.5 rounded-b px-4 py-3 text-sm font-bold text-primary-dark no-underline hover:bg-cta-tint hover:underline hover:underline-offset-4 focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+          aria-label="Xで見る（新しいタブで開きます）"
+          title="Xで見る"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-primary-dark hover:bg-cta-tint hover:text-primary-darker focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
         >
           <XMark />
-          Xで見る
-          <span className="sr-only">（新しいタブで開きます）</span>
         </a>
       </div>
     </article>

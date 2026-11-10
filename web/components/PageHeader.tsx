@@ -9,8 +9,9 @@ import { breadcrumbJsonLd } from "@/lib/site";
  * path を渡すと、パンくずリスト（表示＋BreadcrumbList 構造化データ）を出力します。
  */
 /** leadAfter：リード文の直下に置く要素（例：/contact の「フォームへ進む」） */
-export function PageHeader({ title, lead, path, crumb, leadAfter }: { title: string; lead?: string; path?: string; crumb?: string; leadAfter?: React.ReactNode }) {
+export function PageHeader({ title, lead, path, crumb, ancestors, leadAfter }: { title: string; lead?: string; path?: string; crumb?: string; ancestors?: { name: string; path: string }[]; leadAfter?: React.ReactNode }) {
   const name = crumb ?? title;
+  const trail = path ? [...(ancestors ?? []), { name, path }] : [];
   return (
     <>
       <div className="relative overflow-hidden bg-primary text-white">
@@ -27,11 +28,22 @@ export function PageHeader({ title, lead, path, crumb, leadAfter }: { title: str
               <li>
                 <Link href="/" className="inline-flex min-h-11 min-w-11 items-center text-primary-dark underline underline-offset-4">ホーム</Link>
               </li>
-              <li aria-hidden="true" className="text-muted">›</li>
-              <li aria-current="page" className="inline-flex min-h-11 items-center text-ink">{name}</li>
+              {trail.map((item, i) => {
+                const last = i === trail.length - 1;
+                return (
+                  <li key={item.path} className="inline-flex min-h-11 items-center gap-x-2">
+                    <span aria-hidden="true" className="text-muted">›</span>
+                    {last ? (
+                      <span aria-current="page" className="inline-flex min-h-11 items-center text-ink">{item.name}</span>
+                    ) : (
+                      <Link href={item.path} className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4">{item.name}</Link>
+                    )}
+                  </li>
+                );
+              })}
             </ol>
           </nav>
-          <JsonLd data={breadcrumbJsonLd([{ name, path }])} />
+          <JsonLd data={breadcrumbJsonLd(trail)} />
         </>
       ) : null}
       {lead ? (

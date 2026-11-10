@@ -10,7 +10,7 @@ export function Footer() {
       <div className="mx-auto max-w-[812px] px-4 py-10">
         <nav aria-label="フッターメニュー">
           <ul className="grid grid-cols-2 gap-x-3 text-sm sm:flex sm:flex-wrap sm:justify-center sm:gap-x-1">
-            {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
+            {[...allPages, { href: CONTACT_HREF, label: CONTACT_LABEL }, { href: "/disclosure", label: "情報公開" }, { href: "/privacy", label: "個人情報保護方針" }].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="flex min-h-11 items-center border-b border-line px-1 text-ink sm:inline-flex sm:border-b-0 sm:px-2 no-underline hover:text-primary-dark hover:underline hover:underline-offset-4">
                   <Phrases text={item.label} />

@@ -38,14 +38,6 @@ function FallbackCard() {
   );
 }
 
-function XMark() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 16 16" className="h-3.5 w-3.5 shrink-0" fill="currentColor">
-      <path d="M2.1 2.1h2.6L8 6.6l3.3-4.5h2.6L9.3 8l4.6 5.9h-2.6L8 9.4l-3.3 4.5H2.1L6.7 8 2.1 2.1Z" />
-    </svg>
-  );
-}
-
 function PostCard({ post }: { post: XPostCard }) {
   return (
     <article className="flex h-full w-full flex-col rounded border border-line bg-white shadow-card">
@@ -65,9 +57,8 @@ function PostCard({ post }: { post: XPostCard }) {
           href={post.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-bold text-primary-dark no-underline hover:bg-cta-tint hover:text-primary-darker hover:underline hover:underline-offset-4 focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+          className="inline-flex min-h-11 items-center rounded-full px-3 text-xs font-medium text-primary-dark no-underline hover:bg-cta-tint hover:text-primary-darker hover:underline hover:underline-offset-4 focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
         >
-          <XMark />
           公式Xで見る
           <span className="sr-only">（新しいタブで開きます）</span>
         </a>

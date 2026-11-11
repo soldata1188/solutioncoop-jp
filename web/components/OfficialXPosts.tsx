@@ -64,11 +64,11 @@ function PostCard({ post }: { post: XPostCard }) {
           <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 1024px) 290px, (min-width: 768px) 360px, 100vw" className="object-cover" />
         </div>
       ) : null}
-      <div className="px-4 pt-4 pb-4">
+      <div className="px-4 pt-3 pb-4">
         <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
           {formatJstDotDate(post.createdAt) || post.dateLabel}
         </time>
-        <p className="mt-2 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
+        <p className="mt-1 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
       </div>
       <div className="mt-auto flex justify-center border-t border-line py-2">
         <a

@@ -8,6 +8,9 @@ import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks, KeepWords } from "@/components/KeepWords";
 import { photos } from "@/lib/images";
+import caseKensetsu from "@/public/images/cases/case-kensetsu.webp";
+import caseKikaiKinzoku from "@/public/images/cases/case-kikai-kinzoku.webp";
+import caseNaisouTosou from "@/public/images/cases/case-naisou-tosou.webp";
 import { CONTACT_HREF, CONTACT_LABEL, licenses, org, sdgs } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
@@ -114,10 +117,18 @@ const credentials = [
 ];
 
 /** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
-const cases = [
+const cases: {
+  photo: { src: typeof photos.siteSteel.src; alt: string };
+  tag: string;
+  /** 仮画像のときだけ出す。実写真に差し替えたら外す */
+  imageNote?: string;
+}[] = [
   { photo: photos.siteSteel, tag: "大阪府・金属加工" },
   { photo: photos.siteExcavation, tag: "大阪府・造園土木" },
   { photo: photos.siteInterior, tag: "京都府・土木工事" },
+  { photo: { src: caseKensetsu, alt: "建設業のイメージ画像" }, tag: "建設", imageNote: "イメージ" },
+  { photo: { src: caseKikaiKinzoku, alt: "機械・金属業のイメージ画像" }, tag: "機械・金属", imageNote: "イメージ" },
+  { photo: { src: caseNaisouTosou, alt: "内装・塗装業のイメージ画像" }, tag: "内装・塗装", imageNote: "イメージ" },
 ];
 
 export default function Home() {
@@ -239,7 +250,14 @@ export default function Home() {
         <ul className="grid gap-4 sm:grid-cols-3">
           {cases.map((c) => (
             <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
-              <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
+              <div className="relative">
+                <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
+                {c.imageNote ? (
+                  <span className="pointer-events-none absolute bottom-2 left-2 rounded bg-white/95 px-1.5 py-0.5 text-xs font-bold text-ink ring-1 ring-line">
+                    {c.imageNote}
+                  </span>
+                ) : null}
+              </div>
               <div className="p-4">
                 <p className="text-sm font-bold text-ink">{c.tag}</p>
               </div>

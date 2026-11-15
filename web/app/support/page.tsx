@@ -201,8 +201,9 @@ export default function Page() {
               当組合は登録支援機関（登録番号：{licenses.toroku.number}）として、特定技能1号の外国人の方への法令に基づく支援（生活オリエンテーション、相談への対応、定期的な面談など）を、受入れ企業様から受託することができます。
             </p>
             <p className="mt-4 text-[15px] leading-relaxed">当組合の研修センターです。講習などに使用しております。</p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="/faq" variant="outlineCta" className="min-h-14 sm:min-w-64">よくある質問を見る</LinkButton>
+              <LinkButton href="/price" variant="outlineCta" className="min-h-14 sm:min-w-64">料金の目安を見る</LinkButton>
             </div>
           </div>
         </div>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+<symbol id="helm" viewBox="0 0 80 110">
+  <path d="M30 64c-2 14-10 28-14 38" fill="none" stroke="#1F8A4C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M12 102h12" fill="none" stroke="#3A4640" stroke-width="6" stroke-linecap="round"/>
+  <path d="M44 64c6 14 14 26 18 38" fill="none" stroke="#1F8A4C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M54 102h14" fill="none" stroke="#3A4640" stroke-width="6" stroke-linecap="round"/>
+  <rect x="22" y="40" width="32" height="28" rx="8" fill="#34B268"/>
+  <path d="M34 42h12l2 22H32z" fill="#FFF478"/>
+  <path d="M26 48c-8 4-12 16-8 24" fill="none" stroke="#2E9B5C" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="18" cy="74" r="4" fill="#F3C8A8"/>
+  <path d="M50 46c10 2 18 8 24 14" fill="none" stroke="#34B268" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="74" cy="62" r="4.2" fill="#F3C8A8"/>
+  <rect x="34" y="34" width="10" height="8" rx="3" fill="#F3C8A8"/>
+  <circle cx="40" cy="24" r="13" fill="#F3C8A8"/>
+  <path d="M24 22c2-14 32-16 38-1v5H22z" fill="#1F8A4C"/>
+  <rect x="20" y="22" width="42" height="4.5" rx="2" fill="#FFF478"/>
+  <circle cx="48" cy="26" r="1.6" fill="#3A4640"/>
+  <path d="M44 31q4 3 8 0" fill="none" stroke="#C4896A" stroke-width="1.4" stroke-linecap="round"/>
+</symbol>
+<clipPath id="frame"><rect width="320" height="200" rx="16"/></clipPath></defs>
+  <g clip-path="url(#frame)">
+    <rect width="320" height="200" fill="#F3FAF6"/>
+    <path d="M18 150c40-48 90-70 150-74 40-2 80 10 120 28v46H18z" fill="#E7F6EE" stroke="#1F8A4C" stroke-width="2"/>
+    <path d="M40 132h200M70 110h160M100 90h120" stroke="#34B268" stroke-width="2"/>
+    <rect x="250" y="28" width="8" height="90" fill="#8B9794"/>
+    <path d="M254 28h-40" stroke="#5C6B68" stroke-width="2"/>
+    <path d="M214 28v16" stroke="#5C6B68" stroke-width="2"/>
+    <rect x="206" y="44" width="16" height="8" fill="#FFF478"/>
+    <circle cx="70" cy="96" r="3" fill="#FFF478"/><circle cx="84" cy="88" r="2" fill="#E4D15A"/><circle cx="78" cy="104" r="2" fill="#FFF478"/>
+    <rect y="158" width="320" height="42" fill="#D4EFE0"/><rect y="156" width="320" height="3" fill="#B7E0CB"/>
+    <use href="#helm" x="36" y="48" width="80" height="110"/>
+  </g>
+</svg>

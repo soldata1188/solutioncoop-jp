@@ -242,6 +242,11 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-center text-sm">
+            <Link href="/sakai" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">
+              堺市の企業様向けのご案内
+            </Link>
+          </p>
         </div>
       </Section>
 

@@ -4,7 +4,6 @@ import { CtaSection } from "@/components/CtaSection";
 import { JsonLd } from "@/components/JsonLd";
 import { LineButton } from "@/components/LineButton";
 import { Photo } from "@/components/Photo";
-import { CheckBadge } from "@/components/Placeholder";
 import { LinkButton } from "@/components/ui";
 import { photos } from "@/lib/images";
 import { pageMeta } from "@/lib/meta";
@@ -44,7 +43,6 @@ function Amount({ item }: { item: PriceItem }) {
   return (
     <p className="mt-2 text-lg font-bold text-primary-dark">
       {item.display}
-      {item.status === "placeholder" ? <CheckBadge /> : null}
     </p>
   );
 }
@@ -156,7 +154,7 @@ export default function Page() {
                 <li key={item.id} className="rounded-xl bg-pale p-5 shadow-card ring-1 ring-line">
                   <h3 className="font-bold text-ink">{item.label}</h3>
                   <Amount item={item} />
-                  {item.note ? <p className="mt-2 text-sm text-body">{item.note}{item.note.includes("要確認") ? <CheckBadge /> : null}</p> : null}
+                  {item.note ? <p className="mt-2 text-sm text-body">{item.note}</p> : null}
                 </li>
               ))}
             </ul>
@@ -200,7 +198,7 @@ export default function Page() {
       <section id="other" aria-labelledby="other-title" className="bg-pale">
         <div className="mx-auto max-w-[1040px] px-4 py-16 md:py-24">
           <h2 id="other-title" className="text-2xl font-bold text-primary-dark md:text-3xl">支払時期を定めていない項目</h2>
-          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed">次の項目は金額も支払時期も未定です。お見積りのときにご案内します。</p>
+          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed">次の項目は、お見積りでご案内します。</p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {other.map((item) => (
               <li key={item.id} className="rounded-xl bg-white p-4 shadow-card ring-1 ring-line">
@@ -219,7 +217,7 @@ export default function Page() {
             <li className="rounded-xl bg-pale p-5">年会費と、当組合の人材紹介手数料は、記載の金額です。</li>
             <li className="rounded-xl bg-pale p-5">計画認定の公的手数料は、1件ごとの金額です。</li>
             <li className="rounded-xl bg-pale p-5">航空券、在留手続手数料、帰国費は実費です。帰国費は受入企業さまのご負担です。</li>
-            <li className="rounded-xl bg-pale p-5">要確認の項目は、金額も内訳もお見積りでご案内します。受入れ後の監査・訪問指導・生活面のご相談は、<Link href="/support" className="font-bold text-primary-dark underline underline-offset-4">受入れ後の支援</Link>に記載しています。</li>
+            <li className="rounded-xl bg-pale p-5">金額を「お見積り」とした項目は、お見積りでご案内します。受入れ後の監査・訪問指導・生活面のご相談は、<Link href="/support" className="font-bold text-primary-dark underline underline-offset-4">受入れ後の支援</Link>に記載しています。</li>
           </ul>
           <p className="mt-4 text-sm text-muted">特定技能の支援費用は、このページには載せていません。お見積りでご案内します。</p>
         </div>

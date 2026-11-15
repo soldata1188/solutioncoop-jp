@@ -1,10 +1,9 @@
 /**
  * 料金ページの金額。
- * status が placeholder の項目は表示を「○○円（要確認）」のままにし、Bossの確認後に display と status だけ差し替える。
- * 本番公開は、placeholder が無くなるまで行わない。
+ * status が quote の項目は「お見積り」と表示する。金額が決まったら display と status を差し替える。
  */
 
-export type PriceStatus = "confirmed" | "placeholder" | "actual-cost";
+export type PriceStatus = "confirmed" | "quote" | "actual-cost";
 
 /** 費用を載せる段階。coop は組合費。other は支払時期を断定しない。 */
 export type PriceStage = "before" | "entry" | "orientation" | "during" | "return" | "coop" | "other";
@@ -22,7 +21,7 @@ export type PriceItem = {
   note?: string;
 };
 
-export const PLACEHOLDER_AMOUNT = "○○円（要確認）";
+export const QUOTE_AMOUNT = "お見積り";
 
 export const priceNotes = [
   "金額は概算です。特記のない限り税別です。",
@@ -62,7 +61,7 @@ export const priceItems: PriceItem[] = [
     status: "confirmed",
     stage: "coop",
     system: "both",
-    note: "脱退時の取扱いは定款に基づきます（要確認）",
+    note: "脱退時の取扱いは定款に基づきます",
   },
   {
     id: "ginou-cert",
@@ -85,32 +84,32 @@ export const priceItems: PriceItem[] = [
   {
     id: "pre-training",
     label: "入国前講習費",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "before",
     system: "both",
   },
   {
     id: "documents",
     label: "書類作成費",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "before",
     system: "both",
   },
   {
     id: "health-check",
     label: "健康診断",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "before",
     system: "both",
   },
   {
     id: "initial-fee",
     label: "着手金",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "before",
     system: "both",
   },
@@ -133,32 +132,32 @@ export const priceItems: PriceItem[] = [
   {
     id: "post-training",
     label: "入国後講習費",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "orientation",
     system: "both",
   },
   {
     id: "training-allowance",
     label: "講習手当",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "orientation",
     system: "both",
   },
   {
     id: "kanri-monthly",
     label: "監理費（月額）",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "during",
     system: "both",
   },
   {
     id: "sending-monthly",
     label: "送出機関管理費（月額）",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "during",
     system: "both",
   },
@@ -174,16 +173,16 @@ export const priceItems: PriceItem[] = [
   {
     id: "insurance",
     label: "保険",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "other",
     system: "both",
   },
   {
     id: "exam-fee",
     label: "技能検定受検料",
-    display: PLACEHOLDER_AMOUNT,
-    status: "placeholder",
+    display: QUOTE_AMOUNT,
+    status: "quote",
     stage: "other",
     system: "both",
   },
@@ -193,7 +192,7 @@ export function itemsFor(system: "ginou" | "ikusei", stage: PriceStage) {
   return priceItems.filter((item) => item.stage === stage && (item.system === "both" || item.system === system));
 }
 
-export const pricePlaceholders = priceItems.filter((item) => item.status === "placeholder");
+export const priceQuotes = priceItems.filter((item) => item.status === "quote");
 
 export const priceFaqs = [
   {
@@ -206,7 +205,7 @@ export const priceFaqs = [
   },
   {
     q: "出資金はいくらですか。",
-    a: "出資金は10,000円（1口）です。脱退時の取扱いは定款に基づきます（要確認）。",
+    a: "出資金は10,000円（1口）です。脱退時の取扱いは定款に基づきます。",
   },
   {
     q: "計画の認定手数料はいくらですか。",
@@ -218,6 +217,6 @@ export const priceFaqs = [
   },
   {
     q: "掲載している金額は確定ですか。",
-    a: "金額は概算です。特記のない限り税別です。送出国・職種・人数により異なります。詳細はお見積りいたします。○○円（要確認）と記載した項目は、金額が未定です。",
+    a: "金額は概算です。特記のない限り税別です。送出国・職種・人数により異なります。詳細はお見積りいたします。",
   },
 ] as const;

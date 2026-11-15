@@ -71,6 +71,7 @@ export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${o
 
 /** ヘッダーのメニュー */
 export const nav = [
+  { href: "/industries", label: "対象業種" },
   { href: "/support", label: "受入れ後の支援" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },

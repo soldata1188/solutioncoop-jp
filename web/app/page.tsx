@@ -32,8 +32,8 @@ export const metadata: Metadata = {
 const businesses = [
   {
     title: "外国人材受入事業",
-    sub: "グローバル人材の安定確保",
-    body: "意欲ある若手・グローバル人材の安定的な確保と育成を支援。受入れ後の生活面のご相談にも対応し、職場への定着を支援いたします。",
+    sub: "技能実習は育成と技能移転",
+    body: "技能実習は、人材育成と技能移転による国際貢献としてご支援します。特定技能は、登録支援機関として受入れ後の支援を行います。生活面のご相談にも対応いたします。",
     items: ["外国人技能実習生共同受入れ事業", "特定技能外国人支援事業"],
     Icon: IconGlobe,
   },
@@ -47,7 +47,7 @@ const businesses = [
   {
     title: "グローバルビジネス支援",
     sub: "海外進出サポート事業",
-    body: "労働力不足の解消だけでなく、組合員様のさらなる成長のために海外展開を支援。現地の強力なネットワークを活かし、安全かつ円滑なグローバルビジネスの第一歩をサポートします。",
+    body: "組合員様のさらなる成長のために海外展開を支援します。現地の強力なネットワークを活かし、安全かつ円滑なグローバルビジネスの第一歩をサポートします。",
     items: ["組合員の海外進出に関するサポート事業", "海外市場の調査及び関連情報の提供"],
     Icon: IconPlane,
   },
@@ -77,7 +77,7 @@ const reasons = [
   {
     title: "3か国対応ハイブリッド",
     sub: "多国籍で優秀な人材の厳選",
-    body: "ベトナム、インドネシア、フィリピンの3か国から意欲ある人材を紹介可能。貴社の社風や業務ニーズに合わせ、グローバルな視点から最も定着しやすい人材を提案します。",
+    body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携しています。技能実習は育成と技能移転、特定技能は登録支援機関としての支援として、貴社の業務に沿ってご案内します。",
     Icon: IconGlobe,
   },
   {
@@ -167,7 +167,7 @@ export default function Home() {
         id="business"
         eyebrow={<span lang="en">BUSINESS CONTENT</span>}
         title="ソリューション協同組合の事業内容"
-        lead="単なる人材紹介にとどまらず、受入れ企業様の「人手不足解消」から「事業拡大」「海外進出」までをトータルでサポートする4つの事業を柱としています。"
+        lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {businesses.map(({ title, sub, body, items, Icon }, i) => (
@@ -284,8 +284,9 @@ export default function Home() {
         <div className="mt-12">
           <LineHeading>制度について詳しく知る</LineHeading>
           <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
-            <p className="text-sm text-body">2027年4月に向けた準備をまとめております。</p>
+            <p className="text-sm text-body">対象業種と、2027年4月に向けた準備をまとめております。</p>
             <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
+              <LinkButton href="/industries" variant="ghost" className="sm:min-w-52">対象業種</LinkButton>
               <LinkButton href="/roadmap" variant="ghost" className="sm:min-w-52">2027年4月に向けた準備</LinkButton>
             </div>
           </div>

@@ -57,7 +57,7 @@ export default function Page() {
             </h2>
             <p className="mt-2 text-[15px] text-body">
               {sdgs.selected}（出典：
-              <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap text-primary-dark underline underline-offset-4">
+              <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center whitespace-nowrap text-primary-dark underline underline-offset-4">
                 {sdgs.sourceLabel}
                 <span className="sr-only">（新しいタブで開きます）</span>
               </a>

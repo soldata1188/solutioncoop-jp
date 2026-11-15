@@ -225,6 +225,10 @@ export default function Page() {
             <Link href="/faq" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">
               よくある質問
             </Link>
+            <span aria-hidden="true"> ／ </span>
+            <Link href="/price" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">
+              料金の目安
+            </Link>
           </p>
         </div>
       </section>

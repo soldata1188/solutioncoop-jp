@@ -240,7 +240,7 @@ export default function Page() {
                 対応分野
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed">
-                当組合では、建設、機械・金属、食品製造の分野を中心に、大阪府内の中小企業様をご支援しております。受入れ可能な分野・業務は制度上定められておりますので、貴社の業務内容が対象となるかは個別に確認いたします。
+                当組合では、<Link href="/industries/construction" className="font-bold text-primary-dark underline underline-offset-4">建設</Link>、<Link href="/industries/industrial-products#work-0" className="font-bold text-primary-dark underline underline-offset-4">機械・金属</Link>、<Link href="/industries/food-manufacturing#work-0" className="font-bold text-primary-dark underline underline-offset-4">食品製造</Link>の分野を中心に、大阪府内の中小企業様をご支援しております。受入れ可能な分野・業務は制度上定められておりますので、貴社の業務内容が対象となるかは個別に確認いたします。
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 監理団体許可の条件には、「{licenses.kanri.conditions[0]}」が含まれます。取扱職種は、技能実習計画作成指導者が在籍する範囲です。
@@ -250,18 +250,28 @@ export default function Page() {
           <ul className="mt-12 grid gap-6 md:grid-cols-3">
             <li className="overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-line">
               <Shot flush photo={kensetsu} sizes="(min-width: 768px) 320px, 100vw" note />
-              <p className="px-5 py-4 text-lg font-bold text-primary-dark">建設</p>
+              <p className="px-5 py-2">
+                <Link href="/industries/construction" className="inline-flex min-h-11 items-center text-lg font-bold text-primary-dark underline underline-offset-4">建設</Link>
+              </p>
             </li>
             <li className="overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-line">
               <Shot flush photo={kikai} sizes="(min-width: 768px) 320px, 100vw" note />
-              <p className="px-5 py-4 text-lg font-bold text-primary-dark">機械・金属</p>
+              <p className="px-5 py-2">
+                <Link href="/industries/industrial-products#work-0" className="inline-flex min-h-11 items-center text-lg font-bold text-primary-dark underline underline-offset-4">機械・金属</Link>
+              </p>
             </li>
             <li className="overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-line">
               <Art flush src="/art/sakai/food.svg" alt="作業台と容器を描いた、食品製造のイメージイラスト" />
-              <p className="px-5 py-4 text-lg font-bold text-primary-dark">食品製造</p>
+              <p className="px-5 py-2">
+                <Link href="/industries/food-manufacturing#work-0" className="inline-flex min-h-11 items-center text-lg font-bold text-primary-dark underline underline-offset-4">食品製造</Link>
+              </p>
             </li>
           </ul>
           <p className="mt-8 text-sm">
+            <Link href="/industries" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">
+              対象業種を見る
+            </Link>
+            <span aria-hidden="true"> ／ </span>
             <Link href="/#cases" className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4">
               受入れ事例を見る
             </Link>

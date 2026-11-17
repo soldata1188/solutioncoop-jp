@@ -38,23 +38,27 @@ export function Footer() {
             <span className="sr-only">（新しいタブで開きます）</span>
           </a>
         </div>
-        {/* SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）。黒文字・1〜2行 */}
-        <p className="mx-auto mt-6 max-w-[560px] rounded border border-line-strong bg-white px-4 py-4 text-center text-base font-bold leading-relaxed text-black shadow-card [text-wrap:balance]">
-          <Chunks parts={sdgs.supportParts} />
-        </p>
         <div className="mt-6 border-t border-line pt-6 text-center text-sm leading-7 text-muted">
-          <p className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 text-[15px] font-bold text-ink">
-            <LogoTile alt="" />
-            {org.name}
-          </p>
-          <address className="mt-1 not-italic">
-            {fullAddress}
-            <br />
-            TEL：<a className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4 sm:min-h-0" href={TEL_HREF}>{org.tel}</a>
-            <span aria-hidden="true">　</span>FAX：{org.fax}
-            <br />
-            メール：<a className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4 sm:min-h-0" href={`mailto:${org.email}`}>{org.email}</a>
-          </address>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-8 sm:text-left">
+            <div className="min-w-0 text-center sm:text-left">
+              <p className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 text-[15px] font-bold text-ink sm:justify-start">
+                <LogoTile alt="" />
+                {org.name}
+              </p>
+              <address className="mt-1 not-italic">
+                {fullAddress}
+                <br />
+                TEL：<a className="inline-flex min-h-11 items-center font-bold text-primary-dark underline underline-offset-4 sm:min-h-0" href={TEL_HREF}>{org.tel}</a>
+                <span aria-hidden="true">　</span>FAX：{org.fax}
+                <br />
+                メール：<a className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4 sm:min-h-0" href={`mailto:${org.email}`}>{org.email}</a>
+              </address>
+            </div>
+            {/* SDGs未来都市・堺の応援（文字のみ。ロゴ画像は使いません）。黒文字・枠なし・1〜2行 */}
+            <p className="max-w-[18rem] text-base font-bold leading-relaxed text-black [text-wrap:balance]">
+              <Chunks parts={sdgs.supportParts} />
+            </p>
+          </div>
           <p className="mt-2">
             監理団体許可番号：{licenses.kanri.number}（{licenses.kanri.kind}）
             <span className="hidden sm:inline">　</span>

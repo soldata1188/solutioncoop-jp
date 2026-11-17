@@ -248,7 +248,7 @@ export default function Home() {
       <Section id="line" tone="pale" title="LINEでのご相談" width="default">
         <LineHeading>当組合のLINE公式アカウント</LineHeading>
         <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
-          <p className="text-[15px] text-body">当組合のLINE公式アカウントから、トーク画面からご相談いただけます。</p>
+          <p className="text-[15px] text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
           <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
           <div className="mt-5">
             <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />

@@ -53,6 +53,33 @@ html {
   scroll-margin-top: 4.5rem;
 }
 
+/* 許可証枠。幅に対して高さ 141.4%（A4 縦）。aspect-ratio 対応時はそちらを使う */
+.license-frame {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 141.4%;
+  overflow: hidden;
+}
+.license-frame-inner {
+  position: absolute;
+  inset: 0;
+}
+@supports (aspect-ratio: 1 / 1.414) {
+  .license-frame {
+    height: auto;
+    padding-bottom: 0;
+    aspect-ratio: 1 / 1.414;
+  }
+}
+.license-dialog::backdrop {
+  background: rgb(10 55 32 / 0.72);
+}
+.license-dialog-img {
+  max-height: 80vh;
+  max-height: 80dvh;
+}
+
 body {
   color: var(--color-body);
   background: #ffffff;

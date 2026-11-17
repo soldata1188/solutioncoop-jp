@@ -5,6 +5,7 @@ import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
+import { LicenseFrames } from "@/components/LicenseFrames";
 import { disclosureDocuments } from "@/lib/disclosure";
 import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/site";
 
@@ -113,6 +114,7 @@ export default function Page() {
       </Section>
 
       <Section id="license" title="許可・登録" tone="pale">
+          <LicenseFrames />
           <div className="grid gap-6 md:grid-cols-2">
             <div className="border-b-4 border-primary bg-white p-6 shadow-card">
               <h3 className="text-lg font-bold text-ink">{licenses.kanri.label}</h3>

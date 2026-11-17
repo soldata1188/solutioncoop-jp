@@ -4,7 +4,7 @@ import { CtaSection } from "@/components/CtaSection";
 import { FaqList } from "@/components/FaqList";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
-import { ArrowIcon, LineHeading, LinkButton, Section, TabCard } from "@/components/ui";
+import { ArrowIcon, LinkButton, Section, SectionHeading, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
@@ -211,7 +211,7 @@ export default function Home() {
         </ol>
 
         <div className="mt-12">
-          <LineHeading id="credentials-title">許可・登録・拠点</LineHeading>
+          <SectionHeading id="credentials-title">許可・登録・拠点</SectionHeading>
           <ul aria-labelledby="credentials-title" className="mt-6 grid gap-4 md:grid-cols-3">
             {credentials.map(({ title, body, note, Icon, href, link }) => (
               <li key={title} className="flex flex-col bg-white p-5 shadow-card">
@@ -252,8 +252,7 @@ export default function Home() {
 
       {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}
       <Section id="line" tone="pale" title="LINEでのご相談" width="default">
-        <LineHeading>当組合のLINE公式アカウント</LineHeading>
-        <div className="mx-auto mt-6 max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
+        <div className="mx-auto max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
           <p className="text-[15px] text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
           <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
           <div className="mt-5">

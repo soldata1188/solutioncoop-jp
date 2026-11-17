@@ -30,7 +30,7 @@ function IconBuilding() {
   );
 }
 
-const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded px-3 py-1 text-sm font-bold leading-none";
+const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
  * トップのヒーロー。背景は再デザイン前の緑地と四角模様（SquaresPattern）。
@@ -70,15 +70,15 @@ export function HomeHero() {
         <div className="mt-8 flex w-full max-w-3xl flex-col items-center gap-3 rounded-2xl border border-white/40 bg-primary-darker/35 px-3 py-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4 sm:px-5 md:py-4">
           <p className="text-xs font-bold tracking-wide text-cta">主な対応業種</p>
           <ul className="flex flex-wrap items-center justify-center gap-2">
-            <li className={`${chipBase} bg-white text-primary-darker`}>
+            <li className={chipBase}>
               <IconConstruction />
               建設業
             </li>
-            <li className={`${chipBase} bg-white text-primary-darker`}>
+            <li className={chipBase}>
               <IconFactory />
               製造業
             </li>
-            <li className={`${chipBase} border border-white/50 bg-primary-darker text-white`}>
+            <li className={chipBase}>
               <IconBuilding />
               その他業種
             </li>

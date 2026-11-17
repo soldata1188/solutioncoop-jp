@@ -5,14 +5,18 @@ import { Phrases } from "./KeepWords";
 import { LinkButton, SquareDots, SquaresPattern } from "./ui";
 
 /** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い緑 #0F4D2A（白文字 9.93:1） */
-export function CtaSection({ title = "育成就労制度への備えを、今から始めませんか。" }: { title?: string }) {
+export function CtaSection({ title }: { title?: string }) {
   return (
-    <section aria-labelledby="cta-title" className="relative overflow-hidden bg-primary-dark text-white">
+    <section aria-labelledby={title ? "cta-title" : undefined} className="relative overflow-hidden bg-primary-dark text-white">
       <SquaresPattern variant="band" />
       <div className="relative mx-auto max-w-[612px] px-4 py-14 text-center md:py-[72px]">
-        <h2 id="cta-title" className="text-2xl font-bold leading-snug md:text-[1.75rem]">{title}</h2>
-        <SquareDots tone="white" className="mt-4" />
-        <p className="mx-auto mt-5 text-left text-[15px] sm:text-center">
+        {title ? (
+          <>
+            <h2 id="cta-title" className="text-2xl font-bold leading-snug md:text-[1.75rem]">{title}</h2>
+            <SquareDots tone="white" className="mt-4" />
+          </>
+        ) : null}
+        <p className={`mx-auto text-left text-[15px] sm:text-center ${title ? "mt-5" : ""}`}>
           外国人材の受入れや育成就労制度について、堺市の監理団体である当組合が丁寧にご説明いたします。どうぞお気軽にご相談ください。
         </p>
         {/* 主ボタンは「LINEで無料相談」1つ。メール（/contact のフォーム）は白枠の副ボタン */}

@@ -3,15 +3,16 @@ import Link from "next/link";
 import { CtaSection } from "@/components/CtaSection";
 import { FaqList } from "@/components/FaqList";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
-import { ArrowIcon, LineHeading, LinkButton, Section, SquaresPattern, TabCard } from "@/components/ui";
+import { HomeHero } from "@/components/HomeHero";
+import { ArrowIcon, LineHeading, LinkButton, Section, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
-import { Chunks, KeepWords } from "@/components/KeepWords";
+import { Chunks } from "@/components/KeepWords";
 import { photos } from "@/lib/images";
 import caseKensetsu from "@/public/images/cases/case-kensetsu.webp";
 import caseKikaiKinzoku from "@/public/images/cases/case-kikai-kinzoku.webp";
 import caseNaisouTosou from "@/public/images/cases/case-naisou-tosou.webp";
-import { CONTACT_HREF, CONTACT_LABEL, licenses, org, sdgs } from "@/lib/site";
+import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
 import { faqs } from "@/lib/faq";
@@ -134,30 +135,7 @@ const cases: {
 export default function Home() {
   return (
     <>
-      {/* ヒーロー：緑 #1E7F46（白文字 5.02:1）。
-          写真は掲載しない方針（代表者様のご指示）。文字を中央揃え・最大幅を絞り、左右の四角模様でバランスを取ります */}
-      <section data-hero className="relative overflow-hidden bg-primary text-white">
-        <SquaresPattern />
-        <div className="relative mx-auto max-w-[880px] px-4 py-12 text-center md:py-20">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-sm font-bold text-primary-dark">育成就労制度 2027年4月1日施行</p>
-            {/* 応援の表明のみ（認定・選定を受けた旨ではありません）。ロゴ画像は使いません（承認範囲の確認前のため）。
-                白地に #0F4D2A の文字（9.93:1）。組合名入りの定型文は 390px で2行になり見出しを押し下げるため、短い表現にしています */}
-            <p className="inline-block rounded-sm bg-white px-3 py-1 text-sm font-bold text-primary-dark"><KeepWords text={sdgs.badge} /></p>
-          </div>
-          <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.4] sm:text-[2.4rem] md:text-[2.75rem] lg:text-[3rem]">
-            <span className="block">堺の監理団体として、</span>
-            <span className="block">大阪の外国人材受入れを</span>
-            <span className="block">支えます。</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-[640px] text-[19px] font-bold leading-relaxed [word-break:auto-phrase]">
-            堺市を拠点に、大阪府内の中小企業様の外国人材受入れと、育成就労制度への移行をご支援いたします。
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <LineButton onDark className="flex min-h-14 gap-2 px-8 text-base sm:min-w-64" iconClassName="h-5 w-5" />
-          </div>
-        </div>
-      </section>
+      <HomeHero />
 
       {/* 実績ストリップ（代表者様確認済みの4項目と「SDGs未来都市・堺」） */}
       <StatsStrip />

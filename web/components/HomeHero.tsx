@@ -61,7 +61,7 @@ export function HomeHero() {
             </span>
           </span>
           <span className="mt-1 block">
-            <span className="inline-block">70社超の実績とノウハウで、</span>
+            <span className="inline-block">80社以上の実績とノウハウで、</span>
             <span className="inline-block">貴社の外国人材活用を</span>
             <span className="inline-block">トータルサポートいたします。</span>
           </span>
@@ -87,8 +87,8 @@ export function HomeHero() {
 
         <p className="mt-5 text-sm font-bold leading-relaxed text-white md:text-base">
           <span className="inline-block">大阪・関西圏の</span>
-          <span className="mx-1 inline-block text-xl font-black text-cta md:text-2xl">70社を超える企業</span>
-          <span className="inline-block">に導入されています。</span>
+          <span className="mx-1 inline-block text-xl font-black text-cta md:text-2xl">80社以上の企業様</span>
+          <span className="inline-block">にご利用いただいています。</span>
         </p>
 
         <div className="mt-8 grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3 md:mt-10">

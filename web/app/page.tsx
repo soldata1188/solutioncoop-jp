@@ -153,16 +153,18 @@ export default function Home() {
                 <Icon className="h-20 w-20" />
               </div>
               <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:text-left">
-                <Icon className="mx-auto mb-2 h-8 w-8 text-primary sm:hidden" />
+                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
+                  <Icon className="size-14" />
+                </span>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">事業{i + 1}：</span>
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-left text-sm leading-relaxed text-body">{body}</p>
-                <details className="mt-auto pt-4 text-left">
-                  <summary className="mx-auto inline-flex min-h-11 w-fit cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink sm:mx-0">定款記載事業など</summary>
-                  <ul className="mt-2 space-y-1">
+                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
+                <details className="mt-auto pt-4">
+                  <summary className="mx-auto flex min-h-11 w-fit cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink sm:mx-0">定款記載事業など</summary>
+                  <ul className="mt-2 space-y-1 text-left">
                     {items.map((it) => (
                       <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
                         <span aria-hidden="true" className="mt-[0.4em] h-2 w-2 shrink-0 bg-primary" />
@@ -193,13 +195,15 @@ export default function Home() {
                 <Icon className="h-20 w-20" />
               </div>
               <div className="px-5 pb-6 pt-5 text-center sm:text-left">
-                <Icon className="mx-auto mb-2 h-8 w-8 text-primary sm:hidden" />
+                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
+                  <Icon className="size-14" />
+                </span>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">理由{i + 1}：</span>
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-left text-sm leading-relaxed text-body">{body}</p>
+                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
               </div>
             </TabCard>
           ))}
@@ -210,9 +214,11 @@ export default function Home() {
           <ul aria-labelledby="credentials-title" className="mt-6 grid gap-4 md:grid-cols-3">
             {credentials.map(({ title, body, note, Icon, href, link }) => (
               <li key={title} className="flex w-full flex-col bg-white p-5 text-center shadow-card sm:text-left">
-                <Icon className="mx-auto h-8 w-8 text-primary sm:mx-0 sm:h-10 sm:w-10" />
+                <span className="mx-auto flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:mx-0 sm:size-auto sm:bg-transparent">
+                  <Icon className="size-14 sm:size-10" />
+                </span>
                 <h4 className="mt-3 text-base font-bold leading-snug text-ink">{title}</h4>
-                <p className="mt-2 text-left text-sm leading-relaxed text-body">{body}</p>
+                <p className="mt-2 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
                 <p className="mt-2 text-sm text-muted">※{note}</p>
                 <Link href={href} className="mt-auto inline-flex min-h-11 items-center justify-center gap-2 pt-2 text-sm font-bold text-primary-dark underline underline-offset-4 hover:underline sm:justify-start">
                   {link}

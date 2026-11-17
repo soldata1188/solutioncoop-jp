@@ -150,18 +150,21 @@ export default function Home() {
         <ol className="grid gap-5 md:grid-cols-2">
           {businesses.map(({ title, sub, body, items, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
-              <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">
+              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
               <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
-                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">事業{i + 1}：</span>
-                  {title}
+                <h3 className="flex items-center gap-2 text-lg font-bold leading-snug text-ink md:text-xl">
+                  <Icon className="h-8 w-8 shrink-0 text-primary sm:hidden" />
+                  <span>
+                    <span className="sr-only">事業{i + 1}：</span>
+                    {title}
+                  </span>
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
                 <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
-                <div className="mt-auto pt-4">
-                  <p className="inline-block bg-label px-2 py-0.5 text-sm font-bold text-ink">定款記載事業など</p>
+                <details className="mt-auto pt-4">
+                  <summary className="inline-flex min-h-11 cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink">定款記載事業など</summary>
                   <ul className="mt-2 space-y-1">
                     {items.map((it) => (
                       <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
@@ -170,7 +173,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </details>
               </div>
             </TabCard>
           ))}
@@ -189,13 +192,16 @@ export default function Home() {
         <ol className="grid gap-5 md:grid-cols-2">
           {reasons.map(({ title, sub, body, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
-              <div className="flex h-36 items-center justify-center border-b border-tab bg-white text-primary">
+              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
               <div className="px-5 pb-6 pt-5">
-                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">理由{i + 1}：</span>
-                  {title}
+                <h3 className="flex items-center gap-2 text-lg font-bold leading-snug text-ink md:text-xl">
+                  <Icon className="h-8 w-8 shrink-0 text-primary sm:hidden" />
+                  <span>
+                    <span className="sr-only">理由{i + 1}：</span>
+                    {title}
+                  </span>
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
                 <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>

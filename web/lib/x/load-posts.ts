@@ -1,9 +1,10 @@
 import { readFileSync } from "node:fs";
 import { unstable_cache } from "next/cache";
-import { X_HANDLE } from "@/lib/site";
+import { X_HANDLE, X_URL } from "@/lib/site";
 import { xFixturePayload } from "./fixture";
 import {
   X_POSTS_CACHE_TAG,
+  X_POSTS_SUCCESS_REVALIDATE_SECONDS,
   buildUserByUsernameUrl,
   buildUserTweetsUrl,
   mapTweetsToCards,
@@ -68,10 +69,14 @@ async function fetchTweets(userId: string): Promise<XPostCard[]> {
   return mapTweetsToCards(await response.json(), X_HANDLE);
 }
 
-/** 成功した一覧だけを期限なしで保存します。失敗は例外のままにし、キャッシュしません。 */
+/**
+ * 成功した一覧だけを1時間保存します。手動更新のタグ破棄でも捨てます。
+ * 失敗は例外のままにし、キャッシュしません。
+ * 見本のリンクは公式アカウントのページだけにし、実在しない投稿URLは出しません。
+ */
 async function loadFresh(): Promise<XPostCard[]> {
   if (xFixtureEnabled()) {
-    const posts = mapTweetsToCards(readFixturePayload(), X_HANDLE);
+    const posts = mapTweetsToCards(readFixturePayload(), X_HANDLE).map((post) => ({ ...post, href: X_URL }));
     if (posts.length === 0) throw new Error("x posts unavailable");
     return posts;
   }
@@ -83,7 +88,7 @@ async function loadFresh(): Promise<XPostCard[]> {
 }
 
 const loadSuccessCached = unstable_cache(loadFresh, ["x-posts-success"], {
-  revalidate: false,
+  revalidate: X_POSTS_SUCCESS_REVALIDATE_SECONDS,
   tags: [X_POSTS_CACHE_TAG],
 });
 

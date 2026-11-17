@@ -19,8 +19,8 @@ import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
 /**
- * 失敗した案内表示だけ、約5分後の再生成で取り直します。
- * 取得に成功した投稿はタグ x-posts に期限なしで残り、この再生成では X API を呼びません。
+ * 失敗した案内表示だけ、約5分後の再生成で取り直します。失敗はキャッシュしません。
+ * 取得に成功した投稿は最長1時間残り、手動更新（タグ x-posts）でも破棄できます。
  */
 export const revalidate = 300;
 

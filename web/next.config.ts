@@ -10,7 +10,28 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   async redirects() {
-    return [{ source: "/disclosure", destination: "/about#disclosure", permanent: true }];
+    const home = { destination: "/", permanent: true } as const;
+    return [
+      { source: "/disclosure", destination: "/about#disclosure", permanent: true },
+      { source: "/privacy.html", destination: "/privacy", permanent: true },
+      { source: "/news", ...home },
+      { source: "/news/:slug*", ...home },
+      { source: "/news.html", ...home },
+      { source: "/受け入れ実績", ...home },
+      { source: "/%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E5%AE%9F%E7%B8%BE", ...home },
+      { source: "/%E3%81%86%E3%81%91%E3%81%84%E3%82%8C%E5%AE%9F%E7%B8%BE", ...home },
+      { source: "/受入実績", ...home },
+      { source: "/%E5%8F%97%E5%85%A5%E5%AE%9F%E7%B8%BE", ...home },
+      { source: "/industries", ...home },
+      { source: "/industries/:path*", ...home },
+      { source: "/support", ...home },
+      { source: "/price", ...home },
+      { source: "/roadmap", ...home },
+      { source: "/sakai", ...home },
+      { source: "/index.html", ...home },
+      { source: "/gino-jisshu.html", ...home },
+      { source: "/support.html", ...home },
+    ];
   },
   async headers() {
     return [

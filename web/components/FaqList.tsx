@@ -22,7 +22,7 @@ export function FaqList({ items, headingLevel = "h3" }: { items: Faq[]; headingL
               <span className="absolute left-1/2 top-0 h-4 w-px -translate-x-1/2 bg-primary group-open:hidden" />
             </span>
           </summary>
-          <div className="flex gap-3 pb-5 pr-2 md:pr-8">
+          <div className="flex gap-3 pb-5 md:pr-8">
             <span aria-hidden="true" className="font-bold text-cta-text">A</span>
             <p className="text-[15px] text-body">
               <KeepWords text={f.a} />

@@ -132,7 +132,7 @@ export function MobileMenu() {
           <SiteNav
             items={nav}
             listClassName=""
-            linkClassName="flex min-h-12 items-center border-b border-line border-l-4 border-l-transparent px-3 text-[15px] font-bold text-ink no-underline hover:bg-pale"
+            linkClassName="flex min-h-12 items-center justify-center border-b border-line border-l-4 border-l-transparent px-3 text-center text-[15px] font-bold text-ink no-underline hover:bg-pale min-[640px]:justify-start min-[640px]:text-left"
             activeClassName="border-l-primary-dark! bg-pale text-primary-dark"
           />
           <div className="mt-2 grid gap-2">

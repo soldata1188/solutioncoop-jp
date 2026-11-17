@@ -20,6 +20,6 @@ export function pageMeta(path: string, title: string, description: string): Meta
       description,
       images: [ogImage],
     },
-    twitter: { card: "summary_large_image", title, description, images: [ogImage.url] },
+    twitter: { card: "summary", title, description, images: [ogImage.url] },
   };
 }

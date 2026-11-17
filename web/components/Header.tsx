@@ -2,7 +2,7 @@ import Link from "next/link";
 import { nav, CONTACT_HREF, TEL_ARIA, TEL_HREF, org } from "@/lib/site";
 import { SiteNav } from "./SiteNav";
 import { Wordmark } from "./Wordmark";
-import { LineButton } from "./LineButton";
+import { MobileMenu } from "./MobileMenu";
 
 const btnBase = "inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline transition-colors";
 
@@ -41,35 +41,7 @@ export function Header() {
           <Link href={CONTACT_HREF} className={`hidden min-[1200px]:inline-flex ${btnBase} bg-primary px-5 text-white hover:bg-primary-dark`}>
             お問い合わせ
           </Link>
-          <details className="group relative min-[1200px]:hidden">
-            <summary className="flex min-h-11 min-w-12 cursor-pointer flex-col items-center justify-center gap-[3px] rounded border border-line px-2 text-ink">
-              <span aria-hidden="true" className="flex flex-col gap-[3px]">
-                <span className="block h-0.5 w-5 bg-primary" />
-                <span className="block h-0.5 w-5 bg-primary group-open:opacity-0" />
-                <span className="block h-0.5 w-5 bg-primary" />
-              </span>
-              <span className="whitespace-nowrap text-xs font-bold leading-none">メニュー</span>
-            </summary>
-            <nav
-              aria-label="メインメニュー（モバイル）"
-              className="absolute right-0 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded border border-line bg-white p-2 shadow-card"
-            >
-              <SiteNav
-                items={nav}
-                listClassName=""
-                linkClassName="flex min-h-12 items-center border-b border-line border-l-4 border-l-transparent px-3 text-[15px] font-bold text-ink no-underline hover:bg-pale"
-                activeClassName="border-l-primary-dark! bg-pale text-primary-dark"
-              />
-              <div className="mt-2 grid gap-2">
-                <a href={TEL_HREF} className={`${btnBase} border border-primary-dark bg-white text-primary-dark hover:bg-cta-tint`}>
-                  <PhoneIcon />
-                  電話 {org.tel}
-                </a>
-                <LineButton className="flex min-h-11 gap-2 px-4 text-sm" />
-                <Link href={CONTACT_HREF} className={`${btnBase} bg-primary text-white hover:bg-primary-dark`}>お問い合わせ</Link>
-              </div>
-            </nav>
-          </details>
+          <MobileMenu />
         </div>
       </div>
     </header>

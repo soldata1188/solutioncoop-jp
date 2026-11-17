@@ -100,7 +100,7 @@ export function HomeHero() {
               <span className="text-[13px] sm:text-lg">
                 <Chunks parts={["受入れを", "検討する"]} />
               </span>
-              <span className="mt-0.5 text-[10px] font-bold sm:text-xs">無料相談・お問い合わせ</span>
+              <span className="mt-0.5 text-xs font-bold">無料相談・お問い合わせ</span>
             </span>
             <span aria-hidden="true" className="text-base sm:text-xl">→</span>
           </Link>
@@ -111,7 +111,7 @@ export function HomeHero() {
             className="flex min-h-16 flex-col items-center justify-center rounded-lg border-2 border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
           >
             <span className="text-[13px] sm:text-lg">24時間相談窓口</span>
-            <span className="mt-0.5 text-[10px] font-bold sm:text-xs">
+            <span className="mt-0.5 text-xs font-bold">
               <Chunks parts={["実習生・", "外国人材の方はこちら"]} />
             </span>
             <span className="sr-only">（LINE公式アカウントを新しいタブで開きます）</span>

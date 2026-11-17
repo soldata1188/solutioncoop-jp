@@ -69,13 +69,17 @@ export const achievements = [
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;
 
-/** ヘッダーのメニュー */
+/** ヘッダー・フッター・モバイルメニュー。ホーム内の節は実在する id へ飛ばします */
 export const nav = [
+  { href: "/#business", label: "事業内容" },
+  { href: "/#reasons", label: "選ばれる理由" },
+  { href: "/#cases", label: "受入れ事例" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
+  { href: "/disclosure", label: "情報公開" },
 ];
 
-/** フッター・モバイルメニュー用の全ページ一覧 */
+/** モバイルメニューはヘッダーと同じ順 */
 export const allPages = [...nav];
 
 /** 電話リンク（全ページのCTAで使用） */

@@ -1,16 +1,10 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
+import { nav, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
 import { LineButton } from "./LineButton";
 import { Chunks, Phrases } from "./KeepWords";
 
-const footerLinks = [
-  { href: "/faq", label: "よくある質問" },
-  { href: "/about", label: "組合概要" },
-  { href: CONTACT_HREF, label: CONTACT_LABEL },
-  { href: "/disclosure", label: "情報公開" },
-  { href: "/privacy", label: "個人情報保護方針" },
-];
+const footerLinks = [...nav, { href: "/privacy", label: "個人情報保護方針" }];
 
 export function Footer() {
   return (

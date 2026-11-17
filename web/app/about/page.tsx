@@ -115,9 +115,9 @@ export default function Page() {
       <Section id="license" title="許可・登録" tone="pale">
           <LicenseFrames />
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="border-b-4 border-primary bg-white p-6 shadow-card">
+            <div className="w-full border-b-4 border-primary bg-white p-6 text-center shadow-card sm:text-left">
               <h3 className="text-lg font-bold text-ink">{licenses.kanri.label}</h3>
-              <dl className="mt-3 space-y-1">
+              <dl className="mt-3 space-y-1 text-left">
                 <div><dt className="inline font-bold">許可番号：</dt><dd className="inline">{licenses.kanri.number}</dd></div>
                 <div><dt className="inline font-bold">許可の別：</dt><dd className="inline">{licenses.kanri.kind}</dd></div>
                 <div><dt className="inline font-bold">法人の種類：</dt><dd className="inline">{licenses.kanri.corpType}</dd></div>
@@ -133,9 +133,9 @@ export default function Page() {
                 </div>
               </dl>
             </div>
-            <div className="border-b-4 border-primary bg-white p-6 shadow-card">
+            <div className="w-full border-b-4 border-primary bg-white p-6 text-center shadow-card sm:text-left">
               <h3 className="text-lg font-bold text-ink">{licenses.toroku.label}</h3>
-              <dl className="mt-3 space-y-1">
+              <dl className="mt-3 space-y-1 text-left">
                 <div><dt className="inline font-bold">登録番号：</dt><dd className="inline">{licenses.toroku.number}</dd></div>
                 <div><dt className="inline font-bold">登録年月日：</dt><dd className="inline">{licenses.toroku.registeredOn}</dd></div>
                 <div><dt className="inline font-bold">有効期間：</dt><dd className="inline">{licenses.toroku.validity}</dd></div>
@@ -156,7 +156,7 @@ export default function Page() {
           {disclosureDocuments.map((doc) => {
             const file = doc.status === "published" ? doc.fileUrl : undefined;
             return (
-              <li key={doc.id} className="flex min-h-14 flex-col justify-center gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <li key={doc.id} className="flex min-h-14 flex-col items-center justify-center gap-1 py-3 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
                 <span className="text-[15px] font-bold text-ink">{doc.name}</span>
                 {file ? (
                   <a href={file} className="inline-flex min-h-11 items-center text-sm font-bold text-primary-dark underline underline-offset-4">

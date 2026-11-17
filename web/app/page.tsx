@@ -152,18 +152,16 @@ export default function Home() {
               <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
-              <div className="flex flex-1 flex-col px-5 pb-6 pt-5">
-                <h3 className="flex items-center gap-2 text-lg font-bold leading-snug text-ink md:text-xl">
-                  <Icon className="h-8 w-8 shrink-0 text-primary sm:hidden" />
-                  <span>
-                    <span className="sr-only">事業{i + 1}：</span>
-                    {title}
-                  </span>
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:text-left">
+                <Icon className="mx-auto mb-2 h-8 w-8 text-primary sm:hidden" />
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">事業{i + 1}：</span>
+                  {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
-                <details className="mt-auto pt-4">
-                  <summary className="inline-flex min-h-11 cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink">定款記載事業など</summary>
+                <p className="mt-3 text-left text-sm leading-relaxed text-body">{body}</p>
+                <details className="mt-auto pt-4 text-left">
+                  <summary className="mx-auto inline-flex min-h-11 w-fit cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink sm:mx-0">定款記載事業など</summary>
                   <ul className="mt-2 space-y-1">
                     {items.map((it) => (
                       <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
@@ -194,16 +192,14 @@ export default function Home() {
               <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
-              <div className="px-5 pb-6 pt-5">
-                <h3 className="flex items-center gap-2 text-lg font-bold leading-snug text-ink md:text-xl">
-                  <Icon className="h-8 w-8 shrink-0 text-primary sm:hidden" />
-                  <span>
-                    <span className="sr-only">理由{i + 1}：</span>
-                    {title}
-                  </span>
+              <div className="px-5 pb-6 pt-5 text-center sm:text-left">
+                <Icon className="mx-auto mb-2 h-8 w-8 text-primary sm:hidden" />
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">理由{i + 1}：</span>
+                  {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
+                <p className="mt-3 text-left text-sm leading-relaxed text-body">{body}</p>
               </div>
             </TabCard>
           ))}
@@ -213,12 +209,12 @@ export default function Home() {
           <SectionHeading id="credentials-title">許可・登録・拠点</SectionHeading>
           <ul aria-labelledby="credentials-title" className="mt-6 grid gap-4 md:grid-cols-3">
             {credentials.map(({ title, body, note, Icon, href, link }) => (
-              <li key={title} className="flex flex-col bg-white p-5 shadow-card">
-                <Icon className="h-10 w-10 text-primary" />
+              <li key={title} className="flex w-full flex-col bg-white p-5 text-center shadow-card sm:text-left">
+                <Icon className="mx-auto h-8 w-8 text-primary sm:mx-0 sm:h-10 sm:w-10" />
                 <h4 className="mt-3 text-base font-bold leading-snug text-ink">{title}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-body">{body}</p>
+                <p className="mt-2 text-left text-sm leading-relaxed text-body">{body}</p>
                 <p className="mt-2 text-sm text-muted">※{note}</p>
-                <Link href={href} className="mt-auto inline-flex min-h-11 items-center gap-2 pt-2 text-sm font-bold text-primary-dark underline-offset-4 hover:underline">
+                <Link href={href} className="mt-auto inline-flex min-h-11 items-center justify-center gap-2 pt-2 text-sm font-bold text-primary-dark underline underline-offset-4 hover:underline sm:justify-start">
                   {link}
                   <ArrowIcon className="h-3 w-3" />
                 </Link>
@@ -241,7 +237,7 @@ export default function Home() {
                   </span>
                 ) : null}
               </div>
-              <div className="p-4">
+              <div className="p-4 text-center sm:text-left">
                 <p className="text-sm font-bold text-ink">{c.tag}</p>
               </div>
             </li>

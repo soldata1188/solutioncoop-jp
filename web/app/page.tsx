@@ -276,15 +276,6 @@ export default function Home() {
             <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />
           </div>
         </div>
-        <div className="mt-12">
-          <LineHeading>制度について詳しく知る</LineHeading>
-          <div className="mx-auto mt-6 max-w-[620px] rounded border border-line p-5 text-center">
-            <p className="text-sm text-body">2027年4月に向けた準備をまとめております。</p>
-            <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
-              <LinkButton href="/roadmap" variant="ghost" className="sm:min-w-52">2027年4月に向けた準備</LinkButton>
-            </div>
-          </div>
-        </div>
       </Section>
 
       {/* よくある質問 */}

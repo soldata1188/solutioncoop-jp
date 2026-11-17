@@ -4,7 +4,6 @@ import { org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL
 import { LineButton } from "./LineButton";
 import { Chunks, Phrases } from "./KeepWords";
 
-const footerLead = { href: "/roadmap", label: "2027年4月に向けた準備" };
 const footerLinks = [
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
@@ -18,11 +17,6 @@ export function Footer() {
     <footer className="border-t border-line bg-white text-body">
       <div className="mx-auto max-w-[812px] px-4 py-10">
         <nav aria-label="フッターメニュー" className="mx-auto max-w-xl text-center">
-          <p>
-            <Link href={footerLead.href} className="inline-flex min-h-11 items-center text-[15px] font-bold text-primary-dark no-underline hover:underline hover:underline-offset-4">
-              {footerLead.label}
-            </Link>
-          </p>
           <ul className="grid grid-cols-2 text-sm sm:flex sm:flex-wrap sm:justify-center">
             {footerLinks.map((item) => (
               <li key={item.href}>

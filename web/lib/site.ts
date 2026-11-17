@@ -76,10 +76,7 @@ export const nav = [
 ];
 
 /** フッター・モバイルメニュー用の全ページ一覧 */
-export const allPages = [
-  { href: "/roadmap", label: "2027年4月に向けた準備" },
-  ...nav,
-];
+export const allPages = [...nav];
 
 /** 電話リンク（全ページのCTAで使用） */
 export const TEL_HREF = "tel:0722248067";

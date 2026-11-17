@@ -5,6 +5,7 @@ import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
+import { disclosureDocuments } from "@/lib/disclosure";
 import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -143,6 +144,30 @@ export default function Page() {
           <p className="mt-4 text-sm text-muted">
             ※当組合は、技能実習法に基づく監理団体として許可を受けております。2027年4月1日施行の育成就労制度に向けて準備中です。
           </p>
+      </Section>
+      <Section
+        id="disclosure"
+        title="情報公開"
+        width="narrow"
+        lead="関係法令を順守し、透明性の高い運営を行うため、当組合の監理費表および運営規程などの重要書類を公開しております。各ドキュメントは直接ダウンロード、または閲覧が可能です。"
+      >
+        <ul className="divide-y divide-line border-y border-line">
+          {disclosureDocuments.map((doc) => {
+            const file = doc.status === "published" ? doc.fileUrl : undefined;
+            return (
+              <li key={doc.id} className="flex min-h-14 flex-col justify-center gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                <span className="text-[15px] font-bold text-ink">{doc.name}</span>
+                {file ? (
+                  <a href={file} className="inline-flex min-h-11 items-center text-sm font-bold text-primary-dark underline underline-offset-4">
+                    閲覧する
+                  </a>
+                ) : (
+                  <span className="text-sm font-bold text-muted">準備中</span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </Section>
       <CtaSection />
     </>

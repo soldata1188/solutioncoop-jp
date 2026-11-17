@@ -76,7 +76,7 @@ export const nav = [
   { href: "/#cases", label: "受入れ事例" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
-  { href: "/disclosure", label: "情報公開" },
+  { href: "/about#disclosure", label: "情報公開" },
 ];
 
 /** モバイルメニューはヘッダーと同じ順 */

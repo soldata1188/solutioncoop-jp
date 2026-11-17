@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { isCurrent } from "./NavLink";
 
-const SECTION_IDS = ["business", "reasons", "cases"];
+const HOME_IDS = ["business", "reasons", "cases"];
 
 export function SiteNav({
   items,
@@ -20,11 +20,13 @@ export function SiteNav({
 }) {
   const pathname = usePathname();
   const [seenId, setSeenId] = useState<string | null>(null);
-  const activeId = pathname === "/" ? seenId : null;
+  const sectionIds = pathname === "/" ? HOME_IDS : pathname === "/about" ? ["disclosure"] : [];
+  const activeId = seenId && sectionIds.includes(seenId) ? seenId : null;
 
   useEffect(() => {
-    if (pathname !== "/") return;
-    const targets = SECTION_IDS.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el != null);
+    const ids = pathname === "/" ? HOME_IDS : pathname === "/about" ? ["disclosure"] : [];
+    if (ids.length === 0) return;
+    const targets = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el != null);
     if (targets.length === 0) return;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -44,7 +46,7 @@ export function SiteNav({
       {items.map((item) => {
         const hash = item.href.includes("#") ? item.href.split("#")[1] : "";
         const onPage = !hash && isCurrent(pathname, item.href);
-        const inView = pathname === "/" && hash !== "" && hash === activeId;
+        const inView = hash !== "" && hash === activeId;
         return (
           <li key={item.href}>
             <Link

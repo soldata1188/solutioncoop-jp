@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  async redirects() {
+    return [{ source: "/disclosure", destination: "/about#disclosure", permanent: true }];
+  },
   async headers() {
     return [
       {

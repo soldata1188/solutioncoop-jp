@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FaqList } from "@/components/FaqList";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
-import { ArrowIcon, LinkButton, Section, SectionHeading, TabCard } from "@/components/ui";
+import { ArrowIcon, Section, SectionHeading, TabCard } from "@/components/ui";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
@@ -14,7 +13,6 @@ import caseNaisouTosou from "@/public/images/cases/case-naisou-tosou.webp";
 import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
-import { faqs } from "@/lib/faq";
 import { pageMeta } from "@/lib/meta";
 
 /**
@@ -259,16 +257,6 @@ export default function Home() {
           <div className="mt-5">
             <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />
           </div>
-        </div>
-      </Section>
-
-      {/* よくある質問 */}
-      <Section id="faq" title="よくある質問" width="narrow">
-        <FaqList
-          items={faqs.slice(0, 5).filter((item) => item.q !== "育成就労制度はいつから始まりますか。" && item.q !== "どのような業種の企業で受入れが可能ですか。")}
-        />
-        <div className="mt-8 text-center">
-          <LinkButton href="/faq" variant="ghost" className="min-w-64">よくある質問をすべて見る</LinkButton>
         </div>
       </Section>
 

@@ -16,7 +16,8 @@ export function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white">
+    <>
+    <header className="fixed inset-x-0 top-0 z-[70] border-b border-line bg-white">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-4 py-1.5">
         <div className="flex items-center gap-6">
           <Wordmark />
@@ -45,5 +46,7 @@ export function Header() {
         </div>
       </div>
     </header>
+    <div aria-hidden="true" className="h-[57px] shrink-0" />
+    </>
   );
 }

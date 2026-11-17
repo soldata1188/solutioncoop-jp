@@ -86,9 +86,7 @@ export function HomeHero() {
         </div>
 
         <p className="mt-5 text-sm font-bold leading-relaxed text-white md:text-base">
-          <span className="inline-block">大阪・関西圏の</span>
-          <span className="mx-1 inline-block text-xl font-black text-cta md:text-2xl">80社以上の企業様</span>
-          <span className="inline-block">にご利用いただいています。</span>
+          <span className="inline-block">大阪・関西圏の</span><span className="inline-block text-xl font-black text-cta md:text-2xl">80社以上の企業様</span><span className="inline-block">にご利用いただいています。</span>
         </p>
 
         <div className="mt-8 grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3 md:mt-10">

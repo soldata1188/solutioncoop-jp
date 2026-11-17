@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaSection } from "@/components/CtaSection";
 import { FaqList } from "@/components/FaqList";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
@@ -281,8 +280,6 @@ export default function Home() {
       >
         <OfficialXPosts />
       </Section>
-
-      <CtaSection />
     </>
   );
 }

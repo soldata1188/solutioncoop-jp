@@ -1,5 +1,4 @@
 import { PageHeader } from "@/components/PageHeader";
-import { CtaSection } from "@/components/CtaSection";
 import { NoBreak } from "@/components/KeepWords";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
@@ -171,7 +170,6 @@ export default function Page() {
           })}
         </ul>
       </Section>
-      <CtaSection />
     </>
   );
 }

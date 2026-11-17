@@ -1,20 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Chunks } from "@/components/KeepWords";
-import { photos } from "@/lib/images";
+import { SquaresPattern } from "@/components/ui";
 import { CONTACT_HREF, LINE_URL } from "@/lib/site";
-
-/** ヒーロー下端の工場スカイライン（自作。写真の上に重ねる装飾） */
-function FactorySkyline() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 1440 168" preserveAspectRatio="xMidYMax slice" className="pointer-events-none absolute inset-x-0 bottom-0 h-[4.5rem] w-full sm:h-24 md:h-28">
-      <path
-        fill="#02150d"
-        d="M0 168V118H36V96h18V78h10v18h16v22h28V88h14V62h8v26h22v30h40V104h70V78h16V52h8v26h24v26h36V92h48V118h32V70h12V46h8v24h20v48h44V96h56V64h18V40h10v24h22v32h40V108h64V86h22V58h8v28h16v22h48V100h36V72h14V48h8v24h18v28h52V112h70V90h24V66h8v24h20v22h80V118h90V96h28V74h10v22h22v22H1440V168H0Z"
-      />
-    </svg>
-  );
-}
 
 function IconConstruction() {
   return (
@@ -46,28 +33,16 @@ function IconBuilding() {
 const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded px-3 py-1 text-sm font-bold leading-none";
 
 /**
- * トップのヒーロー。背景は既存の金属加工場の写真。
- * 許可証などと同様、実写を足す場合は photos.siteSteel を差し替える。
+ * トップのヒーロー。背景は再デザイン前の緑地と四角模様（SquaresPattern）。
+ * 白 / #1E7F46 は 5.02:1。小さい黄色だけ #FFF9B0（4.65:1）。
+ * 業種の枠と副ボタンは、白を混ぜると文字が 4.5:1 を切るため、濃い緑の半透明にしています。
  */
 export function HomeHero() {
   return (
-    <section data-hero className="relative isolate overflow-hidden text-white">
-      <div className="absolute inset-0" aria-hidden="true">
-        <Image
-          src={photos.siteSteel.src}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-      {/* 暗い緑のオーバーレイ。白文字・黄色アクセントが写真の明暗に左右されないようにする */}
-      <div aria-hidden="true" className="absolute inset-0 bg-primary-darker/88" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-primary-darker/40 via-transparent to-transparent" />
-      <FactorySkyline />
+    <section data-hero className="relative overflow-hidden bg-primary text-white">
+      <SquaresPattern />
 
-      <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 pb-24 pt-14 text-center sm:pb-28 sm:pt-16 md:pb-32 md:pt-20">
+      <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 py-14 text-center sm:py-16 md:py-20">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">
           <span className="block text-white">
             <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />
@@ -81,7 +56,7 @@ export function HomeHero() {
           <span className="block">
             <span className="inline-block">実習生の受入れから</span>
             <span className="inline-block">
-              <span className="mx-1 text-cta">育成就労・特定技能</span>
+              <span className="mx-1 text-cta-hover">育成就労・特定技能</span>
               への移行まで、
             </span>
           </span>
@@ -92,7 +67,7 @@ export function HomeHero() {
           </span>
         </p>
 
-        <div className="mt-8 flex w-full max-w-3xl flex-col items-center gap-3 rounded-2xl border border-white/30 bg-white/10 px-3 py-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4 sm:px-5 md:py-4">
+        <div className="mt-8 flex w-full max-w-3xl flex-col items-center gap-3 rounded-2xl border border-white/40 bg-primary-darker/35 px-3 py-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4 sm:px-5 md:py-4">
           <p className="text-xs font-bold tracking-wide text-cta">主な対応業種</p>
           <ul className="flex flex-wrap items-center justify-center gap-2">
             <li className={`${chipBase} bg-white text-primary-darker`}>
@@ -133,7 +108,7 @@ export function HomeHero() {
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex min-h-16 flex-col items-center justify-center rounded-lg border-2 border-white/80 bg-white/15 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-white/25"
+            className="flex min-h-16 flex-col items-center justify-center rounded-lg border-2 border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
           >
             <span className="text-[13px] sm:text-lg">24時間相談窓口</span>
             <span className="mt-0.5 text-[10px] font-bold sm:text-xs">

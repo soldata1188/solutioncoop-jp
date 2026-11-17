@@ -6,8 +6,6 @@ import { Chunks, Phrases } from "./KeepWords";
 
 const footerLead = { href: "/roadmap", label: "2027年4月に向けた準備" };
 const footerLinks = [
-  { href: "/support", label: "受入れ後の支援" },
-  { href: "/price", label: "料金の目安" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
   { href: CONTACT_HREF, label: CONTACT_LABEL },

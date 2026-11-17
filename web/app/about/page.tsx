@@ -70,7 +70,7 @@ export default function Page() {
       />
       <Section id="office" title="堺から、大阪の企業様を支えます" width="default">
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
-          <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
+          <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" priority caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
           <div>
             <p className="text-[15px]">
               当組合は、堺市堺区に事務所を構え、職員{org.staff}の体制で、大阪府内の中小企業様の外国人材受入れをご支援しております。

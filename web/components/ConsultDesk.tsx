@@ -120,8 +120,7 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
           </div>
         </li>
 
-        <li className="card-lift relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white text-center">
-          <span className="absolute right-3 top-3 rounded bg-linegreen px-2 py-1 text-[11px] font-bold tracking-wide text-ink">POPULAR</span>
+        <li className="card-lift flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white text-center">
           <div className="flex h-28 items-center justify-center bg-[#e7f9ee]">
             <LineMark />
           </div>

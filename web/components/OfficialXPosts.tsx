@@ -67,6 +67,14 @@ function PostCard({ post }: { post: XPostCard }) {
   );
 }
 
+/** 3件はタブレットの2列にすると1件が余るので、広い画面まで1列にし、1280px前後で3列にします。 */
+function postGridClass(count: number): string {
+  if (count <= 1) return "grid grid-cols-1 items-stretch gap-4";
+  if (count === 2) return "grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2";
+  if (count === 3) return "grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3";
+  return "grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3";
+}
+
 /** 公式Xの最新投稿。取得できないときは公式アカウントへのリンクだけを出します。 */
 export async function OfficialXPosts({ limit = X_POST_COUNT, showMore = false }: { limit?: number; showMore?: boolean }) {
   const result = await loadOfficialPosts();
@@ -78,7 +86,7 @@ export async function OfficialXPosts({ limit = X_POST_COUNT, showMore = false }:
           {result.source === "fixture" ? (
             <p className="mb-6 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
-          <ul className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <ul className={postGridClass(posts.length)}>
             {posts.map((post) => (
               <li key={post.id} className="flex min-w-0">
                 <PostCard post={post} />

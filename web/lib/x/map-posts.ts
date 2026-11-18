@@ -8,7 +8,7 @@ export const X_POSTS_SUCCESS_REVALIDATE_SECONDS = 3600;
 /** 失敗した取得だけ、この秒数のあとにもう一度試します。失敗そのものはキャッシュしません。 */
 export const X_POSTS_FAILURE_REVALIDATE_SECONDS = 300;
 /** ホームに出す件数。 */
-export const X_POST_COUNT = 6;
+export const X_POST_COUNT = 3;
 /** 最新情報ページに出す件数。タイムラインは1回の取得でこの件数まで取り、同じキャッシュを使います。 */
 export const X_NEWS_POST_COUNT = 20;
 

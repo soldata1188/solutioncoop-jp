@@ -99,7 +99,7 @@ test("maps the newest six posts, photos, video previews, and plain text", () => 
         { media_key: "3_evil", type: "photo", url: "https://evil.example/a.jpg" },
       ],
     },
-  });
+  }, "KumiaiSol", 6);
 
   assert.deepEqual(cards.map((card) => card.id), ["15", "14", "13", "12", "11", "10"]);
   assert.equal(cards[1]?.image?.url, "https://pbs.twimg.com/media/thumb.jpg");

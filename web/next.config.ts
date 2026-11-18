@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     // 投稿画像は next/image が同一オリジンの /_next/image 経由で配信します。
+    // 許可証は文字が読める品質で、対応ブラウザには AVIF、それ以外には WebP を出します。
+    formats: ["image/avif", "image/webp"],
+    qualities: [75, 90],
     remotePatterns: [{ protocol: "https", hostname: "pbs.twimg.com" }],
   },
   turbopack: {

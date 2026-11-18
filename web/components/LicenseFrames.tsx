@@ -32,9 +32,11 @@ function Frame({ item }: { item: LicenseImageItem }) {
               <Image
                 src={item.image}
                 alt={item.alt}
-                width={827}
-                height={1170}
+                width={item.width}
+                height={item.height}
                 sizes="(min-width: 768px) 400px, 100vw"
+                quality={90}
+                loading="lazy"
                 className="h-full w-full object-contain"
               />
             </button>
@@ -51,7 +53,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
         <dialog
           ref={dialogRef}
           aria-label={item.alt}
-          className="license-dialog w-[min(100%-2rem,40rem)] border border-line bg-white p-4"
+          className="license-dialog w-[min(100%-2rem,1186px)] border border-line bg-white p-4"
           onClick={(event) => {
             if (event.target === dialogRef.current) dialogRef.current?.close();
           }}
@@ -59,9 +61,11 @@ function Frame({ item }: { item: LicenseImageItem }) {
           <Image
             src={item.image}
             alt={item.alt}
-            width={827}
-            height={1170}
-            sizes="90vw"
+            width={item.width}
+            height={item.height}
+            sizes="(min-width: 768px) 1186px, 100vw"
+            quality={90}
+            loading="lazy"
             className="license-dialog-img mx-auto h-auto w-auto max-w-full object-contain"
           />
           <button

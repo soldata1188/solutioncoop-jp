@@ -1,17 +1,16 @@
 import { PageHeader } from "@/components/PageHeader";
-import { NoBreak } from "@/components/KeepWords";
 import { Photo } from "@/components/Photo";
 import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { LicenseFrames } from "@/components/LicenseFrames";
 import { disclosureDocuments } from "@/lib/disclosure";
-import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/site";
+import { org, fullAddress, licenses, repoFacts, TEL_HREF } from "@/lib/site";
 
 export const metadata = pageMeta(
   "/about",
   "組合概要｜堺の監理団体",
-  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、受入れ実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
+  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、受入れ実績、監理団体の許可番号、登録支援機関の登録番号などをご案内いたします。",
 );
 
 export default function Page() {
@@ -39,32 +38,7 @@ export default function Page() {
   ];
   return (
     <>
-      <PageHeader
-        title="組合概要"
-        path="/about"
-        lead="堺市堺区を拠点に、大阪府内の中小企業様の外国人材受入れをご支援する監理団体です。"
-        leadAfter={
-          // SDGs未来都市・堺の応援（文字のみ。ロゴ画像は承認範囲の確認前のため使いません）
-          <section aria-labelledby="sdgs-title" className="mt-5 rounded border border-line-strong border-l-4 border-l-primary bg-white p-4 shadow-card sm:p-5">
-            {/* 見出しと応援の一文が重複していたため、一文を見出しにまとめ、「SDGs未来都市・堺」を大きく表示します */}
-            <h2 id="sdgs-title" className="text-base font-bold leading-relaxed text-black [text-wrap:balance]">
-              <NoBreak>{sdgs.supportParts[0]}</NoBreak>
-              <wbr />
-              <NoBreak><span className="text-xl text-primary-dark md:text-2xl">{sdgs.heading}</span></NoBreak>
-              <wbr />
-              <NoBreak>{sdgs.supportParts[1].slice(sdgs.heading.length)}</NoBreak>
-            </h2>
-            <p className="mt-2 text-[15px] text-body">
-              {sdgs.selected}（出典：
-              <a href={sdgs.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center whitespace-nowrap text-primary-dark underline underline-offset-4">
-                {sdgs.sourceLabel}
-                <span className="sr-only">（新しいタブで開きます）</span>
-              </a>
-              ）
-            </p>
-          </section>
-        }
-      />
+      <PageHeader title="組合概要" path="/about" />
       <Section id="office" title="堺から、大阪の企業様を支えます" width="default" reveal={false}>
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
           <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" priority caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
@@ -94,20 +68,6 @@ export default function Page() {
             ))}
           </tbody>
         </table>
-      </Section>
-
-      <Section id="history" title="沿革" width="narrow">
-        <ol className="border-l-2 border-tab pl-6">
-          {repoFacts.history.map((h) => (
-            <li key={h.year} className="relative pb-6 last:pb-0">
-              <span aria-hidden="true" className="absolute -left-[33px] top-1.5 h-3 w-3 rounded-full bg-primary-dark" />
-              <p className="text-sm font-bold text-primary-dark">{h.year}</p>
-              <p className="mt-0.5">
-                {h.text}
-              </p>
-            </li>
-          ))}
-        </ol>
       </Section>
 
       <Section id="license" title="許可・登録" tone="pale">

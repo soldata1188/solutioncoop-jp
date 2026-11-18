@@ -1,21 +1,18 @@
-import { PageHeader } from "@/components/PageHeader";
+import { ConsultDesk } from "@/components/ConsultDesk";
 import { Section } from "@/components/ui";
-import { ForWorkers } from "@/components/ForWorkers";
+import { CONSULT_CLAIMS } from "@/lib/consult";
+import { lineQrSvg } from "@/lib/line-qr";
 import { pageMeta } from "@/lib/meta";
+import { MESSENGER_URL } from "@/lib/site";
 
-export const metadata = pageMeta(
-  "/for-workers",
-  "外国人材・実習生のみなさまへ",
-  "ベトナム、インドネシア、フィリピンから来た実習生のみなさまへ。ソリューション協同組合の手伝い、困ったときの電話、国の相談窓口をご案内します。",
-);
+export const metadata = pageMeta("/for-workers", CONSULT_CLAIMS.pageTitle, CONSULT_CLAIMS.pageDescription);
 
-export default function Page() {
+export default async function Page() {
+  const lineQr = await lineQrSvg();
+  const messengerQr = MESSENGER_URL ? await lineQrSvg(MESSENGER_URL) : "";
   return (
-    <>
-      <PageHeader title="外国人材・実習生のみなさまへ" path="/for-workers" />
-      <Section width="wide">
-        <ForWorkers />
-      </Section>
-    </>
+    <Section width="wide" tone="pale">
+      <ConsultDesk lineQr={lineQr} messengerQr={messengerQr} />
+    </Section>
   );
 }

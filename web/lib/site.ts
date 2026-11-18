@@ -80,8 +80,10 @@ export const LINE_URL = "https://line.me/R/ti/p/@122kbyao";
 export const LINE_LABEL = "LINEで無料相談";
 export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
-/** 実習生ページの Facebook ボタン。空のあいだはボタンを出しません。URLは推測しません。 */
+/** 実習生ページの Facebook。空のあいだは Messenger のQRもボタンも出しません。URLは推測しません。 */
 export const FACEBOOK_URL = "";
+/** Messenger を開くリンク。空のあいだはボタンを無効にし、QRの場所は「準備中」にします。 */
+export const MESSENGER_URL = "";
 
 /**
  * 公式X（旧Twitter）アカウント @KumiaiSol。

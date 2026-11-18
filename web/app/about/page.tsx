@@ -86,8 +86,9 @@ export default function Page() {
               <li key={doc.id} className="flex min-h-14 flex-col items-center justify-center gap-1 py-3 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:text-left">
                 <span className="text-[15px] font-bold text-ink">{doc.name}</span>
                 {file ? (
-                  <a href={file} className="inline-flex min-h-11 items-center text-sm font-bold text-primary-dark underline underline-offset-4">
-                    閲覧する
+                  <a href={file} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center text-sm font-bold text-primary-dark underline underline-offset-4">
+                    PDF・{Math.round((doc.bytes ?? 0) / 1024)}KB
+                    <span className="sr-only">（新しいタブで開きます）</span>
                   </a>
                 ) : (
                   <span className="text-sm font-bold text-muted">準備中</span>

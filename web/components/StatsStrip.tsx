@@ -1,48 +1,38 @@
 import Image from "next/image";
-import sdgsSakai from "@/public/images/sdgs-sakai.webp";
-import { achievements } from "@/lib/site";
-import { NoBreak } from "./KeepWords";
+import sdgsSakai from "@/public/images/sdgs-mirai-toshi-sakai.jpg";
+import { achievements, sdgs } from "@/lib/site";
 
 /**
- * トップの実績ストリップ（ヒーロー直下）。
- * PC（lg以上）：左に「SDGs未来都市・堺」ロゴ、右に3つの実績を細い区切り線で並べます。
- * スマートフォン・タブレット：先頭にロゴと応援の一文（2行）を全幅で置き、その下に実績を2×2（md以上は4列）で表示します。
- * 数値は #0F4D2A（白背景で 9.93:1）、ラベルは #222。
- * ロゴは既存リポジトリ images/sdgs-sakai.png を WebP に変換したもの（ファイルは無加工）。
- * 堺市「ロゴマーク使用管理要領」第3条により、使用には事前の申請・承認が必要です（承認の有無は代表者様に要確認）。
- * 使用ガイドに従い、背景は白、応援の文言は黒色・ロゴ内の「SDGs未来都市・堺」より小さい文字で、1〜2行に配置します。
+ * トップの実績（ヒーロー直下）。
+ * 3つの実績は同じ大きさのカード。SDGsのロゴと応援の一文は、その下の白い帯に分けます。
+ * ロゴは原寸の JPG を next/image で出し、表示幅は 240px 以下にします。
+ * 背景は白、応援の文言は黒です。
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {
   return (
     <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
       <h2 id="stats-title" className="sr-only">当組合の実績</h2>
-      <div className="mx-auto max-w-[1100px] px-4 py-6 md:py-8">
-        <div className="grid overflow-hidden rounded border border-line bg-white shadow-card lg:grid-cols-[300px_1fr]">
-          <div className="flex flex-col items-center justify-center gap-1.5 border-b border-line px-4 py-3 lg:border-b-0 lg:flex-col lg:gap-2 lg:border-r lg:px-5 lg:py-4">
-            <Image src={sdgsSakai} alt="SDGs未来都市・堺 ロゴ" sizes="(min-width: 1024px) 248px, 200px" className="h-auto w-[200px] shrink-0 lg:w-[248px]" />
-            <p className="text-center text-xs font-bold leading-relaxed text-black">
-              ソリューション協同組合は、
-              <br />
-              SDGs未来都市・堺を応援しています。
-            </p>
-          </div>
-          <ul className="grid grid-cols-3 gap-px bg-line">
-            {achievements.map((a) => (
-              <li key={a.label} className="flex flex-col items-center justify-center bg-white px-2 py-4 text-center">
-                <span aria-hidden="true" className="font-bold leading-none text-primary-dark">
-                  <span className="text-[2.25rem] md:text-[2.5rem]">{a.value}</span>
-                  <span className="ml-0.5 text-lg md:text-xl">{a.unit}</span>
-                </span>
-                <span aria-hidden="true" className="mt-2 text-sm font-bold leading-snug text-ink">
-                  {/* ラベルは語の途中で折り返さないよう、空白で区切ったまとまりごとに改行を禁止します */}
-                  {a.label.split(" ").map((part, i) => (
-                    <span key={part}>{i > 0 ? " " : null}<NoBreak>{part}</NoBreak></span>
-                  ))}
-                </span>
-                <span className="sr-only">{a.sr}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
+        <ul className="grid grid-cols-3 items-stretch gap-2 sm:gap-4">
+          {achievements.map((item) => (
+            <li key={item.label} className="flex h-full flex-col items-center justify-center border-t-[3px] border-primary bg-white px-1.5 py-4 text-center shadow-card sm:px-4 sm:py-6">
+              <span aria-hidden="true" className="text-[1.35rem] font-bold leading-none text-primary-dark sm:text-4xl">{item.value}</span>
+              <span aria-hidden="true" className="mt-2 min-h-10 text-xs font-bold leading-snug text-ink sm:min-h-0 sm:text-sm">{item.label}</span>
+              <span className="sr-only">{item.sr}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4 flex flex-col items-center justify-center gap-3 rounded border border-line bg-white px-4 py-4 text-center sm:flex-row sm:gap-6">
+          <Image
+            src={sdgsSakai}
+            alt="SDGs未来都市・堺 ロゴ"
+            width={758}
+            height={236}
+            quality={90}
+            sizes="240px"
+            className="h-auto w-[240px] max-w-full"
+          />
+          <p className="max-w-md text-sm font-bold leading-relaxed text-black">{sdgs.support}</p>
         </div>
         {children}
       </div>

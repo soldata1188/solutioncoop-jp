@@ -110,7 +110,7 @@ export default function Home() {
     <>
       <HomeHero />
 
-      {/* 実績ストリップ（代表者様確認済みの4項目と「SDGs未来都市・堺」） */}
+      {/* 実績（3つのカード）と、その下の SDGs未来都市・堺 */}
       <StatsStrip />
 
       {/* 事業内容（代表者様ご提供の文言） */}

@@ -48,9 +48,9 @@ export const sdgs = {
 } as const;
 
 export const achievements = [
-  { value: "65", unit: "期", label: "技能実習生受入れ実績", sr: `技能実習生受入れ実績 ${org.terms}` },
-  { value: "80", unit: "社+", label: "受入れ企業数", sr: `受入れ企業数 ${org.clients}` },
-  { value: "知事", unit: "表彰", label: "令和8年 大阪府知事表彰", sr: org.award },
+  { value: "65期", label: "技能実習生受入れ実績", sr: `技能実習生受入れ実績 ${org.terms}` },
+  { value: "80社+", label: "受入れ企業数", sr: `受入れ企業数 ${org.clients}` },
+  { value: "令和8年", label: "大阪府知事表彰", sr: org.award },
 ];
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;

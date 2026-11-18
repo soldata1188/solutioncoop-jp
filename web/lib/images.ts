@@ -16,7 +16,7 @@ export const photos = {
   siteSteel: { src: siteSteel, alt: "鋼材が積まれ、工具や脚立が並ぶ金属加工の作業場", faces: false },
   siteExcavation: { src: siteExcavation, alt: "土留めの木製矢板と配管が見える、掘削中の土木工事の現場", faces: false },
   siteInterior: { src: siteInterior, alt: "照明や資材、作業台が置かれた、内装工事中の広い建物内部", faces: false },
-  office: { src: officeExterior, alt: "「ソリューション協同組合」の縦型看板が掲げられた建物の入口", faces: false },
+  office: { src: officeExterior, alt: "「ソリューション協同組合」堺市の事務所、研修センター", faces: false },
   trainingPlate: { src: trainingPlate, alt: "観葉植物の横の壁に掲げられた「ソリューション協同組合 研修センター」の表札", faces: false },
   sakai: { src: sakaiLighthouse, alt: "青空の下、堺の海辺に立つ白い木造の灯台", faces: false },
   fireDrill: { src: fireDrill, alt: "屋内の訓練場で、受講者が消火器を手に火元に向かって並ぶ消火訓練の様子", faces: true },

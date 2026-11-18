@@ -5,7 +5,7 @@ import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { LicenseFrames } from "@/components/LicenseFrames";
 import { disclosureDocuments } from "@/lib/disclosure";
-import { org, fullAddress, licenses, repoFacts, TEL_HREF } from "@/lib/site";
+import { org, fullAddress, repoFacts, TEL_HREF } from "@/lib/site";
 
 export const metadata = pageMeta(
   "/about",
@@ -72,37 +72,6 @@ export default function Page() {
 
       <Section id="license" title="許可・登録" tone="pale">
           <LicenseFrames />
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="w-full border-b-4 border-primary bg-white p-6 text-center shadow-card sm:text-left">
-              <h3 className="text-lg font-bold text-ink">{licenses.kanri.label}</h3>
-              <dl className="mt-3 space-y-1 text-left">
-                <div><dt className="inline font-bold">許可番号：</dt><dd className="inline">{licenses.kanri.number}</dd></div>
-                <div><dt className="inline font-bold">許可の別：</dt><dd className="inline">{licenses.kanri.kind}</dd></div>
-                <div><dt className="inline font-bold">法人の種類：</dt><dd className="inline">{licenses.kanri.corpType}</dd></div>
-                <div><dt className="inline font-bold">許可年月日：</dt><dd className="inline">{licenses.kanri.grantedOn}</dd></div>
-                <div><dt className="inline font-bold">有効期間：</dt><dd className="inline">{licenses.kanri.validity}</dd></div>
-                <div>
-                  <dt className="font-bold">許可の条件：</dt>
-                  <dd>
-                    <ul className="list-disc pl-6">
-                      {licenses.kanri.conditions.map((c) => <li key={c}>{c}</li>)}
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-            <div className="w-full border-b-4 border-primary bg-white p-6 text-center shadow-card sm:text-left">
-              <h3 className="text-lg font-bold text-ink">{licenses.toroku.label}</h3>
-              <dl className="mt-3 space-y-1 text-left">
-                <div><dt className="inline font-bold">登録番号：</dt><dd className="inline">{licenses.toroku.number}</dd></div>
-                <div><dt className="inline font-bold">登録年月日：</dt><dd className="inline">{licenses.toroku.registeredOn}</dd></div>
-                <div><dt className="inline font-bold">有効期間：</dt><dd className="inline">{licenses.toroku.validity}</dd></div>
-              </dl>
-            </div>
-          </div>
-          <p className="mt-4 text-sm text-muted">
-            ※当組合は、技能実習法に基づく監理団体として許可を受けております。2027年4月1日施行の育成就労制度に向けて準備中です。
-          </p>
       </Section>
       <Section
         id="disclosure"

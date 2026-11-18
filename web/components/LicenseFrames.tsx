@@ -79,7 +79,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
 
 export function LicenseFrames() {
   return (
-    <ul className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+    <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {licenseImages.map((item) => (
         <li key={item.slug}>
           <Frame item={item} />

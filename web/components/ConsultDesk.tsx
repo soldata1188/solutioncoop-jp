@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { CONSULT_CLAIMS, CONSULT_LANGUAGES } from "@/lib/consult";
-import { LINE_URL, MESSENGER_URL, TEL_HREF, org } from "@/lib/site";
+import { LINE_URL, TEL_HREF, org } from "@/lib/site";
 
 const btn =
   "inline-flex min-h-16 w-full flex-col items-center justify-center rounded-lg px-4 py-3 text-center font-bold leading-tight no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark";
@@ -45,8 +45,8 @@ function QrFrame({ children }: { children: ReactNode }) {
   return <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-lg border border-line bg-white p-2">{children}</div>;
 }
 
-export function ConsultDesk({ lineQr, messengerQr }: { lineQr: string; messengerQr: string }) {
-  const messengerReady = MESSENGER_URL.length > 0 && messengerQr.length > 0;
+export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: string; messengerQr: string; messengerHref: string }) {
+  const messengerReady = messengerHref.length > 0 && messengerQr.length > 0;
   return (
     <div className="flex flex-col items-center text-center">
       <p className="inline-flex max-w-full flex-col items-center rounded-lg bg-primary px-6 py-3 text-white">
@@ -105,7 +105,7 @@ export function ConsultDesk({ lineQr, messengerQr }: { lineQr: string; messenger
             </div>
             <div className="mt-auto pt-5">
               {messengerReady ? (
-                <a href={MESSENGER_URL} target="_blank" rel="noopener noreferrer" className={`${btn} bg-[#1877F2] text-white hover:bg-[#1666d2]`}>
+                <a href={messengerHref} target="_blank" rel="noopener noreferrer" className={`${btn} bg-[#1877F2] text-white hover:bg-[#1666d2]`}>
                   <span>Messengerを開く</span>
                   <span className="text-[11px] tracking-wide">OPEN MESSENGER</span>
                   <span className="sr-only">（新しいタブで開きます）</span>

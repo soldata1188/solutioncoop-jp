@@ -80,10 +80,15 @@ export const LINE_URL = "https://line.me/R/ti/p/@122kbyao";
 export const LINE_LABEL = "LINEで無料相談";
 export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
-/** 実習生ページの Facebook。空のあいだは Messenger のQRもボタンも出しません。URLは推測しません。 */
-export const FACEBOOK_URL = "";
-/** Messenger を開くリンク。空のあいだはボタンを無効にし、QRの場所は「準備中」にします。 */
-export const MESSENGER_URL = "";
+/** 公式 Facebook ページ。 */
+export const FACEBOOK_URL = "https://www.facebook.com/solution.sakai";
+/** Messenger のスレッド。空のときは FACEBOOK_URL をボタンとQRに使います。 */
+export const MESSENGER_URL = "https://m.me/solution.sakai";
+
+/** 相談カードのボタンとQRが開くURL。Messenger が空なら Facebook ページです。 */
+export function consultMessengerHref(messenger = MESSENGER_URL, facebook = FACEBOOK_URL) {
+  return messenger.trim() || facebook.trim();
+}
 
 /**
  * 公式X（旧Twitter）アカウント @KumiaiSol。
@@ -125,7 +130,7 @@ export const organizationJsonLd = {
   "@id": `${SITE_URL}/#organization`,
   name: org.name,
   url: SITE_URL,
-  sameAs: [X_URL],
+  sameAs: [X_URL, FACEBOOK_URL],
   logo: `${SITE_URL}/brand/SOL_Solution_Coop_official_2026-11-07.jpg`,
   image: `${SITE_URL}/brand/SOL_Solution_Coop_official_2026-11-07.jpg`,
   openingHoursSpecification: [

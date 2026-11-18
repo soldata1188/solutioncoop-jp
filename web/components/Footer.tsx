@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
-import { nav, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, X_HANDLE, X_URL } from "@/lib/site";
+import { nav, org, fullAddress, licenses, sdgs, TEL_HREF, CONTACT_HREF, CONTACT_LABEL, FACEBOOK_URL, X_HANDLE, X_URL } from "@/lib/site";
 import { LineButton } from "./LineButton";
 import { Chunks, Phrases } from "./KeepWords";
 
@@ -35,6 +35,18 @@ export function Footer() {
             className="inline-flex min-h-12 items-center rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint"
           >
             公式X（@{X_HANDLE}）
+            <span className="sr-only">（新しいタブで開きます）</span>
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center gap-2 rounded border-2 border-primary-dark bg-white px-6 text-base font-bold text-primary-dark no-underline hover:bg-cta-tint"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="currentColor">
+              <path d="M14.8 8.2V6.6c0-.6.4-.9 1-.9H17V3.4h-2.1C12.3 3.4 11 4.7 11 6.7v1.5H9.2v2.6H11V20h3.1v-9.2h2.2l.3-2.6h-2.5z" />
+            </svg>
+            公式Facebook
             <span className="sr-only">（新しいタブで開きます）</span>
           </a>
         </div>

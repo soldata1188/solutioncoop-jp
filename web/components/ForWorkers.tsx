@@ -104,7 +104,8 @@ function Ja() {
           sub="インドネシアから 来た みなさんへ"
           body={
             <>
-              <Rb c="組合" r="くみあい" />は、あなたの <Rb c="仕事" r="しごと" />と 日本の <Rb c="生活" r="せいかつ" />を 手伝います。ハラールの <Rb c="食事" r="しょくじ" />や お<Rb c="祈" r="いの" />りが <Rb c="必要" r="ひつよう" />なら、<Rb c="組合" r="くみあい" />に 話して ください。<Rb c="会社" r="かいしゃ" />に 伝えます。
+              <Rb c="組合" r="くみあい" />は、あなたの <Rb c="仕事" r="しごと" />と 日本の <Rb c="生活" r="せいかつ" />を 手伝います。
+              <Rb c="困" r="こま" />った ときは、<Rb c="組合" r="くみあい" />に <Rb c="電話" r="でんわ" />して ください。
             </>
           }
         />
@@ -126,7 +127,6 @@ function Ja() {
         <p>
           ソリューション<Rb c="協同組合" r="きょうどうくみあい" />は、<Rb c="大阪府" r="おおさかふ" />
           <Rb c="堺市" r="さかいし" />に ある <Rb c="組合" r="くみあい" />です。<Rb c="実習生" r="じっしゅうせい" />の <Rb c="仕事" r="しごと" />と <Rb c="生活" r="せいかつ" />を 手伝います。
-          <Rb c="定期的" r="ていきてき" />に <Rb c="会社" r="かいしゃ" />へ <Rb c="行" r="い" />って、話を <Rb c="聞" r="き" />きます。
         </p>
         <p>
           <Rb c="困" r="こま" />った ことが あったら、<Rb c="組合" r="くみあい" />に <Rb c="連絡" r="れんらく" />して ください。
@@ -162,12 +162,12 @@ function Vi() {
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
         <Card flag={0} name="Việt Nam" alt="Quốc kỳ Việt Nam" sub="Gửi các bạn từ Việt Nam" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
-        <Card flag={1} name="Indonesia" alt="Quốc kỳ Indonesia" sub="Gửi các bạn từ Indonesia" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Nếu bạn cần đồ ăn halal hoặc thời gian cầu nguyện, hãy nói với hợp tác xã. Hợp tác xã sẽ nói với công ty." />
+        <Card flag={1} name="Indonesia" alt="Quốc kỳ Indonesia" sub="Gửi các bạn từ Indonesia" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
         <Card flag={2} name="Philippines" alt="Quốc kỳ Philippines" sub="Gửi các bạn từ Philippines" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
       </ul>
       <Chips label="Nội dung trang này" items={["cuộc sống", "công việc", "tư vấn"]} />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
-        <p>Hợp tác xã Solution ở thành phố Sakai, tỉnh Osaka. Hợp tác xã giúp thực tập sinh về việc làm và cuộc sống. Hợp tác xã đến công ty theo định kỳ và lắng nghe.</p>
+        <p>Hợp tác xã Solution ở thành phố Sakai, tỉnh Osaka. Hợp tác xã giúp thực tập sinh về việc làm và cuộc sống.</p>
         <p>
           Khi gặp khó khăn, hãy liên hệ hợp tác xã. Điện thoại: <a className="font-bold text-primary-dark underline underline-offset-4" href={TEL_HREF}>{org.tel}</a>. Cũng có <Link className="font-bold text-primary-dark underline underline-offset-4" href="/contact">trang liên hệ</Link>.
         </p>
@@ -196,12 +196,12 @@ function Id() {
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
         <Card flag={0} name="Vietnam" alt="Bendera Vietnam" sub="Untuk Anda dari Vietnam" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
-        <Card flag={1} name="Indonesia" alt="Bendera Indonesia" sub="Untuk Anda dari Indonesia" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika Anda perlu makanan halal atau waktu salat, beri tahu koperasi. Koperasi akan menyampaikan ke perusahaan." />
+        <Card flag={1} name="Indonesia" alt="Bendera Indonesia" sub="Untuk Anda dari Indonesia" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
         <Card flag={2} name="Filipina" alt="Bendera Filipina" sub="Untuk Anda dari Filipina" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
       </ul>
       <Chips label="Isi halaman ini" items={["kehidupan", "pekerjaan", "konsultasi"]} />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
-        <p>Koperasi Solution ada di Kota Sakai, Prefektur Osaka. Koperasi membantu pekerjaan dan kehidupan peserta pemagangan. Koperasi mengunjungi perusahaan secara berkala dan mendengarkan.</p>
+        <p>Koperasi Solution ada di Kota Sakai, Prefektur Osaka. Koperasi membantu pekerjaan dan kehidupan peserta pemagangan.</p>
         <p>
           Jika ada masalah, hubungi koperasi. Telepon: <a className="font-bold text-primary-dark underline underline-offset-4" href={TEL_HREF}>{org.tel}</a>. Ada juga <Link className="font-bold text-primary-dark underline underline-offset-4" href="/contact">halaman kontak</Link>.
         </p>
@@ -230,12 +230,12 @@ function En() {
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
         <Card flag={0} name="Vietnam" alt="Flag of Vietnam" sub="To everyone from Vietnam" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
-        <Card flag={1} name="Indonesia" alt="Flag of Indonesia" sub="To everyone from Indonesia" body="The cooperative helps with your work and your life in Japan. If you need halal food or time to pray, please tell the cooperative. The cooperative will tell your company." />
+        <Card flag={1} name="Indonesia" alt="Flag of Indonesia" sub="To everyone from Indonesia" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
         <Card flag={2} name="Philippines" alt="Flag of the Philippines" sub="To everyone from the Philippines" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
       </ul>
       <Chips label="Topics on this page" items={["daily life", "work", "consultation"]} />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
-        <p>Solution Cooperative is in Sakai City, Osaka. The cooperative helps trainees with work and daily life. The cooperative visits the company regularly and listens.</p>
+        <p>Solution Cooperative is in Sakai City, Osaka. The cooperative helps trainees with work and daily life.</p>
         <p>
           If you have a problem, please contact the cooperative. Phone: <a className="font-bold text-primary-dark underline underline-offset-4" href={TEL_HREF}>{org.tel}</a>. There is also a <Link className="font-bold text-primary-dark underline underline-offset-4" href="/contact">contact page</Link>.
         </p>

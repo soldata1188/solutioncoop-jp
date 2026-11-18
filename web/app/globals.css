@@ -53,6 +53,47 @@ html {
   scroll-margin-top: 4.5rem;
 }
 
+/* 実習生ページの言語切替。JavaScript なしでも、選んだパネルだけを出します。 */
+.worker-lang-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.worker-langs .worker-lang-panel {
+  display: none;
+}
+.worker-langs #wl-ja:checked ~ #wl-panel-ja,
+.worker-langs #wl-vi:checked ~ #wl-panel-vi,
+.worker-langs #wl-id:checked ~ #wl-panel-id,
+.worker-langs #wl-en:checked ~ #wl-panel-en {
+  display: block;
+}
+.worker-langs #wl-ja:checked ~ .worker-lang-tabs label[for="wl-ja"],
+.worker-langs #wl-vi:checked ~ .worker-lang-tabs label[for="wl-vi"],
+.worker-langs #wl-id:checked ~ .worker-lang-tabs label[for="wl-id"],
+.worker-langs #wl-en:checked ~ .worker-lang-tabs label[for="wl-en"] {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.worker-langs #wl-ja:focus-visible ~ .worker-lang-tabs label[for="wl-ja"],
+.worker-langs #wl-vi:focus-visible ~ .worker-lang-tabs label[for="wl-vi"],
+.worker-langs #wl-id:focus-visible ~ .worker-lang-tabs label[for="wl-id"],
+.worker-langs #wl-en:focus-visible ~ .worker-lang-tabs label[for="wl-en"] {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+ruby rt {
+  font-size: 0.55em;
+  font-weight: 500;
+}
+
 /* 許可証枠。幅に対して高さ 141.4%（A4 縦）。aspect-ratio 対応時はそちらを使う */
 .license-frame {
   position: relative;

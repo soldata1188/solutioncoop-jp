@@ -210,3 +210,8 @@ summary::-webkit-details-marker {
   }
 }
 
+/* 堺市の使用ガイド：応援文は黒。割り付けはロゴと同じ幅の flex で行います。 */
+.sdgs-support {
+  color: #000;
+}
+

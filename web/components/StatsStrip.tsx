@@ -1,18 +1,40 @@
 import Image from "next/image";
-import sdgsSakai from "@/public/images/sdgs-mirai-toshi-sakai.jpg";
 import { achievements, sdgs } from "@/lib/site";
 
 /**
  * トップの実績（ヒーロー直下）。
- * 3つの実績は同じ大きさのカード。SDGsのロゴと応援の一文は、その下の白い帯に分けます。
- * ロゴは原寸の JPG を next/image で出し、表示幅は 240px 以下にします。
- * 背景は白、応援の文言は黒です。
+ * SDGsの表示は堺市「ロゴマーク使用ガイド【庁外版】」の横型ロゴと、他の主体名との組み合わせに従います。
+ * ロゴの原図は堺市のページから入手した横型PNG（余白なし）です。
+ * https://www.city.sakai.lg.jp/shisei/toshi/sdgs/SDGsmiraitoshi_logo.files/date02.zip
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {
   return (
     <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
       <h2 id="stats-title" className="sr-only">当組合の実績</h2>
       <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
+        <div className="mb-8 flex justify-center bg-white">
+          <div className="w-[min(100%,320px)] sm:w-[440px]">
+            <Image
+              src="/images/sdgs-logo-yoko.png"
+              alt="SDGs未来都市・堺"
+              width={6579}
+              height={1851}
+              quality={90}
+              sizes="(min-width: 640px) 440px, 320px"
+              className="block h-auto w-full"
+            />
+            <p className="sr-only">{sdgs.support}</p>
+            <div aria-hidden="true" className="sdgs-support mt-2 space-y-0.5 text-[13px] leading-none sm:text-base">
+              {[sdgs.supportParts[0], sdgs.supportParts[1]].map((line) => (
+                <span key={line} className="flex w-full justify-between">
+                  {[...line].map((ch, i) => (
+                    <span key={`${line}-${i}`}>{ch}</span>
+                  ))}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
         <ul className="grid grid-cols-3 items-stretch gap-2 sm:gap-4">
           {achievements.map((item) => (
             <li key={item.label} className="flex h-full flex-col items-center justify-center border-t-[3px] border-primary bg-white px-1.5 py-4 text-center shadow-card sm:px-4 sm:py-6">
@@ -22,18 +44,6 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
             </li>
           ))}
         </ul>
-        <div className="mt-4 flex flex-col items-center justify-center gap-3 rounded border border-line bg-white px-4 py-4 text-center sm:flex-row sm:gap-6">
-          <Image
-            src={sdgsSakai}
-            alt="SDGs未来都市・堺 ロゴ"
-            width={758}
-            height={236}
-            quality={90}
-            sizes="240px"
-            className="h-auto w-[240px] max-w-full"
-          />
-          <p className="max-w-md text-sm font-bold leading-relaxed text-black">{sdgs.support}</p>
-        </div>
         {children}
       </div>
     </section>

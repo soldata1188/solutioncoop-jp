@@ -9,8 +9,8 @@ const field = "mt-2 block w-full min-h-12 rounded border-2 border-[#949494] bg-w
 const label = "block font-bold text-ink";
 const req = <span className="ml-2 rounded bg-primary-dark px-1.5 py-0.5 text-sm font-bold text-white">必須</span>;
 
-export function ContactForm() {
-  const [status, setStatus] = useState<Status>({ kind: "idle" });
+export function ContactForm({ notice }: { notice?: string }) {
+  const [status, setStatus] = useState<Status>(notice ? { kind: "info", message: notice } : { kind: "idle" });
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

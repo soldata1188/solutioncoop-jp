@@ -6,6 +6,7 @@ import { PhoneIcon } from "@/components/Header";
 import { LineButton } from "@/components/LineButton";
 import { ContactForm } from "./ContactForm";
 import { Phrases } from "@/components/KeepWords";
+import { CONTACT_PREPARING_MESSAGE, contactMailConfig } from "@/lib/contact";
 
 export const metadata = pageMeta(
   "/contact",
@@ -48,7 +49,7 @@ export default function Page() {
         <div className="rounded bg-white p-5 shadow-card sm:p-8">
           <h2 id="form-title" tabIndex={-1} className="scroll-mt-24 text-xl font-bold text-ink focus:outline-none">お問い合わせフォーム</h2>
           <div className="mt-4">
-            <ContactForm />
+            <ContactForm notice={contactMailConfig().preparing ? CONTACT_PREPARING_MESSAGE : undefined} />
           </div>
         </div>
       </Section>

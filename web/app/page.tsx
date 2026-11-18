@@ -3,13 +3,8 @@ import Link from "next/link";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
 import { ArrowIcon, Section, SectionHeading, TabCard } from "@/components/ui";
-import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
-import { photos } from "@/lib/images";
-import caseKensetsu from "@/public/images/cases/case-kensetsu.webp";
-import caseKikaiKinzoku from "@/public/images/cases/case-kikai-kinzoku.webp";
-import caseNaisouTosou from "@/public/images/cases/case-naisou-tosou.webp";
 import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
@@ -110,21 +105,6 @@ const credentials = [
   },
 ];
 
-/** 受入れ事例の写真（既存サイト index16.html の事例欄に使われていた写真と業種・地域の記載）。企業名・人数・ご感想は未確認のため掲載しません */
-const cases: {
-  photo: { src: typeof photos.siteSteel.src; alt: string };
-  tag: string;
-  /** 仮画像のときだけ出す。実写真に差し替えたら外す */
-  imageNote?: string;
-}[] = [
-  { photo: photos.siteSteel, tag: "大阪府・金属加工" },
-  { photo: photos.siteExcavation, tag: "大阪府・造園土木" },
-  { photo: photos.siteInterior, tag: "京都府・土木工事" },
-  { photo: { src: caseKensetsu, alt: "建設業のイメージ画像" }, tag: "建設", imageNote: "イメージ" },
-  { photo: { src: caseKikaiKinzoku, alt: "機械・金属業のイメージ画像" }, tag: "機械・金属", imageNote: "イメージ" },
-  { photo: { src: caseNaisouTosou, alt: "内装・塗装業のイメージ画像" }, tag: "内装・塗装", imageNote: "イメージ" },
-];
-
 export default function Home() {
   return (
     <>
@@ -211,27 +191,6 @@ export default function Home() {
             ))}
           </ul>
         </div>
-      </Section>
-
-      {/* 事例（未確定のため要確認枠のみ） */}
-      <Section id="cases" title="受入れ事例" lead="外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。">
-        <ul className="grid gap-4 sm:grid-cols-3">
-          {cases.map((c) => (
-            <li key={c.tag} className="flex flex-col overflow-hidden rounded bg-white shadow-card ring-1 ring-line">
-              <div className="relative">
-                <Photo photo={c.photo} sizes="(min-width: 640px) 260px, 100vw" imgClassName="aspect-[16/10]" />
-                {c.imageNote ? (
-                  <span className="pointer-events-none absolute bottom-2 left-2 rounded bg-white/95 px-1.5 py-0.5 text-xs font-bold text-ink ring-1 ring-line">
-                    {c.imageNote}
-                  </span>
-                ) : null}
-              </div>
-              <div className="p-4 text-center sm:text-left">
-                <p className="text-sm font-bold text-ink">{c.tag}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
       </Section>
 
       {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}

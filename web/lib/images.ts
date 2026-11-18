@@ -3,9 +3,6 @@
  * 静的 import により width/height が自動で付与され、レイアウトのずれを防ぎます。
  * faces: 人物の顔が写っている写真（掲載の同意確認が必要。restyle3-notes.md の一覧を参照）
  */
-import siteSteel from "@/public/images/site-steel-workshop.webp";
-import siteExcavation from "@/public/images/site-excavation.webp";
-import siteInterior from "@/public/images/site-building-interior.webp";
 import officeExterior from "@/public/images/office-exterior.webp";
 import trainingPlate from "@/public/images/training-center-plate.webp";
 import sakaiLighthouse from "@/public/images/sakai-lighthouse.webp";
@@ -13,9 +10,6 @@ import fireDrill from "@/public/images/training-fire-drill.webp";
 import practice from "@/public/images/training-practice.webp";
 
 export const photos = {
-  siteSteel: { src: siteSteel, alt: "鋼材が積まれ、工具や脚立が並ぶ金属加工の作業場", faces: false },
-  siteExcavation: { src: siteExcavation, alt: "土留めの木製矢板と配管が見える、掘削中の土木工事の現場", faces: false },
-  siteInterior: { src: siteInterior, alt: "照明や資材、作業台が置かれた、内装工事中の広い建物内部", faces: false },
   office: { src: officeExterior, alt: "「ソリューション協同組合」堺市の事務所、研修センター", faces: false },
   trainingPlate: { src: trainingPlate, alt: "観葉植物の横の壁に掲げられた「ソリューション協同組合 研修センター」の表札", faces: false },
   sakai: { src: sakaiLighthouse, alt: "青空の下、堺の海辺に立つ白い木造の灯台", faces: false },

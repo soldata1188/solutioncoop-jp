@@ -77,7 +77,7 @@ export default function Page() {
         id="disclosure"
         title="情報公開"
         width="narrow"
-        lead="関係法令を順守し、透明性の高い運営を行うため、当組合の監理費表および運営規程などの重要書類を公開しております。各書類は準備が整い次第、こちらに掲載いたします。"
+        lead="関係法令を順守し、透明性の高い運営を行うため、当組合の監理費表および運営規程などの重要書類を公開しております。"
       >
         <ul className="divide-y divide-line border-y border-line">
           {disclosureDocuments.map((doc) => {

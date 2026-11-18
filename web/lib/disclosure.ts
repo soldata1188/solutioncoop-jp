@@ -14,7 +14,7 @@ export type DisclosureDocument = {
 export const disclosureDocuments: DisclosureDocument[] = [
   {
     id: "unei-kitei",
-    name: "監理支援機関の業務の運営に関する規程",
+    name: "監理支援機関の業務の運営に関する規程（監理費表を含む）",
     status: "published",
     fileUrl: "/documents/kanri-shien-kikan-unei-kitei.pdf",
     bytes: 414771,

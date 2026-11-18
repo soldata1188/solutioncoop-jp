@@ -49,7 +49,7 @@ function PostCard({ post }: { post: XPostCard }) {
         <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
           {formatJstDotDate(post.createdAt) || post.dateLabel}
         </time>
-        <p className="mt-1 line-clamp-6 text-[15px] leading-relaxed text-ink">{post.text}</p>
+        <p className="mt-1 line-clamp-6 text-[13px] leading-relaxed text-ink">{post.text}</p>
       </div>
       <div className="mt-auto flex justify-center border-t border-line py-2">
         <a
@@ -74,7 +74,7 @@ export async function OfficialXPosts() {
       {result.posts.length > 0 ? (
         <>
           {result.source === "fixture" ? (
-            <p className="mb-6 text-center text-[15px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
+            <p className="mb-6 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
           <ul className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
             {result.posts.map((post) => (

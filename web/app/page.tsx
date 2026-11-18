@@ -8,6 +8,7 @@ import { Chunks } from "@/components/KeepWords";
 import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
+import { Countries } from "@/components/Countries";
 import { pageMeta } from "@/lib/meta";
 
 /**
@@ -191,6 +192,22 @@ export default function Home() {
             ))}
           </ul>
         </div>
+      </Section>
+
+      <Section
+        id="countries"
+        eyebrow="送り出し国"
+        width="wide"
+        title={
+          <>
+            3か国から候補者を、
+            <br />
+            <span className="underline decoration-primary-dark decoration-[3px] underline-offset-[6px]">ご紹介します</span>
+          </>
+        }
+        lead="当組合は、この3か国の送り出し機関と連携し、候補者をご紹介します。面接、入国の前後の手続き、来日後の生活相談まで、受入れ企業様を支援いたします。"
+      >
+        <Countries />
       </Section>
 
       {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}

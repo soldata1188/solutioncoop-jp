@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { TEL_HREF, org } from "@/lib/site";
+import { ChatIcon } from "@/components/LineButton";
+import { FACEBOOK_URL, LINE_URL, TEL_HREF, org } from "@/lib/site";
 
 /**
  * 国旗は Wikimedia Commons のパブリックドメイン SVG です。
@@ -30,31 +31,93 @@ function Rb({ c, r }: { c: string; r: string }) {
 
 function Flag({ index, alt }: { index: 0 | 1 | 2; alt: string }) {
   const flag = flags[index];
-  return <Image src={flag.src} alt={alt} width={flag.width} height={flag.height} unoptimized className="h-12 w-auto ring-1 ring-line" />;
+      return <Image src={flag.src} alt={alt} width={flag.width} height={flag.height} unoptimized className="relative h-16 w-auto ring-1 ring-line" />;
 }
 
-function Card({ flag, name, alt, sub, body }: { flag: 0 | 1 | 2; name: string; alt: string; sub: ReactNode; body: ReactNode }) {
+function Card({
+  flag,
+  name,
+  alt,
+  sub,
+  body,
+  chipsLabel,
+  chips,
+}: {
+  flag: 0 | 1 | 2;
+  name: string;
+  alt: string;
+  sub: ReactNode;
+  body: ReactNode;
+  chipsLabel: string;
+  chips: readonly string[];
+}) {
   return (
-    <li className="card-lift flex flex-col items-center rounded border border-line bg-white px-5 py-6 text-center shadow-card">
+    <li className="card-lift relative flex h-full flex-col items-center overflow-hidden rounded-lg border border-line bg-pale px-5 pb-6 pt-8 text-center">
+      <span aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/10" />
       <Flag index={flag} alt={alt} />
-      <h3 className="mt-4 text-xl font-bold text-ink">{name}</h3>
-      <p className="mt-2 text-sm font-bold leading-relaxed text-primary-dark">{sub}</p>
-      <p className="mt-3 text-sm leading-relaxed text-body">{body}</p>
+      <h3 className="relative mt-5 text-2xl font-bold text-primary">{name}</h3>
+      <p className="relative mt-2 text-sm font-bold leading-relaxed text-primary-dark">{sub}</p>
+      <p className="relative mt-3 text-sm leading-relaxed text-body">{body}</p>
+      <div className="relative mt-auto w-full pt-6">
+        <div className="flex items-center gap-3">
+          <span aria-hidden="true" className="h-px flex-1 bg-line" />
+          <span className="shrink-0 text-xs font-bold text-muted">{chipsLabel}</span>
+          <span aria-hidden="true" className="h-px flex-1 bg-line" />
+        </div>
+        <ul className="mt-3 flex flex-wrap justify-center gap-2">
+          {chips.map((item) => (
+            <li key={item} className="rounded-full border border-primary/30 bg-white px-3 py-1 text-sm font-bold text-primary-dark">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </li>
   );
 }
 
-function Chips({ label, items }: { label: string; items: string[] }) {
+function PhoneIcon() {
   return (
-    <div className="mt-8 border-t border-line pt-6 text-center">
-      <p className="text-sm font-bold text-muted">{label}</p>
-      <ul className="mt-3 flex flex-wrap justify-center gap-2">
-        {items.map((item) => (
-          <li key={item} className="rounded border border-line bg-white px-3 py-1.5 text-sm font-bold text-primary-dark">
-            {item}
-          </li>
-        ))}
-      </ul>
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 3.5h3.2l1.4 3.6-2 1.2a12 12 0 0 0 5.1 5.1l1.2-2 3.6 1.4V16a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 5 6.7 2 2 0 0 1 7 3.5z" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6 shrink-0" fill="currentColor">
+      <path d="M14.5 8.5V6.8c0-.7.5-1.1 1.2-1.1H17V3h-2.2C12.2 3 11 4.4 11 6.6v1.9H9v2.7h2V21h3.1v-9.8h2.3l.4-2.7h-2.7z" />
+    </svg>
+  );
+}
+
+function ContactBlock({ title, phoneWord }: { title: ReactNode; phoneWord: string }) {
+  const button = "lift inline-flex min-h-16 w-full items-center justify-center gap-3 rounded-lg px-4 text-lg font-bold no-underline";
+  return (
+    <div className="mx-auto mt-12 max-w-[860px] rounded-xl border border-line bg-white px-4 py-8 text-center md:px-8">
+      <h2 className="text-2xl font-bold text-primary md:text-[1.75rem]">{title}</h2>
+      <div className={`mt-6 grid grid-cols-1 gap-3 ${FACEBOOK_URL ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+        <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`${button} bg-linegreen text-ink hover:bg-linegreen-hover`}>
+          <ChatIcon className="h-6 w-6" />
+          LINE
+          <span className="sr-only">（新しいタブで開きます）</span>
+        </a>
+        {FACEBOOK_URL ? (
+          <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className={`${button} bg-[#1877F2] text-white hover:bg-[#1666d2]`}>
+            <FacebookIcon />
+            Facebook
+            <span className="sr-only">（新しいタブで開きます）</span>
+          </a>
+        ) : null}
+        <a href={TEL_HREF} className={`${button} bg-primary text-white hover:bg-primary-dark`}>
+          <PhoneIcon />
+          <span>
+            <span className="block text-sm leading-none">{phoneWord}</span>
+            {org.tel}
+          </span>
+        </a>
+      </div>
     </div>
   );
 }
@@ -71,17 +134,17 @@ function Ext({ href, children }: { href: string; children: React.ReactNode }) {
 function Ja() {
   return (
     <div lang="ja">
-      <p className="text-center text-sm font-bold text-primary-dark">
+      <p className="text-center text-sm font-bold tracking-wide text-primary">
         <Rb c="実習生" r="じっしゅうせい" />の みなさんへ
       </p>
-      <h2 className="mt-2 text-center text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
+      <h2 className="mt-3 text-center text-[1.7rem] font-bold leading-snug text-ink md:text-4xl">
         ソリューション<Rb c="協同組合" r="きょうどうくみあい" />は、
         <br />
-        <span className="underline decoration-primary-dark decoration-[3px] underline-offset-[6px]">
+        <span className="mt-1 inline-block text-primary underline decoration-primary decoration-4 underline-offset-8">
           あなたを <Rb c="手伝" r="てつだ" />います
         </span>
       </h2>
-      <p className="mx-auto mt-5 max-w-[580px] text-center text-[15px] leading-relaxed text-body">
+      <p className="mx-auto mt-6 max-w-[40rem] text-center text-[15px] leading-relaxed text-body md:text-base">
         この ページは、ベトナム、インドネシア、フィリピンから <Rb c="日本" r="にほん" />に <Rb c="来" r="き" />た 人の ページです。
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
@@ -90,6 +153,8 @@ function Ja() {
           name="ベトナム"
           alt="ベトナムの国旗"
           sub="ベトナムから 来た みなさんへ"
+          chipsLabel="この ページの 話"
+          chips={["せいかつ", "しごと", "そうだん"]}
           body={
             <>
               <Rb c="組合" r="くみあい" />は、あなたの <Rb c="仕事" r="しごと" />と 日本の <Rb c="生活" r="せいかつ" />を 手伝います。
@@ -102,6 +167,8 @@ function Ja() {
           name="インドネシア"
           alt="インドネシアの国旗"
           sub="インドネシアから 来た みなさんへ"
+          chipsLabel="この ページの 話"
+          chips={["せいかつ", "しごと", "そうだん"]}
           body={
             <>
               <Rb c="組合" r="くみあい" />は、あなたの <Rb c="仕事" r="しごと" />と 日本の <Rb c="生活" r="せいかつ" />を 手伝います。
@@ -114,6 +181,8 @@ function Ja() {
           name="フィリピン"
           alt="フィリピンの国旗"
           sub="フィリピンから 来た みなさんへ"
+          chipsLabel="この ページの 話"
+          chips={["せいかつ", "しごと", "そうだん"]}
           body={
             <>
               <Rb c="組合" r="くみあい" />は、あなたの <Rb c="仕事" r="しごと" />と 日本の <Rb c="生活" r="せいかつ" />を 手伝います。
@@ -122,7 +191,7 @@ function Ja() {
           }
         />
       </ul>
-      <Chips label="この ページの 話" items={["せいかつ", "しごと", "そうだん"]} />
+      <ContactBlock title="こまった ときは こちらへ" phoneWord="電話" />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
         <p>
           ソリューション<Rb c="協同組合" r="きょうどうくみあい" />は、<Rb c="大阪府" r="おおさかふ" />
@@ -151,21 +220,21 @@ function Ja() {
 function Vi() {
   return (
     <div lang="vi">
-      <p className="text-center text-sm font-bold text-primary-dark">Gửi các thực tập sinh</p>
-      <h2 className="mt-2 text-center text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
+      <p className="text-center text-sm font-bold tracking-wide text-primary">Gửi các thực tập sinh</p>
+      <h2 className="mt-3 text-center text-[1.7rem] font-bold leading-snug text-ink md:text-4xl">
         Hợp tác xã Solution
         <br />
-        <span className="underline decoration-primary-dark decoration-[3px] underline-offset-[6px]">giúp bạn</span>
+        <span className="mt-1 inline-block text-primary underline decoration-primary decoration-4 underline-offset-8">giúp bạn</span>
       </h2>
-      <p className="mx-auto mt-5 max-w-[580px] text-center text-[15px] leading-relaxed text-body">
+      <p className="mx-auto mt-6 max-w-[40rem] text-center text-[15px] leading-relaxed text-body md:text-base">
         Trang này dành cho người đến Nhật Bản từ Việt Nam, Indonesia và Philippines.
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
-        <Card flag={0} name="Việt Nam" alt="Quốc kỳ Việt Nam" sub="Gửi các bạn từ Việt Nam" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
-        <Card flag={1} name="Indonesia" alt="Quốc kỳ Indonesia" sub="Gửi các bạn từ Indonesia" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
-        <Card flag={2} name="Philippines" alt="Quốc kỳ Philippines" sub="Gửi các bạn từ Philippines" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." />
+        <Card flag={0} name="Việt Nam" alt="Quốc kỳ Việt Nam" sub="Gửi các bạn từ Việt Nam" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." chipsLabel="Nội dung trang này" chips={["cuộc sống", "công việc", "tư vấn"]} />
+        <Card flag={1} name="Indonesia" alt="Quốc kỳ Indonesia" sub="Gửi các bạn từ Indonesia" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." chipsLabel="Nội dung trang này" chips={["cuộc sống", "công việc", "tư vấn"]} />
+        <Card flag={2} name="Philippines" alt="Quốc kỳ Philippines" sub="Gửi các bạn từ Philippines" body="Hợp tác xã giúp việc làm và cuộc sống của bạn tại Nhật Bản. Khi gặp khó khăn, hãy gọi cho hợp tác xã." chipsLabel="Nội dung trang này" chips={["cuộc sống", "công việc", "tư vấn"]} />
       </ul>
-      <Chips label="Nội dung trang này" items={["cuộc sống", "công việc", "tư vấn"]} />
+      <ContactBlock title="Khi gặp khó khăn, hãy liên hệ tại đây" phoneWord="Điện thoại" />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
         <p>Hợp tác xã Solution ở thành phố Sakai, tỉnh Osaka. Hợp tác xã giúp thực tập sinh về việc làm và cuộc sống.</p>
         <p>
@@ -185,21 +254,21 @@ function Vi() {
 function Id() {
   return (
     <div lang="id">
-      <p className="text-center text-sm font-bold text-primary-dark">Untuk peserta pemagangan</p>
-      <h2 className="mt-2 text-center text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
+      <p className="text-center text-sm font-bold tracking-wide text-primary">Untuk peserta pemagangan</p>
+      <h2 className="mt-3 text-center text-[1.7rem] font-bold leading-snug text-ink md:text-4xl">
         Koperasi Solution
         <br />
-        <span className="underline decoration-primary-dark decoration-[3px] underline-offset-[6px]">membantu Anda</span>
+        <span className="mt-1 inline-block text-primary underline decoration-primary decoration-4 underline-offset-8">membantu Anda</span>
       </h2>
-      <p className="mx-auto mt-5 max-w-[580px] text-center text-[15px] leading-relaxed text-body">
+      <p className="mx-auto mt-6 max-w-[40rem] text-center text-[15px] leading-relaxed text-body md:text-base">
         Halaman ini untuk orang yang datang ke Jepang dari Vietnam, Indonesia, dan Filipina.
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
-        <Card flag={0} name="Vietnam" alt="Bendera Vietnam" sub="Untuk Anda dari Vietnam" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
-        <Card flag={1} name="Indonesia" alt="Bendera Indonesia" sub="Untuk Anda dari Indonesia" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
-        <Card flag={2} name="Filipina" alt="Bendera Filipina" sub="Untuk Anda dari Filipina" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." />
+        <Card flag={0} name="Vietnam" alt="Bendera Vietnam" sub="Untuk Anda dari Vietnam" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." chipsLabel="Isi halaman ini" chips={["kehidupan", "pekerjaan", "konsultasi"]} />
+        <Card flag={1} name="Indonesia" alt="Bendera Indonesia" sub="Untuk Anda dari Indonesia" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." chipsLabel="Isi halaman ini" chips={["kehidupan", "pekerjaan", "konsultasi"]} />
+        <Card flag={2} name="Filipina" alt="Bendera Filipina" sub="Untuk Anda dari Filipina" body="Koperasi membantu pekerjaan dan kehidupan Anda di Jepang. Jika ada masalah, telepon koperasi." chipsLabel="Isi halaman ini" chips={["kehidupan", "pekerjaan", "konsultasi"]} />
       </ul>
-      <Chips label="Isi halaman ini" items={["kehidupan", "pekerjaan", "konsultasi"]} />
+      <ContactBlock title="Jika ada masalah, hubungi di sini" phoneWord="Telepon" />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
         <p>Koperasi Solution ada di Kota Sakai, Prefektur Osaka. Koperasi membantu pekerjaan dan kehidupan peserta pemagangan.</p>
         <p>
@@ -219,21 +288,21 @@ function Id() {
 function En() {
   return (
     <div lang="en">
-      <p className="text-center text-sm font-bold text-primary-dark">For technical intern trainees</p>
-      <h2 className="mt-2 text-center text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
+      <p className="text-center text-sm font-bold tracking-wide text-primary">For technical intern trainees</p>
+      <h2 className="mt-3 text-center text-[1.7rem] font-bold leading-snug text-ink md:text-4xl">
         Solution Cooperative
         <br />
-        <span className="underline decoration-primary-dark decoration-[3px] underline-offset-[6px]">helps you</span>
+        <span className="mt-1 inline-block text-primary underline decoration-primary decoration-4 underline-offset-8">helps you</span>
       </h2>
-      <p className="mx-auto mt-5 max-w-[580px] text-center text-[15px] leading-relaxed text-body">
+      <p className="mx-auto mt-6 max-w-[40rem] text-center text-[15px] leading-relaxed text-body md:text-base">
         This page is for people who came to Japan from Vietnam, Indonesia, and the Philippines.
       </p>
       <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 md:grid-cols-3">
-        <Card flag={0} name="Vietnam" alt="Flag of Vietnam" sub="To everyone from Vietnam" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
-        <Card flag={1} name="Indonesia" alt="Flag of Indonesia" sub="To everyone from Indonesia" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
-        <Card flag={2} name="Philippines" alt="Flag of the Philippines" sub="To everyone from the Philippines" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." />
+        <Card flag={0} name="Vietnam" alt="Flag of Vietnam" sub="To everyone from Vietnam" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." chipsLabel="Topics on this page" chips={["daily life", "work", "consultation"]} />
+        <Card flag={1} name="Indonesia" alt="Flag of Indonesia" sub="To everyone from Indonesia" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." chipsLabel="Topics on this page" chips={["daily life", "work", "consultation"]} />
+        <Card flag={2} name="Philippines" alt="Flag of the Philippines" sub="To everyone from the Philippines" body="The cooperative helps with your work and your life in Japan. If you have a problem, please call the cooperative." chipsLabel="Topics on this page" chips={["daily life", "work", "consultation"]} />
       </ul>
-      <Chips label="Topics on this page" items={["daily life", "work", "consultation"]} />
+      <ContactBlock title="If you have a problem, contact us here" phoneWord="Phone" />
       <div className="mx-auto mt-10 max-w-[640px] space-y-4 text-[15px] leading-relaxed text-body">
         <p>Solution Cooperative is in Sakai City, Osaka. The cooperative helps trainees with work and daily life.</p>
         <p>

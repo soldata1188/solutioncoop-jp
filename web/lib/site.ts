@@ -80,6 +80,9 @@ export const LINE_URL = "https://line.me/R/ti/p/@122kbyao";
 export const LINE_LABEL = "LINEで無料相談";
 export const LINE_ARIA = "LINEで無料相談する（新しいタブで開きます）";
 
+/** 実習生ページの Facebook ボタン。空のあいだはボタンを出しません。URLは推測しません。 */
+export const FACEBOOK_URL = "";
+
 /**
  * 公式X（旧Twitter）アカウント @KumiaiSol。
  * 投稿の取得はサーバー側の X_BEARER_TOKEN だけで行い、ブラウザには出しません。

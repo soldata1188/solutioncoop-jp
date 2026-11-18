@@ -17,10 +17,8 @@ const body = `# ${org.name}
 - 電話: ${org.tel} / FAX: ${org.fax} / メール: ${org.email}
 - 主な対応地域: 堺市・大阪府
 - 連携する送り出し国: ベトナム、インドネシア、フィリピン
-- 職員数: ${org.staff}
 - 技能実習生の受入れ実績: ${org.terms}
 - 受入れ企業数: ${org.clients}
-- 専任日本語教師: ${org.teachers}
 - 表彰: ${org.award}
 - 育成就労制度は2027年4月1日施行です。当組合は育成就労制度に向けて準備中です。
 

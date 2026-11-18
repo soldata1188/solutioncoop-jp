@@ -5,7 +5,7 @@ import { NoBreak } from "./KeepWords";
 
 /**
  * トップの実績ストリップ（ヒーロー直下）。
- * PC（lg以上）：左に「SDGs未来都市・堺」ロゴ、右に4つの実績を細い区切り線で並べます。
+ * PC（lg以上）：左に「SDGs未来都市・堺」ロゴ、右に3つの実績を細い区切り線で並べます。
  * スマートフォン・タブレット：先頭にロゴと応援の一文（2行）を全幅で置き、その下に実績を2×2（md以上は4列）で表示します。
  * 数値は #0F4D2A（白背景で 9.93:1）、ラベルは #222。
  * ロゴは既存リポジトリ images/sdgs-sakai.png を WebP に変換したもの（ファイルは無加工）。
@@ -26,7 +26,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
               SDGs未来都市・堺を応援しています。
             </p>
           </div>
-          <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-4">
+          <ul className="grid grid-cols-3 gap-px bg-line">
             {achievements.map((a) => (
               <li key={a.label} className="flex flex-col items-center justify-center bg-white px-2 py-4 text-center">
                 <span aria-hidden="true" className="font-bold leading-none text-primary-dark">

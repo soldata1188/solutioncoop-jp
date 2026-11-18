@@ -10,12 +10,9 @@ export const org = {
   tel: "072-224-8067",
   fax: "072-224-2214",
   email: "info@solutioncoop-jp.com",
-  staff: "10名",
-  /** 以下4項目は代表者様に確認済み（2026年11月1日）。集計時点の日付は未確認のため表示しません */
+  /** 以下3項目は代表者様に確認済み（2026年11月1日）。集計時点の日付は未確認のため表示しません */
   terms: "65期",
   clients: "80社以上",
-  /** 専任日本語教師の人数（職員数 10名 とは別に記載しています） */
-  teachers: "12名",
   award: "令和8年 大阪府知事表彰",
   representative: "新 雅志",
 };
@@ -63,7 +60,6 @@ export const sdgs = {
 export const achievements = [
   { value: "65", unit: "期", label: "技能実習生受入れ実績", sr: `技能実習生受入れ実績 ${org.terms}` },
   { value: "80", unit: "社+", label: "受入れ企業数", sr: `受入れ企業数 ${org.clients}` },
-  { value: "12", unit: "名", label: "専任日本語教師", sr: `専任日本語教師 ${org.teachers}` },
   { value: "知事", unit: "表彰", label: "令和8年 大阪府知事表彰", sr: org.award },
 ];
 

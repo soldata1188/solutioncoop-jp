@@ -11,7 +11,7 @@ import { org, fullAddress, licenses, repoFacts, sdgs, TEL_HREF } from "@/lib/sit
 export const metadata = pageMeta(
   "/about",
   "組合概要｜堺の監理団体",
-  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、職員数、受入れ実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
+  "堺市堺区甲斐町東に事務所を置く監理団体、ソリューション協同組合の組合概要です。所在地・連絡先、代表者、受入れ実績、監理団体の許可番号、登録支援機関の登録番号、沿革などをご案内いたします。",
 );
 
 export default function Page() {
@@ -32,10 +32,8 @@ export default function Page() {
         <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど</span>
       </span>,
     ],
-    ["職員数", org.staff],
     ["技能実習生|受入れ実績", org.terms],
     ["受入れ企業数", org.clients],
-    ["専任日本語教師", org.teachers],
     ["表彰", org.award],
     ["連携する送り出し国", "ベトナム、インドネシア、フィリピン"],
   ];
@@ -72,7 +70,7 @@ export default function Page() {
           <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" priority caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
           <div>
             <p className="text-[15px]">
-              当組合は、堺市堺区に事務所を構え、職員{org.staff}の体制で、大阪府内の中小企業様の外国人材受入れをご支援しております。
+              当組合は、堺市堺区に事務所を構え、大阪府内の中小企業様の外国人材受入れをご支援しております。
             </p>
             <Photo photo={photos.sakai} sizes="(min-width: 768px) 310px, 100vw" className="mt-5" caption="地元・堺の海辺の風景" />
           </div>

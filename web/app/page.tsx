@@ -94,8 +94,8 @@ const credentials = [
   },
   {
     title: "堺市に拠点を構え、大阪の中小企業様に密着",
-    body: `堺市堺区に事務所を構え、職員${org.staff}の体制で、大阪府内の中小企業様を中心にきめ細かくご支援いたします。`,
-    note: `所在地 ${org.locality}／職員 ${org.staff}`,
+    body: "堺市堺区に事務所を構え、大阪府内の中小企業様を中心にきめ細かくご支援いたします。",
+    note: `所在地 ${org.locality}`,
     Icon: IconLocal,
     href: "/about",
     link: "組合概要を見る",

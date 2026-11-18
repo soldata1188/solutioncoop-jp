@@ -210,8 +210,23 @@ summary::-webkit-details-marker {
   }
 }
 
-/* 堺市の使用ガイド：応援文は黒。割り付けはロゴと同じ幅の flex で行います。 */
+/* 応援文は黒・通常の字間・中央揃え。語句の途中では改行しない。
+   狭い画面は20pxで2行（長い行がロゴ320pxの内側）。
+   640px以上は16pxで全文がロゴ440pxに収まり1行。 */
 .sdgs-support {
   color: #000;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: 20px;
+}
+.sdgs-support span {
+  display: inline-block;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .sdgs-support {
+    font-size: 16px;
+  }
 }
 

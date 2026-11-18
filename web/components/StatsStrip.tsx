@@ -23,16 +23,9 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
               sizes="(min-width: 640px) 440px, 320px"
               className="block h-auto w-full"
             />
-            <p className="sr-only">{sdgs.support}</p>
-            <div aria-hidden="true" className="sdgs-support mt-2 space-y-0.5 text-[13px] leading-none sm:text-base">
-              {[sdgs.supportParts[0], sdgs.supportParts[1]].map((line) => (
-                <span key={line} className="flex w-full justify-between">
-                  {[...line].map((ch, i) => (
-                    <span key={`${line}-${i}`}>{ch}</span>
-                  ))}
-                </span>
-              ))}
-            </div>
+            <p className="sdgs-support mt-2 text-center leading-normal tracking-normal">
+              <span>{sdgs.supportParts[0]}</span><span>{sdgs.supportParts[1]}</span>
+            </p>
           </div>
         </div>
         <ul className="grid grid-cols-3 items-stretch gap-2 sm:gap-4">

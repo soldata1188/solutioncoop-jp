@@ -11,7 +11,7 @@ const u = (path: string) => (path === "/" ? SITE_URL : `${SITE_URL}${path}`);
 
 const body = `# ${org.name}
 
-> 大阪府堺市堺区の監理団体（技能実習法に基づく一般監理事業の許可 ${licenses.kanri.number}）・登録支援機関（${licenses.toroku.number}）です。堺市・大阪府内の中小企業様（建設、機械・金属、食品製造など）の外国人材受入れをご支援しています。2027年4月1日施行の育成就労制度に向けて準備中です。
+> 大阪府堺市堺区の監理団体（技能実習法に基づく一般監理事業の許可 ${licenses.kanri.number}）・登録支援機関（${licenses.toroku.number}）です。堺市・大阪府内の中小企業様（建設、機械・金属、食品製造など）の外国人材受入れをご支援しています。
 
 - 所在地: ${fullAddress}
 - 電話: ${org.tel} / FAX: ${org.fax} / メール: ${org.email}
@@ -20,7 +20,7 @@ const body = `# ${org.name}
 - 技能実習生の受入れ実績: ${org.terms}
 - 受入れ企業数: ${org.clients}
 - 表彰: ${org.award}
-- 育成就労制度は2027年4月1日施行です。当組合は育成就労制度に向けて準備中です。
+- 育成就労制度は2027年4月1日施行です。
 
 ## 主なページ
 

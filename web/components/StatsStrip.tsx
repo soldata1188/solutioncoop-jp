@@ -14,7 +14,7 @@ import { NoBreak } from "./KeepWords";
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {
   return (
-    <section aria-labelledby="stats-title" className="bg-white">
+    <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
       <h2 id="stats-title" className="sr-only">当組合の実績</h2>
       <div className="mx-auto max-w-[1100px] px-4 py-6 md:py-8">
         <div className="grid overflow-hidden rounded border border-line bg-white shadow-card lg:grid-cols-[300px_1fr]">

@@ -136,6 +136,46 @@ summary::-webkit-details-marker {
   }
 }
 
+/* スクロールで一度だけ出す。html.motion は JS かつ動きを許可するときだけ付く。
+   変化は opacity と transform だけ。ヒーローと LCP 画像には data-reveal を付けない。 */
+@media (prefers-reduced-motion: no-preference) {
+  html.motion [data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  html.motion [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 520ms ease-out, transform 520ms ease-out;
+    transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  }
+  @media (hover: hover) {
+    button:not(:disabled),
+    a.lift,
+    .shadow-card,
+    .card-lift {
+      transition: transform 200ms ease-out, box-shadow 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out;
+    }
+    button:not(:disabled):hover,
+    a.lift:hover,
+    .shadow-card:hover,
+    .card-lift:hover,
+    html.motion [data-reveal].is-in:is(button, a.lift, .shadow-card, .card-lift):hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgb(15 77 42 / 0.12);
+    }
+  }
+  @media (hover: none) {
+    button:not(:disabled):active,
+    a.lift:active,
+    .shadow-card:active,
+    .card-lift:active {
+      transform: translateY(-2px);
+      transition: transform 180ms ease-out;
+    }
+  }
+}
+
 /* 640px 未満だけ文字を中央にそろえる。左右の余白は各コンテナの px-4（16px）以上。
    デスクトップ（640px 以上）の text-left / sm:text-left はそのまま。 */
 @media (max-width: 639px) {

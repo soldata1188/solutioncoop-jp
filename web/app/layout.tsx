@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { BarRoute } from "@/components/BarRoute";
 import { JsonLd } from "@/components/JsonLd";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SITE_URL, org, organizationJsonLd } from "@/lib/site";
 
 /** Noto Sans JP の可変フォント（ビルド時に取得してセルフホスト。実行時に外部へは接続しません） */
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <MobileCallBar />
         </BarRoute>
         <JsonLd data={organizationJsonLd} />
+        <RevealOnScroll />
       </body>
     </html>
   );

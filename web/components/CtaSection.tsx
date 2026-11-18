@@ -7,7 +7,7 @@ import { LinkButton, SquareDots, SquaresPattern } from "./ui";
 /** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い緑 #0F4D2A（白文字 9.93:1） */
 export function CtaSection({ title }: { title?: string }) {
   return (
-    <section aria-labelledby={title ? "cta-title" : undefined} className="relative overflow-hidden bg-primary-dark text-white">
+    <section aria-labelledby={title ? "cta-title" : undefined} data-reveal="" className="relative overflow-hidden bg-primary-dark text-white">
       <SquaresPattern variant="band" />
       <div className="relative mx-auto max-w-[612px] px-4 py-14 text-center md:py-[72px]">
         {title ? (

@@ -67,7 +67,7 @@ export default function Page() {
           </section>
         }
       />
-      <Section id="office" title="堺から、大阪の企業様を支えます" width="default">
+      <Section id="office" title="堺から、大阪の企業様を支えます" width="default" reveal={false}>
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
           <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" priority caption="「ソリューション協同組合」の看板を掲げた当組合の建物（堺市の事務所）" />
           <div>

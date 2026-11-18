@@ -12,7 +12,7 @@ export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string })
 type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "dark" | "ghost";
 
 const buttonBase =
-  "relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded px-8 font-bold leading-snug no-underline transition-colors";
+  "lift relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded px-8 font-bold leading-snug no-underline";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   // 主ボタン：#1E7F46 地に白文字（5.02:1）、hover #0F4D2A（9.93:1）
@@ -136,6 +136,7 @@ export function Section({
   flushBottom = false,
   eyebrow,
   sub,
+  reveal = true,
 }: {
   id?: string;
   title?: React.ReactNode;
@@ -147,9 +148,11 @@ export function Section({
   children: React.ReactNode;
   className?: string;
   flushBottom?: boolean;
+  /** スクロールで一度だけ出す。ヒーローと LCP 画像の節では false */
+  reveal?: boolean;
 }) {
   return (
-    <section aria-labelledby={title && id ? id : undefined} className={`${tone === "pale" ? "bg-pale" : "bg-white"} ${className}`}>
+    <section aria-labelledby={title && id ? id : undefined} data-reveal={reveal ? "" : undefined} className={`${tone === "pale" ? "bg-pale" : "bg-white"} ${className}`}>
       <div className={`mx-auto ${widths[width]} px-4 ${flushBottom ? "pt-14 md:pt-[72px]" : "py-14 md:py-[72px]"}`}>
         {title ? <SectionHeading id={id} lead={lead} eyebrow={eyebrow} sub={sub}>{title}</SectionHeading> : null}
         <div className={title ? "mt-10" : ""}>{children}</div>
@@ -215,7 +218,7 @@ export function ImagePlaceholder({
 /** 番号タブ付きの淡い緑枠カード（「選ばれる理由」型） */
 export function TabCard({ n, children, className = "", as: Tag = "li" }: { n: number; children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
-    <Tag className={`relative flex flex-col border-[6px] border-tab bg-white ${className}`}>
+    <Tag className={`card-lift relative flex flex-col border-[6px] border-tab bg-white ${className}`}>
       <span aria-hidden="true" className="absolute -left-[6px] -top-[6px] flex h-8 w-8 items-center justify-center bg-tab text-base font-bold text-primary-dark">
         {n}
       </span>

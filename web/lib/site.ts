@@ -70,6 +70,7 @@ export const nav = [
   { href: "/#business", label: "事業内容" },
   { href: "/#reasons", label: "選ばれる理由" },
   { href: "/#cases", label: "受入れ事例" },
+  { href: "/news", label: "最新情報" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
   { href: "/about#disclosure", label: "情報公開" },

@@ -253,7 +253,7 @@ export default function Home() {
         width="wide"
         lead="当組合の公式アカウントの最新の投稿です。"
       >
-        <OfficialXPosts />
+        <OfficialXPosts showMore />
       </Section>
     </>
   );

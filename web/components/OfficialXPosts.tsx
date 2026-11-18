@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { loadOfficialPosts } from "@/lib/x/load-posts";
-import type { XPostCard } from "@/lib/x/map-posts";
+import { X_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
 
 function ProfileLink() {
@@ -67,23 +68,31 @@ function PostCard({ post }: { post: XPostCard }) {
 }
 
 /** 公式Xの最新投稿。取得できないときは公式アカウントへのリンクだけを出します。 */
-export async function OfficialXPosts() {
+export async function OfficialXPosts({ limit = X_POST_COUNT, showMore = false }: { limit?: number; showMore?: boolean }) {
   const result = await loadOfficialPosts();
+  const posts = result.posts.slice(0, limit);
   return (
     <div>
-      {result.posts.length > 0 ? (
+      {posts.length > 0 ? (
         <>
           {result.source === "fixture" ? (
             <p className="mb-6 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
           <ul className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {result.posts.map((post) => (
+            {posts.map((post) => (
               <li key={post.id} className="flex min-w-0">
                 <PostCard post={post} />
               </li>
             ))}
           </ul>
         </>
+      ) : null}
+      {showMore ? (
+        <p className="mt-6 text-center">
+          <Link href="/news" className="lift inline-flex min-h-12 items-center justify-center rounded border border-line bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary">
+            最新情報をもっと見る
+          </Link>
+        </p>
       ) : null}
       <ProfileLink />
     </div>

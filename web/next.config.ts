@@ -14,8 +14,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/disclosure", destination: "/about#disclosure", permanent: true },
       { source: "/privacy.html", destination: "/privacy", permanent: true },
-      { source: "/news", ...home },
-      { source: "/news/:slug*", ...home },
+      { source: "/news/:slug+", ...home },
       { source: "/news.html", ...home },
       { source: "/受け入れ実績", ...home },
       { source: "/%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E5%AE%9F%E7%B8%BE", ...home },

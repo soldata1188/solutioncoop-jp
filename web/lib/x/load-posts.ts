@@ -3,6 +3,7 @@ import { unstable_cache } from "next/cache";
 import { X_HANDLE, X_URL } from "@/lib/site";
 import { xFixturePayload } from "./fixture";
 import {
+  X_NEWS_POST_COUNT,
   X_POSTS_CACHE_TAG,
   X_POSTS_SUCCESS_REVALIDATE_SECONDS,
   buildUserByUsernameUrl,
@@ -66,7 +67,7 @@ async function fetchTweets(userId: string): Promise<XPostCard[]> {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!response.ok) throw new Error("x posts unavailable");
-  return mapTweetsToCards(await response.json(), X_HANDLE);
+  return mapTweetsToCards(await response.json(), X_HANDLE, X_NEWS_POST_COUNT);
 }
 
 /**
@@ -76,7 +77,7 @@ async function fetchTweets(userId: string): Promise<XPostCard[]> {
  */
 async function loadFresh(): Promise<XPostCard[]> {
   if (xFixtureEnabled()) {
-    const posts = mapTweetsToCards(readFixturePayload(), X_HANDLE).map((post) => ({ ...post, href: X_URL }));
+    const posts = mapTweetsToCards(readFixturePayload(), X_HANDLE, X_NEWS_POST_COUNT).map((post) => ({ ...post, href: X_URL }));
     if (posts.length === 0) throw new Error("x posts unavailable");
     return posts;
   }

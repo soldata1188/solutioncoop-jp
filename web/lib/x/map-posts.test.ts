@@ -12,7 +12,7 @@ import {
 test("tweets URL asks for original posts and the fields we render", () => {
   const url = new URL(buildUserTweetsUrl("12345"));
   assert.equal(url.origin + url.pathname, "https://api.x.com/2/users/12345/tweets");
-  assert.equal(url.searchParams.get("max_results"), "10");
+  assert.equal(url.searchParams.get("max_results"), "20");
   assert.equal(url.searchParams.get("exclude"), "replies,retweets");
   assert.equal(url.searchParams.get("tweet.fields"), "created_at,text,attachments,entities");
   assert.equal(url.searchParams.get("expansions"), "attachments.media_keys");

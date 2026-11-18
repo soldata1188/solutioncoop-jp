@@ -32,28 +32,24 @@ const businesses = [
     title: "外国人材受入事業",
     sub: "技能実習は育成と技能移転",
     body: "技能実習は、人材育成と技能移転による国際貢献としてご支援します。特定技能は、登録支援機関として受入れ後の支援を行います。生活面のご相談にも対応いたします。",
-    items: ["外国人技能実習生共同受入れ事業", "特定技能外国人支援事業"],
     Icon: IconGlobe,
   },
   {
     title: "事業拡大サポート",
     sub: "共同事業を通じたビジネス拡大支援",
     body: "組合員様向けに、事業拡大と業務効率化を直接的にバックアップ。受注のあっせんや必要な資材・設備の共同購買を通じて、組合員様のコスト削減と収益向上に貢献します。",
-    items: ["組合員の行う事業・工事等の受注斡旋", "組合員の必要とする機械・設備等の購買斡旋"],
     Icon: IconHandshake,
   },
   {
     title: "グローバルビジネス支援",
     sub: "海外進出サポート事業",
     body: "組合員様のさらなる成長のために海外展開を支援します。現地の強力なネットワークを活かし、安全かつ円滑なグローバルビジネスの第一歩をサポートします。",
-    items: ["組合員の海外進出に関するサポート事業", "海外市場の調査及び関連情報の提供"],
     Icon: IconPlane,
   },
   {
     title: "組織力強化支援",
     sub: "経営向上と福利厚生の充実",
     body: "企業としての持続的な成長を支援するため、最新の法令・業界動向の共有から、従業員の皆様の働きやすい環境づくりまで、多角的なサポートを提供します。",
-    items: ["組合員の福利厚生に関する事業", "前各号の事業に附帯する事業"],
     Icon: IconChartUp,
   },
 ];
@@ -145,7 +141,7 @@ export default function Home() {
         lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
       >
         <ol className="grid gap-5 md:grid-cols-2">
-          {businesses.map(({ title, sub, body, items, Icon }, i) => (
+          {businesses.map(({ title, sub, body, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
               <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
@@ -160,17 +156,6 @@ export default function Home() {
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
                 <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
-                <details className="mt-auto pt-4">
-                  <summary className="mx-auto flex min-h-11 w-fit cursor-pointer items-center bg-label px-2 text-sm font-bold text-ink sm:mx-0">定款記載事業など</summary>
-                  <ul className="mt-2 space-y-1 text-left">
-                    {items.map((it) => (
-                      <li key={it} className="flex items-start gap-2 text-sm leading-snug text-ink">
-                        <span aria-hidden="true" className="mt-[0.4em] h-2 w-2 shrink-0 bg-primary" />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
               </div>
             </TabCard>
           ))}

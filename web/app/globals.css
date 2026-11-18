@@ -186,7 +186,7 @@ summary::-webkit-details-marker {
   footer :is(h1, h2, h3, h4, p, li, address, a) {
     text-align: center;
   }
-  /* フォームのラベルと入力、開いた FAQ の回答、表、開いた定款一覧、箇条書き、プライバシー本文は左揃え */
+  /* フォームのラベルと入力、開いた FAQ の回答、表、開いた折りたたみの一覧、箇条書き、プライバシー本文は左揃え */
   form :is(label, p, a, span, div, li),
   details > div,
   details > div :is(p, span),

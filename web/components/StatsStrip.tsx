@@ -20,6 +20,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
               width={6579}
               height={1851}
               quality={90}
+              priority
               sizes="(min-width: 640px) 440px, 320px"
               className="block h-auto w-full"
             />

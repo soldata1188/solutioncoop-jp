@@ -30,7 +30,6 @@ export const licenses = {
   },
 };
 
-/** トップの実績ストリップ（値は org の確認済みの数値と同じ。sr はスクリーンリーダー向けの読み上げ文） */
 /**
  * 「SDGs未来都市・堺」関連（堺市の公式ページで確認した事実のみ）。
  * 選定：堺市「SDGs未来都市」ページ「堺市は、平成30年（2018年）6月、SDGs未来都市に大阪府内の自治体で初めて選定され…」
@@ -47,10 +46,11 @@ export const sdgs = {
   sourceLabel: "堺市「SDGs未来都市」",
 } as const;
 
+/** トップの実績。label が上、value が下（最大の文字）。各文言はここ一度だけ。 */
 export const achievements = [
-  { value: "65期", label: "技能実習生受入れ実績", sr: `技能実習生受入れ実績 ${org.terms}` },
-  { value: "80社+", label: "受入れ企業数", sr: `受入れ企業数 ${org.clients}` },
-  { value: "令和8年", label: "大阪府知事表彰", sr: org.award },
+  { label: "技能実習生受入れ実績", value: "65期", count: 65, unit: "期" },
+  { label: "受入れ企業数", value: "80社以上", count: 80, unit: "社以上" },
+  { label: "令和8年", value: "大阪府知事表彰" },
 ];
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;

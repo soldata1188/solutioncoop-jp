@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { achievements, sdgs } from "@/lib/site";
+import { AchievementCards } from "@/components/AchievementCards";
+import { sdgs } from "@/lib/site";
 
 /**
  * トップの実績（ヒーロー直下）。
@@ -29,15 +30,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
             </p>
           </div>
         </div>
-        <ul className="grid grid-cols-3 items-stretch gap-2 sm:gap-4">
-          {achievements.map((item) => (
-            <li key={item.label} className="flex h-full flex-col items-center justify-center border-t-[3px] border-primary bg-white px-1.5 py-4 text-center shadow-card sm:px-4 sm:py-6">
-              <span aria-hidden="true" className="text-[1.35rem] font-bold leading-none text-primary-dark sm:text-4xl">{item.value}</span>
-              <span aria-hidden="true" className="mt-2 min-h-10 text-xs font-bold leading-snug text-ink sm:min-h-0 sm:text-sm">{item.label}</span>
-              <span className="sr-only">{item.sr}</span>
-            </li>
-          ))}
-        </ul>
+        <AchievementCards />
         {children}
       </div>
     </section>

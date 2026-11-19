@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/brand/SOL_Solution_Coop_2026-11-19.png";
+import logo from "@/public/brand/SOL_Solution_Coop_2026-11-19_white.png";
 
 /**
- * 公式ロゴ（2026-11-19）。余白の緑だけを切り、色と形はそのまま。
- * ファイルは表示高さ 44px の 2 倍（131×88）。ヘッダーは priority。
+ * 公式ロゴ（2026-11-19 白背景）。余白だけを切り、色と形はそのまま。
+ * ファイルは表示高さ 44px の 2 倍（130×88）。ヘッダーは priority。
  */
 export function LogoTile({
   className = "",
@@ -20,10 +20,10 @@ export function LogoTile({
     <Image
       src={logo}
       alt={alt}
-      width={131}
+      width={130}
       height={88}
       priority={priority}
-      sizes="66px"
+      sizes="65px"
       className={`h-11 w-auto max-w-none shrink-0 ${className}`}
     />
   );

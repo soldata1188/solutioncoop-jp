@@ -45,4 +45,4 @@ npm run build && npm start
 
 - 組合情報・許可番号: `lib/site.ts`
 - よくある質問（画面表示と FAQPage JSON-LD の共通データ）: `lib/faq.ts`
-- ロゴ: `public/brand/SOL_Solution_Coop_2026-11-19.png`（余白を切った 131×88。色と形は 2026-11-19 の支給画像のまま）。ヘッダーとフッターは高さ 44px。古い `SOL_Solution_Coop_official_2026-11-07.jpg` は残しています。favicon・icon・apple-icon は「SOL」の部分だけを、ロゴの緑で正方形にしています。SDGs のロゴは変更していません。
+- ロゴ: `public/brand/SOL_Solution_Coop_2026-11-19_white.png`（白背景。余白を切った 130×88。色と形は 2026-11-19 17:31 の支給画像のまま）。ヘッダーとフッターは高さ 44px。古い `SOL_Solution_Coop_2026-11-19.png` と `SOL_Solution_Coop_official_2026-11-07.jpg` は残しています。favicon・icon・apple-icon は「SOL」だけを白地にしています。SDGs のロゴは変更していません。

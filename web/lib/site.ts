@@ -131,8 +131,8 @@ export const organizationJsonLd = {
   name: org.name,
   url: SITE_URL,
   sameAs: [X_URL, FACEBOOK_URL],
-  logo: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19.png`,
-  image: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19.png`,
+  logo: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19_white.png`,
+  image: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19_white.png`,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

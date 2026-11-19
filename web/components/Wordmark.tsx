@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/brand/SOL_Solution_Coop_official_2026-11-07.jpg";
+import logo from "@/public/brand/SOL_Solution_Coop_official_2026-11-19.jpg";
 
 /**
- * 公式ロゴ（2026-11-07 支給の全体）。緑地、白の S・L、淡い黄色の O、下段の白文字「Solution Coop」。
- * 切り抜き・変色・比率変更はしません。表示枠は原本と同じ 1500:1200 です。
- * 原本: public/brand/SOL_Solution_Coop_official_2026-11-07.jpg
+ * 公式ロゴ（2026-11-19 支給の全体）。明るい緑地、白の S・L、黄色の O、下段の白文字「Solution Coop」。
+ * 切り抜き・変色・比率変更はしません。表示の高さはこれまでと同じ 44px です。
+ * 原本: public/brand/SOL_Solution_Coop_official_2026-11-19.jpg（1147×860）
  */
 export function LogoTile({
   className = "",
@@ -22,8 +22,8 @@ export function LogoTile({
       src={logo}
       alt={alt}
       priority={priority}
-      sizes="55px"
-      className={`h-11 w-[55px] max-w-none shrink-0 object-contain ${className}`}
+      sizes="59px"
+      className={`h-11 w-auto max-w-none shrink-0 ${className}`}
     />
   );
 }

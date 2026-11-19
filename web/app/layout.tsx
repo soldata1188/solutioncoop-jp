@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: org.name,
-    images: [{ url: "/brand/SOL_Solution_Coop_official_2026-11-07.jpg", width: 1500, height: 1200, alt: org.name }],
+    images: [{ url: "/brand/SOL_Solution_Coop_official_2026-11-19.jpg", width: 1147, height: 860, alt: org.name }],
   },
 };
 

@@ -158,8 +158,13 @@ export default function Home() {
       <Section
         id="countries"
         eyebrow="実習生のみなさま"
-        title="外国人材・実習生のみなさまへ"
-        width="narrow"
+        title={
+          <>
+            <span className="lg:block lg:whitespace-nowrap">外国人材・</span>
+            <span className="lg:block lg:whitespace-nowrap">実習生のみなさまへ</span>
+          </>
+        }
+        width="default"
         lead="仕事や生活で困ったときの案内ページです。"
         visual={
           <img

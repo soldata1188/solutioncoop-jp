@@ -4,10 +4,10 @@ import { ChatIcon } from "@/components/LineButton";
 import { org, fullAddress, licenses, sdgs, TEL_HREF, FACEBOOK_URL, X_HANDLE, X_URL, LINE_URL, LINE_ARIA, repoFacts } from "@/lib/site";
 import { Chunks, Phrases } from "./KeepWords";
 
-/** 既存のページ5つと、相談窓口。ホーム内の節リンクはヘッダーに残します。 */
+/** 相談窓口、ホームの最新情報、下層ページ。 */
 const footerLinks = [
   { href: "/for-workers", label: "相談窓口" },
-  { href: "/news", label: "最新情報" },
+  { href: "/#news", label: "最新情報" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
   { href: "/about#disclosure", label: "情報公開" },

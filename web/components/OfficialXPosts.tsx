@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { loadOfficialPosts } from "@/lib/x/load-posts";
 import { X_HOME_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
@@ -56,7 +55,7 @@ function PostRow({ post }: { post: XPostCard }) {
 }
 
 /** 公式アカウントの最新投稿。取得できないときは一文と、公式アカウントへのリンクだけを出します。 */
-export async function OfficialXPosts({ limit = X_HOME_POST_COUNT, showMore = false }: { limit?: number; showMore?: boolean }) {
+export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: number }) {
   const result = await loadOfficialPosts();
   const posts = result.posts.slice(0, limit);
   return (
@@ -77,13 +76,6 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT, showMore = fal
       ) : (
         <p className="rounded border border-line bg-white px-4 py-3 text-[15px] leading-relaxed text-body">現在お知らせはありません。</p>
       )}
-      {showMore ? (
-        <p className="mt-6 text-center">
-          <Link href="/news" className="lift inline-flex min-h-11 items-center justify-center rounded border border-line bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary">
-            一覧を見る
-          </Link>
-        </p>
-      ) : null}
       <ProfileLink />
     </div>
   );

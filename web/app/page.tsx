@@ -195,15 +195,15 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 最新情報。/news と同じ取得結果の新しい順・最大12件。サーバーで HTML にし、埋め込みスクリプトは読みません。 */}
+      {/* 最新情報。新しい順・最大12件をサーバーで HTML にします。埋め込みスクリプトは読みません。 */}
       <Section
-        id="latest"
+        id="news"
         tone="pale"
         title="最新情報"
         width="wide"
         lead="当組合の公式アカウントの投稿を、新しい順に掲載しています。"
       >
-        <OfficialXPosts showMore />
+        <OfficialXPosts />
       </Section>
     </>
   );

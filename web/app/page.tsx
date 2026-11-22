@@ -195,13 +195,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 公式X。お知らせ欄は無いため、最後の相談枠の直前。取得はサーバー側のみで、widgets.js は使いません。 */}
+      {/* 最新情報。/news と同じ取得結果の新しい順・最大12件。サーバーで HTML にし、埋め込みスクリプトは読みません。 */}
       <Section
-        id="official-x"
+        id="latest"
         tone="pale"
-        title="公式X（旧Twitter）"
+        title="最新情報"
         width="wide"
-        lead="当組合の公式アカウントの最新の投稿です。"
+        lead="当組合の公式アカウントの投稿を、新しい順に掲載しています。"
       >
         <OfficialXPosts showMore />
       </Section>

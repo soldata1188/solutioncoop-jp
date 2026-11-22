@@ -119,6 +119,18 @@ export default function Home() {
         eyebrow={<span lang="en">BUSINESS CONTENT</span>}
         title="ソリューション協同組合の事業内容"
         lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
+        visual={
+          <img
+            src="/images/jigyo-naiyo-buildings.svg"
+            alt=""
+            width={375}
+            height={375}
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            className="h-auto w-full max-w-[240px] lg:w-[320px] lg:max-w-[320px]"
+          />
+        }
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {businesses.map(({ title, sub, body, Icon }, i) => (

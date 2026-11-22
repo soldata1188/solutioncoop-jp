@@ -137,6 +137,7 @@ export function Section({
   eyebrow,
   sub,
   reveal = true,
+  visual,
 }: {
   id?: string;
   title?: React.ReactNode;
@@ -150,11 +151,19 @@ export function Section({
   flushBottom?: boolean;
   /** スクロールで一度だけ出す。ヒーローと LCP 画像の節では false */
   reveal?: boolean;
+  /** 見出しの横（狭い画面では見出しの下）に置く補足の図 */
+  visual?: React.ReactNode;
 }) {
+  const heading = title ? <SectionHeading id={id} lead={lead} eyebrow={eyebrow} sub={sub}>{title}</SectionHeading> : null;
   return (
     <section aria-labelledby={title && id ? id : undefined} data-reveal={reveal ? "" : undefined} className={`${tone === "pale" ? "bg-pale" : "bg-white"} ${className}`}>
       <div className={`mx-auto ${widths[width]} px-4 ${flushBottom ? "pt-14 md:pt-[72px]" : "py-14 md:py-[72px]"}`}>
-        {title ? <SectionHeading id={id} lead={lead} eyebrow={eyebrow} sub={sub}>{title}</SectionHeading> : null}
+        {heading && visual ? (
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-12">
+            {heading}
+            <div className="mt-6 flex justify-center lg:mt-0">{visual}</div>
+          </div>
+        ) : heading}
         <div className={title ? "mt-10" : ""}>{children}</div>
       </div>
     </section>

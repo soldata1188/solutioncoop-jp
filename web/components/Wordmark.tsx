@@ -4,7 +4,7 @@ import logo from "@/public/brand/SOL_Solution_Coop_2026-11-19_white.png";
 
 /**
  * 公式ロゴ（2026-11-19 白背景）。余白だけを切り、色と形はそのまま。
- * ファイルは表示高さ 44px の 2 倍（130×88）。ヘッダーは priority。
+ * ファイルは 130×88。ヘッダーは h-8（32px）で priority。フッターは別の高さ。
  */
 export function LogoTile({
   className = "",
@@ -16,7 +16,7 @@ export function LogoTile({
   /** 隣に組合名の文字がある場所では "" にして読み上げの重複を避けます */
   alt?: string;
   priority?: boolean;
-  /** ヘッダーは h-11（44px）。フッターは h-8（32px）。 */
+  /** ヘッダーは h-8（32px）。フッターは h-[22px]。 */
   heightClass?: string;
 }) {
   return (
@@ -35,7 +35,7 @@ export function LogoTile({
 export function Wordmark() {
   return (
     <Link href="/" className="inline-flex min-h-11 min-w-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
-      <LogoTile priority />
+      <LogoTile priority heightClass="h-8" />
       <span aria-hidden="true" className="hidden whitespace-nowrap text-[15px] tracking-wide sm:inline">ソリューション協同組合</span>
     </Link>
   );

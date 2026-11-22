@@ -199,7 +199,7 @@ summary::-webkit-details-marker {
   }
   /* 最新情報カードの日付と見出しは左揃え。中央寄せだと2行目がガタつく */
   ul.news-rows,
-  ul.news-rows :is(li, a, span, time) {
+  ul.news-rows :is(li, a, span, time, p) {
     text-align: left;
   }
   /* フォームのラベルと入力、開いた FAQ の回答、表、開いた折りたたみの一覧、箇条書き、プライバシー本文は左揃え */

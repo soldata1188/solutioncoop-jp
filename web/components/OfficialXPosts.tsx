@@ -42,14 +42,14 @@ function PostCard({ post }: { post: XPostCard }) {
         {post.image ? (
           <Image src={post.image.url} alt={shortAlt(post.text)} fill sizes={IMAGE_SIZES} loading="lazy" className="object-cover" />
         ) : (
-          <p className="absolute inset-0 line-clamp-6 p-2 text-left text-[12px] font-bold leading-snug text-ink sm:p-3 sm:text-[13px]">{post.text}</p>
+          <p className="absolute inset-0 line-clamp-8 p-2 text-left text-[12px] font-normal leading-[1.6] text-[#555] sm:line-clamp-9 sm:p-3 sm:text-[13px]">{post.text}</p>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 px-2.5 py-2 sm:px-3 sm:py-3">
-        <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
+        <time dateTime={post.createdAt} className="text-[11px] font-normal leading-none tabular-nums text-[#757575]">
           {date}
         </time>
-        <span className="line-clamp-2 text-[13px] font-bold leading-snug text-ink sm:text-[15px]">{post.text}</span>
+        <span className="line-clamp-4 text-[12px] font-normal leading-[1.6] text-[#555] sm:line-clamp-5 sm:text-[13px]">{post.text}</span>
       </div>
       <span className="sr-only">（新しいタブで開きます）</span>
     </a>

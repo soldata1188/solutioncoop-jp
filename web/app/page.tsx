@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconLicense, IconLocal, IconPartners, IconPlane } from "@/components/LineIcons";
+import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
-import { ArrowIcon, LinkButton, Section, SectionHeading, TabCard } from "@/components/ui";
+import { LinkButton, Section, TabCard } from "@/components/ui";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
-import { CONTACT_HREF, CONTACT_LABEL, licenses, org } from "@/lib/site";
 import { LineButton } from "@/components/LineButton";
 import { OfficialXPosts } from "@/components/OfficialXPosts";
 import { pageMeta } from "@/lib/meta";
@@ -77,34 +75,6 @@ const reasons = [
   },
 ];
 
-/** 許可・登録・拠点（旧「選ばれる理由」の3枚。確認済みの事実） */
-const credentials = [
-  {
-    title: "監理団体の許可と登録支援機関の登録",
-    body: `技能実習法に基づく監理団体（${licenses.kanri.kind}）の許可と、特定技能の登録支援機関の登録を受けております。`,
-    note: `許可番号 ${licenses.kanri.number}／登録番号 ${licenses.toroku.number}`,
-    Icon: IconLicense,
-    href: "/about",
-    link: "許可・登録の内容を見る",
-  },
-  {
-    title: "堺市に拠点を構え、大阪の中小企業様に密着",
-    body: "堺市堺区に事務所を構え、大阪府内の中小企業様を中心にきめ細かくご支援いたします。",
-    note: `所在地 ${org.locality}`,
-    Icon: IconLocal,
-    href: "/about",
-    link: "組合概要を見る",
-  },
-  {
-    title: "送り出し機関と連携",
-    body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携し、貴社の業務に合った人材の受入れをご提案いたします。",
-    note: "ベトナム・インドネシア・フィリピン",
-    Icon: IconPartners,
-    href: CONTACT_HREF,
-    link: CONTACT_LABEL,
-  },
-];
-
 export default function Home() {
   return (
     <>
@@ -154,7 +124,7 @@ export default function Home() {
         </ol>
       </Section>
 
-      {/* 選ばれ続ける理由（代表者様ご提供の文言）＋許可・登録・拠点 */}
+      {/* 選ばれ続ける理由（代表者様ご提供の文言） */}
       <Section
         id="reasons"
         tone="pale"
@@ -183,26 +153,6 @@ export default function Home() {
             </TabCard>
           ))}
         </ol>
-
-        <div className="mt-12">
-          <SectionHeading id="credentials-title">許可・登録・拠点</SectionHeading>
-          <ul aria-labelledby="credentials-title" className="mt-6 grid gap-4 md:grid-cols-3">
-            {credentials.map(({ title, body, note, Icon, href, link }) => (
-              <li key={title} className="flex w-full flex-col bg-white p-5 text-center shadow-card sm:text-left">
-                <span className="mx-auto flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:mx-0 sm:size-auto sm:bg-transparent">
-                  <Icon className="size-14 sm:size-10" />
-                </span>
-                <h4 className="mt-3 text-base font-bold leading-snug text-ink">{title}</h4>
-                <p className="mt-2 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
-                <p className="mt-2 text-sm text-muted">※{note}</p>
-                <Link href={href} className="mt-auto inline-flex min-h-11 items-center justify-center gap-2 pt-2 text-sm font-bold text-primary-dark underline underline-offset-4 hover:underline sm:justify-start">
-                  {link}
-                  <ArrowIcon className="h-3 w-3" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </Section>
 
       <Section id="countries" eyebrow="実習生のみなさま" title="外国人材・実習生のみなさまへ" width="narrow" lead="仕事や生活で困ったときの案内ページです。">

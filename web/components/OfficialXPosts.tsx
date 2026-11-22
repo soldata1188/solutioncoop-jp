@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { loadOfficialPosts } from "@/lib/x/load-posts";
-import { X_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
+import { X_HOME_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
 
 function ProfileLink() {
@@ -38,45 +37,26 @@ function formatJstDotDate(iso: string): string {
   return `${year}.${month}.${day}`;
 }
 
-function PostCard({ post }: { post: XPostCard }) {
+function PostRow({ post }: { post: XPostCard }) {
+  const date = formatJstDotDate(post.createdAt) || post.dateLabel;
   return (
-    <article className="flex h-full w-full flex-col rounded border border-line bg-white shadow-card">
-      {post.image ? (
-        <div className="relative aspect-video w-full overflow-hidden rounded-t bg-pale">
-          <Image src={post.image.url} alt={post.image.alt} fill sizes="(min-width: 1024px) 290px, (min-width: 768px) 360px, 100vw" className="object-cover" />
-        </div>
-      ) : null}
-      <div className="px-4 pt-3 pb-4">
-        <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
-          {formatJstDotDate(post.createdAt) || post.dateLabel}
-        </time>
-        <p className="mt-1 line-clamp-6 text-[13px] leading-relaxed text-ink">{post.text}</p>
-      </div>
-      <div className="mt-auto flex justify-center border-t border-line py-2">
-        <a
-          href={post.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center rounded-full px-3 text-xs font-medium text-primary-dark no-underline hover:bg-cta-tint hover:text-primary-darker hover:underline hover:underline-offset-4 focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
-        >
-          公式Xで見る
-          <span className="sr-only">（新しいタブで開きます）</span>
-        </a>
-      </div>
-    </article>
+    <a
+      href={post.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex h-full min-h-11 items-start gap-3 rounded border border-line bg-white px-4 py-3 no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+    >
+      <time dateTime={post.createdAt} className="shrink-0 pt-0.5 text-xs tabular-nums text-muted">
+        {date}
+      </time>
+      <span className="line-clamp-2 min-w-0 flex-1 text-[15px] font-bold leading-snug text-ink">{post.text}</span>
+      <span className="sr-only">（新しいタブで開きます）</span>
+    </a>
   );
 }
 
-/** 3件はタブレットの2列にすると1件が余るので、広い画面まで1列にし、1280px前後で3列にします。 */
-function postGridClass(count: number): string {
-  if (count <= 1) return "grid grid-cols-1 items-stretch gap-4";
-  if (count === 2) return "grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2";
-  if (count === 3) return "grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3";
-  return "grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3";
-}
-
-/** 公式Xの最新投稿。取得できないときは公式アカウントへのリンクだけを出します。 */
-export async function OfficialXPosts({ limit = X_POST_COUNT, showMore = false }: { limit?: number; showMore?: boolean }) {
+/** 公式アカウントの最新投稿。取得できないときは一文と、公式アカウントへのリンクだけを出します。 */
+export async function OfficialXPosts({ limit = X_HOME_POST_COUNT, showMore = false }: { limit?: number; showMore?: boolean }) {
   const result = await loadOfficialPosts();
   const posts = result.posts.slice(0, limit);
   return (
@@ -84,21 +64,23 @@ export async function OfficialXPosts({ limit = X_POST_COUNT, showMore = false }:
       {posts.length > 0 ? (
         <>
           {result.source === "fixture" ? (
-            <p className="mb-6 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
+            <p className="mb-4 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
-          <ul className={postGridClass(posts.length)}>
+          <ul className="grid grid-cols-1 items-stretch gap-3 lg:grid-cols-2">
             {posts.map((post) => (
-              <li key={post.id} className="flex min-w-0">
-                <PostCard post={post} />
+              <li key={post.id} className="min-w-0">
+                <PostRow post={post} />
               </li>
             ))}
           </ul>
         </>
-      ) : null}
+      ) : (
+        <p className="rounded border border-line bg-white px-4 py-3 text-[15px] leading-relaxed text-body">現在お知らせはありません。</p>
+      )}
       {showMore ? (
         <p className="mt-6 text-center">
-          <Link href="/news" className="lift inline-flex min-h-12 items-center justify-center rounded border border-line bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary">
-            最新情報をもっと見る
+          <Link href="/news" className="lift inline-flex min-h-11 items-center justify-center rounded border border-line bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary">
+            一覧を見る
           </Link>
         </p>
       ) : null}

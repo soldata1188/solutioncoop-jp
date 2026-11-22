@@ -7,8 +7,8 @@ export const X_POSTS_CACHE_TAG = "x-posts";
 export const X_POSTS_SUCCESS_REVALIDATE_SECONDS = 3600;
 /** 失敗した取得だけ、この秒数のあとにもう一度試します。失敗そのものはキャッシュしません。 */
 export const X_POSTS_FAILURE_REVALIDATE_SECONDS = 300;
-/** ホームに出す件数。 */
-export const X_POST_COUNT = 3;
+/** ホームに出す件数。取得キャッシュは最新情報ページと共有し、新しい順の先頭だけを使います。 */
+export const X_HOME_POST_COUNT = 12;
 /** 最新情報ページに出す件数。タイムラインは1回の取得でこの件数まで取り、同じキャッシュを使います。 */
 export const X_NEWS_POST_COUNT = 20;
 
@@ -117,7 +117,7 @@ function firstImage(tweet: Record<string, unknown>, mediaByKey: Map<string, Reco
   return null;
 }
 
-export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit = X_POST_COUNT): XPostCard[] {
+export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit = X_NEWS_POST_COUNT): XPostCard[] {
   if (!isRecord(payload) || !Array.isArray(payload.data)) return [];
   const mediaByKey = new Map<string, Record<string, unknown>>();
   if (isRecord(payload.includes) && Array.isArray(payload.includes.media)) {

@@ -5,7 +5,7 @@ import { Fragment } from "react";
  * word-break: auto-phrase に未対応のブラウザ（一部の Safari・Firefox）や、auto-phrase でも語の途中で区切られる場合に備えます。
  * 文言は変えず、指定した語を inline-block の span で包むだけです（読み上げ・検索への影響はありません）。
  */
-const WORDS = ["SDGs未来都市・堺", "お問い合わせ", "メールでの", "無料相談", "個人情報", "電話で", "フォームへ"];
+const WORDS = ["SDGs未来都市・堺", "お問い合わせ", "メールでの", "無料相談", "個人情報", "電話で"];
 const RE = new RegExp(`(${WORDS.join("|")})`);
 
 /** 1つのまとまりを途中で折り返さない */
@@ -30,7 +30,6 @@ const PHRASES: Record<string, string[]> = {
   "LINEで無料相談": ["LINEで", "無料相談"],
   "メールでのお問い合わせ": ["メールでの", "お問い合わせ"],
   "電話で相談": ["電話で", "相談"],
-  "フォームへ進む": ["フォームへ", "進む"],
 };
 export function Phrases({ text }: { text: string }) {
   return <Chunks parts={PHRASES[text] ?? [text]} />;

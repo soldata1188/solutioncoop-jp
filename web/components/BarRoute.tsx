@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-/** 固定バーを出さないページ（/contact はページ内に電話・LINE・フォームがあるため、/privacy は本文の閲覧を優先するため） */
+/** 固定バーを出さないページ（/contact はページ内に電話・メール・LINEがあるため、/privacy は本文の閲覧を優先するため） */
 const HIDDEN_ON = ["/contact", "/privacy"];
 
 /**

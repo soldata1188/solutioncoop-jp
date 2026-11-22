@@ -8,7 +8,7 @@ import { breadcrumbJsonLd } from "@/lib/site";
  * 帯の中は大きい白文字（タイトル）のみとし、本文サイズのリード文は白背景側に置いてコントラストを確保します。
  * path を渡すと、パンくずリスト（表示＋BreadcrumbList 構造化データ）を出力します。
  */
-/** leadAfter：リード文の直下に置く要素（例：/contact の「フォームへ進む」） */
+/** leadAfter：リード文の直下に置く要素 */
 export function PageHeader({ title, lead, path, crumb, ancestors, leadAfter }: { title: string; lead?: string; path?: string; crumb?: string; ancestors?: { name: string; path: string }[]; leadAfter?: React.ReactNode }) {
   const name = crumb ?? title;
   const trail = path ? [...(ancestors ?? []), { name, path }] : [];

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
 import { LinkButton, Section, TabCard } from "@/components/ui";
@@ -155,7 +156,27 @@ export default function Home() {
         </ol>
       </Section>
 
-      <Section id="countries" eyebrow="実習生のみなさま" title="外国人材・実習生のみなさまへ" width="narrow" lead="仕事や生活で困ったときの案内ページです。">
+      <Section
+        id="countries"
+        eyebrow="実習生のみなさま"
+        title="外国人材・実習生のみなさまへ"
+        width="narrow"
+        lead="仕事や生活で困ったときの案内ページです。"
+        visual={
+          <div className="w-full overflow-hidden rounded-lg lg:w-[320px]">
+            <Image
+              src="/images/food-factory-hygiene.webp"
+              alt="食品工場で衛生帽と手袋をつけて作業する人のイメージ"
+              width={1280}
+              height={854}
+              quality={75}
+              loading="lazy"
+              sizes="(min-width: 1024px) 320px, 100vw"
+              className="h-auto w-full"
+            />
+          </div>
+        }
+      >
         <p className="text-center">
           <LinkButton href="/for-workers">案内を見る</LinkButton>
         </p>

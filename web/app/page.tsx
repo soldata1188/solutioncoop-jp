@@ -121,7 +121,7 @@ export default function Home() {
         lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
         visual={
           <img
-            src="/images/jigyo-naiyo-buildings.svg"
+            src="/images/jigyo-naiyo-buildings-green_2026-11-22.svg"
             alt=""
             width={375}
             height={375}

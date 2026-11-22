@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // /news/ を /#news へ直接送るため、Next.js 標準の末尾スラッシュ転送は止め、下の redirects で同じ転送を付け直します。
+  skipTrailingSlashRedirect: true,
   images: {
     // 投稿画像は next/image が同一オリジンの /_next/image 経由で配信します。
     // 許可証は文字が読める品質で、対応ブラウザには AVIF、それ以外には WebP を出します。
@@ -17,7 +19,10 @@ const nextConfig: NextConfig = {
     return [
       { source: "/disclosure", destination: "/about#disclosure", permanent: true },
       { source: "/privacy.html", destination: "/privacy", permanent: true },
-      { source: "/news/:slug+", ...home },
+      { source: "/news", destination: "/#news", permanent: true },
+      { source: "/news/", destination: "/#news", permanent: true },
+      { source: "/news/:slug+", destination: "/#news", permanent: true },
+      { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/news.html", ...home },
       { source: "/受け入れ実績", ...home },
       { source: "/%E5%8F%97%E3%81%91%E5%85%A5%E3%82%8C%E5%AE%9F%E7%B8%BE", ...home },

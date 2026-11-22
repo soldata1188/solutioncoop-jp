@@ -1,5 +1,5 @@
 # 画像の出典
 
-| ファイル | 出典ページ | 撮影者 | ライセンス | 取得日 |
-|---|---|---|---|---|
-| food-factory-hygiene.webp | https://www.pexels.com/photo/woman-in-uniform-working-in-food-industry-5953759/ | Anna Shvets | [Pexels License](https://www.pexels.com/license/) | 2026-11-22 |
+| ファイル | 名前 / 出典ページ | ライセンス | 取得日 |
+|---|---|---|---|
+| jigyo-sodan-conversation.svg | Conversation — https://undraw.co/illustration/conversation_15p8 | [unDraw License](https://undraw.co/license) | 2026-11-22 |

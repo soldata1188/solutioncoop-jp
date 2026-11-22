@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
 import { LinkButton, Section, TabCard } from "@/components/ui";
@@ -163,18 +162,16 @@ export default function Home() {
         width="narrow"
         lead="仕事や生活で困ったときの案内ページです。"
         visual={
-          <div className="w-full overflow-hidden rounded-lg lg:w-[320px]">
-            <Image
-              src="/images/food-factory-hygiene.webp"
-              alt="食品工場で衛生帽と手袋をつけて作業する人のイメージ"
-              width={1280}
-              height={854}
-              quality={75}
-              loading="lazy"
-              sizes="(min-width: 1024px) 320px, 100vw"
-              className="h-auto w-full"
-            />
-          </div>
+          <img
+            src="/images/jigyo-sodan-conversation.svg"
+            alt=""
+            width={842}
+            height={843}
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            className="h-auto w-full max-w-[240px] lg:w-[320px] lg:max-w-[320px]"
+          />
         }
       >
         <p className="text-center">

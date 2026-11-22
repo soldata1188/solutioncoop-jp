@@ -102,9 +102,9 @@ test("maps the newest six posts, photos, video previews, and plain text", () => 
   }, "KumiaiSol", 6);
 
   assert.deepEqual(cards.map((card) => card.id), ["15", "14", "13", "12", "11", "10"]);
-  assert.equal(cards[1]?.image?.url, "https://pbs.twimg.com/media/thumb.jpg");
+  assert.equal(cards[1]?.image?.url, "https://pbs.twimg.com/media/thumb.jpg?name=small");
   assert.equal(cards[1]?.text, "動画です");
-  assert.equal(cards[2]?.image?.url, "https://pbs.twimg.com/media/photo.jpg");
+  assert.equal(cards[2]?.image?.url, "https://pbs.twimg.com/media/photo.jpg?name=small");
   assert.equal(cards[2]?.text, "写真です 詳細は solutioncoop-jp.com");
   assert.equal(cards[3]?.text, "文章のみ #堺市");
   assert.equal(cards[3]?.href, "https://x.com/KumiaiSol/status/12");

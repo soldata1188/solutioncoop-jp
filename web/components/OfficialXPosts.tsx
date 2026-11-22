@@ -3,8 +3,7 @@ import { loadOfficialPosts } from "@/lib/x/load-posts";
 import { X_HOME_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
 
-/** 3列は約300px、2列はビューポートの半分弱。 */
-const IMAGE_SIZES = "(min-width: 1024px) 300px, 45vw";
+const IMAGE_SIZES = "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw";
 
 /** 投稿日。Asia/Tokyo 固定で YYYY.MM.DD（ゼロ埋め）。 */
 function formatJstDotDate(iso: string): string {
@@ -39,10 +38,12 @@ function PostCard({ post }: { post: XPostCard }) {
       rel="noopener noreferrer"
       className="flex h-full flex-col overflow-hidden rounded border border-line bg-white text-left no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-pale-strong">
+      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-pale">
         {post.image ? (
-          <Image src={post.image.url} alt={shortAlt(post.text)} fill sizes={IMAGE_SIZES} className="object-cover" />
-        ) : null}
+          <Image src={post.image.url} alt={shortAlt(post.text)} fill sizes={IMAGE_SIZES} loading="lazy" className="object-cover" />
+        ) : (
+          <p className="absolute inset-0 line-clamp-6 p-2 text-left text-[12px] font-bold leading-snug text-ink sm:p-3 sm:text-[13px]">{post.text}</p>
+        )}
       </div>
       <div className="flex flex-1 flex-col gap-1 px-2.5 py-2 sm:px-3 sm:py-3">
         <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
@@ -66,7 +67,7 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: nu
           {result.source === "fixture" ? (
             <p className="mb-4 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
-          <ul className="news-rows grid grid-cols-2 items-stretch gap-2 sm:gap-3 lg:grid-cols-3">
+          <ul className="news-rows grid grid-cols-2 items-stretch gap-2 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
             {posts.map((post) => (
               <li key={post.id} className="min-w-0">
                 <PostCard post={post} />

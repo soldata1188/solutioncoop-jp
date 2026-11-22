@@ -49,6 +49,14 @@ export function readUserId(payload: unknown): string | null {
 }
 
 /** 表示に使ってよい画像URL。pbs.twimg.com と、見本用のサイト内パスだけです。 */
+/** pbs.twimg.com の画像は小さい版（name=small）だけを使います。サイト内の見本パスはそのままです。 */
+export function smallMediaUrl(url: string): string {
+  if (!url.startsWith("https://pbs.twimg.com/")) return url;
+  const parsed = new URL(url);
+  parsed.searchParams.set("name", "small");
+  return parsed.toString();
+}
+
 export function safeImageUrl(url: string): string | null {
   if (url.startsWith("/images/") || url.startsWith("/brand/")) {
     if (url.includes("..") || url.includes("\\") || url.includes("?") || url.includes("#")) return null;
@@ -112,7 +120,7 @@ function firstImage(tweet: Record<string, unknown>, mediaByKey: Map<string, Reco
     const media = mediaByKey.get(key);
     if (!media) continue;
     const url = mediaUrl(media);
-    if (url) return { url, alt: "投稿の画像" };
+    if (url) return { url: smallMediaUrl(url), alt: "投稿の画像" };
   }
   return null;
 }

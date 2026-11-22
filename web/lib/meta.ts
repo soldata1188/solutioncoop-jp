@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_URL, org } from "./site";
 
-/** OGP 画像（公式ロゴ。ページ側で openGraph を上書きすると継承されないため明示） */
-const ogImage = { url: "/brand/SOL_Solution_Coop_2026-11-19_white.png", width: 130, height: 88, alt: org.name };
+/** OGP 画像（白背景の公式ロゴを 1200×630 に配置。ページ側で openGraph を上書きすると継承されないため明示） */
+const ogImage = { url: "/brand/og_2026-11-19.png", width: 1200, height: 630, alt: org.name };
 
 /** 各ページ共通のメタデータ（タイトル・説明・canonical・OGP・Twitter カード） */
 export function pageMeta(path: string, title: string, description: string): Metadata {
@@ -21,6 +21,6 @@ export function pageMeta(path: string, title: string, description: string): Meta
       description,
       images: [ogImage],
     },
-    twitter: { card: "summary", title: socialTitle, description, images: [ogImage.url] },
+    twitter: { card: "summary_large_image", title: socialTitle, description, images: [ogImage.url] },
   };
 }

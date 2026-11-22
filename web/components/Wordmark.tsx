@@ -10,11 +10,14 @@ export function LogoTile({
   className = "",
   alt = "ソリューション協同組合",
   priority = false,
+  heightClass = "h-11",
 }: {
   className?: string;
   /** 隣に組合名の文字がある場所では "" にして読み上げの重複を避けます */
   alt?: string;
   priority?: boolean;
+  /** ヘッダーは h-11（44px）。フッターは h-8（32px）。 */
+  heightClass?: string;
 }) {
   return (
     <Image
@@ -24,7 +27,7 @@ export function LogoTile({
       height={88}
       priority={priority}
       sizes="65px"
-      className={`h-11 w-auto max-w-none shrink-0 ${className}`}
+      className={`${heightClass} w-auto max-w-none shrink-0 ${className}`}
     />
   );
 }

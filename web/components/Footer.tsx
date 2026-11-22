@@ -41,8 +41,8 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1100px] items-start gap-10 px-4 py-12 md:grid-cols-3 md:gap-12 md:py-16">
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <p className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 text-[15px] font-bold text-white md:justify-start">
-              <span className="inline-flex rounded-lg bg-white p-2">
-                <LogoTile alt="ソリューション協同組合" className="!h-[29px]" />
+              <span className="inline-flex rounded-md bg-white p-1.5">
+                <LogoTile alt="ソリューション協同組合" heightClass="h-8" />
               </span>
               <span aria-hidden="true">{org.name}</span>
             </p>

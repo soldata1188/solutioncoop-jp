@@ -132,6 +132,11 @@ body {
 summary {
   list-style: none;
 }
+
+/* 固定ヘッダー（スペーサーと同じ 57px）の下に「最新情報」の見出しを出す */
+#news {
+  scroll-margin-top: 57px;
+}
 summary::-webkit-details-marker {
   display: none;
 }

@@ -1,6 +1,10 @@
+import Image from "next/image";
 import { loadOfficialPosts } from "@/lib/x/load-posts";
 import { X_HOME_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
+
+/** 3列は約300px、2列はビューポートの半分弱。 */
+const IMAGE_SIZES = "(min-width: 1024px) 300px, 45vw";
 
 /** 投稿日。Asia/Tokyo 固定で YYYY.MM.DD（ゼロ埋め）。 */
 function formatJstDotDate(iso: string): string {
@@ -20,25 +24,38 @@ function formatJstDotDate(iso: string): string {
   return `${year}.${month}.${day}`;
 }
 
-function PostRow({ post }: { post: XPostCard }) {
+/** 画像の代替テキスト。見出しと同じ文を短くする。 */
+function shortAlt(text: string): string {
+  const flat = text.replace(/\s+/g, " ").trim();
+  return flat.length <= 40 ? flat : flat.slice(0, 40);
+}
+
+function PostCard({ post }: { post: XPostCard }) {
   const date = formatJstDotDate(post.createdAt) || post.dateLabel;
   return (
     <a
       href={post.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-full min-h-11 items-start gap-3 rounded border border-line bg-white px-4 py-3 text-left no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+      className="flex h-full flex-col overflow-hidden rounded border border-line bg-white text-left no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
     >
-      <time dateTime={post.createdAt} className="shrink-0 pt-0.5 text-left text-xs tabular-nums text-muted">
-        {date}
-      </time>
-      <span className="line-clamp-2 min-w-0 flex-1 text-left text-[15px] font-bold leading-snug text-ink">{post.text}</span>
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-pale-strong">
+        {post.image ? (
+          <Image src={post.image.url} alt={shortAlt(post.text)} fill sizes={IMAGE_SIZES} className="object-cover" />
+        ) : null}
+      </div>
+      <div className="flex flex-1 flex-col gap-1 px-2.5 py-2 sm:px-3 sm:py-3">
+        <time dateTime={post.createdAt} className="text-xs tabular-nums text-muted">
+          {date}
+        </time>
+        <span className="line-clamp-2 text-[13px] font-bold leading-snug text-ink sm:text-[15px]">{post.text}</span>
+      </div>
       <span className="sr-only">（新しいタブで開きます）</span>
     </a>
   );
 }
 
-/** 公式アカウントの最新投稿。取得できないときは一文と、公式アカウントへのリンクだけを出します。 */
+/** 公式アカウントの最新投稿。取得できないときは一文と、公式アカウントへのボタンだけを出します。 */
 export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: number }) {
   const result = await loadOfficialPosts();
   const posts = result.posts.slice(0, limit);
@@ -49,10 +66,10 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: nu
           {result.source === "fixture" ? (
             <p className="mb-4 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
-          <ul className="news-rows grid grid-cols-1 items-stretch gap-3 lg:grid-cols-2">
+          <ul className="news-rows grid grid-cols-2 items-stretch gap-2 sm:gap-3 lg:grid-cols-3">
             {posts.map((post) => (
               <li key={post.id} className="min-w-0">
-                <PostRow post={post} />
+                <PostCard post={post} />
               </li>
             ))}
           </ul>

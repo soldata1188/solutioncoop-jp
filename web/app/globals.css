@@ -197,7 +197,7 @@ summary::-webkit-details-marker {
   footer :is(h1, h2, h3, h4, p, li, address, a) {
     text-align: center;
   }
-  /* 最新情報の行は日付の右（または下）に見出しを左揃え。中央寄せだと2行目がガタつく */
+  /* 最新情報カードの日付と見出しは左揃え。中央寄せだと2行目がガタつく */
   ul.news-rows,
   ul.news-rows :is(li, a, span, time) {
     text-align: left;

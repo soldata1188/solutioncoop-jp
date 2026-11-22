@@ -2,22 +2,6 @@ import { loadOfficialPosts } from "@/lib/x/load-posts";
 import { X_HOME_POST_COUNT, type XPostCard } from "@/lib/x/map-posts";
 import { X_URL } from "@/lib/site";
 
-function ProfileLink() {
-  return (
-    <p className="mt-4 text-center">
-      <a
-        href={X_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex min-h-11 items-center px-3 text-[15px] font-bold text-primary-dark underline underline-offset-4"
-      >
-        Xで最新情報を見る
-        <span className="sr-only">（新しいタブで開きます）</span>
-      </a>
-    </p>
-  );
-}
-
 /** 投稿日。Asia/Tokyo 固定で YYYY.MM.DD（ゼロ埋め）。 */
 function formatJstDotDate(iso: string): string {
   const date = new Date(iso);
@@ -43,12 +27,12 @@ function PostRow({ post }: { post: XPostCard }) {
       href={post.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-full min-h-11 items-start gap-3 rounded border border-line bg-white px-4 py-3 no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
+      className="flex h-full min-h-11 items-start gap-3 rounded border border-line bg-white px-4 py-3 text-left no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
     >
-      <time dateTime={post.createdAt} className="shrink-0 pt-0.5 text-xs tabular-nums text-muted">
+      <time dateTime={post.createdAt} className="shrink-0 pt-0.5 text-left text-xs tabular-nums text-muted">
         {date}
       </time>
-      <span className="line-clamp-2 min-w-0 flex-1 text-[15px] font-bold leading-snug text-ink">{post.text}</span>
+      <span className="line-clamp-2 min-w-0 flex-1 text-left text-[15px] font-bold leading-snug text-ink">{post.text}</span>
       <span className="sr-only">（新しいタブで開きます）</span>
     </a>
   );
@@ -65,7 +49,7 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: nu
           {result.source === "fixture" ? (
             <p className="mb-4 text-center text-[13px] font-bold text-ink">これは表示確認用の見本です。実際の投稿ではありません。</p>
           ) : null}
-          <ul className="grid grid-cols-1 items-stretch gap-3 lg:grid-cols-2">
+          <ul className="news-rows grid grid-cols-1 items-stretch gap-3 lg:grid-cols-2">
             {posts.map((post) => (
               <li key={post.id} className="min-w-0">
                 <PostRow post={post} />
@@ -87,7 +71,6 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: nu
           <span className="sr-only">（新しいタブで開きます）</span>
         </a>
       </p>
-      <ProfileLink />
     </div>
   );
 }

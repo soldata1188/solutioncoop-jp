@@ -124,14 +124,32 @@ export default function Home() {
         </ol>
       </Section>
 
-      {/* 選ばれ続ける理由（代表者様ご提供の文言） */}
+      {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
       <Section
         id="reasons"
         tone="pale"
+        width="wide"
+        visualShare="half"
         eyebrow="80社以上の企業様に選ばれた実績"
         title="80社以上に選ばれ続ける理由"
         sub={<Chunks parts={["— 受入れ企業様が実感する、", "技能実習・育成就労・", "特定技能対応の", "4つの理由 —"]} />}
         lead="技能実習生の受入れから育成就労制度への移行、特定技能への対応まで。外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
+        visual={
+          <picture className="block w-full">
+            <source srcSet="/images/global-jinzai-illustration.avif" type="image/avif" />
+            <source srcSet="/images/global-jinzai-illustration.webp" type="image/webp" />
+            <img
+              src="/images/global-jinzai-illustration.webp"
+              alt="グローバル人材 若い力を日本企業へ（外国人材と日本企業をつなぐイメージ）"
+              width={1280}
+              height={956}
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
+              className="h-auto w-full"
+            />
+          </picture>
+        }
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {reasons.map(({ title, sub, body, Icon }, i) => (

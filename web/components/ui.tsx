@@ -138,6 +138,7 @@ export function Section({
   sub,
   reveal = true,
   visual,
+  visualShare = "aside",
 }: {
   id?: string;
   title?: React.ReactNode;
@@ -153,13 +154,18 @@ export function Section({
   reveal?: boolean;
   /** 見出しの横（狭い画面では見出しの下）に置く補足の図 */
   visual?: React.ReactNode;
+  /** aside は幅320px。half は見出しと図を半々 */
+  visualShare?: "aside" | "half";
 }) {
   const heading = title ? <SectionHeading id={id} lead={lead} eyebrow={eyebrow} sub={sub}>{title}</SectionHeading> : null;
+  const visualGrid = visualShare === "half"
+    ? "lg:grid lg:grid-cols-2 lg:items-center lg:gap-10"
+    : "lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-12";
   return (
     <section aria-labelledby={title && id ? id : undefined} data-reveal={reveal ? "" : undefined} className={`${tone === "pale" ? "bg-pale" : "bg-white"} ${className}`}>
       <div className={`mx-auto ${widths[width]} px-4 ${flushBottom ? "pt-14 md:pt-[72px]" : "py-14 md:py-[72px]"}`}>
         {heading && visual ? (
-          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-12">
+          <div className={visualGrid}>
             {heading}
             <div className="mt-6 flex justify-center lg:mt-0">{visual}</div>
           </div>

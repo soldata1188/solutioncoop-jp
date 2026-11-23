@@ -127,7 +127,6 @@ export default function Home() {
       {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
       <Section
         id="reasons"
-        tone="pale"
         width="wide"
         visualShare="half"
         eyebrow="80社以上の企業様に選ばれた実績"

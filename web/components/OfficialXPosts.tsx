@@ -38,11 +38,19 @@ function PostCard({ post }: { post: XPostCard }) {
       rel="noopener noreferrer"
       className="flex h-full flex-col overflow-hidden rounded border border-line bg-white text-left no-underline hover:border-primary focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!"
     >
-      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-pale">
+      <div className={`relative aspect-square w-full shrink-0 overflow-hidden ${post.image ? "bg-pale" : "bg-[#f5f5f5]"}`}>
         {post.image ? (
           <Image src={post.image.url} alt={shortAlt(post.text)} fill sizes={IMAGE_SIZES} loading="lazy" className="object-cover" />
         ) : (
-          <p className="absolute inset-0 line-clamp-8 p-2 text-left text-[12px] font-normal leading-[1.6] text-[#555] sm:line-clamp-9 sm:p-3 sm:text-[13px]">{post.text}</p>
+          <Image
+            src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
+            alt="ソリューション協同組合"
+            width={130}
+            height={88}
+            sizes={IMAGE_SIZES}
+            loading="lazy"
+            className="absolute inset-0 m-auto h-auto max-h-[46%] w-auto max-w-[72%] object-contain"
+          />
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 px-2.5 py-2 sm:px-3 sm:py-3">

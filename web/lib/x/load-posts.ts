@@ -1,15 +1,14 @@
 import { readFileSync } from "node:fs";
-import { unstable_cache } from "next/cache";
+import { unstable_cache, unstable_noStore as noStore } from "next/cache";
 import { X_HANDLE, X_URL } from "@/lib/site";
 import { xFixturePayload } from "./fixture";
 import {
+  X_ACCOUNT_USER_ID,
   X_NEWS_POST_COUNT,
   X_POSTS_CACHE_TAG,
   X_POSTS_SUCCESS_REVALIDATE_SECONDS,
-  buildUserByUsernameUrl,
-  buildUserTweetsUrl,
+  fetchUserTweets,
   mapTweetsToCards,
-  readUserId,
   type XPostCard,
 } from "./map-posts";
 
@@ -48,26 +47,19 @@ function readFixturePayload(): unknown {
   }
 }
 
-async function lookupUserId(): Promise<string> {
-  const token = bearerToken();
-  if (!token) throw new Error("x posts unavailable");
-  const response = await fetch(buildUserByUsernameUrl(X_HANDLE), {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!response.ok) throw new Error("x posts unavailable");
-  const id = readUserId(await response.json());
-  if (!id) throw new Error("x posts unavailable");
-  return id;
+function resolveUserId(): string {
+  return userIdFromEnv() ?? X_ACCOUNT_USER_ID;
 }
 
 async function fetchTweets(userId: string): Promise<XPostCard[]> {
   const token = bearerToken();
   if (!token) throw new Error("x posts unavailable");
-  const response = await fetch(buildUserTweetsUrl(userId), {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!response.ok) throw new Error("x posts unavailable");
-  return mapTweetsToCards(await response.json(), X_HANDLE, X_NEWS_POST_COUNT);
+  const payload = await fetchUserTweets(userId, token);
+  const posts = mapTweetsToCards(payload, X_HANDLE, X_NEWS_POST_COUNT);
+  if (posts.length === 0) {
+    console.error(`[x-posts] timeline for user ${userId} had no posts after filtering`);
+  }
+  return posts;
 }
 
 /**
@@ -81,8 +73,11 @@ async function loadFresh(): Promise<XPostCard[]> {
     if (posts.length === 0) throw new Error("x posts unavailable");
     return posts;
   }
-  if (!bearerToken()) throw new Error("x posts unavailable");
-  const userId = userIdFromEnv() ?? (await lookupUserId());
+  if (!bearerToken()) {
+    console.error("[x-posts] X_BEARER_TOKEN is not set");
+    throw new Error("x posts unavailable");
+  }
+  const userId = resolveUserId();
   const posts = await fetchTweets(userId);
   if (posts.length === 0) throw new Error("x posts unavailable");
   return posts;
@@ -100,13 +95,21 @@ function isNextControlFlowError(error: unknown): boolean {
   return digest.startsWith("DYNAMIC_SERVER_USAGE") || digest.startsWith("HANGING_PROMISE_REJECTION");
 }
 
-/** 失敗しても空を返し、ページのビルドや表示を止めません。トークンは返しません。 */
+/** 失敗しても空を返し、ページのビルドや表示を止めません。空の結果はキャッシュしません。トークンは返しません。 */
 export async function loadOfficialPosts(): Promise<OfficialPostsResult> {
   try {
     const posts = await loadSuccessCached();
+    if (posts.length === 0) {
+      noStore();
+      console.error("[x-posts] empty timeline; the empty page is not cached");
+      return { source: "fallback", posts: [] };
+    }
     return { source: xFixtureEnabled() ? "fixture" : "api", posts };
   } catch (error) {
     if (isNextControlFlowError(error)) throw error;
+    noStore();
+    const message = error instanceof Error ? error.message : "unknown";
+    console.error(`[x-posts] load failed; the empty page is not cached: ${message}`);
     return { source: "fallback", posts: [] };
   }
 }

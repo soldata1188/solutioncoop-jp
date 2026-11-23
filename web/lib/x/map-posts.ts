@@ -1,6 +1,8 @@
 /** X API v2 のユーザー投稿レスポンスを、画面用のカードへ変換します。トークンは扱いません。 */
 
 export const X_API_BASE = "https://api.x.com";
+/** @KumiaiSol。ユーザー名検索に失敗してもタイムラインを取りに行けるように固定します。 */
+export const X_ACCOUNT_USER_ID = "2116869676546572289";
 /** 取得に成功した投稿のキャッシュタグ。1時間で切れ、手動更新でも破棄します。 */
 export const X_POSTS_CACHE_TAG = "x-posts";
 /** 成功した一覧を保持する秒数。手動更新（タグ破棄）でも先に捨てられます。 */
@@ -143,6 +145,7 @@ export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit =
     if (!dateLabel) continue;
     const text = displayText(item.text, item.entities);
     if (!text) continue;
+    if (text.includes("#新しいプロフィール画像")) continue;
     cards.push({
       id: item.id,
       text,
@@ -155,4 +158,25 @@ export function mapTweetsToCards(payload: unknown, handle = "KumiaiSol", limit =
 
   cards.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
   return cards.slice(0, limit);
+}
+
+/** タイムラインを取得します。失敗した 200 応答を Data Cache に残さないため cache: no-store です。トークンはログに出しません。 */
+export async function fetchUserTweets(userId: string, token: string, fetchImpl: typeof fetch = fetch): Promise<unknown> {
+  const response = await fetchImpl(buildUserTweetsUrl(userId), {
+    cache: "no-store",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!response.ok) {
+    let title = "";
+    try {
+      const body = await response.json();
+      const raw = isRecord(body) && Array.isArray(body.errors) && isRecord(body.errors[0]) ? body.errors[0].title : "";
+      if (typeof raw === "string" && !/bearer|token|authorization/i.test(raw)) title = raw.slice(0, 80);
+    } catch {
+      title = "";
+    }
+    console.error(`[x-posts] GET /2/users/${userId}/tweets failed: HTTP ${response.status}${title ? ` ${title}` : ""}`);
+    throw new Error("x posts unavailable");
+  }
+  return response.json();
 }

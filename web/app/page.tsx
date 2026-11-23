@@ -136,8 +136,16 @@ export default function Home() {
         lead="技能実習生の受入れから育成就労制度への移行、特定技能への対応まで。外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
         visual={
           <picture className="block w-full">
-            <source srcSet="/images/global-jinzai-illustration.avif" type="image/avif" />
-            <source srcSet="/images/global-jinzai-illustration.webp" type="image/webp" />
+            <source
+              type="image/avif"
+              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
+              srcSet="/images/global-jinzai-illustration-480.avif 480w, /images/global-jinzai-illustration-640.avif 640w, /images/global-jinzai-illustration-880.avif 880w, /images/global-jinzai-illustration.avif 1280w"
+            />
+            <source
+              type="image/webp"
+              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
+              srcSet="/images/global-jinzai-illustration-480.webp 480w, /images/global-jinzai-illustration-640.webp 640w, /images/global-jinzai-illustration-880.webp 880w, /images/global-jinzai-illustration.webp 1280w"
+            />
             <img
               src="/images/global-jinzai-illustration.webp"
               alt="グローバル人材 若い力を日本企業へ（外国人材と日本企業をつなぐイメージ）"

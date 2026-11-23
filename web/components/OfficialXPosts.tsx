@@ -84,14 +84,14 @@ export async function OfficialXPosts({ limit = X_HOME_POST_COUNT }: { limit?: nu
           </ul>
         </>
       ) : (
-        <p className="rounded border border-line bg-white px-4 py-3 text-[15px] leading-relaxed text-body">現在お知らせはありません。</p>
+        <p className="rounded border border-[#ddf1e4] bg-[#eef8f1] px-4 py-3 text-[15px] leading-relaxed text-body">現在お知らせはありません。</p>
       )}
       <p className="mt-6 text-center">
         <a
           href={X_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="lift inline-flex min-h-11 items-center justify-center rounded border border-line bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary"
+          className="lift inline-flex min-h-11 items-center justify-center rounded border border-[#1e7f46] bg-white px-8 font-bold text-ink no-underline shadow-sm hover:border-primary"
         >
           公式Xで見る
           <span className="sr-only">（新しいタブで開きます）</span>

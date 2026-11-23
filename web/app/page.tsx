@@ -223,7 +223,6 @@ export default function Home() {
       {/* 最新情報。新しい順・最大12件をサーバーで HTML にします。埋め込みスクリプトは読みません。 */}
       <Section
         id="news"
-        tone="pale"
         title="最新情報"
         width="wide"
         lead="当組合の公式アカウントの投稿を、新しい順に掲載しています。"

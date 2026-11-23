@@ -139,18 +139,18 @@ export default function Home() {
             <source
               type="image/avif"
               sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.avif 480w, /images/global-jinzai-illustration-640.avif 640w, /images/global-jinzai-illustration-880.avif 880w, /images/global-jinzai-illustration.avif 1280w"
+              srcSet="/images/global-jinzai-illustration-480.avif 480w, /images/global-jinzai-illustration-640.avif 640w, /images/global-jinzai-illustration-880.avif 880w, /images/global-jinzai-illustration-1000.avif 1000w"
             />
             <source
               type="image/webp"
               sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.webp 480w, /images/global-jinzai-illustration-640.webp 640w, /images/global-jinzai-illustration-880.webp 880w, /images/global-jinzai-illustration.webp 1280w"
+              srcSet="/images/global-jinzai-illustration-480.webp 480w, /images/global-jinzai-illustration-640.webp 640w, /images/global-jinzai-illustration-880.webp 880w, /images/global-jinzai-illustration-1000.webp 1000w"
             />
             <img
-              src="/images/global-jinzai-illustration.webp"
+              src="/images/global-jinzai-illustration-1000.webp"
               alt="グローバル人材 若い力を日本企業へ（外国人材と日本企業をつなぐイメージ）"
-              width={1280}
-              height={956}
+              width={1000}
+              height={746}
               loading="lazy"
               decoding="async"
               sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"

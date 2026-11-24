@@ -1,21 +1,42 @@
 # Mẫu Nginx cho site tĩnh. CHƯA áp dụng lên máy chủ.
 # Domain solutioncoop-jp.com chỉ là placeholder. Chưa chạy certbot.
-# Include file này trong khối http.
+# Include file này trong khối http (đã có mime.types).
+# Copy deploy/sakura/security-headers.conf thành
+# /etc/nginx/snippets/solutioncoop-security-headers.conf
 # Brotli: nếu máy đã có module ngx_brotli thì có thể thêm `brotli on;`
-# và `brotli_types` cùng các kiểu bên dưới. File này không bật brotli,
-# để `nginx -t` vẫn chạy khi chưa cài module.
+# và `brotli_types` cùng các kiểu gzip. File này không bật brotli.
 
+# www, HTTP và HTTPS, luôn về tên miền gốc.
 server {
     listen 80;
     listen [::]:80;
-    server_name solutioncoop-jp.com www.solutioncoop-jp.com;
-    return 301 https://$host$request_uri;
+    server_name www.solutioncoop-jp.com;
+    return 301 https://solutioncoop-jp.com$request_uri;
 }
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name solutioncoop-jp.com www.solutioncoop-jp.com;
+    server_name www.solutioncoop-jp.com;
+
+    # Cùng chứng chỉ với tên miền gốc. Chứng chỉ phải có cả hai tên.
+    ssl_certificate     /etc/letsencrypt/live/solutioncoop-jp.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/solutioncoop-jp.com/privkey.pem;
+
+    return 301 https://solutioncoop-jp.com$request_uri;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name solutioncoop-jp.com;
+    return 301 https://solutioncoop-jp.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name solutioncoop-jp.com;
 
     # certbot --nginx sẽ tạo hoặc trỏ các file này. Chưa có chứng chỉ trong repo.
     ssl_certificate     /etc/letsencrypt/live/solutioncoop-jp.com/fullchain.pem;
@@ -29,9 +50,7 @@ server {
     gzip_min_length 256;
     gzip_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json;
 
-    add_header X-Frame-Options SAMEORIGIN always;
-    add_header X-Content-Type-Options nosniff always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    include /etc/nginx/snippets/solutioncoop-security-headers.conf;
 
     # /news/ và /faq/ đi một bước tới đích. Các URL có dấu / cuối khác bỏ dấu /.
     rewrite ^/(?!news/$|faq/$)(.+)/$ /$1 permanent;
@@ -63,35 +82,46 @@ server {
     location @news_gone { return 301 /; }
 
     location ^~ /_next/static/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
         add_header Cache-Control "public, max-age=31536000, immutable" always;
-        add_header X-Frame-Options SAMEORIGIN always;
-        add_header X-Content-Type-Options nosniff always;
-        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+        try_files $uri =404;
+    }
+
+    # Payload .txt của Next. Không chặn, vì điều hướng phía client cần đọc.
+    # Hai file công khai không gắn noindex.
+    location = /robots.txt {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+    location = /llms.txt {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+    location ~ \.txt$ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header X-Robots-Tag "noindex" always;
+        add_header Cache-Control "no-cache" always;
         try_files $uri =404;
     }
 
     location = / {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
         add_header Cache-Control "no-cache" always;
-        add_header X-Frame-Options SAMEORIGIN always;
-        add_header X-Content-Type-Options nosniff always;
-        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
         try_files /index.html =404;
     }
 
     location / {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
         add_header Cache-Control "no-cache" always;
-        add_header X-Frame-Options SAMEORIGIN always;
-        add_header X-Content-Type-Options nosniff always;
-        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
         try_files $uri.html $uri $uri/ =404;
     }
 
     error_page 404 /404.html;
     location = /404.html {
         internal;
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
         add_header Cache-Control "no-cache" always;
-        add_header X-Frame-Options SAMEORIGIN always;
-        add_header X-Content-Type-Options nosniff always;
-        add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     }
 }

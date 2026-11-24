@@ -1,0 +1,29 @@
+[Unit]
+Description=Solutioncoop web (Next.js standalone)
+After=network.target
+
+[Service]
+User=web
+Group=web
+WorkingDirectory=/var/www/solutioncoop/current
+EnvironmentFile=/var/www/solutioncoop/shared/.env
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3000
+ExecStart=/usr/bin/env node server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

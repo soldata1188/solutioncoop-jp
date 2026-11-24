@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   poweredByHeader: false,
   // /news/ を /#news へ直接送るため、Next.js 標準の末尾スラッシュ転送は止め、下の redirects で同じ転送を付け直します。
   skipTrailingSlashRedirect: true,

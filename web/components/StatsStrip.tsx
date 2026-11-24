@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import { AchievementCards } from "@/components/AchievementCards";
 import { sdgs } from "@/lib/site";
 
@@ -14,13 +15,19 @@ const SDGS_WEBP =
  * https://www.city.sakai.lg.jp/shisei/toshi/sdgs/SDGsmiraitoshi_logo.files/date02.zip
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {
+  preload(SDGS_AVIF, {
+    as: "image",
+    type: "image/avif",
+    imageSrcSet: SDGS_AVIF,
+    imageSizes: SDGS_SIZES,
+    fetchPriority: "high",
+  });
   return (
     <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
       <h2 id="stats-title" className="sr-only">当組合の実績</h2>
       <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
         <div className="mb-8 flex justify-center bg-white">
           <div className="w-[min(100%,320px)] sm:w-[440px]">
-            <link rel="preload" as="image" type="image/avif" imageSrcSet={SDGS_AVIF} imageSizes={SDGS_SIZES} fetchPriority="high" />
             <picture>
               <source type="image/avif" sizes={SDGS_SIZES} srcSet={SDGS_AVIF} />
               <source type="image/webp" sizes={SDGS_SIZES} srcSet={SDGS_WEBP} />
@@ -30,6 +37,7 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
                 width={6579}
                 height={1851}
                 sizes={SDGS_SIZES}
+                fetchPriority="high"
                 decoding="async"
                 className="block h-auto w-full"
               />

@@ -76,6 +76,11 @@ server {
     location = /受入実績 { return 301 /; }
 
     # Ảnh đã xuất (tên có kích thước). HTML vẫn no-cache ở location /.
+    location ^~ /brand/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
     location ^~ /images/ {
         include /etc/nginx/snippets/solutioncoop-security-headers.conf;
         add_header Cache-Control "public, max-age=31536000, immutable" always;

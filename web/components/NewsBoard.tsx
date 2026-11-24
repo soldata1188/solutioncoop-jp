@@ -13,7 +13,7 @@ const SIZES_STANDARD = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width:
 const SIZES_DOUBLE = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
 const SIZES_FULL_MOBILE = "(max-width: 767px) calc(100vw - 32px), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
 
-type TileImage = { id: string; imageAlt?: string; imageWidths?: readonly number[] };
+type TileImage = { id: string; imageAlt?: string; imageWidths?: readonly number[]; imageHeight?: number };
 
 function tileSizes(index: number): string {
   if (MOBILE_WIDE.has(index)) return SIZES_FULL_MOBILE;
@@ -53,7 +53,7 @@ function CardImage({ item, alt, sizes }: { item: TileImage; alt: string; sizes: 
         src={`/news/${item.id}-640.webp`}
         alt={alt}
         width={fallbackWidth}
-        height={Math.round((fallbackWidth * 3) / 4)}
+        height={item.imageHeight ?? Math.round((fallbackWidth * 3) / 4)}
         loading="lazy"
         decoding="async"
         sizes={sizes}

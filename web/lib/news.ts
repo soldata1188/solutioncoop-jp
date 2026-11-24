@@ -111,6 +111,8 @@ export type NewsPhotoTile = {
   shortTitle?: string;
   imageAlt: string;
   imageWidths: readonly number[];
+  /** 4:3 以外の最大画像の高さ。無ければ幅の 3/4 */
+  imageHeight?: number;
 };
 
 export const newsPhotos: NewsPhotoTile[] = [
@@ -149,6 +151,7 @@ export const newsPhotos: NewsPhotoTile[] = [
     id: "photo-07",
     shortTitle: "憲法施行記念式並びに表彰式",
     imageAlt: "木目の壁を背景に正装で並ぶ集合写真",
-    imageWidths: [320, 480, 640],
+    imageWidths: [320, 480, 640, 960],
+    imageHeight: 539,
   },
 ];

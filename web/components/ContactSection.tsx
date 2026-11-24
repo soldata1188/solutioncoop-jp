@@ -1,6 +1,6 @@
 import { PhoneIcon } from "@/components/Header";
 import { LineButton } from "@/components/LineButton";
-import { fullAddress, org, repoFacts, TEL_HREF } from "@/lib/site";
+import { org, repoFacts, TEL_HREF } from "@/lib/site";
 
 const focus = "focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!";
 
@@ -9,24 +9,6 @@ function MailIcon({ className = "h-5 w-5" }: { className?: string }) {
     <svg aria-hidden="true" viewBox="0 0 24 24" className={`shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="M3 7l9 7 9-7" />
-    </svg>
-  );
-}
-
-function PinIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className={`shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" />
-      <circle cx="12" cy="10" r="2.2" />
-    </svg>
-  );
-}
-
-function ClockIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className={`shrink-0 ${className}`} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M12 8v5l3 2" />
     </svg>
   );
 }
@@ -68,25 +50,6 @@ export function ContactMethods() {
         <p className="mt-2 text-[15px] leading-relaxed text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
         <LineButton className="mt-4 flex min-h-14 w-full gap-2 px-4 text-base sm:w-fit sm:min-w-64 sm:px-8" iconClassName="h-5 w-5" />
         <p className="mt-3 text-sm leading-relaxed text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
-      </article>
-
-      <article className="rounded border border-line bg-white p-5 shadow-card sm:p-6">
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="flex items-start gap-3">
-            <MethodIcon><PinIcon /></MethodIcon>
-            <div>
-              <h3 className="text-lg font-bold leading-snug text-ink">所在地</h3>
-              <address className="mt-2 text-[15px] leading-relaxed text-body not-italic">{fullAddress}</address>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <MethodIcon><ClockIcon /></MethodIcon>
-            <div>
-              <h3 className="text-lg font-bold leading-snug text-ink">受付時間</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-body">{repoFacts.hours}</p>
-            </div>
-          </div>
-        </div>
       </article>
     </div>
   );

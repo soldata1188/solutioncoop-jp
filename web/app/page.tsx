@@ -3,8 +3,6 @@ import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, Ic
 import { HomeHero } from "@/components/HomeHero";
 import { LinkButton, Section, TabCard } from "@/components/ui";
 import { StatsStrip } from "@/components/StatsStrip";
-import { Chunks } from "@/components/KeepWords";
-import { LineButton } from "@/components/LineButton";
 import { NewsBoard } from "@/components/NewsBoard";
 import { ContactMethods } from "@/components/ContactSection";
 import { pageMeta } from "@/lib/meta";
@@ -124,10 +122,9 @@ export default function Home() {
         id="reasons"
         width="wide"
         visualShare="half"
-        eyebrow="80社以上の企業様に選ばれた実績"
         title="80社以上に選ばれ続ける理由"
-        sub={<Chunks parts={["— 受入れ企業様が実感する、", "技能実習・育成就労・", "特定技能対応の", "4つの理由 —"]} />}
-        lead="技能実習生の受入れから育成就労制度への移行、特定技能への対応まで。外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
+        sub="— 受入れ企業様が実感する4つの理由 —"
+        lead="外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
         visual={
           <picture className="block w-full">
             <source
@@ -177,7 +174,6 @@ export default function Home() {
 
       <Section
         id="countries"
-        eyebrow="実習生のみなさま"
         title={
           <>
             <span className="lg:block lg:whitespace-nowrap">外国人材・</span>
@@ -204,23 +200,12 @@ export default function Home() {
         </p>
       </Section>
 
-      {/* LINEでのご相談（ホームの中段の枠。文章はお問い合わせ節の LINE 案内と同じ既存の文言のみ） */}
-      <Section id="line" tone="pale" title="LINEでのご相談" width="default">
-        <div className="mx-auto max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
-          <p className="text-[15px] text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
-          <p className="mt-2 text-sm text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
-          <div className="mt-5">
-            <LineButton className="flex min-h-14 w-full gap-2 px-8 text-base sm:mx-auto sm:w-auto sm:min-w-64 sm:inline-flex" iconClassName="h-5 w-5" />
-          </div>
-        </div>
-      </Section>
-
       {/* 活動情報。lib/news.ts の文章を静的なカードにしています。 */}
       <Section
         id="news"
         title="活動情報"
         width="wide"
-        lead="当組合からのお知らせを、新しい順に掲載しています。"
+        lead="当組合の活動や、講習・研修の様子を写真でご紹介します。"
       >
         <NewsBoard />
       </Section>

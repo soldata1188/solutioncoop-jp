@@ -53,12 +53,14 @@ server {
     include /etc/nginx/snippets/solutioncoop-security-headers.conf;
 
     # /news/ và /faq/ đi một bước tới đích. Các URL có dấu / cuối khác bỏ dấu /.
-    rewrite ^/(?!news/$|faq/$)(.+)/$ /$1 permanent;
+    rewrite ^/(?!news/$|faq/$|contact/$)(.+)/$ /$1 permanent;
 
     location = /disclosure { return 301 /about#disclosure; }
     location = /privacy.html { return 301 /privacy; }
     location = /news { return 301 /#news; }
     location = /news/ { return 301 /#news; }
+    location = /contact { return 301 "/#contact"; }
+    location = /contact/ { return 301 "/#contact"; }
     location = /faq { return 301 /; }
     location = /faq/ { return 301 /; }
     location = /news.html { return 301 /; }

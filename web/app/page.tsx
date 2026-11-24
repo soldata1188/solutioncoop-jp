@@ -6,6 +6,7 @@ import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
 import { LineButton } from "@/components/LineButton";
 import { NewsBoard } from "@/components/NewsBoard";
+import { ContactMethods } from "@/components/ContactSection";
 import { pageMeta } from "@/lib/meta";
 
 export const metadata: Metadata = {
@@ -203,7 +204,7 @@ export default function Home() {
         </p>
       </Section>
 
-      {/* LINEでのご相談（ホームの中段の枠。文章は /contact の LINE 案内と同じ既存の文言のみ） */}
+      {/* LINEでのご相談（ホームの中段の枠。文章はお問い合わせ節の LINE 案内と同じ既存の文言のみ） */}
       <Section id="line" tone="pale" title="LINEでのご相談" width="default">
         <div className="mx-auto max-w-[620px] rounded border border-line bg-white p-5 sm:text-center">
           <p className="text-[15px] text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
@@ -214,14 +215,24 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 最新情報。lib/news.ts の文章を静的なカードにしています。 */}
+      {/* 活動情報。lib/news.ts の文章を静的なカードにしています。 */}
       <Section
         id="news"
-        title="最新情報"
+        title="活動情報"
         width="wide"
         lead="当組合からのお知らせを、新しい順に掲載しています。"
       >
         <NewsBoard />
+      </Section>
+
+      <Section
+        id="contact"
+        title="お問い合わせ"
+        tone="pale"
+        width="wide"
+        lead="外国人材の受入れや育成就労制度について、お電話、メール、またはLINEにてご相談いただけます。"
+      >
+        <ContactMethods />
       </Section>
     </>
   );

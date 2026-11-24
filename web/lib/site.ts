@@ -60,7 +60,7 @@ export const nav = [
   { href: "/#business", label: "事業内容" },
   { href: "/#reasons", label: "選ばれる理由" },
   { href: "/for-workers", label: "実習生の方へ" },
-  { href: "/#news", label: "最新情報" },
+  { href: "/#news", label: "活動情報" },
   { href: "/about", label: "組合概要" },
   { href: "/about#disclosure", label: "情報公開" },
 ];
@@ -109,8 +109,8 @@ export const repoFacts = {
   ] as { year: string; text: string; confirmed?: boolean }[],
 };
 
-export const CONTACT_HREF = "/contact";
-/** /contact へのボタンの文言（代表者様のご指示により全ボタンで統一） */
+export const CONTACT_HREF = "/#contact";
+/** ホームのお問い合わせ節へのボタンの文言（代表者様のご指示により全ボタンで統一） */
 export const CONTACT_LABEL = "メールでのお問い合わせ";
 /** 電話ボタンの読み上げ名（アイコンのみのボタン用） */
 export const TEL_ARIA = "お電話でのご相談";

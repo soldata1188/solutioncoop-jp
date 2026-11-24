@@ -39,6 +39,12 @@ Nginx đọc `/var/www/solutioncoop/current`. Không cần chạy Node để xem
 
 Cần Boss duyệt trước khi sửa Nginx.
 
+Xem phiên bản Nginx trước khi áp file mẫu. `http2 on;` cần nginx >= 1.25.1. Bản cũ hơn thì đổi thành `listen 443 ssl http2;` (ghi chú nằm trong `nginx.conf.example`).
+
+```bash
+nginx -v
+```
+
 Trong `deploy/sakura/nginx.conf.example` đã có:
 
 ```
@@ -79,7 +85,11 @@ Kỳ vọng:
   - `/privacy` → `https://solutioncoop-jp.com/privacy`
   - `/contact` → `https://solutioncoop-jp.com` (trang chủ)
 - Trang chủ trả `200`.
-- File AVIF logo SDGs trả `200` và `Content-Type` là `image/avif`.
+- File AVIF logo SDGs trả `200`, `Content-Type` là `image/avif`, và `Cache-Control` có `max-age=604800` (không có `immutable`).
+
+```bash
+curl -sI https://solutioncoop-jp.com/images/sdgs-logo-yoko-880.avif | grep -i cache-control
+```
 
 Xem canonical:
 

@@ -3,8 +3,7 @@
 # Include file này trong khối http (đã có mime.types).
 # Copy deploy/sakura/security-headers.conf thành
 # /etc/nginx/snippets/solutioncoop-security-headers.conf
-# Brotli: nếu máy đã có module ngx_brotli thì có thể thêm `brotli on;`
-# và `brotli_types` cùng các kiểu gzip. File này không bật brotli.
+# Brotli không được bật. Khối tùy chọn (đang chú thích) nằm dưới gzip.
 
 # www, HTTP và HTTPS, luôn về tên miền gốc.
 server {
@@ -17,6 +16,8 @@ server {
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
+    # http2 on; cần nginx >= 1.25.1. Bản cũ hơn: `listen 443 ssl http2;` (xem `nginx -v`).
+    http2 on;
     server_name www.solutioncoop-jp.com;
 
     # Cùng chứng chỉ với tên miền gốc. Chứng chỉ phải có cả hai tên.
@@ -36,6 +37,8 @@ server {
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
+    # http2 on; cần nginx >= 1.25.1. Bản cũ hơn: `listen 443 ssl http2;` (xem `nginx -v`).
+    http2 on;
     server_name solutioncoop-jp.com;
 
     # certbot --nginx sẽ tạo hoặc trỏ các file này. Chưa có chứng chỉ trong repo.
@@ -49,6 +52,11 @@ server {
     gzip_vary on;
     gzip_min_length 256;
     gzip_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json;
+
+    # Brotli: chỉ bỏ dấu # nếu nginx trên VPS có module ngx_brotli. Không có thì gzip ở trên là đủ. Không bật ở đây.
+    # brotli on;
+    # brotli_comp_level 5;
+    # brotli_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json;
 
     include /etc/nginx/snippets/solutioncoop-security-headers.conf;
 
@@ -83,9 +91,10 @@ server {
         add_header Cache-Control "public, max-age=31536000, immutable" always;
         try_files $uri =404;
     }
+    # Tên file trong /images/ không có hash (ví dụ logo SDGs bị ghi đè tại chỗ), nên không cache 1 năm.
     location ^~ /images/ {
         include /etc/nginx/snippets/solutioncoop-security-headers.conf;
-        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        add_header Cache-Control "public, max-age=604800" always;
         try_files $uri =404;
     }
     location ^~ /licenses/ {
@@ -99,10 +108,10 @@ server {
         try_files $uri =404;
     }
 
-    # Ảnh trong /news/ được phục vụ và cache dài. Slug cũ không có file thì về trang chủ.
+    # Ảnh trong /news/ cũng không có hash trên tên file, nên cache 7 ngày. Slug cũ không có file thì về trang chủ.
     location ^~ /news/ {
         include /etc/nginx/snippets/solutioncoop-security-headers.conf;
-        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        add_header Cache-Control "public, max-age=604800" always;
         try_files $uri @news_gone;
     }
     location @news_gone { return 301 /; }

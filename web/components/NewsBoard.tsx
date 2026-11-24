@@ -1,7 +1,7 @@
-import { newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
+import { newsCardTitle, newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
 
-/** 4列は約213px、2列は余白と隙間を引いた半分。 */
-const IMAGE_SIZES = "(min-width: 1024px) 213px, calc(50vw - 20px)";
+/** 2列。デスクトップの枠は最大約450px、狭い画面は余白を引いた半分。 */
+const IMAGE_SIZES = "(min-width: 1024px) 450px, calc(50vw - 16px)";
 
 function formatJstDotDate(iso: string): string {
   const date = new Date(iso);
@@ -23,62 +23,58 @@ function formatJstDotDate(iso: string): string {
 function CardImage({ item }: { item: NewsItem }) {
   if (!item.imageAlt) {
     return (
-      <div className="news-media relative aspect-square overflow-hidden bg-[#eef8f1]">
-        <img
-          src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
-          alt=""
-          width={130}
-          height={88}
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 m-auto h-auto max-h-[46%] w-auto max-w-[72%] object-contain"
-        />
-      </div>
+      <img
+        src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
+        alt=""
+        width={130}
+        height={88}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 m-auto h-auto max-h-[42%] w-auto max-w-[70%] object-contain"
+      />
     );
   }
+  const fallbackWidth = 960;
   return (
-    <div className="news-media relative aspect-square shrink-0 overflow-hidden bg-pale">
-      <picture>
-        <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item.id, "avif")} />
-        <source type="image/webp" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item.id, "webp")} />
-        <img
-          src={`/news/${item.id}-640.webp`}
-          alt={item.imageAlt}
-          width={640}
-          height={640}
-          loading="lazy"
-          decoding="async"
-          sizes={IMAGE_SIZES}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </picture>
-    </div>
+    <picture>
+      <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "avif")} />
+      <source type="image/webp" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "webp")} />
+      <img
+        src={`/news/${item.id}-640.webp`}
+        alt={item.imageAlt}
+        width={fallbackWidth}
+        height={Math.round((fallbackWidth * 3) / 4)}
+        loading="lazy"
+        decoding="async"
+        sizes={IMAGE_SIZES}
+        className="news-photo absolute inset-0 h-full w-full object-cover"
+      />
+    </picture>
   );
 }
 
 function NewsCard({ item }: { item: NewsItem }) {
-  const date = formatJstDotDate(item.createdAt);
+  const title = newsCardTitle(item);
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white text-left">
+    <article className="relative aspect-[4/3] overflow-hidden rounded-lg bg-[#eef8f1]">
       <CardImage item={item} />
-      <div className="flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 sm:px-3 sm:py-3">
-        {item.label ? (
-          <span className="self-start rounded-full border border-tab bg-pale px-2 py-0.5 text-[11px] font-bold leading-none text-primary-dark">{item.label}</span>
-        ) : null}
-        <time dateTime={item.createdAt} className="text-[11px] font-normal leading-none tabular-nums text-[#757575]">
-          {date}
-        </time>
-        {item.title ? <p className="text-[13px] font-bold leading-snug text-ink">{item.title}</p> : null}
-        <p className="line-clamp-3 text-[12px] font-normal leading-[1.6] text-body sm:line-clamp-4 sm:text-[13px]">{item.text}</p>
-      </div>
+      <time
+        dateTime={item.createdAt}
+        className="absolute left-2 top-2 rounded-full bg-[#0a3720] px-2 py-1 text-[11px] font-normal leading-none text-white"
+      >
+        {formatJstDotDate(item.createdAt)}
+      </time>
+      <p className="news-caption absolute inset-x-0 bottom-0 line-clamp-2 px-2.5 pb-2.5 pt-10 text-[13px] font-bold leading-snug text-white sm:text-[15px]">
+        {title}
+      </p>
     </article>
   );
 }
 
-/** お知らせの静的なカード。リンクも外部ボタンも付けません。 */
+/** 写真を主にしたお知らせ。本文は出さず、見出しと日付だけです。 */
 export function NewsBoard() {
   return (
-    <ul className="news-rows grid grid-cols-2 items-stretch gap-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-4">
+    <ul className="news-rows grid grid-cols-2 items-stretch gap-2">
       {newsItems.map((item) => (
         <li key={item.id} className="min-w-0">
           <NewsCard item={item} />

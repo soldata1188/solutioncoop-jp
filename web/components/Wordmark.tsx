@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/brand/SOL_Solution_Coop_2026-11-19_white.png";
 
 /**
  * 公式ロゴ（2026-11-19 白背景）。余白だけを切り、色と形はそのまま。
- * ファイルは 130×88。ヘッダーは h-8（32px）で priority。フッターは別の高さ。
+ * ファイルは 130×88。ヘッダーは h-8（32px）。フッターは h-[22px] で白地の上。
+ * 表示は可逆 WebP。PNG は構造化データ用に同じパスのまま残しています。
  */
 export function LogoTile({
   className = "",
@@ -20,15 +19,19 @@ export function LogoTile({
   heightClass?: string;
 }) {
   return (
-    <Image
-      src={logo}
-      alt={alt}
-      width={130}
-      height={88}
-      priority={priority}
-      sizes="65px"
-      className={`${heightClass} w-auto max-w-none shrink-0 ${className}`}
-    />
+    <picture className={`inline-flex ${heightClass} w-auto max-w-none shrink-0 ${className}`}>
+      <source type="image/webp" srcSet="/brand/SOL_Solution_Coop_2026-11-19_white.webp" />
+      <img
+        src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
+        alt={alt}
+        width={130}
+        height={88}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={priority ? "high" : "auto"}
+        className="h-full w-auto max-w-none"
+      />
+    </picture>
   );
 }
 

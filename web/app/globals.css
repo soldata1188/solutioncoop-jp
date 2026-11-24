@@ -81,6 +81,10 @@ html {
 .license-dialog::backdrop {
   background: rgb(10 55 32 / 0.72);
 }
+.news-caption {
+  background: linear-gradient(to top, rgba(8, 22, 16, 0.94) 0%, rgba(8, 22, 16, 0.9) 46%, rgba(8, 22, 16, 0) 100%);
+}
+
 .license-dialog-img {
   max-height: 80vh;
   max-height: 80dvh;
@@ -160,6 +164,25 @@ summary::-webkit-details-marker {
     transition: opacity 520ms ease-out, transform 520ms ease-out;
     transition-delay: calc(var(--reveal-i, 0) * 70ms);
   }
+  /* 最新情報の写真カード。立ち上がりは 12px、間隔は 60ms。画像は 1.08 から 1 へ。 */
+  html.motion ul.news-rows > li[data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  html.motion ul.news-rows > li[data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 560ms ease-out, transform 560ms ease-out;
+    transition-delay: calc(var(--reveal-i, 0) * 60ms);
+  }
+  html.motion ul.news-rows > li[data-reveal]:not(.is-in) .news-photo {
+    transform: scale(1.08);
+  }
+  html.motion ul.news-rows > li[data-reveal].is-in .news-photo {
+    transform: scale(1);
+    transition: transform 700ms ease-out;
+    transition-delay: calc(var(--reveal-i, 0) * 60ms);
+  }
   @media (hover: hover) {
     button:not(:disabled),
     a.lift,
@@ -201,18 +224,6 @@ summary::-webkit-details-marker {
   ul.news-rows,
   ul.news-rows :is(li, article, span, time, p) {
     text-align: left;
-  }
-  /* 枚数が奇数のとき、最後の1枚だけ幅いっぱいにして空きマスを残さない */
-  ul.news-rows > li:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-  }
-  ul.news-rows > li:last-child:nth-child(odd) > article {
-    flex-direction: row;
-    align-items: stretch;
-  }
-  ul.news-rows > li:last-child:nth-child(odd) .news-media {
-    width: 42%;
-    flex: none;
   }
   .contact-cards,
   .contact-cards :is(h2, h3, p, address, a) {

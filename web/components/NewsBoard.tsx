@@ -1,11 +1,35 @@
 import { newsCardTitle, newsItems, newsPhotos, newsSrcSet, type NewsItem, type NewsPhotoTile } from "@/lib/news";
 
-/** 768px以上は3列で約295px。狭い画面は2列。 */
-const IMAGE_SIZES = "(min-width: 768px) 295px, calc(50vw - 16px)";
+/** 8枚目。折り鶴の集合写真を、防災センターの写真に差し替えた。 */
+const REPLACED_PHOTO_ID = "2119705192216264798";
+
+/** デスクトップは6列の大小モザイク。0始まり。8枚目（差し替え写真）は大きい枠。 */
+const DESKTOP_LARGE = new Set([0, 1, 7]);
+const DESKTOP_WIDE = new Set([6, 8, 9, 10, 13, 14]);
+/** 狭い画面で2列をまたぐ。端数が残らない並びにしている。 */
+const MOBILE_WIDE = new Set([0, 1, 6, 9, 14]);
+
+const SIZES_STANDARD = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width: 931px) calc((100vw - 72px) / 6), 143px";
+const SIZES_DOUBLE = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
+const SIZES_FULL_MOBILE = "(max-width: 767px) calc(100vw - 32px), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
 
 type TileImage = { id: string; imageAlt?: string; imageWidths?: readonly number[] };
 
-function CardImage({ item, alt }: { item: TileImage; alt: string }) {
+function tileSizes(index: number): string {
+  if (MOBILE_WIDE.has(index)) return SIZES_FULL_MOBILE;
+  if (DESKTOP_LARGE.has(index) || DESKTOP_WIDE.has(index)) return SIZES_DOUBLE;
+  return SIZES_STANDARD;
+}
+
+function spanClass(index: number): string {
+  const parts = ["news-tile-wrap", "min-w-0"];
+  if (DESKTOP_LARGE.has(index)) parts.push("news-d-lg");
+  if (DESKTOP_WIDE.has(index)) parts.push("news-d-wide");
+  if (MOBILE_WIDE.has(index)) parts.push("news-m-wide");
+  return parts.join(" ");
+}
+
+function CardImage({ item, alt, sizes }: { item: TileImage; alt: string; sizes: string }) {
   if (!alt) {
     return (
       <img
@@ -23,8 +47,8 @@ function CardImage({ item, alt }: { item: TileImage; alt: string }) {
   const fallbackWidth = Math.max(...widths);
   return (
     <picture className="news-frame absolute inset-0 block">
-      <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "avif")} />
-      <source type="image/webp" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "webp")} />
+      <source type="image/avif" sizes={sizes} srcSet={newsSrcSet(item, "avif")} />
+      <source type="image/webp" sizes={sizes} srcSet={newsSrcSet(item, "webp")} />
       <img
         src={`/news/${item.id}-640.webp`}
         alt={alt}
@@ -32,18 +56,18 @@ function CardImage({ item, alt }: { item: TileImage; alt: string }) {
         height={Math.round((fallbackWidth * 3) / 4)}
         loading="lazy"
         decoding="async"
-        sizes={IMAGE_SIZES}
+        sizes={sizes}
         className="news-photo absolute inset-0 h-full w-full object-cover"
       />
     </picture>
   );
 }
 
-function NewsCard({ item, alt }: { item: NewsItem | NewsPhotoTile; alt: string }) {
+function NewsCard({ item, alt, sizes }: { item: NewsItem | NewsPhotoTile; alt: string; sizes: string }) {
   return (
-    <article tabIndex={0} className="news-tile relative aspect-[4/3] rounded-lg bg-[#eef8f1]">
-      <div className="absolute inset-0 overflow-hidden rounded-lg">
-        <CardImage item={item} alt={alt} />
+    <article tabIndex={0} className="news-tile relative h-full rounded-lg bg-[#eef8f1]">
+      <div className="news-clip absolute inset-0 overflow-hidden rounded-lg">
+        <CardImage item={item} alt={alt} sizes={sizes} />
       </div>
     </article>
   );
@@ -52,16 +76,21 @@ function NewsCard({ item, alt }: { item: NewsItem | NewsPhotoTile; alt: string }
 /** 写真だけの展示。見出しの文字は出さない。 */
 export function NewsBoard() {
   const tiles = [
-    ...newsItems.map((item) => ({ item, alt: newsCardTitle(item) })),
+    ...newsItems.map((item) => ({
+      item,
+      alt: item.id === REPLACED_PHOTO_ID ? (item.imageAlt ?? "") : newsCardTitle(item),
+    })),
     ...newsPhotos.map((item) => ({ item, alt: item.imageAlt })),
   ];
   return (
-    <ul className="news-rows grid grid-cols-2 items-stretch gap-2 md:grid-cols-3">
-      {tiles.map(({ item, alt }) => (
-        <li key={item.id} className="news-tile-wrap min-w-0">
-          <NewsCard item={item} alt={alt} />
-        </li>
-      ))}
-    </ul>
+    <div className="news-mosaic">
+      <ul className="news-rows grid">
+        {tiles.map(({ item, alt }, index) => (
+          <li key={item.id} className={spanClass(index)}>
+            <NewsCard item={item} alt={alt} sizes={tileSizes(index)} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

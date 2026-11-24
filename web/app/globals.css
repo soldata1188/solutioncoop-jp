@@ -147,8 +147,41 @@ summary::-webkit-details-marker {
   }
 }
 
+/* 最新情報。6列のモザイク。行の高さは列幅と同じなので、大小を混ぜても端が揃う。 */
+.news-mosaic {
+  container-type: inline-size;
+}
+.news-rows {
+  --news-gap: 8px;
+  display: grid;
+  grid-auto-flow: dense;
+  gap: var(--news-gap);
+}
+@media (max-width: 767px) {
+  .news-rows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: calc((100cqi - var(--news-gap)) / 2);
+  }
+  .news-m-wide {
+    grid-column: span 2;
+  }
+}
+@media (min-width: 768px) {
+  .news-rows {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: calc((100cqi - 5 * var(--news-gap)) / 6);
+  }
+  .news-d-lg {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .news-d-wide {
+    grid-column: span 2;
+  }
+}
+
 /* スクロールで一度だけ出す。html.motion は JS が付けたときだけ。
-   クラスが無ければカードは最初から見える。変化は opacity と transform だけ。 */
+   クラスが無ければカードは最初から見える。変化は opacity と transform、最新情報は clip-path も。 */
 @media (prefers-reduced-motion: no-preference) {
   html.motion [data-reveal]:not(.is-in) {
     opacity: 0;
@@ -160,40 +193,28 @@ summary::-webkit-details-marker {
     transition: opacity 520ms ease-out, transform 520ms ease-out;
     transition-delay: calc(var(--reveal-i, 0) * 70ms);
   }
-  /* 最新情報。出現はフェードと立ち上がり、写真は 1.12 から 1。間隔 70ms。 */
-  html.motion ul.news-rows > li[data-reveal]:not(.is-in) {
-    opacity: 0;
-    transform: translateY(18px);
-  }
+  /* 最新情報。横から一度だけ開き、写真は 1.15 から 1。間隔 60ms。その後は止める。 */
+  html.motion ul.news-rows > li[data-reveal]:not(.is-in),
   html.motion ul.news-rows > li[data-reveal].is-in {
     opacity: 1;
     transform: none;
-    transition: opacity 780ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 780ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    transition-delay: calc(var(--reveal-i, 0) * 70ms);
+    transition: none;
   }
-  html.motion ul.news-rows > li[data-reveal]:not(.is-in) .news-frame {
-    transform: scale(1.12);
+  html.motion ul.news-rows > li[data-reveal]:not(.is-in) .news-clip {
+    clip-path: inset(0 100% 0 0 round var(--radius-lg));
   }
-  html.motion ul.news-rows > li[data-reveal].is-in .news-frame {
-    transform: scale(1);
-    transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  html.motion ul.news-rows > li[data-reveal].is-in .news-clip {
+    clip-path: inset(0 round var(--radius-lg));
+    transition: clip-path 1000ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(var(--reveal-i, 0) * 60ms);
+  }
+  html.motion ul.news-rows > li[data-reveal]:not(.is-in) .news-photo {
+    transform: scale(1.15);
   }
   html.motion ul.news-rows > li[data-reveal].is-in .news-photo {
-    animation: news-drift 16s ease-in-out infinite alternate;
-    animation-delay: calc(var(--reveal-i, 0) * 70ms);
-  }
-  html.motion ul.news-rows > li[data-reveal]:nth-child(even).is-in .news-photo {
-    animation-name: news-drift-alt;
-    animation-duration: 18s;
-  }
-  @keyframes news-drift {
-    from { transform: scale(1.06) translate3d(0, 0, 0); }
-    to { transform: scale(1.12) translate3d(-1.6%, -1.2%, 0); }
-  }
-  @keyframes news-drift-alt {
-    from { transform: scale(1.06) translate3d(0, 0, 0); }
-    to { transform: scale(1.12) translate3d(1.6%, 1.2%, 0); }
+    transform: scale(1);
+    transition: transform 1000ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(var(--reveal-i, 0) * 60ms);
   }
   @media (hover: hover) {
     button:not(:disabled),
@@ -210,7 +231,7 @@ summary::-webkit-details-marker {
       transform: translateY(-3px);
       box-shadow: 0 8px 18px rgb(15 77 42 / 0.12);
     }
-    ul.news-rows .news-tile::after {
+    html.motion ul.news-rows .news-tile::after {
       content: "";
       position: absolute;
       z-index: -1;
@@ -221,24 +242,39 @@ summary::-webkit-details-marker {
       pointer-events: none;
       transition: opacity 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    ul.news-rows:has(.news-tile:hover) .news-tile,
-    ul.news-rows:has(.news-tile:focus-visible) .news-tile {
-      opacity: 0.62;
-      transition: opacity 280ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    html.motion ul.news-rows .news-clip::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.42) 50%, transparent 62%);
+      transform: translateX(-130%);
+      opacity: 0;
+      pointer-events: none;
     }
-    ul.news-rows .news-tile:hover,
-    ul.news-rows .news-tile:focus-visible {
-      opacity: 1;
+    html.motion ul.news-rows .news-tile:hover,
+    html.motion ul.news-rows .news-tile:focus-visible {
       transform: translateY(-6px);
       z-index: 1;
+      transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    ul.news-rows .news-tile:hover::after,
-    ul.news-rows .news-tile:focus-visible::after {
+    html.motion ul.news-rows .news-tile:hover::after,
+    html.motion ul.news-rows .news-tile:focus-visible::after {
       opacity: 1;
     }
-    ul.news-rows .news-tile:hover .news-frame,
-    ul.news-rows .news-tile:focus-visible .news-frame {
+    html.motion ul.news-rows .news-tile:hover .news-clip::after,
+    html.motion ul.news-rows .news-tile:focus-visible .news-clip::after {
+      transform: translateX(130%);
+      opacity: 1;
+      transition: transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    html.motion ul.news-rows > li[data-reveal].is-in .news-tile:hover .news-photo,
+    html.motion ul.news-rows > li[data-reveal].is-in .news-tile:focus-visible .news-photo,
+    html.motion ul.news-rows .news-tile:hover .news-photo,
+    html.motion ul.news-rows .news-tile:focus-visible .news-photo {
       transform: scale(1.06);
+      transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: 0s;
     }
   }
   @media (hover: none) {

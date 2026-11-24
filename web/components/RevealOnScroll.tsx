@@ -5,8 +5,8 @@ import { useEffect } from "react";
 
 /**
  * スクロールで節とカードを一度だけ出す。
- * html.motion を付ける前に、画面内の要素へ is-in を付けて、最初から見えるものが消えないようにします。
- * IntersectionObserver が無い、または動きを減らす設定では何もしません。
+ * 隠すのは html.motion を付けたあとだけ。JS が無い、Observer が無い、動きを減らす設定では付けません。
+ * 画面内の要素には motion より先に is-in を付けます。約2秒後に残りも出します。
  */
 export function RevealOnScroll() {
   const pathname = usePathname();
@@ -39,25 +39,42 @@ export function RevealOnScroll() {
     const pending: HTMLElement[] = [];
     targets.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) visible.push(el);
+      if (rect.top < window.innerHeight && rect.bottom > 0) visible.push(el);
       else pending.push(el);
     });
     visible.forEach((el) => el.classList.add("is-in"));
+
+    let io: IntersectionObserver | null = null;
+    if (pending.length > 0) {
+      try {
+        io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-in");
+              io?.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px 40% 0px", threshold: 0 },
+        );
+        pending.forEach((el) => io?.observe(el));
+      } catch {
+        pending.forEach((el) => el.classList.add("is-in"));
+        io = null;
+      }
+    }
+
     root.classList.add("motion");
 
-    if (pending.length === 0) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        });
-      },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
-    );
-    pending.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const showAll = () => {
+      document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-in)").forEach((el) => el.classList.add("is-in"));
+    };
+    const timer = window.setTimeout(showAll, 2000);
+
+    return () => {
+      window.clearTimeout(timer);
+      io?.disconnect();
+    };
   }, [pathname]);
 
   return null;

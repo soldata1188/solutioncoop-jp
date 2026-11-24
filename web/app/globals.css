@@ -147,8 +147,8 @@ summary::-webkit-details-marker {
   }
 }
 
-/* スクロールで一度だけ出す。html.motion は JS かつ動きを許可するときだけ付く。
-   変化は opacity と transform だけ。ヒーローと LCP 画像には data-reveal を付けない。 */
+/* スクロールで一度だけ出す。html.motion は JS が付けたときだけ。
+   クラスが無ければカードは最初から見える。変化は opacity と transform だけ。 */
 @media (prefers-reduced-motion: no-preference) {
   html.motion [data-reveal]:not(.is-in) {
     opacity: 0;

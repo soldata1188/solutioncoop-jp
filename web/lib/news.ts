@@ -30,7 +30,7 @@ export function newsCardTitle(item: NewsItem): string {
   return item.shortTitle ?? item.text.split("\n")[0] ?? item.text;
 }
 
-export function newsSrcSet(item: NewsItem, ext: "avif" | "webp"): string {
+export function newsSrcSet(item: { id: string; imageWidths?: readonly number[] }, ext: "avif" | "webp"): string {
   const widths = item.imageWidths ?? NEWS_IMAGE_WIDTHS;
   return widths.map((width) => `/news/${item.id}-${width}.${ext} ${width}w`).join(", ");
 }
@@ -99,5 +99,56 @@ export const newsItems: NewsItem[] = [
     shortTitle: "第64期生13名が来日しました",
     imageAlt: "折り鶴の前で並んで記念撮影する一行",
     text: "10月22日、第64期生13名が来日いたしました。\n受け入れ企業さま6社にて、とび職4名・建設機械施工4名・左官職5名が、建設現場での活躍に向けて歩み始めます。\n当組合は入国後講習から職場への定着まで、企業さまと実習生に寄り添ってサポートしてまいります。",
+  },
+];
+
+/**
+ * 見出し未定の写真。日付も本文も付けない。
+ * TODO: 見出しはBossの確認待ち。印刷された文字がある写真だけ shortTitle を付けています。
+ */
+export type NewsPhotoTile = {
+  id: string;
+  shortTitle?: string;
+  imageAlt: string;
+  imageWidths: readonly number[];
+};
+
+export const newsPhotos: NewsPhotoTile[] = [
+  {
+    id: "photo-01",
+    imageAlt: "消防車の前での集合写真",
+    imageWidths: [320, 480, 640, 960],
+  },
+  {
+    id: "photo-02",
+    shortTitle: "憲法施行記念式並びに表彰式",
+    imageAlt: "表彰状を持つ男性と、式会場への案内板",
+    imageWidths: [320, 480, 640, 960],
+  },
+  {
+    id: "photo-03",
+    imageAlt: "室内で椅子に座り、画面の説明を聞く参加者",
+    imageWidths: [320, 480, 640, 960],
+  },
+  {
+    id: "photo-04",
+    imageAlt: "防災の展示パネルの前での集合写真",
+    imageWidths: [320, 480, 640, 800],
+  },
+  {
+    id: "photo-05",
+    imageAlt: "床のマットの上で応急手当を練習する人たち",
+    imageWidths: [320, 480, 640, 960],
+  },
+  {
+    id: "photo-06",
+    imageAlt: "机で書類に書き込む人たち",
+    imageWidths: [320, 480, 640, 960],
+  },
+  {
+    id: "photo-07",
+    shortTitle: "憲法施行記念式並びに表彰式",
+    imageAlt: "木目の壁を背景に正装で並ぶ集合写真",
+    imageWidths: [320, 480, 640],
   },
 ];

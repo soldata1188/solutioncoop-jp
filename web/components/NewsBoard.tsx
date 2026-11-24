@@ -1,9 +1,9 @@
-import { newsCardTitle, newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
+import { newsCardTitle, newsItems, newsPhotos, newsSrcSet, type NewsItem, type NewsPhotoTile } from "@/lib/news";
 
-/** 2列。デスクトップの枠は最大約450px、狭い画面は余白を引いた半分。 */
-const IMAGE_SIZES = "(min-width: 1024px) 450px, calc(50vw - 16px)";
+/** 768px以上は3列で約295px。狭い画面は2列。 */
+const IMAGE_SIZES = "(min-width: 768px) 295px, calc(50vw - 16px)";
 
-function CardImage({ item }: { item: NewsItem }) {
+function CardImage({ item }: { item: { id: string; imageAlt?: string; imageWidths?: readonly number[] } }) {
   if (!item.imageAlt) {
     return (
       <img
@@ -17,7 +17,8 @@ function CardImage({ item }: { item: NewsItem }) {
       />
     );
   }
-  const fallbackWidth = 960;
+  const widths = item.imageWidths ?? [960];
+  const fallbackWidth = Math.max(...widths);
   return (
     <picture>
       <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "avif")} />
@@ -36,25 +37,30 @@ function CardImage({ item }: { item: NewsItem }) {
   );
 }
 
-function NewsCard({ item }: { item: NewsItem }) {
-  const title = newsCardTitle(item);
+function NewsCard({ item, title }: { item: NewsItem | NewsPhotoTile; title?: string }) {
   return (
     <article className="relative aspect-[4/3] overflow-hidden rounded-lg bg-[#eef8f1]">
       <CardImage item={item} />
-      <p className="news-caption absolute inset-x-0 bottom-0 line-clamp-2 px-2.5 pb-2.5 pt-10 text-[13px] font-bold leading-snug text-white sm:text-[15px]">
-        {title}
-      </p>
+      {title ? (
+        <p className="news-caption absolute inset-x-0 bottom-0 line-clamp-2 px-2.5 pb-2.5 pt-10 text-[13px] font-bold leading-snug text-white sm:text-[15px]">
+          {title}
+        </p>
+      ) : null}
     </article>
   );
 }
 
 /** 写真を主にしたお知らせ。本文は出さず、見出しだけです。 */
 export function NewsBoard() {
+  const tiles = [
+    ...newsItems.map((item) => ({ item, title: newsCardTitle(item) })),
+    ...newsPhotos.map((item) => ({ item, title: item.shortTitle })),
+  ];
   return (
-    <ul className="news-rows grid grid-cols-2 items-stretch gap-2">
-      {newsItems.map((item) => (
+    <ul className="news-rows grid grid-cols-2 items-stretch gap-2 md:grid-cols-3">
+      {tiles.map(({ item, title }) => (
         <li key={item.id} className="min-w-0">
-          <NewsCard item={item} />
+          <NewsCard item={item} title={title} />
         </li>
       ))}
     </ul>

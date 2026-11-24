@@ -89,10 +89,7 @@ export function consultMessengerHref(messenger = MESSENGER_URL, facebook = FACEB
   return messenger.trim() || facebook.trim();
 }
 
-/**
- * 公式X（旧Twitter）アカウント @KumiaiSol。
- * 投稿の取得はサーバー側の X_BEARER_TOKEN だけで行い、ブラウザには出しません。
- */
+/** 公式X（旧Twitter）アカウント @KumiaiSol。投稿は lib/news.ts に写してあり、ページからは取得しません。 */
 export const X_URL = "https://x.com/KumiaiSol";
 export const X_HANDLE = "KumiaiSol";
 

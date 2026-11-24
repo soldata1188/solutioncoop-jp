@@ -22,7 +22,7 @@ sudo -u web git clone --branch release/2026-11 --single-branch <url-repo> /var/w
 sudo cp deploy/sakura/.env.example /var/www/solutioncoop/shared/.env
 sudo chown web:web /var/www/solutioncoop/shared/.env
 sudo chmod 600 /var/www/solutioncoop/shared/.env
-# Điền X_BEARER_TOKEN và X_REFRESH_SECRET vào file đó. Không commit.
+# File này chỉ cần NODE_ENV. Site không đọc token X. Không xóa token đang có trên Vercel.
 sudo cp deploy/sakura/solutioncoop-web.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo bash deploy/sakura/deploy.sh

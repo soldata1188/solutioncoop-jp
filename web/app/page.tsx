@@ -5,14 +5,8 @@ import { LinkButton, Section, TabCard } from "@/components/ui";
 import { StatsStrip } from "@/components/StatsStrip";
 import { Chunks } from "@/components/KeepWords";
 import { LineButton } from "@/components/LineButton";
-import { OfficialXPosts } from "@/components/OfficialXPosts";
+import { NewsBoard } from "@/components/NewsBoard";
 import { pageMeta } from "@/lib/meta";
-
-/**
- * 失敗した案内表示だけ、約5分後の再生成で取り直します。失敗はキャッシュしません。
- * 取得に成功した投稿は最長1時間残り、手動更新（タグ x-posts）でも破棄できます。
- */
-export const revalidate = 300;
 
 export const metadata: Metadata = {
   ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援します。"),
@@ -220,14 +214,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 最新情報。新しい順・最大12件をサーバーで HTML にします。埋め込みスクリプトは読みません。 */}
+      {/* 最新情報。公式Xの投稿を静的なカードにしています。埋め込みスクリプトは読みません。 */}
       <Section
         id="news"
         title="最新情報"
         width="wide"
-        lead="当組合の公式アカウントの投稿を、新しい順に掲載しています。"
+        lead="当組合からのお知らせを、新しい順に掲載しています。"
       >
-        <OfficialXPosts />
+        <NewsBoard />
       </Section>
     </>
   );

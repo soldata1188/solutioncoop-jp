@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
     // 許可証は文字が読める品質で、対応ブラウザには AVIF、それ以外には WebP を出します。
     formats: ["image/avif", "image/webp"],
     qualities: [75, 90],
-    remotePatterns: [{ protocol: "https", hostname: "pbs.twimg.com" }],
   },
   turbopack: {
     root: __dirname,
@@ -24,7 +23,8 @@ const nextConfig: NextConfig = {
       { source: "/news/", destination: "/#news", permanent: true },
       { source: "/faq", ...home },
       { source: "/faq/", ...home },
-      { source: "/news/:slug+", ...home },
+      // 拡張子のある /news/*.avif などは public/news の画像なので転送しない。
+      { source: "/news/:slug([^./]+)+", ...home },
       { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/news.html", ...home },
       { source: "/受け入れ実績", ...home },

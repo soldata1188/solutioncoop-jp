@@ -1,17 +1,7 @@
 # Mẫu Nginx cho solutioncoop-web. CHƯA áp dụng lên máy chủ.
 # Domain solutioncoop-jp.com chỉ là placeholder. Chưa chạy certbot từ repo này.
-# Đặt nguyên file này trong http { } (ví dụ /etc/nginx/conf.d/solutioncoop.conf
-# không được nếu map nằm ngoài server — file này gồm map + server, nên include
-# từ nginx.conf trong khối http, không nhét vào trong một server có sẵn).
-
-map $uri $solutioncoop_log_uri {
-    /api/x/refresh $uri;
-    default $request_uri;
-}
-
-log_format solutioncoop '$remote_addr - $remote_user [$time_local] '
-    '"$request_method $solutioncoop_log_uri $server_protocol" '
-    '$status $body_bytes_sent "$http_referer" "$http_user_agent"';
+# Include file này trong khối http. Route /api/x/refresh đã bỏ, nên không còn
+# quy tắc giấu query string của URL đó.
 
 server {
     listen 80;
@@ -29,7 +19,7 @@ server {
     ssl_certificate     /etc/letsencrypt/live/solutioncoop-jp.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/solutioncoop-jp.com/privkey.pem;
 
-    access_log /var/log/nginx/solutioncoop.access.log solutioncoop;
+    access_log /var/log/nginx/solutioncoop.access.log;
 
     location /_next/static/ {
         proxy_pass http://127.0.0.1:3000;

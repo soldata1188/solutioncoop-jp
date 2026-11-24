@@ -175,6 +175,12 @@ summary::-webkit-details-marker {
       transform: translateY(-3px);
       box-shadow: 0 8px 18px rgb(15 77 42 / 0.12);
     }
+    .news-card .news-photo {
+      transition: transform 200ms ease-out;
+    }
+    .news-card:hover .news-photo {
+      transform: scale(1.04);
+    }
   }
   @media (hover: none) {
     button:not(:disabled):active,

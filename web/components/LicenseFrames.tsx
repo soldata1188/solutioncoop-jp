@@ -3,13 +3,9 @@
 import { useRef } from "react";
 import { licenseImages, type LicenseImageItem } from "@/lib/license-images";
 
-const DOC_WIDTHS: Record<LicenseImageItem["slug"], number[]> = {
-  kanri: [480, 800, 1186],
-  toroku: [480, 800, 1182],
-};
+const THUMB_WIDTHS = [480, 720];
 
-function DocPicture({ item, sizes, className }: { item: LicenseImageItem; sizes: string; className: string }) {
-  const widths = DOC_WIDTHS[item.slug];
+function DocPicture({ item, widths, sizes, className }: { item: LicenseImageItem; widths: number[]; sizes: string; className: string }) {
   const set = (ext: "avif" | "webp") => widths.map((width) => `/licenses/${item.slug}-${width}.${ext} ${width}w`).join(", ");
   return (
     <picture className="block h-full w-full">
@@ -54,7 +50,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
               onClick={() => dialogRef.current?.showModal()}
               aria-label={`${item.alt}を拡大`}
             >
-              <DocPicture item={item} sizes="(min-width: 768px) 400px, 100vw" className="h-full w-full object-contain" />
+              <DocPicture item={item} widths={THUMB_WIDTHS} sizes="(min-width: 768px) 400px, calc(100vw - 32px)" className="h-full w-full object-contain" />
             </button>
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-3 px-4 text-center">
@@ -74,7 +70,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
             if (event.target === dialogRef.current) dialogRef.current?.close();
           }}
         >
-          <DocPicture item={item} sizes="(min-width: 768px) 1186px, 100vw" className="license-dialog-img mx-auto h-auto w-auto max-w-full object-contain" />
+          <DocPicture item={item} widths={[720, item.width]} sizes="(min-width: 768px) 1186px, calc(100vw - 32px)" className="license-dialog-img mx-auto h-auto w-auto max-w-full object-contain" />
           <button
             type="button"
             className="mt-3 inline-flex min-h-11 items-center justify-center rounded bg-primary-dark px-6 font-bold text-white"

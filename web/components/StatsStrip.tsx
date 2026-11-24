@@ -1,6 +1,12 @@
 import { AchievementCards } from "@/components/AchievementCards";
 import { sdgs } from "@/lib/site";
 
+const SDGS_SIZES = "(min-width: 640px) 440px, 320px";
+const SDGS_AVIF =
+  "/images/sdgs-logo-yoko-320.avif 320w, /images/sdgs-logo-yoko-440.avif 440w, /images/sdgs-logo-yoko-880.avif 880w";
+const SDGS_WEBP =
+  "/images/sdgs-logo-yoko-320.webp 320w, /images/sdgs-logo-yoko-440.webp 440w, /images/sdgs-logo-yoko-880.webp 880w";
+
 /**
  * トップの実績（ヒーロー直下）。
  * SDGsの表示は堺市「ロゴマーク使用ガイド【庁外版】」の横型ロゴと、他の主体名との組み合わせに従います。
@@ -14,24 +20,16 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
       <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
         <div className="mb-8 flex justify-center bg-white">
           <div className="w-[min(100%,320px)] sm:w-[440px]">
+            <link rel="preload" as="image" type="image/avif" imageSrcSet={SDGS_AVIF} imageSizes={SDGS_SIZES} fetchPriority="high" />
             <picture>
-              <source
-                type="image/avif"
-                sizes="(min-width: 640px) 440px, 320px"
-                srcSet="/images/sdgs-logo-yoko-320.avif 320w, /images/sdgs-logo-yoko-440.avif 440w, /images/sdgs-logo-yoko-880.avif 880w"
-              />
-              <source
-                type="image/webp"
-                sizes="(min-width: 640px) 440px, 320px"
-                srcSet="/images/sdgs-logo-yoko-320.webp 320w, /images/sdgs-logo-yoko-440.webp 440w, /images/sdgs-logo-yoko-880.webp 880w"
-              />
+              <source type="image/avif" sizes={SDGS_SIZES} srcSet={SDGS_AVIF} />
+              <source type="image/webp" sizes={SDGS_SIZES} srcSet={SDGS_WEBP} />
               <img
                 src="/images/sdgs-logo-yoko-880.webp"
                 alt="SDGs未来都市・堺"
                 width={6579}
                 height={1851}
-                sizes="(min-width: 640px) 440px, 320px"
-                fetchPriority="high"
+                sizes={SDGS_SIZES}
                 decoding="async"
                 className="block h-auto w-full"
               />

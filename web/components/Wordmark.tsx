@@ -28,7 +28,7 @@ export function LogoTile({
         height={88}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        fetchPriority={priority ? "high" : "auto"}
+        fetchPriority="low"
         className="h-full w-auto max-w-none"
       />
     </picture>
@@ -38,7 +38,7 @@ export function LogoTile({
 export function Wordmark() {
   return (
     <Link href="/" className="inline-flex min-h-11 min-w-11 shrink-0 items-center gap-2.5 font-bold text-ink no-underline">
-      <LogoTile priority heightClass="h-8" />
+      <LogoTile heightClass="h-8" />
       <span aria-hidden="true" className="hidden whitespace-nowrap text-[15px] tracking-wide sm:inline">ソリューション協同組合</span>
     </Link>
   );

@@ -1,11 +1,54 @@
 import { PageHeader } from "@/components/PageHeader";
-import { Photo } from "@/components/Photo";
-import { photos } from "@/lib/images";
 import { Section } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { LicenseFrames } from "@/components/LicenseFrames";
 import { disclosureDocuments } from "@/lib/disclosure";
 import { org, fullAddress, repoFacts, TEL_HREF } from "@/lib/site";
+
+const OFFICE_SIZES = "(min-width: 768px) 470px, calc(100vw - 32px)";
+const OFFICE_AVIF = "/images/office-480.avif 480w, /images/office-720.avif 720w, /images/office-800.avif 800w";
+const OFFICE_WEBP = "/images/office-480.webp 480w, /images/office-720.webp 720w, /images/office-800.webp 800w";
+const SAKAI_SIZES = "(min-width: 768px) 310px, calc(100vw - 32px)";
+const SAKAI_AVIF = "/images/sakai-400.avif 400w, /images/sakai-600.avif 600w";
+const SAKAI_WEBP = "/images/sakai-400.webp 400w, /images/sakai-600.webp 600w";
+
+function AboutPhoto({
+  avif,
+  webp,
+  src,
+  sizes,
+  alt,
+  width,
+  height,
+  preload = false,
+  caption,
+  className = "",
+}: {
+  avif: string;
+  webp: string;
+  src: string;
+  sizes: string;
+  alt: string;
+  width: number;
+  height: number;
+  preload?: boolean;
+  caption: string;
+  className?: string;
+}) {
+  return (
+    <figure className={className}>
+      {preload ? (
+        <link rel="preload" as="image" type="image/avif" imageSrcSet={avif} imageSizes={sizes} fetchPriority="high" />
+      ) : null}
+      <picture>
+        <source type="image/avif" sizes={sizes} srcSet={avif} />
+        <source type="image/webp" sizes={sizes} srcSet={webp} />
+        <img src={src} alt={alt} width={width} height={height} sizes={sizes} loading={preload ? "eager" : "lazy"} decoding="async" className="h-auto w-full object-cover" />
+      </picture>
+      <figcaption className="mt-2 text-[13px] leading-relaxed text-muted">{caption}</figcaption>
+    </figure>
+  );
+}
 
 export const metadata = pageMeta(
   "/about",
@@ -41,12 +84,32 @@ export default function Page() {
       <PageHeader title="組合概要" path="/about" />
       <Section id="office" title="堺から、大阪の企業様を支えます" width="default" reveal={false}>
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
-          <Photo photo={photos.office} sizes="(min-width: 768px) 470px, 100vw" priority caption="「ソリューション協同組合」堺市の事務所、研修センター" />
+          <AboutPhoto
+            avif={OFFICE_AVIF}
+            webp={OFFICE_WEBP}
+            src="/images/office-800.webp"
+            sizes={OFFICE_SIZES}
+            alt="「ソリューション協同組合」堺市の事務所、研修センター"
+            width={800}
+            height={533}
+            preload
+            caption="「ソリューション協同組合」堺市の事務所、研修センター"
+          />
           <div>
             <p className="text-[15px]">
               当組合は、堺市堺区に事務所を構え、大阪府内の中小企業様の外国人材受入れをご支援しております。
             </p>
-            <Photo photo={photos.sakai} sizes="(min-width: 768px) 310px, 100vw" className="mt-5" caption="地元・堺の海辺の風景" />
+            <AboutPhoto
+              avif={SAKAI_AVIF}
+              webp={SAKAI_WEBP}
+              src="/images/sakai-600.webp"
+              sizes={SAKAI_SIZES}
+              alt="青空の下、堺の海辺に立つ白い木造の灯台"
+              width={600}
+              height={400}
+              className="mt-5"
+              caption="地元・堺の海辺の風景"
+            />
           </div>
         </div>
       </Section>

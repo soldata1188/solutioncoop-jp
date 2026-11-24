@@ -75,8 +75,27 @@ server {
     location = /うけいれ実績 { return 301 /; }
     location = /受入実績 { return 301 /; }
 
-    # Ảnh trong /news/ được phục vụ. Slug cũ không có file thì về trang chủ.
+    # Ảnh đã xuất (tên có kích thước). HTML vẫn no-cache ở location /.
+    location ^~ /images/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+    location ^~ /licenses/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+    location ^~ /flags/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+
+    # Ảnh trong /news/ được phục vụ và cache dài. Slug cũ không có file thì về trang chủ.
     location ^~ /news/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
         try_files $uri @news_gone;
     }
     location @news_gone { return 301 /; }

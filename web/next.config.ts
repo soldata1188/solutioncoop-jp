@@ -22,6 +22,8 @@ const nextConfig: NextConfig = {
       { source: "/privacy.html", destination: "/privacy", permanent: true },
       { source: "/news", destination: "/#news", permanent: true },
       { source: "/news/", destination: "/#news", permanent: true },
+      { source: "/faq", ...home },
+      { source: "/faq/", ...home },
       { source: "/news/:slug+", ...home },
       { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/news.html", ...home },

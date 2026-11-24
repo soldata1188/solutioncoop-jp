@@ -61,7 +61,6 @@ export const nav = [
   { href: "/#reasons", label: "選ばれる理由" },
   { href: "/for-workers", label: "実習生の方へ" },
   { href: "/#news", label: "最新情報" },
-  { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
   { href: "/about#disclosure", label: "情報公開" },
 ];

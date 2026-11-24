@@ -8,7 +8,6 @@ import { Chunks, Phrases } from "./KeepWords";
 const footerLinks = [
   { href: "/for-workers", label: "相談窓口" },
   { href: "/#news", label: "最新情報" },
-  { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },
   { href: "/about#disclosure", label: "情報公開" },
   { href: "/privacy", label: "個人情報保護方針" },

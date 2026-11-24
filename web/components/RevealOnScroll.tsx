@@ -26,7 +26,8 @@ export function RevealOnScroll() {
       if (cards.length > 1) {
         section.removeAttribute("data-reveal");
         cards.forEach((card, index) => {
-          card.style.setProperty("--reveal-i", String(Math.min(index, 8)));
+          const step = card.closest("ul.news-rows") ? index : Math.min(index, 8);
+          card.style.setProperty("--reveal-i", String(step));
           card.setAttribute("data-reveal", "");
           targets.push(card);
         });

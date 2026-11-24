@@ -92,6 +92,7 @@ export function HomeHero() {
         <div className="mt-8 grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3 md:mt-10">
           <Link
             href={CONTACT_HREF}
+            prefetch={false}
             className="flex min-h-16 items-center justify-center gap-1 rounded-lg bg-cta px-2 py-3 text-center font-black text-ink no-underline transition-colors hover:bg-cta-hover"
           >
             <span className="flex flex-col items-center leading-tight">

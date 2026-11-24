@@ -26,7 +26,7 @@ export function PageHeader({ title, lead, path, crumb, ancestors, leadAfter }: {
           <nav aria-label="パンくずリスト" className="border-b border-line bg-pale">
             <ol className="mx-auto flex max-w-[932px] flex-wrap items-center gap-x-2 px-4 text-sm">
               <li>
-                <Link href="/" className="inline-flex min-h-11 min-w-11 items-center text-primary-dark underline underline-offset-4">ホーム</Link>
+                <Link href="/" prefetch={false} className="inline-flex min-h-11 min-w-11 items-center text-primary-dark underline underline-offset-4">ホーム</Link>
               </li>
               {trail.map((item, i) => {
                 const last = i === trail.length - 1;
@@ -36,7 +36,7 @@ export function PageHeader({ title, lead, path, crumb, ancestors, leadAfter }: {
                     {last ? (
                       <span aria-current="page" className="inline-flex min-h-11 items-center text-ink">{item.name}</span>
                     ) : (
-                      <Link href={item.path} className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4">{item.name}</Link>
+                      <Link href={item.path} prefetch={false} className="inline-flex min-h-11 items-center text-primary-dark underline underline-offset-4">{item.name}</Link>
                     )}
                   </li>
                 );

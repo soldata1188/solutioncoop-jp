@@ -54,7 +54,7 @@ export function Footer() {
           <ul className="grid grid-cols-2 md:grid-cols-1">
             {footerLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className={`flex min-h-11 items-center justify-center px-1 text-sm md:justify-start md:px-0 ${textLink}`}>
+                <Link href={item.href} prefetch={false} className={`flex min-h-11 items-center justify-center px-1 text-sm md:justify-start md:px-0 ${textLink}`}>
                   <Phrases text={item.label} />
                 </Link>
               </li>

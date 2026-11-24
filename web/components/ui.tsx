@@ -43,7 +43,7 @@ export function LinkButton({
   className?: string;
 }) {
   return (
-    <Link href={href} className={buttonClass(variant, className)}>
+    <Link href={href} prefetch={false} className={buttonClass(variant, className)}>
       <span>{children}</span>
       <ArrowIcon className="h-3.5 w-3.5" />
     </Link>

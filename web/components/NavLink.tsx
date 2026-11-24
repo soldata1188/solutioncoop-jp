@@ -27,7 +27,7 @@ export function NavLink({
 }) {
   const current = isCurrent(usePathname(), href);
   return (
-    <Link href={href} aria-current={current ? "page" : undefined} className={`${className} ${current ? activeClassName : ""}`}>
+    <Link href={href} prefetch={false} aria-current={current ? "page" : undefined} className={`${className} ${current ? activeClassName : ""}`}>
       {children}
     </Link>
   );

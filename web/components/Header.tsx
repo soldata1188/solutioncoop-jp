@@ -39,7 +39,7 @@ export function Header() {
             <PhoneIcon />
             <span className="hidden min-[1200px]:inline">{org.tel}</span>
           </a>
-          <Link href={CONTACT_HREF} className={`hidden min-[1200px]:inline-flex ${btnBase} bg-primary px-5 text-white hover:bg-primary-dark`}>
+          <Link href={CONTACT_HREF} prefetch={false} className={`hidden min-[1200px]:inline-flex ${btnBase} bg-primary px-5 text-white hover:bg-primary-dark`}>
             お問い合わせ
           </Link>
           <MobileMenu />

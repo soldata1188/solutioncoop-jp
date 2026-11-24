@@ -22,7 +22,7 @@ export function MobileCallBar() {
           <Phrases text="電話で相談" />
         </a>
         <LineButton className={item} iconClassName="h-5 w-5" />
-        <Link href={CONTACT_HREF} aria-label={CONTACT_LABEL} className={`${item} border-2 border-primary-dark bg-white text-primary-dark`}>
+        <Link href={CONTACT_HREF} prefetch={false} aria-label={CONTACT_LABEL} className={`${item} border-2 border-primary-dark bg-white text-primary-dark`}>
           <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="5" width="18" height="14" rx="2" />
             <path d="m3 7 9 6 9-6" />

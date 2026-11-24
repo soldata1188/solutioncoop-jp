@@ -143,7 +143,7 @@ export function MobileMenu() {
               電話 {org.tel}
             </a>
             <LineButton className="flex min-h-11 gap-2 px-4 text-sm" />
-            <Link href={CONTACT_HREF} className={`${btnBase} bg-primary text-white hover:bg-primary-dark`}>お問い合わせ</Link>
+            <Link href={CONTACT_HREF} prefetch={false} className={`${btnBase} bg-primary text-white hover:bg-primary-dark`}>お問い合わせ</Link>
           </div>
         </nav>
       ) : null}

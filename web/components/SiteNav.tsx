@@ -51,6 +51,7 @@ export function SiteNav({
           <li key={item.href}>
             <Link
               href={item.href}
+              prefetch={false}
               aria-current={onPage ? "page" : inView ? "location" : undefined}
               className={`${linkClassName} ${onPage || inView ? activeClassName : ""}`}
             >

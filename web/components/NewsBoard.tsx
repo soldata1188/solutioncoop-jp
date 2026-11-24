@@ -41,8 +41,10 @@ function CardImage({ item, alt }: { item: TileImage; alt: string }) {
 
 function NewsCard({ item, alt }: { item: NewsItem | NewsPhotoTile; alt: string }) {
   return (
-    <article tabIndex={0} className="news-tile relative aspect-[4/3] overflow-hidden rounded-lg bg-[#eef8f1]">
-      <CardImage item={item} alt={alt} />
+    <article tabIndex={0} className="news-tile relative aspect-[4/3] rounded-lg bg-[#eef8f1]">
+      <div className="absolute inset-0 overflow-hidden rounded-lg">
+        <CardImage item={item} alt={alt} />
+      </div>
     </article>
   );
 }

@@ -89,10 +89,6 @@ export function consultMessengerHref(messenger = MESSENGER_URL, facebook = FACEB
   return messenger.trim() || facebook.trim();
 }
 
-/** 公式X（旧Twitter）アカウント @KumiaiSol。投稿は lib/news.ts に写してあり、ページからは取得しません。 */
-export const X_URL = "https://x.com/KumiaiSol";
-export const X_HANDLE = "KumiaiSol";
-
 /**
  * 既存リポジトリ（solutioncoop-app/・gino-jisshu.html・index16.html）に記載のある情報。
  * 記載どうしで食い違いがある、または代表者様の確認が済んでいないため、表示時は必ず「要確認」を付けます。
@@ -126,7 +122,7 @@ export const organizationJsonLd = {
   "@id": `${SITE_URL}/#organization`,
   name: org.name,
   url: SITE_URL,
-  sameAs: [X_URL, FACEBOOK_URL],
+  sameAs: [FACEBOOK_URL],
   logo: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19_white.png`,
   image: `${SITE_URL}/brand/SOL_Solution_Coop_2026-11-19_white.png`,
   openingHoursSpecification: [

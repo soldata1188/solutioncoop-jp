@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
 import { ChatIcon } from "@/components/LineButton";
-import { org, fullAddress, licenses, sdgs, TEL_HREF, FACEBOOK_URL, X_HANDLE, X_URL, LINE_URL, LINE_ARIA, repoFacts } from "@/lib/site";
+import { org, fullAddress, licenses, sdgs, TEL_HREF, FACEBOOK_URL, LINE_URL, LINE_ARIA, repoFacts } from "@/lib/site";
 import { Chunks, Phrases } from "./KeepWords";
 
 /** 相談窓口、ホームの最新情報、下層ページ。 */
@@ -12,14 +12,6 @@ const footerLinks = [
   { href: "/about#disclosure", label: "情報公開" },
   { href: "/privacy", label: "個人情報保護方針" },
 ];
-
-function XIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-      <path d="M4 4.2h4.2l4 5.5 4.5-5.5H20L14.2 12 20 19.8h-4.2l-4.3-5.8-4.8 5.8H4l6.2-7.5L4 4.2z" />
-    </svg>
-  );
-}
 
 function FacebookIcon() {
   return (
@@ -71,9 +63,6 @@ export function Footer() {
         </nav>
 
         <div className="flex items-center justify-center gap-3 md:justify-start">
-          <a href={X_URL} target="_blank" rel="noopener noreferrer" aria-label={`公式X（@${X_HANDLE}）（新しいタブで開きます）`} className={iconButton}>
-            <XIcon />
-          </a>
           <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="公式Facebook（新しいタブで開きます）" className={iconButton}>
             <FacebookIcon />
           </a>

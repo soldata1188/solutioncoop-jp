@@ -1,7 +1,7 @@
 # ソリューション協同組合 新サイト（web/）
 
 Next.js（App Router）+ TypeScript + Tailwind CSS v4 による静的サイトです。データベースはありません。
-画面は静的に生成します。公式Xの投稿は `lib/news.ts` に写してあり、ページの表示では X API を呼びません。
+`npm run build` は静的ファイルを `out/` に書き出します。表示用のサーバー処理はありません。
 
 既存の `solutioncoop-app/`（さくらVPSで稼働中の現行サイト）には一切手を加えていません。
 
@@ -13,7 +13,7 @@ npm ci
 npm run dev        # http://localhost:3000
 npm run typecheck
 npm run lint
-npm run build && npm start
+npm run build        # web/out/ に静的ファイルを書き出す
 ```
 
 ## Vercel 設定（参考）
@@ -24,7 +24,19 @@ npm run build && npm start
 
 `.env*` ファイルはコミットしないでください（`.env.example` を参照）。お問い合わせは電話・メール・LINEで受けます。
 
-サイトの表示に環境変数は要りません。`X_BEARER_TOKEN`、`X_USER_ID`、`X_USE_FIXTURE`、`X_REFRESH_SECRET` はもう読みません。Vercel に残っている値は消さなくて構いません。最新情報を足すときは `lib/news.ts` と `public/news/` を編集します。
+表示に環境変数は要りません。Vercel に残っている値は消さなくて構いません。
+
+## 最新情報の足し方
+
+`lib/news.ts` の `newsItems` の先頭に1件足します。書くのは日付（ISO）、任意のラベル、任意の見出し `title`、本文です。本文は支給された原文のままにし、新しい事実は作りません。
+
+写真を出すときは `imageAlt` を書き、次の6ファイルを `public/news/` に置きます。
+
+- `{id}-320.avif` `{id}-320.webp`
+- `{id}-480.avif` `{id}-480.webp`
+- `{id}-640.avif` `{id}-640.webp`
+
+写真が無いときは `imageAlt` を省きます。カードはリンクではありません。640px 未満で枚数が奇数のとき、最後の1枚だけ横幅いっぱいになります。
 
 ## データの場所
 

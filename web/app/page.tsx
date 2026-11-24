@@ -214,7 +214,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* 最新情報。公式Xの投稿を静的なカードにしています。埋め込みスクリプトは読みません。 */}
+      {/* 最新情報。lib/news.ts の文章を静的なカードにしています。 */}
       <Section
         id="news"
         title="最新情報"

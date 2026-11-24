@@ -1,8 +1,7 @@
-import { newsHref, newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
-import { X_URL } from "@/lib/site";
+import { newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
 
-/** 3列は約289px、2列は余白と隙間を引いた半分。 */
-const IMAGE_SIZES = "(min-width: 1024px) 289px, calc(50vw - 20px)";
+/** 4列は約213px、2列は余白と隙間を引いた半分。 */
+const IMAGE_SIZES = "(min-width: 1024px) 213px, calc(50vw - 20px)";
 
 function formatJstDotDate(iso: string): string {
   const date = new Date(iso);
@@ -24,7 +23,7 @@ function formatJstDotDate(iso: string): string {
 function CardImage({ item }: { item: NewsItem }) {
   if (!item.imageAlt) {
     return (
-      <div className="relative aspect-square overflow-hidden bg-[#eef8f1]">
+      <div className="news-media relative aspect-square overflow-hidden bg-[#eef8f1]">
         <img
           src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
           alt=""
@@ -38,7 +37,7 @@ function CardImage({ item }: { item: NewsItem }) {
     );
   }
   return (
-    <div className="relative aspect-square overflow-hidden bg-pale">
+    <div className="news-media relative aspect-square shrink-0 overflow-hidden bg-pale">
       <picture>
         <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item.id, "avif")} />
         <source type="image/webp" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item.id, "webp")} />
@@ -50,7 +49,7 @@ function CardImage({ item }: { item: NewsItem }) {
           loading="lazy"
           decoding="async"
           sizes={IMAGE_SIZES}
-          className="news-photo absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
       </picture>
     </div>
@@ -60,12 +59,7 @@ function CardImage({ item }: { item: NewsItem }) {
 function NewsCard({ item }: { item: NewsItem }) {
   const date = formatJstDotDate(item.createdAt);
   return (
-    <a
-      href={newsHref(item)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="news-card card-lift flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white text-left no-underline"
-    >
+    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white text-left">
       <CardImage item={item} />
       <div className="flex flex-1 flex-col gap-1.5 px-2.5 py-2.5 sm:px-3 sm:py-3">
         {item.label ? (
@@ -74,35 +68,22 @@ function NewsCard({ item }: { item: NewsItem }) {
         <time dateTime={item.createdAt} className="text-[11px] font-normal leading-none tabular-nums text-[#757575]">
           {date}
         </time>
+        {item.title ? <p className="text-[13px] font-bold leading-snug text-ink">{item.title}</p> : null}
         <p className="line-clamp-3 text-[12px] font-normal leading-[1.6] text-body sm:line-clamp-4 sm:text-[13px]">{item.text}</p>
       </div>
-      <span className="sr-only">（新しいタブで開きます）</span>
-    </a>
+    </article>
   );
 }
 
-/** 公式Xの投稿を静的なカードにしたもの。ページの生成時にAPIは呼びません。 */
+/** お知らせの静的なカード。リンクも外部ボタンも付けません。 */
 export function NewsBoard() {
   return (
-    <div>
-      <ul className="news-rows grid grid-cols-2 items-stretch gap-2 min-[1024px]:grid-cols-3 min-[1024px]:gap-4">
-        {newsItems.map((item) => (
-          <li key={item.id} className="min-w-0">
-            <NewsCard item={item} />
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6 text-center">
-        <a
-          href={X_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="lift inline-flex min-h-11 items-center justify-center rounded border border-[#1e7f46] bg-white px-8 font-bold text-ink no-underline shadow-sm"
-        >
-          公式Xで見る
-          <span className="sr-only">（新しいタブで開きます）</span>
-        </a>
-      </p>
-    </div>
+    <ul className="news-rows grid grid-cols-2 items-stretch gap-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-4">
+      {newsItems.map((item) => (
+        <li key={item.id} className="min-w-0">
+          <NewsCard item={item} />
+        </li>
+      ))}
+    </ul>
   );
 }

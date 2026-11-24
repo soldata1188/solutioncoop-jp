@@ -1,29 +1,25 @@
 /**
- * ホームの最新情報。公式X @KumiaiSol の投稿を手で写したものです。
- * 取得元: 2026-11-24 のスナップショット。#新しいプロフィール画像 の投稿は入れていません。
- * 文章は投稿の本文のままです（末尾のハッシュタグ行だけ外しています）。
- * カードを足すときは、この配列の先頭に足してください。
+ * ホームの最新情報。文章は支給された原文のままです（末尾のタグ行だけ外しています）。
+ * カードを足すときは配列の先頭に足してください。外部へのリンクは付けません。
  * 写真があるカードは imageAlt を書き、public/news/{id}-320|480|640.avif と .webp を置きます。
  * 写真が無いカードは imageAlt を省くと、既存のロゴタイルになります。
+ * title を書いたときだけ、本文の上に見出しを出します。
  */
 export type NewsItem = {
+  /** ファイル名に使う識別子。公開URLには出しません */
   id: string;
   /** ISO 8601。表示は日本時間の YYYY.MM.DD */
   createdAt: string;
   /** 内容から読み取れるときだけ。無ければ出しません */
   label?: string;
+  /** 任意。本文と別に見出しを出すときだけ */
+  title?: string;
   text: string;
   /** 写真の代替テキスト。写真が無いカードでは使いません */
   imageAlt?: string;
 };
 
 export const NEWS_IMAGE_WIDTHS = [320, 480, 640] as const;
-
-const STATUS = (id: string) => `https://x.com/KumiaiSol/status/${id}`;
-
-export function newsHref(item: NewsItem): string {
-  return STATUS(item.id);
-}
 
 export function newsSrcSet(id: string, ext: "avif" | "webp"): string {
   return NEWS_IMAGE_WIDTHS.map((width) => `/news/${id}-${width}.${ext} ${width}w`).join(", ");
@@ -85,10 +81,5 @@ export const newsItems: NewsItem[] = [
     label: "来日",
     imageAlt: "10月22日に来日した第64期生13名と受け入れ関係者",
     text: "10月22日、第64期生13名が来日いたしました。\n受け入れ企業さま6社にて、とび職4名・建設機械施工4名・左官職5名が、建設現場での活躍に向けて歩み始めます。\n当組合は入国後講習から職場への定着まで、企業さまと実習生に寄り添ってサポートしてまいります。",
-  },
-  {
-    id: "2117033843530289581",
-    createdAt: "2026-11-01T23:19:35Z",
-    text: "ソリューション協同組合(大阪府堺市)の公式アカウントを開設しました。技能実習・特定技能の監理団体として、中小企業の外国人材の受け入れを支援しています。育成就労制度に向けて準備中です。どうぞよろしくお願いいたします。",
   },
 ];

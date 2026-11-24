@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { AchievementCards } from "@/components/AchievementCards";
 import { sdgs } from "@/lib/site";
 
@@ -15,16 +14,28 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
       <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
         <div className="mb-8 flex justify-center bg-white">
           <div className="w-[min(100%,320px)] sm:w-[440px]">
-            <Image
-              src="/images/sdgs-logo-yoko.png"
-              alt="SDGs未来都市・堺"
-              width={6579}
-              height={1851}
-              quality={90}
-              priority
-              sizes="(min-width: 640px) 440px, 320px"
-              className="block h-auto w-full"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                sizes="(min-width: 640px) 440px, 320px"
+                srcSet="/images/sdgs-logo-yoko-320.avif 320w, /images/sdgs-logo-yoko-440.avif 440w, /images/sdgs-logo-yoko-880.avif 880w"
+              />
+              <source
+                type="image/webp"
+                sizes="(min-width: 640px) 440px, 320px"
+                srcSet="/images/sdgs-logo-yoko-320.webp 320w, /images/sdgs-logo-yoko-440.webp 440w, /images/sdgs-logo-yoko-880.webp 880w"
+              />
+              <img
+                src="/images/sdgs-logo-yoko-880.webp"
+                alt="SDGs未来都市・堺"
+                width={6579}
+                height={1851}
+                sizes="(min-width: 640px) 440px, 320px"
+                fetchPriority="high"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </picture>
             <p className="sdgs-support mt-2 text-center leading-normal tracking-normal">
               <span>{sdgs.supportParts[0]}</span><span>{sdgs.supportParts[1]}</span>
             </p>

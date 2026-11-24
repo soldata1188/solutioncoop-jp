@@ -175,12 +175,6 @@ summary::-webkit-details-marker {
       transform: translateY(-3px);
       box-shadow: 0 8px 18px rgb(15 77 42 / 0.12);
     }
-    .news-card .news-photo {
-      transition: transform 200ms ease-out;
-    }
-    .news-card:hover .news-photo {
-      transform: scale(1.04);
-    }
   }
   @media (hover: none) {
     button:not(:disabled):active,
@@ -205,8 +199,20 @@ summary::-webkit-details-marker {
   }
   /* 最新情報カードの日付と見出しは左揃え。中央寄せだと2行目がガタつく */
   ul.news-rows,
-  ul.news-rows :is(li, a, span, time, p) {
+  ul.news-rows :is(li, article, span, time, p) {
     text-align: left;
+  }
+  /* 枚数が奇数のとき、最後の1枚だけ幅いっぱいにして空きマスを残さない */
+  ul.news-rows > li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  ul.news-rows > li:last-child:nth-child(odd) > article {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  ul.news-rows > li:last-child:nth-child(odd) .news-media {
+    width: 42%;
+    flex: none;
   }
   .contact-cards,
   .contact-cards :is(h2, h3, p, address, a) {

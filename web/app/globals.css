@@ -48,6 +48,7 @@ html {
 
 #business,
 #reasons,
+#results,
 #countries,
 #disclosure {
   scroll-margin-top: 4.5rem;
@@ -303,6 +304,11 @@ summary::-webkit-details-marker {
   ul.news-rows :is(li, article, span, time, p) {
     text-align: left;
   }
+  /* 選ばれる理由は左に図、右に文章。狭い画面でも中央寄せにしない */
+  .reason-cards,
+  .reason-cards :is(h3, p, li, span) {
+    text-align: left;
+  }
   .contact-cards,
   .contact-cards :is(h2, h3, p, address, a) {
     text-align: left;
@@ -345,20 +351,4 @@ summary::-webkit-details-marker {
   }
 }
 
-/* 実績カードのアイコン。画面に入ったとき一度だけ。動きを減らす設定では付けない。 */
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes achieve-icon-in {
-    from {
-      opacity: 0;
-      transform: scale(0.84);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  .achieve-icon.is-in {
-    animation: achieve-icon-in 700ms ease-out both;
-  }
-}
 

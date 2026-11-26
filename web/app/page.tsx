@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
+import { IconChartUp, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
 import { LinkButton, Section, TabCard } from "@/components/ui";
 import { StatsStrip } from "@/components/StatsStrip";
+import { ResultsSection } from "@/components/ResultsSection";
+import { ReasonsSection } from "@/components/ReasonsSection";
 import { NewsBoard } from "@/components/NewsBoard";
 import { ContactMethods } from "@/components/ContactSection";
 import { pageMeta } from "@/lib/meta";
@@ -40,41 +42,14 @@ const businesses = [
   },
 ];
 
-/** 選ばれ続ける理由（代表者様ご提供の文言をそのまま掲載） */
-const reasons = [
-  {
-    title: "明朗な費用で安心",
-    sub: "適正な費用体系・透明性の高い運営",
-    body: "すべての費用を書面で明示し、透明性の高い適正な運営体制で企業様の信頼にお応えします。",
-    Icon: IconChartDown,
-  },
-  {
-    title: "事務負担を大幅に軽減",
-    sub: "煩雑な事務手続きの負担軽減",
-    body: "新制度移行に伴う煩雑な手続きの負担軽減と確実な法令順守をサポート。受入れ準備から各種申請に関する適切なアドバイスまで、専門スタッフが伴走し、企業様の適正な運用を支援します。",
-    Icon: IconDocuments,
-  },
-  {
-    title: "3か国対応ハイブリッド",
-    sub: "多国籍で優秀な人材の厳選",
-    body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携しています。",
-    Icon: IconGlobe,
-  },
-  {
-    title: "手厚いフォローで安心",
-    sub: "受入れ後の継続的なサポート",
-    body: "入社後も独自のフォロー体制を提供。生活習慣の違いからくるトラブルやメンタルケアまで母国語で対応し、外国人材の迅速な環境適応と長期定着をバックアップします。",
-    Icon: IconHandshake,
-  },
-];
-
 export default function Home() {
   return (
     <>
       <HomeHero />
 
-      {/* 実績（3つのカード）と、その下の SDGs未来都市・堺 */}
+      {/* SDGs未来都市・堺。実績の6項目はその直下 */}
       <StatsStrip />
+      <ResultsSection />
 
       {/* 事業内容（代表者様ご提供の文言） */}
       <Section
@@ -117,60 +92,7 @@ export default function Home() {
         </ol>
       </Section>
 
-      {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
-      <Section
-        id="reasons"
-        width="wide"
-        visualShare="half"
-        title="80社以上に選ばれ続ける理由"
-        sub="— 受入れ企業様が実感する4つの理由 —"
-        lead="外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
-        visual={
-          <picture className="block w-full">
-            <source
-              type="image/avif"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.avif 480w, /images/global-jinzai-illustration-640.avif 640w, /images/global-jinzai-illustration-880.avif 880w, /images/global-jinzai-illustration-1000.avif 1000w"
-            />
-            <source
-              type="image/webp"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.webp 480w, /images/global-jinzai-illustration-640.webp 640w, /images/global-jinzai-illustration-880.webp 880w, /images/global-jinzai-illustration-1000.webp 1000w"
-            />
-            <img
-              src="/images/global-jinzai-illustration-1000.webp"
-              alt="グローバル人材 若い力を日本企業へ（外国人材と日本企業をつなぐイメージ）"
-              width={1000}
-              height={746}
-              loading="lazy"
-              decoding="async"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              className="h-auto w-full"
-            />
-          </picture>
-        }
-      >
-        <ol className="grid gap-5 md:grid-cols-2">
-          {reasons.map(({ title, sub, body, Icon }, i) => (
-            <TabCard key={title} n={i + 1}>
-              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
-                <Icon className="h-20 w-20" />
-              </div>
-              <div className="px-5 pb-6 pt-5 text-center sm:text-left">
-                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
-                  <Icon className="size-14" />
-                </span>
-                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">理由{i + 1}：</span>
-                  {title}
-                </h3>
-                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
-              </div>
-            </TabCard>
-          ))}
-        </ol>
-      </Section>
+      <ReasonsSection />
 
       <Section
         id="countries"

@@ -1,5 +1,4 @@
 import { preload } from "react-dom";
-import { AchievementCards } from "@/components/AchievementCards";
 import { sdgs } from "@/lib/site";
 
 const SDGS_SIZES = "(min-width: 640px) 440px, 320px";
@@ -9,10 +8,11 @@ const SDGS_WEBP =
   "/images/sdgs-logo-yoko-320.webp 320w, /images/sdgs-logo-yoko-440.webp 440w, /images/sdgs-logo-yoko-880.webp 880w";
 
 /**
- * トップの実績（ヒーロー直下）。
- * SDGsの表示は堺市「ロゴマーク使用ガイド【庁外版】」の横型ロゴと、他の主体名との組み合わせに従います。
+ * ヒーロー直下の「SDGs未来都市・堺」。
+ * 表示は堺市「ロゴマーク使用ガイド【庁外版】」の横型ロゴと、他の主体名との組み合わせに従います。
  * ロゴの原図は堺市のページから入手した横型PNG（余白なし）です。
  * https://www.city.sakai.lg.jp/shisei/toshi/sdgs/SDGsmiraitoshi_logo.files/date02.zip
+ * 実績の数値は直下の ResultsSection に出します。
  */
 export function StatsStrip({ children }: { children?: React.ReactNode }) {
   preload(SDGS_AVIF, {
@@ -23,10 +23,10 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
     fetchPriority: "high",
   });
   return (
-    <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
-      <h2 id="stats-title" className="sr-only">当組合の実績</h2>
-      <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
-        <div className="mb-8 flex justify-center bg-white">
+    <section aria-labelledby="sdgs-title" data-reveal="" className="bg-white">
+      <h2 id="sdgs-title" className="sr-only">SDGs未来都市・堺</h2>
+      <div className="mx-auto max-w-[932px] px-4 pb-2 pt-6 md:pb-4 md:pt-8">
+        <div className="flex justify-center bg-white">
           <div className="w-[min(100%,320px)] sm:w-[440px]">
             <picture>
               <source type="image/avif" sizes={SDGS_SIZES} srcSet={SDGS_AVIF} />
@@ -47,7 +47,6 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
             </p>
           </div>
         </div>
-        <AchievementCards />
         {children}
       </div>
     </section>

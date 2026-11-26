@@ -46,11 +46,61 @@ export const sdgs = {
   sourceLabel: "堺市「SDGs未来都市」",
 } as const;
 
-/** トップの実績。label が上、value が下（最大の文字）。各文言はここ一度だけ。 */
-export const achievements = [
-  { label: "技能実習生受入れ実績", value: "65期", count: 65, unit: "期" },
-  { label: "受入れ企業数", value: "80社以上", count: 80, unit: "社以上" },
-  { label: "令和8年", value: "大阪府知事表彰" },
+/**
+ * トップの実績。確認済みの公開事実だけを載せ、数値は増やしません。
+ * label がピル、count と unit（と prefix）が指標、caption が説明です。
+ */
+export const achievements: {
+  label: string;
+  value: string;
+  count: number;
+  unit: string;
+  caption: string;
+  prefix?: string;
+}[] = [
+  {
+    label: "技能実習生受入れ実績",
+    value: "65期",
+    count: 65,
+    unit: "期",
+    caption: "長年の受入れ実績を重ね、安定した人材受入れを支援しています。",
+  },
+  {
+    label: "受入れ企業数",
+    value: "80社以上",
+    count: 80,
+    unit: "社以上",
+    caption: "大阪・関西圏を中心に、多くの企業様にご利用いただいています。",
+  },
+  {
+    label: "公的表彰",
+    value: "令和8年",
+    count: 8,
+    unit: "年",
+    prefix: "令和",
+    caption: "大阪府知事表彰を受賞いたしました。",
+  },
+  {
+    label: "送り出し連携国",
+    value: "3か国",
+    count: 3,
+    unit: "か国",
+    caption: "ベトナム・インドネシア・フィリピンの送り出し機関と連携しています。",
+  },
+  {
+    label: "相談サポート体制",
+    value: "24時間",
+    count: 24,
+    unit: "時間",
+    caption: "実習生・外国人材向けの相談窓口を設けています。",
+  },
+  {
+    label: "対応制度",
+    value: "3制度",
+    count: 3,
+    unit: "制度",
+    caption: "技能実習・特定技能・育成就労の3制度に対応しています。",
+  },
 ];
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;

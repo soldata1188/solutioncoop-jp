@@ -85,7 +85,7 @@ export default function Home() {
               受入れ事例
             </h2>
             <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
-              外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。
+              金属加工や造園土木、建設など、さまざまな分野の現場で外国人材が活躍しています。
             </p>
           </div>
           <div className="mt-8">

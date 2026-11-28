@@ -45,8 +45,27 @@ function QrFrame({ children }: { children: ReactNode }) {
   return <div className="mx-auto flex h-40 w-40 items-center justify-center overflow-hidden rounded-site border border-line bg-white p-4">{children}</div>;
 }
 
-export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: string; messengerQr: string; messengerHref: string }) {
-  const messengerReady = messengerHref.length > 0 && messengerQr.length > 0;
+export function ConsultDesk({
+  lineQr,
+  messengerQr,
+  messengerHref,
+  headingLevel = "h1",
+  showQr = true,
+  columns = "lg",
+}: {
+  lineQr: string;
+  messengerQr: string;
+  messengerHref: string;
+  /** ホームでは h2。/for-workers は h1 のまま。 */
+  headingLevel?: "h1" | "h2";
+  /** ホームでは QR を出さない。/for-workers は出す。 */
+  showQr?: boolean;
+  /** ホームは sm から3列。/for-workers は lg のまま。 */
+  columns?: "sm" | "lg";
+}) {
+  const messengerReady = messengerHref.length > 0 && (showQr ? messengerQr.length > 0 : true);
+  const Heading = headingLevel;
+  const CardHeading = headingLevel === "h1" ? "h2" : "h3";
   return (
     <div className="flex flex-col items-center text-center">
       <p className="inline-flex max-w-full flex-col items-center rounded-control bg-primary px-6 py-3 text-white">
@@ -62,10 +81,10 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
         {CONSULT_CLAIMS.pillJa} / {CONSULT_CLAIMS.pillEn}
       </p>
 
-      <h1 className="mt-6 text-3xl font-bold leading-tight text-primary-darker md:text-5xl">
+      <Heading id={headingLevel === "h2" ? "countries" : undefined} className="mt-6 text-3xl font-bold leading-tight text-primary-darker md:text-5xl">
         {CONSULT_CLAIMS.titlePrefix}
         <span className="text-primary">{CONSULT_CLAIMS.titleAccent}</span>
-      </h1>
+      </Heading>
       <p className="mt-3 text-xs font-bold tracking-[0.18em] text-primary md:text-sm">{CONSULT_CLAIMS.hotlineEn}</p>
       <p className="mx-auto mt-5 max-w-[40rem] text-base font-bold leading-relaxed text-ink md:text-lg">{CONSULT_CLAIMS.leadJa}</p>
       <p className="mx-auto mt-1 max-w-[40rem] text-sm text-muted">{CONSULT_CLAIMS.leadEn}</p>
@@ -80,7 +99,7 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
         ))}
       </ul>
 
-      <ul className="mt-10 grid grid-cols-1 items-stretch gap-4 lg:grid-cols-3">
+      <ul className={`mt-10 grid grid-cols-1 items-stretch gap-4 ${columns === "sm" ? "sm:grid-cols-3" : "lg:grid-cols-3"}`}>
         <li className="card-lift flex h-full flex-col overflow-hidden rounded-site border border-line bg-white text-center">
           <div className="flex h-28 items-center justify-center bg-[#e7f1ff]">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1877F2]">
@@ -88,21 +107,23 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
             </span>
           </div>
           <div className="flex flex-1 flex-col px-5 py-6">
-            <h2 className="text-xl font-bold text-[#1877F2]">Facebookで相談</h2>
+            <CardHeading className="text-xl font-bold text-[#1877F2]">Facebookで相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-[#1877F2]">CONSULT VIA FACEBOOK</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">Messengerでメッセージを送れます。ベトナム語、インドネシア語、タガログ語で話を聞きます。</p>
             <p className="mt-1 text-xs leading-relaxed text-muted">You can send a Messenger message. We listen in Vietnamese, Indonesian, and Tagalog.</p>
-            <div className="mt-5">
-              {messengerReady ? (
-                <QrFrame>
-                  <div className="line-qr h-full w-full" role="img" aria-label="MessengerのQRコード" dangerouslySetInnerHTML={{ __html: messengerQr }} />
-                </QrFrame>
-              ) : (
-                <QrFrame>
-                  <span className="text-base font-bold text-muted">準備中</span>
-                </QrFrame>
-              )}
-            </div>
+            {showQr ? (
+              <div className="mt-5">
+                {messengerHref.length > 0 && messengerQr.length > 0 ? (
+                  <QrFrame>
+                    <div className="line-qr h-full w-full" role="img" aria-label="MessengerのQRコード" dangerouslySetInnerHTML={{ __html: messengerQr }} />
+                  </QrFrame>
+                ) : (
+                  <QrFrame>
+                    <span className="text-base font-bold text-muted">準備中</span>
+                  </QrFrame>
+                )}
+              </div>
+            ) : null}
             <div className="mt-auto pt-5">
               {messengerReady ? (
                 <a href={messengerHref} target="_blank" rel="noopener noreferrer" className={`${btn} bg-[#1877F2] text-white hover:bg-[#1666d2]`}>
@@ -125,15 +146,17 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
             <LineMark />
           </div>
           <div className="flex flex-1 flex-col px-5 py-6">
-            <h2 className="text-xl font-bold text-linegreen">LINEで相談</h2>
+            <CardHeading className="text-xl font-bold text-linegreen">LINEで相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-linegreen">CONSULT VIA LINE</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をすると、LINEでメッセージを送れます。</p>
             <p className="mt-1 text-xs leading-relaxed text-muted">After you add us, you can send a message on LINE.</p>
-            <div className="mt-5">
-              <QrFrame>
-                <div className="line-qr h-full w-full" role="img" aria-label="LINEの友だち追加用QRコード" dangerouslySetInnerHTML={{ __html: lineQr }} />
-              </QrFrame>
-            </div>
+            {showQr ? (
+              <div className="mt-5">
+                <QrFrame>
+                  <div className="line-qr h-full w-full" role="img" aria-label="LINEの友だち追加用QRコード" dangerouslySetInnerHTML={{ __html: lineQr }} />
+                </QrFrame>
+              </div>
+            ) : null}
             <div className="mt-auto pt-5">
               <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`${btn} bg-linegreen text-ink hover:bg-linegreen-hover`}>
                 <span>LINE 友だち登録へ</span>
@@ -149,11 +172,11 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
             <PhoneIcon />
           </div>
           <div className="flex flex-1 flex-col px-5 py-6">
-            <h2 className="text-xl font-bold text-primary">電話で相談</h2>
+            <CardHeading className="text-xl font-bold text-primary">電話で相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-primary">CONSULT BY PHONE</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">急いで話したいときは、この番号に電話してください。</p>
             <p className="mt-1 text-xs leading-relaxed text-muted">If you need to talk right away, please call this number.</p>
-            <p className="mt-5 flex min-h-40 items-center justify-center text-3xl font-bold tracking-wide text-primary">{org.tel}</p>
+            <p className={`mt-5 flex items-center justify-center text-3xl font-bold tracking-wide text-primary ${showQr ? "min-h-40" : ""}`}>{org.tel}</p>
             <div className="mt-auto pt-5">
               <a href={TEL_HREF} className={`${btn} bg-primary text-white hover:bg-primary-dark`}>
                 <span>今すぐ発信する</span>

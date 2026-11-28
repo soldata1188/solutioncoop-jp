@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { IconChartDown, IconChartUp, IconDocuments, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
-import { LinkButton, Section, TabCard } from "@/components/ui";
+import { Section, TabCard } from "@/components/ui";
+import { ConsultDesk } from "@/components/ConsultDesk";
+import { consultMessengerHref } from "@/lib/site";
 import { StatsStrip } from "@/components/StatsStrip";
 import { NewsBoard } from "@/components/NewsBoard";
 import { CasesBoard } from "@/components/CasesBoard";
@@ -163,33 +165,18 @@ export default function Home() {
         </ol>
       </Section>
 
-      <Section
-        id="countries"
-        title={
-          <>
-            <span className="lg:block lg:whitespace-nowrap">外国人材・</span>
-            <span className="lg:block lg:whitespace-nowrap">実習生のみなさまへ</span>
-          </>
-        }
-        width="default"
-        lead="仕事や生活で困ったときの案内ページです。"
-        visual={
-          <img
-            src="/images/jigyo-sodan-conversation.svg"
-            alt=""
-            width={842}
-            height={843}
-            loading="lazy"
-            decoding="async"
-            aria-hidden="true"
-            className="h-auto w-full max-w-[240px] lg:w-[320px] lg:max-w-[320px]"
+      <section aria-labelledby="countries" className="bg-white">
+        <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
+          <ConsultDesk
+            lineQr=""
+            messengerQr=""
+            messengerHref={consultMessengerHref()}
+            headingLevel="h2"
+            showQr={false}
+            columns="sm"
           />
-        }
-      >
-        <p className="text-center">
-          <LinkButton href="/for-workers">案内を見る</LinkButton>
-        </p>
-      </Section>
+        </div>
+      </section>
 
       <section aria-labelledby="news" className="bg-pale">
         <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">

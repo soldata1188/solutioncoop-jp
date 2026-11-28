@@ -4,7 +4,7 @@ function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boole
   return (
     <ul className={`client-marquee-list ${hidden ? "client-marquee-clone" : ""}`} aria-hidden={hidden || undefined}>
       {items.map((item) => (
-        <li key={item.name} className="flex h-28 w-[9.75rem] shrink-0 flex-col items-center justify-center rounded-control border border-line bg-white px-2 py-2 sm:h-[7.75rem] sm:w-[11.25rem]">
+        <li key={item.name} className="flex h-[4.75rem] w-[9.25rem] shrink-0 flex-col items-center justify-center px-1 sm:h-20 sm:w-[11rem]">
           {item.logoSrc ? (
             <>
               <span className="flex h-8 w-full items-center justify-center sm:h-10">
@@ -59,7 +59,7 @@ export function ClientMarquee() {
           {clientsHeadline.peopleUnit}
         </h2>
       </div>
-      <div className="client-marquee mt-8 space-y-3 pb-14 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:pb-[72px]" tabIndex={0}>
+      <div className="client-marquee mt-8 space-y-5 pb-14 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:space-y-6 md:pb-[72px]" tabIndex={0}>
         <Row items={clientRowOne} />
         <Row items={clientRowTwo} reverse />
       </div>

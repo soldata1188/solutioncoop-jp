@@ -79,7 +79,7 @@ html {
   animation-direction: reverse;
 }
 .client-marquee-list {
-  --client-gap: 8px;
+  --client-gap: 20px;
   display: flex;
   gap: var(--client-gap);
   margin: 0;
@@ -88,7 +88,7 @@ html {
 }
 @media (min-width: 640px) {
   .client-marquee-list {
-    --client-gap: 12px;
+    --client-gap: 32px;
   }
 }
 .client-marquee:hover .client-track,

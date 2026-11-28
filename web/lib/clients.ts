@@ -26,7 +26,7 @@ export type ClientCard = {
 
 /** 見出しは下書き。数字は別変数。文言の確定は代表の承認待ち。 */
 export const clientCompaniesCount = 83;
-export const clientPeopleCount = 639;
+export const clientPeopleCount = 839;
 
 export const clientsHeadline = {
   companiesLead: "取引企業数",

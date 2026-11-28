@@ -8,6 +8,7 @@ import { StatsStrip } from "@/components/StatsStrip";
 import { NewsBoard } from "@/components/NewsBoard";
 import { CasesBoard } from "@/components/CasesBoard";
 import { ContactMethods } from "@/components/ContactSection";
+import { ClientMarquee } from "@/components/ClientMarquee";
 import { pageMeta } from "@/lib/meta";
 
 export const metadata: Metadata = {
@@ -96,6 +97,8 @@ export default function Home() {
           ))}
         </ol>
       </Section>
+
+      <ClientMarquee />
 
       <section aria-labelledby="countries" className="bg-white">
         <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">

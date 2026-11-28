@@ -63,6 +63,66 @@ html {
   height: 100%;
 }
 
+/* 受入れ企業名のサンプル。同じ列を2つ並べ、半分だけ動かすと継ぎ目が消える。 */
+.client-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.client-track {
+  display: flex;
+  width: max-content;
+  animation: client-marquee 46s linear infinite;
+}
+.client-track-back {
+  animation-duration: 54s;
+  animation-direction: reverse;
+}
+.client-marquee-list {
+  --client-gap: 8px;
+  display: flex;
+  gap: var(--client-gap);
+  margin: 0;
+  padding: 0 var(--client-gap) 0 0;
+  list-style: none;
+}
+@media (min-width: 640px) {
+  .client-marquee-list {
+    --client-gap: 12px;
+  }
+}
+.client-marquee:hover .client-track,
+.client-marquee:focus-within .client-track {
+  animation-play-state: paused;
+}
+@keyframes client-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .client-track,
+  .client-track-back {
+    animation: none;
+    width: 100%;
+    transform: none;
+    justify-content: center;
+  }
+  .client-marquee-clone {
+    display: none;
+  }
+  .client-marquee-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
 /* 許可証枠。幅に対して高さ 141.4%（A4 縦）。aspect-ratio 対応時はそちらを使う */
 .license-frame {
   position: relative;

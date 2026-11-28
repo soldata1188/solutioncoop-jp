@@ -230,15 +230,10 @@ export function ImagePlaceholder({
   );
 }
 
-/** 淡い緑枠カード。n を渡したときだけ左上に番号を出す。 */
-export function TabCard({ n, children, className = "", as: Tag = "li" }: { n?: number; children: React.ReactNode; className?: string; as?: "li" | "div" }) {
+/** 淡い緑枠カード（「選ばれる理由」「事業内容」）。 */
+export function TabCard({ children, className = "", as: Tag = "li" }: { children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
     <Tag className={`card-lift relative flex flex-col rounded-site border border-line bg-white ${className}`}>
-      {n != null ? (
-        <span aria-hidden="true" className="absolute -left-px -top-px flex h-8 w-8 items-center justify-center rounded-tl-site bg-tab text-base font-bold text-primary-dark">
-          {n}
-        </span>
-      ) : null}
       {children}
     </Tag>
   );

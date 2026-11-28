@@ -150,8 +150,8 @@ export default function Home() {
         }
       >
         <ol className="grid gap-5 md:grid-cols-2">
-          {businesses.map(({ title, sub, body, Icon }, i) => (
-            <TabCard key={title} n={i + 1}>
+          {businesses.map(({ title, sub, body, Icon }) => (
+            <TabCard key={title}>
               <div className="hidden h-36 items-center justify-center border-b border-line bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
@@ -160,7 +160,6 @@ export default function Home() {
                   <Icon className="size-14" />
                 </span>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">事業{i + 1}：</span>
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>

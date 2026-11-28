@@ -61,7 +61,7 @@ export function HomeHero() {
           <Link
             href={CONTACT_HREF}
             prefetch={false}
-            className="flex min-h-16 items-center justify-center gap-1 rounded-control bg-cta px-2 py-3 text-center font-black text-ink no-underline transition-colors hover:bg-cta-hover"
+            className="relative flex min-h-16 items-center justify-center rounded-control bg-cta px-2 py-3 text-center font-black text-ink no-underline transition-colors hover:bg-cta-hover"
           >
             <span className="flex flex-col items-center leading-tight">
               <span className="text-[13px] sm:text-lg">
@@ -69,7 +69,7 @@ export function HomeHero() {
               </span>
               <span className="mt-0.5 text-xs font-bold">無料相談・お問い合わせ</span>
             </span>
-            <span aria-hidden="true" className="text-base sm:text-xl">→</span>
+            <span aria-hidden="true" className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-base leading-none sm:right-3 sm:text-xl">→</span>
           </Link>
           <a
             href={LINE_URL}

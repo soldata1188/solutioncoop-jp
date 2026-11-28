@@ -3,17 +3,24 @@ import { preload } from "react-dom";
 import { Chunks } from "@/components/KeepWords";
 import { CONTACT_HREF, LINE_URL } from "@/lib/site";
 
-const HERO_SIZES = "100vw";
+/**
+ * デスクトップは元画像の全幅。高さ 611px のときは cover で約 1451px 幅になるので、
+ * 1460px を下限にして 1x は 1600、2x は 3468 を選ばせる。1600px 以上は幅そのもの。
+ */
+const HERO_SIZES = "(max-width: 1459px) 1460px, 100vw";
 const HERO_AVIF =
-  "/images/hero/hero-bg-640.avif 640w, /images/hero/hero-bg-1080.avif 1080w, /images/hero/hero-bg-1600.avif 1600w, /images/hero/hero-bg-2400.avif 2400w";
+  "/images/hero/hero-bg-1600.avif 1600w, /images/hero/hero-bg-2400.avif 2400w, /images/hero/hero-bg-3468.avif 3468w";
 const HERO_WEBP =
-  "/images/hero/hero-bg-640.webp 640w, /images/hero/hero-bg-1080.webp 1080w, /images/hero/hero-bg-1600.webp 1600w, /images/hero/hero-bg-2400.webp 2400w";
-/** モバイルは工場帯だけを縦に切った別画像。cover で高さいっぱい使うので sizes は幅より広くする。 */
-const HERO_MOBILE_SIZES = "240vw";
+  "/images/hero/hero-bg-1600.webp 1600w, /images/hero/hero-bg-2400.webp 2400w, /images/hero/hero-bg-3468.webp 3468w";
+/**
+ * モバイルも元画像の全幅（3468×1460）。高さ 688px までは cover の表示幅が約 1634px。
+ * 1x は 1734、2x は実寸 3468 を選ばせ、引き伸ばさない。360px 以下は 1x でも実寸を使う。
+ */
+const HERO_MOBILE_SIZES = "(max-width: 389px) 1900px, 1734px";
 const HERO_MOBILE_AVIF =
-  "/images/hero/hero-bg-mobile-390.avif 390w, /images/hero/hero-bg-mobile-780.avif 780w, /images/hero/hero-bg-mobile-1170.avif 1170w";
+  "/images/hero/hero-bg-mobile-1734.avif 1734w, /images/hero/hero-bg-3468.avif 3468w";
 const HERO_MOBILE_WEBP =
-  "/images/hero/hero-bg-mobile-390.webp 390w, /images/hero/hero-bg-mobile-780.webp 780w, /images/hero/hero-bg-mobile-1170.webp 1170w";
+  "/images/hero/hero-bg-mobile-1734.webp 1734w, /images/hero/hero-bg-3468.webp 3468w";
 
 function IconConstruction() {
   return (
@@ -45,9 +52,9 @@ function IconBuilding() {
 const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
- * トップのヒーロー。背景は夕景の工場写真。文字の下は濃い緑のスクリム。
- * 白 / #1E7F46 は 5.02:1。小さい黄色だけ #FFF9B0（4.65:1）。
- * 業種の枠と副ボタンは、白を混ぜると文字が 4.5:1 を切るため、濃い緑の半透明にしています。
+ * トップのヒーロー。背景は夕景の工場写真（縮小と切り出しのみ。ぼかしや色の加工はしない）。
+ * 文字の背後だけ、暗い紺のスクリム。緑の塗りつぶしは使わない。
+ * 通常の文字は 4.5:1、大きな見出しは 3:1。黄色のボタン地は #222 / #FFF478。
  */
 export function HomeHero() {
   preload(HERO_MOBILE_AVIF, {
@@ -67,12 +74,12 @@ export function HomeHero() {
     media: "(min-width: 640px)",
   });
   return (
-    <section data-hero className="relative overflow-hidden bg-primary text-white">
+    <section data-hero className="relative overflow-hidden bg-[#0c1220] text-white">
       <picture className="pointer-events-none absolute inset-0 block">
         <source media="(max-width: 639px)" type="image/avif" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_AVIF} />
         <source media="(max-width: 639px)" type="image/webp" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_WEBP} />
-        <source type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
-        <source type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
+        <source media="(min-width: 640px)" type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
+        <source media="(min-width: 640px)" type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
         <img
           src="/images/hero/hero-bg-1600.webp"
           alt=""
@@ -84,7 +91,10 @@ export function HomeHero() {
           className="h-full w-full object-cover object-center sm:object-[center_62%]"
         />
       </picture>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,#0a3720e6_0%,#0a3720d1_48%,#0a3720b8_68%,#0a372066_100%)] sm:bg-gradient-to-b sm:from-primary-darker/85 sm:via-primary-darker/70 sm:to-primary-darker/28" />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(12,18,32,0.78)_0%,rgba(12,18,32,0.72)_38%,rgba(12,18,32,0.66)_70%,rgba(12,18,32,0.52)_100%)] sm:bg-[radial-gradient(ellipse_78%_125%_at_50%_46%,rgba(12,18,32,0.80)_0%,rgba(12,18,32,0.70)_42%,rgba(12,18,32,0.42)_68%,rgba(12,18,32,0.12)_84%,rgba(12,18,32,0)_100%)]"
+      />
 
       <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 py-14 text-center sm:py-16 md:py-20">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">

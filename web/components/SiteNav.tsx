@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { isCurrent } from "./NavLink";
 
-const HOME_IDS = ["business", "reasons", "news", "contact"];
+const HOME_IDS = ["reasons", "news", "contact"];
+const ABOUT_IDS = ["business", "disclosure"];
 
 export function SiteNav({
   items,
@@ -20,11 +21,11 @@ export function SiteNav({
 }) {
   const pathname = usePathname();
   const [seenId, setSeenId] = useState<string | null>(null);
-  const sectionIds = pathname === "/" ? HOME_IDS : pathname === "/about" ? ["disclosure"] : [];
+  const sectionIds = pathname === "/" ? HOME_IDS : pathname === "/about" ? ABOUT_IDS : [];
   const activeId = seenId && sectionIds.includes(seenId) ? seenId : null;
 
   useEffect(() => {
-    const ids = pathname === "/" ? HOME_IDS : pathname === "/about" ? ["disclosure"] : [];
+    const ids = pathname === "/" ? HOME_IDS : pathname === "/about" ? ABOUT_IDS : [];
     if (ids.length === 0) return;
     const targets = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el != null);
     if (targets.length === 0) return;

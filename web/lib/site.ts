@@ -115,7 +115,7 @@ export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${o
 /** ヘッダー・フッター・モバイルメニュー。ホーム内の節は実在する id へ飛ばします */
 export const nav = [
   { href: "/#reasons", label: "選ばれる理由" },
-  { href: "/#business", label: "事業内容" },
+  { href: "/about#business", label: "事業内容" },
   { href: "/for-workers", label: "実習生の方へ" },
   { href: "/#news", label: "活動情報" },
   { href: "/about", label: "組合概要" },

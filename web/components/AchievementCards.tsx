@@ -45,32 +45,37 @@ export function AchievementCards() {
     };
   }, []);
 
-  const heading = achievementsHeading.text;
   const highlight = achievementsHeading.highlight;
-  const mark =
-    heading && highlight && heading.includes(highlight)
-      ? {
-          before: heading.slice(0, heading.indexOf(highlight)),
-          mid: highlight,
-          after: heading.slice(heading.indexOf(highlight) + highlight.length),
-        }
-      : null;
 
   return (
     <div>
-      {heading ? (
-        <p className="mb-6 text-center text-2xl font-bold leading-snug text-ink md:text-3xl">
-          {mark ? (
-            <>
-              {mark.before}
-              <span className="bg-cta px-1">{mark.mid}</span>
-              {mark.after}
-            </>
-          ) : (
-            heading
-          )}
+      <div className="mb-8 text-center">
+        <p aria-hidden="true" className="mb-4 flex items-center justify-center gap-3">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         </p>
-      ) : null}
+        <h2 id="stats-title" className="text-2xl font-bold leading-snug text-ink md:text-[1.75rem]">
+          {achievementsHeading.lines.map((line) => {
+            const at = highlight ? line.indexOf(highlight) : -1;
+            return (
+              <span key={line} className="block">
+                {at === -1 ? (
+                  line
+                ) : (
+                  <>
+                    {line.slice(0, at)}
+                    <span className="bg-cta-tint text-primary-dark">{line.slice(at, at + highlight!.length)}</span>
+                    {line.slice(at + highlight!.length)}
+                  </>
+                )}
+              </span>
+            );
+          })}
+        </h2>
+      </div>
       <ul ref={rootRef} className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3">
         {achievements.map((item, i) => (
           <li key={item.label} className="flex h-full flex-col items-center rounded-3xl border-4 border-pale-border bg-white px-4 py-6 text-center">
@@ -84,7 +89,7 @@ export function AchievementCards() {
               </span>
               {item.unit ? <span className="mb-1 ml-0.5 text-base font-bold sm:text-lg">{item.unit}</span> : null}
             </p>
-            {item.description ? <p className="mt-3 text-sm leading-relaxed text-muted">{item.description}</p> : null}
+            {item.description ? <p className="mt-4 text-center text-sm leading-relaxed text-muted">{item.description}</p> : null}
           </li>
         ))}
       </ul>

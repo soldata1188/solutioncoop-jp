@@ -60,16 +60,35 @@ export type Achievement = {
 };
 
 /**
- * 実績見出し。text が空なら出さない。
- * highlight を渡すと、その部分だけマーカー線を引く。
+ * TODO: 仮文言・代表者様確認待ち
+ * 見出しと各カードの説明。highlight の部分だけ色とマーカーを変える。
  */
-export const achievementsHeading: { text: string; highlight?: string } = { text: "" };
+export const achievementsHeading: { lines: readonly string[]; highlight?: string } = {
+  lines: ["外国人材の受入れを支える", "「確かな実績」があります"],
+  highlight: "「確かな実績」",
+};
 
 /** トップの実績。各文言はここ一度だけ。 */
 export const achievements: Achievement[] = [
-  { label: "技能実習生受入れ実績", count: 65, unit: "期" },
-  { label: "受入れ企業数", count: 80, unit: "社以上" },
-  { label: "大阪府知事表彰", prefix: "令和", count: 8, unit: "年" },
+  {
+    label: "技能実習生受入れ実績",
+    count: 65,
+    unit: "期",
+    description: "技能実習生の受入れを、第65期まで継続してご支援してまいりました。",
+  },
+  {
+    label: "受入れ企業数",
+    count: 80,
+    unit: "社以上",
+    description: "多くの企業様に、外国人材の受入れでご利用いただいております。",
+  },
+  {
+    label: "大阪府知事表彰",
+    prefix: "令和",
+    count: 8,
+    unit: "年",
+    description: "令和8年に、大阪府知事表彰を受けました。",
+  },
 ];
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;

@@ -24,7 +24,6 @@ export function StatsStrip({ children }: { children?: React.ReactNode }) {
   });
   return (
     <section aria-labelledby="stats-title" data-reveal="" className="bg-white">
-      <h2 id="stats-title" className="sr-only">当組合の実績</h2>
       <div className="mx-auto max-w-[932px] px-4 py-6 md:py-8">
         <div className="mb-8 flex justify-center bg-white">
           <div className="w-[min(100%,320px)] sm:w-[440px]">

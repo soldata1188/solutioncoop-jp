@@ -233,7 +233,7 @@ export function ImagePlaceholder({
 /** 淡い緑枠カード（「選ばれる理由」「事業内容」）。 */
 export function TabCard({ children, className = "", as: Tag = "li" }: { children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
-    <Tag className={`card-lift relative flex flex-col rounded-site border border-line bg-white ${className}`}>
+    <Tag className={`card-lift relative flex flex-col overflow-hidden rounded-site border border-line bg-white ${className}`}>
       {children}
     </Tag>
   );

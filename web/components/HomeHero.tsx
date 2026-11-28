@@ -52,9 +52,9 @@ function IconBuilding() {
 const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
- * トップのヒーロー。背景は夕景の工場写真（縮小と切り出しのみ。ぼかしや色の加工はしない）。
- * 文字の背後だけ、暗い紺のスクリム。緑の塗りつぶしは使わない。
- * 通常の文字は 4.5:1、大きな見出しは 3:1。黄色のボタン地は #222 / #FFF478。
+ * トップのヒーロー。背景は夕景の工場写真（縮小のみ。色の加工はしない）。
+ * 文字一式は曇りガラスの箱の中。写真の上にスクリムは重ねない。
+ * 通常の文字は 4.5:1、大きな見出しは 3:1。ぼかし非対応のときは箱の地を濃くする。
  */
 export function HomeHero() {
   preload(HERO_MOBILE_AVIF, {
@@ -88,15 +88,12 @@ export function HomeHero() {
           sizes={HERO_SIZES}
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full object-cover object-center sm:object-[center_62%]"
+          className="h-full w-full object-cover object-[center_68%]"
         />
       </picture>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(12,18,32,0.78)_0%,rgba(12,18,32,0.72)_38%,rgba(12,18,32,0.66)_70%,rgba(12,18,32,0.52)_100%)] sm:bg-[radial-gradient(ellipse_78%_125%_at_50%_46%,rgba(12,18,32,0.80)_0%,rgba(12,18,32,0.70)_42%,rgba(12,18,32,0.42)_68%,rgba(12,18,32,0.12)_84%,rgba(12,18,32,0)_100%)]"
-      />
 
-      <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 py-14 text-center sm:py-16 md:py-20">
+      <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-3 pb-32 pt-16 sm:px-4 sm:pb-28 sm:pt-20">
+        <div className="hero-glass w-full max-w-[920px] px-3 py-3 text-center sm:px-5 sm:py-5">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">
           <span className="block text-white">
             <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />
@@ -106,7 +103,7 @@ export function HomeHero() {
           </span>
         </h1>
 
-        <p className="mt-6 text-base font-bold leading-relaxed text-white md:mt-8 md:text-xl">
+        <p className="mt-3 text-base font-bold leading-relaxed text-white sm:mt-5 md:text-xl">
           <span className="block">
             <span className="inline-block">実習生の受入れから</span>
             <span className="inline-block">
@@ -121,7 +118,7 @@ export function HomeHero() {
           </span>
         </p>
 
-        <div className="mt-8 flex w-full max-w-3xl flex-col items-center gap-3 rounded-site border border-white/40 bg-primary-darker/35 px-3 py-3 sm:mt-10 sm:w-auto sm:flex-row sm:gap-4 sm:px-5 md:py-4">
+        <div className="mt-3 flex w-full max-w-3xl flex-col items-center gap-3 rounded-site border border-white/40 bg-primary-darker/35 px-3 py-3 sm:mt-5 sm:w-auto sm:flex-row sm:gap-4 sm:px-5">
           <p className="text-xs font-bold tracking-wide text-cta">主な対応業種</p>
           <ul className="flex flex-wrap items-center justify-center gap-2">
             <li className={chipBase}>
@@ -139,7 +136,7 @@ export function HomeHero() {
           </ul>
         </div>
 
-        <div className="mt-8 grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3 md:mt-10">
+        <div className="mt-3 grid w-full max-w-xl grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
           <Link
             href={CONTACT_HREF}
             prefetch={false}
@@ -165,6 +162,7 @@ export function HomeHero() {
             </span>
             <span className="sr-only">（LINE公式アカウントを新しいタブで開きます）</span>
           </a>
+        </div>
         </div>
       </div>
     </section>

@@ -1,64 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { achievements } from "@/lib/site";
-
-const stroke = {
-  "aria-hidden": true as const,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.75,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
-
-/** 技能実習生（人の集まり） */
-function IconPeople() {
-  return (
-    <svg {...stroke} width={26} height={26} className="block h-[26px] w-[26px] shrink-0">
-      <circle cx="7.5" cy="7.5" r="2" />
-      <circle cx="16.5" cy="7.5" r="2" />
-      <path d="M3.8 18.2c.5-2.7 2.3-4.1 3.7-4.1s3.2 1.4 3.7 4.1" />
-      <path d="M12.8 18.2c.5-2.7 2.3-4.1 3.7-4.1s3.2 1.4 3.7 4.1" />
-    </svg>
-  );
-}
-
-/** 受入れ企業（建物） */
-function IconBuilding() {
-  return (
-    <svg {...stroke} width={26} height={26} className="block h-[26px] w-[26px] shrink-0">
-      <path d="M4 20h16" />
-      <path d="M6.5 20V9.5L11 6v14" />
-      <path d="M11 20V11h6.5V20" />
-      <path d="M8.2 12h1.2M8.2 15h1.2M8.2 18h1.2M13.2 14h1.2M13.2 17h1.2" />
-    </svg>
-  );
-}
-
-/** 知事表彰（メダル） */
-function IconMedal() {
-  return (
-    <svg {...stroke} width={26} height={26} className="block h-[26px] w-[26px] shrink-0">
-      <path d="M8.5 3.5 12 9l3.5-5.5" />
-      <circle cx="12" cy="15" r="4.6" />
-      <path d="M12 13.2v2.2M10.6 16.2h2.8" />
-    </svg>
-  );
-}
-
-const icons = [IconPeople, IconBuilding, IconMedal];
+import { achievements, achievementsHeading } from "@/lib/site";
 
 /**
- * ホームの実績3枚。文言はサーバー描画の最終値のまま。
- * 画面に入ったあとだけ、アイコンを一度出し、65 と 80 を約1秒で数える。
+ * ホームの実績3枚。文言は最終値のまま描き、動きを減らす設定では数えない。
+ * 画面に入ったあとだけ、数字を約1秒で数える。幅は桁数で確保する。
  */
 export function AchievementCards() {
   const rootRef = useRef<HTMLUListElement>(null);
-  const [play, setPlay] = useState(false);
   const [live, setLive] = useState(false);
-  const [nums, setNums] = useState(() => achievements.map((item) => item.count ?? null));
+  const [nums, setNums] = useState(() => achievements.map((item) => item.count));
 
   useEffect(() => {
     const root = rootRef.current;
@@ -72,17 +24,16 @@ export function AchievementCards() {
         if (played || !entries.some((entry) => entry.isIntersecting)) return;
         played = true;
         io.disconnect();
-        setPlay(true);
         setLive(true);
         const duration = 1000;
         const start = performance.now();
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - t, 3);
-          setNums(achievements.map((item) => (item.count == null ? null : Math.round(eased * item.count))));
+          setNums(achievements.map((item) => Math.round(eased * item.count)));
           if (t < 1) frame = requestAnimationFrame(tick);
         };
-        setNums(achievements.map((item) => (item.count == null ? null : 0)));
+        setNums(achievements.map(() => 0));
         frame = requestAnimationFrame(tick);
       },
       { threshold: 0.35 },
@@ -94,30 +45,49 @@ export function AchievementCards() {
     };
   }, []);
 
+  const heading = achievementsHeading.text;
+  const highlight = achievementsHeading.highlight;
+  const mark =
+    heading && highlight && heading.includes(highlight)
+      ? {
+          before: heading.slice(0, heading.indexOf(highlight)),
+          mid: highlight,
+          after: heading.slice(heading.indexOf(highlight) + highlight.length),
+        }
+      : null;
+
   return (
-    <ul ref={rootRef} className="grid grid-cols-3 items-stretch gap-2 sm:gap-4">
-      {achievements.map((item, i) => {
-        const Icon = icons[i];
-        const counted = item.count != null && item.unit;
-        return (
-          <li key={item.label} className="flex h-full flex-col items-center justify-start border-t-[3px] border-primary bg-white px-1.5 py-4 text-center shadow-card sm:px-4 sm:py-6">
-            <span aria-hidden="true" className={`achieve-icon mb-2 flex size-12 shrink-0 items-center justify-center rounded-full bg-pale text-primary${play ? " is-in" : ""}`} style={play ? { animationDelay: `${i * 80}ms` } : undefined}>
-              <Icon />
+    <div>
+      {heading ? (
+        <p className="mb-6 text-center text-2xl font-bold leading-snug text-ink md:text-3xl">
+          {mark ? (
+            <>
+              {mark.before}
+              <span className="bg-cta px-1">{mark.mid}</span>
+              {mark.after}
+            </>
+          ) : (
+            heading
+          )}
+        </p>
+      ) : null}
+      <ul ref={rootRef} className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3">
+        {achievements.map((item, i) => (
+          <li key={item.label} className="flex h-full flex-col items-center rounded-3xl border-4 border-pale-border bg-white px-4 py-6 text-center">
+            <span className="inline-flex max-w-full items-center justify-center rounded-full bg-primary-dark px-4 py-1.5 text-sm font-bold leading-snug text-white">
+              {item.label}
             </span>
-            <span className="flex min-h-10 w-full items-start justify-center text-xs font-bold leading-snug text-ink sm:min-h-10 sm:text-sm">{item.label}</span>
-            <span className={`mt-2 max-w-full font-bold text-primary-dark ${counted ? "text-lg leading-none sm:text-4xl" : "text-lg leading-tight sm:text-2xl"}`}>
-              {counted && live ? (
-                <span className="inline-flex items-baseline justify-center">
-                  <span className="inline-block min-w-[2ch] text-center tabular-nums">{nums[i]}</span>
-                  {item.unit}
-                </span>
-              ) : (
-                item.value
-              )}
-            </span>
+            <p className="mt-6 flex items-end justify-center text-primary-dark">
+              {item.prefix ? <span className="mb-1 text-xl font-bold sm:text-2xl">{item.prefix}</span> : null}
+              <span className="text-6xl font-bold leading-none tabular-nums sm:text-7xl" style={{ minWidth: `${String(item.count).length}ch` }}>
+                {live ? nums[i] : item.count}
+              </span>
+              {item.unit ? <span className="mb-1 ml-0.5 text-base font-bold sm:text-lg">{item.unit}</span> : null}
+            </p>
+            {item.description ? <p className="mt-3 text-sm leading-relaxed text-muted">{item.description}</p> : null}
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    </div>
   );
 }

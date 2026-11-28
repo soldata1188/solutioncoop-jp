@@ -46,11 +46,30 @@ export const sdgs = {
   sourceLabel: "堺市「SDGs未来都市」",
 } as const;
 
-/** トップの実績。label が上、value が下（最大の文字）。各文言はここ一度だけ。 */
-export const achievements = [
-  { label: "技能実習生受入れ実績", value: "65期", count: 65, unit: "期" },
-  { label: "受入れ企業数", value: "80社以上", count: 80, unit: "社以上" },
-  { label: "令和8年", value: "大阪府知事表彰" },
+/** 実績カード。description が空なら説明文は出さない。 */
+export type Achievement = {
+  label: string;
+  /** 大きい数字。あるときだけ数える */
+  count: number;
+  /** 数字の左に小さく出す文字（例: 令和） */
+  prefix?: string;
+  /** 数字の右下に小さく出す文字（例: 期） */
+  unit?: string;
+  /** 数字の下。空なら出さない */
+  description?: string;
+};
+
+/**
+ * 実績見出し。text が空なら出さない。
+ * highlight を渡すと、その部分だけマーカー線を引く。
+ */
+export const achievementsHeading: { text: string; highlight?: string } = { text: "" };
+
+/** トップの実績。各文言はここ一度だけ。 */
+export const achievements: Achievement[] = [
+  { label: "技能実習生受入れ実績", count: 65, unit: "期" },
+  { label: "受入れ企業数", count: 80, unit: "社以上" },
+  { label: "大阪府知事表彰", prefix: "令和", count: 8, unit: "年" },
 ];
 
 export const fullAddress = `〒${org.postalCode} ${org.region}${org.locality}${org.street}`;

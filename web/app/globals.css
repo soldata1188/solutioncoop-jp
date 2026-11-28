@@ -49,6 +49,14 @@
   --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
+/* 見出しのポイント語句（「安心して任せられる理由」と同じ）。文字 #0F4D2A / 背景 #FFFBD1（9.14:1、WCAG AA） */
+.accent {
+  background-color: var(--color-cta-tint);
+  color: var(--color-primary-dark);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -398,7 +406,7 @@ summary::-webkit-details-marker {
    狭い画面は20pxで2行（長い行がロゴ320pxの内側）。
    640px以上は16pxで全文がロゴ440pxに収まり1行。 */
 .sdgs-support {
-  color: #000;
+  color: var(--color-ink);
   letter-spacing: normal;
   text-align: center;
   font-size: 20px;

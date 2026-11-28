@@ -1,4 +1,16 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
+
+/** セクション見出しの共通スケール（30px / 36px）と文字色 */
+export const sectionTitleClass = "text-3xl font-bold leading-snug text-ink md:text-4xl";
+/** 濃い緑など、白い文字の帯の上で使う見出し */
+export const sectionTitleClassOnDark = "text-3xl font-bold leading-snug md:text-4xl";
+
+/** 見出しのポイントとなる語句。背景は淡い黄色、文字は濃い緑（「安心して任せられる理由」と同じ） */
+export function Accent({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <span className={className ? `accent ${className}` : "accent"}>{children}</span>;
+}
+
 
 /** 右向き矢印（ボタン・リンク用。装飾のため読み上げ対象外） */
 export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
@@ -83,7 +95,7 @@ export function SectionHeading({
   return (
     <div className="text-center">
       {eyebrow ? <p className="mb-2 text-sm font-bold tracking-wide text-primary-dark">{eyebrow}</p> : null}
-      <Tag id={id} className="text-2xl font-bold leading-snug text-primary md:text-[1.75rem]">
+      <Tag id={id} className={sectionTitleClass}>
         {children}
       </Tag>
       {sub ? <p className="mt-3 text-[15px] font-bold leading-relaxed text-ink md:text-base">{sub}</p> : null}

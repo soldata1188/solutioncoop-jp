@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { CONSULT_CLAIMS, CONSULT_LANGUAGES } from "@/lib/consult";
 import { LINE_URL, TEL_HREF, org } from "@/lib/site";
+import { Accent, sectionTitleClass } from "@/components/ui";
 
 const btn =
   "inline-flex min-h-16 w-full flex-col items-center justify-center rounded-control px-4 py-3 text-center font-bold leading-tight no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark";
@@ -81,9 +82,9 @@ export function ConsultDesk({
         {CONSULT_CLAIMS.pillJa} / {CONSULT_CLAIMS.pillEn}
       </p>
 
-      <Heading id={headingLevel === "h2" ? "for-workers" : undefined} className="mt-6 text-3xl font-bold leading-tight text-primary-darker md:text-5xl">
+      <Heading id={headingLevel === "h2" ? "for-workers" : undefined} className={`mt-6 ${sectionTitleClass}`}>
         {CONSULT_CLAIMS.titlePrefix}
-        <span className="text-primary">{CONSULT_CLAIMS.titleAccent}</span>
+        <Accent>{CONSULT_CLAIMS.titleAccent}</Accent>
       </Heading>
       <p className="mt-3 text-xs font-bold tracking-[0.18em] text-primary md:text-sm">{CONSULT_CLAIMS.hotlineEn}</p>
       <p className="mx-auto mt-5 max-w-[40rem] text-base font-bold leading-relaxed text-ink md:text-lg">{CONSULT_CLAIMS.leadJa}</p>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { IconChartDown, IconDocuments, IconGlobe, IconHandshake } from "@/components/LineIcons";
 import { HomeHero } from "@/components/HomeHero";
-import { Section, TabCard } from "@/components/ui";
+import { Accent, Section, TabCard, sectionTitleClass } from "@/components/ui";
 import { ConsultDesk } from "@/components/ConsultDesk";
 import { consultMessengerHref } from "@/lib/site";
 import { StatsStrip } from "@/components/StatsStrip";
@@ -56,7 +56,7 @@ export default function Home() {
       <section aria-labelledby="cases" className="bg-pale">
         <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
           <div className="text-center">
-            <h2 id="cases" className="text-3xl font-bold leading-tight text-ink md:text-5xl">
+            <h2 id="cases" className={sectionTitleClass}>
               受入れ事例
             </h2>
             <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
@@ -73,7 +73,7 @@ export default function Home() {
       <Section
         id="reasons"
         width="wide"
-        title="83社に選ばれ続ける理由"
+        title={<><Accent>83社</Accent>に選ばれ続ける理由</>}
         sub="— 受入れ企業様が実感する4つの理由 —"
         lead="外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
       >
@@ -120,8 +120,8 @@ export default function Home() {
               <span aria-hidden="true" className="inline-block h-0.5 w-8 bg-primary" />
               ACTIVITIES
             </p>
-            <h2 id="news" className="text-3xl font-bold leading-tight text-ink md:text-5xl">
-              組合の日々の活動
+            <h2 id="news" className={sectionTitleClass}>
+              組合の<Accent>日々の活動</Accent>
             </h2>
             <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
               講習や訓練、面接の様子など、受入れの現場での取り組みをご紹介します。

@@ -1,10 +1,10 @@
 import { PageHeader } from "@/components/PageHeader";
 import { IconChartUp, IconGlobe, IconHandshake, IconPlane } from "@/components/LineIcons";
-import { Section, TabCard } from "@/components/ui";
 import { pageMeta } from "@/lib/meta";
 import { LicenseFrames } from "@/components/LicenseFrames";
 import { disclosureDocuments } from "@/lib/disclosure";
 import { org, fullAddress, repoFacts, TEL_HREF } from "@/lib/site";
+import { Accent, Section, TabCard } from "@/components/ui";
 
 const OFFICE_SIZES = "(min-width: 768px) 470px, calc(100vw - 32px)";
 const OFFICE_AVIF = "/images/office-480.avif 480w, /images/office-720.avif 720w, /images/office-800.avif 800w";
@@ -107,7 +107,7 @@ export default function Page() {
   return (
     <>
       <PageHeader title="組合概要" path="/about" />
-      <Section id="office" title="堺から、大阪の企業様を支えます" width="default" reveal={false}>
+      <Section id="office" title={<>堺から、<Accent>大阪の企業様を支えます</Accent></>} width="default" reveal={false}>
         <div className="grid items-start gap-6 md:grid-cols-[3fr_2fr]">
           <AboutPhoto
             avif={OFFICE_AVIF}
@@ -161,7 +161,7 @@ export default function Page() {
       <Section
         id="business"
         eyebrow={<span lang="en">BUSINESS CONTENT</span>}
-        title="ソリューション協同組合の事業内容"
+        title={<>ソリューション協同組合の<Accent>事業内容</Accent></>}
         lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
         visual={
           <img

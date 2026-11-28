@@ -23,7 +23,7 @@ export function FaqList({ items, headingLevel = "h3" }: { items: Faq[]; headingL
             </span>
           </summary>
           <div className="flex gap-3 pb-5 md:pr-8">
-            <span aria-hidden="true" className="font-bold text-cta-text">A</span>
+            <span aria-hidden="true" className="font-bold text-primary-dark">A</span>
             <p className="text-[15px] text-body">
               <KeepWords text={f.a} />
               {f.needsCheck ? <CheckBadge /> : null}

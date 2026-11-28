@@ -2,17 +2,18 @@ import { CONTACT_HREF, CONTACT_LABEL, TEL_HREF, org, repoFacts } from "@/lib/sit
 import { PhoneIcon } from "./Header";
 import { LineButton } from "./LineButton";
 import { Phrases } from "./KeepWords";
-import { LinkButton, SquareDots, SquaresPattern } from "./ui";
+import type { ReactNode } from "react";
+import { LinkButton, SquareDots, SquaresPattern, sectionTitleClassOnDark } from "./ui";
 
 /** 最後のCTA帯。本文サイズの白文字を置くため、背景は濃い緑 #0F4D2A（白文字 9.93:1） */
-export function CtaSection({ title }: { title?: string }) {
+export function CtaSection({ title }: { title?: ReactNode }) {
   return (
     <section aria-labelledby={title ? "cta-title" : undefined} data-reveal="" className="relative overflow-hidden bg-primary-dark text-white">
       <SquaresPattern variant="band" />
       <div className="relative mx-auto max-w-[612px] px-4 py-14 text-center md:py-[72px]">
         {title ? (
           <>
-            <h2 id="cta-title" className="text-2xl font-bold leading-snug md:text-[1.75rem]">{title}</h2>
+            <h2 id="cta-title" className={sectionTitleClassOnDark}>{title}</h2>
             <SquareDots tone="white" className="mt-4" />
           </>
         ) : null}

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { achievements, achievementsHeading } from "@/lib/site";
+import { Accent, sectionTitleClass } from "@/components/ui";
 
 /** ホームに出すのは先頭3枚。後ろの3枚は site.ts に残し、ここでは描かない。 */
 const homeAchievements = achievements.slice(0, 3);
@@ -60,7 +61,7 @@ export function AchievementCards() {
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         </p>
-        <h2 id="stats-title" className="text-2xl font-bold leading-snug text-ink md:text-[1.75rem]">
+        <h2 id="stats-title" className={sectionTitleClass}>
           {achievementsHeading.lines.map((line) => {
             const at = highlight ? line.indexOf(highlight) : -1;
             return (
@@ -70,7 +71,7 @@ export function AchievementCards() {
                 ) : (
                   <>
                     {line.slice(0, at)}
-                    <span className="bg-cta-tint text-primary-dark">{line.slice(at, at + highlight!.length)}</span>
+                    <Accent>{line.slice(at, at + highlight!.length)}</Accent>
                     {line.slice(at + highlight!.length)}
                   </>
                 )}

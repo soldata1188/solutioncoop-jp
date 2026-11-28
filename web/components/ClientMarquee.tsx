@@ -1,4 +1,5 @@
 import { clientCompaniesCount, clientPeopleCount, clientStripSubline, clientsHeadline, clientRowOne, clientRowTwo, type ClientCard } from "@/lib/clients";
+import { Accent, sectionTitleClass } from "@/components/ui";
 
 /** 1列が画面より狭いと、半分だけ動かすループの端が空く。1920px まで埋まるよう同じ列を繰り返す。 */
 const LOOP_COPIES = 2;
@@ -51,18 +52,18 @@ export function ClientMarquee() {
     <section aria-labelledby="clients-title" className="overflow-x-hidden bg-white">
       <div className="mx-auto max-w-[932px] px-4 pt-14 text-center md:pt-[72px]">
         <p aria-hidden="true" className="mb-4 flex items-center justify-center gap-3">
-          <span className="h-1.5 w-1.5 rounded-full bg-cta-text" />
-          <span className="h-1.5 w-1.5 rounded-full bg-[#1877F2]" />
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-          <span className="h-1.5 w-1.5 rounded-full bg-cta-text" />
-          <span className="h-1.5 w-1.5 rounded-full bg-[#1877F2]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         </p>
-        <h2 id="clients-title" className="text-xl font-bold leading-snug text-ink sm:text-3xl">
+        <h2 id="clients-title" className={sectionTitleClass}>
           {clientsHeadline.companiesLead}
-          <span className="mx-1 text-4xl font-black text-cta-text sm:text-6xl">{clientCompaniesCount}</span>
+          <Accent className="mx-1 text-4xl font-black sm:text-6xl">{clientCompaniesCount}</Accent>
           {clientsHeadline.companiesUnit}
           {clientsHeadline.peopleLead}
-          <span className="mx-1 text-4xl font-black text-cta-text sm:text-6xl">{clientPeopleCount}</span>
+          <Accent className="mx-1 text-4xl font-black sm:text-6xl">{clientPeopleCount}</Accent>
           {clientsHeadline.peopleUnit}
         </h2>
         <p className="mx-auto mt-3 max-w-[40rem] text-center text-[15px] leading-relaxed text-body sm:text-base">

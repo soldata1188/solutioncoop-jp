@@ -1,10 +1,10 @@
 import { PageHeader } from "@/components/PageHeader";
 import { CtaSection } from "@/components/CtaSection";
 import { FaqList } from "@/components/FaqList";
-import { Section } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
 import { pageMeta } from "@/lib/meta";
 import { faqs } from "@/lib/faq";
+import { Accent, Section } from "@/components/ui";
 
 export const metadata = pageMeta(
   "/faq",
@@ -26,13 +26,13 @@ export default function Page() {
   return (
     <>
       <PageHeader path="/faq" title="よくある質問" lead="外国人材の受入れや育成就労制度について、よくいただくご質問をまとめました。" />
-      <Section id="faq-system" title="制度・受入れについて" width="narrow">
+      <Section id="faq-system" title={<><Accent>制度・受入れ</Accent>について</>} width="narrow">
         <FaqList items={faqs.slice(0, 10)} />
       </Section>
-      <Section id="faq-owner" title="経営者様からよくいただくご質問" width="narrow" tone="pale">
+      <Section id="faq-owner" title={<>経営者様から<Accent>よくいただくご質問</Accent></>} width="narrow" tone="pale">
         <FaqList items={faqs.slice(10)} />
       </Section>
-      <CtaSection title="ご不明な点は、お気軽にお問い合わせください。" />
+      <CtaSection title={<>ご不明な点は、お気軽に<Accent>お問い合わせ</Accent>ください。</>} />
       <JsonLd data={faqJsonLd} />
     </>
   );

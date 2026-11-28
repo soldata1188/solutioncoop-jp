@@ -2,6 +2,10 @@ import { PhoneIcon } from "@/components/Header";
 import { ChatIcon, LineButton } from "@/components/LineButton";
 import { org, repoFacts, TEL_HREF } from "@/lib/site";
 
+/** 下書き。メールカードの説明だけを直すときは、この一文を差し替える。 */
+const MAIL_DESCRIPTION =
+  "受入れに関するご質問やご相談は、メールでも承っております。資料のご請求やお見積りのご依頼は、LINEからもお気軽にご連絡いただけます。";
+
 const focus = "focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!";
 const card = "flex h-full flex-col items-center rounded-site border border-line bg-white p-5 text-center";
 const action = "mt-auto w-full pt-5";
@@ -39,6 +43,7 @@ export function ContactMethods() {
       <li className={card}>
         <MethodIcon><MailIcon /></MethodIcon>
         <h3 className="mt-4 text-lg font-bold leading-snug text-ink">メール</h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-body">{MAIL_DESCRIPTION}</p>
         <div className={action}>
           <a href={`mailto:${org.email}`} className={`${button} break-all border border-line bg-white text-base text-primary hover:bg-pale`}>
             {org.email}

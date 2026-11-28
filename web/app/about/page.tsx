@@ -43,7 +43,7 @@ function AboutPhoto({
       <picture>
         <source type="image/avif" sizes={sizes} srcSet={avif} />
         <source type="image/webp" sizes={sizes} srcSet={webp} />
-        <img src={src} alt={alt} width={width} height={height} sizes={sizes} loading={preload ? "eager" : "lazy"} decoding="async" className="h-auto w-full object-cover" />
+        <img src={src} alt={alt} width={width} height={height} sizes={sizes} loading={preload ? "eager" : "lazy"} decoding="async" className="h-auto w-full rounded-site object-cover" />
       </picture>
       <figcaption className="mt-2 text-[13px] leading-relaxed text-muted">{caption}</figcaption>
     </figure>

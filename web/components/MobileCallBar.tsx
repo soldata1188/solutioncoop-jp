@@ -13,7 +13,7 @@ import { Phrases } from "./KeepWords";
  * トップではヒーローが見えている間だけ隠します（BarVisibility。JavaScript 無効時は常に表示）。
  */
 export function MobileCallBar() {
-  const item = "flex min-h-[52px] flex-col items-center justify-center gap-0.5 rounded-site px-1 text-[13px] font-bold leading-tight no-underline";
+  const item = "flex min-h-[52px] flex-col items-center justify-center gap-0.5 rounded-control px-1 text-[13px] font-bold leading-tight no-underline";
   return (
     <div id="mobile-cta-bar" data-hidden="false" className="fixed inset-x-0 bottom-0 z-40 transition-transform duration-200 data-[hidden=true]:translate-y-full motion-reduce:transition-none border-t border-line bg-white/95 px-2 pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] shadow-[0_-2px_8px_rgba(0,0,0,0.08)] backdrop-blur md:hidden">
       <div className="mx-auto grid max-w-[612px] grid-cols-[1fr_1.45fr_1fr] gap-2">
@@ -22,7 +22,7 @@ export function MobileCallBar() {
           <Phrases text="電話で相談" />
         </a>
         <LineButton className={item} iconClassName="h-5 w-5" />
-        <Link href={CONTACT_HREF} prefetch={false} aria-label={CONTACT_LABEL} className={`${item} border-2 border-primary-dark bg-white text-primary-dark`}>
+        <Link href={CONTACT_HREF} prefetch={false} aria-label={CONTACT_LABEL} className={`${item} border border-primary-dark bg-white text-primary-dark`}>
           <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="5" width="18" height="14" rx="2" />
             <path d="m3 7 9 6 9-6" />

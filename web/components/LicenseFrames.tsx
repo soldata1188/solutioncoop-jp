@@ -73,7 +73,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
           <DocPicture item={item} widths={[720, item.width]} sizes="(min-width: 768px) 1186px, calc(100vw - 32px)" className="license-dialog-img mx-auto h-auto w-auto max-w-full object-contain" />
           <button
             type="button"
-            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-site bg-primary-dark px-6 font-bold text-white"
+            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-control bg-primary-dark px-6 font-bold text-white"
             onClick={() => dialogRef.current?.close()}
           >
             閉じる

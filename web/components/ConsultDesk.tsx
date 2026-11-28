@@ -4,7 +4,7 @@ import { CONSULT_CLAIMS, CONSULT_LANGUAGES } from "@/lib/consult";
 import { LINE_URL, TEL_HREF, org } from "@/lib/site";
 
 const btn =
-  "inline-flex min-h-16 w-full flex-col items-center justify-center rounded-site px-4 py-3 text-center font-bold leading-tight no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark";
+  "inline-flex min-h-16 w-full flex-col items-center justify-center rounded-control px-4 py-3 text-center font-bold leading-tight no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark";
 
 function PeopleIcon() {
   return (
@@ -42,14 +42,14 @@ function PhoneIcon() {
 }
 
 function QrFrame({ children }: { children: ReactNode }) {
-  return <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-site border border-line bg-white p-2">{children}</div>;
+  return <div className="mx-auto flex h-40 w-40 items-center justify-center overflow-hidden rounded-site border border-line bg-white p-4">{children}</div>;
 }
 
 export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: string; messengerQr: string; messengerHref: string }) {
   const messengerReady = messengerHref.length > 0 && messengerQr.length > 0;
   return (
     <div className="flex flex-col items-center text-center">
-      <p className="inline-flex max-w-full flex-col items-center rounded-site bg-primary px-6 py-3 text-white">
+      <p className="inline-flex max-w-full flex-col items-center rounded-control bg-primary px-6 py-3 text-white">
         <span className="inline-flex items-center gap-2 text-base font-bold md:text-lg">
           <PeopleIcon />
           {CONSULT_CLAIMS.badgeJa}
@@ -57,7 +57,7 @@ export function ConsultDesk({ lineQr, messengerQr, messengerHref }: { lineQr: st
         <span className="mt-0.5 text-xs font-bold tracking-wide text-white/90">{CONSULT_CLAIMS.badgeEn}</span>
       </p>
 
-      <p className="mx-auto mt-5 inline-flex items-center gap-2 rounded-site bg-white px-4 py-1.5 text-sm font-bold text-ink shadow-sm ring-1 ring-line">
+      <p className="mx-auto mt-5 inline-flex items-center gap-2 rounded-control bg-white px-4 py-1.5 text-sm font-bold text-ink shadow-sm ring-1 ring-line">
         <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-primary" />
         {CONSULT_CLAIMS.pillJa} / {CONSULT_CLAIMS.pillEn}
       </p>

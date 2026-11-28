@@ -42,7 +42,7 @@ export default function Page() {
             <div className="mt-2 [text-wrap:pretty] [word-break:auto-phrase]">{typeof s.body === "string" ? <KeepWords text={s.body} /> : s.body}</div>
           </section>
         ))}
-        <section className="border-l-4 border-primary bg-pale p-5">
+        <section className="border-l border-primary bg-pale p-5">
           <SubHeading as="h2">お問い合わせ窓口</SubHeading>
           <p className="mt-2">
             {org.name}

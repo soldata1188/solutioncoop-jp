@@ -29,14 +29,15 @@
   --color-pale-border: #a9ddbc;
   --color-tab: #cbebd6;
   --color-label: #daeadf;
-  --color-line: #dce6df;
+  --color-line: #e5ece7;
   --color-line-strong: #ccddd2;
   --color-gray-ref: #777777;
   --color-ink: #222222;
   --color-body: #333333;
   --color-muted: #666666;
   --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
-  --radius-site: 4px;
+  --radius-site: 16px;
+  --radius-control: 12px;
   --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
@@ -319,8 +320,8 @@ summary::-webkit-details-marker {
   ul.list-disc li,
   main section.mb-8,
   main section.mb-8 :is(h2, p, li, div, span),
-  main section.border-l-4.bg-pale,
-  main section.border-l-4.bg-pale :is(h2, p, div, span) {
+  main section.border-l.bg-pale,
+  main section.border-l.bg-pale :is(h2, p, div, span) {
     text-align: left;
   }
 }

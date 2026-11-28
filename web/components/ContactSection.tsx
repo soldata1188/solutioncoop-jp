@@ -27,7 +27,7 @@ export function ContactMethods() {
             <MethodIcon><PhoneIcon className="h-5 w-5" /></MethodIcon>
             <h3 className="pt-2 text-lg font-bold leading-snug text-ink">お電話でもご相談いただけます</h3>
           </div>
-          <a href={TEL_HREF} className={`mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-site bg-primary-dark px-4 text-lg font-bold text-white no-underline hover:bg-primary-darker ${focus}`}>
+          <a href={TEL_HREF} className={`mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-control bg-primary-dark px-4 text-lg font-bold text-white no-underline hover:bg-primary-darker ${focus}`}>
             <PhoneIcon className="h-5 w-5" />
             {org.tel}
           </a>
@@ -39,13 +39,13 @@ export function ContactMethods() {
             <MethodIcon><MailIcon /></MethodIcon>
             <h3 className="pt-2 text-lg font-bold leading-snug text-ink">メール</h3>
           </div>
-          <a href={`mailto:${org.email}`} className={`mt-5 flex min-h-14 w-full items-center justify-center break-all rounded-site border-2 border-primary-dark bg-white px-4 text-center text-base font-bold text-primary-dark no-underline hover:bg-pale ${focus}`}>
+          <a href={`mailto:${org.email}`} className={`mt-5 flex min-h-14 w-full items-center justify-center break-all rounded-control border border-primary-dark bg-white px-4 text-center text-base font-bold text-primary-dark no-underline hover:bg-pale ${focus}`}>
             {org.email}
           </a>
         </article>
       </div>
 
-      <article className="rounded-site border border-line border-l-4 border-l-linegreen bg-white p-5 shadow-card sm:p-6">
+      <article className="rounded-site border border-line border-l-linegreen bg-white p-5 shadow-card sm:p-6">
         <h3 className="text-lg font-bold leading-snug text-ink">LINEでもご相談いただけます</h3>
         <p className="mt-2 text-[15px] leading-relaxed text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
         <LineButton className="mt-4 flex min-h-14 w-full gap-2 px-4 text-base sm:w-fit sm:min-w-64 sm:px-8" iconClassName="h-5 w-5" />

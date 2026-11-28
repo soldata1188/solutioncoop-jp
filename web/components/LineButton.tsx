@@ -33,7 +33,7 @@ export function LineButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={LINE_ARIA}
-      className={`lift items-center justify-center whitespace-nowrap rounded-site bg-linegreen font-bold text-ink no-underline hover:bg-linegreen-hover ${onDark ? "border-2 border-white" : ""} ${className}`}
+      className={`lift items-center justify-center whitespace-nowrap rounded-control bg-linegreen font-bold text-ink no-underline hover:bg-linegreen-hover ${onDark ? "border border-white" : ""} ${className}`}
     >
       <ChatIcon className={iconClassName} />
       {children}

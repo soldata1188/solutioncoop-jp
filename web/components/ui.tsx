@@ -12,15 +12,15 @@ export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string })
 type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "dark" | "ghost";
 
 const buttonBase =
-  "lift relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded-site px-8 font-bold leading-snug no-underline";
+  "lift relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded-control px-8 font-bold leading-snug no-underline";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   // 主ボタン：#1E7F46 地に白文字（5.02:1）、hover #0F4D2A（9.93:1）
   primary: "bg-primary text-white shadow-sm hover:bg-primary-dark",
-  outlineWhite: "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary-dark",
+  outlineWhite: "border border-white bg-transparent text-white hover:bg-white hover:text-primary-dark",
   // 白地＋濃い緑の枠（枠・文字とも #0F4D2A、9.93:1）
-  whiteCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
-  outlineCta: "border-2 border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
+  whiteCta: "border border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
+  outlineCta: "border border-primary-dark bg-white text-primary-dark hover:bg-cta-tint",
   dark: "bg-primary-dark text-white hover:bg-primary-darker",
   // 白地・グレー枠・緑の矢印（「もっと見る」などの副ボタン）
   ghost: "border border-line bg-white text-ink shadow-sm hover:border-primary [&>svg]:text-primary-dark",
@@ -233,8 +233,8 @@ export function ImagePlaceholder({
 /** 番号タブ付きの淡い緑枠カード（「選ばれる理由」型） */
 export function TabCard({ n, children, className = "", as: Tag = "li" }: { n: number; children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
-    <Tag className={`card-lift relative flex flex-col border-[6px] border-tab bg-white ${className}`}>
-      <span aria-hidden="true" className="absolute -left-[6px] -top-[6px] flex h-8 w-8 items-center justify-center bg-tab text-base font-bold text-primary-dark">
+    <Tag className={`card-lift relative flex flex-col rounded-site border border-tab bg-white ${className}`}>
+      <span aria-hidden="true" className="absolute -left-px -top-px flex h-8 w-8 items-center justify-center rounded-tl-site bg-tab text-base font-bold text-primary-dark">
         {n}
       </span>
       {children}

@@ -105,7 +105,7 @@ export function NewsBoard() {
           aria-label="前の活動情報"
           disabled={page <= 0}
           onClick={() => go(page - 1)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
           ‹
         </button>
@@ -119,7 +119,7 @@ export function NewsBoard() {
               onClick={() => go(index)}
               className="inline-flex h-5 w-5 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
             >
-              <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${index === page ? "bg-primary-dark" : "border-2 border-primary bg-white"}`} />
+              <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${index === page ? "bg-primary-dark" : "border border-primary bg-white"}`} />
             </button>
           ))}
         </div>
@@ -128,7 +128,7 @@ export function NewsBoard() {
           aria-label="次の活動情報"
           disabled={page >= pages - 1}
           onClick={() => go(page + 1)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
         >
           ›
         </button>

@@ -7,7 +7,7 @@ import { nav, CONTACT_HREF, TEL_HREF, org } from "@/lib/site";
 import { SiteNav } from "./SiteNav";
 import { LineButton } from "./LineButton";
 
-const btnBase = "inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-site px-4 text-[13px] font-bold no-underline transition-colors";
+const btnBase = "inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-control px-4 text-[13px] font-bold no-underline transition-colors";
 
 /** 開く前の scrollY。null のあいだは固定していない。 */
 let savedScrollY: number | null = null;
@@ -109,7 +109,7 @@ export function MobileMenu() {
     <div className="min-[1200px]:hidden">
       <button
         type="button"
-        className="flex min-h-11 min-w-12 flex-col items-center justify-center gap-[3px] rounded-site border border-line px-2 text-ink"
+        className="flex min-h-11 min-w-12 flex-col items-center justify-center gap-[3px] rounded-control border border-line px-2 text-ink"
         aria-expanded={open}
         aria-controls="mobile-menu-panel"
         onClick={() => (open ? close() : openMenu())}
@@ -132,7 +132,7 @@ export function MobileMenu() {
           <SiteNav
             items={nav}
             listClassName=""
-            linkClassName="flex min-h-12 items-center justify-center border-b border-line border-l-4 border-l-transparent px-3 text-center text-[15px] font-bold text-ink no-underline hover:bg-pale min-[640px]:justify-start min-[640px]:text-left"
+            linkClassName="flex min-h-12 items-center justify-center border-b border-line border-l border-l-transparent px-3 text-center text-[15px] font-bold text-ink no-underline hover:bg-pale min-[640px]:justify-start min-[640px]:text-left"
             activeClassName="border-l-primary-dark! bg-pale text-primary-dark"
           />
           <div className="mt-2 grid gap-2">

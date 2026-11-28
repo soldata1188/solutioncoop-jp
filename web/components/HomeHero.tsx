@@ -30,7 +30,7 @@ function IconBuilding() {
   );
 }
 
-const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-site border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
+const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
  * トップのヒーロー。背景は再デザイン前の緑地と四角模様（SquaresPattern）。
@@ -89,7 +89,7 @@ export function HomeHero() {
           <Link
             href={CONTACT_HREF}
             prefetch={false}
-            className="flex min-h-16 items-center justify-center gap-1 rounded-site bg-cta px-2 py-3 text-center font-black text-ink no-underline transition-colors hover:bg-cta-hover"
+            className="flex min-h-16 items-center justify-center gap-1 rounded-control bg-cta px-2 py-3 text-center font-black text-ink no-underline transition-colors hover:bg-cta-hover"
           >
             <span className="flex flex-col items-center leading-tight">
               <span className="text-[13px] sm:text-lg">
@@ -103,7 +103,7 @@ export function HomeHero() {
             href={LINE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex min-h-16 flex-col items-center justify-center rounded-site border-2 border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
+            className="flex min-h-16 flex-col items-center justify-center rounded-control border border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
           >
             <span className="text-[13px] sm:text-lg">24時間相談窓口</span>
             <span className="mt-0.5 text-xs font-bold">

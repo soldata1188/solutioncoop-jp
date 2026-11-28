@@ -69,7 +69,7 @@ export function HomeHero() {
               </span>
               <span className="mt-0.5 text-xs font-bold">無料相談・お問い合わせ</span>
             </span>
-            <span aria-hidden="true" className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-base leading-none sm:right-3 sm:text-xl">→</span>
+            <span aria-hidden="true" className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-sm leading-none sm:right-3 sm:text-xl">→</span>
           </Link>
           <Link
             href="/for-workers"

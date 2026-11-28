@@ -1,26 +1,25 @@
 import Link from "next/link";
-import { preload } from "react-dom";
 import { Chunks } from "@/components/KeepWords";
 import { CONTACT_HREF, LINE_URL } from "@/lib/site";
 
-/**
- * デスクトップは元画像の全幅。高さ 611px のときは cover で約 1451px 幅になるので、
- * 1460px を下限にして 1x は 1600、2x は 3468 を選ばせる。1600px 以上は幅そのもの。
- */
-const HERO_SIZES = "(max-width: 1459px) 1460px, 100vw";
-const HERO_AVIF =
-  "/images/hero/hero-bg-1600.avif 1600w, /images/hero/hero-bg-2400.avif 2400w, /images/hero/hero-bg-3468.avif 3468w";
-const HERO_WEBP =
-  "/images/hero/hero-bg-1600.webp 1600w, /images/hero/hero-bg-2400.webp 2400w, /images/hero/hero-bg-3468.webp 3468w";
-/**
- * モバイルも元画像の全幅（3468×1460）。高さ 688px までは cover の表示幅が約 1634px。
- * 1x は 1734、2x は実寸 3468 を選ばせ、引き伸ばさない。360px 以下は 1x でも実寸を使う。
- */
-const HERO_MOBILE_SIZES = "(max-width: 389px) 1900px, 1734px";
-const HERO_MOBILE_AVIF =
-  "/images/hero/hero-bg-mobile-1734.avif 1734w, /images/hero/hero-bg-3468.avif 3468w";
-const HERO_MOBILE_WEBP =
-  "/images/hero/hero-bg-mobile-1734.webp 1734w, /images/hero/hero-bg-3468.webp 3468w";
+/** 文字の外側だけに置く緑の図形。写真は使わない。 */
+function HeroDecor() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <svg className="absolute inset-x-0 bottom-0 h-20 w-full min-[1100px]:hidden" viewBox="0 0 390 80" preserveAspectRatio="xMidYMax meet">
+        <circle cx="28" cy="92" r="46" fill="#0F4D2A" />
+        <circle cx="368" cy="86" r="34" fill="#176B3B" />
+      </svg>
+      <svg className="absolute inset-0 hidden h-full w-full min-[1100px]:block" viewBox="0 0 1280 640" preserveAspectRatio="xMidYMid slice">
+        <circle cx="8" cy="72" r="78" fill="#0F4D2A" />
+        <circle cx="1268" cy="540" r="96" fill="#0A3720" />
+        <rect x="-36" y="430" width="150" height="52" rx="26" fill="#2E9A5A" opacity="0.55" />
+        <rect x="1148" y="36" width="168" height="40" rx="20" transform="rotate(18 1148 36)" fill="#FFF478" opacity="0.28" />
+        <circle cx="1188" cy="150" r="22" fill="#B7DCC8" opacity="0.45" />
+      </svg>
+    </div>
+  );
+}
 
 function IconConstruction() {
   return (
@@ -52,48 +51,16 @@ function IconBuilding() {
 const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
- * トップのヒーロー。背景は夕景の工場写真（縮小のみ。色の加工はしない）。
- * 文字一式は曇りガラスの箱の中。写真の上にスクリムは重ねない。
- * 通常の文字は 4.5:1、大きな見出しは 3:1。ぼかし非対応のときは箱の地を濃くする。
+ * トップのヒーロー。背景は写真導入前の緑（#1E7F46）。
+ * 図形は文字の外側だけ。通常の文字は 4.5:1、大きな見出しは 3:1。
  */
 export function HomeHero() {
-  preload(HERO_MOBILE_AVIF, {
-    as: "image",
-    type: "image/avif",
-    imageSrcSet: HERO_MOBILE_AVIF,
-    imageSizes: HERO_MOBILE_SIZES,
-    fetchPriority: "high",
-    media: "(max-width: 639px)",
-  });
-  preload(HERO_AVIF, {
-    as: "image",
-    type: "image/avif",
-    imageSrcSet: HERO_AVIF,
-    imageSizes: HERO_SIZES,
-    fetchPriority: "high",
-    media: "(min-width: 640px)",
-  });
   return (
-    <section data-hero className="relative overflow-hidden bg-[#0c1220] text-white">
-      <picture className="pointer-events-none absolute inset-0 block">
-        <source media="(max-width: 639px)" type="image/avif" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_AVIF} />
-        <source media="(max-width: 639px)" type="image/webp" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_WEBP} />
-        <source media="(min-width: 640px)" type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
-        <source media="(min-width: 640px)" type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
-        <img
-          src="/images/hero/hero-bg-1600.webp"
-          alt=""
-          width={3468}
-          height={1460}
-          sizes={HERO_SIZES}
-          fetchPriority="high"
-          decoding="async"
-          className="h-full w-full object-cover object-[center_68%]"
-        />
-      </picture>
+    <section data-hero className="relative overflow-hidden bg-primary text-white">
+      <HeroDecor />
 
       <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-3 pb-32 pt-16 sm:px-4 sm:pb-28 sm:pt-20">
-        <div className="hero-glass w-full max-w-[920px] px-3 py-3 text-center sm:px-5 sm:py-5">
+        <div className="w-full max-w-[920px] px-3 py-3 text-center sm:px-5 sm:py-5">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">
           <span className="block text-white">
             <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />

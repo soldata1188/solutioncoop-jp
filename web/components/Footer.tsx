@@ -30,7 +30,7 @@ const textLink = "font-bold text-white underline-offset-4 hover:text-cta hover:u
 export function Footer() {
   return (
     <footer className="bg-primary-dark text-white">
-      <div className="mx-auto grid max-w-[1100px] items-start gap-10 px-4 py-12 md:grid-cols-3 md:gap-12 md:py-16">
+      <div className="mx-auto grid max-w-[1100px] items-center gap-6 px-4 py-8 md:grid-cols-3 md:gap-8">
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <p className="inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 text-[15px] font-bold text-white md:justify-start">
               <span className="inline-flex items-center bg-white p-1">
@@ -38,7 +38,7 @@ export function Footer() {
               </span>
               <span aria-hidden="true">{org.name}</span>
             </p>
-          <address className="mt-4 not-italic text-sm leading-7 text-white">
+          <address className="mt-3 not-italic text-sm leading-6 text-white">
             {fullAddress}
             <br />
             TEL：<a className={`inline-flex min-h-11 items-center md:min-h-0 ${textLink}`} href={TEL_HREF}>{org.tel}</a>
@@ -52,10 +52,10 @@ export function Footer() {
         </div>
 
         <nav aria-label="フッターメニュー">
-          <ul className="grid grid-cols-2 md:grid-cols-1">
+          <ul className="grid grid-cols-2 gap-x-3">
             {footerLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} prefetch={false} className={`flex min-h-11 items-center justify-center px-1 text-sm md:justify-start md:px-0 ${textLink}`}>
+                <Link href={item.href} prefetch={false} className={`flex min-h-11 items-center justify-center px-1 py-1 text-sm md:min-h-9 md:justify-start md:px-0 ${textLink}`}>
                   <Phrases text={item.label} />
                 </Link>
               </li>
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/35 px-4 py-4 pb-[calc(69px+1rem+env(safe-area-inset-bottom))] text-center text-[13px] leading-6 text-white md:pb-4">
+      <div className="border-t border-white/35 px-4 py-3 text-center text-[13px] leading-5 text-white">
         <p>監理団体許可番号：{licenses.kanri.number}（{licenses.kanri.kind}）</p>
         <p>登録支援機関登録番号：{licenses.toroku.number}</p>
         <p className="mt-1">

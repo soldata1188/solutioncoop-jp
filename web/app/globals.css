@@ -42,7 +42,8 @@
   --color-ink: #222222;
   --color-body: #333333;
   --color-muted: #666666;
-  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  /* 日本語はシステムのフォントを使う（Web フォントを読み込まない）。太さ・行間は従来どおり。 */
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", YuGothic, Meiryo, system-ui, sans-serif;
   --radius-site: 16px;
   --radius-control: 12px;
   --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);

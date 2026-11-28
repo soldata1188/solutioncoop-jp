@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,13 +7,6 @@ import { BarRoute } from "@/components/BarRoute";
 import { JsonLd } from "@/components/JsonLd";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SITE_URL, org, organizationJsonLd } from "@/lib/site";
-
-/** Noto Sans JP の可変フォント（ビルド時に取得してセルフホスト。実行時に外部へは接続しません） */
-const notoSansJp = Noto_Sans_JP({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-noto-sans-jp",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -46,7 +38,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja" className={notoSansJp.variable} suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning>
       <head>
         {/* JavaScript が使えるときだけ html に .js を付けます（開閉式の部品は、JavaScript 無効時にすべて開いた状態で表示するため） */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

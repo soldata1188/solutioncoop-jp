@@ -16,8 +16,9 @@ const HERO_WEBP =
 /**
  * トップのヒーロー。背景はバナー用イラスト第3稿（左が建設現場、右が工場、中央は緑の余白）。
  * 書き出し時に中央の緑にあった小さな赤い欠けを周囲の緑で埋めた以外、絵は変えていない。
- * 文字組は 05997ce のまま。文字は中央の濃い緑に置き、人物に重ねない（1280）。スクリムは重ねない。
- * モバイルは画像を左寄せする（object-left）。md 未満の見出し・リードは濃い色（#1a1a1a / ラベル #0B3D24）と白い薄い text-shadow。md 以上の色は変えない。スクリムは重ねない。
+ * 文字組は 05997ce のまま。1280 では中央の濃い緑に文字を置き、人物に重ねない。スクリムは重ねない。
+ * モバイルは画像を左寄せ（object-left）。md 未満は見出し・リードを白い曇りガラスの枠に載せ、文字は #1a1a1a / ラベル #0B3D24。
+ * md 以上は枠を display:contents で消す（色・配置は従来どおり）。
  */
 export function HomeHero() {
   preload(HERO_AVIF, {
@@ -47,26 +48,29 @@ export function HomeHero() {
 
       {/* 中央揃えで幅を濃い緑の余白に合わせ、人物に重ならないようにする */}
       <div className="relative mx-auto flex w-full max-w-[36rem] flex-col items-center justify-center px-4 py-14 text-center sm:py-16 md:py-20">
-        <h1 className="w-full">
-          <span className="block text-[11px] font-bold leading-none tracking-[0.14em] text-[#0B3D24] [text-shadow:0_0_8px_rgb(255_255_255_/_0.85)] sm:text-sm sm:tracking-[0.2em] md:text-cta md:[text-shadow:none]">
-            <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />
-          </span>
-          <span className="mt-4 block text-[1.65rem] font-black leading-[1.25] tracking-tight text-[#1a1a1a] [text-shadow:0_0_8px_rgb(255_255_255_/_0.85)] sm:mt-5 sm:text-4xl sm:leading-[1.2] md:text-[2.75rem] md:text-white md:[text-shadow:none]">
-            <Chunks parts={["外国人採用を", "適正な監理で支えます。"]} />
-          </span>
-        </h1>
+        {/* md 未満だけ曇りガラスの枠。ボタンは枠の外。md 以上は contents で箱を消す */}
+        <div className="w-full rounded-[16px] border border-line bg-white/[0.86] px-3.5 py-5 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] md:contents">
+          <h1 className="w-full">
+            <span className="block text-[11px] font-bold leading-none tracking-[0.14em] text-[#0B3D24] sm:text-sm sm:tracking-[0.2em] md:text-cta">
+              <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />
+            </span>
+            <span className="mt-4 block text-[1.65rem] font-black leading-[1.25] tracking-tight text-[#1a1a1a] sm:mt-5 sm:text-4xl sm:leading-[1.2] md:text-[2.75rem] md:text-white">
+              <Chunks parts={["外国人採用を", "適正な監理で支えます。"]} />
+            </span>
+          </h1>
 
-        <p className="mt-6 max-w-[30rem] text-sm font-medium leading-[1.8] text-[#1a1a1a] [text-shadow:0_0_8px_rgb(255_255_255_/_0.8)] sm:mt-7 sm:text-base md:text-white md:[text-shadow:none]">
-          <span className="block">
-            <span className="inline-block">実習生の受入れから</span>
-            <span className="inline-block">育成就労・特定技能への移行まで、</span>
-          </span>
-          <span className="mt-1 block">
-            <span className="inline-block">80社以上の実績とノウハウで、</span>
-            <span className="inline-block">貴社の外国人材活用を</span>
-            <span className="inline-block">トータルサポートいたします。</span>
-          </span>
-        </p>
+          <p className="mt-6 max-w-[30rem] text-sm font-medium leading-[1.8] text-[#1a1a1a] sm:mt-7 sm:text-base md:text-white">
+            <span className="block">
+              <span className="inline-block">実習生の受入れから</span>
+              <span className="inline-block">育成就労・特定技能への移行まで、</span>
+            </span>
+            <span className="mt-1 block">
+              <span className="inline-block">80社以上の実績とノウハウで、</span>
+              <span className="inline-block">貴社の外国人材活用を</span>
+              <span className="inline-block">トータルサポートいたします。</span>
+            </span>
+          </p>
+        </div>
 
         <div className="mt-8 grid w-full grid-cols-2 gap-3 sm:mt-10">
           <Link

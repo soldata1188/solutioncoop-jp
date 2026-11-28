@@ -109,7 +109,7 @@ export function ConsultDesk({
           <div className="flex flex-1 flex-col px-5 py-6">
             <CardHeading className="text-xl font-bold text-[#1877F2]">Facebookで相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-[#1877F2]">CONSULT VIA FACEBOOK</p>
-            <p className="mt-4 text-sm font-bold leading-relaxed text-ink">Messengerでメッセージを送れます。ベトナム語、インドネシア語、タガログ語で話を聞きます。</p>
+            <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をするとベトナム語、インドネシア語、タガログ語で相談できます</p>
             <p className="mt-1 text-xs leading-relaxed text-muted">You can send a Messenger message. We listen in Vietnamese, Indonesian, and Tagalog.</p>
             {showQr ? (
               <div className="mt-5">
@@ -148,7 +148,7 @@ export function ConsultDesk({
           <div className="flex flex-1 flex-col px-5 py-6">
             <CardHeading className="text-xl font-bold text-linegreen">LINEで相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-linegreen">CONSULT VIA LINE</p>
-            <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をすると、LINEでメッセージを送れます。</p>
+            <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をするとベトナム語、インドネシア語、タガログ語で相談できます</p>
             <p className="mt-1 text-xs leading-relaxed text-muted">After you add us, you can send a message on LINE.</p>
             {showQr ? (
               <div className="mt-5">

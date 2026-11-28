@@ -200,21 +200,17 @@ export default function Home() {
         </p>
       </Section>
 
-      <section aria-labelledby="news" className="bg-[#fbf6ea]">
+      <section aria-labelledby="news" className="bg-pale">
         <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
           <div className="text-center">
             <p lang="en" className="mb-3 flex items-center justify-center gap-3 text-sm font-bold tracking-[0.28em] text-primary">
-              <span aria-hidden="true" className="inline-block h-0.5 w-8 bg-[#e6b325]" />
+              <span aria-hidden="true" className="inline-block h-0.5 w-8 bg-primary" />
               ACTIVITIES
             </p>
-            <h2
-              id="news"
-              className="text-3xl font-bold leading-tight text-[#1b2b4a] md:text-5xl"
-              style={{ fontFamily: '"Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "MS PMincho", serif' }}
-            >
+            <h2 id="news" className="text-3xl font-bold leading-tight text-ink md:text-5xl">
               組合の日々の活動
             </h2>
-            <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-[#666] md:text-[15px]">
+            <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
               講習や訓練、面接の様子など、受入れの現場での取り組みをご紹介します。
             </p>
           </div>

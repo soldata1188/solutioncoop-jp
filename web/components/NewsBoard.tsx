@@ -87,13 +87,13 @@ export function NewsBoard() {
       >
         {newsItems.map((item) => (
           <li key={item.id} className="box-border w-full shrink-0 snap-start px-2 sm:w-1/2 lg:w-[calc(100%/3)]">
-            <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e7e0d2] bg-white shadow-[0_8px_24px_rgb(27_43_74/0.06)]">
-              <div className="relative aspect-[4/3] bg-[#f3efe6]">
+            <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="relative aspect-[4/3] bg-pale">
                 <CardImage item={item} />
               </div>
               <div className="flex flex-1 flex-col px-4 py-4">
-                <h3 className="text-base font-bold leading-snug text-[#1b2b4a]">{item.shortTitle}</h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#666]">{firstSentence(item.text)}</p>
+                <h3 className="text-base font-bold leading-snug text-ink">{item.shortTitle}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted">{firstSentence(item.text)}</p>
               </div>
             </article>
           </li>
@@ -119,7 +119,7 @@ export function NewsBoard() {
               onClick={() => go(index)}
               className="inline-flex h-5 w-5 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
             >
-              <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${index === page ? "bg-primary-dark" : "bg-primary/30"}`} />
+              <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${index === page ? "bg-primary-dark" : "border-2 border-primary bg-white"}`} />
             </button>
           ))}
         </div>

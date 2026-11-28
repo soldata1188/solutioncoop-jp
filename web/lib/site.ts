@@ -12,7 +12,7 @@ export const org = {
   email: "info@solutioncoop-jp.com",
   /** 以下3項目は代表者様に確認済み（2026年11月1日）。集計時点の日付は未確認のため表示しません */
   terms: "65期",
-  clients: "80社以上",
+  clients: "83社",
   award: "令和8年 大阪府知事表彰",
   representative: "新 雅志",
 };
@@ -97,8 +97,8 @@ export const achievements: Achievement[] = [
   },
   {
     label: "受入れ企業数",
-    count: 80,
-    unit: "社以上",
+    count: 83,
+    unit: "社",
     description: ["多くの企業様にご利用いただき、", "さまざまな職場で受入れを支えています。"],
   },
   {

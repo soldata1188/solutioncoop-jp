@@ -65,7 +65,7 @@ export function HomeHero() {
               <span className="inline-block">育成就労・特定技能への移行まで、</span>
             </span>
             <span className="mt-1 block">
-              <span className="inline-block">80社以上の実績とノウハウで、</span>
+              <span className="inline-block">83社の実績とノウハウで、</span>
               <span className="inline-block">貴社の外国人材活用を</span>
               <span className="inline-block">トータルサポートいたします。</span>
             </span>

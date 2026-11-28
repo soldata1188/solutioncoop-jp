@@ -2,10 +2,12 @@
  * ホームの受入れ企業ショーケース。
  * 本番公開前に代表の公開承認が必要（プレビューのみ）
  *
- * データの入れ方（83社のCSVが来たらここに足す）:
+ * データの入れ方:
  * - 1件は clientCompanies に追加する。列は分けて書かない。
- * - 公式サイトで商号（株式会社／有限会社の位置）と大阪・関西の所在地が一致し、
- *   そのサイトのロゴ画像が十分なときだけ logoSrc を付ける。ロゴは描かない。
+ * - 文字だけの社は、すでに公開承認した20社だけ。それ以外は、公式ロゴが取れた社だけ足す。
+ * - 公式サイトで商号（株式会社／有限会社の位置）が一致し、サイトに書かれた市区町村が
+ *   受入れ名簿の市区町村と一致し、ロゴ画像が十分なときだけ logoSrc を付ける。ロゴは描かない。
+ * - 代表から渡されたロゴファイルは、サイトから取った画像より優先する。
  * - 表示順は自動。logoSrc がある社を先、ない社を後。それぞれの中の並びは配列の順。
  * - ロゴ付きが合計20社（1列あたり約10）未満のあいだは、文字だけの社を後ろに足して
  *   列を埋める。ただし文字だけを足して合計32（1列あたり約16）を超えない。
@@ -45,9 +47,9 @@ export const clientCompanies: ClientCard[] = [
   {
     name: "株式会社村上工業",
     logoSrc: "/clients/murakami-kogyo.png",
-    logoSourceUrl: "https://mkkogyo.com/img/header_logo.png",
-    logoWidth: 400,
-    logoHeight: 78,
+    logoSourceUrl: "Boss 提供 2026-11-28",
+    logoWidth: 108,
+    logoHeight: 112,
   },
   {
     name: "株式会社プライムエコ",
@@ -59,7 +61,13 @@ export const clientCompanies: ClientCard[] = [
   { name: "鉄電塗装株式会社" },
   { name: "林組株式会社" },
   { name: "山村土木興業株式会社" },
-  { name: "有限会社高嶋建設" },
+  {
+    name: "有限会社高嶋建設",
+    logoSrc: "/clients/takashima.png",
+    logoSourceUrl: "https://takashimakensetsu.com/cms/wp-content/uploads/2017/02/takashimakensetsu_logo.png",
+    logoWidth: 80,
+    logoHeight: 80,
+  },
   { name: "株式会社オービービー" },
   {
     name: "株式会社ふじえ",
@@ -84,14 +92,67 @@ export const clientCompanies: ClientCard[] = [
     logoWidth: 240,
     logoHeight: 60,
   },
-  { name: "正栄工業株式会社" },
+  {
+    name: "正栄工業株式会社",
+    logoSrc: "/clients/shoei.png",
+    logoSourceUrl: "https://xs361550.xsrv.jp/wp-content/uploads/2022/11/logo-shoei-680x280-2.png",
+    logoWidth: 197,
+    logoHeight: 80,
+  },
   { name: "株式会社ケナフエンジニア" },
   { name: "北口精機株式会社" },
   { name: "有限会社野々村鉄筋" },
   { name: "株式会社三栄" },
-  { name: "株式会社丸田工業" },
-  { name: "株式会社山口商店" },
+  {
+    name: "株式会社丸田工業",
+    logoSrc: "/clients/maruta.png",
+    logoSourceUrl: "https://maruta-kougyou.com/wp-content/themes/tpl-theme/images/common/logo.png",
+    logoWidth: 468,
+    logoHeight: 78,
+  },
+  {
+    name: "株式会社山口商店",
+    logoSrc: "/clients/yamaguchi.png",
+    logoSourceUrl: "https://www.yamaguchi-inc.biz/wp-content/uploads/2026/10/logo.png",
+    logoWidth: 243,
+    logoHeight: 53,
+  },
   { name: "株式会社荒木建設" },
+  {
+    name: "株式会社矢野組",
+    logoSrc: "/clients/yanogumi.png",
+    logoSourceUrl: "https://www.yanogumi.jp/img/common/logo.jpg",
+    logoWidth: 324,
+    logoHeight: 51,
+  },
+  {
+    name: "株式会社弘翔建工",
+    logoSrc: "/clients/kousyo.png",
+    logoSourceUrl: "https://kousyo.jp/wp-content/uploads/2023/01/cropped-iogo.png",
+    logoWidth: 433,
+    logoHeight: 80,
+  },
+  {
+    name: "株式会社トラストグリーン",
+    logoSrc: "/clients/trustgreen.png",
+    logoSourceUrl: "https://cdn.cuezilla-cms.com/trustgreen0720.com/images/743/c9kT70SUSI.webp",
+    logoWidth: 400,
+    logoHeight: 80,
+  },
+  {
+    name: "株式会社ヤマエ",
+    logoSrc: "/clients/yamae.png",
+    logoSourceUrl: "https://yamae.jp/yamae_sp/wp-content/uploads/2024/07/logo.gif",
+    logoWidth: 160,
+    logoHeight: 45,
+  },
+  {
+    name: "谷川工業株式会社",
+    logoSrc: "/clients/canyonriver.png",
+    logoSourceUrl: "http://www.canyonriver.co.jp/common/img/logo.png",
+    logoWidth: 503,
+    logoHeight: 51,
+  },
 ];
 
 function hasVerifiedLogo(company: ClientCard): boolean {

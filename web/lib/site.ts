@@ -55,17 +55,14 @@ export type Achievement = {
   prefix?: string;
   /** 数字の右下に小さく出す文字（例: 期） */
   unit?: string;
-  /** 数字の下。空なら出さない */
-  description?: string;
+  /** 数字の下。空なら出さない。配列の区切りが改行 */
+  description?: readonly string[];
 };
 
-/**
- * TODO: 仮文言・代表者様確認待ち
- * 見出しと各カードの説明。highlight の部分だけ色とマーカーを変える。
- */
+// TODO: 代表者様の指示で見本の文言をそのまま使っています。公開前に、他社の文言と同一になっていないか、事実として裏付けがあるかを再確認してください。
 export const achievementsHeading: { lines: readonly string[]; highlight?: string } = {
-  lines: ["外国人材の受入れを支える", "「確かな実績」があります"],
-  highlight: "「確かな実績」",
+  lines: ["外国人材の受入れを", "「安心して任せられる理由」があります！"],
+  highlight: "「安心して任せられる理由」",
 };
 
 /** トップの実績。各文言はここ一度だけ。 */
@@ -74,20 +71,20 @@ export const achievements: Achievement[] = [
     label: "技能実習生受入れ実績",
     count: 65,
     unit: "期",
-    description: "技能実習生の受入れを、第65期まで継続してご支援してまいりました。",
+    description: ["職場で継続1年以上の人材が", "多く在籍しています。"],
   },
   {
     label: "受入れ企業数",
     count: 80,
     unit: "社以上",
-    description: "多くの企業様に、外国人材の受入れでご利用いただいております。",
+    description: ["企業からのリピート希望率が高く、", "多くの職場で戦力になっています。"],
   },
   {
     label: "大阪府知事表彰",
     prefix: "令和",
     count: 8,
     unit: "年",
-    description: "令和8年に、大阪府知事表彰を受けました。",
+    description: ["現地の言葉でやり取りできるので", "外国人材も安心して就業できます。"],
   },
 ];
 

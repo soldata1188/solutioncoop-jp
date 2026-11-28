@@ -89,7 +89,16 @@ export function AchievementCards() {
               </span>
               {item.unit ? <span className="mb-1 ml-0.5 text-base font-bold sm:text-lg">{item.unit}</span> : null}
             </p>
-            {item.description ? <p className="mt-4 text-center text-sm leading-relaxed text-muted">{item.description}</p> : null}
+            {item.description && item.description.length > 0 ? (
+              <p className="mt-4 max-w-full text-center text-sm leading-relaxed text-muted">
+                {item.description.map((line, index) => (
+                  <span key={line}>
+                    {index > 0 ? <br /> : null}
+                    {line}
+                  </span>
+                ))}
+              </p>
+            ) : null}
           </li>
         ))}
       </ul>

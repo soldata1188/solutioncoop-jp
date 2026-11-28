@@ -30,7 +30,7 @@ export function HomeHero() {
     <section data-hero className="relative overflow-hidden bg-primary text-white">
       <HeroDecor />
 
-      <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-3 pb-32 pt-16 sm:px-4 sm:pb-28 sm:pt-20">
+      <div className="relative mx-auto flex max-w-[1000px] flex-col items-center px-3 pb-16 pt-16 sm:px-4 sm:pb-28 sm:pt-20">
         <div className="w-full max-w-[920px] px-3 py-3 text-center sm:px-5 sm:py-5">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">
           <span className="block text-white">
@@ -56,7 +56,8 @@ export function HomeHero() {
           </span>
         </p>
 
-        <div className="mt-3 grid w-full max-w-xl grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
+        <div className="mt-3 flex w-full justify-center sm:mt-5">
+        <div className="grid w-full max-w-xl grid-cols-2 gap-2 sm:gap-3">
           <Link
             href={CONTACT_HREF}
             prefetch={false}
@@ -82,6 +83,7 @@ export function HomeHero() {
             </span>
             <span className="sr-only">（LINE公式アカウントを新しいタブで開きます）</span>
           </a>
+        </div>
         </div>
         </div>
       </div>

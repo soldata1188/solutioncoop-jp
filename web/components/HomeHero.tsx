@@ -1,7 +1,13 @@
 import Link from "next/link";
+import { preload } from "react-dom";
 import { Chunks } from "@/components/KeepWords";
-import { SquaresPattern } from "@/components/ui";
 import { CONTACT_HREF, LINE_URL } from "@/lib/site";
+
+const HERO_SIZES = "100vw";
+const HERO_AVIF =
+  "/images/hero/hero-bg-640.avif 640w, /images/hero/hero-bg-1080.avif 1080w, /images/hero/hero-bg-1600.avif 1600w, /images/hero/hero-bg-2400.avif 2400w";
+const HERO_WEBP =
+  "/images/hero/hero-bg-640.webp 640w, /images/hero/hero-bg-1080.webp 1080w, /images/hero/hero-bg-1600.webp 1600w, /images/hero/hero-bg-2400.webp 2400w";
 
 function IconConstruction() {
   return (
@@ -33,14 +39,35 @@ function IconBuilding() {
 const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
 
 /**
- * トップのヒーロー。背景は再デザイン前の緑地と四角模様（SquaresPattern）。
+ * トップのヒーロー。背景は夕景の工場写真。文字の下は濃い緑のスクリム。
  * 白 / #1E7F46 は 5.02:1。小さい黄色だけ #FFF9B0（4.65:1）。
  * 業種の枠と副ボタンは、白を混ぜると文字が 4.5:1 を切るため、濃い緑の半透明にしています。
  */
 export function HomeHero() {
+  preload(HERO_AVIF, {
+    as: "image",
+    type: "image/avif",
+    imageSrcSet: HERO_AVIF,
+    imageSizes: HERO_SIZES,
+    fetchPriority: "high",
+  });
   return (
     <section data-hero className="relative overflow-hidden bg-primary text-white">
-      <SquaresPattern />
+      <picture className="pointer-events-none absolute inset-0 block">
+        <source type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
+        <source type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
+        <img
+          src="/images/hero/hero-bg-1600.webp"
+          alt=""
+          width={3468}
+          height={1460}
+          sizes={HERO_SIZES}
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full origin-bottom scale-150 object-cover object-bottom sm:origin-center sm:scale-100 sm:object-[center_62%]"
+        />
+      </picture>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary-darker/85 via-primary-darker/70 to-primary-darker/28" />
 
       <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 py-14 text-center sm:py-16 md:py-20">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">

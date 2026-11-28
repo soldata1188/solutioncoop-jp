@@ -233,7 +233,7 @@ export function ImagePlaceholder({
 /** 番号タブ付きの淡い緑枠カード（「選ばれる理由」型） */
 export function TabCard({ n, children, className = "", as: Tag = "li" }: { n: number; children: React.ReactNode; className?: string; as?: "li" | "div" }) {
   return (
-    <Tag className={`card-lift relative flex flex-col rounded-site border border-tab bg-white ${className}`}>
+    <Tag className={`card-lift relative flex flex-col rounded-site border border-line bg-white ${className}`}>
       <span aria-hidden="true" className="absolute -left-px -top-px flex h-8 w-8 items-center justify-center rounded-tl-site bg-tab text-base font-bold text-primary-dark">
         {n}
       </span>

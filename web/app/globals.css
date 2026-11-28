@@ -29,7 +29,9 @@
   --color-pale-border: #a9ddbc;
   --color-tab: #cbebd6;
   --color-label: #daeadf;
-  --color-line: #e5ece7;
+  /* カード枠・区切りの共通色。primary #1E7F46 を白へ 50%（sRGB）で混ぜた淡い緑。
+     25–35% は pale 地で 1px がほぼ消えるため、見える側へ寄せている。 */
+  --color-line: #8ebfa2;
   --color-line-strong: #ccddd2;
   --color-gray-ref: #777777;
   --color-ink: #222222;

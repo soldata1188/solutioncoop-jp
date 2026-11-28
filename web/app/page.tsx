@@ -112,7 +112,7 @@ export default function Home() {
         <ol className="grid gap-5 md:grid-cols-2">
           {reasons.map(({ title, sub, body, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
-              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
+              <div className="hidden h-36 items-center justify-center border-b border-line bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
               <div className="px-5 pb-6 pt-5 text-center sm:text-left">
@@ -153,7 +153,7 @@ export default function Home() {
         <ol className="grid gap-5 md:grid-cols-2">
           {businesses.map(({ title, sub, body, Icon }, i) => (
             <TabCard key={title} n={i + 1}>
-              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
+              <div className="hidden h-36 items-center justify-center border-b border-line bg-white text-primary sm:flex">
                 <Icon className="h-20 w-20" />
               </div>
               <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:text-left">

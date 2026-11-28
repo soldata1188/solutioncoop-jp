@@ -59,7 +59,7 @@ export type Achievement = {
   description?: readonly string[];
 };
 
-// TODO: 代表者様の指示で見本の文言をそのまま使っています。公開前に、他社の文言と同一になっていないか、事実として裏付けがあるかを再確認してください。
+// 代表者様承認済みの文言（2026-11-28）
 export const achievementsHeading: { lines: readonly string[]; highlight?: string } = {
   lines: ["外国人材の受入れを", "「安心して任せられる理由」があります！"],
   highlight: "「安心して任せられる理由」",

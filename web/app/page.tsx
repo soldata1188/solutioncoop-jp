@@ -76,47 +76,6 @@ export default function Home() {
       {/* 実績（3つのカード）と、その下の SDGs未来都市・堺 */}
       <StatsStrip />
 
-      {/* 事業内容（代表者様ご提供の文言） */}
-      <Section
-        id="business"
-        eyebrow={<span lang="en">BUSINESS CONTENT</span>}
-        title="ソリューション協同組合の事業内容"
-        lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
-        visual={
-          <img
-            src="/images/jigyo-naiyo-buildings-green_2026-11-22.svg"
-            alt=""
-            width={375}
-            height={375}
-            loading="lazy"
-            decoding="async"
-            aria-hidden="true"
-            className="h-auto w-full max-w-[240px] lg:w-[320px] lg:max-w-[320px]"
-          />
-        }
-      >
-        <ol className="grid gap-5 md:grid-cols-2">
-          {businesses.map(({ title, sub, body, Icon }, i) => (
-            <TabCard key={title} n={i + 1}>
-              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
-                <Icon className="h-20 w-20" />
-              </div>
-              <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:text-left">
-                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
-                  <Icon className="size-14" />
-                </span>
-                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
-                  <span className="sr-only">事業{i + 1}：</span>
-                  {title}
-                </h3>
-                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
-                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
-              </div>
-            </TabCard>
-          ))}
-        </ol>
-      </Section>
-
       {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
       <Section
         id="reasons"
@@ -162,6 +121,47 @@ export default function Home() {
                 </span>
                 <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
                   <span className="sr-only">理由{i + 1}：</span>
+                  {title}
+                </h3>
+                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
+                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
+              </div>
+            </TabCard>
+          ))}
+        </ol>
+      </Section>
+
+      {/* 事業内容（代表者様ご提供の文言） */}
+      <Section
+        id="business"
+        eyebrow={<span lang="en">BUSINESS CONTENT</span>}
+        title="ソリューション協同組合の事業内容"
+        lead="技能実習における人材育成・技能移転・国際貢献と、事業拡大・海外進出まで、4つの事業でご支援します。"
+        visual={
+          <img
+            src="/images/jigyo-naiyo-buildings-green_2026-11-22.svg"
+            alt=""
+            width={375}
+            height={375}
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            className="h-auto w-full max-w-[240px] lg:w-[320px] lg:max-w-[320px]"
+          />
+        }
+      >
+        <ol className="grid gap-5 md:grid-cols-2">
+          {businesses.map(({ title, sub, body, Icon }, i) => (
+            <TabCard key={title} n={i + 1}>
+              <div className="hidden h-36 items-center justify-center border-b border-tab bg-white text-primary sm:flex">
+                <Icon className="h-20 w-20" />
+              </div>
+              <div className="flex flex-1 flex-col px-5 pb-6 pt-5 text-center sm:text-left">
+                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
+                  <Icon className="size-14" />
+                </span>
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  <span className="sr-only">事業{i + 1}：</span>
                   {title}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>

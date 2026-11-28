@@ -37,6 +37,9 @@ export const clientsHeadline = {
   peopleUnit: "名の実績！",
 } as const;
 
+/** 文言は代表の承認待ち（プレビューのみ） */
+export const clientStripSubline = "地域を支える優良企業の皆さまに、外国人材受入れのパートナーとして選ばれています。";
+
 /** ロゴがこの数未満なら、文字だけの社で列を埋める（両列で約10社ずつ）。 */
 const MIN_LOGOS_BEFORE_DROPPING_TEXT = 20;
 /** 文字だけを足すときの上限（両列で約16社ずつ）。ロゴ付きはこの上限で切らない。 */

@@ -1,4 +1,4 @@
-import { clientCompaniesCount, clientPeopleCount, clientsHeadline, clientRowOne, clientRowTwo, type ClientCard } from "@/lib/clients";
+import { clientCompaniesCount, clientPeopleCount, clientStripSubline, clientsHeadline, clientRowOne, clientRowTwo, type ClientCard } from "@/lib/clients";
 
 function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boolean }) {
   return (
@@ -67,6 +67,10 @@ export function ClientMarquee() {
           <span className="mx-1 text-4xl font-black text-cta-text sm:text-6xl">{clientPeopleCount}</span>
           {clientsHeadline.peopleUnit}
         </h2>
+        <p className="mx-auto mt-3 max-w-[40rem] text-center text-[15px] leading-relaxed text-body sm:text-base">
+          <span className="inline-block">{clientStripSubline.slice(0, clientStripSubline.indexOf("、") + 1)}</span>
+          <span className="inline-block">{clientStripSubline.slice(clientStripSubline.indexOf("、") + 1)}</span>
+        </p>
       </div>
       <div className="client-marquee mt-8 space-y-5 pb-14 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:space-y-6 md:pb-[72px]" tabIndex={0}>
         <Row items={clientRowOne} />

@@ -4,8 +4,25 @@ function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boole
   return (
     <ul className={`client-marquee-list ${hidden ? "client-marquee-clone" : ""}`} aria-hidden={hidden || undefined}>
       {items.map((item) => (
-        <li key={item.name} className="w-[16.5rem] shrink-0 rounded-site border border-line bg-white px-3 py-2.5 text-center sm:w-[18.5rem] sm:px-4 sm:py-3">
-          <p className="whitespace-nowrap text-sm font-bold leading-snug text-primary sm:text-base">{item.name}</p>
+        <li key={item.name} className="flex h-28 w-[9.75rem] shrink-0 flex-col items-center justify-center rounded-control border border-line bg-white px-2 py-2 sm:h-[7.75rem] sm:w-[11.25rem]">
+          {item.logoSrc ? (
+            <>
+              <span className="flex h-8 w-full items-center justify-center sm:h-10">
+                <img
+                  src={item.logoSrc}
+                  alt={hidden ? "" : item.name}
+                  width={item.logoWidth}
+                  height={item.logoHeight}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-8 w-auto max-w-full object-contain sm:max-h-10"
+                />
+              </span>
+              <p className="mt-1 line-clamp-2 w-full text-balance text-center text-[10px] font-medium leading-tight text-ink sm:text-[11px]">{item.name}</p>
+            </>
+          ) : (
+            <p className="line-clamp-3 text-balance text-center text-[13px] font-bold leading-snug text-primary sm:text-sm">{item.name}</p>
+          )}
         </li>
       ))}
     </ul>
@@ -24,7 +41,7 @@ function Row({ items, reverse }: { items: readonly ClientCard[]; reverse?: boole
 /** ホームの受入れ企業名。実習生ブロックの直前に置く。 */
 export function ClientMarquee() {
   return (
-    <section aria-labelledby="clients-title" className="overflow-x-hidden bg-pale">
+    <section aria-labelledby="clients-title" className="overflow-x-hidden bg-white">
       <div className="mx-auto max-w-[932px] px-4 pt-14 text-center md:pt-[72px]">
         <p aria-hidden="true" className="mb-4 flex items-center justify-center gap-3">
           <span className="h-1.5 w-1.5 rounded-full bg-cta-text" />

@@ -67,6 +67,25 @@ export const achievementsHeading: { lines: readonly string[]; highlight?: string
 
 /** トップの実績。各文言はここ一度だけ。 */
 export const achievements: Achievement[] = [
+  // TODO: 公開不可。代表者様の指示により見本（他社）の数値・文言をそのまま仮置きしています。公開前に当組合の実数値と独自の文言へ差し替えが必要です（景品表示法・著作権の観点）。
+  {
+    label: "定着率",
+    count: 90,
+    unit: "%",
+    description: ["職場で継続1年以上の人材が", "多く在籍しています。"],
+  },
+  {
+    label: "リピート率",
+    count: 94,
+    unit: "%",
+    description: ["企業からのリピート希望率が高く、", "多くの職場で戦力になっています。"],
+  },
+  {
+    label: "外国人サポート率",
+    count: 100,
+    unit: "%",
+    description: ["現地の言葉でやり取りできるので", "外国人材も安心して就業できます。"],
+  },
   {
     label: "技能実習生受入れ実績",
     count: 65,

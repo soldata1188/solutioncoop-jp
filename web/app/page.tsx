@@ -4,6 +4,7 @@ import { HomeHero } from "@/components/HomeHero";
 import { LinkButton, Section, TabCard } from "@/components/ui";
 import { StatsStrip } from "@/components/StatsStrip";
 import { NewsBoard } from "@/components/NewsBoard";
+import { CasesBoard } from "@/components/CasesBoard";
 import { ContactMethods } from "@/components/ContactSection";
 import { pageMeta } from "@/lib/meta";
 
@@ -75,6 +76,23 @@ export default function Home() {
 
       {/* 実績（3つのカード）と、その下の SDGs未来都市・堺 */}
       <StatsStrip />
+
+      {/* 事例（未確定のため要確認枠のみ）。見出しと tag は ebf987b^ の原文。番号タブとメニュー項目は足さない。 */}
+      <section aria-labelledby="cases" className="bg-pale">
+        <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
+          <div className="text-center">
+            <h2 id="cases" className="text-3xl font-bold leading-tight text-ink md:text-5xl">
+              受入れ事例
+            </h2>
+            <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
+              外国人材が活躍する分野の現場です。企業名・人数・ご感想などの詳細は、掲載のご了承と内容の確認が済み次第、掲載いたします。
+            </p>
+          </div>
+          <div className="mt-8">
+            <CasesBoard />
+          </div>
+        </div>
+      </section>
 
       {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
       <Section

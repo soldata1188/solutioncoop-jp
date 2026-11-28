@@ -74,7 +74,13 @@ export const clientCompanies: ClientCard[] = [
     logoWidth: 80,
     logoHeight: 80,
   },
-  { name: "株式会社オービービー" },
+  {
+    name: "株式会社オービービー",
+    logoSrc: "/clients/obb.png",
+    logoSourceUrl: "Boss 提供 2026-11-28",
+    logoWidth: 206,
+    logoHeight: 62,
+  },
   {
     name: "株式会社ふじえ",
     logoSrc: "/clients/fujie.png",

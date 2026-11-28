@@ -15,7 +15,16 @@ function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boole
                   height={item.logoHeight}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-8 w-auto max-w-full object-contain sm:max-h-10"
+                  className={
+                    item.logoHeight !== undefined && item.logoHeight < 80
+                      ? "w-auto max-w-full object-contain"
+                      : "max-h-8 w-auto max-w-full object-contain sm:max-h-10"
+                  }
+                  style={
+                    item.logoHeight !== undefined && item.logoHeight < 80
+                      ? { maxHeight: Math.floor(item.logoHeight / 2) }
+                      : undefined
+                  }
                 />
               </span>
               <p className="mt-1 line-clamp-2 w-full text-balance text-center text-[10px] font-medium leading-tight text-ink sm:text-[11px]">{item.name}</p>

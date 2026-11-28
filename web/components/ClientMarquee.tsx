@@ -1,39 +1,33 @@
 import { clientCompaniesCount, clientPeopleCount, clientStripSubline, clientsHeadline, clientRowOne, clientRowTwo, type ClientCard } from "@/lib/clients";
 
+/** 1列が画面より狭いと、半分だけ動かすループの端が空く。1920px まで埋まるよう同じ列を繰り返す。 */
+const LOOP_COPIES = 2;
+
 function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boolean }) {
+  const logos = items.filter((item) => item.logoSrc);
   return (
     <ul className={`client-marquee-list ${hidden ? "client-marquee-clone" : ""}`} aria-hidden={hidden || undefined}>
-      {items.map((item) => (
-        <li key={item.name} className="flex h-[4.75rem] w-[9.25rem] shrink-0 flex-col items-center justify-center px-1 sm:h-20 sm:w-[11rem]">
-          {item.logoSrc ? (
-            <>
-              <span className="flex h-8 w-full items-center justify-center sm:h-10">
-                <img
-                  src={item.logoSrc}
-                  alt={hidden ? "" : item.name}
-                  width={item.logoWidth}
-                  height={item.logoHeight}
-                  loading="lazy"
-                  decoding="async"
-                  className={
-                    item.logoHeight !== undefined && item.logoHeight < 80
-                      ? "w-auto max-w-full object-contain"
-                      : "max-h-8 w-auto max-w-full object-contain sm:max-h-10"
-                  }
-                  style={
-                    item.logoHeight !== undefined && item.logoHeight < 80
-                      ? { maxHeight: Math.floor(item.logoHeight / 2) }
-                      : undefined
-                  }
-                />
-              </span>
-              <p className="mt-1 line-clamp-2 w-full text-balance text-center text-[10px] font-medium leading-tight text-ink sm:text-[11px]">{item.name}</p>
-            </>
-          ) : (
-            <p className="line-clamp-3 text-balance text-center text-[13px] font-bold leading-snug text-primary sm:text-sm">{item.name}</p>
-          )}
-        </li>
-      ))}
+      {logos.map((item) => {
+        const crisp = item.logoHeight !== undefined && item.logoHeight < 80;
+        const plated = item.logoSrc?.endsWith("murakami-kogyo.png");
+        return (
+          <li key={item.name} className="flex h-[4.75rem] w-[9.25rem] shrink-0 flex-col items-center justify-center px-1 sm:h-20 sm:w-[11rem]">
+            <span className="flex h-8 w-full items-center justify-center sm:h-10">
+              <img
+                src={item.logoSrc}
+                alt={hidden ? "" : item.name}
+                width={item.logoWidth}
+                height={item.logoHeight}
+                loading="lazy"
+                decoding="async"
+                className={`${crisp ? "w-auto max-w-full object-contain" : "max-h-8 w-auto max-w-full object-contain sm:max-h-10"}${plated ? " rounded-[6px]" : ""}`}
+                style={crisp ? { maxHeight: Math.floor(item.logoHeight! / 2) } : undefined}
+              />
+            </span>
+            <p className="mt-1 line-clamp-2 w-full text-balance text-center text-[10px] font-medium leading-tight text-ink sm:text-[11px]">{item.name}</p>
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -41,8 +35,12 @@ function Cards({ items, hidden }: { items: readonly ClientCard[]; hidden?: boole
 function Row({ items, reverse }: { items: readonly ClientCard[]; reverse?: boolean }) {
   return (
     <div className={`client-track ${reverse ? "client-track-back" : ""}`}>
-      <Cards items={items} />
-      <Cards items={items} hidden />
+      {Array.from({ length: LOOP_COPIES }, (_, copy) => (
+        <Cards key={copy} items={items} hidden={copy > 0} />
+      ))}
+      {Array.from({ length: LOOP_COPIES }, (_, copy) => (
+        <Cards key={`clone-${copy}`} items={items} hidden />
+      ))}
     </div>
   );
 }

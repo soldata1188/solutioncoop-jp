@@ -8,11 +8,8 @@
  * - 公式サイトで商号（株式会社／有限会社の位置）が一致し、サイトに書かれた市区町村が
  *   受入れ名簿の市区町村と一致し、ロゴ画像が十分なときだけ logoSrc を付ける。ロゴは描かない。
  * - 代表から渡されたロゴファイルは、サイトから取った画像より優先する。
- * - 表示順は自動。logoSrc がある社を先、ない社を後。それぞれの中の並びは配列の順。
- * - ロゴ付きが合計20社（1列あたり約10）未満のあいだは、文字だけの社を後ろに足して
- *   列を埋める。ただし文字だけを足して合計32（1列あたり約16）を超えない。
- * - ロゴ付きが20社以上になったら文字だけは出さない。確認できたロゴは数の上限で切らない。
- * - 2列は交互に配る。上の列が先頭から1,3,5社目、下の列が2,4,6社目。両列ともロゴから始まる。
+ * - 表示するのは logoSrc がある社だけ。名前だけの社はデータに残しても帯には出さない。
+ * - 2列は交互に配る。上の列が先頭から1,3,5社目、下の列が2,4,6社目。
  */
 export const CLIENTS_PUBLISHABLE = false;
 
@@ -40,19 +37,14 @@ export const clientsHeadline = {
 /** 文言は代表の承認待ち（プレビューのみ） */
 export const clientStripSubline = "地域を支える優良企業の皆さまに、外国人材受入れのパートナーとして選ばれています。";
 
-/** ロゴがこの数未満なら、文字だけの社で列を埋める（両列で約10社ずつ）。 */
-const MIN_LOGOS_BEFORE_DROPPING_TEXT = 20;
-/** 文字だけを足すときの上限（両列で約16社ずつ）。ロゴ付きはこの上限で切らない。 */
-const MAX_FILLED_SLOTS = 32;
-
-/** 受入れ企業。ロゴの有無にかかわらず追加順で書く。表示順は visibleClientCompanies が決める。 */
+/** 受入れ企業。ロゴの有無にかかわらず追加順で書く。帯に出るのは visibleClientCompanies だけ。 */
 export const clientCompanies: ClientCard[] = [
   {
     name: "株式会社村上工業",
     logoSrc: "/clients/murakami-kogyo.png",
-    logoSourceUrl: "Boss 提供 2026-11-28",
-    logoWidth: 108,
-    logoHeight: 112,
+    logoSourceUrl: "Boss cung cấp 28/11",
+    logoWidth: 442,
+    logoHeight: 198,
   },
   {
     name: "株式会社プライムエコ",
@@ -174,16 +166,9 @@ function hasVerifiedLogo(company: ClientCard): boolean {
   return Boolean(company.logoSrc);
 }
 
-/**
- * ロゴ付きを先、足りなければ文字だけを後ろに足した表示用の並び。
- * CSVで社が増えても、この関数の結果を2列に分ければよい。
- */
+/** 帯に出す社。logoSrc があるものだけ。 */
 export function visibleClientCompanies(companies: readonly ClientCard[] = clientCompanies): ClientCard[] {
-  const logos = companies.filter(hasVerifiedLogo);
-  const textOnly = companies.filter((company) => !hasVerifiedLogo(company));
-  if (logos.length >= MIN_LOGOS_BEFORE_DROPPING_TEXT) return logos;
-  const roomForText = Math.max(0, MAX_FILLED_SLOTS - logos.length);
-  return [...logos, ...textOnly.slice(0, roomForText)];
+  return companies.filter(hasVerifiedLogo);
 }
 
 /** 交互に2列へ配る。上の列が先。 */

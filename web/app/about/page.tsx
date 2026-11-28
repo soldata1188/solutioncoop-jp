@@ -103,10 +103,6 @@ export default function Page() {
         <span className="mt-1 block">共同購買事業、受注のあっせん、海外進出のサポートなど</span>
       </span>,
     ],
-    ["技能実習生|受入れ実績", org.terms],
-    ["受入れ企業数", org.clients],
-    ["表彰", org.award],
-    ["連携する送り出し国", "ベトナム、インドネシア、フィリピン"],
   ];
   return (
     <>

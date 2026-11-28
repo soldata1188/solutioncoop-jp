@@ -8,6 +8,12 @@ const HERO_AVIF =
   "/images/hero/hero-bg-640.avif 640w, /images/hero/hero-bg-1080.avif 1080w, /images/hero/hero-bg-1600.avif 1600w, /images/hero/hero-bg-2400.avif 2400w";
 const HERO_WEBP =
   "/images/hero/hero-bg-640.webp 640w, /images/hero/hero-bg-1080.webp 1080w, /images/hero/hero-bg-1600.webp 1600w, /images/hero/hero-bg-2400.webp 2400w";
+/** モバイルは工場帯だけを縦に切った別画像。cover で高さいっぱい使うので sizes は幅より広くする。 */
+const HERO_MOBILE_SIZES = "240vw";
+const HERO_MOBILE_AVIF =
+  "/images/hero/hero-bg-mobile-390.avif 390w, /images/hero/hero-bg-mobile-780.avif 780w, /images/hero/hero-bg-mobile-1170.avif 1170w";
+const HERO_MOBILE_WEBP =
+  "/images/hero/hero-bg-mobile-390.webp 390w, /images/hero/hero-bg-mobile-780.webp 780w, /images/hero/hero-bg-mobile-1170.webp 1170w";
 
 function IconConstruction() {
   return (
@@ -44,16 +50,27 @@ const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control borde
  * 業種の枠と副ボタンは、白を混ぜると文字が 4.5:1 を切るため、濃い緑の半透明にしています。
  */
 export function HomeHero() {
+  preload(HERO_MOBILE_AVIF, {
+    as: "image",
+    type: "image/avif",
+    imageSrcSet: HERO_MOBILE_AVIF,
+    imageSizes: HERO_MOBILE_SIZES,
+    fetchPriority: "high",
+    media: "(max-width: 639px)",
+  });
   preload(HERO_AVIF, {
     as: "image",
     type: "image/avif",
     imageSrcSet: HERO_AVIF,
     imageSizes: HERO_SIZES,
     fetchPriority: "high",
+    media: "(min-width: 640px)",
   });
   return (
     <section data-hero className="relative overflow-hidden bg-primary text-white">
       <picture className="pointer-events-none absolute inset-0 block">
+        <source media="(max-width: 639px)" type="image/avif" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_AVIF} />
+        <source media="(max-width: 639px)" type="image/webp" sizes={HERO_MOBILE_SIZES} srcSet={HERO_MOBILE_WEBP} />
         <source type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
         <source type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
         <img
@@ -64,10 +81,10 @@ export function HomeHero() {
           sizes={HERO_SIZES}
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full origin-bottom scale-150 object-cover object-bottom sm:origin-center sm:scale-100 sm:object-[center_62%]"
+          className="h-full w-full object-cover object-center sm:object-[center_62%]"
         />
       </picture>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary-darker/85 via-primary-darker/70 to-primary-darker/28" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,#0a3720e6_0%,#0a3720d1_48%,#0a3720b8_68%,#0a372066_100%)] sm:bg-gradient-to-b sm:from-primary-darker/85 sm:via-primary-darker/70 sm:to-primary-darker/28" />
 
       <div className="relative mx-auto flex max-w-[920px] flex-col items-center px-4 py-14 text-center sm:py-16 md:py-20">
         <h1 className="text-[1.7rem] font-black leading-tight sm:text-4xl md:text-5xl">

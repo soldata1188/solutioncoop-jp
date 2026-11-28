@@ -89,12 +89,12 @@ export function ConsultDesk({
       <p className="mx-auto mt-5 max-w-[40rem] text-base font-bold leading-relaxed text-ink md:text-lg">{CONSULT_CLAIMS.leadJa}</p>
       <p className="mx-auto mt-1 max-w-[40rem] text-sm text-muted">{CONSULT_CLAIMS.leadEn}</p>
 
-      <ul className="mt-8 flex flex-wrap items-start justify-center gap-8">
+      <ul className="mt-8 grid w-full grid-cols-3 gap-x-1 sm:flex sm:w-auto sm:flex-wrap sm:items-start sm:justify-center sm:gap-8">
         {CONSULT_LANGUAGES.map((lang) => (
-          <li key={lang.en} className="flex w-28 flex-col items-center">
-            <Image src={lang.flag} alt="" width={lang.width} height={lang.height} unoptimized className="h-8 w-auto ring-1 ring-line" />
-            <span className="mt-2 text-sm font-bold text-ink">{lang.ja}</span>
-            <span className="text-xs font-bold tracking-wide text-muted">{lang.en}</span>
+          <li key={lang.en} className="flex min-w-0 flex-col items-center sm:w-28">
+            <Image src={lang.flag} alt="" width={lang.width} height={lang.height} unoptimized className="h-8 w-12 object-contain ring-1 ring-line sm:w-auto" />
+            <span className="mt-2 text-sm font-bold leading-tight text-ink">{lang.ja}</span>
+            <span className="text-xs font-bold leading-tight tracking-normal text-muted sm:tracking-wide">{lang.en}</span>
           </li>
         ))}
       </ul>

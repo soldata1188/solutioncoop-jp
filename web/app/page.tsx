@@ -94,38 +94,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 選ばれ続ける理由（代表者様ご提供の文言）。イラストは切り抜きせず全体を出す */}
+      {/* 選ばれ続ける理由（代表者様ご提供の文言）。見出し横のイラストは外し、見出しは中央。 */}
       <Section
         id="reasons"
         width="wide"
-        visualShare="half"
         title="80社以上に選ばれ続ける理由"
         sub="— 受入れ企業様が実感する4つの理由 —"
         lead="外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
-        visual={
-          <picture className="block w-full">
-            <source
-              type="image/avif"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.avif 480w, /images/global-jinzai-illustration-640.avif 640w, /images/global-jinzai-illustration-880.avif 880w, /images/global-jinzai-illustration-1000.avif 1000w"
-            />
-            <source
-              type="image/webp"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              srcSet="/images/global-jinzai-illustration-480.webp 480w, /images/global-jinzai-illustration-640.webp 640w, /images/global-jinzai-illustration-880.webp 880w, /images/global-jinzai-illustration-1000.webp 1000w"
-            />
-            <img
-              src="/images/global-jinzai-illustration-1000.webp"
-              alt="グローバル人材 若い力を日本企業へ（外国人材と日本企業をつなぐイメージ）"
-              width={1000}
-              height={746}
-              loading="lazy"
-              decoding="async"
-              sizes="(min-width: 1024px) 440px, calc(100vw - 32px)"
-              className="h-auto w-full"
-            />
-          </picture>
-        }
       >
         <ol className="grid gap-5 md:grid-cols-2">
           {reasons.map(({ title, sub, body, Icon }) => (

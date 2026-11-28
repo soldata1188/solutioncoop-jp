@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Chunks } from "@/components/KeepWords";
-import { CONTACT_HREF, LINE_URL } from "@/lib/site";
+import { CONTACT_HREF } from "@/lib/site";
 
 /** 文字の外側だけに置く緑の図形。写真は使わない。 */
 function HeroDecor() {
@@ -71,18 +71,16 @@ export function HomeHero() {
             </span>
             <span aria-hidden="true" className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-base leading-none sm:right-3 sm:text-xl">→</span>
           </Link>
-          <a
-            href={LINE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/for-workers"
+            prefetch={false}
             className="flex min-h-16 flex-col items-center justify-center rounded-control border border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
           >
             <span className="text-[13px] sm:text-lg">24時間相談窓口</span>
             <span className="mt-0.5 text-xs font-bold">
               <Chunks parts={["実習生・", "外国人材の方はこちら"]} />
             </span>
-            <span className="sr-only">（LINE公式アカウントを新しいタブで開きます）</span>
-          </a>
+          </Link>
         </div>
         </div>
         </div>

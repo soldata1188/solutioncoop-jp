@@ -1,96 +1,138 @@
-import { newsCardTitle, newsItems, newsPhotos, newsSrcSet, type NewsItem, type NewsPhotoTile } from "@/lib/news";
+"use client";
 
-/** 8枚目。折り鶴の集合写真を、防災センターの写真に差し替えた。 */
-const REPLACED_PHOTO_ID = "2119705192216264798";
+import { useEffect, useRef, useState } from "react";
+import { newsItems, newsSrcSet, type NewsItem } from "@/lib/news";
 
-/** デスクトップは6列の大小モザイク。0始まり。8枚目（差し替え写真）は大きい枠。 */
-const DESKTOP_LARGE = new Set([0, 1, 7]);
-const DESKTOP_WIDE = new Set([6, 8, 9, 10, 13, 14]);
-/** 狭い画面で2列をまたぐ。端数が残らない並びにしている。 */
-const MOBILE_WIDE = new Set([0, 1, 6, 9, 14]);
-
-const SIZES_STANDARD = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width: 931px) calc((100vw - 72px) / 6), 143px";
-const SIZES_DOUBLE = "(max-width: 767px) calc((100vw - 40px) / 2), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
-const SIZES_FULL_MOBILE = "(max-width: 767px) calc(100vw - 32px), (max-width: 931px) calc((100vw - 72px) / 3 + 8px), 294px";
-
-type TileImage = { id: string; imageAlt?: string; imageWidths?: readonly number[]; imageHeight?: number };
-
-function tileSizes(index: number): string {
-  if (MOBILE_WIDE.has(index)) return SIZES_FULL_MOBILE;
-  if (DESKTOP_LARGE.has(index) || DESKTOP_WIDE.has(index)) return SIZES_DOUBLE;
-  return SIZES_STANDARD;
+/** カードは原文の最初の一文だけ。言い換えない。 */
+function firstSentence(text: string): string {
+  const line = text.split("\n")[0] ?? "";
+  const end = line.indexOf("。");
+  return end === -1 ? line : line.slice(0, end + 1);
 }
 
-function spanClass(index: number): string {
-  const parts = ["news-tile-wrap", "min-w-0"];
-  if (DESKTOP_LARGE.has(index)) parts.push("news-d-lg");
-  if (DESKTOP_WIDE.has(index)) parts.push("news-d-wide");
-  if (MOBILE_WIDE.has(index)) parts.push("news-m-wide");
-  return parts.join(" ");
+function perView(): number {
+  if (window.matchMedia("(min-width: 1024px)").matches) return 3;
+  if (window.matchMedia("(min-width: 640px)").matches) return 2;
+  return 1;
 }
 
-function CardImage({ item, alt, sizes }: { item: TileImage; alt: string; sizes: string }) {
-  if (!alt) {
-    return (
-      <img
-        src="/brand/SOL_Solution_Coop_2026-11-19_white.png"
-        alt=""
-        width={130}
-        height={88}
-        loading="lazy"
-        decoding="async"
-        className="news-photo absolute inset-0 m-auto h-auto max-h-[42%] w-auto max-w-[70%] object-contain"
-      />
-    );
-  }
+const IMAGE_SIZES = "(min-width: 1024px) 290px, (min-width: 640px) 46vw, calc(100vw - 32px)";
+
+function CardImage({ item }: { item: NewsItem }) {
   const widths = item.imageWidths ?? [960];
   const fallbackWidth = Math.max(...widths);
   return (
-    <picture className="news-frame absolute inset-0 block">
-      <source type="image/avif" sizes={sizes} srcSet={newsSrcSet(item, "avif")} />
-      <source type="image/webp" sizes={sizes} srcSet={newsSrcSet(item, "webp")} />
+    <picture className="absolute inset-0 block">
+      <source type="image/avif" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "avif")} />
+      <source type="image/webp" sizes={IMAGE_SIZES} srcSet={newsSrcSet(item, "webp")} />
       <img
         src={`/news/${item.id}-640.webp`}
-        alt={alt}
+        alt={item.imageAlt ?? item.shortTitle ?? ""}
         width={fallbackWidth}
-        height={item.imageHeight ?? Math.round((fallbackWidth * 3) / 4)}
+        height={Math.round((fallbackWidth * 3) / 4)}
         loading="lazy"
         decoding="async"
-        sizes={sizes}
-        className="news-photo absolute inset-0 h-full w-full object-cover"
+        sizes={IMAGE_SIZES}
+        className="h-full w-full object-cover"
       />
     </picture>
   );
 }
 
-function NewsCard({ item, alt, sizes }: { item: NewsItem | NewsPhotoTile; alt: string; sizes: string }) {
-  return (
-    <article tabIndex={0} className="news-tile relative h-full rounded-lg bg-[#eef8f1]">
-      <div className="news-clip absolute inset-0 overflow-hidden rounded-lg">
-        <CardImage item={item} alt={alt} sizes={sizes} />
-      </div>
-    </article>
-  );
-}
-
-/** 写真だけの展示。見出しの文字は出さない。 */
+/**
+ * 8件の投稿だけをカードにする。newsPhotos は見出しと本文が無いのでここには出さない。
+ * データ自体は lib/news.ts に残す。
+ */
 export function NewsBoard() {
-  const tiles = [
-    ...newsItems.map((item) => ({
-      item,
-      alt: item.id === REPLACED_PHOTO_ID ? (item.imageAlt ?? "") : newsCardTitle(item),
-    })),
-    ...newsPhotos.map((item) => ({ item, alt: item.imageAlt })),
-  ];
+  const scroller = useRef<HTMLUListElement>(null);
+  const [page, setPage] = useState(0);
+  const [pages, setPages] = useState(1);
+
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+    const sync = () => {
+      const count = perView();
+      const total = Math.max(1, Math.ceil(newsItems.length / count));
+      const width = Math.max(el.clientWidth, 1);
+      const current = Math.round(el.scrollLeft / width);
+      setPages(total);
+      setPage(Math.min(Math.max(current, 0), total - 1));
+    };
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(el);
+    el.addEventListener("scroll", sync, { passive: true });
+    return () => {
+      observer.disconnect();
+      el.removeEventListener("scroll", sync);
+    };
+  }, []);
+
+  function go(next: number) {
+    const el = scroller.current;
+    if (!el) return;
+    const total = Math.max(1, Math.ceil(newsItems.length / perView()));
+    const clamped = Math.min(Math.max(next, 0), total - 1);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: reduce ? "auto" : "smooth" });
+    setPage(clamped);
+  }
+
   return (
-    <div className="news-mosaic">
-      <ul className="news-rows grid">
-        {tiles.map(({ item, alt }, index) => (
-          <li key={item.id} className={spanClass(index)}>
-            <NewsCard item={item} alt={alt} sizes={tileSizes(index)} />
+    <div className="min-w-0">
+      <ul
+        ref={scroller}
+        className="flex w-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {newsItems.map((item) => (
+          <li key={item.id} className="box-border w-full shrink-0 snap-start px-2 sm:w-1/2 lg:w-[calc(100%/3)]">
+            <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e7e0d2] bg-white shadow-[0_8px_24px_rgb(27_43_74/0.06)]">
+              <div className="relative aspect-[4/3] bg-[#f3efe6]">
+                <CardImage item={item} />
+              </div>
+              <div className="flex flex-1 flex-col px-4 py-4">
+                <h3 className="text-base font-bold leading-snug text-[#1b2b4a]">{item.shortTitle}</h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#666]">{firstSentence(item.text)}</p>
+              </div>
+            </article>
           </li>
         ))}
       </ul>
+      <div className="mt-6 flex min-h-11 items-center justify-center gap-4">
+        <button
+          type="button"
+          aria-label="前の活動情報"
+          disabled={page <= 0}
+          onClick={() => go(page - 1)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          ‹
+        </button>
+        <div className="flex items-center gap-1" role="group" aria-label="活動情報のページ">
+          {Array.from({ length: pages }, (_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`${index + 1}ページ目`}
+              aria-current={index === page ? "true" : undefined}
+              onClick={() => go(index)}
+              className="inline-flex h-5 w-5 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark"
+            >
+              <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${index === page ? "bg-primary-dark" : "bg-primary/30"}`} />
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          aria-label="次の活動情報"
+          disabled={page >= pages - 1}
+          onClick={() => go(page + 1)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-primary bg-white text-xl leading-none text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-dark disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          ›
+        </button>
+      </div>
     </div>
   );
 }

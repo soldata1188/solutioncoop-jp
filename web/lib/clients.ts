@@ -58,7 +58,13 @@ export const clientCompanies: ClientCard[] = [
     logoWidth: 229,
     logoHeight: 80,
   },
-  { name: "鉄電塗装株式会社" },
+  {
+    name: "鉄電塗装株式会社",
+    logoSrc: "/clients/tetsuden-tosou.png",
+    logoSourceUrl: "Boss 提供 2026-11-28",
+    logoWidth: 230,
+    logoHeight: 80,
+  },
   { name: "林組株式会社" },
   { name: "山村土木興業株式会社" },
   {

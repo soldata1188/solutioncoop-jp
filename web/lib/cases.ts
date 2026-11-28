@@ -6,6 +6,8 @@
 export type CaseCard = {
   id: string;
   src: string;
+  /** AVIF があるときは picture で先に出す */
+  avifSrc?: string;
   alt: string;
   /** カードの見出し。原文の tag */
   tag: string;
@@ -18,11 +20,12 @@ export type CaseCard = {
 export const caseCards: CaseCard[] = [
   {
     id: "site-steel",
-    src: "/images/site-steel-workshop.webp",
-    alt: "鋼材が積まれ、工具や脚立が並ぶ金属加工の作業場",
+    src: "/images/cases/machining-guidance.webp",
+    avifSrc: "/images/cases/machining-guidance.avif",
+    alt: "金属加工の現場で実習指導を行う様子",
     tag: "大阪府・金属加工",
-    width: 800,
-    height: 533,
+    width: 1200,
+    height: 900,
   },
   {
     id: "site-excavation",
@@ -51,12 +54,12 @@ export const caseCards: CaseCard[] = [
   },
   {
     id: "case-kikai-kinzoku",
-    src: "/images/cases/case-kikai-kinzoku.webp",
-    alt: "機械・金属業のイメージ画像",
+    src: "/images/cases/cnc-lathe.webp",
+    avifSrc: "/images/cases/cnc-lathe.avif",
+    alt: "CNC旋盤の操作盤を扱う様子",
     tag: "機械・金属",
-    width: 1600,
-    height: 1000,
-    imageNote: "イメージ",
+    width: 1200,
+    height: 900,
   },
   {
     id: "case-naisou-tosou",

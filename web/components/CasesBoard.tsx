@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { caseCards } from "@/lib/cases";
+import Image from "next/image";
+import { caseCards, type CaseCard } from "@/lib/cases";
 
 function perView(): number {
   if (window.matchMedia("(min-width: 1024px)").matches) return 3;
@@ -10,6 +11,23 @@ function perView(): number {
 }
 
 const IMAGE_SIZES = "(min-width: 1024px) 290px, (min-width: 640px) 46vw, calc(100vw - 32px)";
+
+function CasePhoto({ item }: { item: CaseCard }) {
+  return (
+    <picture>
+      {item.avifSrc ? <source type="image/avif" srcSet={item.avifSrc} sizes={IMAGE_SIZES} /> : null}
+      <Image
+        src={item.src}
+        alt={item.alt}
+        width={item.width}
+        height={item.height}
+        sizes={IMAGE_SIZES}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    </picture>
+  );
+}
 
 /**
  * 活動情報と同じページ送り。カードの見出しは復元した tag だけ。新しい本文は足さない。
@@ -62,16 +80,7 @@ export function CasesBoard() {
           <li key={item.id} className="box-border w-full shrink-0 snap-start px-2 sm:w-1/2 lg:w-[calc(100%/3)]">
             <article className="flex h-full flex-col overflow-hidden rounded-site border border-line bg-white shadow-card">
               <div className="relative aspect-[4/3] bg-pale">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  width={item.width}
-                  height={item.height}
-                  loading="lazy"
-                  decoding="async"
-                  sizes={IMAGE_SIZES}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
+                <CasePhoto item={item} />
                 {item.imageNote ? (
                   <span className="pointer-events-none absolute bottom-2 left-2 rounded-control border border-line bg-white px-1.5 py-0.5 text-xs font-bold text-ink">
                     {item.imageNote}

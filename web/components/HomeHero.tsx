@@ -49,7 +49,7 @@ export function HomeHero() {
       {/* 中央揃えで幅を濃い緑の余白に合わせ、人物に重ならないようにする */}
       <div className="relative mx-auto flex w-full max-w-[36rem] flex-col items-center justify-center px-4 py-14 text-center sm:py-16 md:py-20">
         {/* md 未満だけ曇りガラスの枠。ボタンは枠の外。md 以上は contents で箱を消す */}
-        <div className="w-full rounded-[16px] border border-line bg-white/[0.86] px-3.5 py-5 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] md:contents">
+        <div className="w-full rounded-[16px] bg-white/50 px-3.5 py-5 backdrop-blur-[4px] [-webkit-backdrop-filter:blur(4px)] md:contents">
           <h1 className="w-full">
             <span className="block text-[11px] font-bold leading-none tracking-[0.14em] text-[#0B3D24] sm:text-sm sm:tracking-[0.2em] md:text-cta">
               <Chunks parts={["技能実習生・", "育成就労・", "特定技能、"]} />

@@ -75,7 +75,7 @@ export const caseCards: CaseCard[] = [
     src: "/images/cases/tatami.webp",
     avifSrc: "/images/cases/tatami.avif",
     alt: "畳の製造ラインで作業する様子",
-    tag: "畳製造",
+    tag: "製造業",
     width: 1200,
     height: 900,
   },

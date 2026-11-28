@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LogoTile } from "@/components/Wordmark";
 import { ChatIcon } from "@/components/LineButton";
-import { org, fullAddress, licenses, sdgs, TEL_HREF, FACEBOOK_URL, LINE_URL, LINE_ARIA, repoFacts } from "@/lib/site";
+import { org, fullAddress, sdgs, TEL_HREF, FACEBOOK_URL, LINE_URL, LINE_ARIA, repoFacts } from "@/lib/site";
 import { Chunks, Phrases } from "./KeepWords";
 
 /** 相談窓口、ホームの活動情報、下層ページ。 */
@@ -74,9 +74,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/35 px-4 py-3 text-center text-[13px] leading-5 text-white">
-        <p>監理団体許可番号：{licenses.kanri.number}（{licenses.kanri.kind}）</p>
-        <p>登録支援機関登録番号：{licenses.toroku.number}</p>
-        <p className="mt-1">
+        <p>
           <Chunks parts={sdgs.supportParts} />
         </p>
         <p className="mt-1">© {org.name}</p>

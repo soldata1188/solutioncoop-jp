@@ -21,35 +21,6 @@ function HeroDecor() {
   );
 }
 
-function IconConstruction() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-      <path d="M4 20h16M8 20V9l4-5 4 5v11" />
-      <path d="M12 4v-1M10 20v-4h4v4" />
-    </svg>
-  );
-}
-
-function IconFactory() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-      <path d="M3 20V11l5 3V11l5 3V9h8v11H3z" />
-      <path d="M16 6V3M16 6h3" />
-    </svg>
-  );
-}
-
-function IconBuilding() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-      <path d="M5 20V5h8v15M13 20V10h6v10" />
-      <path d="M8 8h2M8 12h2M8 16h2M16 13h2M16 16h2" />
-    </svg>
-  );
-}
-
-const chipBase = "inline-flex min-h-9 items-center gap-1.5 rounded-control border border-white/80 bg-transparent px-3 py-1 text-sm font-bold leading-none text-white";
-
 /**
  * トップのヒーロー。背景は写真導入前の緑（#1E7F46）。
  * 図形は文字の外側だけ。通常の文字は 4.5:1、大きな見出しは 3:1。
@@ -84,24 +55,6 @@ export function HomeHero() {
             <span className="inline-block">トータルサポートいたします。</span>
           </span>
         </p>
-
-        <div className="mt-3 flex w-full max-w-3xl flex-col items-center gap-3 rounded-site border border-white/40 bg-primary-darker/35 px-3 py-3 sm:mt-5 sm:w-auto sm:flex-row sm:gap-4 sm:px-5">
-          <p className="text-xs font-bold tracking-wide text-cta">主な対応業種</p>
-          <ul className="flex flex-wrap items-center justify-center gap-2">
-            <li className={chipBase}>
-              <IconConstruction />
-              建設業
-            </li>
-            <li className={chipBase}>
-              <IconFactory />
-              製造業
-            </li>
-            <li className={chipBase}>
-              <IconBuilding />
-              その他業種
-            </li>
-          </ul>
-        </div>
 
         <div className="mt-3 grid w-full max-w-xl grid-cols-2 gap-2 sm:mt-5 sm:gap-3">
           <Link

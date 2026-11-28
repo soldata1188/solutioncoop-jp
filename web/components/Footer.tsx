@@ -73,7 +73,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/35 px-4 py-3 text-center text-[13px] leading-5 text-white">
+      <div className="border-t border-white/35 px-4 py-3 text-center text-sm leading-5 text-white">
         <p>
           <Chunks parts={sdgs.supportParts} />
         </p>

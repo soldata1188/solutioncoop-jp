@@ -44,6 +44,8 @@ export function HomeHero() {
           className="h-full w-full object-cover object-left md:object-[44%_center]"
         />
       </picture>
+      {/* 携帯は絵の左端（明るい空・建設現場）に文字が乗るため、濃い緑を重ねて白・黄の文字を 4.5:1 以上にする。md 以上は中央の濃い緑に文字を置くので重ねない */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-primary-darker/70 md:hidden" />
 
       {/* 中央揃えで幅を濃い緑の余白に合わせ、人物に重ならないようにする */}
       <div className="relative mx-auto flex w-full max-w-[36rem] flex-col items-center justify-center px-4 py-14 text-center sm:py-16 md:py-20">

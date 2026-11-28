@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "お問い合わせ",
   alternates: { canonical: "/" },
+  robots: { index: false, follow: true },
 };
 
 /** 静的書き出しにはサーバーのリダイレクトが無い。nginx の例では 301。 */

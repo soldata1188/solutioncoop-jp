@@ -29,7 +29,7 @@ export function Photo({
         placeholder="blur"
         className={`h-auto w-full object-cover ${imgClassName}`}
       />
-      {caption ? <figcaption className="mt-2 text-[13px] leading-relaxed text-muted">{caption}</figcaption> : null}
+      {caption ? <figcaption className="mt-2 text-sm leading-relaxed text-muted">{caption}</figcaption> : null}
     </figure>
   );
 }

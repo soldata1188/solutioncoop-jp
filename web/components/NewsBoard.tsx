@@ -83,6 +83,8 @@ export function NewsBoard() {
     <div className="min-w-0">
       <ul
         ref={scroller}
+        tabIndex={0}
+        aria-label="最新情報"
         className="flex w-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {newsItems.map((item) => (

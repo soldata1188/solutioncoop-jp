@@ -33,7 +33,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={TEL_HREF}
-            aria-label={`${TEL_ARIA}（${org.tel}）`}
+            aria-label={`${TEL_ARIA} ${org.tel}`}
             className="lift inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-control border border-primary-dark px-2 text-[13px] font-bold text-primary-dark no-underline hover:bg-pale min-[1200px]:px-3"
           >
             <PhoneIcon />

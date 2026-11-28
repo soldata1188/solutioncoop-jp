@@ -60,7 +60,7 @@ function Frame({ item }: { item: LicenseImageItem }) {
           )}
         </div>
       </div>
-      <figcaption className="mt-2 text-center text-[13px] leading-relaxed text-ink">{caption}</figcaption>
+      <figcaption className="mt-2 text-center text-sm leading-relaxed text-ink">{caption}</figcaption>
       {item.image ? (
         <dialog
           ref={dialogRef}

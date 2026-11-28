@@ -73,7 +73,7 @@ export function ConsultDesk({
           <PeopleIcon />
           {CONSULT_CLAIMS.badgeJa}
         </span>
-        <span className="mt-0.5 text-xs font-bold tracking-wide text-white/90">{CONSULT_CLAIMS.badgeEn}</span>
+        <span className="mt-0.5 text-xs font-bold tracking-wide text-white">{CONSULT_CLAIMS.badgeEn}</span>
       </p>
 
       <p className="mx-auto mt-5 inline-flex items-center gap-2 rounded-control bg-white px-4 py-1.5 text-sm font-bold text-ink shadow-sm ring-1 ring-line">
@@ -94,7 +94,7 @@ export function ConsultDesk({
           <li key={lang.en} className="flex w-28 flex-col items-center">
             <Image src={lang.flag} alt="" width={lang.width} height={lang.height} unoptimized className="h-8 w-auto ring-1 ring-line" />
             <span className="mt-2 text-sm font-bold text-ink">{lang.ja}</span>
-            <span className="text-[11px] font-bold tracking-wide text-muted">{lang.en}</span>
+            <span className="text-xs font-bold tracking-wide text-muted">{lang.en}</span>
           </li>
         ))}
       </ul>
@@ -102,15 +102,15 @@ export function ConsultDesk({
       <ul className={`mt-10 grid grid-cols-1 items-stretch gap-4 ${columns === "sm" ? "sm:grid-cols-3" : "lg:grid-cols-3"}`}>
         <li className="card-lift flex h-full flex-col overflow-hidden rounded-site border border-line bg-white text-center">
           <div className="flex h-28 items-center justify-center bg-[#e7f1ff]">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1877F2]">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-fb">
               <FacebookIcon />
             </span>
           </div>
           <div className="flex flex-1 flex-col px-5 py-6">
-            <CardHeading className="text-xl font-bold text-[#1877F2]">Facebookで相談</CardHeading>
-            <p className="text-xs font-bold italic tracking-wide text-[#1877F2]">CONSULT VIA FACEBOOK</p>
+            <CardHeading className="text-xl font-bold text-fb">Facebookで相談</CardHeading>
+            <p className="text-xs font-bold italic tracking-wide text-fb">CONSULT VIA FACEBOOK</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をするとベトナム語、インドネシア語、タガログ語で相談できます</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted">Message us on Messenger to consult in Vietnamese, Indonesian, or Tagalog.</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted">Message us on Messenger to consult in Vietnamese, Indonesian, or Tagalog.</p>
             {showQr ? (
               <div className="mt-5">
                 {messengerHref.length > 0 && messengerQr.length > 0 ? (
@@ -126,15 +126,15 @@ export function ConsultDesk({
             ) : null}
             <div className="mt-auto pt-5">
               {messengerReady ? (
-                <a href={messengerHref} target="_blank" rel="noopener noreferrer" className={`${btn} bg-[#1877F2] text-white hover:bg-[#1666d2]`}>
+                <a href={messengerHref} target="_blank" rel="noopener noreferrer" className={`${btn} bg-fb text-white hover:bg-fb-hover`}>
                   <span>Messengerを開く</span>
-                  <span className="text-[11px] tracking-wide">OPEN MESSENGER</span>
+                  <span className="text-xs tracking-wide">OPEN MESSENGER</span>
                   <span className="sr-only">（新しいタブで開きます）</span>
                 </a>
               ) : (
-                <button type="button" disabled aria-disabled="true" className={`${btn} cursor-not-allowed bg-[#1877F2] text-white opacity-60`}>
+                <button type="button" disabled aria-disabled="true" className={`${btn} cursor-not-allowed bg-fb text-white opacity-60`}>
                   <span>Messengerを開く</span>
-                  <span className="text-[11px] tracking-wide">OPEN MESSENGER</span>
+                  <span className="text-xs tracking-wide">OPEN MESSENGER</span>
                 </button>
               )}
             </div>
@@ -146,10 +146,10 @@ export function ConsultDesk({
             <LineMark />
           </div>
           <div className="flex flex-1 flex-col px-5 py-6">
-            <CardHeading className="text-xl font-bold text-linegreen">LINEで相談</CardHeading>
-            <p className="text-xs font-bold italic tracking-wide text-linegreen">CONSULT VIA LINE</p>
+            <CardHeading className="text-xl font-bold text-linegreen-text">LINEで相談</CardHeading>
+            <p className="text-xs font-bold italic tracking-wide text-linegreen-text">CONSULT VIA LINE</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">友だち追加をするとベトナム語、インドネシア語、タガログ語で相談できます</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted">After you add us as a friend, you can consult in Vietnamese, Indonesian, or Tagalog.</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted">After you add us as a friend, you can consult in Vietnamese, Indonesian, or Tagalog.</p>
             {showQr ? (
               <div className="mt-5">
                 <QrFrame>
@@ -160,7 +160,7 @@ export function ConsultDesk({
             <div className="mt-auto pt-5">
               <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`${btn} bg-linegreen text-ink hover:bg-linegreen-hover`}>
                 <span>LINE 友だち登録へ</span>
-                <span className="text-[11px] tracking-wide">ADD AS FRIEND</span>
+                <span className="text-xs tracking-wide">ADD AS FRIEND</span>
                 <span className="sr-only">（新しいタブで開きます）</span>
               </a>
             </div>
@@ -175,12 +175,12 @@ export function ConsultDesk({
             <CardHeading className="text-xl font-bold text-primary">電話で相談</CardHeading>
             <p className="text-xs font-bold italic tracking-wide text-primary">CONSULT BY PHONE</p>
             <p className="mt-4 text-sm font-bold leading-relaxed text-ink">急いで話したいときは、この番号に電話してください。</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted">If you need to talk right away, please call this number.</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted">If you need to talk right away, please call this number.</p>
             <p className={`mt-5 flex items-center justify-center text-3xl font-bold tracking-wide text-primary ${showQr ? "min-h-40" : ""}`}>{org.tel}</p>
             <div className="mt-auto pt-5">
               <a href={TEL_HREF} className={`${btn} bg-primary text-white hover:bg-primary-dark`}>
                 <span>今すぐ発信する</span>
-                <span className="text-[11px] tracking-wide">CALL NOW</span>
+                <span className="text-xs tracking-wide">CALL NOW</span>
               </a>
             </div>
           </div>

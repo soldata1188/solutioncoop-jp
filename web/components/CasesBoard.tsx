@@ -54,6 +54,8 @@ export function CasesBoard() {
     <div className="min-w-0">
       <ul
         ref={scroller}
+        tabIndex={0}
+        aria-label="受入れ事例"
         className="flex w-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {caseCards.map((item) => (

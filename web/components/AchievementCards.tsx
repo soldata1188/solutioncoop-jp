@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { achievements, achievementsHeading } from "@/lib/site";
 
+/** ホームに出すのは先頭3枚。後ろの3枚は site.ts に残し、ここでは描かない。 */
+const homeAchievements = achievements.slice(0, 3);
+
 /**
  * ホームの実績3枚。文言は最終値のまま描き、動きを減らす設定では数えない。
  * 画面に入ったあとだけ、数字を約1秒で数える。幅は桁数で確保する。
@@ -10,7 +13,7 @@ import { achievements, achievementsHeading } from "@/lib/site";
 export function AchievementCards() {
   const rootRef = useRef<HTMLUListElement>(null);
   const [live, setLive] = useState(false);
-  const [nums, setNums] = useState(() => achievements.map((item) => item.count));
+  const [nums, setNums] = useState(() => homeAchievements.map((item) => item.count));
 
   useEffect(() => {
     const root = rootRef.current;
@@ -30,10 +33,10 @@ export function AchievementCards() {
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - t, 3);
-          setNums(achievements.map((item) => Math.round(eased * item.count)));
+          setNums(homeAchievements.map((item) => Math.round(eased * item.count)));
           if (t < 1) frame = requestAnimationFrame(tick);
         };
-        setNums(achievements.map(() => 0));
+        setNums(homeAchievements.map(() => 0));
         frame = requestAnimationFrame(tick);
       },
       { threshold: 0.35 },
@@ -77,7 +80,7 @@ export function AchievementCards() {
         </h2>
       </div>
       <ul ref={rootRef} className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3">
-        {achievements.map((item, i) => (
+        {homeAchievements.map((item, i) => (
           <li key={item.label} className="flex h-full flex-col items-center rounded-site border border-line bg-white px-4 py-6 text-center">
             <span className="inline-flex max-w-full items-center justify-center rounded-control bg-primary-dark px-4 py-1.5 text-sm font-bold leading-snug text-white">
               {item.label}

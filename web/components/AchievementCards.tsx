@@ -78,8 +78,8 @@ export function AchievementCards() {
       </div>
       <ul ref={rootRef} className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3">
         {achievements.map((item, i) => (
-          <li key={item.label} className="flex h-full flex-col items-center rounded-3xl border-4 border-pale-border bg-white px-4 py-6 text-center">
-            <span className="inline-flex max-w-full items-center justify-center rounded-full bg-primary-dark px-4 py-1.5 text-sm font-bold leading-snug text-white">
+          <li key={item.label} className="flex h-full flex-col items-center rounded-site border-4 border-pale-border bg-white px-4 py-6 text-center">
+            <span className="inline-flex max-w-full items-center justify-center rounded-site bg-primary-dark px-4 py-1.5 text-sm font-bold leading-snug text-white">
               {item.label}
             </span>
             <p className="mt-6 flex items-end justify-center text-primary-dark">

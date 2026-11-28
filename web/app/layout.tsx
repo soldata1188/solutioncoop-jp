@@ -54,7 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="flex min-h-screen flex-col antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-primary-dark focus:shadow"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-site focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-primary-dark focus:shadow"
         >
           本文へスキップ
         </a>

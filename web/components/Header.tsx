@@ -4,7 +4,7 @@ import { SiteNav } from "./SiteNav";
 import { Wordmark } from "./Wordmark";
 import { MobileMenu } from "./MobileMenu";
 
-const btnBase = "lift inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded px-4 text-[13px] font-bold no-underline";
+const btnBase = "lift inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-site px-4 text-[13px] font-bold no-underline";
 
 export function PhoneIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -34,7 +34,7 @@ export function Header() {
           <a
             href={TEL_HREF}
             aria-label={`${TEL_ARIA}（${org.tel}）`}
-            className="lift inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded border border-primary-dark px-2 text-[13px] font-bold text-primary-dark no-underline hover:bg-pale min-[1200px]:px-3"
+            className="lift inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-site border border-primary-dark px-2 text-[13px] font-bold text-primary-dark no-underline hover:bg-pale min-[1200px]:px-3"
           >
             <PhoneIcon />
             <span className="hidden min-[1200px]:inline">{org.tel}</span>

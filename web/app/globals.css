@@ -36,6 +36,7 @@
   --color-body: #333333;
   --color-muted: #666666;
   --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  --radius-site: 4px;
   --shadow-card: 0 1px 3px rgb(15 77 42 / 0.08), 0 4px 12px rgb(0 0 0 / 0.04);
 }
 
@@ -126,7 +127,6 @@ body {
   outline: 3px solid var(--color-cta);
   outline-offset: 2px;
   box-shadow: 0 0 0 5px var(--color-primary-darker);
-  border-radius: 4px;
 }
 
 summary {
@@ -236,7 +236,7 @@ summary::-webkit-details-marker {
       position: absolute;
       z-index: -1;
       inset: 0;
-      border-radius: inherit;
+      border-radius: var(--radius-site);
       box-shadow: 0 18px 36px rgb(15 77 42 / 0.16);
       opacity: 0;
       pointer-events: none;

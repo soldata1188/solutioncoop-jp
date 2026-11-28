@@ -115,7 +115,7 @@ export default function Page() {
       </Section>
 
       <Section id="overview" title="組合の概要" width="narrow" tone="pale">
-        <table className="w-full border-separate border-spacing-0 overflow-hidden rounded text-left text-[15px] shadow-card md:text-base">
+        <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-site text-left text-[15px] shadow-card md:text-base">
           <caption className="sr-only">ソリューション協同組合の概要</caption>
           <tbody>
             {rows.map(([k, v]) => (

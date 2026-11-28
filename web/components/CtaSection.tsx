@@ -26,7 +26,7 @@ export function CtaSection({ title }: { title?: string }) {
         </div>
         <p className="mt-6 text-[15px]">
           お電話でのご相談
-          <a href={TEL_HREF} className="mx-auto mt-2 flex min-h-12 w-fit items-center gap-2 rounded border-2 border-white px-5 text-xl font-bold text-white no-underline hover:bg-white/10">
+          <a href={TEL_HREF} className="mx-auto mt-2 flex min-h-12 w-fit items-center gap-2 rounded-site border-2 border-white px-5 text-xl font-bold text-white no-underline hover:bg-white/10">
             <PhoneIcon className="h-5 w-5" />
             {org.tel}
           </a>

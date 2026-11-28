@@ -12,7 +12,7 @@ export function ArrowIcon({ className = "h-3.5 w-3.5" }: { className?: string })
 type ButtonVariant = "primary" | "outlineWhite" | "whiteCta" | "outlineCta" | "dark" | "ghost";
 
 const buttonBase =
-  "lift relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded px-8 font-bold leading-snug no-underline";
+  "lift relative inline-flex min-h-12 items-center justify-center gap-2.5 rounded-site px-8 font-bold leading-snug no-underline";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   // 主ボタン：#1E7F46 地に白文字（5.02:1）、hover #0F4D2A（9.93:1）

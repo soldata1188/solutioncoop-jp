@@ -87,7 +87,7 @@ export function NewsBoard() {
       >
         {newsItems.map((item) => (
           <li key={item.id} className="box-border w-full shrink-0 snap-start px-2 sm:w-1/2 lg:w-[calc(100%/3)]">
-            <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+            <article className="flex h-full flex-col overflow-hidden rounded-site border border-line bg-white shadow-card">
               <div className="relative aspect-[4/3] bg-pale">
                 <CardImage item={item} />
               </div>

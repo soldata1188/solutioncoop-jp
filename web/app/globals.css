@@ -322,7 +322,7 @@ summary::-webkit-details-marker {
   }
   .contact-cards,
   .contact-cards :is(h2, h3, p, address, a) {
-    text-align: left;
+    text-align: center;
   }
   /* フォームのラベルと入力、開いた FAQ の回答、表、開いた折りたたみの一覧、箇条書き、プライバシー本文は左揃え */
   form :is(label, p, a, span, div, li),

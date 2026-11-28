@@ -1,8 +1,11 @@
 import { PhoneIcon } from "@/components/Header";
-import { LineButton } from "@/components/LineButton";
+import { ChatIcon, LineButton } from "@/components/LineButton";
 import { org, repoFacts, TEL_HREF } from "@/lib/site";
 
 const focus = "focus-visible:outline-2! focus-visible:outline-offset-2! focus-visible:outline-primary-dark!";
+const card = "flex h-full flex-col items-center rounded-site border border-line bg-white p-5 text-center";
+const action = "mt-auto w-full pt-5";
+const button = `flex min-h-14 w-full items-center justify-center rounded-control px-4 text-center font-bold no-underline ${focus}`;
 
 function MailIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -14,43 +17,44 @@ function MailIcon({ className = "h-5 w-5" }: { className?: string }) {
 }
 
 function MethodIcon({ children }: { children: React.ReactNode }) {
-  return <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-site bg-pale text-primary-dark">{children}</span>;
+  return <span className="flex h-12 w-12 items-center justify-center rounded-site bg-pale text-primary">{children}</span>;
 }
 
-/** /contact にあった連絡先。文言はそのまま。 */
+/** ホームのお問い合わせ。文言・電話・メール・LINEのリンクはそのまま。 */
 export function ContactMethods() {
   return (
-    <div className="contact-cards mx-auto grid max-w-[932px] gap-4">
-      <div className="grid gap-4 md:grid-cols-2">
-        <article className="flex flex-col rounded-site border border-line bg-white p-5 shadow-card sm:p-6">
-          <div className="flex items-start gap-3">
-            <MethodIcon><PhoneIcon className="h-5 w-5" /></MethodIcon>
-            <h3 className="pt-2 text-lg font-bold leading-snug text-ink">お電話でもご相談いただけます</h3>
-          </div>
-          <a href={TEL_HREF} className={`mt-5 flex min-h-14 w-full items-center justify-center gap-2 rounded-control bg-primary-dark px-4 text-lg font-bold text-white no-underline hover:bg-primary-darker ${focus}`}>
+    <ul className="contact-cards mx-auto grid max-w-[932px] grid-cols-1 items-stretch gap-4 md:grid-cols-3">
+      <li className={card}>
+        <MethodIcon><PhoneIcon className="h-5 w-5" /></MethodIcon>
+        <h3 className="mt-4 text-lg font-bold leading-snug text-ink">お電話でもご相談いただけます</h3>
+        <p className="mt-3 text-sm leading-relaxed text-muted">受付時間：{repoFacts.hours}<br />FAX：{org.fax}</p>
+        <div className={action}>
+          <a href={TEL_HREF} className={`${button} gap-2 bg-primary text-lg text-white hover:bg-primary-dark`}>
             <PhoneIcon className="h-5 w-5" />
             {org.tel}
           </a>
-          <p className="mt-3 text-sm leading-relaxed text-muted">受付時間：{repoFacts.hours}<br />FAX：{org.fax}</p>
-        </article>
+        </div>
+      </li>
 
-        <article className="flex flex-col rounded-site border border-line bg-white p-5 shadow-card sm:p-6">
-          <div className="flex items-start gap-3">
-            <MethodIcon><MailIcon /></MethodIcon>
-            <h3 className="pt-2 text-lg font-bold leading-snug text-ink">メール</h3>
-          </div>
-          <a href={`mailto:${org.email}`} className={`mt-5 flex min-h-14 w-full items-center justify-center break-all rounded-control border border-primary-dark bg-white px-4 text-center text-base font-bold text-primary-dark no-underline hover:bg-pale ${focus}`}>
+      <li className={card}>
+        <MethodIcon><MailIcon /></MethodIcon>
+        <h3 className="mt-4 text-lg font-bold leading-snug text-ink">メール</h3>
+        <div className={action}>
+          <a href={`mailto:${org.email}`} className={`${button} break-all border border-line bg-white text-base text-primary hover:bg-pale`}>
             {org.email}
           </a>
-        </article>
-      </div>
+        </div>
+      </li>
 
-      <article className="rounded-site border border-line border-l-linegreen bg-white p-5 shadow-card sm:p-6">
-        <h3 className="text-lg font-bold leading-snug text-ink">LINEでもご相談いただけます</h3>
-        <p className="mt-2 text-[15px] leading-relaxed text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
-        <LineButton className="mt-4 flex min-h-14 w-full gap-2 px-4 text-base sm:w-fit sm:min-w-64 sm:px-8" iconClassName="h-5 w-5" />
-        <p className="mt-3 text-sm leading-relaxed text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
-      </article>
-    </div>
+      <li className={card}>
+        <MethodIcon><ChatIcon className="h-5 w-5" /></MethodIcon>
+        <h3 className="mt-4 text-lg font-bold leading-snug text-ink">LINEでもご相談いただけます</h3>
+        <p className="mt-3 text-[15px] leading-relaxed text-body">当組合のLINE公式アカウントのトーク画面から、ご相談いただけます。</p>
+        <p className="mt-2 text-sm leading-relaxed text-muted">LINEでのご相談は、お返事までお時間をいただく場合がございます。あらかじめご了承ください。</p>
+        <div className={action}>
+          <LineButton className={`${button} gap-2 bg-linegreen text-base text-ink hover:bg-linegreen-hover`} iconClassName="h-5 w-5" />
+        </div>
+      </li>
+    </ul>
   );
 }

@@ -4,20 +4,20 @@ import { Chunks } from "@/components/KeepWords";
 import { CONTACT_HREF } from "@/lib/site";
 
 /**
- * バナー原図は 2421×800。幅 1280 では高さ 423px を超えると左右が切れる。
- * 390px 幅では中央の緑が文字の後ろに来るよう cover する。2x は実寸 2421 を選ばせる。
+ * バナー原図は 2400×800。幅 1280 では高さ 427px を超えると左右が切れる。
+ * モバイル（md 未満）は Boss の指示どおり左端に合わせて cover する。2x は実寸 2400 を選ばせる。
  */
-const HERO_SIZES = "(max-width: 639px) 1800px, 100vw";
+const HERO_SIZES = "(max-width: 767px) 1800px, 100vw";
 const HERO_AVIF =
-  "/images/hero/hero-illustration-1280.avif 1280w, /images/hero/hero-illustration-1600.avif 1600w, /images/hero/hero-illustration-2421.avif 2421w";
+  "/images/hero/hero-illustration-1280.avif 1280w, /images/hero/hero-illustration-1600.avif 1600w, /images/hero/hero-illustration-2400.avif 2400w";
 const HERO_WEBP =
-  "/images/hero/hero-illustration-1280.webp 1280w, /images/hero/hero-illustration-1600.webp 1600w, /images/hero/hero-illustration-2421.webp 2421w";
+  "/images/hero/hero-illustration-1280.webp 1280w, /images/hero/hero-illustration-1600.webp 1600w, /images/hero/hero-illustration-2400.webp 2400w";
 
 /**
- * トップのヒーロー。背景はバナー用イラスト第2稿（端の空が明るく、中央は緑の余白）。
- * 文字は中央の濃い緑に置き、人物に重ねない。スクリムは重ねない。
- * 白 / 中央の緑（平均 #036D47 付近）は 6.40:1。黄色の小見出し #FFF478 は濃い緑上で 5.63:1。
- * 黄色は右寄りの明るい緑で 4.5:1 を切るため、アクセント（ラベルと主ボタン）に限り、本文は白。
+ * トップのヒーロー。背景はバナー用イラスト第3稿（左が建設現場、右が工場、中央は緑の余白）。
+ * 書き出し時に中央の緑にあった小さな赤い欠けを周囲の緑で埋めた以外、絵は変えていない。
+ * 文字組は 05997ce のまま。文字は中央の濃い緑に置き、人物に重ねない（1280）。スクリムは重ねない。
+ * モバイルは画像を左寄せする（object-left）。
  */
 export function HomeHero() {
   preload(HERO_AVIF, {
@@ -29,19 +29,19 @@ export function HomeHero() {
   });
 
   return (
-    <section data-hero className="relative overflow-hidden bg-[#036d47] text-white">
+    <section data-hero className="relative overflow-hidden bg-[#056c49] text-white">
       <picture className="pointer-events-none absolute inset-0 block">
         <source type="image/avif" sizes={HERO_SIZES} srcSet={HERO_AVIF} />
         <source type="image/webp" sizes={HERO_SIZES} srcSet={HERO_WEBP} />
         <img
           src="/images/hero/hero-illustration-1600.webp"
           alt=""
-          width={2421}
+          width={2400}
           height={800}
           sizes={HERO_SIZES}
           fetchPriority="high"
           decoding="async"
-          className="h-full w-full object-cover object-center sm:object-[40%_center]"
+          className="h-full w-full object-cover object-left md:object-[44%_center]"
         />
       </picture>
 

@@ -83,8 +83,9 @@ export function ConsultDesk({
       </p>
 
       <Heading id={headingLevel === "h2" ? "for-workers" : undefined} className={`mt-6 ${sectionTitleClass}`}>
-        {CONSULT_CLAIMS.titlePrefix}
-        <Accent>{CONSULT_CLAIMS.titleAccent}</Accent>
+        <span className="inline-block whitespace-nowrap md:inline">{CONSULT_CLAIMS.titlePrefix}</span>
+        <br className="md:hidden" />
+        <Accent className="inline-block whitespace-nowrap md:inline">{CONSULT_CLAIMS.titleAccent}</Accent>
       </Heading>
       <p className="mt-3 text-xs font-bold tracking-[0.18em] text-primary md:text-sm">{CONSULT_CLAIMS.hotlineEn}</p>
       <p className="mx-auto mt-5 max-w-[40rem] text-base font-bold leading-relaxed text-ink md:text-lg">{CONSULT_CLAIMS.leadJa}</p>

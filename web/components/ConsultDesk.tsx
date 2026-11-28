@@ -56,11 +56,11 @@ export function ConsultDesk({
   lineQr: string;
   messengerQr: string;
   messengerHref: string;
-  /** ホームでは h2。/for-workers は h1 のまま。 */
+  /** ホームでは h2。単体ページでは h1。 */
   headingLevel?: "h1" | "h2";
-  /** ホームでは QR を出さない。/for-workers は出す。 */
+  /** ホームでは QR を出さない。 */
   showQr?: boolean;
-  /** ホームは sm から3列。/for-workers は lg のまま。 */
+  /** ホームは sm から3列。 */
   columns?: "sm" | "lg";
 }) {
   const messengerReady = messengerHref.length > 0 && (showQr ? messengerQr.length > 0 : true);
@@ -81,7 +81,7 @@ export function ConsultDesk({
         {CONSULT_CLAIMS.pillJa} / {CONSULT_CLAIMS.pillEn}
       </p>
 
-      <Heading id={headingLevel === "h2" ? "countries" : undefined} className="mt-6 text-3xl font-bold leading-tight text-primary-darker md:text-5xl">
+      <Heading id={headingLevel === "h2" ? "for-workers" : undefined} className="mt-6 text-3xl font-bold leading-tight text-primary-darker md:text-5xl">
         {CONSULT_CLAIMS.titlePrefix}
         <span className="text-primary">{CONSULT_CLAIMS.titleAccent}</span>
       </Heading>

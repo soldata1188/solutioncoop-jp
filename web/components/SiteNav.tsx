@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { isCurrent } from "./NavLink";
 
-const HOME_IDS = ["reasons", "news", "contact"];
+const HOME_IDS = ["reasons", "for-workers", "news", "contact"];
 const ABOUT_IDS = ["business", "disclosure"];
 
 export function SiteNav({

@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/for-workers",
+      "destination": "/#for-workers",
+      "permanent": true
+    },
+    {
+      "source": "/for-workers/",
+      "destination": "/#for-workers",
+      "permanent": true
+    }
+  ]
+}

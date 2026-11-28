@@ -72,7 +72,7 @@ export function HomeHero() {
             <span aria-hidden="true" className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-sm leading-none sm:right-3 sm:text-xl">→</span>
           </Link>
           <Link
-            href="/for-workers"
+            href="/#for-workers"
             prefetch={false}
             className="flex min-h-16 flex-col items-center justify-center rounded-control border border-white/80 bg-primary-darker/45 px-2 py-3 text-center font-black leading-tight text-white no-underline transition-colors hover:bg-primary-darker/60"
           >

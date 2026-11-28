@@ -6,7 +6,7 @@ import { Chunks, Phrases } from "./KeepWords";
 
 /** 相談窓口、ホームの活動情報、下層ページ。 */
 const footerLinks = [
-  { href: "/for-workers", label: "相談窓口" },
+  { href: "/#for-workers", label: "相談窓口" },
   { href: "/#news", label: "活動情報" },
   { href: "/faq", label: "よくある質問" },
   { href: "/about", label: "組合概要" },

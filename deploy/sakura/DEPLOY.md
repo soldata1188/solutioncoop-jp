@@ -76,12 +76,13 @@ curl -sI https://solutioncoop-jp.com/images/sdgs-logo-yoko-880.avif | head -n 15
 Kỳ vọng:
 
 - `/contact` và `/contact/` trả `301`, `Location` có `/#contact`.
+- `/for-workers` và `/for-workers/` trả `301`, `Location` có `/#for-workers`.
 - `robots.txt` trả về được.
-- `sitemap.xml` có đúng 4 URL: `/`, `/about`, `/for-workers`, `/privacy`. Không có `/contact`.
-- Canonical của 5 trang:
+- `sitemap.xml` có đúng 4 URL: `/`, `/faq`, `/about`, `/privacy`. Không có `/contact`. Không có `/for-workers`.
+- Canonical của 4 trang:
   - `/` → `https://solutioncoop-jp.com`
   - `/about` → `https://solutioncoop-jp.com/about`
-  - `/for-workers` → `https://solutioncoop-jp.com/for-workers`
+  - `/faq` → `https://solutioncoop-jp.com/faq`
   - `/privacy` → `https://solutioncoop-jp.com/privacy`
   - `/contact` → `https://solutioncoop-jp.com` (trang chủ)
 - Trang chủ trả `200`.
@@ -94,7 +95,7 @@ curl -sI https://solutioncoop-jp.com/images/sdgs-logo-yoko-880.avif | grep -i ca
 Xem canonical:
 
 ```bash
-for p in / /about /for-workers /privacy /contact; do
+for p in / /about /faq /privacy /contact; do
   echo "== $p"
   curl -s "https://solutioncoop-jp.com$p" | grep -o 'rel="canonical"[^>]*' | head -n 1
 done

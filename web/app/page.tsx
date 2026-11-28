@@ -100,7 +100,7 @@ export default function Home() {
 
       <ClientMarquee />
 
-      <section aria-labelledby="countries" className="bg-white">
+      <section aria-labelledby="for-workers" className="bg-white">
         <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
           <ConsultDesk
             lineQr=""

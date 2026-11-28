@@ -11,8 +11,6 @@ export const CONSULT_CLAIMS = {
   hotlineEn: "24/7 MULTILINGUAL CONSULTATION HOTLINE",
   leadJa: "実習生の安心な日本生活を、母国語スタッフがサポートします。",
   leadEn: "Staff who speak your language support your life in Japan.",
-  pageTitle: "24時間365日対応相談窓口",
-  pageDescription: "実習生の安心な日本生活を、母国語スタッフがサポートします。LINEと電話で相談できます。",
 } as const;
 
 export const CONSULT_LANGUAGES = [

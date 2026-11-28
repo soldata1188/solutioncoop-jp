@@ -1,0 +1,147 @@
+import type { Metadata } from "next";
+import { IconChartDown, IconDocuments, IconGlobe, IconHandshake } from "@/components/LineIcons";
+import { HomeHero } from "@/components/HomeHero";
+import { Accent, Section, TabCard, sectionTitleClass } from "@/components/ui";
+import { ConsultDesk } from "@/components/ConsultDesk";
+import { consultMessengerHref } from "@/lib/site";
+import { StatsStrip } from "@/components/StatsStrip";
+import { NewsBoard } from "@/components/NewsBoard";
+import { CasesBoard } from "@/components/CasesBoard";
+import { ContactMethods } from "@/components/ContactSection";
+import { ClientMarquee } from "@/components/ClientMarquee";
+import { pageMeta } from "@/lib/meta";
+
+export const metadata: Metadata = {
+  ...pageMeta("/", "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労", "堺市堺区の監理団体、ソリューション協同組合です。建設・機械金属・食品製造など大阪の中小企業様の外国人材受入れを、ベトナム・インドネシア・フィリピンの送り出し機関と連携してご支援します。"),
+  title: { absolute: "堺の監理団体 ソリューション協同組合｜大阪の外国人材受入れ・育成就労" },
+};
+
+/** 選ばれ続ける理由（代表者様ご提供の文言をそのまま掲載） */
+const reasons = [
+  {
+    title: "明朗な費用で安心",
+    sub: "適正な費用体系・透明性の高い運営",
+    body: "すべての費用を書面で明示し、透明性の高い適正な運営体制で企業様の信頼にお応えします。",
+    Icon: IconChartDown,
+  },
+  {
+    title: "事務負担を大幅に軽減",
+    sub: "煩雑な事務手続きの負担軽減",
+    body: "新制度移行に伴う煩雑な手続きの負担軽減と確実な法令順守をサポート。受入れ準備から各種申請に関する適切なアドバイスまで、専門スタッフが伴走し、企業様の適正な運用を支援します。",
+    Icon: IconDocuments,
+  },
+  {
+    title: "3か国対応ハイブリッド",
+    sub: "多国籍で優秀な人材の厳選",
+    body: "ベトナム、インドネシア、フィリピンの送り出し機関と連携しています。",
+    Icon: IconGlobe,
+  },
+  {
+    title: "手厚いフォローで安心",
+    sub: "受入れ後の継続的なサポート",
+    body: "入社後も独自のフォロー体制を提供。生活習慣の違いからくるトラブルやメンタルケアまで母国語で対応し、外国人材の迅速な環境適応と長期定着をバックアップします。",
+    Icon: IconHandshake,
+  },
+];
+
+export default function Home() {
+  return (
+    <>
+      <HomeHero />
+
+      {/* 実績（3つのカード）と、その下の SDGs未来都市・堺 */}
+      <StatsStrip />
+
+      {/* 事例（未確定のため要確認枠のみ）。見出しと tag は ebf987b^ の原文。番号タブとメニュー項目は足さない。 */}
+      <section aria-labelledby="cases" className="bg-pale">
+        <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
+          <div className="text-center">
+            <h2 id="cases" className={sectionTitleClass}>
+              受入れ事例
+            </h2>
+            <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
+              外国人材が活躍する、各分野の受入れ現場をご紹介します。
+            </p>
+          </div>
+          <div className="mt-8">
+            <CasesBoard />
+          </div>
+        </div>
+      </section>
+
+      {/* 選ばれ続ける理由（代表者様ご提供の文言）。見出し横のイラストは外し、見出しは中央。 */}
+      <Section
+        id="reasons"
+        width="wide"
+        title={<><Accent>83社</Accent>に選ばれ続ける理由</>}
+        sub="— 受入れ企業様が実感する4つの理由 —"
+        lead="外国人材の採用に慣れていない中小企業様にも、煩雑な事務手続きのご負担を軽減しながら、「規律と礼節」を重んじる独自の教育体制で、グローバル人材の安定的な育成を支援します。"
+      >
+        <ol className="grid gap-5 md:grid-cols-2">
+          {reasons.map(({ title, sub, body, Icon }) => (
+            <TabCard key={title}>
+              <div className="hidden h-36 items-center justify-center border-b border-line bg-white text-primary sm:flex">
+                <Icon className="h-20 w-20" />
+              </div>
+              <div className="px-5 pb-6 pt-5 text-center sm:text-left">
+                <span className="mx-auto mb-3 flex size-20 items-center justify-center rounded-full bg-pale text-primary sm:hidden">
+                  <Icon className="size-14" />
+                </span>
+                <h3 className="text-lg font-bold leading-snug text-ink md:text-xl">
+                  {title}
+                </h3>
+                <p className="mt-1 text-sm font-bold text-primary-dark">{sub}</p>
+                <p className="mt-3 text-pretty text-center text-sm leading-relaxed text-body sm:text-left">{body}</p>
+              </div>
+            </TabCard>
+          ))}
+        </ol>
+      </Section>
+
+      <ClientMarquee />
+
+      <section aria-labelledby="for-workers" className="bg-white">
+        <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
+          <ConsultDesk
+            lineQr=""
+            messengerQr=""
+            messengerHref={consultMessengerHref()}
+            headingLevel="h2"
+            showQr={false}
+            columns="sm"
+          />
+        </div>
+      </section>
+
+      <section aria-labelledby="news" className="bg-pale">
+        <div className="mx-auto max-w-[932px] px-4 py-14 md:py-[72px]">
+          <div className="text-center">
+            <p lang="en" className="mb-3 flex items-center justify-center gap-3 text-sm font-bold tracking-[0.28em] text-primary">
+              <span aria-hidden="true" className="inline-block h-0.5 w-8 bg-primary" />
+              ACTIVITIES
+            </p>
+            <h2 id="news" className={sectionTitleClass}>
+              組合の<Accent>日々の活動</Accent>
+            </h2>
+            <p className="mx-auto mt-4 max-w-[580px] text-sm leading-relaxed text-muted md:text-[15px]">
+              講習や訓練、面接の様子など、受入れの現場での取り組みをご紹介します。
+            </p>
+          </div>
+          <div className="mt-8">
+            <NewsBoard />
+          </div>
+        </div>
+      </section>
+
+      <Section
+        id="contact"
+        title="お問い合わせ"
+        tone="pale"
+        width="wide"
+        lead="外国人材の受入れや育成就労制度について、お電話、メール、またはLINEにてご相談いただけます。"
+      >
+        <ContactMethods />
+      </Section>
+    </>
+  );
+}

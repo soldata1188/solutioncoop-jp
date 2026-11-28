@@ -1,0 +1,162 @@
+# Mẫu Nginx cho site tĩnh. CHƯA áp dụng lên máy chủ.
+# Domain solutioncoop-jp.com chỉ là placeholder. Chưa chạy certbot.
+# Include file này trong khối http (đã có mime.types).
+# Copy deploy/sakura/security-headers.conf thành
+# /etc/nginx/snippets/solutioncoop-security-headers.conf
+# Brotli không được bật. Khối tùy chọn (đang chú thích) nằm dưới gzip.
+
+# www, HTTP và HTTPS, luôn về tên miền gốc.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name www.solutioncoop-jp.com;
+    return 301 https://solutioncoop-jp.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    # http2 on; cần nginx >= 1.25.1. Bản cũ hơn: `listen 443 ssl http2;` (xem `nginx -v`).
+    http2 on;
+    server_name www.solutioncoop-jp.com;
+
+    # Cùng chứng chỉ với tên miền gốc. Chứng chỉ phải có cả hai tên.
+    ssl_certificate     /etc/letsencrypt/live/solutioncoop-jp.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/solutioncoop-jp.com/privkey.pem;
+
+    return 301 https://solutioncoop-jp.com$request_uri;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name solutioncoop-jp.com;
+    return 301 https://solutioncoop-jp.com$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    # http2 on; cần nginx >= 1.25.1. Bản cũ hơn: `listen 443 ssl http2;` (xem `nginx -v`).
+    http2 on;
+    server_name solutioncoop-jp.com;
+
+    # certbot --nginx sẽ tạo hoặc trỏ các file này. Chưa có chứng chỉ trong repo.
+    ssl_certificate     /etc/letsencrypt/live/solutioncoop-jp.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/solutioncoop-jp.com/privkey.pem;
+
+    root /var/www/solutioncoop/current;
+    index index.html;
+
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 256;
+    gzip_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json;
+
+    # Brotli: chỉ bỏ dấu # nếu nginx trên VPS có module ngx_brotli. Không có thì gzip ở trên là đủ. Không bật ở đây.
+    # brotli on;
+    # brotli_comp_level 5;
+    # brotli_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml application/manifest+json;
+
+    include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+
+    # /news/ và /contact/ đi một bước tới đích. Các URL có dấu / cuối khác bỏ dấu /.
+    rewrite ^/(?!news/$|contact/$|for-workers/$)(.+)/$ /$1 permanent;
+
+    location = /disclosure { return 301 /about#disclosure; }
+    location = /privacy.html { return 301 /privacy; }
+    location = /news { return 301 /#news; }
+    location = /news/ { return 301 /#news; }
+    location = /contact { return 301 "/#contact"; }
+    location = /contact/ { return 301 "/#contact"; }
+    location = /for-workers { return 301 "/#for-workers"; }
+    location = /for-workers/ { return 301 "/#for-workers"; }
+    location = /news.html { return 301 /; }
+    location = /index.html { return 301 /; }
+    location = /gino-jisshu.html { return 301 /; }
+    location = /support.html { return 301 /; }
+    location = /support { return 301 /; }
+    location = /price { return 301 /; }
+    location = /roadmap { return 301 /; }
+    location = /sakai { return 301 /; }
+    location = /industries { return 301 /; }
+    location ^~ /industries/ { return 301 /; }
+    location = /受け入れ実績 { return 301 /; }
+    location = /うけいれ実績 { return 301 /; }
+    location = /受入実績 { return 301 /; }
+
+    # Ảnh đã xuất (tên có kích thước). HTML vẫn no-cache ở location /.
+    location ^~ /brand/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+    # Tên file trong /images/ không có hash (ví dụ logo SDGs bị ghi đè tại chỗ), nên không cache 1 năm.
+    location ^~ /images/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=604800" always;
+        try_files $uri =404;
+    }
+    location ^~ /licenses/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+    location ^~ /flags/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+
+    # Ảnh trong /news/ cũng không có hash trên tên file, nên cache 7 ngày. Slug cũ không có file thì về trang chủ.
+    location ^~ /news/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=604800" always;
+        try_files $uri @news_gone;
+    }
+    location @news_gone { return 301 /; }
+
+    location ^~ /_next/static/ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable" always;
+        try_files $uri =404;
+    }
+
+    # Payload .txt của Next. Không chặn, vì điều hướng phía client cần đọc.
+    # Hai file công khai không gắn noindex.
+    location = /robots.txt {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+    location = /llms.txt {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+    location ~ \.txt$ {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header X-Robots-Tag "noindex" always;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri =404;
+    }
+
+    location = / {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files /index.html =404;
+    }
+
+    location / {
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+        try_files $uri.html $uri $uri/ =404;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+        include /etc/nginx/snippets/solutioncoop-security-headers.conf;
+        add_header Cache-Control "no-cache" always;
+    }
+}

@@ -89,6 +89,9 @@ export function CasesBoard() {
               </div>
               <div className="flex flex-1 flex-col px-4 py-4">
                 <h3 className="text-base font-bold leading-snug text-ink">{item.tag}</h3>
+                {item.sub ? (
+                  <p className="mt-1 text-sm font-bold leading-snug text-primary-dark">{item.sub}</p>
+                ) : null}
               </div>
             </article>
           </li>
